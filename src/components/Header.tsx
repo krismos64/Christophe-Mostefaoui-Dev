@@ -1,16 +1,15 @@
-import React from 'react';
-import { Code2, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { Code2, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { name: 'Accueil', href: '#home' },
-    { name: 'À propos', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Accueil", href: "#home" },
+    { name: "À propos", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -19,7 +18,9 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <a href="#home" className="flex items-center space-x-2">
             <Code2 className="h-8 w-8 text-blue-600" />
-            <span className="text-xl font-bold text-gray-900">DevFreelance</span>
+            <span className="text-xl font-bold text-gray-900">
+              DevFreelance
+            </span>
           </a>
 
           {/* Desktop Menu */}

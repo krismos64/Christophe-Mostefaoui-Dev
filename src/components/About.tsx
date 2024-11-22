@@ -1,27 +1,26 @@
-import React from 'react';
-import { Code, Cpu, Users, Zap } from 'lucide-react';
+import { Code, Cpu, Users, Zap } from "lucide-react";
 
 export default function About() {
   const skills = [
     {
       icon: <Code className="h-6 w-6 text-blue-600" />,
-      title: 'Expertise Technique',
-      description: 'Maîtrise de React, Symfony, Node.js et des API REST',
+      title: "Expertise Technique",
+      description: "Maîtrise de React, Symfony, Node.js et des API REST",
     },
     {
       icon: <Users className="h-6 w-6 text-blue-600" />,
-      title: 'Communication',
-      description: 'Collaboration étroite et transparente avec les clients',
+      title: "Communication",
+      description: "Collaboration étroite et transparente avec les clients",
     },
     {
       icon: <Zap className="h-6 w-6 text-blue-600" />,
-      title: 'Solutions Innovantes',
-      description: 'Approche créative et orientée résultats',
+      title: "Solutions Innovantes",
+      description: "Approche créative et orientée résultats",
     },
     {
       icon: <Cpu className="h-6 w-6 text-blue-600" />,
-      title: 'Veille Technologique',
-      description: 'Toujours à jour avec les dernières technologies',
+      title: "Veille Technologique",
+      description: "Toujours à jour avec les dernières technologies",
     },
   ];
 
@@ -29,7 +28,9 @@ export default function About() {
     <section id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">À propos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            À propos
+          </h2>
           <p className="mt-4 text-xl text-gray-600">
             Passionné par le développement web et les nouvelles technologies
           </p>
@@ -45,17 +46,19 @@ export default function About() {
           </div>
           <div>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Après une reconversion réussie dans le développement web, je mets aujourd'hui
-              mes compétences au service de vos projets. Spécialisé dans les technologies
-              modernes comme React, Symfony et Node.js, je crée des solutions web
-              performantes et sur mesure.
+              Après une reconversion réussie dans le développement web, je mets
+              aujourd'hui mes compétences au service de vos projets. Spécialisé
+              dans les technologies modernes comme React, Symfony et Node.js, je
+              crée des solutions web performantes et sur mesure.
             </p>
             <div className="grid grid-cols-2 gap-6">
               {skills.map((skill) => (
                 <div key={skill.title} className="flex items-start space-x-3">
                   {skill.icon}
                   <div>
-                    <h3 className="font-semibold text-gray-900">{skill.title}</h3>
+                    <h3 className="font-semibold text-gray-900">
+                      {skill.title}
+                    </h3>
                     <p className="text-sm text-gray-600">{skill.description}</p>
                   </div>
                 </div>
