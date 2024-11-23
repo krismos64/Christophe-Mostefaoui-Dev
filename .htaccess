@@ -3,17 +3,29 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.html [QSA,L]
 
+# Définition des types MIME corrects
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType application/javascript .mjs
+    AddType text/javascript .js
+    AddType text/javascript .mjs
+    AddType application/json .json
+    AddType text/css .css
+</IfModule>
+
 # Compression Gzip
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
     AddOutputFilterByType DEFLATE text/xml
     AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
     AddOutputFilterByType DEFLATE application/xml
     AddOutputFilterByType DEFLATE application/xhtml+xml
     AddOutputFilterByType DEFLATE application/rss+xml
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
 </IfModule>
 
 # Cache-Control Headers
@@ -26,4 +38,20 @@ RewriteRule ^ index.html [QSA,L]
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/json "access plus 1 day"
+</IfModule>
+
+# Headers pour autoriser les modules ES
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set Access-Control-Allow-Origin "*"
+    
+    <FilesMatch "\.(js|mjs)$">
+        Header set Content-Type "application/javascript"
+    </FilesMatch>
+    
+    <FilesMatch "\.css$">
+        Header set Content-Type "text/css"
+    </FilesMatch>
 </IfModule>
