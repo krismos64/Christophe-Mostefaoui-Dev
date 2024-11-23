@@ -7,24 +7,26 @@ export default function LegalNotice() {
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-4">1. Édition du site</h2>
           <p className="mb-4">
-            Le site devfreelance.fr est édité par [Votre Nom], entrepreneur
+            Le site web est édité par Mostefaoui Christophe, entrepreneur
             individuel.
             <br />
-            Adresse : [Votre Adresse]
+            Adresse : 64170 Artix
             <br />
-            SIRET : [Votre numéro SIRET]
+            SIREN : 937 719 177
+            <br />
+            Mail : christophe.mostefaoui.dev@gmail.com
           </p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-4">2. Hébergement</h2>
           <p className="mb-4">
-            Le site est hébergé par Netlify
+            Le site est hébergé par Hostinger
             <br />
-            Adresse : 2325 3rd Street, Suite 215, San Francisco, California
-            94107
+            Hostinger International Ltd. 61 Lordou Vironos Street, 6023 Larnaca,
+            Chypre Téléphone : +370 645 03378 Email : domains@hostinger.com
             <br />
-            Site web : netlify.com
+            Site web : Hostinger.com
           </p>
         </section>
 

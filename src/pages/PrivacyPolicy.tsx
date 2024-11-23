@@ -69,7 +69,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-xl font-semibold mb-4">6. Contact</h2>
           <p className="mb-4">
             Pour toute question relative à notre politique de confidentialité,
-            vous pouvez nous contacter à : contact@devfreelance.fr
+            vous pouvez nous contacter à : christophe.mostefaoui.dev@gmail.com
           </p>
         </section>
       </div>

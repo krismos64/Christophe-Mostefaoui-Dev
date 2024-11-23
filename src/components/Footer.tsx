@@ -1,4 +1,5 @@
 import { Code2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -109,13 +110,19 @@ export default function Footer() {
             Tous droits réservés.
           </p>
           <p className="mt-2 text-sm">
-            <a href="#" className="hover:text-white transition-colors">
+            <Link
+              to="/mentions-legales"
+              className="hover:text-white transition-colors"
+            >
               Mentions légales
-            </a>{" "}
+            </Link>{" "}
             &middot;{" "}
-            <a href="#" className="hover:text-white transition-colors">
+            <Link
+              to="/politique-de-confidentialite"
+              className="hover:text-white transition-colors"
+            >
               Politique de confidentialité
-            </a>
+            </Link>
           </p>
         </div>
       </div>
