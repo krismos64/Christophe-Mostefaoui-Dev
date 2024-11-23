@@ -1,57 +1,84 @@
-Options -MultiViews
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.html [QSA,L]
+DirectoryIndex index.html
 
-# Définition des types MIME corrects
+# Enable rewrite engine
+
+RewriteEngine On
+
+# Handle Front Controller...
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [L]
+
+# Correct MIME types
+
 <IfModule mod_mime.c>
     AddType application/javascript .js
     AddType application/javascript .mjs
-    AddType text/javascript .js
-    AddType text/javascript .mjs
-    AddType application/json .json
+    AddType application/javascript .jsx
+    AddType application/javascript .ts
+    AddType application/javascript .tsx
     AddType text/css .css
+    AddType application/json .json
 </IfModule>
 
-# Compression Gzip
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE text/javascript
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE application/json
-</IfModule>
+# Force MIME types
 
-# Cache-Control Headers
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresByType image/jpg "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType text/javascript "access plus 1 month"
-    ExpiresByType application/json "access plus 1 day"
-</IfModule>
+<FilesMatch "\.js$">
+ForceType application/javascript
+</FilesMatch>
 
-# Headers pour autoriser les modules ES
+<FilesMatch "\.mjs$">
+ForceType application/javascript
+</FilesMatch>
+
+<FilesMatch "\.(tsx|ts|jsx)$">
+ForceType application/javascript
+</FilesMatch>
+
+<FilesMatch "\.css$">
+ForceType text/css
+</FilesMatch>
+
+# Security headers
+
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
-    Header set Access-Control-Allow-Origin "*"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
     
-    <FilesMatch "\.(js|mjs)$">
+    # CORS Headers
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+    
+    # Set correct content types for specific files
+    <FilesMatch "\.(js|mjs|jsx|ts|tsx)$">
         Header set Content-Type "application/javascript"
     </FilesMatch>
     
     <FilesMatch "\.css$">
         Header set Content-Type "text/css"
     </FilesMatch>
+</IfModule>
+
+# Compression
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
+</IfModule>
+
+# Cache Control
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/json "access plus 5 minutes"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
 </IfModule>
