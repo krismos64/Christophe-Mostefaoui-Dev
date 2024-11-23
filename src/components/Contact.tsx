@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Mail, Phone, Linkedin, Github } from 'lucide-react';
+import React, { useState } from "react";
+import { Mail, Phone, Linkedin, Github, LinkIcon } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
     consent: false,
   });
 
@@ -14,15 +14,17 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically handle the form submission
     setSubmitted(true);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value, type } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+      [name]:
+        type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
   };
 
@@ -30,7 +32,9 @@ export default function Contact() {
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Contact</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Contact
+          </h2>
           <p className="mt-4 text-xl text-gray-600">
             Discutons de votre projet
           </p>
@@ -44,24 +48,46 @@ export default function Contact() {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Mail className="h-6 w-6 text-blue-600" />
-                <span className="text-gray-600">contact@devfreelance.fr</span>
+                <a
+                  href="mailto:christophe.mostefaoui.dev@gmail.com"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  christophe.mostefaoui.dev@gmail.com
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-6 w-6 text-blue-600" />
-                <span className="text-gray-600">+33 6 XX XX XX XX</span>
+                <a
+                  href="tel:+33679088845"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  +33 6 79 08 88 45
+                </a>
               </div>
               <div className="flex space-x-4 mt-6">
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/christophemostefaoui/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   <Linkedin className="h-6 w-6" />
                 </a>
                 <a
-                  href="#"
+                  href="https://github.com/krismos64"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   <Github className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://krismos.fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  <LinkIcon className="h-6 w-6" />
                 </a>
               </div>
             </div>
@@ -74,7 +100,8 @@ export default function Contact() {
                   Message envoyé !
                 </h3>
                 <p className="text-green-700">
-                  Merci pour votre message. Je vous répondrai dans les plus brefs délais.
+                  Merci pour votre message. Je vous répondrai dans les plus
+                  brefs délais.
                 </p>
               </div>
             ) : (

@@ -19,7 +19,7 @@ export default function Header() {
           <a href="#home" className="flex items-center space-x-2">
             <Code2 className="h-8 w-8 text-blue-600" />
             <span className="text-xl font-bold text-gray-900">
-              DevFreelance
+              DevFreelance Christophe Mostefaoui
             </span>
           </a>
 

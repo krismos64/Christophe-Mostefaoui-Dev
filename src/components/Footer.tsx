@@ -94,16 +94,19 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
-              <li className="text-gray-400">contact@devfreelance.fr</li>
-              <li className="text-gray-400">+33 6 XX XX XX XX</li>
-              <li className="text-gray-400">Pau, France</li>
+              <li className="text-gray-400">
+                christophe.mostefaoui.dev@gmail.com
+              </li>
+              <li className="text-gray-400">+33 6 79 08 88 45</li>
+              <li className="text-gray-400">Artix, France</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
           <p>
-            © {new Date().getFullYear()} DevFreelance. Tous droits réservés.
+            © {new Date().getFullYear()} Christophe Mostefaoui DevFreelance.
+            Tous droits réservés.
           </p>
           <p className="mt-2 text-sm">
             <a href="#" className="hover:text-white transition-colors">
