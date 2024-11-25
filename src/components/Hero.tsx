@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React from "react";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -11,8 +11,9 @@ export default function Hero() {
               Développeur web freelance à votre service
             </h1>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-              Transformez vos idées en solutions digitales innovantes. Expert en React, Symfony, et Node.js,
-              je vous accompagne dans la réalisation de vos projets web.
+              Transformez vos idées en solutions digitales innovantes.
+              Spécialisé en React, Symfony, et Node.js, je vous accompagne dans
+              la réalisation de vos projets web.
             </p>
             <div className="mt-8">
               <a

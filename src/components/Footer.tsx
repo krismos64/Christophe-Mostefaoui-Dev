@@ -96,9 +96,21 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
               <li className="text-gray-400">
-                christophe.mostefaoui.dev@gmail.com
+                <a
+                  href="mailto:christophe.mostefaoui.dev@gmail.com"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  christophe.mostefaoui.dev@gmail.com
+                </a>
               </li>
-              <li className="text-gray-400">+33 6 79 08 88 45</li>
+              <li className="text-gray-400">
+                <a
+                  href="tel:+33679088845"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  +33 6 79 08 88 45
+                </a>
+              </li>
               <li className="text-gray-400">Artix, France</li>
             </ul>
           </div>
