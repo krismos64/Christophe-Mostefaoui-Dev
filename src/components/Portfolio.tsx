@@ -8,40 +8,45 @@ export default function Portfolio() {
         "Site de gestion pour un garage automobile avec système de rendez-vous en ligne",
       image: "/assets/images/garage.jpg",
       alt: "site web garage Vincent Parrot",
-      tech: ["Symfony", "React", "MySQL"],
+      tech: ["Symfony", "Twig", "MySQL"],
+      link: "https://parrotgarage.site/",
     },
-
     {
       title: "Kocinaspeed",
       description:
         "Plateforme de recettes de cuisine rapide avec filtres intelligents et chatbot interractif",
       image: "/assets/images/kocina.jpg",
-      tech: ["React", "Node.js", "MongoDB"],
+      tech: ["Symfony", "Twig", "MySQL"],
+      link: "https://kocinaspeed.fr/",
     },
     {
       title: "Metal Gear Chronicles",
       description:
         "Mini-site interactif pour les fans avec timeline interactive",
       image: "/assets/images/mgs.jpg",
-      tech: ["React", "Three.js", "Firebase"],
+      tech: ["HTML", "CSS", "JavaScript"],
+      link: "https://mgs-quiz-krismos.netlify.app/",
     },
     {
       title: "JDS",
       description: "Plateforme d'un groupe de soirées jeux de société",
       image: "/assets/images/jds.jpg",
-      tech: ["React", "Node.js", "MongoDB"],
+      tech: ["HTML", "CSS", "Javascript"],
+      link: "https://embrouillejds.netlify.app/",
     },
     {
       title: "StacyMakeupCreations",
       description: "Plateforme d'une maquilleuse professionnelle",
       image: "/assets/images/stacy.jpg",
-      tech: ["React", "Node.js", "MongoDB"],
+      tech: ["Symfony", "Twig", "MySQL"],
+      link: "https://stacymakeupcreations.website/",
     },
     {
       title: "Portfolio",
       description: "Portfolio personnel pour présenter mes projets",
       image: "/assets/images/portfolio.jpg",
-      tech: ["React", "Node.js", "MongoDB"],
+      tech: ["HTML", "CSS", "JavaScript"],
+      link: "https://krismos.fr/",
     },
   ];
 
@@ -64,11 +69,19 @@ export default function Portfolio() {
               className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
             >
               <div className="relative group">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Visiter le site"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.alt || project.title}
+                    className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </a>
+
                 <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-70 transition-all flex items-center justify-center">
                   <ExternalLink className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
