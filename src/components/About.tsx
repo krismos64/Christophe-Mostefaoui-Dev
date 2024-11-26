@@ -46,10 +46,9 @@ export default function About() {
           </div>
           <div>
             <p className="text-gray-600 leading-relaxed mb-6">
-              Après une reconversion réussie dans le développement web, je mets
-              aujourd'hui mes compétences au service de vos projets. Spécialisé
-              dans les technologies modernes comme React, Symfony et Node.js, je
-              crée des solutions web performantes et sur mesure.
+              Je mets aujourd'hui mes compétences au service de vos projets.
+              Spécialisé dans les technologies modernes comme React, Symfony et
+              Node.js, je crée des solutions web performantes et sur mesure.
             </p>
             <div className="grid grid-cols-2 gap-6">
               {skills.map((skill) => (
