@@ -1,25 +1,47 @@
-import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink } from "lucide-react";
 
 export default function Portfolio() {
   const projects = [
     {
-      title: 'Garage Parrot',
-      description: 'Site de gestion pour un garage automobile avec système de rendez-vous en ligne',
-      image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80',
-      tech: ['Symfony', 'React', 'MySQL'],
+      title: "Garage Parrot",
+      description:
+        "Site de gestion pour un garage automobile avec système de rendez-vous en ligne",
+      image: "/assets/images/garage.jpg",
+      alt: "site web garage Vincent Parrot",
+      tech: ["Symfony", "React", "MySQL"],
+    },
+
+    {
+      title: "Kocinaspeed",
+      description:
+        "Plateforme de recettes de cuisine rapide avec filtres intelligents et chatbot interractif",
+      image: "/assets/images/kocina.jpg",
+      tech: ["React", "Node.js", "MongoDB"],
     },
     {
-      title: 'Kocinaspeed',
-      description: 'Plateforme de recettes de cuisine rapide avec filtres intelligents',
-      image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80',
-      tech: ['React', 'Node.js', 'MongoDB'],
+      title: "Metal Gear Chronicles",
+      description:
+        "Mini-site interactif pour les fans avec timeline interactive",
+      image: "/assets/images/mgs.jpg",
+      tech: ["React", "Three.js", "Firebase"],
     },
     {
-      title: 'Metal Gear Chronicles',
-      description: 'Mini-site interactif pour les fans avec timeline interactive',
-      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80',
-      tech: ['React', 'Three.js', 'Firebase'],
+      title: "JDS",
+      description: "Plateforme d'un groupe de soirées jeux de société",
+      image: "/assets/images/jds.jpg",
+      tech: ["React", "Node.js", "MongoDB"],
+    },
+    {
+      title: "StacyMakeupCreations",
+      description: "Plateforme d'une maquilleuse professionnelle",
+      image: "/assets/images/stacy.jpg",
+      tech: ["React", "Node.js", "MongoDB"],
+    },
+    {
+      title: "Portfolio",
+      description: "Portfolio personnel pour présenter mes projets",
+      image: "/assets/images/portfolio.jpg",
+      tech: ["React", "Node.js", "MongoDB"],
     },
   ];
 
@@ -27,7 +49,9 @@ export default function Portfolio() {
     <section id="portfolio" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Portfolio</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Portfolio
+          </h2>
           <p className="mt-4 text-xl text-gray-600">
             Découvrez mes dernières réalisations
           </p>
