@@ -74,11 +74,13 @@ export default function Portfolio() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Visiter le site"
+                  onClick={() => console.log(`Navigating to: ${project.link}`)}
                 >
                   <img
                     src={project.image}
                     alt={project.alt || project.title}
                     className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                    style={{ transition: "transform 0.3s ease" }}
                   />
                 </a>
 
