@@ -16,14 +16,16 @@ export default function Portfolio() {
       description:
         "Plateforme de recettes de cuisine rapide avec filtres intelligents et chatbot interractif",
       image: "/assets/images/kocina.jpg",
+      alt: "site web de recettes de cuisine Kocinaspeed",
       tech: ["Symfony", "Twig", "MySQL"],
       link: "https://kocinaspeed.fr/",
     },
     {
-      title: "Metal Gear Chronicles",
+      title: "Metal Gear",
       description:
         "Mini-site interactif pour les fans avec timeline interactive",
       image: "/assets/images/mgs.jpg",
+      alt: "site web Metal Gear Chronicles",
       tech: ["HTML", "CSS", "JavaScript"],
       link: "https://mgs-quiz-krismos.netlify.app/",
     },
@@ -31,6 +33,7 @@ export default function Portfolio() {
       title: "JDS",
       description: "Plateforme d'un groupe de soirées jeux de société",
       image: "/assets/images/jds.jpg",
+      alt: "site web JDS soirées jeux de société",
       tech: ["HTML", "CSS", "Javascript"],
       link: "https://embrouillejds.netlify.app/",
     },
@@ -38,6 +41,7 @@ export default function Portfolio() {
       title: "StacyMakeupCreations",
       description: "Plateforme d'une maquilleuse professionnelle",
       image: "/assets/images/stacy.jpg",
+      alt: "site web StacyMakeupCreations",
       tech: ["Symfony", "Twig", "MySQL"],
       link: "https://stacymakeupcreations.website/",
     },
@@ -45,6 +49,7 @@ export default function Portfolio() {
       title: "Portfolio",
       description: "Portfolio personnel pour présenter mes projets",
       image: "/assets/images/portfolio.jpg",
+      alt: "Portfolio personnel",
       tech: ["HTML", "CSS", "JavaScript"],
       link: "https://krismos.fr/",
     },
@@ -66,31 +71,43 @@ export default function Portfolio() {
           {projects.map((project) => (
             <div
               key={project.title}
-              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
             >
-              <div className="relative group">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Visiter le site"
-                  onClick={() => console.log(`Navigating to: ${project.link}`)}
-                >
-                  <img
-                    src={project.image}
-                    alt={project.alt || project.title}
-                    className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
-                    style={{ transition: "transform 0.3s ease" }}
-                  />
-                </a>
-
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative group"
+                onClick={(e) => {
+                  if (!project.link) {
+                    e.preventDefault();
+                  }
+                }}
+              >
+                <img
+                  src={project.image}
+                  alt={project.alt}
+                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src =
+                      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80";
+                  }}
+                />
                 <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-70 transition-all flex items-center justify-center">
                   <ExternalLink className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
-              </div>
+              </a>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {project.title}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    {project.title}
+                  </a>
                 </h3>
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">

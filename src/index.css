@@ -28,6 +28,7 @@ body {
 }
 
 /* Smooth transitions */
-a, button {
+a,
+button {
   @apply transition-all duration-200;
 }

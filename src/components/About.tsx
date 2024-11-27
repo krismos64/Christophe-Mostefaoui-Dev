@@ -48,7 +48,12 @@ export default function About() {
             <p className="text-gray-600 leading-relaxed mb-6">
               Je mets aujourd'hui mes compétences au service de vos projets.
               Spécialisé dans les technologies modernes comme React, Symfony et
-              Node.js, je crée des solutions web performantes et sur mesure.
+              Node.js, je crée des solutions web performantes et sur mesure. Je
+              privilégie une approche personnalisée avec un contact direct et
+              régulier, incluant des déplacements gratuits dans le secteur
+              Pau-Orthez-Bayonne-Tarbes pour les entreprises locales. Chaque
+              projet bénéficie d'une documentation détaillée, depuis le cahier
+              des charges jusqu'aux spécifications techniques.
             </p>
             <div className="grid grid-cols-2 gap-6">
               {skills.map((skill) => (
