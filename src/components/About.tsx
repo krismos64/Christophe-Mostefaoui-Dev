@@ -32,7 +32,7 @@ export default function About() {
             À propos
           </h2>
           <p className="mt-4 text-xl text-gray-600">
-            Passionné par le développement web et les nouvelles technologies
+            🚀 Passionné par le développement web et les nouvelles technologies
           </p>
         </div>
 
@@ -45,17 +45,41 @@ export default function About() {
             />
           </div>
           <div>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              Je mets aujourd'hui mes compétences au service de vos projets.
-              Spécialisé dans les technologies modernes comme React, Symfony et
-              Node.js, je crée des solutions web performantes et sur mesure. Je
-              privilégie une approche personnalisée avec un contact direct et
-              régulier, incluant des déplacements gratuits dans le secteur
-              Pau-Orthez-Bayonne-Tarbes pour les entreprises locales. Chaque
-              projet bénéficie d'une documentation détaillée, depuis le cahier
-              des charges jusqu'aux spécifications techniques.
-            </p>
-            <div className="grid grid-cols-2 gap-6">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              ✨ Ce que je vous propose :
+            </h3>
+            <ul className="list-disc pl-6 text-gray-600 leading-relaxed space-y-4">
+              <li>
+                💻 <strong>Développement de solutions web performantes</strong>{" "}
+                : utilisation des technologies modernes comme{" "}
+                <strong>React</strong>, <strong>Symfony</strong> et{" "}
+                <strong>Node.js</strong> pour des résultats{" "}
+                <strong>sur mesure</strong>.
+              </li>
+              <li>
+                🤝 <strong>Approche personnalisée</strong> : collaboration
+                directe et régulière avec des{" "}
+                <strong>déplacements gratuits</strong> dans la région{" "}
+                <strong>Pau-Orthez-Bayonne-Tarbes</strong>.
+              </li>
+              <li>
+                📋 <strong>Documentation détaillée</strong> : livrables clairs
+                et complets, depuis le <strong>cahier des charges</strong>{" "}
+                jusqu'aux <strong>spécifications techniques</strong>.
+              </li>
+              <li>
+                ✅ <strong>Engagement qualité</strong> : respect des{" "}
+                <strong>délais</strong>, solutions optimisées, et souci constant
+                de l'<strong>expérience utilisateur</strong>.
+              </li>
+              <li>
+                🎓 <strong>Formation et accompagnement</strong> : possibilité de{" "}
+                <strong>former vos équipes</strong> à l'utilisation des outils
+                développés.
+              </li>
+            </ul>
+
+            <div className="grid grid-cols-2 gap-6 mt-6">
               {skills.map((skill) => (
                 <div key={skill.title} className="flex items-start space-x-3">
                   {skill.icon}

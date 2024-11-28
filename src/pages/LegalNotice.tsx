@@ -12,7 +12,7 @@ export default function LegalNotice() {
             <br />
             Adresse : 64170 Artix
             <br />
-            SIREN : 937 719 177
+            SIRET : 93771917700019
             <br />
             Mail : christophe.mostefaoui.dev@gmail.com
           </p>

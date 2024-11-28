@@ -1,4 +1,3 @@
-import React from "react";
 import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
@@ -8,12 +7,11 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              Développeur web freelance à votre service
+              Je transforme vos idées en succès digitaux
             </h1>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-              Transformez vos idées en solutions digitales innovantes.
-              Spécialisé en React, Symfony, et Node.js, je vous accompagne dans
-              la réalisation de vos projets web.
+              Ensemble, construisons des solutions sur mesure pour répondre aux
+              besoins de votre activité et atteindre vos objectifs.
             </p>
             <div className="mt-8">
               <a
