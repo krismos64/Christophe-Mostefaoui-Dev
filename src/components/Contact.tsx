@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Mail, Phone, Linkedin, Github, LinkIcon } from "lucide-react";
 
 export default function Contact() {
@@ -11,11 +12,7 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const [status, setStatus] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,6 +23,41 @@ export default function Contact() {
       [name]:
         type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
     }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_1pvfw4u", // Service ID
+        "template_853hpli", // Template ID
+        {
+          to_name: "Christophe Mostefaoui",
+          from_name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        "NwZG3Q_sYxu72rLtC" // Clé publique (User ID)
+      )
+      .then(
+        () => {
+          setSubmitted(true);
+          setStatus("Message envoyé avec succès !");
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+            consent: false,
+          });
+        },
+        (error) => {
+          setStatus("Erreur lors de l'envoi du message.");
+          console.error(error);
+        }
+      );
   };
 
   return (
@@ -194,6 +226,11 @@ export default function Contact() {
                 >
                   Envoyer
                 </button>
+                {status && (
+                  <p className="text-sm text-center mt-4 text-gray-600">
+                    {status}
+                  </p>
+                )}
               </form>
             )}
           </div>
