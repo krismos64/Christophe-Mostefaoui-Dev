@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import FAQ from "./pages/FAQ"; // Import de la page FAQ
 
 function HomePage() {
   return (
@@ -34,6 +35,7 @@ function App() {
               path="/politique-de-confidentialite"
               element={<PrivacyPolicy />}
             />
+            <Route path="/faq" element={<FAQ />} /> {/* Chemin pour la FAQ */}
           </Routes>
         </main>
         <Footer />

@@ -13,6 +13,7 @@ export default function Header() {
     { name: "Services", to: isHomePage ? "#services" : "/#services" },
     { name: "Portfolio", to: isHomePage ? "#portfolio" : "/#portfolio" },
     { name: "Contact", to: isHomePage ? "#contact" : "/#contact" },
+    { name: "FAQ", to: "/faq" }, // Lien vers la FAQ
   ];
 
   const handleNavigation = (to: string) => {
