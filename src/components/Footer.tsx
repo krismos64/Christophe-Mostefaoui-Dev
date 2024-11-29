@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <Code2 className="h-8 w-8 text-blue-400" />
-              <span className="text-xl font-bold">Développeur freelance</span>
+              <span className="text-xl font-bold">Développeur web</span>
             </div>
             <p className="text-gray-400">
               Solutions web sur mesure pour vos projets digitaux

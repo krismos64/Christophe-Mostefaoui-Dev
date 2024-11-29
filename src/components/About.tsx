@@ -60,7 +60,7 @@ export default function About() {
                 🤝 <strong>Approche personnalisée</strong> : collaboration
                 directe et régulière avec des{" "}
                 <strong>déplacements gratuits</strong> dans la région{" "}
-                <strong>Pau-Orthez-Bayonne-Tarbes</strong>.
+                <strong>Pau-Orthez-Tarbes et allentours</strong>.
               </li>
               <li>
                 📋 <strong>Documentation détaillée</strong> : livrables clairs

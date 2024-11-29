@@ -30,7 +30,7 @@ export default function Header() {
           <Link to="/" className="flex items-center space-x-2">
             <Code2 className="h-8 w-8 text-blue-600" />
             <span className="text-xl font-bold text-gray-900">
-              Christophe, développeur web freelance
+              Christophe, développeur web
             </span>
           </Link>
 
