@@ -3,35 +3,38 @@ import { Code, Cpu, Users, Zap } from "lucide-react";
 export default function About() {
   const skills = [
     {
-      icon: <Code className="h-6 w-6 text-blue-600" />,
+      icon: <Code className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
       title: "Expertise Technique",
       description: "Maîtrise de React, Symfony, Node.js et des API REST",
     },
     {
-      icon: <Users className="h-6 w-6 text-blue-600" />,
+      icon: <Users className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
       title: "Communication",
       description: "Collaboration étroite et transparente avec les clients",
     },
     {
-      icon: <Zap className="h-6 w-6 text-blue-600" />,
+      icon: <Zap className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
       title: "Solutions Innovantes",
       description: "Approche créative et orientée résultats",
     },
     {
-      icon: <Cpu className="h-6 w-6 text-blue-600" />,
+      icon: <Cpu className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
       title: "Veille Technologique",
       description: "Toujours à jour avec les dernières technologies",
     },
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section
+      id="about"
+      className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300"
+    >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             À propos
           </h2>
-          <p className="mt-4 text-xl text-gray-600">
+          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
             🚀 Passionné par le développement web et les nouvelles technologies
           </p>
         </div>
@@ -45,10 +48,10 @@ export default function About() {
             />
           </div>
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
               ✨ Ce que je vous propose :
             </h3>
-            <ul className="list-disc pl-6 text-gray-600 leading-relaxed space-y-4">
+            <ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 leading-relaxed space-y-4">
               <li>
                 💻 <strong>Développement de solutions web performantes</strong>{" "}
                 : utilisation des technologies modernes comme{" "}
@@ -84,10 +87,12 @@ export default function About() {
                 <div key={skill.title} className="flex items-start space-x-3">
                   {skill.icon}
                   <div>
-                    <h3 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-900 dark:text-white">
                       {skill.title}
                     </h3>
-                    <p className="text-sm text-gray-600">{skill.description}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      {skill.description}
+                    </p>
                   </div>
                 </div>
               ))}

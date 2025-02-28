@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import FAQ from "./pages/FAQ"; // Import de la page FAQ
+import { ThemeProvider } from "./context/ThemeContext";
 
 function HomePage() {
   return (
@@ -24,23 +25,25 @@ function HomePage() {
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen bg-white">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/mentions-legales" element={<LegalNotice />} />
-            <Route
-              path="/politique-de-confidentialite"
-              element={<PrivacyPolicy />}
-            />
-            <Route path="/faq" element={<FAQ />} /> {/* Chemin pour la FAQ */}
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/mentions-legales" element={<LegalNotice />} />
+              <Route
+                path="/politique-de-confidentialite"
+                element={<PrivacyPolicy />}
+              />
+              <Route path="/faq" element={<FAQ />} /> {/* Chemin pour la FAQ */}
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
