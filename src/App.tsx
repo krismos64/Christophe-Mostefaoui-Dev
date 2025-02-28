@@ -24,7 +24,7 @@ const Home = () => (
 function App() {
   return (
     <ThemeProvider>
-      <Router basename="">
+      <Router basename="/">
         <div className="App min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
           <Header />
           <main>

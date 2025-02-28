@@ -1,19 +1,17 @@
 # Définir l'index par défaut
-
 DirectoryIndex index.html
 
 # Activer le moteur de réécriture
-
 RewriteEngine On
+RewriteBase /
 
 # Redirection des requêtes vers index.html pour React Router
-
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.html [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
 
 # Forcer le bon type MIME pour JavaScript, CSS et JSON
-
 <IfModule mod_mime.c>
     AddType application/javascript .js .mjs .jsx .ts .tsx
     AddType text/css .css
@@ -21,44 +19,31 @@ RewriteRule ^ index.html [L]
 </IfModule>
 
 # Sécurisation et gestion des en-têtes HTTP
-
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
     Header set X-XSS-Protection "1; mode=block"
     Header set X-Frame-Options "SAMEORIGIN"
-    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-
+    
     # Activer CORS (si nécessaire pour des requêtes API)
     Header set Access-Control-Allow-Origin "*"
     Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
     Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
-
-    # Définir les bons types MIME pour les fichiers
-    <FilesMatch "\.(js|mjs|jsx|ts|tsx)$">
-        Header set Content-Type "application/javascript; charset=UTF-8"
-    </FilesMatch>
-    <FilesMatch "\.css$">
-        Header set Content-Type "text/css; charset=UTF-8"
-    </FilesMatch>
-
 </IfModule>
 
 # Activer la compression GZIP
-
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
 </IfModule>
 
 # Activer la mise en cache pour de meilleures performances
-
 <IfModule mod_expires.c>
     ExpiresActive On
-    ExpiresByType text/css "access plus 1 year"
-    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
     ExpiresByType application/json "access plus 5 minutes"
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
 </IfModule>

@@ -19,24 +19,6 @@
       content="Développement web, React, Symfony, Node.js, Freelance, Sites web, Applications"
     />
     <title>Christophe Développeur Web</title>
-    <script>
-      // Vérifier si nous sommes sur une route spécifique
-      (function () {
-        // Récupérer le chemin depuis l'URL
-        var path = window.location.pathname;
-
-        // Si nous sommes sur une route autre que la racine
-        if (path !== "/" && path !== "/index.html") {
-          // Rediriger vers la racine avec le chemin en paramètre
-          var redirectUrl =
-            "/" + (path.startsWith("/") ? path.substr(1) : path);
-          window.location.replace(redirectUrl);
-        } else {
-          // Sinon, charger normalement
-          window.location.replace("/");
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
