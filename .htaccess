@@ -1,69 +1,56 @@
+# Définir l'index par défaut
+
 DirectoryIndex index.html
 
-# Enable rewrite engine
+# Activer le moteur de réécriture
+
 RewriteEngine On
 
-# Handle Front Controller...
+# Redirection des requêtes vers index.html pour React Router
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.html [L]
 
-# Correct MIME types
+# Forcer le bon type MIME pour JavaScript, CSS et JSON
+
 <IfModule mod_mime.c>
-    AddType application/javascript .js
-    AddType application/javascript .mjs
-    AddType application/javascript .jsx
-    AddType application/javascript .ts
-    AddType application/javascript .tsx
+    AddType application/javascript .js .mjs .jsx .ts .tsx
     AddType text/css .css
     AddType application/json .json
 </IfModule>
 
-# Force MIME types
-<FilesMatch "\.js$">
-    ForceType application/javascript
-</FilesMatch>
+# Sécurisation et gestion des en-têtes HTTP
 
-<FilesMatch "\.mjs$">
-    ForceType application/javascript
-</FilesMatch>
-
-<FilesMatch "\.(tsx|ts|jsx)$">
-    ForceType application/javascript
-</FilesMatch>
-
-<FilesMatch "\.css$">
-    ForceType text/css
-</FilesMatch>
-
-# Security headers
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
     Header set X-XSS-Protection "1; mode=block"
     Header set X-Frame-Options "SAMEORIGIN"
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-    
-    # CORS Headers
+
+    # Activer CORS (si nécessaire pour des requêtes API)
     Header set Access-Control-Allow-Origin "*"
     Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
     Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
-    
-    # Set correct content types for specific files
+
+    # Définir les bons types MIME pour les fichiers
     <FilesMatch "\.(js|mjs|jsx|ts|tsx)$">
-        Header set Content-Type "application/javascript"
+        Header set Content-Type "application/javascript; charset=UTF-8"
     </FilesMatch>
-    
     <FilesMatch "\.css$">
-        Header set Content-Type "text/css"
+        Header set Content-Type "text/css; charset=UTF-8"
     </FilesMatch>
+
 </IfModule>
 
-# Compression
+# Activer la compression GZIP
+
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
 </IfModule>
 
-# Cache Control
+# Activer la mise en cache pour de meilleures performances
+
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType text/css "access plus 1 year"
