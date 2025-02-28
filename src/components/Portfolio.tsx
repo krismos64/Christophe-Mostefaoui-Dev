@@ -79,10 +79,11 @@ export default function Portfolio() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.title}
-              className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow group"
+              className="card-hover bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 animate-slideIn"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <a
                 href={project.link}
@@ -98,15 +99,15 @@ export default function Portfolio() {
                 <img
                   src={project.image}
                   alt={project.alt}
-                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src =
                       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80";
                   }}
                 />
-                <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-70 transition-all flex items-center justify-center">
-                  <ExternalLink className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                  <ExternalLink className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-0 group-hover:scale-100" />
                 </div>
               </a>
               <div className="p-6">
@@ -127,7 +128,7 @@ export default function Portfolio() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-200 rounded-full text-sm"
+                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-200 rounded-full text-sm transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-800"
                     >
                       {tech}
                     </span>

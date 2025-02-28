@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useTheme } from "../context/ThemeContext";
 
 const FAQ: React.FC = () => {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   // Données de la FAQ
   const faqData = [
     {
@@ -18,7 +22,7 @@ const FAQ: React.FC = () => {
             </li>
             <li>
               🤖 Solutions intégrant des{" "}
-              <strong>technologies d’intelligence artificielle</strong>{" "}
+              <strong>technologies d'intelligence artificielle</strong>{" "}
               (chatbots interactifs, etc.)
             </li>
           </ul>
@@ -58,7 +62,7 @@ const FAQ: React.FC = () => {
             <li>📍 Orthez</li>
             <li>📍 Et leurs environs</li>
           </ul>
-          Ces rencontres permettent d’échanger humainement, capturer du contenu
+          Ces rencontres permettent d'échanger humainement, capturer du contenu
           visuel et mieux comprendre vos besoins.
         </>
       ),
@@ -68,7 +72,7 @@ const FAQ: React.FC = () => {
         "Pouvez-vous capturer du contenu pour mon projet lors de vos déplacements ?",
       answer: (
         <>
-          Absolument ! Lors de mes visites, je peux :
+          Absolument ! Lors de mes visites, je peux :
           <ul>
             <li>📸 Capturer des photos professionnelles</li>
             <li>🎥 Réaliser des vidéos de vos locaux ou produits</li>
@@ -105,7 +109,7 @@ const FAQ: React.FC = () => {
         "Proposez-vous des services de maintenance ou de mise à jour après livraison ?",
       answer: (
         <>
-          Oui ! Je propose des services de maintenance pour :
+          Oui ! Je propose des services de maintenance pour :
           <ul>
             <li>
               🔒 Assurer la <strong>sécurité</strong> de votre site ou
@@ -126,7 +130,7 @@ const FAQ: React.FC = () => {
       question: "Quels outils et technologies utilisez-vous ?",
       answer: (
         <>
-          Voici les technologies et outils que j’utilise :
+          Voici les technologies et outils que j'utilise :
           <ul>
             <li>
               🖌️ <strong>Frontend :</strong> HTML, CSS, JavaScript, React
@@ -149,10 +153,10 @@ const FAQ: React.FC = () => {
       question: "Comment se déroule la collaboration sur un projet ?",
       answer: (
         <>
-          Voici les principales étapes :
+          Voici les principales étapes :
           <ol>
             <li>
-              📞 <strong>Prise de contact :</strong> Vous m’expliquez votre
+              📞 <strong>Prise de contact :</strong> Vous m'expliquez votre
               projet et vos besoins
             </li>
             <li>
@@ -179,27 +183,27 @@ const FAQ: React.FC = () => {
       ),
     },
     {
-      question: "Puis-je suivre l’avancement de mon projet ?",
+      question: "Puis-je suivre l'avancement de mon projet ?",
       answer: (
         <>
-          Oui ! Je vous tiens régulièrement informé avec :
+          Oui ! Je vous tiens régulièrement informé avec :
           <ul>
             <li>📅 Des points hebdomadaires pour ajuster le projet</li>
-            <li>📩 Des mises à jour sur l’état d’avancement</li>
+            <li>📩 Des mises à jour sur l'état d'avancement</li>
           </ul>
         </>
       ),
     },
     {
       question:
-        "Pourquoi mettez-vous l’accent sur les rencontres locales et le contenu personnalisé ?",
+        "Pourquoi mettez-vous l'accent sur les rencontres locales et le contenu personnalisé ?",
       answer:
-        "Je crois fermement que les échanges humains et une immersion dans votre environnement permettent de mieux comprendre vos besoins. Lors de mes déplacements, je prends le temps de m’imprégner de votre projet et de capturer des éléments authentiques (photos/vidéos) pour refléter parfaitement votre identité.",
+        "Je crois fermement que les échanges humains et une immersion dans votre environnement permettent de mieux comprendre vos besoins. Lors de mes déplacements, je prends le temps de m'imprégner de votre projet et de capturer des éléments authentiques (photos/vidéos) pour refléter parfaitement votre identité.",
     },
     {
       question: "Pourquoi vous choisir ?",
       answer:
-        "Avec un parcours combinant une forte expérience client, une passion pour le développement web et une approche humaine basée sur l’échange local, je suis convaincu de pouvoir transformer vos idées en projets concrets et innovants. Mon attention aux détails, ma communication claire et mes livrables bien documentés font toute la différence.",
+        "Avec un parcours combinant une forte expérience client, une passion pour le développement web et une approche humaine basée sur l'échange local, je suis convaincu de pouvoir transformer vos idées en projets concrets et innovants. Mon attention aux détails, ma communication claire et mes livrables bien documentés font toute la différence.",
     },
   ];
 
@@ -216,30 +220,49 @@ const FAQ: React.FC = () => {
       <Helmet>
         <title>FAQ</title>
       </Helmet>
-      <div style={{ fontFamily: "Arial, sans-serif" }}>
-        <div className="faq-container" style={styles.container}>
-          <h1 style={styles.header}>FAQ</h1>
-          <div className="faq-list" style={styles.faqList}>
+      <div className="font-sans pt-20">
+        <div
+          className={`max-w-3xl mx-auto my-8 p-6 rounded-lg shadow-md transition-colors duration-300 ${
+            isDark ? "bg-gray-800" : "bg-gray-50"
+          }`}
+        >
+          <h1
+            className={`text-center text-3xl font-bold mb-8 ${
+              isDark ? "text-white" : "text-gray-800"
+            }`}
+          >
+            FAQ
+          </h1>
+          <div className="flex flex-col space-y-4">
             {faqData.map((item, index) => (
-              <div key={index} className="faq-item" style={styles.faqItem}>
+              <div
+                key={index}
+                className={`border-b ${
+                  isDark ? "border-gray-700" : "border-gray-200"
+                } pb-4`}
+              >
                 <h2
                   onClick={() => toggleFAQ(index)}
-                  style={{
-                    ...styles.question,
-                    color: openIndex === index ? "#007bff" : "#333",
-                  }}
+                  className={`text-xl font-medium cursor-pointer transition-colors duration-300 ${
+                    openIndex === index
+                      ? "text-blue-500 dark:text-blue-400"
+                      : isDark
+                      ? "text-gray-200"
+                      : "text-gray-700"
+                  }`}
                 >
                   {item.question}
                 </h2>
                 <div
-                  style={{
-                    ...styles.answer,
-                    maxHeight: openIndex === index ? "1000px" : "0",
-                    opacity: openIndex === index ? "1" : "0",
-                    overflow: "hidden",
-                  }}
+                  className={`overflow-hidden transition-all duration-300 ${
+                    isDark ? "text-gray-300" : "text-gray-600"
+                  } ${
+                    openIndex === index
+                      ? "max-h-[1000px] opacity-100 mt-3"
+                      : "max-h-0 opacity-0"
+                  }`}
                 >
-                  {item.answer}
+                  <div className="prose dark:prose-invert">{item.answer}</div>
                 </div>
               </div>
             ))}
@@ -248,45 +271,6 @@ const FAQ: React.FC = () => {
       </div>
     </>
   );
-};
-
-// Styles inline
-const styles = {
-  container: {
-    maxWidth: "800px",
-    margin: "2rem auto",
-    padding: "1rem",
-    backgroundColor: "#f9f9f9",
-    borderRadius: "8px",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-  },
-  header: {
-    textAlign: "center" as const,
-    fontSize: "2rem",
-    color: "#444",
-    marginBottom: "1.5rem",
-  },
-  faqList: {
-    display: "flex",
-    flexDirection: "column" as const,
-    gap: "1rem",
-  },
-  faqItem: {
-    borderBottom: "1px solid #ccc",
-    paddingBottom: "1rem",
-  },
-  question: {
-    fontSize: "1.25rem",
-    cursor: "pointer" as const,
-    transition: "color 0.3s ease",
-  },
-  answer: {
-    fontSize: "1rem",
-    color: "#555",
-    marginTop: "0.5rem",
-    lineHeight: "1.5",
-    transition: "all 0.3s ease",
-  },
 };
 
 export default FAQ;

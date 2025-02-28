@@ -86,13 +86,18 @@ export default function Services() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div
               key={service.title}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="group card-hover p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-slideIn"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
+                <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-full inline-block">
+                  {service.icon}
+                </div>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {service.title}
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
