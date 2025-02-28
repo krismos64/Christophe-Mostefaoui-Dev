@@ -1,4 +1,6 @@
 import { Code, Cpu, Users, Zap } from "lucide-react";
+import Lottie from "lottie-react";
+import chatbotAnimation from "../animations/chatbot.json";
 
 export default function About() {
   const skills = [
@@ -27,9 +29,14 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300"
+      className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300 relative overflow-hidden"
     >
-      <div className="container mx-auto px-6">
+      {/* Animation en arrière-plan pour les écrans mobiles */}
+      <div className="absolute inset-0 opacity-5 md:hidden pointer-events-none">
+        <Lottie animationData={chatbotAnimation} loop={true} />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             À propos
@@ -40,13 +47,11 @@ export default function About() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1544725121-be3bf52e2dc8?auto=format&fit=crop&q=80"
-              alt="Developer portrait"
-              className="rounded-lg shadow-lg"
-            />
+          {/* Animation visible uniquement sur les écrans moyens et grands */}
+          <div className="hidden md:block">
+            <Lottie animationData={chatbotAnimation} loop={true} />
           </div>
+
           <div>
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
               ✨ Ce que je vous propose :

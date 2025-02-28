@@ -1,12 +1,19 @@
 import { ArrowRight } from "lucide-react";
+import Lottie from "lottie-react";
+import companyAnimation from "../animations/company.json";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="pt-24 pb-12 md:pt-32 md:pb-20 transition-colors duration-300"
+      className="pt-24 pb-12 md:pt-32 md:pb-20 transition-colors duration-300 relative overflow-hidden"
     >
-      <div className="container mx-auto px-6">
+      {/* Animation en arrière-plan pour les écrans mobiles */}
+      <div className="absolute inset-0 opacity-10 md:hidden pointer-events-none">
+        <Lottie animationData={companyAnimation} loop={true} />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
@@ -26,12 +33,10 @@ export default function Hero() {
               </a>
             </div>
           </div>
-          <div className="flex-1">
-            <img
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80"
-              alt="Developer workspace"
-              className="rounded-lg shadow-2xl"
-            />
+
+          {/* Animation visible uniquement sur les écrans moyens et grands */}
+          <div className="flex-1 hidden md:block">
+            <Lottie animationData={companyAnimation} loop={true} />
           </div>
         </div>
       </div>

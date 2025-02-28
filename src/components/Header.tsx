@@ -1,7 +1,9 @@
-import { Code2, Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
+import Lottie from "lottie-react";
+import thinkingAnimation from "../animations/thinking.json";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +33,9 @@ export default function Header() {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <Code2 className="h-8 w-8 text-blue-600" />
+            <div className="h-10 w-10">
+              <Lottie animationData={thinkingAnimation} loop={true} />
+            </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
               Christophe, développeur web
             </span>

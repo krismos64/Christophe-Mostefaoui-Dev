@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Mail, Phone, Linkedin, Github, LinkIcon } from "lucide-react";
+import Lottie from "lottie-react";
+import contactAnimation from "../animations/contact.json";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -73,6 +75,9 @@ export default function Contact() {
           <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
             Discutons de votre projet
           </p>
+          <div className="max-w-xs mx-auto mt-6">
+            <Lottie animationData={contactAnimation} loop={true} />
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">

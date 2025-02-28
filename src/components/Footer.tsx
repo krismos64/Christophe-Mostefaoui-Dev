@@ -1,5 +1,7 @@
 import { Code2 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import Lottie from "lottie-react";
+import thinkingAnimation from "../animations/thinking.json";
 
 export default function Footer() {
   const location = useLocation();
@@ -24,6 +26,9 @@ export default function Footer() {
             <p className="text-gray-400">
               Solutions web sur mesure pour vos projets digitaux
             </p>
+            <div className="mt-4 w-24">
+              <Lottie animationData={thinkingAnimation} loop={true} />
+            </div>
           </div>
 
           <div>
