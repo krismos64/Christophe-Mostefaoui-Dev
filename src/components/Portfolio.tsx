@@ -3,6 +3,14 @@ import { ExternalLink } from "lucide-react";
 export default function Portfolio() {
   const projects = [
     {
+      title: "Poulp Fiction",
+      description: "Site web vitrine pour un centre de plongée de St Cyprien",
+      image: "/assets/images/poulpfiction.jpg",
+      alt: "site web Poulp Fiction",
+      tech: ["HTML", "Javascript", "Lottie animations"],
+      link: "https://poulpfiction.netlify.app/",
+    },
+    {
       title: "Garage Parrot",
       description:
         "Site de gestion pour un garage automobile avec système de rendez-vous en ligne",
