@@ -1,0 +1,21 @@
+{
+  "name": "Christophe Mostefaoui | Développeur Web Freelance",
+  "short_name": "CM Dev Web",
+  "description": "Développeur web freelance à Pau et Artix. Création de sites web et applications sur mesure.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

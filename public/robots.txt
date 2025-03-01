@@ -1,0 +1,8 @@
+# www.robotstxt.org/
+
+# Autoriser tous les robots d'exploration
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://christophe-dev-freelance.fr/sitemap.xml 
