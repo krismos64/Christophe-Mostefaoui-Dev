@@ -10,7 +10,7 @@ import {
   Mail,
   HelpCircle,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import Lottie from "lottie-react";
@@ -23,6 +23,7 @@ export default function Header() {
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
   const { theme, toggleTheme } = useTheme();
+  const navigationInProgress = useRef(false);
 
   // Empêcher le défilement lorsque le menu mobile est ouvert
   useEffect(() => {
@@ -69,42 +70,58 @@ export default function Header() {
   ];
 
   const handleNavigation = (to: string) => {
+    // Fermer le menu mobile
     setIsMenuOpen(false);
 
-    // Si c'est un lien vers la FAQ
-    if (to === "/faq") {
-      navigate(to);
-      return;
-    }
+    // Éviter les navigations multiples
+    if (navigationInProgress.current) return;
+    navigationInProgress.current = true;
 
-    // Si c'est un lien vers la page d'accueil
-    if (to === "/") {
-      navigate(to);
-      return;
-    }
+    console.log("Navigation vers:", to);
 
-    // Si c'est un lien avec ancre et que nous sommes sur la page d'accueil
-    if (to.startsWith("#") && isHomePage) {
-      const element = document.querySelector(to);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+    // Délai pour permettre à l'animation de fermeture du menu de se terminer
+    setTimeout(() => {
+      // Si c'est un lien vers la FAQ
+      if (to === "/faq") {
+        navigate(to);
+        navigationInProgress.current = false;
+        return;
       }
-      return;
-    }
 
-    // Si c'est un lien avec ancre mais que nous ne sommes pas sur la page d'accueil
-    if (to.includes("#") && !isHomePage) {
-      navigate("/");
-      // On attend que la navigation soit terminée avant de scroller
-      setTimeout(() => {
-        const anchorId = to.split("#")[1];
-        const element = document.querySelector(`#${anchorId}`);
+      // Si c'est un lien vers la page d'accueil
+      if (to === "/") {
+        navigate(to);
+        navigationInProgress.current = false;
+        return;
+      }
+
+      // Si c'est un lien avec ancre et que nous sommes sur la page d'accueil
+      if (to.startsWith("#") && isHomePage) {
+        const element = document.getElementById(to.substring(1));
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100);
-      return;
-    }
+        navigationInProgress.current = false;
+        return;
+      }
+
+      // Si c'est un lien avec ancre mais que nous ne sommes pas sur la page d'accueil
+      if (to.includes("#") && !isHomePage) {
+        navigate("/");
+        // On attend que la navigation soit terminée avant de scroller
+        setTimeout(() => {
+          const anchorId = to.split("#")[1];
+          const element = document.getElementById(anchorId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+          navigationInProgress.current = false;
+        }, 300);
+        return;
+      }
+
+      navigationInProgress.current = false;
+    }, 100);
   };
 
   // Vérifier si un lien est actif
@@ -244,13 +261,16 @@ export default function Header() {
             {menuItems.map((item, index) => (
               <button
                 key={item.name}
-                className={`mobile-menu-link text-gray-800 dark:text-gray-100 font-semibold ${
+                className={`mobile-menu-link text-gray-800 dark:text-gray-100 font-semibold text-xl py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all ${
                   isActive(item.to) ? "text-blue-600 dark:text-blue-400" : ""
                 }`}
                 onClick={() => handleNavigation(item.to)}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {item.name}
+                <div className="flex items-center">
+                  <span className="mr-2">{item.icon}</span>
+                  {item.name}
+                </div>
               </button>
             ))}
           </div>
