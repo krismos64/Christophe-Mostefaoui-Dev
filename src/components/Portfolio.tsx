@@ -3,6 +3,14 @@ import { ExternalLink } from "lucide-react";
 export default function Portfolio() {
   const projects = [
     {
+      title: "SmartPlanning",
+      description: "Saas de gestion d'équipes et de plannings automatisés",
+      image: "/assets/images/business-smartplanning.webp",
+      alt: "site Smartplanning.fr",
+      tech: ["React", "Node JS", "IA", "MongoDB"],
+      link: "https://smartplanning.fr/",
+    },
+    {
       title: "Poulp Fiction",
       description: "Site web vitrine pour un centre de plongée de St Cyprien",
       image: "/assets/images/poulpfiction.jpg",
