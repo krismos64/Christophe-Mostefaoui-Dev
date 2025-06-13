@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { Mail, Phone, Linkedin, Github, LinkIcon } from "lucide-react";
 import Lottie from "lottie-react";
+import { Github, Linkedin, LinkIcon, Mail, Phone } from "lucide-react";
+import React, { useState } from "react";
 import contactAnimation from "../animations/contact.json";
 
 export default function Contact() {
@@ -109,6 +109,7 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/christophemostefaoui/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Profil LinkedIn de Christophe Mostefaoui"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   <Linkedin className="h-6 w-6" />
@@ -117,6 +118,7 @@ export default function Contact() {
                   href="https://github.com/krismos64"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Profil GitHub de Christophe Mostefaoui"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   <Github className="h-6 w-6" />
@@ -125,6 +127,7 @@ export default function Contact() {
                   href="https://krismos.fr/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Ancien portfolio de Christophe Mostefaoui"
                   className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   <LinkIcon className="h-6 w-6" />

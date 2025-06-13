@@ -6,7 +6,7 @@ export default function Portfolio() {
       title: "SmartPlanning",
       description: "Saas de gestion d'équipes et de plannings automatisés",
       image: "/assets/images/business-smartplanning.webp",
-      alt: "site Smartplanning.fr",
+      alt: "Projet SmartPlanning, réalisé par un développeur web à Pau",
       tech: ["React", "Node JS", "IA", "MongoDB"],
       link: "https://smartplanning.fr/",
     },
@@ -14,7 +14,7 @@ export default function Portfolio() {
       title: "Poulp Fiction",
       description: "Site web vitrine pour un centre de plongée de St Cyprien",
       image: "/assets/images/poulpfiction.jpg",
-      alt: "site web Poulp Fiction",
+      alt: "Projet Poulp Fiction, site vitrine pour centre de plongée",
       tech: ["HTML", "Javascript", "Lottie animations"],
       link: "https://poulpfiction.netlify.app/",
     },
@@ -23,7 +23,7 @@ export default function Portfolio() {
       description:
         "Site de gestion pour un garage automobile avec système de rendez-vous en ligne",
       image: "/assets/images/garage.jpg",
-      alt: "site web garage Vincent Parrot",
+      alt: "Projet Garage Parrot, site de gestion pour garage automobile",
       tech: ["Symfony", "Twig", "MySQL"],
       link: "https://parrotgarage.site/",
     },
@@ -32,7 +32,7 @@ export default function Portfolio() {
       description:
         "Plateforme de recettes de cuisine rapide avec filtres intelligents et chatbot interractif",
       image: "/assets/images/kocina.jpg",
-      alt: "site web de recettes de cuisine Kocinaspeed",
+      alt: "Projet Kocinaspeed, plateforme de recettes de cuisine",
       tech: ["Symfony", "Twig", "MySQL"],
       link: "https://kocinaspeed.fr/",
     },
@@ -41,7 +41,7 @@ export default function Portfolio() {
       description:
         "Mini-site interactif pour les fans avec timeline interactive",
       image: "/assets/images/mgs.jpg",
-      alt: "site web Metal Gear Chronicles",
+      alt: "Projet Metal Gear, mini-site interactif pour fans",
       tech: ["HTML", "CSS", "JavaScript"],
       link: "https://mgs-quiz-krismos.netlify.app/",
     },
@@ -49,7 +49,7 @@ export default function Portfolio() {
       title: "JDS",
       description: "Plateforme d'un groupe de soirées jeux de société",
       image: "/assets/images/jds.jpg",
-      alt: "site web JDS soirées jeux de société",
+      alt: "Projet JDS, plateforme pour soirées jeux de société",
       tech: ["HTML", "CSS", "Javascript"],
       link: "https://embrouillejds.netlify.app/",
     },
@@ -57,7 +57,7 @@ export default function Portfolio() {
       title: "StacyMakeupCreations",
       description: "Plateforme d'une maquilleuse professionnelle",
       image: "/assets/images/stacy.jpg",
-      alt: "site web StacyMakeupCreations",
+      alt: "Projet StacyMakeupCreations, plateforme pour maquilleuse",
       tech: ["Symfony", "Twig", "MySQL"],
       link: "https://stacymakeupcreations.website/",
     },
@@ -65,7 +65,7 @@ export default function Portfolio() {
       title: "Portfolio",
       description: "Portfolio personnel pour présenter mes projets",
       image: "/assets/images/portfolio.jpg",
-      alt: "Portfolio personnel",
+      alt: "Ancien portfolio personnel de développeur web",
       tech: ["HTML", "CSS", "JavaScript"],
       link: "https://krismos.fr/",
     },
@@ -107,6 +107,7 @@ export default function Portfolio() {
                 <img
                   src={project.image}
                   alt={project.alt}
+                  loading="lazy"
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;

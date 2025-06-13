@@ -1,6 +1,6 @@
+import Lottie from "lottie-react";
 import { Code2 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import Lottie from "lottie-react";
 import thinkingAnimation from "../animations/thinking.json";
 
 export default function Footer() {
@@ -135,6 +135,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="text-gray-400">Artix, France</li>
+              <li className="text-gray-400">SIRET : 93771917700019</li>
             </ul>
           </div>
         </div>
