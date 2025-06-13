@@ -27,6 +27,32 @@ export default {
           "thumb-hover": "#0284c7",
         },
       },
+      animation: {
+        "menu-open-anim": "menu-open-anim 0.5s ease-out forwards",
+        "menu-item-anim": "menu-item-anim 0.5s ease-out forwards",
+      },
+      keyframes: {
+        "menu-open-anim": {
+          "0%": {
+            transform: "scale(0)",
+            "border-radius": "100%",
+          },
+          "100%": {
+            transform: "scale(1)",
+            "border-radius": "0",
+          },
+        },
+        "menu-item-anim": {
+          "0%": {
+            opacity: "0",
+            transform: "translateX(30px) skewX(-15deg)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateX(0) skewX(0)",
+          },
+        },
+      },
     },
   },
   plugins: [],
