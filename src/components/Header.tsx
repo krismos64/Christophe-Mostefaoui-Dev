@@ -10,6 +10,7 @@ import {
   Mail,
   Menu,
   Moon,
+  Star,
   Sun,
   User,
   X,
@@ -69,6 +70,11 @@ export default function Header() {
       name: "Portfolio",
       to: isHomePage ? "#portfolio" : "/#portfolio",
       icon: <FolderOpen className="h-5 w-5" />,
+    },
+    {
+      name: "Avis",
+      to: isHomePage ? "#testimonials" : "/#testimonials",
+      icon: <Star className="h-5 w-5" />,
     },
     {
       name: "Contact",
