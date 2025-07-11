@@ -25,7 +25,7 @@ export default function Portfolio() {
       image: "/assets/images/garage.jpg",
       alt: "Projet Garage Parrot, site de gestion pour garage automobile",
       tech: ["Symfony", "Twig", "MySQL"],
-      link: "https://parrotgarage.site/",
+      link: "https://garageparrot.space/",
     },
     {
       title: "Kocinaspeed",
@@ -59,7 +59,7 @@ export default function Portfolio() {
       image: "/assets/images/stacy.jpg",
       alt: "Projet StacyMakeupCreations, plateforme pour maquilleuse",
       tech: ["Symfony", "Twig", "MySQL"],
-      link: "https://stacymakeupcreations.website/",
+      link: "https://stacymakeupcreations.space/",
     },
     {
       title: "Portfolio",

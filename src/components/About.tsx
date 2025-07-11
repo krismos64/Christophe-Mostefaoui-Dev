@@ -60,9 +60,9 @@ export default function About() {
               <li>
                 💻 <strong>Développement de solutions web performantes</strong>{" "}
                 : utilisation des technologies modernes comme{" "}
-                <strong>React</strong>, <strong>Symfony</strong> et{" "}
-                <strong>Node.js</strong> pour des résultats{" "}
-                <strong>sur mesure</strong>.
+                <strong>React</strong>, <strong>Next JS</strong>,{" "}
+                <strong>Symfony</strong> et <strong>Node.js</strong> pour des
+                résultats <strong>sur mesure</strong>.
               </li>
               <li>
                 🤝 <strong>Approche personnalisée</strong> : collaboration
