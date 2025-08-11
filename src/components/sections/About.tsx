@@ -40,10 +40,11 @@ export default function About() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-            Christophe Mostefaoui - Développeur Full-Stack Expert
+            Développeur Full-Stack
           </h2>
           <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-            🚀 Spécialiste React.js, Node.js, TypeScript - Création d'applications web modernes et performantes
+            🚀 Spécialiste React.js, Node.js, TypeScript - Création
+            d'applications web modernes et performantes
           </p>
         </div>
 
