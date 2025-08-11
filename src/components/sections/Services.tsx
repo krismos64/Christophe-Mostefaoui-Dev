@@ -14,15 +14,15 @@ export default function Services() {
   const services = [
     {
       icon: <Globe className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Sites Web Sur Mesure",
+      title: "Sites Web React.js Sur Mesure",
       description:
-        "Développement de sites web modernes et responsifs avec React et Node JS. Devis personnalisés adaptés à vos besoins.",
+        "Développement de sites web modernes et responsifs avec React.js, TypeScript et Node.js. Performance optimisée et SEO intégré.",
     },
     {
       icon: <Server className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Applications Web",
+      title: "Applications SaaS Full-Stack",
       description:
-        "Création d'applications web sécurisées et performantes avec documentation détaillée du projet.",
+        "Création d'applications SaaS complètes avec authentification, paiements, API REST et base de données.",
     },
     {
       icon: <Wrench className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
@@ -44,9 +44,9 @@ export default function Services() {
     },
     {
       icon: <Search className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Référencement",
+      title: "SEO Technique & Performance",
       description:
-        "Optimisation SEO pour améliorer la visibilité de votre site sur les moteurs de recherche.",
+        "Optimisation SEO technique, Core Web Vitals, données structurées JSON-LD et compatibilité LLM pour maximiser votre visibilité.",
     },
     {
       icon: <Shield className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
@@ -78,10 +78,10 @@ export default function Services() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-            Mes Services
+            Services Développement Web Expert
           </h2>
           <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-            Des solutions complètes et adaptées à vos besoins
+            Solutions digitales modernes avec React.js, Node.js et TypeScript - Performance et SEO garantis
           </p>
         </div>
 

@@ -8,7 +8,7 @@ export default function About() {
       icon: <Code className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
       title: "Expertise Technique",
       description:
-        "Maîtrise de React, Next JS, Express, Node.js et des API REST",
+        "Maîtrise experte de React.js, Next.js, Node.js, Express, TypeScript, API REST et bases de données",
     },
     {
       icon: <Users className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
@@ -40,10 +40,10 @@ export default function About() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-            À propos
+            Christophe Mostefaoui - Développeur Full-Stack Expert
           </h2>
           <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
-            🚀 Passionné par le développement web et les nouvelles technologies
+            🚀 Spécialiste React.js, Node.js, TypeScript - Création d'applications web modernes et performantes
           </p>
         </div>
 

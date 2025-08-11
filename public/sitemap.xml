@@ -1,28 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <!-- Page d'accueil -->
   <url>
     <loc>https://christophe-dev-freelance.fr/</loc>
-    <lastmod>2024-05-24T10:00:00+00:00</lastmod>
-    <priority>1.00</priority>
+    <lastmod>2025-01-11T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
-
+  
+  <!-- Page FAQ -->
   <url>
     <loc>https://christophe-dev-freelance.fr/faq</loc>
-    <lastmod>2024-05-24T10:00:00+00:00</lastmod>
-    <priority>0.80</priority>
+    <lastmod>2025-01-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-
+  
+  <!-- Page Mentions Légales -->
   <url>
     <loc>https://christophe-dev-freelance.fr/mentions-legales</loc>
-    <lastmod>2024-05-24T10:00:00+00:00</lastmod>
-    <priority>0.50</priority>
+    <lastmod>2025-01-11T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
-
+  
+  <!-- Page Politique de Confidentialité -->
   <url>
     <loc>https://christophe-dev-freelance.fr/politique-de-confidentialite</loc>
-    <lastmod>2024-05-24T10:00:00+00:00</lastmod>
-    <priority>0.50</priority>
+    <lastmod>2025-01-11T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
-
+  
+  <!-- Projets du Portfolio - Références externes -->
+  <url>
+    <loc>https://livrestaka.fr/</loc>
+    <lastmod>2025-01-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://smartplanning.fr/</loc>
+    <lastmod>2024-12-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://poulpfiction.netlify.app/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://garageparrot.space/</loc>
+    <lastmod>2024-10-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kocinaspeed.fr/</loc>
+    <lastmod>2024-09-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://mgs-quiz-krismos.netlify.app/</loc>
+    <lastmod>2024-08-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://embrouillejds.netlify.app/</loc>
+    <lastmod>2024-07-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://stacymakeupcreations.space/</loc>
+    <lastmod>2024-06-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://krismos.fr/</loc>
+    <lastmod>2024-05-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

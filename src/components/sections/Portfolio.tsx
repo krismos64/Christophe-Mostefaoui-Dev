@@ -3,8 +3,18 @@ import { ExternalLink } from "lucide-react";
 export default function Portfolio() {
   const projects = [
     {
-      title: "SmartPlanning",
-      description: "Saas de gestion d'équipes et de plannings automatisés",
+      title: "LivresStaka.fr",
+      description:
+        "Plateforme web enterprise-grade dédiée aux services de correction et d'édition de manuscrits. Cette application monorepo sophistiquée offre une expérience complète aux auteurs avec authentification sécurisée, administration avancée, paiements Stripe intégrés et système de messagerie temps réel.",
+      image: "/assets/images/livrestaka.jpg",
+      alt: "Projet LivresStaka.fr, plateforme de gestion de livres",
+      tech: ["React", "Node.js", "Express", "TypeScript", "MySQL", "API"],
+      link: "https://livrestaka.fr/",
+    },
+    {
+      title: "SmartPlanning.fr",
+      description:
+        "SmartPlanning est une application SaaS complète de gestion intelligente des plannings d'équipe avec intégration IA, développée en TypeScript pour une gestion optimisée des ressources humaines. L'application utilise une architecture moderne séparée (frontend React/backend Node.js) avec des fonctionnalités d'IA avancées pour l'optimisation automatique des plannings.",
       image: "/assets/images/business-smartplanning.webp",
       alt: "Projet SmartPlanning, réalisé par un développeur web à Pau",
       tech: ["React", "Node JS", "IA", "MongoDB"],
