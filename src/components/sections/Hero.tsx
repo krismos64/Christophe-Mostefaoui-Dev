@@ -17,7 +17,8 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-              Je transforme vos idées en succès digitaux
+              Je transforme vos idées en{" "}
+              <span className="rgb-text">succès digitaux</span>
             </h1>
             <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               Spécialiste React.js, Node.js, TypeScript. Création d'applications
@@ -28,7 +29,7 @@ export default function Hero() {
             <div className="mt-8">
               <a
                 href="#contact"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors btn-rgb"
               >
                 Contactez-moi
                 <ArrowRight className="ml-2 h-5 w-5" />

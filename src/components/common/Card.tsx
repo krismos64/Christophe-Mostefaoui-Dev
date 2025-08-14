@@ -13,7 +13,7 @@ export default function Card({
   hover = true, 
   delay = 0 
 }: CardProps) {
-  const hoverClass = hover ? "card-hover" : "";
+  const hoverClass = hover ? "card-hover card-rgb" : "card-rgb";
   
   return (
     <div

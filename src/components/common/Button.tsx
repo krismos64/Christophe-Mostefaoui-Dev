@@ -24,9 +24,9 @@ export default function Button({
   const baseClasses = "inline-flex items-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
   
   const variantClasses = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
+    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 btn-rgb",
     secondary: "bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500",
-    outline: "border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white focus:ring-blue-500"
+    outline: "border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white focus:ring-blue-500 rgb-border"
   };
   
   const sizeClasses = {

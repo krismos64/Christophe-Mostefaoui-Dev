@@ -93,14 +93,23 @@ export default function Header() {
   return (
     <>
       <header className="fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm z-50 shadow-sm transition-colors duration-300">
+        <div className="accent-line-rgb"></div>
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2">
-              <div className="h-10 w-10">
-                <Lottie animationData={thinkingAnimation} loop={true} />
+              <div className="h-12 w-12 rounded-full overflow-hidden">
+                <video
+                  src="/assets/videos/animation-chris-dev.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                  aria-label="Animation Christophe développeur"
+                />
               </div>
               <span className="text-xl font-bold text-gray-900 dark:text-white">
-                Christophe, développeur web
+                Christophe, <span className="rgb-text">développeur web</span>
               </span>
             </Link>
 
