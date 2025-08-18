@@ -3,6 +3,15 @@ import { ExternalLink } from "lucide-react";
 export default function Portfolio() {
   const projects = [
     {
+      title: "Cabinet infirmier Graslin Nantes",
+      description:
+        "Site vitrine moderne et responsive pour le Cabinet Infirmier Graslin situé à Nantes, quartier Graslin.",
+      image: "/assets/images/graslin.jpg",
+      alt: "Cabinet infirmier Nantes, site web vitrine cabinet infirmier",
+      tech: ["React", "Css modules", "Lottie animations", "SEO optimisé"],
+      link: "https://snazzy-biscotti-d93519.netlify.app/",
+    },
+    {
       title: "LivresStaka.fr",
       description:
         "Plateforme web enterprise-grade dédiée aux services de correction et d'édition de manuscrits. Cette application monorepo sophistiquée offre une expérience complète aux auteurs avec authentification sécurisée, administration avancée, paiements Stripe intégrés et système de messagerie temps réel.",
