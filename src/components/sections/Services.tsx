@@ -8,6 +8,8 @@ import {
   Server,
   Shield,
   Wrench,
+  Video,
+  Camera,
 } from "lucide-react";
 
 export default function Services() {
@@ -53,6 +55,18 @@ export default function Services() {
       title: "Sécurité",
       description:
         "Implémentation des meilleures pratiques de sécurité web et maintenance régulière.",
+    },
+    {
+      icon: <Video className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      title: "Montage Vidéo Professionnel",
+      description:
+        "Production vidéo avec Final Cut Pro X sur Mac pour vos contenus marketing et communication d'entreprise.",
+    },
+    {
+      icon: <Camera className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      title: "Prises de Vue Drone",
+      description:
+        "Captation aérienne avec DJI Mavic Air pour immobilier, sites industriels et communication d'entreprise.",
     },
     {
       icon: <Car className="h-8 w-8 text-blue-600 dark:text-blue-400" />,

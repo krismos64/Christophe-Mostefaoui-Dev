@@ -8,6 +8,7 @@ import Hero from "./components/sections/Hero";
 import Portfolio from "./components/sections/Portfolio";
 import Services from "./components/sections/Services";
 import Testimonials from "./components/sections/Testimonials";
+import VideoServices from "./components/sections/VideoServices";
 import { ThemeProvider } from "./context/ThemeContext";
 import FAQ from "./pages/FAQ";
 import LegalNotice from "./pages/LegalNotice";
@@ -22,6 +23,7 @@ const Home = () => (
     <Services />
     <Portfolio />
     <Testimonials />
+    <VideoServices />
     <Contact />
   </>
 );
