@@ -15,7 +15,7 @@ export const SEOHead = ({
   description = 'Christophe Mostefaoui - Développeur web full-stack freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript, Symfony PHP. Création d\'applications SaaS, e-commerce et sites vitrines sur mesure. SEO technique, performance web et solutions digitales innovantes.',
   keywords = 'Développeur web freelance Pau, React.js expert, Node.js développeur, TypeScript spécialiste, Symfony PHP, full-stack developer, SaaS application, e-commerce development, site vitrine, SEO technique, performance web, API REST, MongoDB, MySQL, développement sur mesure, solutions digitales, Christophe Mostefaoui, Artix 64170',
   canonical = 'https://christophe-dev-freelance.fr/',
-  image = 'https://christophe-dev-freelance.fr/assets/images/business-smartplanning.webp',
+  image = 'https://christophe-dev-freelance.fr/assets/images/chris-profil.jpg',
   type = 'website',
   structuredData
 }: SEOProps) => {

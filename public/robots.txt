@@ -1,8 +1,11 @@
 # www.robotstxt.org/
 
-# Allow all user agents
+# Allow all user agents - Focus sur page d'accueil uniquement
 User-agent: *
-Allow: /
+Allow: /$
+Disallow: /faq
+Disallow: /mentions-legales
+Disallow: /politique-de-confidentialite
 
-# Sitemap location
+# Sitemap location - Page d'accueil centralisée
 Sitemap: https://christophe-dev-freelance.fr/sitemap.xml 
