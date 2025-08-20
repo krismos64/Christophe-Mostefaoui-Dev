@@ -67,6 +67,7 @@ export default function Services() {
       title: "Prises de Vue Drone",
       description:
         "Captation aérienne avec DJI Mavic Air pour immobilier, sites industriels et communication d'entreprise.",
+      badge: "/assets/images/badge-drone.png",
     },
     {
       icon: <Car className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
@@ -91,10 +92,17 @@ export default function Services() {
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-            Services Développement Web Expert
-          </h2>
-          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              Services Développement Web Expert
+            </h2>
+            <img
+              src="/assets/images/badge-dev.png"
+              alt="Certification Développeur"
+              className="w-20 h-20 object-contain"
+            />
+          </div>
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             Solutions digitales modernes avec React.js, Node.js et TypeScript - Performance et SEO garantis
           </p>
         </div>
@@ -103,9 +111,16 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group card-hover p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-slideIn"
+              className="group card-hover p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-slideIn relative"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {service.badge && (
+                <img
+                  src={service.badge}
+                  alt="Badge certification DGAC"
+                  className="absolute top-4 right-4 w-16 h-16 object-contain"
+                />
+              )}
               <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
                 <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-full inline-block">
                   {service.icon}

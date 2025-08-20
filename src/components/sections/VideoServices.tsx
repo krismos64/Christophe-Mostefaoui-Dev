@@ -53,9 +53,16 @@ export default function VideoServices() {
       <div className="container mx-auto px-6 relative z-10">
         {/* Titre principal */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Production Vidéo & Drone
-          </h2>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              Production Vidéo & Drone
+            </h2>
+            <img
+              src="/assets/images/badge-drone.png"
+              alt="Télépilote Drone Certifié DGAC AlphaTango"
+              className="w-20 h-20 object-contain"
+            />
+          </div>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             🎬 Sublimez votre communication avec des contenus visuels professionnels
           </p>

@@ -273,6 +273,25 @@ export default function Contact() {
                 ))}
               </div>
             </div>
+
+            {/* Badges Certifications */}
+            <motion.div
+              className="mt-8 flex items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <img
+                src="/assets/images/badge-drone.png"
+                alt="Télépilote Drone Certifié DGAC AlphaTango"
+                className="w-24 h-24 object-contain"
+              />
+              <img
+                src="/assets/images/badge-dev.png"
+                alt="Certification Développeur"
+                className="w-24 h-24 object-contain"
+              />
+            </motion.div>
           </motion.div>
 
           <motion.div

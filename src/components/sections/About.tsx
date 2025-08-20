@@ -39,10 +39,17 @@ export default function About() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-            Développeur Full-Stack
-          </h2>
-          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              Développeur Full-Stack
+            </h2>
+            <img
+              src="/assets/images/badge-dev.png"
+              alt="Certification Développeur"
+              className="w-20 h-20 object-contain"
+            />
+          </div>
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             🚀 Spécialiste React.js, Node.js, TypeScript - Création
             d'applications web modernes et performantes
           </p>
