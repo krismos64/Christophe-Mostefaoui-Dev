@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import About from "./components/sections/About";
@@ -14,10 +14,19 @@ import FAQ from "./pages/FAQ";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { SEOHead } from "./utils/seo";
+import { generateContactActionStructuredData, generateSoftwareApplicationStructuredData } from "./utils/structured-data";
 
 const Home = () => (
   <>
     <SEOHead />
+    <Helmet>
+      <script type="application/ld+json">
+        {JSON.stringify(generateContactActionStructuredData())}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(generateSoftwareApplicationStructuredData())}
+      </script>
+    </Helmet>
     <Hero />
     <About />
     <Services />

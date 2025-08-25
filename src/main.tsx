@@ -3,6 +3,10 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
+import { initGoogleAnalytics } from "./utils/analytics";
+
+// Initialisation de Google Analytics
+initGoogleAnalytics();
 
 // Récupération de l'élément racine
 const rootElement = document.getElementById("root");

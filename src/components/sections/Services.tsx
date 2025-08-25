@@ -11,6 +11,7 @@ import {
   Video,
   Camera,
 } from "lucide-react";
+import CallToAction from "../common/CallToAction";
 
 export default function Services() {
   const services = [
@@ -134,6 +135,24 @@ export default function Services() {
               </p>
             </div>
           ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <div className="inline-flex flex-col items-center gap-6">
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Prêt à transformer votre vision digitale en réalité ?
+            </p>
+            <CallToAction
+              variant="gradient"
+              text="Démarrez votre projet maintenant"
+              subtext="Consultation gratuite"
+              icon="message"
+              size="large"
+              href="#contact"
+              location="services"
+              testId="services_cta"
+            />
+          </div>
         </div>
       </div>
     </section>

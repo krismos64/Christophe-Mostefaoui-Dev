@@ -1,6 +1,7 @@
 import Lottie from "lottie-react";
 import { Code, Cpu, Users, Zap } from "lucide-react";
 import chatbotAnimation from "../../animations/chatbot.json";
+import CallToAction from "../common/CallToAction";
 
 export default function About() {
   const skills = [
@@ -110,6 +111,26 @@ export default function About() {
                   </div>
                 </div>
               ))}
+            </div>
+            
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <CallToAction
+                variant="gradient"
+                text="Parlons de votre projet"
+                subtext="Consultation gratuite"
+                icon="message"
+                size="medium"
+                href="#contact"
+                location="about"
+              />
+              <CallToAction
+                variant="secondary"
+                text="Découvrir mes réalisations"
+                icon="arrow"
+                size="medium"
+                href="#portfolio"
+                location="about"
+              />
             </div>
           </div>
         </div>

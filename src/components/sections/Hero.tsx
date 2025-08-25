@@ -1,6 +1,7 @@
 import Lottie from "lottie-react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 import companyAnimation from "../../animations/company.json";
+import CallToAction from "../common/CallToAction";
 
 export default function Hero() {
   return (
@@ -26,14 +27,26 @@ export default function Hero() {
               Ensemble, construisons des solutions digitales sur mesure pour
               vous ou votre entreprise.
             </p>
-            <div className="mt-8">
-              <a
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <CallToAction
+                variant="gradient"
+                text="Obtenez un devis gratuit"
+                subtext="Réponse sous 24h"
+                icon="send"
+                size="large"
                 href="#contact"
-                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors btn-rgb"
-              >
-                Contactez-moi
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
+                location="hero"
+                testId="hero_cta_primary"
+              />
+              <CallToAction
+                variant="secondary"
+                text="Discutons de votre projet"
+                icon="calendar"
+                size="large"
+                href="#contact"
+                location="hero"
+                testId="hero_cta_secondary"
+              />
             </div>
           </div>
 

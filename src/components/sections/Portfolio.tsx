@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import CallToAction from "../common/CallToAction";
 
 export default function Portfolio() {
   const projects = [
@@ -165,6 +166,37 @@ export default function Portfolio() {
               </div>
             </div>
           ))}
+        </div>
+        
+        <div className="mt-16 text-center">
+          <div className="inline-flex flex-col items-center gap-6">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+              Vous avez un projet en tête ?
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+              Transformons ensemble vos idées en solutions digitales performantes
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <CallToAction
+                variant="primary"
+                text="Lancer mon projet"
+                subtext="Devis gratuit sous 24h"
+                icon="arrow"
+                size="large"
+                href="#contact"
+                location="portfolio"
+                testId="portfolio_cta"
+              />
+              <CallToAction
+                variant="secondary"
+                text="Voir mes services"
+                icon="arrow"
+                size="large"
+                href="#services"
+                location="portfolio"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
