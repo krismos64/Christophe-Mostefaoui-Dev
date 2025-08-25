@@ -9,6 +9,7 @@ import Hero from "./components/sections/Hero";
 import Portfolio from "./components/sections/Portfolio";
 import Services from "./components/sections/Services";
 import Testimonials from "./components/sections/Testimonials";
+import VideoPresentation from "./components/sections/VideoPresentation";
 import VideoServices from "./components/sections/VideoServices";
 import WelcomeScreen from "./components/welcome/WelcomeScreen";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -21,6 +22,7 @@ const Home = () => (
   <>
     <SEOHead />
     <Hero />
+    <VideoPresentation />
     <About />
     <Services />
     <Portfolio />

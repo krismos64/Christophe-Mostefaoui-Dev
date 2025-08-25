@@ -10,6 +10,7 @@ import {
   Mail,
   Menu,
   Moon,
+  Play,
   Star,
   Sun,
   User,
@@ -59,6 +60,11 @@ export default function Header() {
       name: "À propos",
       to: isHomePage ? "#about" : "/#about",
       icon: <User className="h-5 w-5" />,
+    },
+    {
+      name: "Présentation",
+      to: isHomePage ? "#video-presentation" : "/#video-presentation",
+      icon: <Play className="h-5 w-5" />,
     },
     {
       name: "Services",
