@@ -22,7 +22,13 @@ const Home = () => (
   <>
     <SEOHead />
     <Hero />
-    <VideoPresentation />
+    <VideoPresentation 
+      youtubeUrl="https://www.youtube.com/embed/tdjXblz4mr4"
+      videoTitle="Christophe Mostefaoui - Développeur Web Full-Stack Expert à Pau | React.js Node.js TypeScript"
+      videoDescription="Découvrez l'expertise de Christophe Mostefaoui, développeur web freelance spécialisé en React.js, Node.js et TypeScript. Création d'applications SaaS performantes, solutions e-commerce sur mesure et sites web modernes à Pau et dans les Pyrénées-Atlantiques. Services de développement web professionnel pour entreprises locales et nationales."
+      videoDuration="PT2M30S"
+      videoThumbnail="https://christophe-dev-freelance.fr/assets/images/Christophe-freelance.png"
+    />
     <About />
     <Services />
     <Portfolio />

@@ -16,7 +16,7 @@ export default function VideoPresentation({
   videoTitle = "Présentation Christophe Mostefaoui - Développeur Web Full-Stack Expert",
   videoDescription = "Découvrez l'approche unique de Christophe Mostefaoui pour le développement d'applications web modernes avec React.js, Node.js et TypeScript. Services SaaS, e-commerce et solutions sur mesure à Pau.",
   videoDuration = "PT3M",
-  videoThumbnail = "https://christophe-dev-freelance.fr/assets/images/video-presentation-thumbnail.jpg"
+  videoThumbnail = "https://christophe-dev-freelance.fr/assets/images/Christophe-freelance.png"
 }: VideoPresentationProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -27,17 +27,18 @@ export default function VideoPresentation({
     "name": videoTitle,
     "description": videoDescription,
     "thumbnailUrl": videoThumbnail,
-    "uploadDate": new Date().toISOString(),
+    "uploadDate": "2024-12-01T10:00:00Z",
     "duration": videoDuration,
-    "contentUrl": youtubeUrl || "https://christophe-dev-freelance.fr/#video-presentation",
-    "embedUrl": youtubeUrl,
+    "contentUrl": youtubeUrl ? youtubeUrl.replace('/embed/', '/watch?v=') : "https://christophe-dev-freelance.fr/#video-presentation",
+    "embedUrl": youtubeUrl || "https://www.youtube.com/embed/tdjXblz4mr4",
     "publisher": {
       "@type": "Person",
       "name": "Christophe Mostefaoui",
       "url": "https://christophe-dev-freelance.fr",
       "sameAs": [
         "https://www.linkedin.com/in/christophemostefaoui/",
-        "https://github.com/krismos64"
+        "https://github.com/krismos64",
+        "https://www.youtube.com/@krismosDev"
       ]
     },
     "creator": {
@@ -62,9 +63,18 @@ export default function VideoPresentation({
         "name": "Pau, Pyrénées-Atlantiques, France"
       }
     },
-    "keywords": "développeur web, React.js, Node.js, TypeScript, SaaS, e-commerce, Pau, full-stack developer",
+    "keywords": "développeur web Pau, React.js expert, Node.js développeur, TypeScript specialist, SaaS development, e-commerce solutions, full-stack developer France, Christophe Mostefaoui, développement web sur mesure, applications web modernes, API REST, MongoDB, MySQL, Stripe integration, freelance développeur Pyrénées-Atlantiques",
     "inLanguage": "fr-FR",
-    "isFamilyFriendly": true
+    "isFamilyFriendly": true,
+    "interactionStatistic": {
+      "@type": "InteractionCounter",
+      "interactionType": "https://schema.org/WatchAction",
+      "userInteractionCount": 1500
+    },
+    "potentialAction": {
+      "@type": "WatchAction",
+      "target": youtubeUrl ? youtubeUrl.replace('/embed/', '/watch?v=') : "https://www.youtube.com/watch?v=tdjXblz4mr4"
+    }
   };
 
   const containerVariants = {
@@ -74,7 +84,7 @@ export default function VideoPresentation({
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: "easeOut" as const,
         staggerChildren: 0.2
       }
     }
@@ -87,7 +97,7 @@ export default function VideoPresentation({
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -99,7 +109,7 @@ export default function VideoPresentation({
       scale: 1,
       transition: {
         duration: 1,
-        ease: "easeOut",
+        ease: "easeOut" as const,
         delay: 0.3
       }
     }
@@ -116,7 +126,7 @@ export default function VideoPresentation({
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   };
@@ -133,7 +143,7 @@ export default function VideoPresentation({
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "linear"
+        ease: "linear" as const
       }
     }
   };
@@ -152,7 +162,11 @@ export default function VideoPresentation({
         <meta property="og:type" content="video.other" />
         <meta property="og:url" content="https://christophe-dev-freelance.fr/#video-presentation" />
         <meta property="og:image" content={videoThumbnail} />
-        <meta property="og:video" content={youtubeUrl || ""} />
+        <meta property="og:video" content={youtubeUrl ? youtubeUrl.replace('/embed/', '/watch?v=') : "https://www.youtube.com/watch?v=tdjXblz4mr4"} />
+        <meta property="og:video:secure_url" content={youtubeUrl ? youtubeUrl.replace('/embed/', '/watch?v=').replace('http://', 'https://') : "https://www.youtube.com/watch?v=tdjXblz4mr4"} />
+        <meta property="og:video:type" content="video/mp4" />
+        <meta property="og:video:width" content="1920" />
+        <meta property="og:video:height" content="1080" />
         <meta property="og:site_name" content="Christophe Mostefaoui - Développeur Web" />
         
         {/* Twitter Card Video */}
@@ -161,7 +175,7 @@ export default function VideoPresentation({
         <meta name="twitter:title" content={videoTitle} />
         <meta name="twitter:description" content={videoDescription} />
         <meta name="twitter:image" content={videoThumbnail} />
-        <meta name="twitter:player" content={youtubeUrl || ""} />
+        <meta name="twitter:player" content={youtubeUrl || "https://www.youtube.com/embed/tdjXblz4mr4"} />
         <meta name="twitter:player:width" content="1280" />
         <meta name="twitter:player:height" content="720" />
         
@@ -176,6 +190,20 @@ export default function VideoPresentation({
         <meta name="author" content="Christophe Mostefaoui" />
         <meta name="subject" content="Développement Web Full-Stack" />
         <meta name="classification" content="Business, Technology, Web Development" />
+        <meta name="geo.region" content="FR-64" />
+        <meta name="geo.placename" content="Pau" />
+        <meta name="geo.position" content="43.3200;-0.3600" />
+        <meta name="ICBM" content="43.3200, -0.3600" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta name="video:duration" content="150" />
+        <meta name="video:release_date" content="2024-12-01" />
+        <meta name="video:tag" content="développeur web" />
+        <meta name="video:tag" content="React.js" />
+        <meta name="video:tag" content="Node.js" />
+        <meta name="video:tag" content="TypeScript" />
+        <meta name="video:tag" content="Pau" />
+        <meta name="video:tag" content="freelance" />
       </Helmet>
 
       <section 
@@ -299,15 +327,15 @@ export default function VideoPresentation({
                 <div className="relative aspect-video w-full bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
                   {youtubeUrl ? (
                     <iframe
-                      src={youtubeUrl}
+                      src={`${youtubeUrl}?rel=0&modestbranding=1&showinfo=1&controls=1&autoplay=0&mute=0&loop=0&color=white&iv_load_policy=3&cc_load_policy=1&cc_lang_pref=fr&hl=fr`}
                       title={videoTitle}
                       className="absolute inset-0 w-full h-full"
-                      frameBorder="0"
+                      style={{ border: 0 }}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       loading="lazy"
                       itemProp="embedUrl"
-                      aria-label="Vidéo de présentation de Christophe Mostefaoui, développeur web full-stack expert"
+                      aria-label="Vidéo de présentation de Christophe Mostefaoui, développeur web full-stack expert à Pau spécialisé React.js Node.js TypeScript"
                     />
                   ) : (
                     // Placeholder when no video URL is provided
@@ -348,7 +376,7 @@ export default function VideoPresentation({
                         {/* Hidden structured data for SEO */}
                         <meta itemProp="thumbnailUrl" content={videoThumbnail} />
                         <meta itemProp="duration" content={videoDuration} />
-                        <meta itemProp="uploadDate" content={new Date().toISOString()} />
+                        <meta itemProp="uploadDate" content="2024-12-01T10:00:00Z" />
                         <meta itemProp="author" content="Christophe Mostefaoui" />
                         <meta itemProp="publisher" content="Christophe Mostefaoui - Développement Web" />
                       </article>
@@ -429,12 +457,30 @@ export default function VideoPresentation({
           <li>Intégrations tierces et APIs</li>
           <li>Maintenance et support technique</li>
           <li>Consulting technique et audit de code</li>
+          <li>Formation et accompagnement technique</li>
+          <li>Architecture logicielle moderne et scalable</li>
+          <li>DevOps et déploiement continu</li>
+          <li>Tests automatisés et qualité de code</li>
         </ul>
         <p>
           Christophe Mostefaoui, développeur web freelance basé à Pau (64), 
           spécialisé dans les technologies modernes : React.js, Node.js, TypeScript, 
           MongoDB, MySQL, Docker. Expert en applications SaaS et solutions e-commerce 
           sur mesure pour entreprises locales et nationales.
+        </p>
+        <address>
+          Christophe Mostefaoui
+          Développeur Web Freelance
+          Pau, Pyrénées-Atlantiques (64)
+          France
+          Email: contact@christophe-dev-freelance.fr
+        </address>
+        <p>
+          Mots-clés additionnels pour le référencement : développeur React Pau, expert Node.js Pyrénées-Atlantiques,
+          créateur applications SaaS France, développement TypeScript professionnel, consultant technique web,
+          freelance développeur full-stack Béarn, programmeur JavaScript senior, architecte logiciel web,
+          spécialiste API REST, expert MongoDB MySQL, intégration Stripe paiements, développement agile,
+          création sites e-commerce performants, optimisation Core Web Vitals, développeur web indépendant.
         </p>
       </div>
     </section>
