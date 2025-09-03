@@ -4,6 +4,15 @@ import CallToAction from "../common/CallToAction";
 export default function Portfolio() {
   const projects = [
     {
+      title: "coachtfe.fr",
+      description:
+        "Refonte site vitrine moderne et responsive pour coachtfe.fr",
+      image: "/assets/images/coachtfe.png",
+      alt: "Sites web coachtfe.fr",
+      tech: ["HTML", "Css modules", "Javascript", "SEO optimisé"],
+      link: "https://coachtfe.fr/",
+    },
+    {
       title: "Cabinet infirmier Graslin Nantes",
       description:
         "Site vitrine moderne et responsive pour le Cabinet Infirmier Graslin situé à Nantes, quartier Graslin.",
@@ -15,7 +24,7 @@ export default function Portfolio() {
     {
       title: "LivresStaka.fr",
       description:
-        "Plateforme web enterprise-grade dédiée aux services de correction et d'édition de manuscrits. Cette application monorepo sophistiquée offre une expérience complète aux auteurs avec authentification sécurisée, administration avancée, paiements Stripe intégrés et système de messagerie temps réel.",
+        "Plateforme web enterprise-grade dédiée aux services de correction et d'édition de manuscrits. Cette application monorepo sophistiquée offre une expérience complète aux auteurs avec authentification sécurisée, administration avancée, paiements Stripe intégrés et système de messagerie temps réel. Réalisé from scratch.",
       image: "/assets/images/livrestaka.jpg",
       alt: "Projet LivresStaka.fr, plateforme de gestion de livres",
       tech: ["React", "Node.js", "Express", "TypeScript", "MySQL", "API"],
@@ -27,12 +36,13 @@ export default function Portfolio() {
         "SmartPlanning est une application SaaS complète de gestion intelligente des plannings d'équipe avec intégration IA, développée en TypeScript pour une gestion optimisée des ressources humaines. L'application utilise une architecture moderne séparée (frontend React/backend Node.js) avec des fonctionnalités d'IA avancées pour l'optimisation automatique des plannings.",
       image: "/assets/images/business-smartplanning.webp",
       alt: "Projet SmartPlanning, réalisé par un développeur web à Pau",
-      tech: ["React", "Node JS", "IA", "MongoDB"],
+      tech: ["React", "Node JS", "IA", "MongoDB", "Python"],
       link: "https://smartplanning.fr/",
     },
     {
       title: "Poulp Fiction",
-      description: "Site web vitrine pour un centre de plongée de St Cyprien",
+      description:
+        "Site web vitrine pour un centre de plongée de St Cyprien avec animations Lottie.",
       image: "/assets/images/poulpfiction.jpg",
       alt: "Projet Poulp Fiction, site vitrine pour centre de plongée",
       tech: ["HTML", "Javascript", "Lottie animations"],
@@ -41,25 +51,25 @@ export default function Portfolio() {
     {
       title: "Garage Parrot",
       description:
-        "Site de gestion pour un garage automobile avec système de rendez-vous en ligne",
+        "Site web de gestion pour un garage automobile avec système de rendez-vous en ligne, vente de véhicule d'occasion avec base de données, espace administrateur pour les membres du garage (rôle avec tous les droits pour le gérant et rôle avec droits limités pour les employés).",
       image: "/assets/images/garage.jpg",
       alt: "Projet Garage Parrot, site de gestion pour garage automobile",
-      tech: ["Symfony", "Twig", "MySQL"],
+      tech: ["Symfony", "Twig", "MySQL", "PHP", "Javascript"],
       link: "https://garageparrot.space/",
     },
     {
       title: "Kocinaspeed",
       description:
-        "Plateforme de recettes de cuisine rapide avec filtres intelligents et chatbot interractif",
+        "Plateforme de recettes de cuisine rapide avec filtres intelligents, espace administrateur pour les gérants qui peuvent créer, modifier, ajouter et supprimer leurs recettes, images, et vidéos.",
       image: "/assets/images/kocina.jpg",
       alt: "Projet Kocinaspeed, plateforme de recettes de cuisine",
-      tech: ["Symfony", "Twig", "MySQL"],
+      tech: ["Symfony", "Twig", "MySQL", "PHP", "Javascript"],
       link: "https://kocinaspeed.fr/",
     },
     {
       title: "Metal Gear",
       description:
-        "Mini-site interactif pour les fans avec timeline interactive",
+        "Mini-site interactif pour les fans avec timeline interactive, chatbot avec le légendaire Solid Snake",
       image: "/assets/images/mgs.jpg",
       alt: "Projet Metal Gear, mini-site interactif pour fans",
       tech: ["HTML", "CSS", "JavaScript"],
@@ -67,18 +77,20 @@ export default function Portfolio() {
     },
     {
       title: "JDS",
-      description: "Plateforme d'un groupe de soirées jeux de société",
+      description:
+        "Plateforme d'un groupe de soirées jeux de société, site moderne et animé avec espace administrateur pour que les joueurs mettent à jour leurs scores, peuvent créer des nouveux jeux, nouveaux membres et mettent à jour eux mêmes leurs informations.",
       image: "/assets/images/jds.jpg",
       alt: "Projet JDS, plateforme pour soirées jeux de société",
-      tech: ["HTML", "CSS", "Javascript"],
+      tech: ["React", "HTML", "CSS", "Javascript"],
       link: "https://embrouillejds.netlify.app/",
     },
     {
       title: "StacyMakeupCreations",
-      description: "Plateforme d'une maquilleuse professionnelle",
+      description:
+        "Plateforme d'une maquilleuse professionnelle qui a accès à un espace administrateur et peut gérer ses contenus elle-même.",
       image: "/assets/images/stacy.jpg",
       alt: "Projet StacyMakeupCreations, plateforme pour maquilleuse",
-      tech: ["Symfony", "Twig", "MySQL"],
+      tech: ["Symfony", "Twig", "MySQL", "PHP", "Javascript"],
       link: "https://stacymakeupcreations.space/",
     },
     {
@@ -167,14 +179,15 @@ export default function Portfolio() {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-16 text-center">
           <div className="inline-flex flex-col items-center gap-6">
             <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
               Vous avez un projet en tête ?
             </h3>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
-              Transformons ensemble vos idées en solutions digitales performantes
+              Transformons ensemble vos idées en solutions digitales
+              performantes
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <CallToAction
