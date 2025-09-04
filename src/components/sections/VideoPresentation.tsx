@@ -16,7 +16,7 @@ export default function VideoPresentation({
   videoTitle = "Présentation Christophe Mostefaoui - Développeur Web Full-Stack Expert",
   videoDescription = "Découvrez l'approche unique de Christophe Mostefaoui pour le développement d'applications web modernes avec React.js, Node.js et TypeScript. Services SaaS, e-commerce et solutions sur mesure à Pau.",
   videoDuration = "PT3M",
-  videoThumbnail = "https://christophe-dev-freelance.fr/assets/images/Christophe-freelance.png"
+  videoThumbnail = "/assets/images/Christophe-freelance.png"
 }: VideoPresentationProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -185,7 +185,6 @@ export default function VideoPresentation({
         </script>
         
         {/* Additional SEO enhancements */}
-        <link rel="canonical" href="https://christophe-dev-freelance.fr/#video-presentation" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
         <meta name="author" content="Christophe Mostefaoui" />
         <meta name="subject" content="Développement Web Full-Stack" />
@@ -325,9 +324,9 @@ export default function VideoPresentation({
               >
                 {/* Video placeholder or iframe */}
                 <div className="relative aspect-video w-full bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
-                  {youtubeUrl ? (
+                  {youtubeUrl && isPlaying ? (
                     <iframe
-                      src={`${youtubeUrl}?rel=0&modestbranding=1&showinfo=1&controls=1&autoplay=0&mute=0&loop=0&color=white&iv_load_policy=3&cc_load_policy=1&cc_lang_pref=fr&hl=fr`}
+                      src={`${youtubeUrl}?rel=0&modestbranding=1&showinfo=1&controls=1&autoplay=1&mute=0&loop=0&color=white&iv_load_policy=3&cc_load_policy=1&cc_lang_pref=fr&hl=fr`}
                       title={videoTitle}
                       className="absolute inset-0 w-full h-full"
                       style={{ border: 0 }}
@@ -339,7 +338,12 @@ export default function VideoPresentation({
                     />
                   ) : (
                     // Placeholder when no video URL is provided
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div 
+                      className="absolute inset-0 flex items-center justify-center bg-contain bg-center bg-no-repeat"
+                      style={{
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${videoThumbnail})`,
+                      }}
+                    >
                       <article className="text-center" itemScope itemType="https://schema.org/VideoObject">
                         <motion.div
                           className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 flex items-center justify-center cursor-pointer"
@@ -354,7 +358,7 @@ export default function VideoPresentation({
                             ]
                           }}
                           transition={{ duration: 2, repeat: Infinity }}
-                          onClick={() => setIsPlaying(!isPlaying)}
+                          onClick={() => setIsPlaying(true)}
                           role="button"
                           aria-label="Lancer la vidéo de présentation"
                           tabIndex={0}
@@ -362,15 +366,10 @@ export default function VideoPresentation({
                           <Play className="w-10 h-10 text-white ml-1" fill="currentColor" />
                         </motion.div>
                         <h3 className="text-2xl font-bold text-white mb-4" itemProp="name">
-                          Présentation Christophe Mostefaoui - Développeur Full-Stack
+                          {youtubeUrl ? "▶️ Regarder ma présentation vidéo" : "Présentation Christophe Mostefaoui - Développeur Full-Stack"}
                         </h3>
-                        <p className="text-gray-300 text-lg" itemProp="description">
-                          Découvrez mon expertise en <strong>développement web moderne</strong> : 
-                          applications <strong>React.js</strong>, API <strong>Node.js</strong>, 
-                          solutions <strong>SaaS</strong> et <strong>e-commerce</strong> performantes.
-                        </p>
                         <div className="mt-8 text-sm text-gray-400">
-                          🎬 Vidéo bientôt disponible | ⚡ Services disponibles dès maintenant
+                          {youtubeUrl ? "🎬 Cliquez pour charger la vidéo | ⚡ Chargement optimisé" : "🎬 Vidéo bientôt disponible | ⚡ Services disponibles dès maintenant"}
                         </div>
                         
                         {/* Hidden structured data for SEO */}
