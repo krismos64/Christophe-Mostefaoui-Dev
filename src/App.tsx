@@ -16,11 +16,11 @@ import { ThemeProvider } from "./context/ThemeContext";
 import FAQ from "./pages/FAQ";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import { SEOHead } from "./utils/seo";
+import { SEOHead, generateLocalBusinessStructuredData } from "./utils/seo";
 
 const Home = () => (
   <>
-    <SEOHead />
+    <SEOHead structuredData={generateLocalBusinessStructuredData()} />
     <Hero />
     <VideoPresentation 
       youtubeUrl="https://www.youtube.com/embed/tdjXblz4mr4"

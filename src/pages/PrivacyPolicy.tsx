@@ -1,11 +1,18 @@
 import { useTheme } from "../context/ThemeContext";
+import { Helmet } from "react-helmet-async";
 
 export default function PrivacyPolicy() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
   return (
-    <div className="pt-24 pb-12">
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Politique de Confidentialité - Christophe Mostefaoui</title>
+      </Helmet>
+      
+      <div className="pt-24 pb-12">
       <div
         className={`container mx-auto px-6 ${
           isDark ? "text-gray-200" : "text-gray-800"
@@ -129,5 +136,6 @@ export default function PrivacyPolicy() {
         </section>
       </div>
     </div>
+    </>
   );
 }
