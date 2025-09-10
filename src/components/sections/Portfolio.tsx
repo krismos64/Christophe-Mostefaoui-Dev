@@ -4,9 +4,18 @@ import CallToAction from "../common/CallToAction";
 export default function Portfolio() {
   const projects = [
     {
+      title: "methodea.fr",
+      description:
+        "Refonte site vitrine moderne et responsive pour methodea.fr, création d'un formaulaire de contact relié au mail de mon client",
+      image: "/assets/images/methodea.png",
+      alt: "Sites web methodea.fr",
+      tech: ["HTML", "Css modules", "Javascript", "SEO optimisé"],
+      link: "https://methodea.netlify.app/",
+    },
+    {
       title: "coachtfe.fr",
       description:
-        "Refonte site vitrine moderne et responsive pour coachtfe.fr",
+        "Refonte site vitrine moderne et responsive pour coachtfe.fr, création d'un formaulaire de contact relié au mail de mon client",
       image: "/assets/images/coachtfe.png",
       alt: "Sites web coachtfe.fr",
       tech: ["HTML", "Css modules", "Javascript", "SEO optimisé"],
