@@ -20,17 +20,17 @@ export default function VideoPresentation({
 }: VideoPresentationProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // SEO: Generate structured data for video
+  // SEO: Generate structured data for video with all required fields
   const videoStructuredData = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "name": videoTitle,
-    "description": videoDescription,
-    "thumbnailUrl": videoThumbnail,
-    "uploadDate": "2024-12-01T10:00:00Z",
-    "duration": videoDuration,
-    "contentUrl": youtubeUrl ? youtubeUrl.replace('/embed/', '/watch?v=') : "https://christophe-dev-freelance.fr/#video-presentation",
-    "embedUrl": youtubeUrl || "https://www.youtube.com/embed/tdjXblz4mr4",
+    "name": videoTitle || "Présentation de Christophe Mostefaoui - Développeur Web Full-Stack Expert",
+    "description": videoDescription || "Découvrez mon expertise en développement web full-stack avec React.js, Node.js et TypeScript. Création d'applications SaaS et e-commerce sur mesure à Pau.",
+    "thumbnailUrl": videoThumbnail || "https://christophe-dev-freelance.fr/video-thumbnail.jpg",
+    "uploadDate": "2024-12-01T10:00:00+01:00",
+    "duration": videoDuration || "PT2M30S",
+    "contentUrl": youtubeUrl ? youtubeUrl.replace('/embed/', '/watch?v=').replace('http://', 'https://') : "https://www.youtube.com/watch?v=tdjXblz4mr4",
+    "embedUrl": youtubeUrl ? youtubeUrl.replace('http://', 'https://') : "https://www.youtube.com/embed/tdjXblz4mr4",
     "publisher": {
       "@type": "Person",
       "name": "Christophe Mostefaoui",
@@ -344,7 +344,7 @@ export default function VideoPresentation({
                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url(${videoThumbnail})`,
                       }}
                     >
-                      <article className="text-center" itemScope itemType="https://schema.org/VideoObject">
+                      <article className="text-center">
                         <motion.div
                           className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 flex items-center justify-center cursor-pointer"
                           whileHover={{ scale: 1.1 }}
