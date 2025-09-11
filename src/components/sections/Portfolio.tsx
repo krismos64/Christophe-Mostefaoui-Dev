@@ -9,7 +9,13 @@ export default function Portfolio() {
         "Refonte site vitrine moderne et responsive pour methodea.fr, création d'un formaulaire de contact relié au mail de mon client",
       image: "/assets/images/methodea.png",
       alt: "Sites web methodea.fr",
-      tech: ["HTML", "Css modules", "Javascript", "SEO optimisé"],
+      tech: [
+        "HTML",
+        "Css modules",
+        "Javascript",
+        "SEO optimisé",
+        "Formulaire de contact",
+      ],
       link: "https://methodea.netlify.app/",
     },
     {
@@ -18,7 +24,13 @@ export default function Portfolio() {
         "Refonte site vitrine moderne et responsive pour coachtfe.fr, création d'un formaulaire de contact relié au mail de mon client",
       image: "/assets/images/coachtfe.png",
       alt: "Sites web coachtfe.fr",
-      tech: ["HTML", "Css modules", "Javascript", "SEO optimisé"],
+      tech: [
+        "HTML",
+        "Css modules",
+        "Javascript",
+        "SEO optimisé",
+        "Formulaire de contact",
+      ],
       link: "https://coachtfe.fr/",
     },
     {
