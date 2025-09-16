@@ -114,55 +114,7 @@ export const generateReviewsStructuredDataFixed = () => {
     }))
   };
 
-  // Service avec avis CORRIGÉ
-  const serviceWithReviews = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": `${baseUrl}/#service-reviews`,
-    "name": "Services Développement Web & Intelligence Artificielle",
-    "description": "Services complets de développement web et intégration IA : Chatbots, Machine Learning, Applications SaaS",
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
-    "provider": {
-      "@type": "Person",
-      "name": "Christophe Mostefaoui",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Pau",
-        "addressRegion": "Pyrénées-Atlantiques",
-        "addressCountry": "FR"
-      }
-    },
-    "areaServed": {
-      "@type": "Place",
-      "name": "France"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": reviews.length.toString(),
-      "bestRating": "5",
-      "worstRating": "5"
-    },
-    "review": reviews.slice(0, 4).map(review => ({
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "Service",
-        "name": "Services Développement Web & Intelligence Artificielle"
-      },
-      "author": {
-        "@type": "Person",
-        "name": review.author
-      },
-      "datePublished": review.datePublished,
-      "reviewBody": review.reviewBody,
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": review.rating.toString(),
-        "bestRating": "5",
-        "worstRating": "1"
-      }
-    }))
-  };
+  // Service avec avis SUPPRIMÉ car Google n'accepte pas les reviews sur Service
 
   // Product avec avis CORRIGÉ
   const productWithReviews = {
@@ -223,7 +175,7 @@ export const generateReviewsStructuredDataFixed = () => {
     }))
   };
 
-  return [localBusinessWithReviews, serviceWithReviews, productWithReviews];
+  return [localBusinessWithReviews, productWithReviews];
 };
 
 // Fonction pour générer des témoignages cachés (invisibles mais indexés)
