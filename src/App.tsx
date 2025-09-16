@@ -18,10 +18,43 @@ import FAQ from "./pages/FAQ";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { SEOHead, generateLocalBusinessStructuredData } from "./utils/seo";
+import { generateAdvancedStructuredData } from "./utils/seo-advanced";
+import { generateReviewsStructuredData, generateHiddenTestimonials } from "./utils/reviews-structured-data";
+import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
+import HiddenReviews from "./components/seo/HiddenReviews";
 
-const Home = () => (
+const Home = () => {
+  const advancedStructuredData = generateAdvancedStructuredData();
+  const reviewsStructuredData = generateReviewsStructuredData();
+  const hiddenTestimonials = generateHiddenTestimonials();
+
+  return (
   <>
     <SEOHead structuredData={generateLocalBusinessStructuredData()} />
+    <LLMOptimizedHead />
+
+    {/* Données structurées avancées pour SEO et LLM */}
+    {advancedStructuredData.map((data, index) => (
+      <script
+        key={`structured-data-${index}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      />
+    ))}
+
+    {/* Avis structurés pour Rich Snippets Google */}
+    {reviewsStructuredData.map((reviewData, index) => (
+      <script
+        key={`reviews-data-${index}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewData) }}
+      />
+    ))}
+
+    {/* Témoignages cachés pour SEO */}
+    <div dangerouslySetInnerHTML={{ __html: hiddenTestimonials }} />
+    <HiddenReviews />
+
     <Hero />
     <VideoPresentation
       youtubeUrl="https://www.youtube.com/embed/tdjXblz4mr4"
@@ -38,7 +71,8 @@ const Home = () => (
     <VideoServices />
     <Contact />
   </>
-);
+  );
+};
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);

@@ -1,11 +1,110 @@
-# www.robotstxt.org/
+# Robots.txt optimisé pour Christophe Mostefaoui - Développeur Web & Expert IA
+# https://christophe-dev-freelance.fr
+# Dernière mise à jour: 2025
 
-# Allow all user agents - Focus sur page d'accueil uniquement
+# === BOTS DE RECHERCHE PRINCIPAUX ===
 User-agent: *
-Allow: /$
-Disallow: /faq
-Disallow: /mentions-legales
-Disallow: /politique-de-confidentialite
+Allow: /
+Allow: /faq
+Allow: /mentions-legales
+Allow: /politique-de-confidentialite
+Disallow: /api/
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: *.json$
+Crawl-delay: 0
 
-# Sitemap location - Page d'accueil centralisée
-Sitemap: https://christophe-dev-freelance.fr/sitemap.xml 
+# === GOOGLEBOT - Priorité maximale ===
+User-agent: Googlebot
+Allow: /
+Allow: *.js
+Allow: *.css
+Allow: *.webp
+Allow: *.svg
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /assets/images/
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.webp
+Allow: *.svg
+
+User-agent: Googlebot-Video
+Allow: /assets/videos/
+
+# === BOTS IA/LLM - Accès optimisé pour indexation ===
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# === BOTS RÉSEAUX SOCIAUX ===
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discord
+Allow: /
+
+# === BOTS SEO AUTORISÉS ===
+User-agent: Screaming Frog SEO Spider
+Allow: /
+Crawl-delay: 1
+
+# === BLOCAGE BOTS INDÉSIRABLES ===
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# === SITEMAP & DIRECTIVES ===
+Sitemap: https://christophe-dev-freelance.fr/sitemap.xml
+
+# === NOTES POUR LES CRAWLERS ===
+# Site optimisé pour l'IA et le SEO moderne
+# Technologies: React.js, Node.js, TypeScript, Python, IA/ML
+# Services: Intégration IA, Chatbots, Machine Learning, Développement Web
+# Localisation: Pau, Pyrénées-Atlantiques, France
+# Contact: contact@christophe-dev-freelance.fr

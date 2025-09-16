@@ -1,21 +1,118 @@
 {
-  "name": "Christophe Mostefaoui | Développeur Web Freelance",
-  "short_name": "CM Dev Web",
-  "description": "Développeur web freelance à Pau et Artix. Création de sites web et applications sur mesure.",
+  "name": "Christophe, Concepteur/Développeur d'applications web modernes & Expert IA",
+  "short_name": "Christophe Dev IA",
+  "description": "Expert en intégration IA et développement web full-stack. Chatbots GPT/Claude, machine learning, React.js, Node.js, Python. Basé à Pau, France.",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
-  "theme_color": "#3b82f6",
+  "theme_color": "#6366f1",
+  "scope": "/",
+  "lang": "fr-FR",
+  "categories": ["technology", "productivity", "business", "ai", "web-development"],
+  "iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9",
   "icons": [
     {
       "src": "/favicons/favicon.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicons/favicon.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicons/favicon.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicons/favicon.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicons/favicon.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/favicons/favicon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot-desktop.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Portfolio et services de Christophe Mostefaoui"
+    },
+    {
+      "src": "/assets/images/screenshot-mobile.jpg",
+      "sizes": "360x640",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Version mobile du portfolio"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Solutions IA",
+      "short_name": "IA",
+      "description": "Découvrir les solutions d'intégration IA",
+      "url": "/#ai-integration",
+      "icons": [
+        {
+          "src": "/favicons/favicon.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Nous contacter pour un projet",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/favicons/favicon.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "Voir nos réalisations",
+      "url": "/#portfolio",
+      "icons": [
+        {
+          "src": "/favicons/favicon.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
 }
