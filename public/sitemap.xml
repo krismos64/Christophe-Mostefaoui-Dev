@@ -99,25 +99,5 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Projets portfolio externes -->
-  <url>
-    <loc>https://smartplanning.fr</loc>
-    <lastmod>2025-01-01T00:00:00+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://livrestaka.fr</loc>
-    <lastmod>2025-01-01T00:00:00+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://coachtfe.fr</loc>
-    <lastmod>2025-01-01T00:00:00+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Les projets externes (smartplanning.fr, livrestaka.fr, coachtfe.fr) sont référencés dans le portfolio et les données structurées -->
 </urlset>
