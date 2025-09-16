@@ -167,9 +167,7 @@ export default function VideoPresentation({
     <>
       {/* SEO: Enhanced metadata for video section */}
       <Helmet>
-        <title>
-          Présentation Vidéo - Christophe Mostefaoui Développeur Web Expert
-        </title>
+        <title>Présentation Vidéo - Christophe Développeur Web Expert</title>
         <meta name="description" content={videoDescription} />
         <meta
           name="keywords"
