@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 
 interface VideoPresentationProps {
   youtubeUrl?: string;
@@ -164,97 +163,7 @@ export default function VideoPresentation({
   };
 
   return (
-    <>
-      {/* SEO: Enhanced metadata for video section */}
-      <Helmet>
-        <title>Présentation Vidéo - Christophe Développeur Web Expert</title>
-        <meta name="description" content={videoDescription} />
-        <meta
-          name="keywords"
-          content="présentation vidéo développeur web, Christophe Mostefaoui, React.js expert, Node.js développeur, services développement web Pau, applications SaaS sur mesure"
-        />
-
-        {/* Open Graph Video Tags */}
-        <meta property="og:title" content={videoTitle} />
-        <meta property="og:description" content={videoDescription} />
-        <meta property="og:type" content="video.other" />
-        <meta
-          property="og:url"
-          content="https://christophe-dev-freelance.fr/#video-presentation"
-        />
-        <meta property="og:image" content={videoThumbnail} />
-        <meta
-          property="og:video"
-          content={
-            youtubeUrl
-              ? youtubeUrl.replace("/embed/", "/watch?v=")
-              : "https://www.youtube.com/watch?v=tdjXblz4mr4"
-          }
-        />
-        <meta
-          property="og:video:secure_url"
-          content={
-            youtubeUrl
-              ? youtubeUrl
-                  .replace("/embed/", "/watch?v=")
-                  .replace("http://", "https://")
-              : "https://www.youtube.com/watch?v=tdjXblz4mr4"
-          }
-        />
-        <meta property="og:video:type" content="video/mp4" />
-        <meta property="og:video:width" content="1920" />
-        <meta property="og:video:height" content="1080" />
-        <meta
-          property="og:site_name"
-          content="Christophe Mostefaoui - Développeur Web"
-        />
-
-        {/* Twitter Card Video */}
-        <meta name="twitter:card" content="player" />
-        <meta name="twitter:site" content="@christophe_dev" />
-        <meta name="twitter:title" content={videoTitle} />
-        <meta name="twitter:description" content={videoDescription} />
-        <meta name="twitter:image" content={videoThumbnail} />
-        <meta
-          name="twitter:player"
-          content={youtubeUrl || "https://www.youtube.com/embed/tdjXblz4mr4"}
-        />
-        <meta name="twitter:player:width" content="1280" />
-        <meta name="twitter:player:height" content="720" />
-
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify(videoStructuredData)}
-        </script>
-
-        {/* Additional SEO enhancements */}
-        <meta
-          name="robots"
-          content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
-        />
-        <meta name="author" content="Christophe Mostefaoui" />
-        <meta name="subject" content="Développement Web Full-Stack" />
-        <meta
-          name="classification"
-          content="Business, Technology, Web Development"
-        />
-        <meta name="geo.region" content="FR-64" />
-        <meta name="geo.placename" content="Pau" />
-        <meta name="geo.position" content="43.3200;-0.3600" />
-        <meta name="ICBM" content="43.3200, -0.3600" />
-        <meta property="og:locale" content="fr_FR" />
-        <meta property="og:locale:alternate" content="en_US" />
-        <meta name="video:duration" content="150" />
-        <meta name="video:release_date" content="2024-12-01" />
-        <meta name="video:tag" content="développeur web" />
-        <meta name="video:tag" content="React.js" />
-        <meta name="video:tag" content="Node.js" />
-        <meta name="video:tag" content="TypeScript" />
-        <meta name="video:tag" content="Pau" />
-        <meta name="video:tag" content="freelance" />
-      </Helmet>
-
-      <section
+    <section
         id="video-presentation"
         className="py-20 relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-950 transition-colors duration-300"
         itemScope
@@ -574,7 +483,6 @@ export default function VideoPresentation({
             développeur web indépendant.
           </p>
         </div>
-      </section>
-    </>
+    </section>
   );
 }

@@ -59,7 +59,7 @@ function App() {
       <HelmetProvider>
         <Helmet>
           <title>
-            Christophe Mostefaoui - Développeur Web Full-Stack & Intégration IA | React.js Node.js Python
+            Christophe, Concepteur/Développeur d'applications web modernes
           </title>
           <meta
             name="description"

@@ -11,7 +11,7 @@ interface SEOProps {
 }
 
 export const SEOHead = ({
-  title = "Christophe Mostefaoui - Développeur Web Full-Stack & Expert IA à Pau | React.js, Node.js & Python",
+  title = "Christophe, Concepteur/Développeur d'applications web modernes",
   description = "Christophe Mostefaoui - Développeur web full-stack et expert en intégration IA à Pau (64). Chatbots intelligents GPT/Claude, machine learning, analyse prédictive. Spécialiste React.js, Node.js, TypeScript, Python. Création d'applications SaaS avec IA, e-commerce intelligent et solutions digitales innovantes.",
   keywords = "Développeur IA Pau, intégration intelligence artificielle, chatbot GPT Claude, machine learning, Python développeur, React.js expert, Node.js, TypeScript, analyse prédictive, vision par ordinateur, génération contenu IA, full-stack developer, SaaS IA, automatisation intelligente, TensorFlow, scikit-learn, OpenAI API, Christophe Mostefaoui, Artix 64170,",
   canonical = "https://christophe-dev-freelance.fr/",

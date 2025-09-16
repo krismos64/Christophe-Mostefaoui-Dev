@@ -218,7 +218,7 @@ const FAQ: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>FAQ</title>
+        <title>FAQ - Christophe, Concepteur/Développeur d'applications web modernes</title>
       </Helmet>
       <div className="font-sans pt-20">
         <div

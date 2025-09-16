@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
     <>
       <Helmet>
         <meta name="robots" content="noindex, nofollow" />
-        <title>Politique de Confidentialité - Christophe Mostefaoui</title>
+        <title>Politique de Confidentialité - Christophe, Concepteur/Développeur d'applications web modernes</title>
       </Helmet>
       
       <div className="pt-24 pb-12">
