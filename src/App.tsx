@@ -19,19 +19,23 @@ import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { SEOHead, generateLocalBusinessStructuredData } from "./utils/seo";
 import { generateAdvancedStructuredData } from "./utils/seo-advanced";
-import { generateReviewsStructuredData, generateHiddenTestimonials } from "./utils/reviews-structured-data";
+import { generateReviewsStructuredDataFixed as generateReviewsStructuredData, generateHiddenTestimonials } from "./utils/reviews-structured-data-fixed";
+import { generateVideoStructuredData } from "./utils/video-seo-optimization";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
+import VideoSEOHead from "./components/seo/VideoSEOHead";
 import HiddenReviews from "./components/seo/HiddenReviews";
 
 const Home = () => {
   const advancedStructuredData = generateAdvancedStructuredData();
   const reviewsStructuredData = generateReviewsStructuredData();
+  const videoStructuredData = generateVideoStructuredData();
   const hiddenTestimonials = generateHiddenTestimonials();
 
   return (
   <>
     <SEOHead structuredData={generateLocalBusinessStructuredData()} />
     <LLMOptimizedHead />
+    <VideoSEOHead />
 
     {/* Données structurées avancées pour SEO et LLM */}
     {advancedStructuredData.map((data, index) => (
@@ -48,6 +52,15 @@ const Home = () => {
         key={`reviews-data-${index}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewData) }}
+      />
+    ))}
+
+    {/* Données structurées vidéo pour indexation Google Video */}
+    {videoStructuredData.map((videoData, index) => (
+      <script
+        key={`video-data-${index}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoData) }}
       />
     ))}
 

@@ -1,5 +1,5 @@
-// Avis structurés pour Google Rich Snippets - Non visibles sur le site
-export const generateReviewsStructuredData = () => {
+// Avis structurés CORRIGÉS pour Google Rich Snippets - Non visibles sur le site
+export const generateReviewsStructuredDataFixed = () => {
   const baseUrl = "https://christophe-dev-freelance.fr";
 
   // Avis clients avec notes 5/5 pour les rich snippets
@@ -62,8 +62,8 @@ export const generateReviewsStructuredData = () => {
     }
   ];
 
-  // Organisation avec agrégation des avis
-  const organizationWithReviews = {
+  // LocalBusiness avec avis CORRIGÉ
+  const localBusinessWithReviews = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${baseUrl}/#business-reviews`,
@@ -86,23 +86,6 @@ export const generateReviewsStructuredData = () => {
     "telephone": "+33-6-XX-XX-XX-XX",
     "email": "contact@christophe-dev-freelance.fr",
     "priceRange": "€€€",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "18:00"
-      }
-    ],
-    "serviceArea": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 43.32,
-        "longitude": -0.36
-      },
-      "geoRadius": "200000"
-    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
@@ -112,12 +95,15 @@ export const generateReviewsStructuredData = () => {
     },
     "review": reviews.map(review => ({
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "Christophe Mostefaoui - Développeur Web & Expert IA"
+      },
       "author": {
         "@type": "Person",
         "name": review.author
       },
       "datePublished": review.datePublished,
-      "description": review.reviewBody,
       "reviewBody": review.reviewBody,
       "reviewRating": {
         "@type": "Rating",
@@ -125,95 +111,44 @@ export const generateReviewsStructuredData = () => {
         "bestRating": "5",
         "worstRating": "1"
       }
-    })),
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Services Développement Web & IA",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Intégration Intelligence Artificielle",
-            "description": "Chatbots GPT/Claude, Machine Learning, Vision par Ordinateur, NLP"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "3"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Développement Applications SaaS",
-            "description": "React.js, Node.js, TypeScript, Base de données, API REST"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "2"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Sites Web Modernes",
-            "description": "Sites responsives, SEO optimisé, Performance maximale"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "3"
-          }
-        }
-      ]
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/christophemostefaoui/",
-      "https://github.com/krismos64",
-      "https://www.facebook.com/christophedev",
-      "https://twitter.com/christophe_dev"
-    ]
+    }))
   };
 
-  // Profil professionnel avec avis
-  const professionalProfile = {
+  // Service avec avis CORRIGÉ
+  const serviceWithReviews = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": `${baseUrl}/#person-reviews`,
-    "name": "Christophe Mostefaoui",
-    "jobTitle": "Développeur Web Full-Stack & Expert Intelligence Artificielle",
-    "description": "Expert en intégration IA et développement web moderne. +15 ans d'expérience, spécialiste React.js, Node.js, Python, Machine Learning.",
-    "url": baseUrl,
+    "@type": "Service",
+    "@id": `${baseUrl}/#service-reviews`,
+    "name": "Services Développement Web & Intelligence Artificielle",
+    "description": "Services complets de développement web et intégration IA : Chatbots, Machine Learning, Applications SaaS",
     "image": `${baseUrl}/assets/images/chris-profil.jpg`,
-    "email": "contact@christophe-dev-freelance.fr",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Pau",
-      "addressRegion": "Pyrénées-Atlantiques",
-      "addressCountry": "FR"
+    "provider": {
+      "@type": "Person",
+      "name": "Christophe Mostefaoui",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pau",
+        "addressRegion": "Pyrénées-Atlantiques",
+        "addressCountry": "FR"
+      }
     },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Expertise Technique",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "name": "Intégration IA",
-          "description": "GPT-4, Claude, Machine Learning, Vision par Ordinateur"
-        },
-        {
-          "@type": "Offer",
-          "name": "Développement Full-Stack",
-          "description": "React.js, Node.js, TypeScript, Python, MongoDB, MySQL"
-        }
-      ]
+    "areaServed": {
+      "@type": "Place",
+      "name": "France"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": reviews.length.toString(),
+      "bestRating": "5",
+      "worstRating": "5"
     },
     "review": reviews.slice(0, 4).map(review => ({
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Service",
+        "name": "Services Développement Web & Intelligence Artificielle"
+      },
       "author": {
         "@type": "Person",
         "name": review.author
@@ -223,22 +158,22 @@ export const generateReviewsStructuredData = () => {
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": review.rating.toString(),
-        "bestRating": "5"
+        "bestRating": "5",
+        "worstRating": "1"
       }
     }))
   };
 
-  // Schema produit/service avec avis spécifiques
-  const aiServiceProduct = {
+  // Product avec avis CORRIGÉ
+  const productWithReviews = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "@id": `${baseUrl}/#ai-service-product`,
+    "@id": `${baseUrl}/#product-reviews`,
     "name": "Services d'Intégration Intelligence Artificielle",
     "description": "Solutions IA complètes : Chatbots GPT/Claude, Machine Learning, Analyse Prédictive, Vision par Ordinateur",
     "image": [
       `${baseUrl}/assets/images/chris-profil.jpg`,
-      `${baseUrl}/assets/images/ai-services-banner.jpg`,
-      `${baseUrl}/assets/images/chatbot-demo.jpg`
+      `${baseUrl}/assets/images/ai-services-banner.jpg`
     ],
     "category": "Artificial Intelligence Services",
     "brand": {
@@ -247,8 +182,6 @@ export const generateReviewsStructuredData = () => {
       "logo": `${baseUrl}/favicons/favicon.png`
     },
     "sku": "AI-INTEGRATION-2025",
-    "mpn": "AI-DEV-SERVICE",
-    "gtin": "0000000000000",
     "offers": {
       "@type": "Offer",
       "price": "2000",
@@ -259,54 +192,22 @@ export const generateReviewsStructuredData = () => {
       "url": `${baseUrl}/#ai-integration`,
       "seller": {
         "@type": "Person",
-        "name": "Christophe Mostefaoui",
-        "url": baseUrl
-      },
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0",
-          "currency": "EUR"
-        },
-        "shippingDestination": {
-          "@type": "DefinedRegion",
-          "addressCountry": "FR"
-        },
-        "deliveryTime": {
-          "@type": "ShippingDeliveryTime",
-          "handlingTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 1,
-            "maxValue": 3,
-            "unitCode": "DAY"
-          },
-          "transitTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 7,
-            "maxValue": 30,
-            "unitCode": "DAY"
-          }
-        }
-      },
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": "FR",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/FreeReturn"
+        "name": "Christophe Mostefaoui"
       }
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
-      "reviewCount": "8",
+      "reviewCount": reviews.length.toString(),
       "bestRating": "5",
       "worstRating": "5"
     },
     "review": reviews.map(review => ({
       "@type": "Review",
+      "itemReviewed": {
+        "@type": "Product",
+        "name": "Services d'Intégration Intelligence Artificielle"
+      },
       "author": {
         "@type": "Person",
         "name": review.author
@@ -316,12 +217,13 @@ export const generateReviewsStructuredData = () => {
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": review.rating.toString(),
-        "bestRating": "5"
+        "bestRating": "5",
+        "worstRating": "1"
       }
     }))
   };
 
-  return [organizationWithReviews, professionalProfile, aiServiceProduct];
+  return [localBusinessWithReviews, serviceWithReviews, productWithReviews];
 };
 
 // Fonction pour générer des témoignages cachés (invisibles mais indexés)
@@ -330,6 +232,9 @@ export const generateHiddenTestimonials = () => {
     <!-- Témoignages structurés cachés pour SEO - Non visibles sur le site -->
     <div style="display: none;" aria-hidden="true">
       <div itemscope itemtype="https://schema.org/Review">
+        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness">
+          <span itemprop="name">Christophe Mostefaoui - Services Développement & IA</span>
+        </div>
         <span itemprop="author" itemscope itemtype="https://schema.org/Person">
           <span itemprop="name">Christian Lopez</span>
         </span>
@@ -342,6 +247,9 @@ export const generateHiddenTestimonials = () => {
       </div>
 
       <div itemscope itemtype="https://schema.org/Review">
+        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/LocalBusiness">
+          <span itemprop="name">Christophe Mostefaoui - Services Développement & IA</span>
+        </div>
         <span itemprop="author" itemscope itemtype="https://schema.org/Person">
           <span itemprop="name">Sébastien Laborde</span>
         </span>
@@ -350,7 +258,22 @@ export const generateHiddenTestimonials = () => {
           <meta itemprop="bestRating" content="5" />
         </div>
         <span itemprop="reviewBody">Application SaaS exceptionnelle, maîtrise parfaite des technologies modernes</span>
-        <meta itemprop="datePublished" content="2024-12-02" />
+        <meta itemprop="datePublished" content="2024-12-18" />
+      </div>
+
+      <div itemscope itemtype="https://schema.org/Review">
+        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Service">
+          <span itemprop="name">Services Développement Web & Intelligence Artificielle</span>
+        </div>
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">Yvan Peyre</span>
+        </span>
+        <div itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5" />
+          <meta itemprop="bestRating" content="5" />
+        </div>
+        <span itemprop="reviewBody">Intégration ML exceptionnelle, +40% de ventes</span>
+        <meta itemprop="datePublished" content="2025-01-08" />
       </div>
     </div>
   `;
