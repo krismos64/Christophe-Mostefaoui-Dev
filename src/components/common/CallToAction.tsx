@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Send, MessageCircle, Calendar } from "lucide-react";
+import { ArrowRight, Send, MessageCircle, Calendar, Bot, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackCTAClick } from "../../utils/analytics";
 import { useABTest } from "../../utils/ab-testing";
 import { useEffect } from "react";
 
 interface CallToActionProps {
-  variant?: "primary" | "secondary" | "gradient";
+  variant?: "primary" | "secondary" | "gradient" | "white" | "outline-white";
   text: string;
   subtext?: string;
-  icon?: "arrow" | "send" | "message" | "calendar";
+  icon?: "arrow" | "send" | "message" | "calendar" | "bot" | "sparkles";
   size?: "small" | "medium" | "large";
   href?: string;
   className?: string;
@@ -50,6 +50,8 @@ const CallToAction = ({
     send: Send,
     message: MessageCircle,
     calendar: Calendar,
+    bot: Bot,
+    sparkles: Sparkles,
   };
 
   const Icon = icons[finalIcon];
@@ -75,6 +77,10 @@ const CallToAction = ({
       "bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 border-2 border-purple-600 dark:border-purple-400 hover:bg-purple-50 dark:hover:bg-gray-700",
     gradient:
       "bg-gradient-to-r from-pink-500 via-purple-600 to-blue-600 text-white shadow-xl hover:shadow-2xl hover:scale-105 animate-gradient-x",
+    white:
+      "bg-white text-purple-600 shadow-xl hover:shadow-2xl hover:scale-105",
+    "outline-white":
+      "bg-transparent text-white border-2 border-white hover:bg-white hover:text-purple-600 transition-colors",
   };
 
   const content = (

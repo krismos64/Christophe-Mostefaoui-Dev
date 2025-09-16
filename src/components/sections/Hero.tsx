@@ -1,5 +1,4 @@
 import Lottie from "lottie-react";
-import { ArrowRight, Calendar } from "lucide-react";
 import companyAnimation from "../../animations/company.json";
 import CallToAction from "../common/CallToAction";
 
@@ -23,7 +22,7 @@ export default function Hero() {
             </h1>
             <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               Spécialiste React.js, Node.js, TypeScript. Création d'applications
-              SaaS, plateformes e-commerce et sites vitrines performants à Pau.
+              SaaS, plateformes e-commerce et sites vitrines performants.
               Ensemble, construisons des solutions digitales sur mesure pour
               vous ou votre entreprise.
             </p>

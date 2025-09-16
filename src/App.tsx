@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { HelmetProvider, Helmet } from 'react-helmet-async';
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import About from "./components/sections/About";
+import AIIntegration from "./components/sections/AIIntegration";
 import Contact from "./components/sections/Contact";
 import Hero from "./components/sections/Hero";
 import Portfolio from "./components/sections/Portfolio";
@@ -22,15 +23,16 @@ const Home = () => (
   <>
     <SEOHead structuredData={generateLocalBusinessStructuredData()} />
     <Hero />
-    <VideoPresentation 
+    <VideoPresentation
       youtubeUrl="https://www.youtube.com/embed/tdjXblz4mr4"
       videoTitle="Christophe Mostefaoui - Développeur Web Full-Stack Expert à Pau | React.js Node.js TypeScript"
-      videoDescription="Découvrez l'expertise de Christophe Mostefaoui, développeur web freelance spécialisé en React.js, Node.js et TypeScript. Création d'applications SaaS performantes, solutions e-commerce sur mesure et sites web modernes à Pau et dans les Pyrénées-Atlantiques. Services de développement web professionnel pour entreprises locales et nationales."
+      videoDescription="Découvrez mon expertise, concepteur développeur d'applications freelance spécialisé en React.js, Node.js et TypeScript. Création d'applications SaaS performantes, solutions e-commerce sur mesure et sites web modernes à Pau et dans les Pyrénées-Atlantiques. Services de développement web professionnel pour entreprises, associations et particuliers."
       videoDuration="PT2M30S"
       videoThumbnail="/assets/images/Christophe-freelance.png"
     />
     <About />
     <Services />
+    <AIIntegration />
     <Portfolio />
     <Testimonials />
     <VideoServices />
@@ -56,68 +58,107 @@ function App() {
     return (
       <HelmetProvider>
         <Helmet>
-          <title>Christophe Mostefaoui - Développeur Web Full-Stack Expert | React.js Node.js</title>
-          <meta name="description" content="Bienvenue sur le portfolio de Christophe Mostefaoui, développeur web full-stack expert à Pau. Spécialiste React.js, Node.js, TypeScript. Créateur d'applications SaaS et solutions digitales innovantes." />
-          <meta name="keywords" content="Christophe Mostefaoui, développeur web Pau, React.js expert, Node.js développeur, full-stack developer, applications SaaS, développement web sur mesure, TypeScript, portfolio développeur" />
+          <title>
+            Christophe Mostefaoui - Développeur Web Full-Stack & Intégration IA | React.js Node.js Python
+          </title>
+          <meta
+            name="description"
+            content="Développeur web full-stack expert à Pau spécialisé en intégration IA. Chatbots intelligents, machine learning, analyse prédictive. Expert React.js, Node.js, TypeScript et Python pour solutions SaaS innovantes."
+          />
+          <meta
+            name="keywords"
+            content="Christophe Mostefaoui, développeur IA Pau, intégration intelligence artificielle, chatbot GPT, machine learning, React.js expert, Node.js, Python, full-stack developer, applications SaaS, développement web IA, TypeScript, analyse prédictive, vision par ordinateur"
+          />
           <meta name="robots" content="index, follow" />
           <meta name="author" content="Christophe Mostefaoui" />
-          
+
           {/* Open Graph pour les réseaux sociaux */}
-          <meta property="og:title" content="Christophe Mostefaoui - Développeur Web Full-Stack Expert" />
-          <meta property="og:description" content="Développeur web full-stack spécialisé React.js, Node.js, TypeScript. Créateur d'applications SaaS et solutions digitales sur mesure à Pau." />
+          <meta
+            property="og:title"
+            content="Christophe Mostefaoui - Développeur Web & Expert IA"
+          />
+          <meta
+            property="og:description"
+            content="Développeur full-stack et expert en intégration IA. Chatbots, machine learning, analyse prédictive. React.js, Node.js, Python. Solutions digitales innovantes à Pau."
+          />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://christophe-dev-freelance.fr/" />
-          <meta property="og:image" content="https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4" />
-          
+          <meta
+            property="og:url"
+            content="https://christophe-dev-freelance.fr/"
+          />
+          <meta
+            property="og:image"
+            content="https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4"
+          />
+
           {/* Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Christophe Mostefaoui - Développeur Web Expert" />
-          <meta name="twitter:description" content="Portfolio développeur web full-stack React.js Node.js TypeScript" />
-          
+          <meta
+            name="twitter:title"
+            content="Christophe Mostefaoui - Développeur Web & IA Expert"
+          />
+          <meta
+            name="twitter:description"
+            content="Expert intégration IA & développeur full-stack. Chatbots, ML, React.js, Node.js, Python"
+          />
+
           {/* Données structurées JSON-LD pour le SEO */}
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "Christophe Mostefaoui",
-              "jobTitle": "Développeur Web Full-Stack",
-              "description": "Développeur web expert spécialisé en React.js, Node.js et TypeScript",
-              "url": "https://christophe-dev-freelance.fr",
-              "image": "https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4",
-              "sameAs": [
+              name: "Christophe Mostefaoui",
+              jobTitle: "Développeur Web Full-Stack & Expert IA",
+              description:
+                "Développeur web expert spécialisé en intégration IA, React.js, Node.js, TypeScript et Python",
+              url: "https://christophe-dev-freelance.fr",
+              image:
+                "https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4",
+              sameAs: [
                 "https://www.linkedin.com/in/christophemostefaoui/",
-                "https://github.com/krismos64"
+                "https://github.com/krismos64",
               ],
-              "knowsAbout": [
+              knowsAbout: [
+                "Intelligence Artificielle",
+                "Machine Learning",
+                "Chatbots GPT/Claude",
+                "Python",
                 "React.js",
                 "Node.js",
                 "TypeScript",
                 "JavaScript",
                 "Full-Stack Development",
                 "SaaS Applications",
-                "Web Development"
+                "Analyse Prédictive",
+                "Vision par Ordinateur",
               ],
-              "address": {
+              address: {
                 "@type": "PostalAddress",
-                "addressLocality": "Pau",
-                "addressRegion": "Pyrénées-Atlantiques",
-                "addressCountry": "France"
+                addressLocality: "Pau",
+                addressRegion: "Pyrénées-Atlantiques",
+                addressCountry: "France",
               },
-              "hasOccupation": {
+              hasOccupation: {
                 "@type": "Occupation",
-                "name": "Développeur Web Full-Stack",
-                "occupationLocation": {
+                name: "Développeur Web Full-Stack & Expert IA",
+                occupationLocation: {
                   "@type": "City",
-                  "name": "Pau"
+                  name: "Pau",
                 },
-                "skills": "React.js, Node.js, TypeScript, JavaScript, MongoDB, MySQL, API REST"
-              }
+                skills:
+                  "IA/ML, Python, ChatGPT/Claude, React.js, Node.js, TypeScript, JavaScript, MongoDB, MySQL, API REST, TensorFlow, Scikit-learn",
+              },
             })}
           </script>
-          
+
           {/* Preload des ressources critiques */}
-          <link rel="preload" href="/assets/videos/animation-chris-dev.mp4" as="video" type="video/mp4" />
-          
+          <link
+            rel="preload"
+            href="/assets/videos/animation-chris-dev.mp4"
+            as="video"
+            type="video/mp4"
+          />
+
           {/* Canonical URL */}
           <link rel="canonical" href="https://christophe-dev-freelance.fr/" />
         </Helmet>

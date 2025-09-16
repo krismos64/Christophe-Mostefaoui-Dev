@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title?: string;
@@ -11,36 +11,36 @@ interface SEOProps {
 }
 
 export const SEOHead = ({
-  title = 'Christophe Mostefaoui - Développeur Web Full-Stack Expert à Pau | React.js & Node.js',
-  description = 'Christophe Mostefaoui - Développeur web full-stack freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript, Symfony PHP. Création d\'applications SaaS, e-commerce et sites vitrines sur mesure. SEO technique, performance web et solutions digitales innovantes.',
-  keywords = 'Développeur web freelance Pau, React.js expert, Node.js développeur, TypeScript spécialiste, Symfony PHP, full-stack developer, SaaS application, e-commerce development, site vitrine, SEO technique, performance web, API REST, MongoDB, MySQL, développement sur mesure, solutions digitales, Christophe Mostefaoui, Artix 64170',
-  canonical = 'https://christophe-dev-freelance.fr/',
-  image = 'https://christophe-dev-freelance.fr/assets/images/chris-profil.jpg',
-  type = 'website',
-  structuredData
+  title = "Christophe Mostefaoui - Développeur Web Full-Stack & Expert IA à Pau | React.js, Node.js & Python",
+  description = "Christophe Mostefaoui - Développeur web full-stack et expert en intégration IA à Pau (64). Chatbots intelligents GPT/Claude, machine learning, analyse prédictive. Spécialiste React.js, Node.js, TypeScript, Python. Création d'applications SaaS avec IA, e-commerce intelligent et solutions digitales innovantes.",
+  keywords = "Développeur IA Pau, intégration intelligence artificielle, chatbot GPT Claude, machine learning, Python développeur, React.js expert, Node.js, TypeScript, analyse prédictive, vision par ordinateur, génération contenu IA, full-stack developer, SaaS IA, automatisation intelligente, TensorFlow, scikit-learn, OpenAI API, Christophe Mostefaoui, Artix 64170,",
+  canonical = "https://christophe-dev-freelance.fr/",
+  image = "https://christophe-dev-freelance.fr/assets/images/chris-profil.jpg",
+  type = "website",
+  structuredData,
 }: SEOProps) => {
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      
+
       {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonical} />
-      
+
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      
+
       {/* Canonical */}
       <link rel="canonical" href={canonical} />
-      
+
       {/* Structured Data */}
       {structuredData && (
         <script type="application/ld+json">
@@ -51,16 +51,18 @@ export const SEOHead = ({
   );
 };
 
-export const generateBreadcrumbStructuredData = (items: Array<{name: string, url: string}>) => {
+export const generateBreadcrumbStructuredData = (
+  items: Array<{ name: string; url: string }>
+) => {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": items.map((item, index) => ({
+    itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
-      "position": index + 1,
-      "name": item.name,
-      "item": item.url
-    }))
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 };
 
@@ -76,39 +78,41 @@ export const generateArticleStructuredData = (article: {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": article.title,
-    "description": article.description,
-    "datePublished": article.datePublished,
-    "dateModified": article.dateModified || article.datePublished,
-    "author": {
+    headline: article.title,
+    description: article.description,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified || article.datePublished,
+    author: {
       "@type": "Person",
-      "name": article.author
+      name: article.author,
     },
-    "image": article.image,
-    "url": article.url,
-    "publisher": {
+    image: article.image,
+    url: article.url,
+    publisher: {
       "@type": "Organization",
-      "name": "Christophe Mostefaoui - Développeur Web",
-      "logo": {
+      name: "Christophe Mostefaoui - Développeur Web",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://christophe-dev-freelance.fr/assets/images/favicon.png"
-      }
-    }
+        url: "https://christophe-dev-freelance.fr/assets/images/favicon.png",
+      },
+    },
   };
 };
 
-export const generateFAQStructuredData = (faqs: Array<{question: string, answer: string}>) => {
+export const generateFAQStructuredData = (
+  faqs: Array<{ question: string; answer: string }>
+) => {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
+    mainEntity: faqs.map((faq) => ({
       "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
+      name: faq.question,
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   };
 };
 
@@ -117,118 +121,129 @@ export const generateLocalBusinessStructuredData = () => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": "https://christophe-dev-freelance.fr/#business",
-    "name": "Christophe Mostefaoui",
-    "alternateName": "Christophe Mostefaoui - Développeur Web",
-    "description": "Développeur web freelance expert à Pau spécialisé en React.js, Node.js et TypeScript. Création d'applications SaaS, e-commerce et sites web sur mesure.",
-    "url": "https://christophe-dev-freelance.fr",
-    "telephone": "+33-6-XX-XX-XX-XX",
-    "email": "contact@christophe-dev-freelance.fr",
-    "image": "https://christophe-dev-freelance.fr/assets/images/chris-profil.jpg",
-    "logo": "https://christophe-dev-freelance.fr/favicons/favicon.png",
-    "address": {
+    name: "Christophe Mostefaoui",
+    alternateName: "Christophe Mostefaoui - Développeur Web",
+    description:
+      "Développeur web freelance et expert IA à Pau. Intégration d'intelligence artificielle, chatbots, machine learning. Spécialiste React.js, Node.js, TypeScript et Python. Création d'applications SaaS avec IA, e-commerce intelligent.",
+    url: "https://christophe-dev-freelance.fr",
+    telephone: "+33-6-XX-XX-XX-XX",
+    email: "contact@christophe-dev-freelance.fr",
+    image: "https://christophe-dev-freelance.fr/assets/images/chris-profil.jpg",
+    logo: "https://christophe-dev-freelance.fr/favicons/favicon.png",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Pau",
-      "addressRegion": "Pyrénées-Atlantiques",
-      "postalCode": "64000",
-      "addressCountry": "FR"
+      addressLocality: "Pau",
+      addressRegion: "Pyrénées-Atlantiques",
+      postalCode: "64000",
+      addressCountry: "FR",
     },
-    "geo": {
+    geo: {
       "@type": "GeoCoordinates",
-      "latitude": 43.3200,
-      "longitude": -0.3600
+      latitude: 43.32,
+      longitude: -0.36,
     },
-    "areaServed": [
+    areaServed: [
       {
         "@type": "Place",
-        "name": "Pau"
+        name: "Pau",
       },
       {
         "@type": "Place",
-        "name": "Pyrénées-Atlantiques"
+        name: "Pyrénées-Atlantiques",
       },
       {
         "@type": "Place",
-        "name": "France"
-      }
+        name: "France",
+      },
     ],
-    "serviceType": [
+    serviceType: [
+      "Intégration Intelligence Artificielle",
+      "Développement Chatbots IA",
+      "Machine Learning Solutions",
+      "Analyse Prédictive",
+      "Vision par Ordinateur",
       "Développement Web",
-      "Applications SaaS",
-      "Sites E-commerce",
+      "Applications SaaS avec IA",
+      "Sites E-commerce Intelligents",
       "Développement React.js",
       "Développement Node.js",
-      "TypeScript Development"
+      "Python AI Development",
+      "TypeScript Development",
     ],
-    "priceRange": "€€",
-    "aggregateRating": {
+    priceRange: "€€",
+    aggregateRating: {
       "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "24",
-      "bestRating": "5",
-      "worstRating": "1"
+      ratingValue: "5.0",
+      reviewCount: "24",
+      bestRating: "5",
+      worstRating: "1",
     },
-    "review": [
+    review: [
       {
         "@type": "Review",
-        "reviewRating": {
+        reviewRating: {
           "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
+          ratingValue: "5",
+          bestRating: "5",
         },
-        "author": {
+        author: {
           "@type": "Person",
-          "name": "Client Satisfait"
+          name: "Client Satisfait",
         },
-        "reviewBody": "Excellent développeur, très professionnel et à l'écoute. Christophe a créé notre application SaaS avec une expertise remarquable en React.js et Node.js."
+        reviewBody:
+          "Excellent développeur, très professionnel et à l'écoute. Christophe a créé notre application SaaS avec une expertise remarquable en React.js et Node.js.",
       },
       {
         "@type": "Review",
-        "reviewRating": {
+        reviewRating: {
           "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
+          ratingValue: "5",
+          bestRating: "5",
         },
-        "author": {
+        author: {
           "@type": "Person",
-          "name": "Entreprise Locale"
+          name: "Entreprise Locale",
         },
-        "reviewBody": "Site e-commerce parfaitement optimisé et moderne. Un freelance de grande qualité à Pau, je recommande vivement !"
-      }
+        reviewBody:
+          "Site e-commerce parfaitement optimisé et moderne. Un freelance de grande qualité à Pau, je recommande vivement !",
+      },
     ],
-    "sameAs": [
+    sameAs: [
       "https://www.linkedin.com/in/christophemostefaoui/",
       "https://github.com/krismos64",
-      "https://g.page/r/CcnggWy2_KpMEBI"
+      "https://g.page/r/CcnggWy2_KpMEBI",
     ],
-    "hasOfferCatalog": {
+    hasOfferCatalog: {
       "@type": "OfferCatalog",
-      "name": "Services de Développement Web",
-      "itemListElement": [
+      name: "Services de Développement Web",
+      itemListElement: [
         {
           "@type": "Offer",
-          "itemOffered": {
+          itemOffered: {
             "@type": "Service",
-            "name": "Développement Applications SaaS",
-            "description": "Création d'applications SaaS complètes avec React.js, Node.js et TypeScript"
-          }
+            name: "Développement Applications SaaS",
+            description:
+              "Création d'applications SaaS complètes avec React.js, Node.js et TypeScript",
+          },
         },
         {
           "@type": "Offer",
-          "itemOffered": {
+          itemOffered: {
             "@type": "Service",
-            "name": "Sites E-commerce",
-            "description": "Solutions e-commerce performantes avec paiements intégrés"
-          }
+            name: "Sites E-commerce",
+            description:
+              "Solutions e-commerce performantes avec paiements intégrés",
+          },
         },
         {
           "@type": "Offer",
-          "itemOffered": {
+          itemOffered: {
             "@type": "Service",
-            "name": "Sites Web sur Mesure",
-            "description": "Création de sites web modernes et optimisés SEO"
-          }
-        }
-      ]
-    }
+            name: "Sites Web sur Mesure",
+            description: "Création de sites web modernes et optimisés SEO",
+          },
+        },
+      ],
+    },
   };
 };

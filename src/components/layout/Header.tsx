@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import {
+  Brain,
   Briefcase,
   FolderOpen,
   Github,
@@ -70,6 +71,11 @@ export default function Header() {
       name: "Services",
       to: isHomePage ? "#services" : "/#services",
       icon: <Briefcase className="h-5 w-5" />,
+    },
+    {
+      name: "Solutions IA",
+      to: isHomePage ? "#ai-integration" : "/#ai-integration",
+      icon: <Brain className="h-5 w-5" />,
     },
     {
       name: "Portfolio",

@@ -10,11 +10,27 @@ import {
   Wrench,
   Video,
   Camera,
+  Brain,
+  Bot,
+  Sparkles,
 } from "lucide-react";
 import CallToAction from "../common/CallToAction";
 
 export default function Services() {
   const services = [
+    {
+      icon: <Brain className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
+      title: "Intégration IA & Machine Learning",
+      description:
+        "À l'heure de l'IA, propulsez votre business vers le futur ! Chatbots intelligents, assistants virtuels, analyse prédictive, recommandations personnalisées.",
+      highlight: true,
+      features: [
+        "Chatbots conversationnels avec GPT/Claude par exemple",
+        "Analyse automatique de données",
+        "Système de recommandations intelligent",
+        "Vision par ordinateur et traitement d'images",
+      ],
+    },
     {
       icon: <Globe className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
       title: "Sites Web React.js Sur Mesure",
@@ -104,7 +120,8 @@ export default function Services() {
             />
           </div>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Solutions digitales modernes avec React.js, Node.js et TypeScript - Performance et SEO garantis
+            Solutions digitales modernes avec React.js, Node.js et TypeScript -
+            Performance et SEO garantis
           </p>
         </div>
 
@@ -112,9 +129,21 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group card-hover p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-slideIn relative"
+              className={`group card-hover p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-slideIn relative ${
+                service.highlight
+                  ? "ring-2 ring-purple-500 dark:ring-purple-400 transform scale-105"
+                  : ""
+              }`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {service.highlight && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-bold rounded-full flex items-center gap-1">
+                    <Sparkles className="h-4 w-4" />
+                    NOUVEAU
+                  </span>
+                </div>
+              )}
               {service.badge && (
                 <img
                   src={service.badge}
@@ -123,7 +152,13 @@ export default function Services() {
                 />
               )}
               <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
-                <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-full inline-block">
+                <div
+                  className={`p-3 ${
+                    service.highlight
+                      ? "bg-purple-50 dark:bg-purple-900/30"
+                      : "bg-blue-50 dark:bg-blue-900/30"
+                  } rounded-full inline-block`}
+                >
                   {service.icon}
                 </div>
               </div>
@@ -133,10 +168,22 @@ export default function Services() {
               <p className="text-gray-600 dark:text-gray-300">
                 {service.description}
               </p>
+              {service.features && (
+                <ul className="mt-4 space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <Bot className="h-4 w-4 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
+                      <span className="text-sm text-gray-600 dark:text-gray-300">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
-        
+
         <div className="mt-16 text-center">
           <div className="inline-flex flex-col items-center gap-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
