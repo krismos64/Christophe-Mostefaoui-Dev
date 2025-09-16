@@ -17,7 +17,7 @@
     </image:image>
     <video:video>
       <video:thumbnail_loc>https://christophe-dev-freelance.fr/assets/images/Christophe-freelance.png</video:thumbnail_loc>
-      <video:title>Christophe Mostefaoui - Expert IA & Développement Web Full-Stack</video:title>
+      <video:title>Christophe Mostefaoui - Expert IA &amp; Développement Web Full-Stack</video:title>
       <video:description>Expertise complète en intégration IA : chatbots GPT/Claude, machine learning, analyse prédictive, vision par ordinateur. Développement React.js, Node.js, TypeScript, Python. Services freelance à Pau, France.</video:description>
       <video:content_loc>https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4</video:content_loc>
       <video:player_loc>https://www.youtube.com/embed/tdjXblz4mr4</video:player_loc>
