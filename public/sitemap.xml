@@ -99,14 +99,7 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Projets externes importants -->
-  <url>
-    <loc>https://livresstaka.fr</loc>
-    <lastmod>2025-01-01T00:00:00+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
+  <!-- Projets portfolio externes -->
   <url>
     <loc>https://smartplanning.fr</loc>
     <lastmod>2025-01-01T00:00:00+01:00</lastmod>
@@ -115,7 +108,14 @@
   </url>
 
   <url>
-    <loc>https://methodea.fr</loc>
+    <loc>https://livrestaka.fr</loc>
+    <lastmod>2025-01-01T00:00:00+01:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://coachtfe.fr</loc>
     <lastmod>2025-01-01T00:00:00+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
