@@ -470,7 +470,7 @@ export default function VideoPresentation({
           <address>
             Christophe Mostefaoui Développeur Web Freelance Pau,
             Pyrénées-Atlantiques (64) France Email:
-            contact@christophe-dev-freelance.fr
+            christophe.mostefaoui.dev@gmail.com
           </address>
           <p>
             Mots-clés additionnels pour le référencement : développeur React

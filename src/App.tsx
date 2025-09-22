@@ -6,6 +6,7 @@ import Header from "./components/layout/Header";
 import About from "./components/sections/About";
 import AIIntegration from "./components/sections/AIIntegration";
 import Contact from "./components/sections/Contact";
+import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
 import Portfolio from "./components/sections/Portfolio";
 import Services from "./components/sections/Services";
@@ -17,15 +18,23 @@ import { ThemeProvider } from "./context/ThemeContext";
 import FAQ from "./pages/FAQ";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Avis from "./pages/Avis";
 import { generateFinalStructuredData } from "./utils/structured-data-final";
 import { generateVideoStructuredData } from "./utils/video-seo-optimization";
+import { generateLocationStructuredData } from "./utils/seo-location-data";
+import { generateGoogleStarsSchema } from "./utils/google-stars-optimization";
+import { generateLocalSEOSchema } from "./utils/local-seo-schema";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
 import VideoSEOHead from "./components/seo/VideoSEOHead";
 import HiddenReviews from "./components/seo/HiddenReviews";
+import GMBOptimizedContact from "./components/seo/GMBOptimizedContact";
 
 const Home = () => {
   const finalStructuredData = generateFinalStructuredData();
   const videoStructuredData = generateVideoStructuredData();
+  const locationStructuredData = generateLocationStructuredData();
+  const googleStarsData = generateGoogleStarsSchema();
+  const localSEOData = generateLocalSEOSchema();
 
   return (
   <>
@@ -50,6 +59,33 @@ const Home = () => {
       />
     ))}
 
+    {/* Données structurées de localisation pour SEO national */}
+    {locationStructuredData.map((locationData, index) => (
+      <script
+        key={`location-data-${index}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationData) }}
+      />
+    ))}
+
+    {/* Données optimisées pour affichage étoiles Google */}
+    {googleStarsData.map((starsData, index) => (
+      <script
+        key={`stars-data-${index}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(starsData) }}
+      />
+    ))}
+
+    {/* Données SEO local pour GMB */}
+    {localSEOData.map((localData, index) => (
+      <script
+        key={`local-seo-${index}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localData) }}
+      />
+    ))}
+
     {/* Témoignages cachés pour SEO */}
     <HiddenReviews />
 
@@ -63,11 +99,12 @@ const Home = () => {
     />
     <About />
     <Services />
+    <FeaturedSnippetsFAQ />
     <AIIntegration />
     <Portfolio />
     <Testimonials />
     <VideoServices />
-    <Contact />
+    <GMBOptimizedContact />
   </>
   );
 };
@@ -91,15 +128,15 @@ function App() {
       <HelmetProvider>
         <Helmet>
           <title>
-            Christophe, Concepteur/Développeur d'applications web modernes
+            Christophe Mostefaoui - Développeur Web Freelance Expert France | React.js Node.js TypeScript
           </title>
           <meta
             name="description"
-            content="Développeur web full-stack expert à Pau spécialisé en intégration IA. Chatbots intelligents, machine learning, analyse prédictive. Expert React.js, Node.js, TypeScript et Python pour solutions SaaS innovantes."
+            content="Christophe Mostefaoui, développeur web freelance expert ⭐⭐⭐⭐⭐ (47 avis). Spécialiste React.js, Node.js, TypeScript. Disponible France entière. Devis gratuit 24h. Réponse à toutes vos questions sur le développement web moderne."
           />
           <meta
             name="keywords"
-            content="Christophe Mostefaoui, développeur IA Pau, intégration intelligence artificielle, chatbot GPT, machine learning, React.js expert, Node.js, Python, full-stack developer, applications SaaS, développement web IA, TypeScript, analyse prédictive, vision par ordinateur"
+            content="développeur web freelance France, expert React.js, Node.js développeur, TypeScript expert, Christophe Mostefaoui, développeur freelance Paris, Lyon, Marseille, Toulouse, Bordeaux, développeur Pau, Artix, applications SaaS, e-commerce, intégration IA, chatbot GPT Claude, développement moderne, gestion projet optimisée"
           />
           <meta name="robots" content="index, follow" />
           <meta name="author" content="Christophe Mostefaoui" />
@@ -209,6 +246,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/avis" element={<Avis />} />
                 <Route path="/mentions-legales" element={<LegalNotice />} />
                 <Route
                   path="/politique-de-confidentialite"

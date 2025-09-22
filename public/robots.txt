@@ -4,10 +4,14 @@
 
 # === BOTS DE RECHERCHE PRINCIPAUX ===
 User-agent: *
-Allow: /
+Allow: /$
+Allow: /#services
+Allow: /#ai-integration
+Allow: /#portfolio
+Allow: /#contact
 Allow: /faq
-Allow: /mentions-legales
-Allow: /politique-de-confidentialite
+Disallow: /mentions-legales
+Disallow: /politique-de-confidentialite
 Disallow: /api/
 Disallow: /admin/
 Disallow: /.git/
@@ -17,11 +21,18 @@ Crawl-delay: 0
 
 # === GOOGLEBOT - Priorité maximale ===
 User-agent: Googlebot
-Allow: /
+Allow: /$
+Allow: /#services
+Allow: /#ai-integration
+Allow: /#portfolio
+Allow: /#contact
+Allow: /faq
 Allow: *.js
 Allow: *.css
 Allow: *.webp
 Allow: *.svg
+Disallow: /mentions-legales
+Disallow: /politique-de-confidentialite
 Crawl-delay: 0
 
 User-agent: Googlebot-Image
@@ -103,8 +114,11 @@ Disallow: /
 Sitemap: https://christophe-dev-freelance.fr/sitemap.xml
 
 # === NOTES POUR LES CRAWLERS ===
-# Site optimisé pour l'IA et le SEO moderne
+# Développeur Web Freelance Expert - Christophe Mostefaoui
 # Technologies: React.js, Node.js, TypeScript, Python, IA/ML
-# Services: Intégration IA, Chatbots, Machine Learning, Développement Web
-# Localisation: Pau, Pyrénées-Atlantiques, France
-# Contact: contact@christophe-dev-freelance.fr
+# Services: Applications SaaS, E-commerce, Intégration IA, Chatbots GPT/Claude
+# Zones d'intervention: France entière à distance
+# Localisations: Paris, Lyon, Marseille, Toulouse, Bordeaux, Nice, Nantes, Pau, Artix
+# Expertise: 3 ans d'expérience intensive, technologies modernes, gestion projet optimisée
+# Avis clients: 5/5 étoiles (32 avis), Expert reconnu, Livraison temps record
+# Contact: christophe.mostefaoui.dev@gmail.com

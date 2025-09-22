@@ -57,7 +57,7 @@ export const generateAdvancedStructuredData = () => {
     "description": "Expert en intégration IA et développement full-stack. 15+ ans d'expérience. Spécialiste React.js, Node.js, Python, Machine Learning.",
     "url": baseUrl,
     "image": `${baseUrl}/assets/images/chris-profil.jpg`,
-    "email": "contact@christophe-dev-freelance.fr",
+    "email": "christophe.mostefaoui.dev@gmail.com",
     "telephone": "+33-6-XX-XX-XX-XX",
     "address": {
       "@type": "PostalAddress",
@@ -397,7 +397,7 @@ export const generateLLMOptimizedMeta = () => {
     "ai-services": "AI-chatbots, predictive-analytics, computer-vision, NLP, SaaS-development",
     "ai-location": "Pau, France, Pyrénées-Atlantiques, 64000",
     "ai-languages": "French, English",
-    "ai-contact": "contact@christophe-dev-freelance.fr",
+    "ai-contact": "christophe.mostefaoui.dev@gmail.com",
 
     // Contexte enrichi pour LLM
     "llm-context": "Christophe Mostefaoui is an AI integration expert and full-stack developer based in Pau, France. Specializes in GPT/Claude chatbots, machine learning solutions, React.js, Node.js, and Python development.",

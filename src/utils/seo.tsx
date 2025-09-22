@@ -127,7 +127,7 @@ export const generateLocalBusinessStructuredData = () => {
       "Développeur web freelance et expert IA à Pau. Intégration d'intelligence artificielle, chatbots, machine learning. Spécialiste React.js, Node.js, TypeScript et Python. Création d'applications SaaS avec IA, e-commerce intelligent.",
     url: "https://christophe-dev-freelance.fr",
     telephone: "+33-6-XX-XX-XX-XX",
-    email: "contact@christophe-dev-freelance.fr",
+    email: "christophe.mostefaoui.dev@gmail.com",
     image: "https://christophe-dev-freelance.fr/assets/images/chris-profil.jpg",
     logo: "https://christophe-dev-freelance.fr/favicons/favicon.png",
     address: {

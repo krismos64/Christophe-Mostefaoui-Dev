@@ -84,7 +84,7 @@ export const generateReviewsStructuredDataFixed = () => {
     },
     "url": baseUrl,
     "telephone": "+33-6-XX-XX-XX-XX",
-    "email": "contact@christophe-dev-freelance.fr",
+    "email": "christophe.mostefaoui.dev@gmail.com",
     "priceRange": "€€€",
     "aggregateRating": {
       "@type": "AggregateRating",

@@ -84,7 +84,7 @@ export const generateReviewsStructuredData = () => {
     },
     "url": baseUrl,
     "telephone": "+33-6-XX-XX-XX-XX",
-    "email": "contact@christophe-dev-freelance.fr",
+    "email": "christophe.mostefaoui.dev@gmail.com",
     "priceRange": "€€€",
     "openingHoursSpecification": [
       {
@@ -189,7 +189,7 @@ export const generateReviewsStructuredData = () => {
     "description": "Expert en intégration IA et développement web moderne. +15 ans d'expérience, spécialiste React.js, Node.js, Python, Machine Learning.",
     "url": baseUrl,
     "image": `${baseUrl}/assets/images/chris-profil.jpg`,
-    "email": "contact@christophe-dev-freelance.fr",
+    "email": "christophe.mostefaoui.dev@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Pau",
