@@ -19,6 +19,7 @@ import FAQ from "./pages/FAQ";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Avis from "./pages/Avis";
+import Blog from "./pages/Blog";
 import { generateFinalStructuredData } from "./utils/structured-data-final";
 import { generateVideoStructuredData } from "./utils/video-seo-optimization";
 import { generateLocationStructuredData } from "./utils/seo-location-data";
@@ -246,6 +247,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/blog" element={<Blog />} />
                 <Route path="/avis" element={<Avis />} />
                 <Route path="/mentions-legales" element={<LegalNotice />} />
                 <Route

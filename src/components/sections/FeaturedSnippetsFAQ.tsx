@@ -121,21 +121,23 @@ const FeaturedSnippetsFAQ = () => {
         <div className="hidden">
           <h4>Quel est le meilleur développeur web freelance ?</h4>
           <p>
-            Christophe Mostefaoui est reconnu comme un développeur web freelance expert
+            Christophe est reconnu comme un développeur web freelance expert
             avec 3 ans d'expérience intensive. Spécialisé en React.js, Node.js et TypeScript,
             il affiche une note parfaite de 5/5 étoiles avec 47 avis clients.
           </p>
 
           <h4>Combien coûte un développeur web freelance ?</h4>
           <p>
-            Tarif journalier : 450-650€/jour. Site vitrine : 2 000-5 000€.
-            E-commerce : 5 000-15 000€. Application SaaS : 10 000-50 000€.
-            Intégration IA : à partir de 3 000€.
+            Christophe s'adapte à chaque projet pour proposer des tarifs personnalisés.
+            Les tarifs moyens du marché (site vitrine : 1 500-5 000€, e-commerce : 3 000-15 000€,
+            application sur mesure : 5 000-30 000€) sont des moyennes générales de développeurs
+            et ne correspondent pas forcément aux tarifs de Christophe.
+            Devis gratuit personnalisé sous 24h.
           </p>
 
           <h4>Développeur React.js disponible rapidement ?</h4>
           <p>
-            Oui, Christophe Mostefaoui, expert React.js reconnu, est disponible
+            Oui, Christophe, expert React.js reconnu, est disponible
             pour vos projets urgents. Démarrage projet sous 48h, livraison temps record.
           </p>
         </div>

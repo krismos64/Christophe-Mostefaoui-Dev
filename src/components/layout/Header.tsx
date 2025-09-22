@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import {
+  BookOpen,
   Brain,
   Briefcase,
   FolderOpen,
@@ -92,6 +93,7 @@ export default function Header() {
       to: isHomePage ? "#contact" : "/#contact",
       icon: <Mail className="h-5 w-5" />,
     },
+    { name: "Blog", to: "/blog", icon: <BookOpen className="h-5 w-5" /> },
     { name: "FAQ", to: "/faq", icon: <HelpCircle className="h-5 w-5" /> },
   ];
 
@@ -254,7 +256,7 @@ export default function Header() {
           </div>
 
           <div
-            className="absolute bottom-24 w-full max-w-[180px] mx-auto animate-menu-item-anim"
+            className="absolute bottom-14 w-full max-w-[120px] mx-auto animate-menu-item-anim"
             style={{ animationDelay: `${150 + menuItems.length * 100}ms` }}
           >
             <Lottie animationData={chatbotAnimation} loop={true} />
