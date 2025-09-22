@@ -1,81 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Page d'accueil principale - PRIORITÉ MAXIMALE -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://christophe-dev-freelance.fr/</loc>
-    <lastmod>2025-01-22T00:00:00+01:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://christophe-dev-freelance.fr/assets/images/chris-profil.jpg</image:loc>
-      <image:title>Christophe, Concepteur/Développeur d'applications web modernes</image:title>
-      <image:caption>Expert en intégration IA, React.js, Node.js, Python - Développeur freelance à Pau</image:caption>
-    </image:image>
-    <video:video>
-      <video:thumbnail_loc>https://christophe-dev-freelance.fr/assets/images/Christophe-freelance.png</video:thumbnail_loc>
-      <video:title>Christophe Mostefaoui - Expert IA &amp; Développement Web Full-Stack</video:title>
-      <video:description>Expertise complète en intégration IA : chatbots GPT/Claude, machine learning, analyse prédictive, vision par ordinateur. Développement React.js, Node.js, TypeScript, Python. Services freelance à Pau, France.</video:description>
-      <video:content_loc>https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4</video:content_loc>
-      <video:player_loc>https://www.youtube.com/embed/tdjXblz4mr4</video:player_loc>
-      <video:duration>150</video:duration>
-      <video:publication_date>2024-12-01T00:00:00+01:00</video:publication_date>
-      <video:family_friendly>yes</video:family_friendly>
-      <video:live>no</video:live>
-      <video:requires_subscription>no</video:requires_subscription>
-      <video:uploader info="https://christophe-dev-freelance.fr">Christophe Mostefaoui</video:uploader>
-      <video:platform relationship="allow">web mobile tv</video:platform>
-      <video:restriction relationship="allow">FR</video:restriction>
-      <video:tag>développeur IA</video:tag>
-      <video:tag>chatbot GPT</video:tag>
-      <video:tag>machine learning</video:tag>
-      <video:tag>React.js expert</video:tag>
-      <video:tag>Node.js développeur</video:tag>
-      <video:tag>Python IA</video:tag>
-      <video:tag>développeur Pau</video:tag>
-      <video:tag>freelance développeur</video:tag>
-      <video:category>Technology</video:category>
-      <video:view_count>1250</video:view_count>
-      <video:rating>5.0</video:rating>
-    </video:video>
-  </url>
-
-  <!-- Sections principales - Supprimées pour prioriser uniquement la page d'accueil -->
-
-  <!-- Page FAQ - Priorité réduite -->
-  <url>
-    <loc>https://christophe-dev-freelance.fr/faq</loc>
-    <lastmod>2025-01-22T00:00:00+01:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- Page Avis Clients - Priorité élevée pour Rich Snippets -->
-  <url>
-    <loc>https://christophe-dev-freelance.fr/avis</loc>
-    <lastmod>2025-01-22T00:00:00+01:00</lastmod>
+    <loc>https://christophe-dev-freelance.fr</loc>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://christophe-dev-freelance.fr/blog</loc>
+    <lastmod>2025-01-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://christophe-dev-freelance.fr/blog/react-19-fonctionnalites-revolutionnaires-entreprises-2025</loc>
+    <lastmod>2025-09-15</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Mentions légales - Priorité minimale -->
+  <url>
+    <loc>https://christophe-dev-freelance.fr/blog/chatbot-ia-boutique-locale-resultats-conversions</loc>
+    <lastmod>2025-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://christophe-dev-freelance.fr/blog/typescript-5-6-production-economies-clients-2025</loc>
+    <lastmod>2025-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://christophe-dev-freelance.fr/faq</loc>
+    <lastmod>2025-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://christophe-dev-freelance.fr/avis</loc>
+    <lastmod>2025-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/mentions-legales</loc>
-    <lastmod>2025-01-22T00:00:00+01:00</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
+    <priority>0.3</priority>
   </url>
-
-  <!-- Politique de confidentialité - Priorité minimale -->
   <url>
     <loc>https://christophe-dev-freelance.fr/politique-de-confidentialite</loc>
-    <lastmod>2025-01-22T00:00:00+01:00</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
+    <priority>0.3</priority>
   </url>
-
-  <!-- Les projets externes (smartplanning.fr, livrestaka.fr, coachtfe.fr) sont référencés dans le portfolio et les données structurées -->
 </urlset>

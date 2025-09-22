@@ -1,71 +1,7 @@
 import { CalendarDaysIcon, ClockIcon, UserIcon, TagIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-
-// Types pour les articles
-interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  publishedAt: string;
-  readTime: number;
-  category: "veille-tech" | "ia-pratique" | "conseils-business";
-  tags: string[];
-  imageUrl: string;
-  imageAlt: string;
-  featured: boolean;
-}
-
-// Articles d'exemple (en attendant le vrai contenu)
-const mockPosts: BlogPost[] = [
-  {
-    id: "1",
-    title: "React 19 arrive : 5 nouvelles fonctionnalités qui vont changer la donne pour votre entreprise",
-    slug: "react-19-nouveautes-entreprises",
-    excerpt: "Découvrez comment les dernières innovations de React peuvent transformer votre site web et améliorer l'expérience de vos clients. Analyse pratique avec exemples concrets pour PME.",
-    content: "Contenu complet à venir...",
-    author: "Christophe Mostefaoui",
-    publishedAt: "2025-10-01",
-    readTime: 8,
-    category: "veille-tech",
-    tags: ["React", "Performance", "PME", "Modernisation"],
-    imageUrl: "/blog/react-19-preview.jpg", // Image suggérée : écran splitté ancien site vs moderne
-    imageAlt: "Comparaison interface avant/après migration React 19",
-    featured: true
-  },
-  {
-    id: "2",
-    title: "J'ai intégré un chatbot IA dans une boutique locale : +40% de conversions en 3 semaines",
-    slug: "chatbot-ia-boutique-locale-resultats",
-    excerpt: "Retour d'expérience détaillé sur l'implémentation d'un assistant virtuel pour une entreprise paloise. Budget, difficultés rencontrées et résultats chiffrés.",
-    content: "Contenu complet à venir...",
-    author: "Christophe Mostefaoui",
-    publishedAt: "2025-10-15",
-    readTime: 6,
-    category: "ia-pratique",
-    tags: ["Chatbot", "IA", "E-commerce", "ROI", "Pau"],
-    imageUrl: "/blog/chatbot-resultats.jpg", // Image suggérée : graphique conversions + capture chatbot
-    imageAlt: "Graphique d'augmentation des conversions avec chatbot IA",
-    featured: true
-  },
-  {
-    id: "3",
-    title: "TypeScript pour les dirigeants : pourquoi cette technologie peut vous faire économiser des milliers d'euros",
-    slug: "typescript-dirigeants-economies-maintenance",
-    excerpt: "Au-delà du jargon technique, découvrez les vrais bénéfices business de TypeScript : moins de bugs, maintenance simplifiée, équipes plus efficaces.",
-    content: "Contenu complet à venir...",
-    author: "Christophe Mostefaoui",
-    publishedAt: "2025-09-15",
-    readTime: 5,
-    category: "veille-tech",
-    tags: ["TypeScript", "Maintenance", "Coûts", "Qualité"],
-    imageUrl: "/blog/typescript-benefits.jpg", // Image suggérée : tableau de bord avec métriques
-    imageAlt: "Dashboard montrant réduction des coûts de maintenance",
-    featured: false
-  }
-];
+import { Link } from "react-router-dom";
+import { blogPosts, BlogPost } from "../../data/blogPosts";
 
 const categories = {
   "veille-tech": {
@@ -89,11 +25,11 @@ const BlogSection = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filteredPosts = activeCategory
-    ? mockPosts.filter(post => post.category === activeCategory)
-    : mockPosts;
+    ? blogPosts.filter(post => post.category === activeCategory)
+    : blogPosts;
 
-  const featuredPost = mockPosts.find(post => post.featured);
-  const regularPosts = mockPosts.filter(post => !post.featured);
+  const featuredPost = blogPosts.find(post => post.featured);
+  const regularPosts = blogPosts.filter(post => !post.featured);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('fr-FR', {
@@ -205,12 +141,15 @@ const BlogSection = () => {
                   </div>
                 </div>
 
-                <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-colors inline-flex items-center gap-2">
+                <Link
+                  to={`/blog/${featuredPost.slug}`}
+                  className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-colors inline-flex items-center gap-2"
+                >
                   Lire l'article complet
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -287,9 +226,12 @@ const BlogSection = () => {
                   </div>
                 </div>
 
-                <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                <Link
+                  to={`/blog/${post.slug}`}
+                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
+                >
                   Lire la suite
-                </button>
+                </Link>
               </div>
             </article>
           ))}
