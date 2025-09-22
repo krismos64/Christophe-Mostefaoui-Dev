@@ -104,11 +104,22 @@ const BlogSection = () => {
         {/* Article featured */}
         {featuredPost && !activeCategory && (
           <div className="mb-16">
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl overflow-hidden relative">
+              {/* Image de fond avec overlay */}
+              <div className="absolute inset-0">
+                <img
+                  src={featuredPost.imageUrl}
+                  alt={featuredPost.imageAlt}
+                  className="w-full h-full object-cover opacity-20"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-indigo-600/90"></div>
+              </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 p-8 md:p-12 text-white flex flex-col lg:flex-row items-center gap-8">
+                <div className="flex-1">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="bg-yellow-400 text-yellow-900 px-4 py-2 rounded-full font-bold text-sm">
                     ⭐ Article phare
@@ -150,6 +161,25 @@ const BlogSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
+                </div>
+
+                {/* Miniature de l'article featured */}
+                <div className="w-full lg:w-80 flex-shrink-0">
+                  <div className="aspect-video rounded-xl overflow-hidden bg-white/10 backdrop-blur-sm">
+                    <img
+                      src={featuredPost.imageUrl}
+                      alt={featuredPost.imageAlt}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.nextElementSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="w-full h-full bg-white/10 backdrop-blur-sm rounded-xl hidden items-center justify-center">
+                      <span className="text-white/60">📄</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -163,32 +193,45 @@ const BlogSection = () => {
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
             >
               <div className="relative">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
-                  <div className="text-center p-6">
-                    <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                      {post.category === 'veille-tech' && (
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                      )}
-                      {post.category === 'ia-pratique' && (
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                      )}
-                      {post.category === 'conseils-business' && (
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                      )}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      📸 Image suggerée : {post.imageAlt}
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={post.imageUrl}
+                    alt={post.imageAlt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    onError={(e) => {
+                      // Fallback vers placeholder si image non trouvée
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.nextElementSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-gray-700 dark:to-gray-600 hidden items-center justify-center">
+                    <div className="text-center p-6">
+                      <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                        {post.category === 'veille-tech' && (
+                          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        )}
+                        {post.category === 'ia-pratique' && (
+                          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                          </svg>
+                        )}
+                        {post.category === 'conseils-business' && (
+                          <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                        )}
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        📸 Image suggerée : {post.imageAlt}
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(post.category)}`}>
+                <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium bg-white/90 backdrop-blur-sm ${getCategoryColor(post.category)}`}>
                   {categories[post.category].name}
                 </span>
               </div>

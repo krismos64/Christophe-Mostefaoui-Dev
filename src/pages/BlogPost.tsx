@@ -170,14 +170,27 @@ const BlogPost = () => {
 
           {/* Image principale */}
           <div className="mb-12">
-            <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-gray-700 dark:to-gray-600 rounded-xl flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="w-20 h-20 bg-blue-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
-                  <span className="text-3xl text-white">📄</span>
-                </div>
-                <div className="text-gray-600 dark:text-gray-400">
-                  <strong>Image suggérée :</strong><br />
-                  {post.imageAlt}
+            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
+              <img
+                src={post.imageUrl}
+                alt={post.imageAlt}
+                className="w-full h-full object-cover"
+                loading="eager"
+                onError={(e) => {
+                  // Fallback vers placeholder si image non trouvée
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling.style.display = 'flex';
+                }}
+              />
+              <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-gray-700 dark:to-gray-600 rounded-xl hidden items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="w-20 h-20 bg-blue-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                    <span className="text-3xl text-white">📄</span>
+                  </div>
+                  <div className="text-gray-600 dark:text-gray-400">
+                    <strong>Image suggérée :</strong><br />
+                    {post.imageAlt}
+                  </div>
                 </div>
               </div>
             </div>
