@@ -319,7 +319,7 @@ const BlogSection = () => {
                 📧 Poser une question
               </a>
               <a
-                href="#contact"
+                href="mailto:christophe.mostefaoui.dev@gmail.com?subject=Projet%20suite%20%C3%A0%20votre%20blog&body=Bonjour%20Christophe%2C%0A%0AJ'ai%20lu%20votre%20blog%20et%20j'aimerais%20discuter%20d'un%20projet%20avec%20vous.%0A%0AMon%20entreprise%20%3A%20%0AMes%20besoins%20%3A%20%0A%0AMerci%20%21"
                 className="border-2 border-amber-500 text-amber-600 dark:text-amber-400 px-8 py-3 rounded-lg font-semibold hover:bg-amber-500 hover:text-white transition-colors"
               >
                 💬 Discuter d'un projet

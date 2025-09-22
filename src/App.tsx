@@ -5,6 +5,7 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import About from "./components/sections/About";
 import AIIntegration from "./components/sections/AIIntegration";
+import SimpleBlogCTA from "./components/sections/SimpleBlogCTA";
 import Contact from "./components/sections/Contact";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
@@ -100,8 +101,10 @@ const Home = () => {
     />
     <About />
     <Services />
+    <SimpleBlogCTA />
     <FeaturedSnippetsFAQ />
     <AIIntegration />
+    <SimpleBlogCTA />
     <Portfolio />
     <Testimonials />
     <VideoServices />
