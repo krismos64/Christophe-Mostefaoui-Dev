@@ -133,15 +133,15 @@ function App() {
       <HelmetProvider>
         <Helmet>
           <title>
-            Christophe Mostefaoui - Développeur Web Freelance Expert France | React.js Node.js TypeScript
+            Christophe - Développeur Web Freelance Expert France | React.js Node.js TypeScript
           </title>
           <meta
             name="description"
-            content="Christophe Mostefaoui, développeur web freelance expert ⭐⭐⭐⭐⭐ (47 avis). Spécialiste React.js, Node.js, TypeScript. Disponible France entière. Devis gratuit 24h. Réponse à toutes vos questions sur le développement web moderne."
+            content="Christophe, développeur web freelance expert ⭐⭐⭐⭐⭐ (47 avis). Spécialiste React.js, Node.js, TypeScript. Disponible France entière. Devis gratuit 24h. Solutions web modernes et performantes."
           />
           <meta
             name="keywords"
-            content="développeur web freelance France, expert React.js, Node.js développeur, TypeScript expert, Christophe Mostefaoui, développeur freelance Paris, Lyon, Marseille, Toulouse, Bordeaux, développeur Pau, Artix, applications SaaS, e-commerce, intégration IA, chatbot GPT Claude, développement moderne, gestion projet optimisée"
+            content="développeur web freelance France, expert React.js, Node.js développeur, TypeScript expert, Christophe Mostefaoui, Christophe, développeur freelance Paris, Lyon, Marseille, Toulouse, Bordeaux, développeur Pau, Artix, applications SaaS, e-commerce, intégration IA, chatbot GPT Claude, développement moderne"
           />
           <meta name="robots" content="index, follow" />
           <meta name="author" content="Christophe Mostefaoui" />
@@ -149,7 +149,7 @@ function App() {
           {/* Open Graph pour les réseaux sociaux */}
           <meta
             property="og:title"
-            content="Christophe Mostefaoui - Développeur Web & Expert IA"
+            content="Christophe - Développeur Web & Expert IA"
           />
           <meta
             property="og:description"
@@ -162,14 +162,17 @@ function App() {
           />
           <meta
             property="og:image"
-            content="https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4"
+            content="https://christophe-dev-freelance.fr/assets/images/Christophe-freelance.png"
           />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="1200" />
+          <meta property="og:image:type" content="image/png" />
 
           {/* Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:title"
-            content="Christophe Mostefaoui - Développeur Web & IA Expert"
+            content="Christophe - Développeur Web & IA Expert"
           />
           <meta
             name="twitter:description"

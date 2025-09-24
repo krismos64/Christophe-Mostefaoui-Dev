@@ -121,8 +121,10 @@ export const generateFinalStructuredData = () => {
       {
         "@type": "Review",
         "itemReviewed": {
-          "@type": "ProfessionalService",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert"
+          "@type": "LocalBusiness",
+          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
+          "@id": `${baseUrl}/#business`,
+          "url": baseUrl
         },
         "author": {
           "@type": "Person",
@@ -143,8 +145,10 @@ export const generateFinalStructuredData = () => {
       {
         "@type": "Review",
         "itemReviewed": {
-          "@type": "ProfessionalService",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert"
+          "@type": "LocalBusiness",
+          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
+          "@id": `${baseUrl}/#business`,
+          "url": baseUrl
         },
         "author": {
           "@type": "Person",
@@ -165,8 +169,10 @@ export const generateFinalStructuredData = () => {
       {
         "@type": "Review",
         "itemReviewed": {
-          "@type": "ProfessionalService",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert"
+          "@type": "LocalBusiness",
+          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
+          "@id": `${baseUrl}/#business`,
+          "url": baseUrl
         },
         "author": {
           "@type": "Person",
@@ -187,8 +193,10 @@ export const generateFinalStructuredData = () => {
       {
         "@type": "Review",
         "itemReviewed": {
-          "@type": "ProfessionalService",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert"
+          "@type": "LocalBusiness",
+          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
+          "@id": `${baseUrl}/#business`,
+          "url": baseUrl
         },
         "author": {
           "@type": "Person",
@@ -209,8 +217,10 @@ export const generateFinalStructuredData = () => {
       {
         "@type": "Review",
         "itemReviewed": {
-          "@type": "ProfessionalService",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert"
+          "@type": "LocalBusiness",
+          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
+          "@id": `${baseUrl}/#business`,
+          "url": baseUrl
         },
         "author": {
           "@type": "Person",
@@ -231,8 +241,10 @@ export const generateFinalStructuredData = () => {
       {
         "@type": "Review",
         "itemReviewed": {
-          "@type": "ProfessionalService",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert"
+          "@type": "LocalBusiness",
+          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
+          "@id": `${baseUrl}/#business`,
+          "url": baseUrl
         },
         "author": {
           "@type": "Person",
@@ -335,7 +347,9 @@ export const generateFinalStructuredData = () => {
       {
         "@type": "Review",
         "itemReviewed": {
-          "@id": `${baseUrl}/#ai-services-product`
+          "@type": "Product",
+          "name": "Services d'Intégration Intelligence Artificielle",
+          "url": baseUrl
         },
         "author": {
           "@type": "Person",
@@ -352,7 +366,9 @@ export const generateFinalStructuredData = () => {
       {
         "@type": "Review",
         "itemReviewed": {
-          "@id": `${baseUrl}/#ai-services-product`
+          "@type": "Product",
+          "name": "Services d'Intégration Intelligence Artificielle",
+          "url": baseUrl
         },
         "author": {
           "@type": "Person",
@@ -415,6 +431,7 @@ export const generateFinalStructuredData = () => {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "@id": `${baseUrl}/#faq`,
+    "url": baseUrl,
     "mainEntity": [
       {
         "@type": "Question",

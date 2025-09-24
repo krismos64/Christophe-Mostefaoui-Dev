@@ -158,7 +158,8 @@ export const generateReviewsStructuredDataFixed = () => {
       "@type": "Review",
       "itemReviewed": {
         "@type": "Product",
-        "name": "Services d'Intégration Intelligence Artificielle"
+        "name": "Services d'Intégration Intelligence Artificielle",
+        "url": "https://christophe-dev-freelance.fr"
       },
       "author": {
         "@type": "Person",

@@ -307,45 +307,7 @@ export const generateAdvancedStructuredData = () => {
     }
   };
 
-  // FAQ Schema
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Quels types d'IA pouvez-vous intégrer à mon projet ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Je peux intégrer : chatbots GPT/Claude, analyse prédictive ML, vision par ordinateur, NLP, systèmes de recommandation, génération de contenu, et automatisation intelligente."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quelles technologies utilisez-vous pour l'IA ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Python, TensorFlow, PyTorch, Scikit-learn, OpenAI API, Claude API, Langchain, Vector Databases, et les derniers modèles LLM du marché."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Combien coûte l'intégration d'une IA ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Les tarifs varient selon la complexité : de 2000€ pour un chatbot simple à 15000€+ pour une solution ML complète. Devis gratuit personnalisé sous 24h."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Où êtes-vous situé ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Je suis basé à Pau (64) mais j'interviens dans toute la France en remote et sur site dans le Sud-Ouest (Bayonne, Tarbes, Toulouse)."
-        }
-      }
-    ]
-  };
+  // FAQ Schema supprimé - maintenant géré dans structured-data-final.tsx pour éviter les doublons
 
   // Breadcrumb
   const breadcrumb = {
@@ -382,7 +344,6 @@ export const generateAdvancedStructuredData = () => {
     webPage,
     services,
     professionalService,
-    faqSchema,
     breadcrumb
   ];
 };

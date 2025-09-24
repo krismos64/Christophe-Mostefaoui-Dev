@@ -32,14 +32,12 @@ const FeaturedSnippetsFAQ = () => {
           </p>
         </div>
 
-        {/* FAQ optimisée pour Google Featured Snippets */}
-        <div className="space-y-4" itemScope itemType="https://schema.org/FAQPage">
+        {/* FAQ optimisée pour Google Featured Snippets - Microdata supprimée pour éviter conflit avec JSON-LD */}
+        <div className="space-y-4">
           {questions.map((item, index) => (
             <div
               key={index}
               className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
-              itemScope
-              itemType="https://schema.org/Question"
             >
               <button
                 className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"

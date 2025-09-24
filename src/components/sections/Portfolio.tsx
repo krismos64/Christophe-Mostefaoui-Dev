@@ -40,7 +40,7 @@ export default function Portfolio() {
       image: "/assets/images/graslin.jpg",
       alt: "Cabinet infirmier Nantes, site web vitrine cabinet infirmier",
       tech: ["React", "Css modules", "Lottie animations", "SEO optimisé"],
-      link: "https://snazzy-biscotti-d93519.netlify.app/",
+      link: "https://cabinet-infirmier-graslin.fr/",
     },
     {
       title: "LivresStaka.fr",
