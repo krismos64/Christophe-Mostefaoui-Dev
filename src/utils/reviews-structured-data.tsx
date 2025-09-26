@@ -68,7 +68,7 @@ export const generateReviewsStructuredData = () => {
     "@type": "LocalBusiness",
     "@id": `${baseUrl}/#business-reviews`,
     "name": "Christophe Mostefaoui - Développeur Web & Expert IA",
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": `${baseUrl}/assets/images/chris-web.png`,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Avenue des Pyrénées",
@@ -188,7 +188,7 @@ export const generateReviewsStructuredData = () => {
     "jobTitle": "Développeur Web Full-Stack & Expert Intelligence Artificielle",
     "description": "Expert en intégration IA et développement web moderne. +15 ans d'expérience, spécialiste React.js, Node.js, Python, Machine Learning.",
     "url": baseUrl,
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": `${baseUrl}/assets/images/chris-web.png`,
     "email": "christophe.mostefaoui.dev@gmail.com",
     "address": {
       "@type": "PostalAddress",
@@ -236,7 +236,7 @@ export const generateReviewsStructuredData = () => {
     "name": "Services d'Intégration Intelligence Artificielle",
     "description": "Solutions IA complètes : Chatbots GPT/Claude, Machine Learning, Analyse Prédictive, Vision par Ordinateur",
     "image": [
-      `${baseUrl}/assets/images/chris-profil.jpg`,
+      `${baseUrl}/assets/images/chris-web.png`,
       `${baseUrl}/assets/images/ai-services-banner.jpg`,
       `${baseUrl}/assets/images/chatbot-demo.jpg`
     ],

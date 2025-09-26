@@ -15,7 +15,7 @@ export const generateAdvancedStructuredData = () => {
       "width": 512,
       "height": 512
     },
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": `${baseUrl}/assets/images/chris-web.png`,
     "description": "Expert en développement web et intégration IA. Spécialiste React.js, Node.js, Python. Chatbots intelligents, machine learning, analyse prédictive.",
     "founder": {
       "@type": "Person",
@@ -56,7 +56,7 @@ export const generateAdvancedStructuredData = () => {
     "jobTitle": "Concepteur/Développeur d'applications web modernes & Expert IA",
     "description": "Expert en intégration IA et développement full-stack. 15+ ans d'expérience. Spécialiste React.js, Node.js, Python, Machine Learning.",
     "url": baseUrl,
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": `${baseUrl}/assets/images/chris-web.png`,
     "email": "christophe.mostefaoui.dev@gmail.com",
     "telephone": "+33-6-XX-XX-XX-XX",
     "address": {
@@ -274,7 +274,7 @@ export const generateAdvancedStructuredData = () => {
     "@type": "ProfessionalService",
     "@id": `${baseUrl}/#professional-service`,
     "name": "Christophe Mostefaoui - Services Développement & IA",
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": `${baseUrl}/assets/images/chris-web.png`,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Pau",

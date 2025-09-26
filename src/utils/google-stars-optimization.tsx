@@ -12,7 +12,7 @@ export const generateGoogleStarsSchema = () => {
     "description": "Développeur web freelance expert reconnu avec 3 ans d'expérience. Spécialiste React.js, Node.js, TypeScript. Technologies modernes, gestion projet optimisée.",
     "url": baseUrl,
     "image": [
-      `${baseUrl}/assets/images/chris-profil.jpg`,
+      `${baseUrl}/assets/images/chris-web.png`,
       `${baseUrl}/assets/images/Christophe-freelance.png`
     ],
     "logo": `${baseUrl}/favicons/favicon.png`,

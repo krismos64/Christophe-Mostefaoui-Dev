@@ -162,11 +162,12 @@ function App() {
           />
           <meta
             property="og:image"
-            content="https://christophe-dev-freelance.fr/assets/images/Christophe-freelance.png"
+            content="https://christophe-dev-freelance.fr/assets/images/chris-web.png"
           />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="1200" />
+          <meta property="og:image:width" content="1024" />
+          <meta property="og:image:height" content="1024" />
           <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:alt" content="Christophe Mostefaoui - Développeur Web & Expert IA" />
 
           {/* Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />

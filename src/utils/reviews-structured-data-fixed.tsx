@@ -68,7 +68,7 @@ export const generateReviewsStructuredDataFixed = () => {
     "@type": "LocalBusiness",
     "@id": `${baseUrl}/#business-reviews`,
     "name": "Christophe Mostefaoui - Développeur Web & Expert IA",
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": `${baseUrl}/assets/images/chris-web.png`,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Avenue des Pyrénées",
@@ -124,7 +124,7 @@ export const generateReviewsStructuredDataFixed = () => {
     "name": "Services d'Intégration Intelligence Artificielle",
     "description": "Solutions IA complètes : Chatbots GPT/Claude, Machine Learning, Analyse Prédictive, Vision par Ordinateur",
     "image": [
-      `${baseUrl}/assets/images/chris-profil.jpg`,
+      `${baseUrl}/assets/images/chris-web.png`,
       `${baseUrl}/assets/images/ai-services-banner.jpg`
     ],
     "category": "Artificial Intelligence Services",

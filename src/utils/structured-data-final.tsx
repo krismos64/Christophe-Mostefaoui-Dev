@@ -10,7 +10,15 @@ export const generateFinalStructuredData = () => {
     "name": "Christophe Mostefaoui - Développeur Web & Expert IA",
     "url": baseUrl,
     "logo": `${baseUrl}/favicons/favicon.png`,
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": [
+      {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/assets/images/chris-web.png`,
+        "width": 1024,
+        "height": 1024,
+        "caption": "Christophe Mostefaoui - Développeur Web & Expert IA"
+      }
+    ],
     "description": "Expert en développement web et intégration IA. Spécialiste React.js, Node.js, Python. Chatbots intelligents, machine learning, analyse prédictive.",
     "founder": {
       "@type": "Person",
@@ -31,7 +39,13 @@ export const generateFinalStructuredData = () => {
     "jobTitle": "Développeur Web Full-Stack & Expert Intelligence Artificielle",
     "description": "Expert en intégration IA et développement full-stack. +15 ans d'expérience.",
     "url": baseUrl,
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": {
+      "@type": "ImageObject",
+      "url": `${baseUrl}/assets/images/chris-web.png`,
+      "width": 1024,
+      "height": 1024,
+      "caption": "Christophe Mostefaoui - Développeur Full-Stack Expert"
+    },
     "email": "christophe.mostefaoui.dev@gmail.com",
     "address": {
       "@type": "PostalAddress",
@@ -59,7 +73,15 @@ export const generateFinalStructuredData = () => {
     "@id": `${baseUrl}/#business`,
     "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
     "alternateName": "Expert React Node.js TypeScript - Concepteur Applications Modernes",
-    "image": `${baseUrl}/assets/images/chris-profil.jpg`,
+    "image": [
+      {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/assets/images/chris-web.png`,
+        "width": 1024,
+        "height": 1024,
+        "caption": "Christophe Mostefaoui - Expert Développement Web"
+      }
+    ],
     "priceRange": "€€€",
     "address": {
       "@type": "PostalAddress",
@@ -273,7 +295,12 @@ export const generateFinalStructuredData = () => {
     "name": "Services d'Intégration Intelligence Artificielle",
     "description": "Solutions IA complètes : Chatbots GPT/Claude, Machine Learning, Analyse Prédictive, Vision par Ordinateur pour entreprises",
     "image": [
-      `${baseUrl}/assets/images/chris-profil.jpg`,
+      {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/assets/images/chris-web.png`,
+        "width": 1024,
+        "height": 1024
+      },
       `${baseUrl}/assets/images/ai-banner.jpg`
     ],
     "category": "Artificial Intelligence Services",
