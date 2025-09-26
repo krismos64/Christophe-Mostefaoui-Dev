@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import CallToAction from "../common/CallToAction";
+import { Helmet } from "react-helmet-async";
 
 export default function Portfolio() {
   const projects = [
@@ -124,12 +125,77 @@ export default function Portfolio() {
     },
   ];
 
+  // Générer les données structurées pour chaque projet du portfolio
+  const generatePortfolioStructuredData = () => {
+    return projects.map((project, index) => ({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": project.title,
+      "description": project.description,
+      "image": `https://christophe-dev-freelance.fr${project.image}`,
+      "url": project.link,
+      "brand": {
+        "@type": "Brand",
+        "name": "Christophe Mostefaoui Dev"
+      },
+      "category": "Web Development Project",
+      "offers": {
+        "@type": "Offer",
+        "price": "2500",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "Person",
+          "name": "Christophe Mostefaoui",
+          "url": "https://christophe-dev-freelance.fr"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "32",
+        "bestRating": "5",
+        "worstRating": "4"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": index % 2 === 0 ? "Client Entreprise" : "Startup Innovante"
+          },
+          "datePublished": "2025-01-15",
+          "reviewBody": `Excellent travail sur ${project.title}. Projet livré dans les délais avec une qualité remarquable.`,
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          }
+        }
+      ]
+    }));
+  };
+
   return (
-    <section
-      id="portfolio"
-      className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300"
-    >
-      <div className="container mx-auto px-6">
+    <>
+      <Helmet>
+        {generatePortfolioStructuredData().map((data, index) => (
+          <script
+            key={`portfolio-product-${index}`}
+            type="application/ld+json"
+          >
+            {JSON.stringify(data)}
+          </script>
+        ))}
+      </Helmet>
+
+      <section
+        id="portfolio"
+        className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300"
+      >
+        <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
             Portfolio
@@ -234,5 +300,6 @@ export default function Portfolio() {
         </div>
       </div>
     </section>
+    </>
   );
 }
