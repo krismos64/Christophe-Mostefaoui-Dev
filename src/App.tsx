@@ -9,6 +9,7 @@ import SimpleBlogCTA from "./components/sections/SimpleBlogCTA";
 import Contact from "./components/sections/Contact";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
+import VideoHero from "./components/sections/VideoHero";
 import Portfolio from "./components/sections/Portfolio";
 import Services from "./components/sections/Services";
 import Testimonials from "./components/sections/Testimonials";
@@ -27,6 +28,7 @@ import { generateVideoStructuredData } from "./utils/video-seo-optimization";
 import { generateLocationStructuredData } from "./utils/seo-location-data";
 import { generateGoogleStarsSchema } from "./utils/google-stars-optimization";
 import { generateLocalSEOSchema } from "./utils/local-seo-schema";
+import { generateViralVideoSEO } from "./utils/viral-video-seo";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
 import VideoSEOHead from "./components/seo/VideoSEOHead";
 import HiddenReviews from "./components/seo/HiddenReviews";
@@ -38,6 +40,7 @@ const Home = () => {
   const locationStructuredData = generateLocationStructuredData();
   const googleStarsData = generateGoogleStarsSchema();
   const localSEOData = generateLocalSEOSchema();
+  const viralVideoData = generateViralVideoSEO();
 
   return (
   <>
@@ -89,9 +92,19 @@ const Home = () => {
       />
     ))}
 
+    {/* Données structurées VIRAL pour la vidéo YouTube */}
+    {viralVideoData.map((viralData, index) => (
+      <script
+        key={`viral-video-${index}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(viralData) }}
+      />
+    ))}
+
     {/* Témoignages cachés pour SEO */}
     <HiddenReviews />
 
+    <VideoHero />
     <Hero />
     <VideoPresentation
       youtubeUrl="https://www.youtube.com/embed/tdjXblz4mr4"
