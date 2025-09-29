@@ -22,7 +22,7 @@ export default function VideoHero() {
         <meta property="og:title" content="🚀 Ce Développeur Français Fait le BUZZ avec l'IA ! Découvrez Pourquoi..." />
         <meta property="og:description" content="🔥 VIDÉO VIRALE : Christophe révèle ses secrets ! Expert React.js, Node.js, créateur SaaS innovants. Cette présentation change tout ! 👀⚡" />
         <meta property="og:image" content="https://christophe-dev-freelance.fr/assets/images/chris-youtube.JPG" />
-        <meta property="og:video" content="https://www.youtube.com/watch?v=DaqQnA2n-AU" />
+        <meta property="og:video" content="https://www.youtube.com/watch?v=eZ6OYMeT1CM" />
         <meta property="og:type" content="video.other" />
 
         {/* Twitter Card viral */}
@@ -137,7 +137,7 @@ export default function VideoHero() {
               ) : (
                 <div className="relative aspect-video">
                   <iframe
-                    src="https://www.youtube.com/embed/DaqQnA2n-AU?autoplay=1&rel=0&showinfo=0&modestbranding=1"
+                    src="https://www.youtube.com/embed/eZ6OYMeT1CM?autoplay=1&rel=0&showinfo=0&modestbranding=1"
                     title="Christophe Mostefaoui - Présentation Professionnelle"
                     className="absolute inset-0 w-full h-full"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

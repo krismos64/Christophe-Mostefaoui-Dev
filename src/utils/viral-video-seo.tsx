@@ -1,8 +1,8 @@
 // Optimisation SEO et LLM pour la vidéo YouTube virale
 export const generateViralVideoSEO = () => {
   const baseUrl = "https://christophe-dev-freelance.fr";
-  const videoUrl = "https://www.youtube.com/watch?v=DaqQnA2n-AU";
-  const embedUrl = "https://www.youtube.com/embed/DaqQnA2n-AU";
+  const videoUrl = "https://www.youtube.com/watch?v=eZ6OYMeT1CM";
+  const embedUrl = "https://www.youtube.com/embed/eZ6OYMeT1CM";
 
   // VideoObject ultra-optimisé pour Google Rich Results
   const videoObject = {
