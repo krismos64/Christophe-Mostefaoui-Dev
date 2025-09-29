@@ -1,46 +1,21 @@
 import { useState } from 'react';
-import { Play, Sparkles, Share2, Heart, MessageCircle } from 'lucide-react';
+import { Play, Sparkles } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 export default function VideoHero() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const [likes, setLikes] = useState(2547);
-  const [shares, setShares] = useState(823);
 
   const handlePlayClick = () => {
     setShowVideo(true);
   };
 
-  const handleLike = () => {
-    setLikes(prev => prev + 1);
-  };
-
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: '🚀 Christophe Mostefaoui : Développeur Full-Stack qui Révolutionne l\'IA !',
-          text: 'Découvrez cette présentation VIRALE d\'un développeur français innovateur !',
-          url: 'https://christophe-dev-freelance.fr'
-        });
-        setShares(prev => prev + 1);
-      } catch (err) {
-        console.log('Partage annulé');
-      }
-    } else {
-      // Fallback pour les navigateurs qui ne supportent pas l'API Share
-      navigator.clipboard.writeText('https://christophe-dev-freelance.fr');
-      setShares(prev => prev + 1);
-      alert('Lien copié ! Partagez cette vidéo exceptionnelle 🚀');
-    }
-  };
 
   return (
     <>
       <Helmet>
-        {/* Métadonnées virales pour partage social */}
-        <title>🚀 VIRAL : Christophe Mostefaoui Révolutionne l'IA - Présentation Épique !</title>
+        {/* Métadonnées pour partage social */}
+        <title>Christophe Mostefaoui - Développeur Full-Stack Expert IA</title>
         <meta name="description" content="🔥 Cette vidéo devient VIRALE ! Découvrez Christophe Mostefaoui, le développeur français qui transforme les entreprises avec l'IA. Expert React.js, Node.js, créateur de SaaS révolutionnaires. Regardez jusqu'à la fin !" />
 
         {/* Open Graph optimisé viral */}
@@ -158,23 +133,6 @@ export default function VideoHero() {
                     En Direct
                   </div>
 
-                  {/* Viral engagement buttons */}
-                  <div className="absolute bottom-4 right-4 flex flex-col gap-2">
-                    <button
-                      onClick={handleLike}
-                      className="p-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full hover:scale-110 transition-transform shadow-lg"
-                    >
-                      <Heart className={`w-5 h-5 ${likes > 2547 ? 'text-red-500 fill-red-500' : 'text-gray-600 dark:text-gray-300'}`} />
-                      <span className="text-xs font-bold text-gray-700 dark:text-gray-300 block">{likes.toLocaleString()}</span>
-                    </button>
-                    <button
-                      onClick={handleShare}
-                      className="p-3 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full hover:scale-110 transition-transform shadow-lg"
-                    >
-                      <Share2 className="w-5 h-5 text-blue-500" />
-                      <span className="text-xs font-bold text-gray-700 dark:text-gray-300 block">{shares}</span>
-                    </button>
-                  </div>
                 </div>
               ) : (
                 <div className="relative aspect-video">
@@ -182,7 +140,6 @@ export default function VideoHero() {
                     src="https://www.youtube.com/embed/DaqQnA2n-AU?autoplay=1&rel=0&showinfo=0&modestbranding=1"
                     title="Christophe Mostefaoui - Présentation Professionnelle"
                     className="absolute inset-0 w-full h-full"
-                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     onLoad={() => setIsVideoLoaded(true)}
