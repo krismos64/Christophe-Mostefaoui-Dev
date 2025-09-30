@@ -264,117 +264,146 @@ RÈGLES IMPORTANTES :
 
   return (
     <>
-      {/* Bulle de salut du robot - Adaptée au thème */}
+      {/* Bulle de salut du robot - Design futuriste */}
       {showRobotBubble && !isOpen && (
         <div
-          className={`fixed bottom-32 right-4 p-3 rounded-lg shadow-xl max-w-xs animate-bounce cursor-pointer z-40 ${
+          className={`fixed bottom-32 right-4 p-4 rounded-2xl shadow-2xl max-w-xs animate-bounce cursor-pointer z-40 backdrop-blur-md border transition-all duration-300 hover:scale-105 ${
             isDarkMode
-              ? 'bg-gray-800 text-white border border-gray-700'
-              : 'bg-blue-600 text-white'
+              ? 'bg-gray-900/90 text-white border-cyan-500/30 shadow-cyan-500/20'
+              : 'bg-white/90 text-gray-900 border-blue-500/30 shadow-blue-500/20'
           }`}
           onClick={handleOpen}
         >
-          <p className="text-sm font-medium">
-            👋 Salut ! Besoin d'aide ?
-          </p>
+          <div className="flex items-center gap-2">
+            <div className={`w-2 h-2 rounded-full animate-pulse ${
+              isDarkMode ? 'bg-cyan-400' : 'bg-blue-500'
+            }`}></div>
+            <p className="text-sm font-medium">
+              👋 Salut ! Besoin d'aide ?
+            </p>
+          </div>
           <div className={`absolute bottom-0 right-8 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent transform translate-y-full ${
-            isDarkMode ? 'border-t-gray-800' : 'border-t-blue-600'
+            isDarkMode ? 'border-t-gray-900/90' : 'border-t-white/90'
           }`}></div>
         </div>
       )}
 
-      {/* Robot animé flottant - Plus grand et transparent */}
+      {/* Robot animé flottant - Design futuriste */}
       {!isOpen && (
         <div className="fixed bottom-6 right-6 z-50">
           <button
             onClick={handleOpen}
-            className="relative bg-transparent transition-all duration-300 hover:scale-110 focus:outline-none"
+            className="relative bg-transparent transition-all duration-500 hover:scale-110 focus:outline-none group"
             aria-label="Ouvrir le chat"
           >
-            <Lottie
-              animationData={chatbotAnimation}
-              loop={true}
-              className="w-24 h-24 drop-shadow-lg"
-            />
-            {/* Effet de pulsation subtil */}
-            <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 animate-ping"></div>
+            {/* Cercles d'onde futuristes */}
+            <div className={`absolute inset-0 rounded-full animate-ping ${
+              isDarkMode ? 'bg-cyan-400/30' : 'bg-blue-500/30'
+            }`}></div>
+            <div className={`absolute inset-2 rounded-full animate-ping delay-1000 ${
+              isDarkMode ? 'bg-purple-400/20' : 'bg-indigo-500/20'
+            }`}></div>
+
+            {/* Robot avec effet glassmorphism */}
+            <div className="relative bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20 shadow-2xl">
+              <Lottie
+                animationData={chatbotAnimation}
+                loop={true}
+                className="w-16 h-16 drop-shadow-lg filter group-hover:brightness-110 transition-all duration-300"
+              />
+            </div>
+
+            {/* Effet de halo au hover */}
+            <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300 ${
+              isDarkMode
+                ? 'bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500'
+                : 'bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500'
+            } blur-xl`}></div>
           </button>
         </div>
       )}
 
-      {/* Fenêtre de chat - Adaptée au thème */}
+      {/* Fenêtre de chat - Design futuriste */}
       {isOpen && (
-        <div className={`fixed bottom-6 right-6 w-96 h-[600px] rounded-2xl shadow-2xl flex flex-col z-50 ${
+        <div className={`fixed bottom-6 right-6 w-96 h-[600px] rounded-3xl shadow-2xl flex flex-col z-50 backdrop-blur-xl border overflow-hidden transition-all duration-500 ${
           isDarkMode
-            ? 'bg-gray-900 border border-gray-700'
-            : 'bg-white border border-gray-200'
+            ? 'bg-gray-900/95 border-cyan-500/30 shadow-cyan-500/20'
+            : 'bg-white/95 border-blue-500/30 shadow-blue-500/20'
         }`}>
-          {/* Header */}
-          <div className={`p-4 rounded-t-2xl flex items-center justify-between ${
+          {/* Header futuriste */}
+          <div className={`relative p-4 flex items-center justify-between overflow-hidden ${
             isDarkMode
-              ? 'bg-gradient-to-r from-gray-800 to-gray-700 text-white'
-              : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
+              ? 'bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 text-white'
+              : 'bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white'
           }`}>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/30">
-                <img
-                  src="/assets/images/Chris-profil.jpg"
-                  alt="Christophe Mostefaoui"
-                  className="w-full h-full object-cover"
-                />
+            {/* Effet de particules animées */}
+            <div className="absolute inset-0 opacity-30">
+              <div className={`absolute top-2 left-4 w-1 h-1 rounded-full animate-pulse ${
+                isDarkMode ? 'bg-cyan-400' : 'bg-white'
+              }`}></div>
+              <div className={`absolute top-6 right-8 w-0.5 h-0.5 rounded-full animate-pulse delay-500 ${
+                isDarkMode ? 'bg-purple-400' : 'bg-white'
+              }`}></div>
+              <div className={`absolute bottom-3 left-12 w-0.5 h-0.5 rounded-full animate-pulse delay-1000 ${
+                isDarkMode ? 'bg-pink-400' : 'bg-white'
+              }`}></div>
+            </div>
+            <div className="relative flex items-center gap-3 z-10">
+              <div className="relative">
+                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/50 shadow-lg">
+                  <img
+                    src="/assets/images/Chris-profil.jpg"
+                    alt="Christophe Mostefaoui"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Indicateur en ligne */}
+                <div className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white animate-pulse ${
+                  isDarkMode ? 'bg-cyan-400' : 'bg-green-400'
+                }`}></div>
               </div>
               <div>
-                <h3 className="font-semibold">Assistant virtuel de Christophe</h3>
-                <p className="text-xs opacity-90">Concepteur développeur d'applications web</p>
+                <h3 className="font-semibold text-white/95">Assistant virtuel de Christophe</h3>
+                <p className="text-xs text-white/70">Concepteur développeur d'applications web</p>
               </div>
             </div>
             <button
               onClick={handleClose}
-              className="hover:bg-white/20 p-2 rounded-full transition"
+              className="relative z-10 hover:bg-white/20 p-2 rounded-full transition-all duration-300 hover:scale-110 group"
               aria-label="Fermer le chat"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
             </button>
           </div>
 
-          {/* Messages */}
-          <div className={`flex-1 overflow-y-auto p-4 space-y-4 ${
-            isDarkMode ? 'bg-gray-800' : 'bg-gray-50'
+          {/* Messages avec effet glassmorphism */}
+          <div className={`flex-1 overflow-y-auto p-4 space-y-4 relative ${
+            isDarkMode
+              ? 'bg-gradient-to-b from-gray-900/50 to-gray-800/50'
+              : 'bg-gradient-to-b from-gray-50/50 to-white/50'
           }`}>
+            {/* Effet de grille futuriste en arrière-plan */}
+            <div className={`absolute inset-0 opacity-5 ${
+              isDarkMode ? 'bg-cyan-500' : 'bg-blue-500'
+            }`} style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+              backgroundSize: '20px 20px'
+            }}></div>
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex gap-3 ${
-                  message.role === "user" ? "flex-row-reverse" : ""
+                className={`relative animate-fade-in ${
+                  message.role === "user" ? "flex justify-end" : ""
                 }`}
               >
                 <div
-                  className={`p-2 rounded-full ${
+                  className={`relative max-w-[80%] p-4 rounded-2xl backdrop-blur-sm border transition-all duration-300 hover:scale-[1.02] ${
                     message.role === "user"
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-300"
-                  }`}
-                >
-                  {message.role === "user" ? (
-                    <User className="w-4 h-4" />
-                  ) : (
-                    <div className="w-6 h-6 rounded-full overflow-hidden">
-                      <img
-                        src="/assets/images/Chris-profil.jpg"
-                        alt="Christophe"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  )}
-                </div>
-                <div
-                  className={`max-w-[70%] p-3 rounded-xl ${
-                    message.role === "user"
-                      ? "bg-blue-600 text-white"
+                      ? "bg-gradient-to-r from-blue-500/90 to-purple-600/90 text-white border-blue-400/30 shadow-blue-500/20"
                       : isDarkMode
-                      ? "bg-gray-700 border border-gray-600 text-white"
-                      : "bg-white border border-gray-200 text-gray-900"
-                  }`}
+                      ? "bg-gray-800/80 border-cyan-500/20 text-white shadow-cyan-500/10"
+                      : "bg-white/80 border-blue-500/20 text-gray-900 shadow-blue-500/10"
+                  } shadow-xl`}
                 >
                   <p className="text-sm whitespace-pre-wrap">
                     {message.content}
@@ -397,27 +426,25 @@ RÈGLES IMPORTANTES :
               </div>
             ))}
             {isLoading && (
-              <div className="flex gap-3">
-                <div className={`p-2 rounded-full ${
-                  isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
-                }`}>
-                  <div className="w-6 h-6 rounded-full overflow-hidden">
-                    <img
-                      src="/assets/images/Chris-profil.jpg"
-                      alt="Christophe"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className={`p-3 rounded-xl ${
+              <div className="relative animate-fade-in">
+                <div className={`relative max-w-[80%] p-4 rounded-2xl backdrop-blur-sm border shadow-xl ${
                   isDarkMode
-                    ? 'bg-gray-700 border border-gray-600'
-                    : 'bg-white border border-gray-200'
+                    ? 'bg-gray-800/80 border-cyan-500/20 shadow-cyan-500/10'
+                    : 'bg-white/80 border-blue-500/20 shadow-blue-500/10'
                 }`}>
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100" />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200" />
+                  <div className="flex gap-2 items-center">
+                    <div className={`w-2 h-2 rounded-full animate-bounce ${
+                      isDarkMode ? 'bg-cyan-400' : 'bg-blue-500'
+                    }`} />
+                    <div className={`w-2 h-2 rounded-full animate-bounce delay-100 ${
+                      isDarkMode ? 'bg-purple-400' : 'bg-indigo-500'
+                    }`} />
+                    <div className={`w-2 h-2 rounded-full animate-bounce delay-200 ${
+                      isDarkMode ? 'bg-pink-400' : 'bg-purple-500'
+                    }`} />
+                    <span className={`text-xs ml-2 ${
+                      isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                    }`}>Christophe réfléchit...</span>
                   </div>
                 </div>
               </div>
@@ -425,33 +452,59 @@ RÈGLES IMPORTANTES :
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
-          <div className={`p-4 border-t rounded-b-2xl ${
+          {/* Input futuriste */}
+          <div className={`relative p-4 backdrop-blur-xl border-t overflow-hidden ${
             isDarkMode
-              ? 'bg-gray-900 border-gray-700'
-              : 'bg-white border-gray-200'
+              ? 'bg-gray-900/90 border-cyan-500/20'
+              : 'bg-white/90 border-blue-500/20'
           }`}>
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Posez votre question..."
-                className={`flex-1 px-4 py-2 border rounded-full focus:outline-none focus:border-blue-600 ${
-                  isDarkMode
-                    ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-400'
-                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                }`}
-                disabled={isLoading}
-              />
+            {/* Effet de lueur en bas */}
+            <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${
+              isDarkMode
+                ? 'from-transparent via-cyan-500 to-transparent'
+                : 'from-transparent via-blue-500 to-transparent'
+            } opacity-50`}></div>
+
+            <div className="relative flex gap-3">
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Posez votre question à Christophe..."
+                  className={`w-full px-5 py-3 rounded-2xl border-2 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:scale-[1.02] ${
+                    isDarkMode
+                      ? 'bg-gray-800/80 border-cyan-500/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:shadow-cyan-500/20'
+                      : 'bg-white/80 border-blue-500/30 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:shadow-blue-500/20'
+                  } focus:shadow-xl`}
+                  disabled={isLoading}
+                />
+                {/* Indicateur de saisie */}
+                {input && (
+                  <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full animate-pulse ${
+                    isDarkMode ? 'bg-cyan-400' : 'bg-blue-500'
+                  }`}></div>
+                )}
+              </div>
+
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white p-2 rounded-full transition"
+                className={`relative px-4 py-3 rounded-2xl transition-all duration-300 hover:scale-110 disabled:scale-100 focus:outline-none group overflow-hidden ${
+                  !input.trim() || isLoading
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : isDarkMode
+                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500'
+                    : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500'
+                } text-white shadow-lg hover:shadow-xl`}
                 aria-label="Envoyer"
               >
-                <Send className="w-5 h-5" />
+                {/* Effet de brillance au hover */}
+                <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <Send className={`relative w-5 h-5 transition-transform duration-300 ${
+                  isLoading ? 'animate-spin' : 'group-hover:translate-x-0.5'
+                }`} />
               </button>
             </div>
           </div>
