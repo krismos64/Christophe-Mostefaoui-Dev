@@ -1,4 +1,4 @@
-import { Bot, MessageCircle, Send, User, X, ExternalLink, Github, Linkedin, Eye } from "lucide-react";
+import { Bot, MessageCircle, Send, User, X, ExternalLink, Github, Linkedin, Eye, Video } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-react";
 import chatbotAnimation from "../animations/chatbot.json";
@@ -9,6 +9,7 @@ interface Message {
   content: string;
   timestamp: Date;
   media?: MediaAttachment[];
+  isStreaming?: boolean;
 }
 
 interface MediaAttachment {
@@ -19,6 +20,24 @@ interface MediaAttachment {
   thumbnail?: string;
   tags?: string[];
 }
+
+// Composant pour l'effet machine à écrire
+const TypewriterText = ({ text, speed = 20 }: { text: string; speed?: number }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, speed);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, text, speed]);
+
+  return <span>{displayedText}<span className="animate-pulse">|</span></span>;
+};
 
 // Composant pour afficher un média attaché
 const MediaCard = ({ media, isDarkMode }: { media: MediaAttachment; isDarkMode: boolean }) => {
@@ -108,6 +127,7 @@ const AIChatbot = () => {
   const [isStreaming, setIsStreaming] = useState(false);
   const [currentStreamingMessage, setCurrentStreamingMessage] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [showVideoModal, setShowVideoModal] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Cache local pour les réponses
@@ -501,6 +521,7 @@ RÈGLES IMPORTANTES :
         role: "assistant",
         content: "",
         timestamp: new Date(),
+        isStreaming: true,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
@@ -546,11 +567,11 @@ RÈGLES IMPORTANTES :
       if (fullResponse.trim()) {
         responseCache.current.set(normalizedInput, fullResponse);
 
-        // Ajouter les médias à la réponse finale
+        // Ajouter les médias à la réponse finale et désactiver le streaming
         const mediaAttachments = enrichResponseWithMedia(fullResponse);
         setMessages((prev) => prev.map(msg =>
           msg.id === assistantMessageId
-            ? { ...msg, media: mediaAttachments }
+            ? { ...msg, media: mediaAttachments, isStreaming: false }
             : msg
         ));
 
@@ -580,7 +601,7 @@ RÈGLES IMPORTANTES :
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
@@ -676,6 +697,7 @@ RÈGLES IMPORTANTES :
           role: "assistant",
           content: "",
           timestamp: new Date(),
+          isStreaming: true,
         };
 
         setMessages((prev) => [...prev, assistantMessage]);
@@ -718,6 +740,14 @@ RÈGLES IMPORTANTES :
 
         if (fullResponse.trim()) {
           responseCache.current.set(normalizedInput, fullResponse);
+
+          // Ajouter les médias et désactiver le streaming
+          const mediaAttachments = enrichResponseWithMedia(fullResponse);
+          setMessages((prev) => prev.map(msg =>
+            msg.id === assistantMessageId
+              ? { ...msg, media: mediaAttachments, isStreaming: false }
+              : msg
+          ));
 
           if (responseCache.current.size > 50) {
             const firstKey = responseCache.current.keys().next().value;
@@ -844,7 +874,7 @@ RÈGLES IMPORTANTES :
                   isDarkMode ? 'bg-cyan-400' : 'bg-green-400'
                 }`}></div>
               </div>
-              <div>
+              <div className="flex-1">
                 <h3 className="font-semibold text-white/95">Assistant virtuel de Christophe</h3>
                 <div className="flex items-center gap-2">
                   <p className="text-xs text-white/70">Concepteur développeur d'applications web</p>
@@ -864,13 +894,29 @@ RÈGLES IMPORTANTES :
                 </div>
               </div>
             </div>
-            <button
-              onClick={handleClose}
-              className="relative z-10 hover:bg-white/20 p-2 rounded-full transition-all duration-300 hover:scale-110 group"
-              aria-label="Fermer le chat"
-            >
-              <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
-            </button>
+            <div className="relative z-10 flex items-center gap-2">
+              {/* Bouton Pitch Vidéo */}
+              <button
+                onClick={() => setShowVideoModal(true)}
+                className="hover:bg-white/20 p-2 rounded-full transition-all duration-300 hover:scale-110 group relative"
+                aria-label="Voir le pitch vidéo"
+                title="Voir le pitch vidéo de Christophe"
+              >
+                <Video className="w-5 h-5 group-hover:text-white/90 transition-colors duration-300" />
+                <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-white/0 group-hover:text-white/80 transition-all duration-300 whitespace-nowrap">
+                  Pitch
+                </span>
+              </button>
+
+              {/* Bouton Fermer */}
+              <button
+                onClick={handleClose}
+                className="hover:bg-white/20 p-2 rounded-full transition-all duration-300 hover:scale-110 group"
+                aria-label="Fermer le chat"
+              >
+                <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
+              </button>
+            </div>
           </div>
 
           {/* Messages avec effet glassmorphism */}
@@ -903,7 +949,11 @@ RÈGLES IMPORTANTES :
                   } shadow-xl`}
                 >
                   <p className="text-sm whitespace-pre-wrap">
-                    {message.content}
+                    {message.isStreaming && message.role === "assistant" ? (
+                      <TypewriterText text={message.content} speed={15} />
+                    ) : (
+                      message.content
+                    )}
                   </p>
 
                   {/* Médias attachés */}
@@ -1010,7 +1060,7 @@ RÈGLES IMPORTANTES :
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={handleKeyPress}
+                  onKeyDown={handleKeyDown}
                   placeholder="Posez votre question à Christophe..."
                   className={`w-full px-5 py-3 rounded-2xl border-2 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:scale-[1.02] ${
                     isDarkMode
@@ -1045,6 +1095,75 @@ RÈGLES IMPORTANTES :
                   isLoading || isStreaming ? 'animate-spin' : 'group-hover:translate-x-0.5'
                 }`} />
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Vidéo Pitch */}
+      {showVideoModal && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in"
+          onClick={() => setShowVideoModal(false)}
+        >
+          <div
+            className={`relative w-[90%] max-w-4xl rounded-3xl overflow-hidden shadow-2xl border ${
+              isDarkMode
+                ? 'bg-gray-900/95 border-cyan-500/30'
+                : 'bg-white/95 border-blue-500/30'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header Modal */}
+            <div className={`relative p-4 flex items-center justify-between ${
+              isDarkMode
+                ? 'bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 text-white'
+                : 'bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white'
+            }`}>
+              <div className="flex items-center gap-3">
+                <Video className="w-6 h-6" />
+                <h3 className="font-semibold text-lg">Pitch Vidéo - Christophe Mostefaoui</h3>
+              </div>
+              <button
+                onClick={() => setShowVideoModal(false)}
+                className="hover:bg-white/20 p-2 rounded-full transition-all duration-300 hover:scale-110 group"
+                aria-label="Fermer la vidéo"
+              >
+                <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
+              </button>
+            </div>
+
+            {/* Conteneur Vidéo */}
+            <div className="relative w-full aspect-video bg-black">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/eZ6OYMeT1CM?autoplay=1"
+                title="Pitch Vidéo - Christophe Mostefaoui"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+
+            {/* Footer avec CTA */}
+            <div className={`p-4 ${
+              isDarkMode ? 'bg-gray-900/50' : 'bg-gray-50/50'
+            }`}>
+              <p className={`text-sm text-center ${
+                isDarkMode ? 'text-gray-300' : 'text-gray-600'
+              }`}>
+                💡 Besoin d'un développeur full-stack expert ?
+                <a
+                  href="#contact"
+                  className={`ml-2 font-semibold underline transition-colors ${
+                    isDarkMode
+                      ? 'text-cyan-400 hover:text-cyan-300'
+                      : 'text-blue-600 hover:text-blue-700'
+                  }`}
+                  onClick={() => setShowVideoModal(false)}
+                >
+                  Contactez-moi !
+                </a>
+              </p>
             </div>
           </div>
         </div>
