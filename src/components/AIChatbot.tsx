@@ -1,6 +1,14 @@
-import { Bot, MessageCircle, Send, User, X, ExternalLink, Github, Linkedin, Eye, Video } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
 import Lottie from "lottie-react";
+import {
+  ExternalLink,
+  Eye,
+  Github,
+  Linkedin,
+  Send,
+  Video,
+  X,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import chatbotAnimation from "../animations/chatbot.json";
 
 interface Message {
@@ -13,7 +21,7 @@ interface Message {
 }
 
 interface MediaAttachment {
-  type: 'link' | 'image' | 'project';
+  type: "link" | "image" | "project";
   title: string;
   description?: string;
   url: string;
@@ -22,29 +30,46 @@ interface MediaAttachment {
 }
 
 // Composant pour l'effet machine à écrire
-const TypewriterText = ({ text, speed = 20 }: { text: string; speed?: number }) => {
-  const [displayedText, setDisplayedText] = useState('');
+const TypewriterText = ({
+  text,
+  speed = 20,
+}: {
+  text: string;
+  speed?: number;
+}) => {
+  const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
-        setDisplayedText(prev => prev + text[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
+        setDisplayedText((prev) => prev + text[currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
       }, speed);
       return () => clearTimeout(timeout);
     }
   }, [currentIndex, text, speed]);
 
-  return <span>{displayedText}<span className="animate-pulse">|</span></span>;
+  return (
+    <span>
+      {displayedText}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
 };
 
 // Composant pour afficher un média attaché
-const MediaCard = ({ media, isDarkMode }: { media: MediaAttachment; isDarkMode: boolean }) => {
+const MediaCard = ({
+  media,
+  isDarkMode,
+}: {
+  media: MediaAttachment;
+  isDarkMode: boolean;
+}) => {
   const getIcon = () => {
-    if (media.url.includes('github')) return <Github className="w-4 h-4" />;
-    if (media.url.includes('linkedin')) return <Linkedin className="w-4 h-4" />;
-    if (media.type === 'project') return <Eye className="w-4 h-4" />;
+    if (media.url.includes("github")) return <Github className="w-4 h-4" />;
+    if (media.url.includes("linkedin")) return <Linkedin className="w-4 h-4" />;
+    if (media.type === "project") return <Eye className="w-4 h-4" />;
     return <ExternalLink className="w-4 h-4" />;
   };
 
@@ -55,8 +80,8 @@ const MediaCard = ({ media, isDarkMode }: { media: MediaAttachment; isDarkMode: 
       rel="noopener noreferrer"
       className={`block p-3 rounded-xl border transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm group ${
         isDarkMode
-          ? 'bg-gray-800/60 border-cyan-500/20 hover:border-cyan-400/40 hover:shadow-cyan-500/10'
-          : 'bg-white/60 border-blue-500/20 hover:border-blue-400/40 hover:shadow-blue-500/10'
+          ? "bg-gray-800/60 border-cyan-500/20 hover:border-cyan-400/40 hover:shadow-cyan-500/10"
+          : "bg-white/60 border-blue-500/20 hover:border-blue-400/40 hover:shadow-blue-500/10"
       } shadow-lg hover:shadow-xl`}
     >
       <div className="flex items-start gap-3">
@@ -69,28 +94,34 @@ const MediaCard = ({ media, isDarkMode }: { media: MediaAttachment; isDarkMode: 
               onError={(e) => {
                 // Fallback si l'image n'existe pas
                 const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
+                target.style.display = "none";
               }}
             />
           </div>
         )}
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
-            <h4 className={`font-medium text-sm leading-tight ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h4
+              className={`font-medium text-sm leading-tight ${
+                isDarkMode ? "text-white" : "text-gray-900"
+              }`}
+            >
               {media.title}
             </h4>
-            <div className={`p-1 rounded-full ${
-              isDarkMode ? 'text-cyan-400' : 'text-blue-600'
-            }`}>
+            <div
+              className={`p-1 rounded-full ${
+                isDarkMode ? "text-cyan-400" : "text-blue-600"
+              }`}
+            >
               {getIcon()}
             </div>
           </div>
           {media.description && (
-            <p className={`text-xs mt-1 leading-relaxed ${
-              isDarkMode ? 'text-gray-300' : 'text-gray-600'
-            }`}>
+            <p
+              className={`text-xs mt-1 leading-relaxed ${
+                isDarkMode ? "text-gray-300" : "text-gray-600"
+              }`}
+            >
               {media.description}
             </p>
           )}
@@ -101,8 +132,8 @@ const MediaCard = ({ media, isDarkMode }: { media: MediaAttachment; isDarkMode: 
                   key={index}
                   className={`text-xs px-2 py-0.5 rounded-full ${
                     isDarkMode
-                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30'
-                      : 'bg-blue-500/20 text-blue-700 border border-blue-500/30'
+                      ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30"
+                      : "bg-blue-500/20 text-blue-700 border border-blue-500/30"
                   }`}
                 >
                   {tag}
@@ -125,7 +156,7 @@ const AIChatbot = () => {
   const [showRobotBubble, setShowRobotBubble] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
-  const [currentStreamingMessage, setCurrentStreamingMessage] = useState('');
+  const [currentStreamingMessage, setCurrentStreamingMessage] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [showVideoModal, setShowVideoModal] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -143,59 +174,73 @@ const AIChatbot = () => {
     "📂 Pouvez-vous me parler de vos projets ?",
     "💰 Quels sont vos tarifs ?",
     "📅 Êtes-vous disponible pour un nouveau projet ?",
-    "🎯 Comment travaillez-vous avec vos clients ?"
+    "🎯 Comment travaillez-vous avec vos clients ?",
   ];
 
   // Base de données des médias pour enrichir les réponses
   const MEDIA_DATABASE: { [key: string]: MediaAttachment[] } = {
-    'staka': [{
-      type: 'project',
-      title: 'Staka Livres',
-      description: 'Plateforme e-commerce de livres d\'occasion avec 10,000+ références',
-      url: 'https://livresstaka.fr',
-      thumbnail: '/assets/images/livrestaka.jpg',
-      tags: ['React', 'Node.js', 'MySQL', 'Stripe', 'E-commerce']
-    }],
-    'smartplanning': [{
-      type: 'project',
-      title: 'SmartPlanning SaaS',
-      description: 'Solution de gestion de planning temps réel pour entreprises',
-      url: 'https://smartplanning.fr',
-      thumbnail: '/assets/images/business-smartplanning.webp',
-      tags: ['React', 'Node.js', 'MongoDB', 'WebSockets', 'SaaS']
-    }],
-    'portfolio': [{
-      type: 'link',
-      title: 'Portfolio Complet',
-      description: 'Découvrez tous les projets de Christophe',
-      url: '#portfolio',
-      thumbnail: '/assets/images/portfolio.jpg',
-      tags: ['Portfolio', 'Projets', 'Réalisations']
-    }],
-    'github': [{
-      type: 'link',
-      title: 'GitHub - krismos64',
-      description: 'Code source et projets open-source',
-      url: 'https://github.com/krismos64',
-      thumbnail: '/assets/images/Chris-profil.jpg',
-      tags: ['Code', 'Open Source', 'GitHub']
-    }],
-    'linkedin': [{
-      type: 'link',
-      title: 'LinkedIn - Christophe Mostefaoui',
-      description: 'Profil professionnel et recommandations',
-      url: 'https://www.linkedin.com/in/christophemostefaoui/',
-      thumbnail: '/assets/images/Chris-profil.jpg',
-      tags: ['LinkedIn', 'Profil', 'Réseau']
-    }],
-    'contact': [{
-      type: 'link',
-      title: 'Contactez Christophe',
-      description: 'Email, téléphone et formulaire de contact',
-      url: '#contact',
-      thumbnail: '/assets/images/Chris-profil.jpg',
-      tags: ['Contact', 'Email', 'Devis']
-    }]
+    staka: [
+      {
+        type: "project",
+        title: "Staka Livres",
+        description:
+          "Plateforme e-commerce de livres d'occasion avec 10,000+ références",
+        url: "https://livrestaka.fr",
+        thumbnail: "/assets/images/livrestaka.jpg",
+        tags: ["React", "Node.js", "MySQL", "Stripe", "E-commerce"],
+      },
+    ],
+    smartplanning: [
+      {
+        type: "project",
+        title: "SmartPlanning SaaS",
+        description:
+          "Solution de gestion de planning temps réel pour entreprises",
+        url: "https://smartplanning.fr",
+        thumbnail: "/assets/images/business-smartplanning.webp",
+        tags: ["React", "Node.js", "MongoDB", "WebSockets", "SaaS"],
+      },
+    ],
+    portfolio: [
+      {
+        type: "link",
+        title: "Portfolio Complet",
+        description: "Découvrez tous les projets de Christophe",
+        url: "#portfolio",
+        thumbnail: "/assets/images/portfolio.jpg",
+        tags: ["Portfolio", "Projets", "Réalisations"],
+      },
+    ],
+    github: [
+      {
+        type: "link",
+        title: "GitHub - krismos64",
+        description: "Code source et projets open-source",
+        url: "https://github.com/krismos64",
+        thumbnail: "/assets/images/Chris-profil.jpg",
+        tags: ["Code", "Open Source", "GitHub"],
+      },
+    ],
+    linkedin: [
+      {
+        type: "link",
+        title: "LinkedIn - Christophe Mostefaoui",
+        description: "Profil professionnel et recommandations",
+        url: "https://www.linkedin.com/in/christophemostefaoui/",
+        thumbnail: "/assets/images/Chris-profil.jpg",
+        tags: ["LinkedIn", "Profil", "Réseau"],
+      },
+    ],
+    contact: [
+      {
+        type: "link",
+        title: "Contactez Christophe",
+        description: "Email, téléphone et formulaire de contact",
+        url: "#contact",
+        thumbnail: "/assets/images/Chris-profil.jpg",
+        tags: ["Contact", "Email", "Devis"],
+      },
+    ],
   };
 
   // Contexte complet de Christophe pour Mistral AI
@@ -231,7 +276,7 @@ COMPÉTENCES TECHNIQUES :
 - PHP : Symfony 7 (stack secondaire)
 
 PROJETS PHARES :
-1. STAKA LIVRES (livresstaka.fr)
+1. STAKA LIVRES (livrestaka.fr)
    - Plateforme e-commerce de livres d'occasion
    - 10,000+ livres référencés
    - Système de paiement Stripe intégré
@@ -307,10 +352,11 @@ RÈGLES IMPORTANTES :
   useEffect(() => {
     const detectTheme = () => {
       // Détection via la classe 'dark' sur html ou body
-      const isDark = document.documentElement.classList.contains('dark') ||
-                    document.body.classList.contains('dark') ||
-                    // Détection via prefers-color-scheme
-                    window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark =
+        document.documentElement.classList.contains("dark") ||
+        document.body.classList.contains("dark") ||
+        // Détection via prefers-color-scheme
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
       setIsDarkMode(isDark);
     };
 
@@ -321,16 +367,16 @@ RÈGLES IMPORTANTES :
     const observer = new MutationObserver(detectTheme);
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['class']
+      attributeFilter: ["class"],
     });
 
     // Observer les changements de prefers-color-scheme
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', detectTheme);
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", detectTheme);
 
     return () => {
       observer.disconnect();
-      mediaQuery.removeEventListener('change', detectTheme);
+      mediaQuery.removeEventListener("change", detectTheme);
     };
   }, []);
 
@@ -379,16 +425,17 @@ RÈGLES IMPORTANTES :
 
   // Fonction pour normaliser les questions et détecter les doublons
   const normalizeQuestion = (question: string): string => {
-    return question.toLowerCase()
-      .replace(/[^\w\s]/g, '')
-      .replace(/\s+/g, ' ')
+    return question
+      .toLowerCase()
+      .replace(/[^\w\s]/g, "")
+      .replace(/\s+/g, " ")
       .trim();
   };
 
   // Fonction pour obtenir le contexte limité
   const getLimitedContext = (allMessages: Message[]): any[] => {
     const recentMessages = allMessages.slice(-MAX_CONTEXT_MESSAGES);
-    return recentMessages.map(m => ({ role: m.role, content: m.content }));
+    return recentMessages.map((m) => ({ role: m.role, content: m.content }));
   };
 
   // Fonction pour enrichir les réponses avec des médias
@@ -397,40 +444,54 @@ RÈGLES IMPORTANTES :
     const lowerResponse = response.toLowerCase();
 
     // Détecter les mots-clés et ajouter les médias correspondants
-    Object.keys(MEDIA_DATABASE).forEach(keyword => {
+    Object.keys(MEDIA_DATABASE).forEach((keyword) => {
       if (lowerResponse.includes(keyword)) {
         mediaAttachments.push(...MEDIA_DATABASE[keyword]);
       }
     });
 
     // Détecter des variations de mots-clés
-    if (lowerResponse.includes('projet') || lowerResponse.includes('réalisation')) {
-      mediaAttachments.push(...MEDIA_DATABASE['portfolio']);
+    if (
+      lowerResponse.includes("projet") ||
+      lowerResponse.includes("réalisation")
+    ) {
+      mediaAttachments.push(...MEDIA_DATABASE["portfolio"]);
     }
 
-    if (lowerResponse.includes('code') || lowerResponse.includes('source')) {
-      mediaAttachments.push(...MEDIA_DATABASE['github']);
+    if (lowerResponse.includes("code") || lowerResponse.includes("source")) {
+      mediaAttachments.push(...MEDIA_DATABASE["github"]);
     }
 
-    if (lowerResponse.includes('profil') || lowerResponse.includes('expérience')) {
-      mediaAttachments.push(...MEDIA_DATABASE['linkedin']);
+    if (
+      lowerResponse.includes("profil") ||
+      lowerResponse.includes("expérience")
+    ) {
+      mediaAttachments.push(...MEDIA_DATABASE["linkedin"]);
     }
 
-    if (lowerResponse.includes('contact') || lowerResponse.includes('email') || lowerResponse.includes('devis')) {
-      mediaAttachments.push(...MEDIA_DATABASE['contact']);
+    if (
+      lowerResponse.includes("contact") ||
+      lowerResponse.includes("email") ||
+      lowerResponse.includes("devis")
+    ) {
+      mediaAttachments.push(...MEDIA_DATABASE["contact"]);
     }
 
-    if (lowerResponse.includes('livre') || lowerResponse.includes('e-commerce')) {
-      mediaAttachments.push(...MEDIA_DATABASE['staka']);
+    if (
+      lowerResponse.includes("livre") ||
+      lowerResponse.includes("e-commerce")
+    ) {
+      mediaAttachments.push(...MEDIA_DATABASE["staka"]);
     }
 
-    if (lowerResponse.includes('planning') || lowerResponse.includes('saas')) {
-      mediaAttachments.push(...MEDIA_DATABASE['smartplanning']);
+    if (lowerResponse.includes("planning") || lowerResponse.includes("saas")) {
+      mediaAttachments.push(...MEDIA_DATABASE["smartplanning"]);
     }
 
     // Retirer les doublons
-    const uniqueMedia = mediaAttachments.filter((media, index, self) =>
-      index === self.findIndex(m => m.url === media.url)
+    const uniqueMedia = mediaAttachments.filter(
+      (media, index, self) =>
+        index === self.findIndex((m) => m.url === media.url)
     );
 
     return uniqueMedia.slice(0, 3); // Limiter à 3 médias maximum
@@ -461,7 +522,7 @@ RÈGLES IMPORTANTES :
         media: mediaAttachments,
       };
 
-      setMessages(prev => [...prev, userMessage, assistantMessage]);
+      setMessages((prev) => [...prev, userMessage, assistantMessage]);
       setInput("");
       setShowSuggestions(false); // Masquer les suggestions même pour le cache
       return;
@@ -533,12 +594,12 @@ RÈGLES IMPORTANTES :
           if (done) break;
 
           const chunk = decoder.decode(value);
-          const lines = chunk.split('\n');
+          const lines = chunk.split("\n");
 
           for (const line of lines) {
-            if (line.startsWith('data: ')) {
+            if (line.startsWith("data: ")) {
               const jsonStr = line.slice(6);
-              if (jsonStr === '[DONE]') continue;
+              if (jsonStr === "[DONE]") continue;
 
               try {
                 const data = JSON.parse(jsonStr);
@@ -549,11 +610,13 @@ RÈGLES IMPORTANTES :
                   setCurrentStreamingMessage(fullResponse);
 
                   // Mettre à jour le message en temps réel
-                  setMessages((prev) => prev.map(msg =>
-                    msg.id === assistantMessageId
-                      ? { ...msg, content: fullResponse }
-                      : msg
-                  ));
+                  setMessages((prev) =>
+                    prev.map((msg) =>
+                      msg.id === assistantMessageId
+                        ? { ...msg, content: fullResponse }
+                        : msg
+                    )
+                  );
                 }
               } catch (e) {
                 // Ignorer les erreurs de parsing JSON
@@ -569,11 +632,13 @@ RÈGLES IMPORTANTES :
 
         // Ajouter les médias à la réponse finale et désactiver le streaming
         const mediaAttachments = enrichResponseWithMedia(fullResponse);
-        setMessages((prev) => prev.map(msg =>
-          msg.id === assistantMessageId
-            ? { ...msg, media: mediaAttachments, isStreaming: false }
-            : msg
-        ));
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === assistantMessageId
+              ? { ...msg, media: mediaAttachments, isStreaming: false }
+              : msg
+          )
+        );
 
         // Limiter la taille du cache (garder seulement 50 entrées)
         if (responseCache.current.size > 50) {
@@ -581,7 +646,6 @@ RÈGLES IMPORTANTES :
           responseCache.current.delete(firstKey);
         }
       }
-
     } catch (error) {
       console.error("Erreur:", error);
 
@@ -610,7 +674,7 @@ RÈGLES IMPORTANTES :
 
   const handleSuggestionClick = async (suggestion: string) => {
     // Retirer l'emoji du début pour la question
-    const cleanQuestion = suggestion.replace(/^[^\s]+\s/, '');
+    const cleanQuestion = suggestion.replace(/^[^\s]+\s/, "");
     setInput(cleanQuestion);
 
     // Simuler l'envoi automatique après un petit délai
@@ -639,7 +703,7 @@ RÈGLES IMPORTANTES :
           media: mediaAttachments,
         };
 
-        setMessages(prev => [...prev, userMessage, assistantMessage]);
+        setMessages((prev) => [...prev, userMessage, assistantMessage]);
         setInput("");
         setShowSuggestions(false);
         return;
@@ -709,12 +773,12 @@ RÈGLES IMPORTANTES :
             if (done) break;
 
             const chunk = decoder.decode(value);
-            const lines = chunk.split('\n');
+            const lines = chunk.split("\n");
 
             for (const line of lines) {
-              if (line.startsWith('data: ')) {
+              if (line.startsWith("data: ")) {
                 const jsonStr = line.slice(6);
-                if (jsonStr === '[DONE]') continue;
+                if (jsonStr === "[DONE]") continue;
 
                 try {
                   const data = JSON.parse(jsonStr);
@@ -724,11 +788,13 @@ RÈGLES IMPORTANTES :
                     fullResponse += token;
                     setCurrentStreamingMessage(fullResponse);
 
-                    setMessages((prev) => prev.map(msg =>
-                      msg.id === assistantMessageId
-                        ? { ...msg, content: fullResponse }
-                        : msg
-                    ));
+                    setMessages((prev) =>
+                      prev.map((msg) =>
+                        msg.id === assistantMessageId
+                          ? { ...msg, content: fullResponse }
+                          : msg
+                      )
+                    );
                   }
                 } catch (e) {
                   // Ignorer les erreurs de parsing JSON
@@ -743,18 +809,19 @@ RÈGLES IMPORTANTES :
 
           // Ajouter les médias et désactiver le streaming
           const mediaAttachments = enrichResponseWithMedia(fullResponse);
-          setMessages((prev) => prev.map(msg =>
-            msg.id === assistantMessageId
-              ? { ...msg, media: mediaAttachments, isStreaming: false }
-              : msg
-          ));
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === assistantMessageId
+                ? { ...msg, media: mediaAttachments, isStreaming: false }
+                : msg
+            )
+          );
 
           if (responseCache.current.size > 50) {
             const firstKey = responseCache.current.keys().next().value;
             responseCache.current.delete(firstKey);
           }
         }
-
       } catch (error) {
         console.error("Erreur:", error);
 
@@ -781,22 +848,24 @@ RÈGLES IMPORTANTES :
         <div
           className={`fixed bottom-32 right-4 p-4 rounded-2xl shadow-2xl max-w-xs animate-bounce cursor-pointer z-40 backdrop-blur-md border transition-all duration-300 hover:scale-105 ${
             isDarkMode
-              ? 'bg-gray-900/90 text-white border-cyan-500/30 shadow-cyan-500/20'
-              : 'bg-white/90 text-gray-900 border-blue-500/30 shadow-blue-500/20'
+              ? "bg-gray-900/90 text-white border-cyan-500/30 shadow-cyan-500/20"
+              : "bg-white/90 text-gray-900 border-blue-500/30 shadow-blue-500/20"
           }`}
           onClick={handleOpen}
         >
           <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full animate-pulse ${
-              isDarkMode ? 'bg-cyan-400' : 'bg-blue-500'
-            }`}></div>
-            <p className="text-sm font-medium">
-              👋 Salut ! Besoin d'aide ?
-            </p>
+            <div
+              className={`w-2 h-2 rounded-full animate-pulse ${
+                isDarkMode ? "bg-cyan-400" : "bg-blue-500"
+              }`}
+            ></div>
+            <p className="text-sm font-medium">👋 Salut ! Besoin d'aide ?</p>
           </div>
-          <div className={`absolute bottom-0 right-8 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent transform translate-y-full ${
-            isDarkMode ? 'border-t-gray-900/90' : 'border-t-white/90'
-          }`}></div>
+          <div
+            className={`absolute bottom-0 right-8 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent transform translate-y-full ${
+              isDarkMode ? "border-t-gray-900/90" : "border-t-white/90"
+            }`}
+          ></div>
         </div>
       )}
 
@@ -809,12 +878,16 @@ RÈGLES IMPORTANTES :
             aria-label="Ouvrir le chat"
           >
             {/* Cercles d'onde futuristes */}
-            <div className={`absolute inset-0 rounded-full animate-ping ${
-              isDarkMode ? 'bg-cyan-400/30' : 'bg-blue-500/30'
-            }`}></div>
-            <div className={`absolute inset-2 rounded-full animate-ping delay-1000 ${
-              isDarkMode ? 'bg-purple-400/20' : 'bg-indigo-500/20'
-            }`}></div>
+            <div
+              className={`absolute inset-0 rounded-full animate-ping ${
+                isDarkMode ? "bg-cyan-400/30" : "bg-blue-500/30"
+              }`}
+            ></div>
+            <div
+              className={`absolute inset-2 rounded-full animate-ping delay-1000 ${
+                isDarkMode ? "bg-purple-400/20" : "bg-indigo-500/20"
+              }`}
+            ></div>
 
             {/* Robot avec effet glassmorphism */}
             <div className="relative bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20 shadow-2xl">
@@ -826,39 +899,51 @@ RÈGLES IMPORTANTES :
             </div>
 
             {/* Effet de halo au hover */}
-            <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300 ${
-              isDarkMode
-                ? 'bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500'
-                : 'bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500'
-            } blur-xl`}></div>
+            <div
+              className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300 ${
+                isDarkMode
+                  ? "bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500"
+                  : "bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+              } blur-xl`}
+            ></div>
           </button>
         </div>
       )}
 
       {/* Fenêtre de chat - Design futuriste */}
       {isOpen && (
-        <div className={`fixed bottom-6 right-6 w-96 h-[600px] rounded-3xl shadow-2xl flex flex-col z-50 backdrop-blur-xl border overflow-hidden transition-all duration-500 ${
-          isDarkMode
-            ? 'bg-gray-900/95 border-cyan-500/30 shadow-cyan-500/20'
-            : 'bg-white/95 border-blue-500/30 shadow-blue-500/20'
-        }`}>
-          {/* Header futuriste */}
-          <div className={`relative p-4 flex items-center justify-between overflow-hidden ${
+        <div
+          className={`fixed bottom-6 right-6 w-96 h-[600px] rounded-3xl shadow-2xl flex flex-col z-50 backdrop-blur-xl border overflow-hidden transition-all duration-500 ${
             isDarkMode
-              ? 'bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 text-white'
-              : 'bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white'
-          }`}>
+              ? "bg-gray-900/95 border-cyan-500/30 shadow-cyan-500/20"
+              : "bg-white/95 border-blue-500/30 shadow-blue-500/20"
+          }`}
+        >
+          {/* Header futuriste */}
+          <div
+            className={`relative p-4 flex items-center justify-between overflow-hidden ${
+              isDarkMode
+                ? "bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 text-white"
+                : "bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white"
+            }`}
+          >
             {/* Effet de particules animées */}
             <div className="absolute inset-0 opacity-30">
-              <div className={`absolute top-2 left-4 w-1 h-1 rounded-full animate-pulse ${
-                isDarkMode ? 'bg-cyan-400' : 'bg-white'
-              }`}></div>
-              <div className={`absolute top-6 right-8 w-0.5 h-0.5 rounded-full animate-pulse delay-500 ${
-                isDarkMode ? 'bg-purple-400' : 'bg-white'
-              }`}></div>
-              <div className={`absolute bottom-3 left-12 w-0.5 h-0.5 rounded-full animate-pulse delay-1000 ${
-                isDarkMode ? 'bg-pink-400' : 'bg-white'
-              }`}></div>
+              <div
+                className={`absolute top-2 left-4 w-1 h-1 rounded-full animate-pulse ${
+                  isDarkMode ? "bg-cyan-400" : "bg-white"
+                }`}
+              ></div>
+              <div
+                className={`absolute top-6 right-8 w-0.5 h-0.5 rounded-full animate-pulse delay-500 ${
+                  isDarkMode ? "bg-purple-400" : "bg-white"
+                }`}
+              ></div>
+              <div
+                className={`absolute bottom-3 left-12 w-0.5 h-0.5 rounded-full animate-pulse delay-1000 ${
+                  isDarkMode ? "bg-pink-400" : "bg-white"
+                }`}
+              ></div>
             </div>
             <div className="relative flex items-center gap-3 z-10">
               <div className="relative">
@@ -870,19 +955,27 @@ RÈGLES IMPORTANTES :
                   />
                 </div>
                 {/* Indicateur en ligne */}
-                <div className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white animate-pulse ${
-                  isDarkMode ? 'bg-cyan-400' : 'bg-green-400'
-                }`}></div>
+                <div
+                  className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white animate-pulse ${
+                    isDarkMode ? "bg-cyan-400" : "bg-green-400"
+                  }`}
+                ></div>
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold text-white/95">Assistant virtuel de Christophe</h3>
+                <h3 className="font-semibold text-white/95">
+                  Assistant virtuel de Christophe
+                </h3>
                 <div className="flex items-center gap-2">
-                  <p className="text-xs text-white/70">Concepteur développeur d'applications web</p>
+                  <p className="text-xs text-white/70">
+                    Concepteur développeur d'applications web
+                  </p>
                   {isStreaming && (
                     <div className="flex items-center gap-1">
-                      <div className={`w-1 h-1 rounded-full animate-pulse ${
-                        isDarkMode ? 'bg-cyan-400' : 'bg-green-400'
-                      }`}></div>
+                      <div
+                        className={`w-1 h-1 rounded-full animate-pulse ${
+                          isDarkMode ? "bg-cyan-400" : "bg-green-400"
+                        }`}
+                      ></div>
                       <span className="text-xs text-white/70">En direct</span>
                     </div>
                   )}
@@ -920,18 +1013,23 @@ RÈGLES IMPORTANTES :
           </div>
 
           {/* Messages avec effet glassmorphism */}
-          <div className={`flex-1 overflow-y-auto p-4 space-y-4 relative ${
-            isDarkMode
-              ? 'bg-gradient-to-b from-gray-900/50 to-gray-800/50'
-              : 'bg-gradient-to-b from-gray-50/50 to-white/50'
-          }`}>
+          <div
+            className={`flex-1 overflow-y-auto p-4 space-y-4 relative ${
+              isDarkMode
+                ? "bg-gradient-to-b from-gray-900/50 to-gray-800/50"
+                : "bg-gradient-to-b from-gray-50/50 to-white/50"
+            }`}
+          >
             {/* Effet de grille futuriste en arrière-plan */}
-            <div className={`absolute inset-0 opacity-5 ${
-              isDarkMode ? 'bg-cyan-500' : 'bg-blue-500'
-            }`} style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-              backgroundSize: '20px 20px'
-            }}></div>
+            <div
+              className={`absolute inset-0 opacity-5 ${
+                isDarkMode ? "bg-cyan-500" : "bg-blue-500"
+              }`}
+              style={{
+                backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+                backgroundSize: "20px 20px",
+              }}
+            ></div>
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -957,13 +1055,19 @@ RÈGLES IMPORTANTES :
                   </p>
 
                   {/* Médias attachés */}
-                  {message.media && message.media.length > 0 && message.role === "assistant" && (
-                    <div className="mt-3 space-y-2">
-                      {message.media.map((media, index) => (
-                        <MediaCard key={index} media={media} isDarkMode={isDarkMode} />
-                      ))}
-                    </div>
-                  )}
+                  {message.media &&
+                    message.media.length > 0 &&
+                    message.role === "assistant" && (
+                      <div className="mt-3 space-y-2">
+                        {message.media.map((media, index) => (
+                          <MediaCard
+                            key={index}
+                            media={media}
+                            isDarkMode={isDarkMode}
+                          />
+                        ))}
+                      </div>
+                    )}
 
                   <p
                     className={`text-xs mt-2 ${
@@ -984,30 +1088,44 @@ RÈGLES IMPORTANTES :
             ))}
             {(isLoading || isStreaming) && (
               <div className="relative animate-fade-in">
-                <div className={`relative max-w-[80%] p-4 rounded-2xl backdrop-blur-sm border shadow-xl ${
-                  isDarkMode
-                    ? 'bg-gray-800/80 border-cyan-500/20 shadow-cyan-500/10'
-                    : 'bg-white/80 border-blue-500/20 shadow-blue-500/10'
-                }`}>
+                <div
+                  className={`relative max-w-[80%] p-4 rounded-2xl backdrop-blur-sm border shadow-xl ${
+                    isDarkMode
+                      ? "bg-gray-800/80 border-cyan-500/20 shadow-cyan-500/10"
+                      : "bg-white/80 border-blue-500/20 shadow-blue-500/10"
+                  }`}
+                >
                   <div className="flex gap-2 items-center">
-                    <div className={`w-2 h-2 rounded-full animate-bounce ${
-                      isDarkMode ? 'bg-cyan-400' : 'bg-blue-500'
-                    }`} />
-                    <div className={`w-2 h-2 rounded-full animate-bounce delay-100 ${
-                      isDarkMode ? 'bg-purple-400' : 'bg-indigo-500'
-                    }`} />
-                    <div className={`w-2 h-2 rounded-full animate-bounce delay-200 ${
-                      isDarkMode ? 'bg-pink-400' : 'bg-purple-500'
-                    }`} />
-                    <span className={`text-xs ml-2 ${
-                      isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>
-                      {isStreaming ? 'Christophe écrit...' : 'Christophe réfléchit...'}
+                    <div
+                      className={`w-2 h-2 rounded-full animate-bounce ${
+                        isDarkMode ? "bg-cyan-400" : "bg-blue-500"
+                      }`}
+                    />
+                    <div
+                      className={`w-2 h-2 rounded-full animate-bounce delay-100 ${
+                        isDarkMode ? "bg-purple-400" : "bg-indigo-500"
+                      }`}
+                    />
+                    <div
+                      className={`w-2 h-2 rounded-full animate-bounce delay-200 ${
+                        isDarkMode ? "bg-pink-400" : "bg-purple-500"
+                      }`}
+                    />
+                    <span
+                      className={`text-xs ml-2 ${
+                        isDarkMode ? "text-gray-300" : "text-gray-600"
+                      }`}
+                    >
+                      {isStreaming
+                        ? "Christophe écrit..."
+                        : "Christophe réfléchit..."}
                     </span>
                     {isStreaming && (
-                      <div className={`w-1 h-4 ml-1 animate-pulse ${
-                        isDarkMode ? 'bg-cyan-400' : 'bg-blue-500'
-                      }`}></div>
+                      <div
+                        className={`w-1 h-4 ml-1 animate-pulse ${
+                          isDarkMode ? "bg-cyan-400" : "bg-blue-500"
+                        }`}
+                      ></div>
                     )}
                   </div>
                 </div>
@@ -1017,9 +1135,13 @@ RÈGLES IMPORTANTES :
             {/* Suggestions de questions */}
             {showSuggestions && messages.length <= 1 && (
               <div className="relative animate-fade-in p-3">
-                <p className={`text-xs mb-3 text-center ${
-                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                }`}>💡 Questions fréquentes :</p>
+                <p
+                  className={`text-xs mb-3 text-center ${
+                    isDarkMode ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  💡 Questions fréquentes :
+                </p>
                 <div className="grid grid-cols-1 gap-2">
                   {SUGGESTED_QUESTIONS.map((suggestion, index) => (
                     <button
@@ -1027,8 +1149,8 @@ RÈGLES IMPORTANTES :
                       onClick={() => handleSuggestionClick(suggestion)}
                       className={`text-left text-sm p-3 rounded-xl border transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm ${
                         isDarkMode
-                          ? 'bg-gray-800/60 border-cyan-500/20 text-white hover:border-cyan-400/40 hover:shadow-cyan-500/10'
-                          : 'bg-white/60 border-blue-500/20 text-gray-800 hover:border-blue-400/40 hover:shadow-blue-500/10'
+                          ? "bg-gray-800/60 border-cyan-500/20 text-white hover:border-cyan-400/40 hover:shadow-cyan-500/10"
+                          : "bg-white/60 border-blue-500/20 text-gray-800 hover:border-blue-400/40 hover:shadow-blue-500/10"
                       } shadow-lg hover:shadow-xl`}
                     >
                       {suggestion}
@@ -1042,17 +1164,21 @@ RÈGLES IMPORTANTES :
           </div>
 
           {/* Input futuriste */}
-          <div className={`relative p-4 backdrop-blur-xl border-t overflow-hidden ${
-            isDarkMode
-              ? 'bg-gray-900/90 border-cyan-500/20'
-              : 'bg-white/90 border-blue-500/20'
-          }`}>
-            {/* Effet de lueur en bas */}
-            <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${
+          <div
+            className={`relative p-4 backdrop-blur-xl border-t overflow-hidden ${
               isDarkMode
-                ? 'from-transparent via-cyan-500 to-transparent'
-                : 'from-transparent via-blue-500 to-transparent'
-            } opacity-50`}></div>
+                ? "bg-gray-900/90 border-cyan-500/20"
+                : "bg-white/90 border-blue-500/20"
+            }`}
+          >
+            {/* Effet de lueur en bas */}
+            <div
+              className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${
+                isDarkMode
+                  ? "from-transparent via-cyan-500 to-transparent"
+                  : "from-transparent via-blue-500 to-transparent"
+              } opacity-50`}
+            ></div>
 
             <div className="relative flex gap-3">
               <div className="relative flex-1">
@@ -1064,16 +1190,18 @@ RÈGLES IMPORTANTES :
                   placeholder="Posez votre question à Christophe..."
                   className={`w-full px-5 py-3 rounded-2xl border-2 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:scale-[1.02] ${
                     isDarkMode
-                      ? 'bg-gray-800/80 border-cyan-500/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:shadow-cyan-500/20'
-                      : 'bg-white/80 border-blue-500/30 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:shadow-blue-500/20'
+                      ? "bg-gray-800/80 border-cyan-500/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:shadow-cyan-500/20"
+                      : "bg-white/80 border-blue-500/30 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:shadow-blue-500/20"
                   } focus:shadow-xl`}
                   disabled={isLoading}
                 />
                 {/* Indicateur de saisie */}
                 {input && (
-                  <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full animate-pulse ${
-                    isDarkMode ? 'bg-cyan-400' : 'bg-blue-500'
-                  }`}></div>
+                  <div
+                    className={`absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full animate-pulse ${
+                      isDarkMode ? "bg-cyan-400" : "bg-blue-500"
+                    }`}
+                  ></div>
                 )}
               </div>
 
@@ -1082,18 +1210,22 @@ RÈGLES IMPORTANTES :
                 disabled={!input.trim() || isLoading || isStreaming}
                 className={`relative px-4 py-3 rounded-2xl transition-all duration-300 hover:scale-110 disabled:scale-100 focus:outline-none group overflow-hidden ${
                   !input.trim() || isLoading || isStreaming
-                    ? 'bg-gray-400 cursor-not-allowed'
+                    ? "bg-gray-400 cursor-not-allowed"
                     : isDarkMode
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500'
-                    : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500'
+                    ? "bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500"
+                    : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500"
                 } text-white shadow-lg hover:shadow-xl`}
                 aria-label="Envoyer"
               >
                 {/* Effet de brillance au hover */}
                 <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                <Send className={`relative w-5 h-5 transition-transform duration-300 ${
-                  isLoading || isStreaming ? 'animate-spin' : 'group-hover:translate-x-0.5'
-                }`} />
+                <Send
+                  className={`relative w-5 h-5 transition-transform duration-300 ${
+                    isLoading || isStreaming
+                      ? "animate-spin"
+                      : "group-hover:translate-x-0.5"
+                  }`}
+                />
               </button>
             </div>
           </div>
@@ -1109,20 +1241,24 @@ RÈGLES IMPORTANTES :
           <div
             className={`relative w-[90%] max-w-4xl rounded-3xl overflow-hidden shadow-2xl border ${
               isDarkMode
-                ? 'bg-gray-900/95 border-cyan-500/30'
-                : 'bg-white/95 border-blue-500/30'
+                ? "bg-gray-900/95 border-cyan-500/30"
+                : "bg-white/95 border-blue-500/30"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header Modal */}
-            <div className={`relative p-4 flex items-center justify-between ${
-              isDarkMode
-                ? 'bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 text-white'
-                : 'bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white'
-            }`}>
+            <div
+              className={`relative p-4 flex items-center justify-between ${
+                isDarkMode
+                  ? "bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 text-white"
+                  : "bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white"
+              }`}
+            >
               <div className="flex items-center gap-3">
                 <Video className="w-6 h-6" />
-                <h3 className="font-semibold text-lg">Pitch Vidéo - Christophe Mostefaoui</h3>
+                <h3 className="font-semibold text-lg">
+                  Pitch Vidéo - Christophe Mostefaoui
+                </h3>
               </div>
               <button
                 onClick={() => setShowVideoModal(false)}
@@ -1145,19 +1281,23 @@ RÈGLES IMPORTANTES :
             </div>
 
             {/* Footer avec CTA */}
-            <div className={`p-4 ${
-              isDarkMode ? 'bg-gray-900/50' : 'bg-gray-50/50'
-            }`}>
-              <p className={`text-sm text-center ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
+            <div
+              className={`p-4 ${
+                isDarkMode ? "bg-gray-900/50" : "bg-gray-50/50"
+              }`}
+            >
+              <p
+                className={`text-sm text-center ${
+                  isDarkMode ? "text-gray-300" : "text-gray-600"
+                }`}
+              >
                 💡 Besoin d'un développeur full-stack expert ?
                 <a
                   href="#contact"
                   className={`ml-2 font-semibold underline transition-colors ${
                     isDarkMode
-                      ? 'text-cyan-400 hover:text-cyan-300'
-                      : 'text-blue-600 hover:text-blue-700'
+                      ? "text-cyan-400 hover:text-cyan-300"
+                      : "text-blue-600 hover:text-blue-700"
                   }`}
                   onClick={() => setShowVideoModal(false)}
                 >
