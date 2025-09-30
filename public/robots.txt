@@ -110,6 +110,11 @@ Disallow: /
 User-agent: Bytespider
 Disallow: /
 
+# === BASE DE CONNAISSANCES IA ===
+# Fichier spécial pour LLM (ChatGPT, Claude, Perplexity, etc.)
+# Contient toutes les informations sur services, tarifs, projets
+AI-Knowledge-Base: /chatbot-knowledge.txt
+
 # === SITEMAP & DIRECTIVES ===
 Sitemap: https://christophe-dev-freelance.fr/sitemap.xml
 

@@ -1,0 +1,376 @@
+# Assistant Virtuel Christophe Mostefaoui - Base de Connaissances
+
+## À propos de Christophe Mostefaoui
+
+**Développeur Web Full-Stack Freelance Expert à Pau (64)**
+
+### Contact
+- Email : christophe.mostefaoui.dev@gmail.com
+- Téléphone : 06 79 08 88 45
+- Site web : https://christophe-dev-freelance.fr
+- GitHub : https://github.com/krismos64
+- LinkedIn : https://www.linkedin.com/in/christophemostefaoui/
+- Localisation : Pau/Artix, Pyrénées-Atlantiques (64)
+
+### Profil
+- Âge : 37 ans
+- Statut : Freelance Full-Stack MERN + Symfony
+- Années d'expérience : 7+ ans
+
+## Services Proposés
+
+### 1. Développement d'Applications Web Sur Mesure
+Création d'applications web modernes avec React.js, Node.js et TypeScript. Solutions personnalisées adaptées aux besoins métier de chaque client.
+
+### 2. Plateformes SaaS Complètes
+Développement de solutions SaaS multi-entreprises, multi-utilisateurs avec synchronisation temps réel, authentification sécurisée et gestion avancée des permissions.
+
+### 3. Sites E-commerce
+Création de boutiques en ligne avec système de paiement intégré (Stripe, PayPal), gestion des stocks, multi-vendeurs et tableaux de bord analytiques.
+
+### 4. Intégration d'Intelligence Artificielle
+Intégration d'IA conversationnelle (ChatGPT, Claude, Mistral) dans vos applications web pour automatiser le support client et améliorer l'expérience utilisateur.
+
+### 5. Sites Vitrines et Portfolio
+Sites web modernes, optimisés SEO, avec design responsive et animations fluides. Parfait pour présenter votre entreprise ou vos services.
+
+### 6. Maintenance et Évolutions
+Support technique réactif, maintenance corrective et évolutive, optimisations de performance et mises à jour de sécurité.
+
+## Compétences Techniques
+
+### Frontend
+- React.js 18 (expert)
+- TypeScript (expert)
+- Next.js 14 (avancé)
+- TailwindCSS (expert)
+- Framer Motion (animations)
+- Redux, Zustand (state management)
+
+### Backend
+- Node.js (expert)
+- Express (expert)
+- API REST (expert)
+- GraphQL (avancé)
+- WebSockets, Socket.io (temps réel)
+
+### Bases de Données
+- MySQL (expert)
+- MongoDB (expert)
+- PostgreSQL (avancé)
+- Prisma ORM (expert)
+- Redis (cache)
+
+### DevOps & Outils
+- Docker (expert)
+- CI/CD, GitHub Actions
+- Git, GitHub
+- Linux (serveurs)
+
+### Systèmes de Paiement
+- Stripe (expert)
+- PayPal (avancé)
+
+### Intelligence Artificielle
+- Intégration OpenAI (ChatGPT)
+- Anthropic Claude
+- Mistral AI
+- Chatbots conversationnels
+
+### CMS & Frameworks PHP
+- WordPress (avancé)
+- Strapi (headless CMS)
+- Symfony 7 (stack secondaire)
+
+## Projets Phares
+
+### 1. STAKA LIVRES (livresstaka.fr)
+**Plateforme e-commerce de livres d'occasion**
+- 10,000+ livres référencés
+- Système de paiement Stripe intégré
+- Multi-vendeurs avec gestion des stocks
+- Système de notation et avis clients
+- Dashboard analytique pour les vendeurs
+- **Technologies** : React.js, Node.js, MySQL, Prisma ORM, Stripe, TailwindCSS
+
+### 2. SMARTPLANNING (smartplanning.fr)
+**SaaS de gestion de planning pour entreprises**
+- Multi-entreprises, multi-utilisateurs
+- Synchronisation temps réel (WebSockets)
+- Gestion des équipes et plannings
+- Notifications automatiques
+- Export PDF et Excel
+- Système de permissions avancé
+- **Technologies** : React.js, TypeScript, Node.js, MongoDB, Socket.io, Express
+
+### 3. Portfolio & Sites Vitrines
+Nombreux sites vitrines modernes créés pour TPE/PME :
+- Design moderne et responsive
+- Optimisation SEO poussée
+- Performance Core Web Vitals 90+
+- Animations fluides (Framer Motion)
+- Formulaires de contact sécurisés
+
+### 4. Applications Métier Sur Mesure
+- Dashboards analytiques
+- Outils de gestion interne
+- Solutions de facturation
+- Systèmes de réservation
+
+## Tarifs
+
+### Taux Journalier Moyen (TJM)
+**250€/jour** pour missions longues (1 mois+)
+
+### Projets au Forfait
+- **Site vitrine** : à partir de 1,000€
+- **Application web simple** : à partir de 3,000€
+- **E-commerce complet** : à partir de 5,000€
+- **Plateforme SaaS** : sur devis personnalisé (généralement 10,000€+)
+
+### Maintenance
+- **Forfait maintenance mensuelle** : à partir de 80€/mois
+- Inclut : mises à jour de sécurité, support technique, corrections de bugs
+
+### Services Complémentaires
+- **Audit technique** : 300€
+- **Consulting (1h)** : 80€
+- **Formation client** : 400€/jour
+
+💡 **Offre Actuelle** : Audit gratuit de 30 minutes pour tout nouveau projet
+
+## Méthode de Travail
+
+### 1. Analyse des Besoins
+Échange gratuit pour comprendre votre projet, vos objectifs et vos contraintes. Conseil technique personnalisé.
+
+### 2. Proposition Technique et Commerciale
+Devis détaillé avec chiffrage précis, planning prévisionnel et choix technologiques justifiés.
+
+### 3. Maquettage et Validation UX/UI
+Création de maquettes interactives (Figma) pour validation du design avant développement.
+
+### 4. Développement Agile par Sprints
+Développement itératif avec démonstrations régulières. Vous suivez l'avancement en temps réel.
+
+### 5. Tests et Optimisations
+Tests fonctionnels, optimisations de performance, SEO technique, accessibilité et compatibilité multi-navigateurs.
+
+### 6. Déploiement et Formation
+Mise en production sécurisée, formation à l'utilisation de votre outil et documentation complète.
+
+### 7. Maintenance et Évolutions
+Support réactif (réponse sous 24h), corrections de bugs et évolutions fonctionnelles sur demande.
+
+## Valeurs & Approche
+
+### Code Propre et Maintenable
+- Architecture claire (MVC, Clean Architecture)
+- Code commenté et documenté
+- Bonnes pratiques (SOLID, DRY)
+- Tests unitaires si nécessaire
+
+### Sécurité OWASP
+- Protection contre les failles courantes (XSS, CSRF, SQL Injection)
+- Authentification sécurisée (JWT, bcrypt)
+- Validation stricte des inputs
+- Gestion sécurisée des secrets (.env)
+
+### Performance Optimisée
+- Core Web Vitals : score 90+ sur Lighthouse
+- Lazy loading des images et composants
+- Code splitting
+- Cache stratégique (Redis, service workers)
+- CDN pour assets statiques
+
+### SEO Technique Avancé
+- Métadonnées optimisées (title, description, Open Graph)
+- Données structurées (Schema.org JSON-LD)
+- URLs propres et sémantiques
+- Sitemap XML automatique
+- Optimisation pour les LLM (ChatGPT, Claude)
+
+### Design Moderne et UX Soignée
+- Interface intuitive et ergonomique
+- Design responsive (mobile-first)
+- Animations fluides sans surcharge
+- Accessibilité WCAG 2.1
+
+### Documentation Complète
+- README détaillé
+- Documentation API (Swagger/OpenAPI)
+- Guide d'utilisation pour les clients
+- Diagrammes d'architecture
+
+### Support Réactif
+- Réponse sous 24h maximum
+- Disponible par email, téléphone, visio
+- Suivi des tickets sur GitHub Issues ou Jira
+
+## Disponibilité
+
+### Modes de Travail
+- **Remote** : Pour toute la France
+- **Présentiel** : Pyrénées-Atlantiques (64) avec déplacements gratuits possibles dans un rayon de 50km
+
+### Planning
+- Disponible pour missions courtes (1 semaine) ou longues (plusieurs mois)
+- Démarrage rapide possible (sous 1 semaine)
+- Flexibilité horaire selon les besoins du projet
+
+### Engagement
+- Contrats freelance (facturation)
+- Possibilité de missions récurrentes
+- Collaboration long terme privilégiée
+
+## Technologies par Cas d'Usage
+
+### Application SaaS Multi-tenants
+**Stack recommandée** : React + TypeScript + Node.js + MongoDB + WebSockets
+- Authentification JWT
+- Permissions par rôle (RBAC)
+- Synchronisation temps réel
+- Facturation Stripe intégrée
+
+### E-commerce Performant
+**Stack recommandée** : Next.js 14 + Node.js + MySQL + Prisma + Stripe
+- SSR pour le SEO
+- Cache optimisé
+- Paiements sécurisés
+- Dashboard vendeur
+
+### Site Vitrine Moderne
+**Stack recommandée** : React + Vite + TailwindCSS + Framer Motion
+- Performance maximale
+- Animations fluides
+- SEO optimisé
+- Formulaire de contact
+
+### Dashboard Analytique
+**Stack recommandée** : React + TypeScript + Node.js + PostgreSQL + Chart.js
+- Graphiques interactifs
+- Export de données
+- Filtres avancés
+- Temps réel si nécessaire
+
+## Pourquoi Choisir Christophe ?
+
+### ✅ Expertise Technique Polyvalente
+Maîtrise complète de la stack MERN (MongoDB, Express, React, Node.js) et Symfony pour des solutions robustes et évolutives.
+
+### ✅ Projets Réels et Concrets
+Plus de 50 projets livrés avec succès, dont des plateformes gérant des milliers d'utilisateurs quotidiens.
+
+### ✅ Approche Moderne et Innovante
+Toujours à la pointe des dernières technologies (React 18, TypeScript, Next.js 14, IA conversationnelle).
+
+### ✅ SEO et Performance au Cœur
+Tous les projets sont optimisés pour atteindre un score Lighthouse de 90+ sur tous les critères.
+
+### ✅ Communication Claire et Régulière
+Points d'avancement fréquents, transparence totale sur l'état du projet et documentation exhaustive.
+
+### ✅ Tarifs Transparents et Compétitifs
+Devis détaillé avant chaque projet, pas de frais cachés, paiements échelonnés possibles.
+
+### ✅ Support Réactif Post-Livraison
+Ne vous laisse pas tomber après la mise en ligne : support technique réactif et maintenance à long terme.
+
+## FAQ - Questions Fréquentes
+
+### Combien de temps pour développer mon projet ?
+- Site vitrine : 1 à 2 semaines
+- Application web simple : 3 à 6 semaines
+- Plateforme SaaS : 2 à 6 mois
+- E-commerce : 1 à 3 mois
+
+*Ces délais sont indicatifs et dépendent de la complexité du projet.*
+
+### Puis-je modifier mon site après la livraison ?
+Oui, deux options :
+1. Formation pour gérer vous-même le contenu (CMS)
+2. Maintenance continue avec forfait mensuel
+
+### Travaillez-vous avec des auto-entrepreneurs / TPE / PME ?
+Absolument ! J'accompagne tous types de structures, du micro-entrepreneur à la PME.
+
+### Proposez-vous un paiement échelonné ?
+Oui, paiement en plusieurs fois possible :
+- 30% à la validation du devis
+- 40% à mi-parcours
+- 30% à la livraison
+
+### Puis-je voir d'autres exemples de vos réalisations ?
+Oui, consultez mon portfolio complet sur https://christophe-dev-freelance.fr/#portfolio
+
+### Assurez-vous l'hébergement et le nom de domaine ?
+Je peux vous accompagner dans le choix et la configuration de l'hébergement. Je recommande généralement :
+- Vercel ou Netlify (sites statiques)
+- OVH ou Scaleway (applications complexes)
+- AWS ou DigitalOcean (SaaS)
+
+### Mon site sera-t-il optimisé pour le référencement Google ?
+Oui, le SEO est intégré par défaut :
+- Métadonnées optimisées
+- Performance maximale
+- Données structurées
+- Sitemap XML
+- Score Lighthouse 90+
+
+### Puis-je demander des modifications après la livraison ?
+Oui :
+- Corrections de bugs : gratuites pendant 1 mois
+- Nouvelles fonctionnalités : sur devis
+- Maintenance continue : forfait mensuel
+
+## Témoignages Clients
+
+### Jean-Marc D. - Gérant Staka Livres
+*"Christophe a transformé notre idée de plateforme de livres d'occasion en une réalité dépassant nos attentes. Le site est fluide, rapide et nos clients adorent l'interface. Nous gérons maintenant plus de 10,000 livres sans aucun ralentissement. Un vrai professionnel !"*
+
+### Sophie L. - Directrice SmartPlanning
+*"Nous cherchions un développeur capable de créer un SaaS de planning en temps réel. Christophe a su comprendre nos besoins métier et proposer une architecture solide. Résultat : 50+ entreprises utilisent notre plateforme quotidiennement. Merci !"*
+
+### Alexandre T. - Auto-entrepreneur
+*"J'avais besoin d'un site vitrine moderne pour lancer mon activité. Christophe m'a accompagné de A à Z avec des conseils précieux. Le site est magnifique, rapide et je reçois déjà des demandes de devis via le formulaire de contact !"*
+
+## Pour Aller Plus Loin
+
+### Visitez Mon Portfolio
+https://christophe-dev-freelance.fr/#portfolio
+
+### Consultez Mon Code Sur GitHub
+https://github.com/krismos64
+
+### Connectons-Nous Sur LinkedIn
+https://www.linkedin.com/in/christophemostefaoui/
+
+### Regardez Ma Vidéo de Présentation
+https://www.youtube.com/watch?v=eZ6OYMeT1CM
+
+## Prêt à Lancer Votre Projet ?
+
+### Contact Direct
+📧 **Email** : christophe.mostefaoui.dev@gmail.com
+📞 **Téléphone** : 06 79 08 88 45
+
+### Processus Rapide
+1. Contactez-moi par email ou téléphone
+2. Échange gratuit de 30 minutes pour comprendre votre besoin
+3. Devis détaillé sous 48h
+4. Démarrage possible sous 1 semaine
+
+### Engagement Qualité
+- Code propre et maintenable
+- Respect des délais
+- Communication transparente
+- Support post-livraison
+
+---
+
+**Christophe Mostefaoui**
+Développeur Web Full-Stack Freelance Expert
+Pau (64) - Pyrénées-Atlantiques
+Spécialiste React.js, Node.js, TypeScript & IA
+
+*Transformons ensemble vos idées en applications web performantes* 🚀
