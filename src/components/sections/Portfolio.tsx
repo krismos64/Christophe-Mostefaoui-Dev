@@ -193,77 +193,80 @@ export default function Portfolio() {
 
       <section
         id="portfolio"
-        className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300"
+        className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
       >
         <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
             Portfolio
           </h2>
-          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
             Découvrez mes dernières réalisations
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
           {projects.map((project, index) => (
-            <div
+            <a
               key={project.title}
-              className="card-hover bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 animate-slideIn"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center no-underline transition-transform duration-300 hover:-translate-y-3 animate-slideIn"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative group"
-                onClick={(e) => {
-                  if (!project.link) {
-                    e.preventDefault();
-                  }
-                }}
-              >
-                <img
-                  src={project.image}
-                  alt={project.alt}
-                  loading="lazy"
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80";
-                  }}
-                />
-                <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                  <ExternalLink className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-0 group-hover:scale-100" />
+              {/* iMac Container */}
+              <div className="relative w-full max-w-[280px] mb-8">
+                {/* iMac Body */}
+                <div className="relative bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-2xl overflow-hidden">
+                  {/* Screen */}
+                  <div className="m-2.5 mt-3 bg-black rounded-lg overflow-hidden" style={{ aspectRatio: '16/10' }}>
+                    <img
+                      src={project.image}
+                      alt={project.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src =
+                          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80";
+                      }}
+                    />
+                  </div>
+
+                  {/* Bottom bezel with camera dot */}
+                  <div className="h-8 flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 bg-gray-500 dark:bg-gray-600 rounded-full"></div>
+                  </div>
                 </div>
-              </a>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {project.title}
-                  </a>
+
+                {/* Stand */}
+                <div className="absolute left-1/2 -translate-x-1/2 w-3 h-9 bg-gradient-to-b from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800" style={{ top: '100%' }}></div>
+
+                {/* Base */}
+                <div className="absolute left-1/2 -translate-x-1/2 w-20 h-2 bg-gradient-to-b from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800 rounded-b-xl" style={{ top: 'calc(100% + 2rem)' }}></div>
+              </div>
+
+              {/* Project Info */}
+              <div className="text-center mt-6 px-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-200 rounded-full text-sm transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-800"
+                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-200 rounded-full text-xs transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-800"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
