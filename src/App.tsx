@@ -16,6 +16,7 @@ import Testimonials from "./components/sections/Testimonials";
 import VideoPresentation from "./components/sections/VideoPresentation";
 import VideoServices from "./components/sections/VideoServices";
 import WelcomeScreen from "./components/welcome/WelcomeScreen";
+import AIChatbot from "./components/AIChatbot";
 import { ThemeProvider } from "./context/ThemeContext";
 import FAQ from "./pages/FAQ";
 import LegalNotice from "./pages/LegalNotice";
@@ -279,6 +280,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
+            <AIChatbot />
           </div>
         </Router>
       </ThemeProvider>
