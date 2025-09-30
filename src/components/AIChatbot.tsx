@@ -316,12 +316,16 @@ RÈGLES IMPORTANTES :
               : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
           }`}>
             <div className="flex items-center gap-3">
-              <div className="bg-white/20 p-2 rounded-full">
-                <Bot className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/30">
+                <img
+                  src="/assets/images/Chris-profil.jpg"
+                  alt="Christophe Mostefaoui"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
-                <h3 className="font-semibold">Assistant Christophe Dev</h3>
-                <p className="text-xs opacity-90">Expert React.js & Node.js</p>
+                <h3 className="font-semibold">Assistant virtuel de Christophe</h3>
+                <p className="text-xs opacity-90">Concepteur développeur d'applications web</p>
               </div>
             </div>
             <button
@@ -354,7 +358,13 @@ RÈGLES IMPORTANTES :
                   {message.role === "user" ? (
                     <User className="w-4 h-4" />
                   ) : (
-                    <Bot className="w-4 h-4" />
+                    <div className="w-6 h-6 rounded-full overflow-hidden">
+                      <img
+                        src="/assets/images/Chris-profil.jpg"
+                        alt="Christophe"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   )}
                 </div>
                 <div
@@ -391,7 +401,13 @@ RÈGLES IMPORTANTES :
                 <div className={`p-2 rounded-full ${
                   isDarkMode ? 'bg-gray-600' : 'bg-gray-300'
                 }`}>
-                  <Bot className="w-4 h-4" />
+                  <div className="w-6 h-6 rounded-full overflow-hidden">
+                    <img
+                      src="/assets/images/Chris-profil.jpg"
+                      alt="Christophe"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
                 <div className={`p-3 rounded-xl ${
                   isDarkMode
