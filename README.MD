@@ -147,6 +147,7 @@ src/
 ## 🔍 Optimisations SEO Expert & LLM (Score 50/50)
 
 ### ⚙️ SEO Technique Avancé
+
 - **Métadonnées enrichies**: Titles optimisés avec tous les mots-clés stratégiques
 - **Keywords longue traîne**: "développeur React.js Pau", "montage vidéo FCPX", "drone DJI Mavic Air"
 - **Open Graph optimisé**: Image Chris-profil.jpg et descriptions complètes
@@ -154,6 +155,7 @@ src/
 - **Google Search Console**: Validé via DNS
 
 ### 📋 Données Structurées JSON-LD (124 schemas!)
+
 - **ProfessionalService**: Services détaillés avec géolocalisation
 - **Organization**: Google Business Profile ready avec 6 avis 5⭐
 - **Person**: Profil expert complet avec 35+ compétences
@@ -162,12 +164,14 @@ src/
 - **AggregateRating**: Note parfaite 5.0/5 avec 6 avis clients
 
 ### 🤖 Optimisation LLM (Large Language Models)
+
 - **130+ occurrences mots-clés**: Distribution optimale dans tout le contenu
 - **Contexte multi-services**: Dev + Vidéo FCPX + Drone DJI + SEO + Chatbots IA
 - **Couverture géographique**: 11 villes Pyrénées-Atlantiques + France + International
 - **FAQ exhaustive**: Questions types des LLM avec réponses détaillées
 
 ### 📊 Performance & Technique
+
 - **Sitemap XML enrichi**: 13 URLs (pages + projets externes)
 - **Robots.txt**: Autorisation complète crawlers
 - **Images optimisées**: Alt text descriptif, lazy loading natif
@@ -176,6 +180,7 @@ src/
 ## 🎯 Services Présentés (11 services)
 
 ### Développement Web
+
 - **Sites Web React.js Sur Mesure** - Performance optimisée et SEO intégré
 - **Applications SaaS Full-Stack** - Authentification, paiements, API REST
 - **Refonte de Sites** - Modernisation et optimisation
@@ -185,10 +190,12 @@ src/
 - **Sécurité & Maintenance** - Bonnes pratiques, suivi régulier
 
 ### Production Audiovisuelle
+
 - **Montage Vidéo Professionnel** - Final Cut Pro X sur Mac, exports 4K
 - **Prises de Vue Drone** - DJI Mavic Air pour entreprises et immobilier
 
 ### Services Client
+
 - **Déplacement Gratuit** - Tout le département 64 (Pau, Bayonne, Biarritz, etc.)
 - **Suivi Personnalisé** - Contact direct, visioconférences, support réactif
 
@@ -225,7 +232,7 @@ src/
 
 ### ♿ Accessibilité & Standards
 
-- **ARIA labels**: Support screen readers et navigation clavier  
+- **ARIA labels**: Support screen readers et navigation clavier
 - **WCAG compliance**: Contraste et focus management optimisés
 - **Sémantique HTML5**: Structure appropriée pour moteurs et IA
 - **Microdata enrichies**: Marquage sémantique pour LLM
@@ -241,7 +248,8 @@ src/
 
 ## 🆕 Dernières Améliorations
 
-### v3.0 - Multi-Services & SEO Maximum (Janvier 2025)
+### v3.0 - Multi-Services & SEO Maximum
+
 - ✅ **Section VideoServices** - Production vidéo FCPX et drone DJI Mavic Air
 - ✅ **124 Schemas JSON-LD** - Record d'optimisation pour Google et IA
 - ✅ **6 Avis 5⭐** - Vincent Parrot, Stacy Menendez, Maria Alvarez, Pierre Laborde, Sébastien Etcheverry, Antony Lopez
@@ -252,6 +260,7 @@ src/
 - ✅ **Score SEO 50/50** - Optimisation maximale Google et LLM
 
 ### v2.1 - SEO Expert & LLM Optimization
+
 - ✅ **SEO Technique Avancé** - Métadonnées enrichies, keywords longue traîne
 - ✅ **Données Structurées JSON-LD** - ProfessionalService, ItemList, Service schemas
 - ✅ **Optimisation LLM** - Contenu structuré pour IA, descriptions techniques précises
@@ -259,6 +268,7 @@ src/
 - ✅ **Portfolio Enrichi** - 9 projets avec stack technique détaillée
 
 ### v2.0 - Refonte Complète
+
 - ✅ **Architecture Clean** - Restructuration complète avec séparation des responsabilités
 - ✅ **Formulaire Futuriste** - Design glassmorphism avec validation temps réel
 - ✅ **Hooks Personnalisés** - `useNavigation` et `useFormValidation` pour la réutilisabilité
@@ -267,6 +277,7 @@ src/
 ## 🛠 Développement
 
 ### Scripts disponibles
+
 ```bash
 npm run dev          # Serveur de développement (port 3000)
 npm run build        # Build de production
@@ -274,6 +285,7 @@ npm run preview      # Preview du build
 ```
 
 ### Bonnes pratiques
+
 - **TypeScript strict** - Configuration rigoureuse pour la qualité du code
 - **ESLint & Prettier** - Formatage et linting automatique
 - **Git hooks** - Validation pré-commit avec Husky (optionnel)
@@ -285,4 +297,4 @@ Copyright © 2025 Christophe Mostefaoui. Tous droits réservés.
 
 ---
 
-*Portfolio multi-services développé avec React 18, TypeScript et Tailwind CSS. Services complets : développement web full-stack, production vidéo FCPX, prises de vue drone DJI Mavic Air, SEO expert et chatbots IA. **124 schemas JSON-LD pour un SEO maximum**. Optimisé pour la performance, l'accessibilité, et l'expérience utilisateur. Déplacements gratuits Pyrénées-Atlantiques et services à distance France entière.*
+_Portfolio multi-services développé avec React 18, TypeScript et Tailwind CSS. Services complets : développement web full-stack, production vidéo FCPX, prises de vue drone DJI Mavic Air, SEO expert et chatbots IA. **124 schemas JSON-LD pour un SEO maximum**. Optimisé pour la performance, l'accessibilité, et l'expérience utilisateur. Déplacements gratuits Pyrénées-Atlantiques et services à distance France entière._

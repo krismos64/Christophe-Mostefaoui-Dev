@@ -122,6 +122,7 @@ Desktop.ini
 # Claude AI assistant files
 .claude/
 claude/
+.claude.json
 CLAUDE.md
 
 # AI assistant related files
