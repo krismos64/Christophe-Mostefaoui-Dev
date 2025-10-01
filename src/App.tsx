@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, lazy, Suspense } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/layout/Footer";
@@ -18,30 +18,30 @@ import VideoServices from "./components/sections/VideoServices";
 import WelcomeScreen from "./components/welcome/WelcomeScreen";
 import AIChatbot from "./components/AIChatbot";
 import { ThemeProvider } from "./context/ThemeContext";
-import FAQ from "./pages/FAQ";
-import LegalNotice from "./pages/LegalNotice";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Avis from "./pages/Avis";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import { generateFinalStructuredData } from "./utils/structured-data-final";
-import { generateVideoStructuredData } from "./utils/video-seo-optimization";
-import { generateLocationStructuredData } from "./utils/seo-location-data";
-import { generateGoogleStarsSchema } from "./utils/google-stars-optimization";
-import { generateLocalSEOSchema } from "./utils/local-seo-schema";
-import { generateViralVideoSEO } from "./utils/viral-video-seo";
+import { useStructuredData } from "./hooks/useStructuredData";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
 import VideoSEOHead from "./components/seo/VideoSEOHead";
 import HiddenReviews from "./components/seo/HiddenReviews";
 import GMBOptimizedContact from "./components/seo/GMBOptimizedContact";
+import ErrorBoundary from "./components/common/ErrorBoundary";
+
+// Lazy loading des pages pour optimiser le code-splitting
+const FAQ = lazy(() => import("./pages/FAQ"));
+const LegalNotice = lazy(() => import("./pages/LegalNotice"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const Avis = lazy(() => import("./pages/Avis"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 
 const Home = () => {
-  const finalStructuredData = generateFinalStructuredData();
-  const videoStructuredData = generateVideoStructuredData();
-  const locationStructuredData = generateLocationStructuredData();
-  const googleStarsData = generateGoogleStarsSchema();
-  const localSEOData = generateLocalSEOSchema();
-  const viralVideoData = generateViralVideoSEO();
+  const {
+    final: finalStructuredData,
+    video: videoStructuredData,
+    location: locationStructuredData,
+    googleStars: googleStarsData,
+    localSEO: localSEOData,
+    viralVideo: viralVideoData,
+  } = useStructuredData();
 
   return (
   <>
@@ -138,9 +138,9 @@ function App() {
     setShowWelcome(true);
   }, []);
 
-  const handleWelcomeComplete = () => {
+  const handleWelcomeComplete = useCallback(() => {
     setShowWelcome(false);
-  };
+  }, []);
 
   if (isFirstVisit && showWelcome) {
     return (
@@ -260,31 +260,43 @@ function App() {
   }
 
   return (
-    <HelmetProvider>
-      <ThemeProvider>
-        <Router basename="/">
-          <div className="App min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-            <Header />
-            <main role="main">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/faq" element={<FAQ />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:slug" element={<BlogPost />} />
-                <Route path="/avis" element={<Avis />} />
-                <Route path="/mentions-legales" element={<LegalNotice />} />
-                <Route
-                  path="/politique-de-confidentialite"
-                  element={<PrivacyPolicy />}
-                />
-              </Routes>
-            </main>
-            <Footer />
-            <AIChatbot />
-          </div>
-        </Router>
-      </ThemeProvider>
-    </HelmetProvider>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <ThemeProvider>
+          <Router basename="/">
+            <div className="App min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+              <Header />
+              <main role="main">
+                <Suspense
+                  fallback={
+                    <div className="flex items-center justify-center min-h-screen">
+                      <div className="text-xl text-gray-600 dark:text-gray-300">
+                        Chargement...
+                      </div>
+                    </div>
+                  }
+                >
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/faq" element={<FAQ />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
+                    <Route path="/avis" element={<Avis />} />
+                    <Route path="/mentions-legales" element={<LegalNotice />} />
+                    <Route
+                      path="/politique-de-confidentialite"
+                      element={<PrivacyPolicy />}
+                    />
+                  </Routes>
+                </Suspense>
+              </main>
+              <Footer />
+              <AIChatbot />
+            </div>
+          </Router>
+        </ThemeProvider>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 
