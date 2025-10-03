@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import chatbotAnimation from "../animations/chatbot.json";
+import { useTheme } from "../context/ThemeContext";
 
 interface Message {
   id: string;
@@ -148,13 +149,15 @@ const MediaCard = ({
 };
 
 const AIChatbot = () => {
+  const { theme } = useTheme();
+  const isDarkMode = theme === "dark";
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
   const [showRobotBubble, setShowRobotBubble] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const [currentStreamingMessage, setCurrentStreamingMessage] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true);
@@ -348,38 +351,6 @@ RÈGLES IMPORTANTES :
   const MISTRAL_API_KEY = "FwtWUW9ylbegvlKbEAP94tMg2vRgRWI7";
   const MISTRAL_API_URL = "https://api.mistral.ai/v1/chat/completions";
 
-  // Détection automatique du thème (dark/light mode)
-  useEffect(() => {
-    const detectTheme = () => {
-      // Détection via la classe 'dark' sur html ou body
-      const isDark =
-        document.documentElement.classList.contains("dark") ||
-        document.body.classList.contains("dark") ||
-        // Détection via prefers-color-scheme
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setIsDarkMode(isDark);
-    };
-
-    // Détection initiale
-    detectTheme();
-
-    // Observer les changements de classe sur l'élément html
-    const observer = new MutationObserver(detectTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    // Observer les changements de prefers-color-scheme
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    mediaQuery.addEventListener("change", detectTheme);
-
-    return () => {
-      observer.disconnect();
-      mediaQuery.removeEventListener("change", detectTheme);
-    };
-  }, []);
-
   useEffect(() => {
     // Bulle robot qui apparaît toutes les 3 secondes
     const robotBubbleTimer = setInterval(() => {
@@ -446,7 +417,10 @@ RÈGLES IMPORTANTES :
     // Détecter les mots-clés et ajouter les médias correspondants
     Object.keys(MEDIA_DATABASE).forEach((keyword) => {
       if (lowerResponse.includes(keyword)) {
-        mediaAttachments.push(...MEDIA_DATABASE[keyword]);
+        const medias = MEDIA_DATABASE[keyword];
+        if (medias) {
+          mediaAttachments.push(...medias);
+        }
       }
     });
 
@@ -455,18 +429,18 @@ RÈGLES IMPORTANTES :
       lowerResponse.includes("projet") ||
       lowerResponse.includes("réalisation")
     ) {
-      mediaAttachments.push(...MEDIA_DATABASE["portfolio"]);
+      mediaAttachments.push(...(MEDIA_DATABASE["portfolio"] || []));
     }
 
     if (lowerResponse.includes("code") || lowerResponse.includes("source")) {
-      mediaAttachments.push(...MEDIA_DATABASE["github"]);
+      mediaAttachments.push(...(MEDIA_DATABASE["github"] || []));
     }
 
     if (
       lowerResponse.includes("profil") ||
       lowerResponse.includes("expérience")
     ) {
-      mediaAttachments.push(...MEDIA_DATABASE["linkedin"]);
+      mediaAttachments.push(...(MEDIA_DATABASE["linkedin"] || []));
     }
 
     if (
@@ -474,18 +448,18 @@ RÈGLES IMPORTANTES :
       lowerResponse.includes("email") ||
       lowerResponse.includes("devis")
     ) {
-      mediaAttachments.push(...MEDIA_DATABASE["contact"]);
+      mediaAttachments.push(...(MEDIA_DATABASE["contact"] || []));
     }
 
     if (
       lowerResponse.includes("livre") ||
       lowerResponse.includes("e-commerce")
     ) {
-      mediaAttachments.push(...MEDIA_DATABASE["staka"]);
+      mediaAttachments.push(...(MEDIA_DATABASE["staka"] || []));
     }
 
     if (lowerResponse.includes("planning") || lowerResponse.includes("saas")) {
-      mediaAttachments.push(...MEDIA_DATABASE["smartplanning"]);
+      mediaAttachments.push(...(MEDIA_DATABASE["smartplanning"] || []));
     }
 
     // Retirer les doublons
@@ -643,7 +617,9 @@ RÈGLES IMPORTANTES :
         // Limiter la taille du cache (garder seulement 50 entrées)
         if (responseCache.current.size > 50) {
           const firstKey = responseCache.current.keys().next().value;
-          responseCache.current.delete(firstKey);
+          if (firstKey !== undefined) {
+            responseCache.current.delete(firstKey);
+          }
         }
       }
     } catch (error) {
@@ -819,7 +795,9 @@ RÈGLES IMPORTANTES :
 
           if (responseCache.current.size > 50) {
             const firstKey = responseCache.current.keys().next().value;
-            responseCache.current.delete(firstKey);
+            if (firstKey !== undefined) {
+              responseCache.current.delete(firstKey);
+            }
           }
         }
       } catch (error) {
@@ -916,7 +894,7 @@ RÈGLES IMPORTANTES :
           className={`fixed bottom-6 right-6 w-96 h-[600px] rounded-3xl shadow-2xl flex flex-col z-50 backdrop-blur-xl border overflow-hidden transition-all duration-500 ${
             isDarkMode
               ? "bg-gray-900/95 border-cyan-500/30 shadow-cyan-500/20"
-              : "bg-white/95 border-blue-500/30 shadow-blue-500/20"
+              : "bg-white border-blue-400/40 shadow-xl"
           }`}
         >
           {/* Header futuriste */}
@@ -1017,7 +995,7 @@ RÈGLES IMPORTANTES :
             className={`flex-1 overflow-y-auto p-4 space-y-4 relative ${
               isDarkMode
                 ? "bg-gradient-to-b from-gray-900/50 to-gray-800/50"
-                : "bg-gradient-to-b from-gray-50/50 to-white/50"
+                : "bg-gradient-to-b from-gray-50 to-blue-50/30"
             }`}
           >
             {/* Effet de grille futuriste en arrière-plan */}
@@ -1043,7 +1021,7 @@ RÈGLES IMPORTANTES :
                       ? "bg-gradient-to-r from-blue-500/90 to-purple-600/90 text-white border-blue-400/30 shadow-blue-500/20"
                       : isDarkMode
                       ? "bg-gray-800/80 border-cyan-500/20 text-white shadow-cyan-500/10"
-                      : "bg-white/80 border-blue-500/20 text-gray-900 shadow-blue-500/10"
+                      : "bg-white border-gray-200 text-gray-900 shadow-md"
                   } shadow-xl`}
                 >
                   <p className="text-sm whitespace-pre-wrap">
@@ -1092,7 +1070,7 @@ RÈGLES IMPORTANTES :
                   className={`relative max-w-[80%] p-4 rounded-2xl backdrop-blur-sm border shadow-xl ${
                     isDarkMode
                       ? "bg-gray-800/80 border-cyan-500/20 shadow-cyan-500/10"
-                      : "bg-white/80 border-blue-500/20 shadow-blue-500/10"
+                      : "bg-white border-gray-200 shadow-md"
                   }`}
                 >
                   <div className="flex gap-2 items-center">
@@ -1136,8 +1114,8 @@ RÈGLES IMPORTANTES :
             {showSuggestions && messages.length <= 1 && (
               <div className="relative animate-fade-in p-3">
                 <p
-                  className={`text-xs mb-3 text-center ${
-                    isDarkMode ? "text-gray-400" : "text-gray-600"
+                  className={`text-xs mb-3 text-center font-medium ${
+                    isDarkMode ? "text-gray-400" : "text-gray-700"
                   }`}
                 >
                   💡 Questions fréquentes :
@@ -1150,7 +1128,7 @@ RÈGLES IMPORTANTES :
                       className={`text-left text-sm p-3 rounded-xl border transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm ${
                         isDarkMode
                           ? "bg-gray-800/60 border-cyan-500/20 text-white hover:border-cyan-400/40 hover:shadow-cyan-500/10"
-                          : "bg-white/60 border-blue-500/20 text-gray-800 hover:border-blue-400/40 hover:shadow-blue-500/10"
+                          : "bg-white border-gray-200 text-gray-900 hover:border-blue-400 hover:shadow-md"
                       } shadow-lg hover:shadow-xl`}
                     >
                       {suggestion}
@@ -1168,7 +1146,7 @@ RÈGLES IMPORTANTES :
             className={`relative p-4 backdrop-blur-xl border-t overflow-hidden ${
               isDarkMode
                 ? "bg-gray-900/90 border-cyan-500/20"
-                : "bg-white/90 border-blue-500/20"
+                : "bg-gray-50 border-gray-200"
             }`}
           >
             {/* Effet de lueur en bas */}
@@ -1191,7 +1169,7 @@ RÈGLES IMPORTANTES :
                   className={`w-full px-5 py-3 rounded-2xl border-2 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:scale-[1.02] ${
                     isDarkMode
                       ? "bg-gray-800/80 border-cyan-500/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:shadow-cyan-500/20"
-                      : "bg-white/80 border-blue-500/30 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:shadow-blue-500/20"
+                      : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:shadow-lg"
                   } focus:shadow-xl`}
                   disabled={isLoading}
                 />
