@@ -64,16 +64,13 @@ export default function VideoHero() {
         <div className="max-w-5xl mx-auto">
           {/* Title Section */}
           <div className="text-center mb-12 animate-fadeInUp">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/10 backdrop-blur-sm rounded-full text-blue-600 dark:text-blue-300 text-sm mb-6 border border-blue-200 dark:border-transparent">
-              <Sparkles className="w-4 h-4" />
-              <span>Nouvelle Présentation Vidéo</span>
-              <Sparkles className="w-4 h-4" />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4 dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-blue-400 dark:via-purple-400 dark:to-pink-400">
-              Découvrez Mon Univers Digital
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 animate-gradient-x">
+                Découvrez Mon Univers Digital
+              </span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Plongez dans mon expertise en développement web et intelligence artificielle
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto font-light leading-relaxed">
+              Plongez dans mon expertise en développement web
             </p>
           </div>
 
