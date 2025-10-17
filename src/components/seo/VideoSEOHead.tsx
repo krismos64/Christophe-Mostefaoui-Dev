@@ -25,7 +25,6 @@ export default function VideoSEOHead() {
       <meta property="og:video:width" content={videoMeta["og:video:width"]} />
       <meta property="og:video:height" content={videoMeta["og:video:height"]} />
       <meta property="og:video:duration" content={videoMeta["og:video:duration"]} />
-      <meta property="og:video:release_date" content={videoMeta["og:video:release_date"]} />
 
       {/* Tags vidéo multiples */}
       {videoMeta["og:video:tag"].map((tag: string, index: number) => (
@@ -72,7 +71,7 @@ export default function VideoSEOHead() {
 
       {/* SEO vidéo avancé */}
       <link rel="video_src" href="https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4" />
-      <link rel="image_src" href="https://christophe-dev-freelance.fr/assets/images/Christophe-freelance.png" />
+      <link rel="image_src" href="https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg" />
 
       {/* Preload de la vidéo pour améliorer l'UX et les signaux SEO */}
       <link

@@ -14,12 +14,15 @@ export default function LLMOptimizedHead() {
       <meta name="ai-location" content={llmMeta["ai-location"]} />
       <meta name="ai-languages" content={llmMeta["ai-languages"]} />
       <meta name="ai-contact" content={llmMeta["ai-contact"]} />
+      <meta name="ai-learning-resources" content={llmMeta["ai-learning-resources"]} />
+      <meta name="ai-featured-playlist" content={llmMeta["ai-featured-playlist"]} />
 
       {/* Contexte enrichi pour LLM */}
       <meta name="llm-context" content={llmMeta["llm-context"]} />
       <meta name="llm-capabilities" content={llmMeta["llm-capabilities"]} />
       <meta name="llm-portfolio" content={llmMeta["llm-portfolio"]} />
       <meta name="llm-availability" content={llmMeta["llm-availability"]} />
+      <meta name="llm-learning-focus" content={llmMeta["llm-learning-focus"]} />
 
       {/* Tags sémantiques */}
       <meta name="semantic-keywords" content={llmMeta["semantic-keywords"]} />

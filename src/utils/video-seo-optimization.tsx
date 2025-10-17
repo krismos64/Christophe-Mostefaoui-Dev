@@ -14,7 +14,6 @@ export const generateVideoStructuredData = () => {
       `${baseUrl}/assets/images/video-thumbnail-1.jpg`,
       `${baseUrl}/assets/images/video-thumbnail-2.jpg`
     ],
-    "uploadDate": "2024-12-01T10:00:00+01:00",
     "duration": "PT2M30S",
     "contentUrl": `${baseUrl}/assets/videos/animation-chris-dev.mp4`,
     "embedUrl": "https://www.youtube.com/embed/tdjXblz4mr4",
@@ -51,7 +50,9 @@ export const generateVideoStructuredData = () => {
       "name": "Christophe Mostefaoui Dev",
       "logo": {
         "@type": "ImageObject",
-        "url": `${baseUrl}/favicons/favicon.png`
+        "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
+        "width": 1024,
+        "height": 1024
       }
     },
     "mainEntity": {
@@ -221,8 +222,6 @@ export const generateVideoStructuredData = () => {
       "url": baseUrl
     },
     "inLanguage": "fr-FR",
-    "datePublished": "2024-12-01",
-    "dateModified": new Date().toISOString().split('T')[0],
     "author": {
       "@type": "Person",
       "name": "Christophe Mostefaoui"
@@ -260,7 +259,6 @@ export const generateVideoMetaTags = () => {
     "og:video:width": "1920",
     "og:video:height": "1080",
     "og:video:duration": "150",
-    "og:video:release_date": "2024-12-01",
     "og:video:tag": ["IA", "chatbot", "machine learning", "React.js", "développeur"],
 
     // Twitter Player Card

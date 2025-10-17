@@ -1,6 +1,7 @@
 // Optimisation spécifique pour affichage des étoiles Google Rich Results
 export const generateGoogleStarsSchema = () => {
   const baseUrl = "https://christophe-dev-freelance.fr";
+  const profileImage = `${baseUrl}/assets/images/Chris-profil.jpg`;
 
   // 1. LocalBusiness principal optimisé pour Rich Results
   const localBusinessOptimized = {
@@ -12,10 +13,10 @@ export const generateGoogleStarsSchema = () => {
     "description": "Développeur web freelance expert reconnu avec 3 ans d'expérience. Spécialiste React.js, Node.js, TypeScript. Technologies modernes, gestion projet optimisée.",
     "url": baseUrl,
     "image": [
-      `${baseUrl}/assets/images/chris-web.png`,
+      profileImage,
       `${baseUrl}/assets/images/Christophe-freelance.png`
     ],
-    "logo": `${baseUrl}/favicons/favicon.png`,
+    "logo": profileImage,
     "telephone": "+33-6-XX-XX-XX-XX",
     "email": "christophe.mostefaoui.dev@gmail.com",
     "priceRange": "€€€",
@@ -174,7 +175,7 @@ export const generateGoogleStarsSchema = () => {
     "@id": `${baseUrl}/#organization-rating`,
     "name": "Christophe Mostefaoui - Services Développement Web",
     "url": baseUrl,
-    "logo": `${baseUrl}/favicons/favicon.png`,
+    "logo": profileImage,
     "aggregateRating": {
       "@type": "AggregateRating",
       "@id": `${baseUrl}/#org-rating`,

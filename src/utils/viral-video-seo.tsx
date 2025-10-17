@@ -19,7 +19,7 @@ export const generateViralVideoSEO = () => {
 
     "thumbnailUrl": [
       `${baseUrl}/assets/images/chris-youtube.JPG`,
-      `${baseUrl}/assets/images/chris-web.png`
+      `${baseUrl}/assets/images/Chris-profil.jpg`
     ],
     "uploadDate": "2025-01-26T10:00:00+01:00",
     "duration": "PT3M45S",
@@ -31,7 +31,7 @@ export const generateViralVideoSEO = () => {
       "@id": `${baseUrl}/#person`,
       "name": "Christophe Mostefaoui",
       "jobTitle": "Développeur Full-Stack & Expert IA",
-      "image": `${baseUrl}/assets/images/chris-web.png`,
+      "image": `${baseUrl}/assets/images/Chris-profil.jpg`,
       "url": baseUrl,
       "sameAs": [
         "https://www.linkedin.com/in/christophemostefaoui/",
@@ -206,10 +206,6 @@ export const generateViralVideoSEO = () => {
     "headline": "🚀 VIRAL : Ce Développeur Français Révolutionne l'IA - Sa Présentation Fait le Buzz !",
     "alternativeHeadline": "Christophe Mostefaoui : Le Génie du Code qui Transforme les Entreprises avec l'Intelligence Artificielle",
     "description": "Cette vidéo exceptionnelle révèle comment Christophe Mostefaoui, développeur full-stack à Pau, révolutionne le monde du développement web avec l'IA. Découvrez ses créations virales, ses secrets de succès et pourquoi les entrepreneurs se l'arrachent !",
-
-    "datePublished": "2025-01-26T10:00:00+01:00",
-    "dateModified": "2025-01-26T10:00:00+01:00",
-
     "author": {
       "@type": "Person",
       "@id": `${baseUrl}/#person`,
@@ -221,13 +217,13 @@ export const generateViralVideoSEO = () => {
       "name": "Christophe Mostefaoui Dev",
       "logo": {
         "@type": "ImageObject",
-        "url": `${baseUrl}/favicons/favicon.png`
+        "url": `${baseUrl}/assets/images/Chris-profil.jpg`
       }
     },
 
     "image": [
       `${baseUrl}/assets/images/chris-youtube.JPG`,
-      `${baseUrl}/assets/images/chris-web.png`
+      `${baseUrl}/assets/images/Chris-profil.jpg`
     ],
 
     "video": {

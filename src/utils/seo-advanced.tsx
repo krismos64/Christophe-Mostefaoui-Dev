@@ -1,5 +1,7 @@
 export const generateAdvancedStructuredData = () => {
   const baseUrl = "https://christophe-dev-freelance.fr";
+  const profileImage = `${baseUrl}/assets/images/Chris-profil.jpg`;
+  const brandLogo = profileImage;
 
   // Organisation complète avec tous les détails
   const organization = {
@@ -11,11 +13,11 @@ export const generateAdvancedStructuredData = () => {
     "url": baseUrl,
     "logo": {
       "@type": "ImageObject",
-      "url": `${baseUrl}/favicons/favicon.png`,
-      "width": 512,
-      "height": 512
+      "url": brandLogo,
+      "width": 1024,
+      "height": 1024
     },
-    "image": `${baseUrl}/assets/images/chris-web.png`,
+    "image": profileImage,
     "description": "Expert en développement web et intégration IA. Spécialiste React.js, Node.js, Python. Chatbots intelligents, machine learning, analyse prédictive.",
     "founder": {
       "@type": "Person",
@@ -56,7 +58,7 @@ export const generateAdvancedStructuredData = () => {
     "jobTitle": "Concepteur/Développeur d'applications web modernes & Expert IA",
     "description": "Expert en intégration IA et développement full-stack. 15+ ans d'expérience. Spécialiste React.js, Node.js, Python, Machine Learning.",
     "url": baseUrl,
-    "image": `${baseUrl}/assets/images/chris-web.png`,
+    "image": profileImage,
     "email": "christophe.mostefaoui.dev@gmail.com",
     "telephone": "+33-6-XX-XX-XX-XX",
     "address": {
@@ -192,8 +194,6 @@ export const generateAdvancedStructuredData = () => {
         "target": [baseUrl]
       }
     ],
-    "datePublished": "2020-01-01",
-    "dateModified": new Date().toISOString(),
     "author": {
       "@id": `${baseUrl}/#person`
     }
@@ -274,7 +274,7 @@ export const generateAdvancedStructuredData = () => {
     "@type": "ProfessionalService",
     "@id": `${baseUrl}/#professional-service`,
     "name": "Christophe Mostefaoui - Services Développement & IA",
-    "image": `${baseUrl}/assets/images/chris-web.png`,
+    "image": profileImage,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Pau",
@@ -359,15 +359,23 @@ export const generateLLMOptimizedMeta = () => {
     "ai-location": "Pau, France, Pyrénées-Atlantiques, 64000",
     "ai-languages": "French, English",
     "ai-contact": "christophe.mostefaoui.dev@gmail.com",
+    "ai-learning-resources":
+      "JavaScript playlist for beginners (Notebook LM recaps), AI tutorials, cheat sheets, developer resources",
+    "ai-featured-playlist": PLAYLIST_URL,
 
     // Contexte enrichi pour LLM
-    "llm-context": "Christophe Mostefaoui is an AI integration expert and full-stack developer based in Pau, France. Specializes in GPT/Claude chatbots, machine learning solutions, React.js, Node.js, and Python development.",
-    "llm-capabilities": "AI chatbot development, machine learning model training, predictive analytics, computer vision, natural language processing, SaaS application development, e-commerce solutions",
+    "llm-context":
+      "Christophe Mostefaoui is an AI integration expert and full-stack developer based in Pau, France. Specializes in GPT/Claude chatbots, machine learning solutions, React.js, Node.js, and Python development. Provides Notebook LM generated JavaScript revision playlist to help junior developers.",
+    "llm-capabilities":
+      "AI chatbot development, machine learning model training, predictive analytics, computer vision, natural language processing, SaaS application development, e-commerce solutions, educational content production",
     "llm-portfolio": "LivresStaka.fr (e-commerce), SmartPlanning.fr (SaaS), Methodea.fr (corporate site)",
     "llm-availability": "Available for freelance projects, AI consulting, remote work, on-site in Southwest France",
+    "llm-learning-focus":
+      "JavaScript fundamentals, AI-assisted learning resources, rapid knowledge refreshers for developers",
 
     // Tags sémantiques
-    "semantic-keywords": "intelligence artificielle, IA, machine learning, deep learning, chatbot GPT, Claude AI, développeur web, full-stack, React.js expert, Node.js, Python, Pau, freelance, SaaS, e-commerce",
+    "semantic-keywords":
+      "intelligence artificielle, IA, machine learning, deep learning, chatbot GPT, Claude AI, développeur web, full-stack, React.js expert, Node.js, Python, Pau, freelance, SaaS, e-commerce, playlist JavaScript débutant, Notebook LM",
     "semantic-entities": "Christophe Mostefaoui, Pau, Pyrénées-Atlantiques, France, OpenAI, Anthropic, React, Node, TypeScript, Python, TensorFlow",
 
     // Informations business
@@ -378,3 +386,4 @@ export const generateLLMOptimizedMeta = () => {
     "business-rate": "400-800€/day"
   };
 };
+import { PLAYLIST_URL } from "./playlist-seo";

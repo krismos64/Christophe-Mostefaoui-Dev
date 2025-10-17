@@ -17,6 +17,7 @@ import {
   Sun,
   User,
   X,
+  Youtube,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -67,6 +68,11 @@ export default function Header() {
       name: "Présentation",
       to: isHomePage ? "#video-presentation" : "/#video-presentation",
       icon: <Play className="h-5 w-5" />,
+    },
+    {
+      name: "Playlist JS",
+      to: isHomePage ? "#playlist-javascript" : "/#playlist-javascript",
+      icon: <Youtube className="h-5 w-5" />,
     },
     {
       name: "Services",

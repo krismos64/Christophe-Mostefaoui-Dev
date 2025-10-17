@@ -15,6 +15,7 @@ import Services from "./components/sections/Services";
 import Testimonials from "./components/sections/Testimonials";
 import VideoPresentation from "./components/sections/VideoPresentation";
 import VideoServices from "./components/sections/VideoServices";
+import YouTubePlaylistCTA from "./components/sections/YouTubePlaylistCTA";
 import WelcomeScreen from "./components/welcome/WelcomeScreen";
 import AIChatbot from "./components/AIChatbot";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -41,6 +42,7 @@ const Home = () => {
     googleStars: googleStarsData,
     localSEO: localSEOData,
     viralVideo: viralVideoData,
+    playlist: playlistStructuredData,
   } = useStructuredData();
 
   return (
@@ -102,6 +104,15 @@ const Home = () => {
       />
     ))}
 
+    {/* Données structurées pour la playlist JavaScript */}
+    {playlistStructuredData.map((playlistData, index) => (
+      <script
+        key={`playlist-data-${index}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(playlistData) }}
+      />
+    ))}
+
     {/* Témoignages cachés pour SEO */}
     <HiddenReviews />
 
@@ -114,6 +125,7 @@ const Home = () => {
       videoDuration="PT2M30S"
       videoThumbnail="/assets/images/Christophe-freelance.png"
     />
+    <YouTubePlaylistCTA />
     <About />
     <Services />
     <SimpleBlogCTA />
@@ -176,11 +188,11 @@ function App() {
           />
           <meta
             property="og:image"
-            content="https://christophe-dev-freelance.fr/assets/images/chris-web.png"
+            content="https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg"
           />
           <meta property="og:image:width" content="1024" />
           <meta property="og:image:height" content="1024" />
-          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:type" content="image/jpeg" />
           <meta property="og:image:alt" content="Christophe Mostefaoui - Développeur Web & Expert IA" />
 
           {/* Twitter Card */}
@@ -192,6 +204,10 @@ function App() {
           <meta
             name="twitter:description"
             content="Expert intégration IA & développeur full-stack. Chatbots, ML, React.js, Node.js, Python"
+          />
+          <meta
+            name="twitter:image"
+            content="https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg"
           />
 
           {/* Données structurées JSON-LD pour le SEO */}
@@ -205,7 +221,7 @@ function App() {
                 "Développeur web expert spécialisé en intégration IA, React.js, Node.js, TypeScript et Python",
               url: "https://christophe-dev-freelance.fr",
               image:
-                "https://christophe-dev-freelance.fr/assets/videos/animation-chris-dev.mp4",
+                "https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg",
               sameAs: [
                 "https://www.linkedin.com/in/christophemostefaoui/",
                 "https://github.com/krismos64",

@@ -5,6 +5,7 @@ import { generateLocationStructuredData } from "../utils/seo-location-data";
 import { generateGoogleStarsSchema } from "../utils/google-stars-optimization";
 import { generateLocalSEOSchema } from "../utils/local-seo-schema";
 import { generateViralVideoSEO } from "../utils/viral-video-seo";
+import { generatePlaylistStructuredData } from "../utils/playlist-seo";
 
 /**
  * Hook personnalisé pour générer et mémoriser toutes les données structurées SEO
@@ -20,6 +21,7 @@ export function useStructuredData() {
       googleStars: generateGoogleStarsSchema(),
       localSEO: generateLocalSEOSchema(),
       viralVideo: generateViralVideoSEO(),
+      playlist: generatePlaylistStructuredData(),
     };
   }, []);
 

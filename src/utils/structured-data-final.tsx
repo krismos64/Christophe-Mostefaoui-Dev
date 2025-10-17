@@ -9,11 +9,16 @@ export const generateFinalStructuredData = () => {
     "@id": `${baseUrl}/#organization`,
     "name": "Christophe Mostefaoui - Développeur Web & Expert IA",
     "url": baseUrl,
-    "logo": `${baseUrl}/favicons/favicon.png`,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
+      "width": 1024,
+      "height": 1024
+    },
     "image": [
       {
         "@type": "ImageObject",
-        "url": `${baseUrl}/assets/images/chris-web.png`,
+        "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
         "width": 1024,
         "height": 1024,
         "caption": "Christophe Mostefaoui - Développeur Web & Expert IA"
@@ -41,7 +46,7 @@ export const generateFinalStructuredData = () => {
     "url": baseUrl,
     "image": {
       "@type": "ImageObject",
-      "url": `${baseUrl}/assets/images/chris-web.png`,
+      "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
       "width": 1024,
       "height": 1024,
       "caption": "Christophe Mostefaoui - Développeur Full-Stack Expert"
@@ -76,7 +81,7 @@ export const generateFinalStructuredData = () => {
     "image": [
       {
         "@type": "ImageObject",
-        "url": `${baseUrl}/assets/images/chris-web.png`,
+        "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
         "width": 1024,
         "height": 1024,
         "caption": "Christophe Mostefaoui - Expert Développement Web"
@@ -297,7 +302,7 @@ export const generateFinalStructuredData = () => {
     "image": [
       {
         "@type": "ImageObject",
-        "url": `${baseUrl}/assets/images/chris-web.png`,
+        "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
         "width": 1024,
         "height": 1024
       },
@@ -307,7 +312,7 @@ export const generateFinalStructuredData = () => {
     "brand": {
       "@type": "Brand",
       "name": "Christophe Mostefaoui Dev",
-      "logo": `${baseUrl}/favicons/favicon.png`
+      "logo": `${baseUrl}/assets/images/Chris-profil.jpg`
     },
     "sku": "AI-SERVICES-2025",
     "mpn": "AI-INTEGRATION-PRO",
