@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Send, MessageCircle, Calendar, Bot, Sparkles } from "lucide-react";
+import { ArrowRight, Send, MessageCircle, Calendar, Bot, Sparkles, Briefcase } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackCTAClick } from "../../utils/analytics";
 import { useABTest } from "../../utils/ab-testing";
@@ -9,7 +9,7 @@ interface CallToActionProps {
   variant?: "primary" | "secondary" | "gradient" | "white" | "outline-white";
   text: string;
   subtext?: string;
-  icon?: "arrow" | "send" | "message" | "calendar" | "bot" | "sparkles";
+  icon?: "arrow" | "send" | "message" | "calendar" | "bot" | "sparkles" | "briefcase";
   size?: "small" | "medium" | "large";
   href?: string;
   className?: string;
@@ -52,6 +52,7 @@ const CallToAction = ({
     calendar: Calendar,
     bot: Bot,
     sparkles: Sparkles,
+    briefcase: Briefcase,
   };
 
   const Icon = icons[finalIcon];

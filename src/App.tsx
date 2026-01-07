@@ -116,8 +116,8 @@ const Home = () => {
     {/* Témoignages cachés pour SEO */}
     <HiddenReviews />
 
-    <VideoHero />
     <Hero />
+    <VideoHero />
     <VideoPresentation
       youtubeUrl="https://www.youtube.com/embed/tdjXblz4mr4"
       videoTitle="Christophe Mostefaoui - Développeur Web Full-Stack Expert à Pau | React.js Node.js TypeScript"

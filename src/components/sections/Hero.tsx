@@ -17,19 +17,31 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-              Je transforme vos idées en{" "}
-              <span className="rgb-text">succès digitaux</span>
+              Création de Sites Internet à{" "}
+              <span className="rgb-text">Pau</span>
             </h1>
             <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-              Spécialiste React.js, Node.js, TypeScript. Création d'applications
-              SaaS, plateformes e-commerce et sites vitrines performants.
-              Ensemble, construisons des solutions digitales sur mesure pour
-              vous ou votre entreprise.
+              Des sites web modernes qui attirent vos clients et valorisent
+              votre activité
             </p>
+
+            {/* Badges de réassurance - style glassmorphism */}
+            <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-3">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-200 rounded-full text-sm font-medium shadow-sm">
+                📍 Déplacement gratuit dans le 64
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-200 rounded-full text-sm font-medium shadow-sm">
+                ⚡ Devis sous 24h
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-200 rounded-full text-sm font-medium shadow-sm">
+                💳 Paiement en 3x sans frais
+              </span>
+            </div>
+
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <CallToAction
                 variant="gradient"
-                text="Obtenez un devis gratuit"
+                text="Demander un devis gratuit"
                 subtext="Réponse sous 24h"
                 icon="send"
                 size="large"
@@ -39,10 +51,10 @@ export default function Hero() {
               />
               <CallToAction
                 variant="secondary"
-                text="Discutons de votre projet"
-                icon="calendar"
+                text="Voir mes réalisations"
+                icon="briefcase"
                 size="large"
-                href="#contact"
+                href="#portfolio"
                 location="hero"
                 testId="hero_cta_secondary"
               />
