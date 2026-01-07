@@ -1,30 +1,23 @@
 import Lottie from "lottie-react";
-import { Code, Cpu, Users, Zap } from "lucide-react";
 import chatbotAnimation from "../../animations/chatbot.json";
 import CallToAction from "../common/CallToAction";
 
 export default function About() {
-  const skills = [
+  const differentiators = [
     {
-      icon: <Code className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
-      title: "Expertise Technique",
-      description:
-        "Maîtrise experte de React.js, Next.js, Node.js, Express, TypeScript, API REST et bases de données",
+      emoji: "💬",
+      title: "Je parle votre langue",
+      description: "Pas de jargon technique, des explications claires",
     },
     {
-      icon: <Users className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
-      title: "Communication",
-      description: "Collaboration étroite et transparente avec les clients",
+      emoji: "⚡",
+      title: "Disponible et réactif",
+      description: "Réponse sous 24h, suivi personnalisé",
     },
     {
-      icon: <Zap className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
-      title: "Solutions Innovantes",
-      description: "Approche créative et orientée résultats",
-    },
-    {
-      icon: <Cpu className="h-6 w-6 text-blue-600 dark:text-blue-400" />,
-      title: "Veille Technologique",
-      description: "Toujours à jour avec les dernières technologies",
+      emoji: "🤝",
+      title: "Présent après livraison",
+      description: "Accompagnement et modifications incluses",
     },
   ];
 
@@ -39,97 +32,83 @@ export default function About() {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-              Développeur Full-Stack
-            </h2>
-            <img
-              src="/assets/images/badge-dev.png"
-              alt="Certification Développeur"
-              className="w-20 h-20 object-contain"
-            />
-          </div>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            🚀 Spécialiste React.js, Node.js, TypeScript - Création
-            d'applications web modernes et performantes
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Animation visible uniquement sur les écrans moyens et grands */}
-          <div className="hidden md:block">
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          {/* Animation Lottie - Desktop uniquement */}
+          <div className="hidden md:block flex-1">
             <Lottie animationData={chatbotAnimation} loop={true} />
           </div>
 
-          <div>
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-              ✨ Ce que je vous propose :
-            </h3>
-            <ul className="list-disc pl-6 text-gray-600 dark:text-gray-300 leading-relaxed space-y-4">
-              <li>
-                💻 <strong>Développement de solutions web performantes</strong>{" "}
-                : utilisation des technologies modernes comme{" "}
-                <strong>React</strong>, <strong>Next JS</strong>,{" "}
-                <strong>Express</strong> et <strong>Node.js</strong> pour des
-                résultats <strong>sur mesure</strong>.
-              </li>
-              <li>
-                🤝 <strong>Approche personnalisée</strong> : collaboration
-                directe et régulière avec des{" "}
-                <strong>déplacements gratuits</strong> dans la région{" "}
-                <strong>Pau-Orthez-Tarbes-Béarn et allentours</strong>.
-              </li>
-              <li>
-                📋 <strong>Documentation détaillée</strong> : livrables clairs
-                et complets, depuis le <strong>cahier des charges</strong>{" "}
-                jusqu'aux <strong>spécifications techniques</strong>.
-              </li>
-              <li>
-                ✅ <strong>Engagement qualité</strong> : respect des{" "}
-                <strong>délais</strong>, solutions optimisées, et souci constant
-                de l'<strong>expérience utilisateur</strong>.
-              </li>
-              <li>
-                🎓 <strong>Formation et accompagnement</strong> : possibilité de{" "}
-                <strong>former vos équipes</strong> à l'utilisation des outils
-                développés.
-              </li>
-            </ul>
+          {/* Contenu */}
+          <div className="flex-1 text-center md:text-left">
+            {/* Header avec badge discret */}
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-6 animate-slideIn">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                Qui suis-je ?
+              </h2>
+              <img
+                src="/assets/images/badge-dev.png"
+                alt="Certification Développeur"
+                className="w-12 h-12 object-contain"
+              />
+            </div>
 
-            <div className="grid grid-cols-2 gap-6 mt-6">
-              {skills.map((skill) => (
-                <div key={skill.title} className="flex items-start space-x-3">
-                  {skill.icon}
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">
-                      {skill.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      {skill.description}
-                    </p>
-                  </div>
+            {/* Paragraphes présentation */}
+            <div
+              className="space-y-4 text-gray-600 dark:text-gray-300 mb-8 animate-slideIn"
+              style={{ animationDelay: "0.1s" }}
+            >
+              <p className="text-lg">
+                Je m'appelle <strong className="text-gray-900 dark:text-white">Christophe</strong>,
+                développeur web freelance basé à{" "}
+                <strong className="text-gray-900 dark:text-white">Artix</strong>, près de Pau.
+              </p>
+              <p>
+                Après 12 ans dans le conseil client en multimédia, j'ai choisi
+                de mettre mon expertise au service des entrepreneurs et des PME.
+                Je comprends vos contraintes : budget à respecter, besoin de
+                résultats concrets, pas de temps à perdre.
+              </p>
+              <p className="font-medium text-gray-900 dark:text-white">
+                Mon approche : vous écouter, vous conseiller, et créer un site
+                qui travaille pour vous — même quand vous dormez.
+              </p>
+            </div>
+
+            {/* 3 points différenciants */}
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 animate-slideIn"
+              style={{ animationDelay: "0.2s" }}
+            >
+              {differentiators.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl p-4 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                >
+                  <span className="text-3xl mb-2 block">{item.emoji}</span>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
-            
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+
+            {/* CTA unique */}
+            <div
+              className="flex justify-center md:justify-start animate-slideIn"
+              style={{ animationDelay: "0.3s" }}
+            >
               <CallToAction
                 variant="gradient"
-                text="Parlons de votre projet"
-                subtext="Consultation gratuite"
+                text="Discutons de votre projet"
+                subtext="Premier échange gratuit"
                 icon="message"
-                size="medium"
+                size="large"
                 href="#contact"
                 location="about"
-              />
-              <CallToAction
-                variant="secondary"
-                text="Découvrir mes réalisations"
-                icon="arrow"
-                size="medium"
-                href="#portfolio"
-                location="about"
+                testId="about_cta"
               />
             </div>
           </div>
