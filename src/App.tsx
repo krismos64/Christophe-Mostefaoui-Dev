@@ -16,6 +16,7 @@ import Pricing from "./components/sections/Pricing";
 import Testimonials from "./components/sections/Testimonials";
 import VideoPresentation from "./components/sections/VideoPresentation";
 import VideoServices from "./components/sections/VideoServices";
+import ServiceArea from "./components/sections/ServiceArea";
 import YouTubePlaylistCTA from "./components/sections/YouTubePlaylistCTA";
 import WelcomeScreen from "./components/welcome/WelcomeScreen";
 import AIChatbot from "./components/AIChatbot";
@@ -137,6 +138,7 @@ const Home = () => {
     <Portfolio />
     <Testimonials />
     <VideoServices />
+    <ServiceArea />
     <GMBOptimizedContact />
   </>
   );
