@@ -12,6 +12,7 @@ import Hero from "./components/sections/Hero";
 import VideoHero from "./components/sections/VideoHero";
 import Portfolio from "./components/sections/Portfolio";
 import Services from "./components/sections/Services";
+import Pricing from "./components/sections/Pricing";
 import Testimonials from "./components/sections/Testimonials";
 import VideoPresentation from "./components/sections/VideoPresentation";
 import VideoServices from "./components/sections/VideoServices";
@@ -128,6 +129,7 @@ const Home = () => {
     <YouTubePlaylistCTA />
     <About />
     <Services />
+    <Pricing />
     <SimpleBlogCTA />
     <FeaturedSnippetsFAQ />
     <AIIntegration />

@@ -1,17 +1,10 @@
 import {
-  Car,
-  FileText,
   Globe,
-  MessageSquare,
-  Palette,
+  Layers,
+  RefreshCw,
   Search,
-  Server,
-  Shield,
-  Wrench,
-  Video,
-  Camera,
-  Brain,
   Bot,
+  Video,
   Sparkles,
 } from "lucide-react";
 import CallToAction from "../common/CallToAction";
@@ -19,86 +12,42 @@ import CallToAction from "../common/CallToAction";
 export default function Services() {
   const services = [
     {
-      icon: <Brain className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
-      title: "Intégration IA & Machine Learning",
+      icon: <Bot className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
+      title: "Intégration IA sur mesure",
       description:
-        "À l'heure de l'IA, propulsez votre business vers le futur ! Chatbots intelligents, assistants virtuels, analyse prédictive, recommandations personnalisées.",
+        "Ajoutez un assistant virtuel intelligent à votre site pour répondre aux questions de vos clients 24h/24, 7j/7",
       highlight: true,
-      features: [
-        "Chatbots conversationnels avec GPT/Claude par exemple",
-        "Analyse automatique de données",
-        "Système de recommandations intelligent",
-        "Vision par ordinateur et traitement d'images",
-      ],
     },
     {
       icon: <Globe className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Sites Web React.js Sur Mesure",
+      title: "Site Vitrine Moderne",
       description:
-        "Développement de sites web modernes et responsifs avec React.js, TypeScript et Node.js. Performance optimisée et SEO intégré.",
+        "Un site professionnel qui vous représente, visible sur Google et référencé par les assistants IA comme ChatGPT ou Claude",
     },
     {
-      icon: <Server className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Applications SaaS Full-Stack",
+      icon: <Layers className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      title: "Site Multi-pages",
       description:
-        "Création d'applications SaaS complètes avec authentification, paiements, API REST et base de données.",
+        "Un site complet avec plusieurs pages, un blog pour votre actualité et un formulaire de contact pour vos prospects",
     },
     {
-      icon: <Wrench className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Refonte de Sites",
+      icon: <RefreshCw className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      title: "Refonte de Site",
       description:
-        "Modernisation et optimisation de sites web existants pour améliorer leurs performances et leur design.",
-    },
-    {
-      icon: <FileText className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Documentation Complète",
-      description:
-        "Rédaction détaillée des spécifications, cahier des charges et documentation technique de votre projet.",
-    },
-    {
-      icon: <Palette className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Design & Maquettes",
-      description:
-        "Création de maquettes personnalisées, rédaction de contenus et retouches graphiques pour votre site.",
+        "Modernisez votre site existant pour une image professionnelle et une meilleure visibilité en ligne",
     },
     {
       icon: <Search className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "SEO Technique & Performance",
+      title: "Référencement Google & IA",
       description:
-        "Optimisation SEO technique, Core Web Vitals, données structurées JSON-LD et compatibilité LLM pour maximiser votre visibilité.",
-    },
-    {
-      icon: <Shield className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Sécurité",
-      description:
-        "Implémentation des meilleures pratiques de sécurité web et maintenance régulière.",
+        "Soyez trouvé sur Google ET recommandé par les intelligences artificielles comme ChatGPT, Claude ou Perplexity",
     },
     {
       icon: <Video className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Montage Vidéo Professionnel",
+      title: "Vidéo & Drone",
       description:
-        "Production vidéo avec Final Cut Pro X sur Mac pour vos contenus marketing et communication d'entreprise.",
-    },
-    {
-      icon: <Camera className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Prises de Vue Drone",
-      description:
-        "Captation aérienne avec DJI Mavic Air pour immobilier, sites industriels et communication d'entreprise.",
+        "Valorisez votre entreprise avec des vidéos professionnelles et des prises de vue aériennes spectaculaires",
       badge: "/assets/images/badge-drone.png",
-    },
-    {
-      icon: <Car className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Déplacement Gratuit",
-      description:
-        "Consultation gratuite sur site pour les entreprises locales (Pau, Orthez, Bayonne, Tarbes).",
-    },
-    {
-      icon: (
-        <MessageSquare className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-      ),
-      title: "Suivi Personnalisé",
-      description:
-        "Contact direct et régulier tout au long du projet pour garantir votre satisfaction.",
     },
   ];
 
@@ -111,7 +60,7 @@ export default function Services() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-              Services Développement Web Expert
+              Mes Services
             </h2>
             <img
               src="/assets/images/badge-dev.png"
@@ -120,8 +69,9 @@ export default function Services() {
             />
           </div>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Solutions digitales modernes avec React.js, Node.js et TypeScript -
-            Performance et SEO garantis
+            Des sites web optimisés pour Google et les assistants IA.
+            <br className="hidden sm:block" />
+            Clients partout en France – déplacement offert dans le 64.
           </p>
         </div>
 
@@ -168,18 +118,6 @@ export default function Services() {
               <p className="text-gray-600 dark:text-gray-300">
                 {service.description}
               </p>
-              {service.features && (
-                <ul className="mt-4 space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <Bot className="h-4 w-4 text-purple-600 dark:text-purple-400 mt-1 flex-shrink-0" />
-                      <span className="text-sm text-gray-600 dark:text-gray-300">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
             </div>
           ))}
         </div>
@@ -187,13 +125,13 @@ export default function Services() {
         <div className="mt-16 text-center">
           <div className="inline-flex flex-col items-center gap-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Prêt à transformer votre vision digitale en réalité ?
+              Un projet en tête ? Parlons-en !
             </p>
             <CallToAction
               variant="gradient"
-              text="Démarrez votre projet maintenant"
-              subtext="Consultation gratuite"
-              icon="message"
+              text="Demander un devis gratuit"
+              subtext="Réponse sous 24h"
+              icon="send"
               size="large"
               href="#contact"
               location="services"
