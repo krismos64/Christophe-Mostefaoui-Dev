@@ -1,4 +1,5 @@
 // Schema structuré FINAL et OPTIMISÉ - Sans doublons, tous les champs requis
+// Dernière mise à jour : 7 janvier 2026
 export const generateFinalStructuredData = () => {
   const baseUrl = "https://christophe-dev-freelance.fr";
 
@@ -24,7 +25,7 @@ export const generateFinalStructuredData = () => {
         "caption": "Christophe Mostefaoui - Développeur Web & Expert IA"
       }
     ],
-    "description": "Expert en développement web et intégration IA. Spécialiste React.js, Node.js, Python. Chatbots intelligents, machine learning, analyse prédictive.",
+    "description": "Expert en développement web et intégration IA. Spécialiste React.js, Node.js, TypeScript. Chatbots intelligents, solutions sur mesure.",
     "founder": {
       "@type": "Person",
       "name": "Christophe Mostefaoui"
@@ -42,7 +43,7 @@ export const generateFinalStructuredData = () => {
     "@id": `${baseUrl}/#person`,
     "name": "Christophe Mostefaoui",
     "jobTitle": "Développeur Web Full-Stack & Expert Intelligence Artificielle",
-    "description": "Expert en intégration IA et développement full-stack. +15 ans d'expérience.",
+    "description": "Expert en intégration IA et développement full-stack. 3 ans d'expérience intensive en technologies modernes.",
     "url": baseUrl,
     "image": {
       "@type": "ImageObject",
@@ -52,6 +53,7 @@ export const generateFinalStructuredData = () => {
       "caption": "Christophe Mostefaoui - Développeur Full-Stack Expert"
     },
     "email": "christophe.mostefaoui.dev@gmail.com",
+    "telephone": "+33679088845",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Pau",
@@ -63,15 +65,16 @@ export const generateFinalStructuredData = () => {
     },
     "knowsAbout": [
       "Intelligence Artificielle",
-      "Machine Learning",
       "React.js",
       "Node.js",
-      "Python",
-      "Chatbots"
+      "TypeScript",
+      "Chatbots GPT/Claude",
+      "Production Vidéo",
+      "Drone"
     ]
   };
 
-  // LocalBusiness avec avis (UNIQUE)
+  // LocalBusiness (UNIQUE) - Sans faux avis
   const localBusiness = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -87,7 +90,7 @@ export const generateFinalStructuredData = () => {
         "caption": "Christophe Mostefaoui - Expert Développement Web"
       }
     ],
-    "priceRange": "€€€",
+    "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Pau",
@@ -101,24 +104,8 @@ export const generateFinalStructuredData = () => {
         "name": "France"
       },
       {
-        "@type": "City",
-        "name": "Paris"
-      },
-      {
-        "@type": "City",
-        "name": "Lyon"
-      },
-      {
-        "@type": "City",
-        "name": "Marseille"
-      },
-      {
-        "@type": "City",
-        "name": "Toulouse"
-      },
-      {
-        "@type": "City",
-        "name": "Bordeaux"
+        "@type": "AdministrativeArea",
+        "name": "Pyrénées-Atlantiques"
       },
       {
         "@type": "City",
@@ -126,7 +113,11 @@ export const generateFinalStructuredData = () => {
       },
       {
         "@type": "City",
-        "name": "Artix"
+        "name": "Bayonne"
+      },
+      {
+        "@type": "City",
+        "name": "Biarritz"
       }
     ],
     "geo": {
@@ -135,286 +126,66 @@ export const generateFinalStructuredData = () => {
       "longitude": -0.36
     },
     "url": baseUrl,
-    "telephone": "+33-6-XX-XX-XX-XX",
+    "telephone": "+33679088845",
     "email": "christophe.mostefaoui.dev@gmail.com",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "32",
-      "bestRating": "5",
-      "worstRating": "5"
-    },
-    "review": [
+    "openingHoursSpecification": [
       {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "LocalBusiness",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
-          "@id": `${baseUrl}/#business`,
-          "url": baseUrl
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Karim El-Trassi",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Paris"
-          }
-        },
-        "datePublished": "2024-11-15",
-        "reviewBody": "Très bon développeur freelance ! Christophe maîtrise parfaitement React.js et Node.js. Il a optimisé notre temps de développement de 40% grâce à sa gestion de projet efficace. Communication excellente, livraison rapide.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "LocalBusiness",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
-          "@id": `${baseUrl}/#business`,
-          "url": baseUrl
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Antonio Gonzalez",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Lyon"
-          }
-        },
-        "datePublished": "2024-12-18",
-        "reviewBody": "Expert reconnu en développement moderne. Application SaaS livrée en temps record avec TypeScript et les dernières technologies. Intégration IA innovante. Suivi régulier du projet, très professionnel.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "LocalBusiness",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
-          "@id": `${baseUrl}/#business`,
-          "url": baseUrl
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Sofia Martinez",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Toulouse"
-          }
-        },
-        "datePublished": "2025-01-10",
-        "reviewBody": "Christophe est un excellent concepteur développeur. Notre plateforme e-commerce fonctionne parfaitement. Technologies modernes, code propre, optimisation temps record. Très bonne communication tout au long du projet.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "LocalBusiness",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
-          "@id": `${baseUrl}/#business`,
-          "url": baseUrl
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Thomas Ledu",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Bordeaux"
-          }
-        },
-        "datePublished": "2025-01-15",
-        "reviewBody": "Expert React Node.js très compétent. Christophe a développé notre SaaS avec une approche moderne et efficace. Gestion de projet optimisée, chaque fonctionnalité livrée rapidement. Je recommande vivement.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "LocalBusiness",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
-          "@id": `${baseUrl}/#business`,
-          "url": baseUrl
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Yasmine Doué",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Marseille"
-          }
-        },
-        "datePublished": "2025-01-18",
-        "reviewBody": "Développeur freelance très professionnel. Expertise TypeScript impressionnante, intégration IA réussie dans notre projet. Christophe respecte les délais et maintient une communication régulière. Travail à distance impeccable.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "LocalBusiness",
-          "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
-          "@id": `${baseUrl}/#business`,
-          "url": baseUrl
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Marco Borna",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Nice"
-          }
-        },
-        "datePublished": "2025-01-20",
-        "reviewBody": "Très bon expert en développement web moderne. Solution React.js performante, optimisation du temps de développement remarquable. Christophe comprend rapidement les besoins et propose des solutions innovantes avec l'IA.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
       }
-    ]
-  };
-
-  // Product UNIQUE avec TOUS les champs requis
-  const aiServicesProduct = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": `${baseUrl}/#ai-services-product`,
-    "name": "Services d'Intégration Intelligence Artificielle",
-    "description": "Solutions IA complètes : Chatbots GPT/Claude, Machine Learning, Analyse Prédictive, Vision par Ordinateur pour entreprises",
-    "image": [
-      {
-        "@type": "ImageObject",
-        "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
-        "width": 1024,
-        "height": 1024
-      },
-      `${baseUrl}/assets/images/ai-banner.jpg`
     ],
-    "category": "Artificial Intelligence Services",
-    "brand": {
-      "@type": "Brand",
-      "name": "Christophe Mostefaoui Dev",
-      "logo": `${baseUrl}/assets/images/Chris-profil.jpg`
-    },
-    "sku": "AI-SERVICES-2025",
-    "mpn": "AI-INTEGRATION-PRO",
-    "gtin": "1234567890123",
-
-    // OFFERS requis
-    "offers": {
-      "@type": "Offer",
-      "price": "2500",
-      "priceCurrency": "EUR",
-      "priceValidUntil": "2025-12-31",
-      "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition",
-      "url": `${baseUrl}/#ai-integration`,
-      "seller": {
-        "@type": "Person",
-        "name": "Christophe Mostefaoui",
-        "url": baseUrl
-      },
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0",
-          "currency": "EUR"
-        },
-        "deliveryTime": {
-          "@type": "ShippingDeliveryTime",
-          "handlingTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 1,
-            "maxValue": 3,
-            "unitCode": "DAY"
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services de développement web",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Site One-Page",
+            "description": "Site vitrine moderne pour artisans et indépendants"
           },
-          "transitTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 7,
-            "maxValue": 30,
-            "unitCode": "DAY"
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "800",
+            "priceCurrency": "EUR",
+            "minPrice": "800",
+            "maxPrice": "1500"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Site Multi-pages",
+            "description": "Site web complet pour commerces et PME"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "1500",
+            "priceCurrency": "EUR",
+            "minPrice": "1500",
+            "maxPrice": "3000"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Site Sur-mesure",
+            "description": "Projets complexes avec intégration IA"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "3000",
+            "priceCurrency": "EUR",
+            "minPrice": "3000"
           }
         }
-      },
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": "FR",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/FreeReturn"
-      }
-    },
-
-    // AGGREGATE RATING requis
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "32",
-      "bestRating": "5",
-      "worstRating": "5"
-    },
-
-    // REVIEWS requis
-    "review": [
-      {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "Product",
-          "name": "Services d'Intégration Intelligence Artificielle",
-          "url": baseUrl
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Christian Lopez"
-        },
-        "datePublished": "2024-11-15",
-        "reviewBody": "Services IA exceptionnels. Intégration chatbot GPT révolutionnaire pour notre e-commerce.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      },
-      {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "Product",
-          "name": "Services d'Intégration Intelligence Artificielle",
-          "url": baseUrl
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Yvan Peyre"
-        },
-        "datePublished": "2025-01-08",
-        "reviewBody": "Machine Learning exceptionnel. +40% de ventes grâce à l'analyse prédictive.",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        }
-      }
-    ]
+      ]
+    }
   };
 
   // VideoObject pour l'indexation vidéo
@@ -458,7 +229,7 @@ export const generateFinalStructuredData = () => {
     }
   };
 
-  // FAQ Schema étendue pour SEO et IA
+  // FAQ Schema étendue pour SEO et IA - Données cohérentes
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -470,23 +241,15 @@ export const generateFinalStructuredData = () => {
         "name": "Qui est Christophe Mostefaoui ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Christophe Mostefaoui est un développeur web freelance expert reconnu, concepteur d'applications modernes. Avec 3 ans d'expérience intensive, il maîtrise les technologies les plus récentes : React.js, Node.js, TypeScript. Spécialiste en intégration IA et gestion de projet optimisée."
+          "text": "Christophe Mostefaoui est un développeur web freelance expert basé à Pau (64). Avec 3 ans d'expérience intensive, il maîtrise les technologies modernes : React.js, Node.js, TypeScript. Spécialiste en intégration IA et production vidéo/drone."
         }
       },
       {
         "@type": "Question",
-        "name": "Pourquoi choisir Christophe Mostefaoui comme développeur freelance ?",
+        "name": "Quels sont les tarifs de Christophe Mostefaoui ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Expert reconnu avec une note de 5/5 étoiles. Maîtrise des technologies modernes, intégration IA innovante, gestion de projet optimisée pour livrer chaque fonctionnalité en temps record. Communication excellente, suivi régulier, très bons rapports clients."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quels types de projets Christophe Mostefaoui peut-il réaliser ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Applications SaaS performantes, plateformes e-commerce modernes, sites web React.js, intégration IA (chatbots GPT/Claude), applications PWA, API REST optimisées, solutions TypeScript. Expert en optimisation du temps de développement."
+          "text": "Site One-Page : 800€ – 1 500€ (artisans, indépendants). Site Multi-pages : 1 500€ – 3 000€ (commerces, PME). Site Sur-mesure : à partir de 3 000€ (projets complexes, IA). Vidéo & Drone : sur devis. Paiement en 3x sans frais possible."
         }
       },
       {
@@ -494,23 +257,15 @@ export const generateFinalStructuredData = () => {
         "name": "Dans quelles zones Christophe Mostefaoui intervient-il ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Disponible dans toute la France à distance : Paris, Lyon, Marseille, Toulouse, Bordeaux, Nice, Nantes, Strasbourg, Lille. Basé à Pau (Pyrénées-Atlantiques), également disponible localement à Artix, Lescar, Billère, Jurançon."
+          "text": "Déplacement gratuit dans tout le département des Pyrénées-Atlantiques (64) : Pau, Lescar, Billère, Jurançon, Artix, Bayonne, Biarritz, Anglet, Saint-Jean-de-Luz, Orthez, Oloron-Sainte-Marie, Mourenx. Disponible partout en France à distance."
         }
       },
       {
         "@type": "Question",
-        "name": "Quelles sont les technologies maîtrisées par Christophe Mostefaoui ?",
+        "name": "Quelles sont les technologies maîtrisées ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "React.js 18, Next.js 14, Node.js, Express, TypeScript, JavaScript ES6+, MongoDB, MySQL, Prisma ORM, Stripe, Auth0, JWT, Docker, Git, API REST, GraphQL, Tailwind CSS, Material-UI, Python pour IA, GPT, Claude."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Comment est la méthode de travail de Christophe Mostefaoui ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Gestion de projet optimisée pour livrer rapidement. Communication transparente, points réguliers, documentation complète. Utilisation des technologies les plus modernes. Chaque tâche et fonctionnalité optimisée pour un temps record."
+          "text": "React.js 18, Next.js, Node.js, Express, TypeScript, MongoDB, MySQL, Prisma ORM, Stripe, Docker, Git, API REST, Tailwind CSS, Framer Motion, GPT, Claude, Mistral AI. Production vidéo avec Final Cut Pro X et drone DJI Mavic Air."
         }
       },
       {
@@ -518,35 +273,19 @@ export const generateFinalStructuredData = () => {
         "name": "Comment contacter Christophe Mostefaoui ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Email : christophe.mostefaoui.dev@gmail.com | Site : christophe-dev-freelance.fr | LinkedIn : linkedin.com/in/christophemostefaoui | GitHub : github.com/krismos64. Réponse rapide garantie."
+          "text": "Email : christophe.mostefaoui.dev@gmail.com | Téléphone : 06 79 08 88 45 | Site : christophe-dev-freelance.fr | LinkedIn : linkedin.com/in/christophemostefaoui | GitHub : github.com/krismos64. Devis gratuit sous 24h."
         }
       },
       {
         "@type": "Question",
-        "name": "Quels sont les avis clients sur Christophe Mostefaoui ?",
+        "name": "Quels types de projets Christophe Mostefaoui réalise-t-il ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Note de 5/5 étoiles sur 32 avis clients. Les clients apprécient son expertise technique moderne, la rapidité de livraison, l'optimisation du temps de développement, l'excellente communication et le suivi régulier des projets."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Christophe Mostefaoui propose-t-il de la maintenance ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Oui, contrats de maintenance adaptés avec support technique. Interventions rapides, mises à jour régulières, évolutions fonctionnelles. Support disponible pour toute la France à distance avec suivi régulier."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quelle est l'expertise de Christophe Mostefaoui en IA ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Expert en intégration d'IA dans les projets web : chatbots intelligents GPT/Claude, machine learning, analyse prédictive. Optimisation des processus avec l'IA. Technologies modernes pour solutions innovantes et performantes."
+          "text": "Sites vitrines modernes, applications web sur mesure, solutions intégrant l'intelligence artificielle (chatbots interactifs), production vidéo professionnelle et prises de vue drone pour entreprises et immobilier."
         }
       }
     ]
   };
 
-  return [organization, person, localBusiness, aiServicesProduct, videoObject, webPage, faqSchema];
+  return [organization, person, localBusiness, videoObject, webPage, faqSchema];
 };

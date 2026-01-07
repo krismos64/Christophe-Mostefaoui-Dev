@@ -1,9 +1,9 @@
 {
   "schema_version": "v1",
-  "name_for_human": "Christophe Mostefaoui - Développeur Web Expert",
+  "name_for_human": "Christophe Mostefaoui - Développeur Web & Expert IA",
   "name_for_model": "christophe_dev_freelance",
-  "description_for_human": "Développeur web full-stack freelance expert à Pau. Spécialiste React.js, Node.js, TypeScript. Création d'applications SaaS, e-commerce et intégration d'IA.",
-  "description_for_model": "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 7+ ans d'expérience. Il est expert en React.js, Node.js, TypeScript et spécialisé dans la création d'applications SaaS, plateformes e-commerce et intégration d'IA conversationnelle. Ses projets phares incluent Staka Livres (10,000+ livres) et SmartPlanning (SaaS de gestion de planning). Il propose des services de développement web sur mesure, maintenance, et consulting technique. Tarifs: TJM 250€, sites vitrines dès 1,000€, applications web dès 3,000€. Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45. Site: https://christophe-dev-freelance.fr",
+  "description_for_human": "Développeur web full-stack freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript. Sites vitrines, applications sur mesure, intégration IA et production vidéo/drone.",
+  "description_for_model": "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 3 ans d'expérience intensive en technologies modernes. Expert en React.js, Node.js, TypeScript. Spécialisé dans les sites vitrines, applications sur mesure et intégration d'IA conversationnelle (GPT, Claude, Mistral). Propose également des services de production vidéo (Final Cut Pro X) et prises de vue drone (DJI Mavic Air). Tarifs: Site One-Page 800€-1500€, Site Multi-pages 1500€-3000€, Sur-mesure à partir de 3000€, Vidéo/Drone sur devis. Paiement en 3x sans frais possible. Déplacement gratuit dans les Pyrénées-Atlantiques (64), disponible partout en France à distance. Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45. Site: https://christophe-dev-freelance.fr",
   "auth": {
     "type": "none"
   },
@@ -24,52 +24,48 @@
     "url": "https://christophe-dev-freelance.fr/chatbot-knowledge.txt",
     "format": "text/plain",
     "language": "fr",
-    "last_updated": "2025-01-15"
+    "last_updated": "2026-01-07"
   },
   "services": [
     {
-      "name": "Développement Applications Web",
-      "description": "Applications web sur mesure avec React.js, Node.js, TypeScript",
-      "pricing_start": "3000€"
+      "name": "Site One-Page",
+      "description": "Site vitrine moderne pour artisans et indépendants",
+      "pricing": "800€ - 1 500€"
     },
     {
-      "name": "Plateformes SaaS",
-      "description": "Solutions SaaS multi-entreprises avec synchronisation temps réel",
+      "name": "Site Multi-pages",
+      "description": "Site web complet pour commerces et PME",
+      "pricing": "1 500€ - 3 000€"
+    },
+    {
+      "name": "Site Sur-mesure",
+      "description": "Projets complexes avec intégration IA (chatbots GPT/Claude)",
+      "pricing": "À partir de 3 000€"
+    },
+    {
+      "name": "Production Vidéo & Drone",
+      "description": "Montage vidéo professionnel (Final Cut Pro X) et prises de vue drone (DJI Mavic Air)",
       "pricing": "Sur devis"
-    },
-    {
-      "name": "E-commerce",
-      "description": "Boutiques en ligne avec paiement intégré (Stripe, PayPal)",
-      "pricing_start": "5000€"
-    },
-    {
-      "name": "Intégration IA",
-      "description": "Chatbots conversationnels avec ChatGPT, Claude, Mistral",
-      "pricing": "Sur devis"
-    },
-    {
-      "name": "Sites Vitrines",
-      "description": "Sites web modernes optimisés SEO",
-      "pricing_start": "1000€"
     }
   ],
   "tech_stack": {
-    "frontend": ["React.js", "TypeScript", "Next.js", "TailwindCSS", "Framer Motion"],
-    "backend": ["Node.js", "Express", "GraphQL", "WebSockets"],
-    "databases": ["MySQL", "MongoDB", "PostgreSQL", "Prisma ORM"],
-    "ai": ["OpenAI", "Anthropic Claude", "Mistral AI"],
-    "devops": ["Docker", "CI/CD", "GitHub Actions"]
+    "frontend": ["React.js 18", "TypeScript", "Next.js", "TailwindCSS", "Framer Motion"],
+    "backend": ["Node.js", "Express", "API REST"],
+    "databases": ["MySQL", "MongoDB", "Prisma ORM"],
+    "ai": ["OpenAI GPT", "Anthropic Claude", "Mistral AI"],
+    "video": ["Final Cut Pro X", "DJI Mavic Air"],
+    "devops": ["Docker", "Git", "GitHub"]
   },
   "locations": {
     "primary": "Pau/Artix, Pyrénées-Atlantiques (64)",
-    "service_area": "France entière (remote)",
-    "on_site": "Pyrénées-Atlantiques avec déplacements gratuits"
+    "free_travel_zone": "Tout le département des Pyrénées-Atlantiques (64): Pau, Lescar, Billère, Jurançon, Artix, Bayonne, Biarritz, Anglet, Saint-Jean-de-Luz, Orthez, Oloron-Sainte-Marie, Mourenx",
+    "remote_service": "France entière à distance (visioconférence, partage d'écran)"
   },
   "projects": [
     {
       "name": "Staka Livres",
       "url": "https://livresstaka.fr",
-      "description": "Plateforme e-commerce 10,000+ livres d'occasion",
+      "description": "Plateforme e-commerce de livres d'occasion",
       "tech": ["React", "Node.js", "MySQL", "Stripe"]
     },
     {
@@ -84,12 +80,18 @@
     "phone": "+33679088845",
     "website": "https://christophe-dev-freelance.fr",
     "github": "https://github.com/krismos64",
-    "linkedin": "https://www.linkedin.com/in/christophemostefaoui/",
-    "video_pitch": "https://www.youtube.com/watch?v=eZ6OYMeT1CM"
+    "linkedin": "https://www.linkedin.com/in/christophemostefaoui/"
+  },
+  "payment": {
+    "installments": "Paiement en 3x sans frais possible",
+    "deposit": "30% à la validation du devis",
+    "midterm": "40% à mi-parcours",
+    "final": "30% à la livraison"
   },
   "availability": {
     "status": "available",
     "response_time": "24h",
-    "start_time": "1 semaine"
+    "quote_time": "Devis gratuit sous 24h",
+    "start_time": "Démarrage sous 1 semaine"
   }
 }

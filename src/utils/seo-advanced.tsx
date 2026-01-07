@@ -56,11 +56,11 @@ export const generateAdvancedStructuredData = () => {
     "givenName": "Christophe",
     "familyName": "Mostefaoui",
     "jobTitle": "Concepteur/Développeur d'applications web modernes & Expert IA",
-    "description": "Expert en intégration IA et développement full-stack. 15+ ans d'expérience. Spécialiste React.js, Node.js, Python, Machine Learning.",
+    "description": "Expert en intégration IA et développement full-stack. 3 ans d'expérience intensive. Spécialiste React.js, Node.js, TypeScript.",
     "url": baseUrl,
     "image": profileImage,
     "email": "christophe.mostefaoui.dev@gmail.com",
-    "telephone": "+33-6-XX-XX-XX-XX",
+    "telephone": "+33679088845",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Pau",
@@ -92,7 +92,7 @@ export const generateAdvancedStructuredData = () => {
             "unitText": "DAY"
           }
         },
-        "experienceRequirements": "15+ années d'expérience",
+        "experienceRequirements": "3 ans d'expérience intensive",
         "skills": "React.js, Node.js, TypeScript, Python, IA/ML"
       },
       {
@@ -288,8 +288,7 @@ export const generateAdvancedStructuredData = () => {
       "longitude": -0.36
     },
     "url": baseUrl,
-    "telephone": "+33-6-XX-XX-XX-XX",
-    "priceRange": "€€€",
+    "telephone": "+33679088845",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -298,13 +297,7 @@ export const generateAdvancedStructuredData = () => {
         "closes": "18:00"
       }
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "24",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    "priceRange": "€€"
   };
 
   // FAQ Schema supprimé - maintenant géré dans structured-data-final.tsx pour éviter les doublons
@@ -355,7 +348,7 @@ export const generateLLMOptimizedMeta = () => {
     "ai-content-type": "professional-portfolio",
     "ai-expertise": "AI-integration, machine-learning, chatbots, web-development",
     "ai-technologies": "React.js, Node.js, TypeScript, Python, TensorFlow, GPT, Claude",
-    "ai-services": "AI-chatbots, predictive-analytics, computer-vision, NLP, SaaS-development",
+    "ai-services": "Sites vitrines, Applications sur mesure, Chatbots GPT/Claude, Production vidéo, Drone DJI Mavic Air",
     "ai-location": "Pau, France, Pyrénées-Atlantiques, 64000",
     "ai-languages": "French, English",
     "ai-contact": "christophe.mostefaoui.dev@gmail.com",
@@ -364,11 +357,11 @@ export const generateLLMOptimizedMeta = () => {
 
     // Contexte enrichi pour LLM
     "llm-context":
-      "Christophe Mostefaoui is an AI integration expert and full-stack developer based in Pau, France. Specializes in GPT/Claude chatbots, machine learning solutions, React.js, Node.js, and Python development.",
+      "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 3 ans d'expérience intensive. Expert React.js, Node.js, TypeScript. Services: sites vitrines (800-1500€), sites multi-pages (1500-3000€), sur-mesure avec IA (3000€+), vidéo/drone. Déplacement gratuit dans le 64, disponible partout en France à distance.",
     "llm-capabilities":
-      "AI chatbot development, machine learning model training, predictive analytics, computer vision, natural language processing, SaaS application development, e-commerce solutions, educational content production",
-    "llm-portfolio": "LivresStaka.fr (e-commerce), SmartPlanning.fr (SaaS), Methodea.fr (corporate site)",
-    "llm-availability": "Available for freelance projects, AI consulting, remote work, on-site in Southwest France",
+      "Sites vitrines modernes, applications web sur mesure, intégration IA (chatbots GPT/Claude/Mistral), production vidéo (Final Cut Pro X), prises de vue drone (DJI Mavic Air)",
+    "llm-portfolio": "LivresStaka.fr (e-commerce), SmartPlanning.fr (SaaS)",
+    "llm-availability": "Disponible pour nouveaux projets. Devis gratuit sous 24h. Déplacement gratuit Pyrénées-Atlantiques (64), France entière à distance.",
 
     // Tags sémantiques
     "semantic-keywords":
@@ -376,10 +369,10 @@ export const generateLLMOptimizedMeta = () => {
     "semantic-entities": "Christophe Mostefaoui, Pau, Pyrénées-Atlantiques, France, OpenAI, Anthropic, React, Node, TypeScript, Python, TensorFlow",
 
     // Informations business
-    "business-type": "B2B, B2C, Freelance, Consulting",
-    "business-sector": "Technology, AI, Web Development, Software Engineering",
+    "business-type": "B2B, B2C, Freelance",
+    "business-sector": "Technology, AI, Web Development, Video Production",
     "business-size": "Freelancer, 1 person",
-    "business-experience": "15+ years",
-    "business-rate": "400-800€/day"
+    "business-experience": "3 ans d'expérience intensive",
+    "business-pricing": "Site One-Page 800-1500€, Site Multi-pages 1500-3000€, Sur-mesure à partir de 3000€"
   };
 };

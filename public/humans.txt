@@ -1,0 +1,24 @@
+/* TEAM */
+Développeur: Christophe Mostefaoui
+Site: https://christophe-dev-freelance.fr
+Email: christophe.mostefaoui.dev@gmail.com
+Téléphone: 06 79 08 88 45
+Localisation: Pau (64), Pyrénées-Atlantiques, France
+LinkedIn: https://www.linkedin.com/in/christophemostefaoui/
+GitHub: https://github.com/krismos64
+
+/* SITE */
+Dernière mise à jour: 2026-01-07
+Standards: HTML5, CSS3, ES6+
+Technologies: React.js 18, TypeScript, Vite, TailwindCSS, Framer Motion
+Hébergement: Hostinger
+
+/* SERVICES */
+Sites vitrines: 800€ - 1 500€
+Sites multi-pages: 1 500€ - 3 000€
+Sites sur-mesure: À partir de 3 000€
+Vidéo & Drone: Sur devis
+
+/* ZONE D'INTERVENTION */
+Déplacement gratuit: Pyrénées-Atlantiques (64)
+À distance: France entière

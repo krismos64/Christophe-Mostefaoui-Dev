@@ -1,6 +1,6 @@
 # Robots.txt optimisé pour Christophe Mostefaoui - Développeur Web & Expert IA
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 2025
+# Dernière mise à jour: 7 janvier 2026
 
 # === BOTS DE RECHERCHE PRINCIPAUX ===
 User-agent: *
@@ -111,19 +111,20 @@ User-agent: Bytespider
 Disallow: /
 
 # === BASE DE CONNAISSANCES IA ===
-# Fichier spécial pour LLM (ChatGPT, Claude, Perplexity, etc.)
-# Contient toutes les informations sur services, tarifs, projets
+# Fichiers spéciaux pour LLM (ChatGPT, Claude, Perplexity, etc.)
 AI-Knowledge-Base: /chatbot-knowledge.txt
+LLMs-Info: /llms.txt
+AI-Plugin: /.well-known/ai-plugin.json
 
 # === SITEMAP & DIRECTIVES ===
 Sitemap: https://christophe-dev-freelance.fr/sitemap.xml
 
 # === NOTES POUR LES CRAWLERS ===
 # Développeur Web Freelance Expert - Christophe Mostefaoui
-# Technologies: React.js, Node.js, TypeScript, Python, IA/ML
-# Services: Applications SaaS, E-commerce, Intégration IA, Chatbots GPT/Claude
-# Zones d'intervention: France entière à distance
-# Localisations: Paris, Lyon, Marseille, Toulouse, Bordeaux, Nice, Nantes, Pau, Artix
-# Expertise: 3 ans d'expérience intensive, technologies modernes, gestion projet optimisée
-# Avis clients: 5/5 étoiles (32 avis), Expert reconnu, Livraison temps record
-# Contact: christophe.mostefaoui.dev@gmail.com
+# Technologies: React.js, Node.js, TypeScript, Intégration IA
+# Services: Sites vitrines, Applications sur mesure, Chatbots GPT/Claude, Production vidéo, Drone
+# Tarifs: Site One-Page 800-1500€, Site Multi-pages 1500-3000€, Sur-mesure à partir de 3000€
+# Zone d'intervention: Déplacement gratuit dans le 64 (Pyrénées-Atlantiques), France entière à distance
+# Expertise: 3 ans d'expérience intensive en technologies modernes
+# Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45
+# Dernière mise à jour: 7 janvier 2026

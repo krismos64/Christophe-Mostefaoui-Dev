@@ -15,7 +15,7 @@
 ### Profil
 - Âge : 37 ans
 - Statut : Freelance Full-Stack MERN + Symfony
-- Années d'expérience : 7+ ans
+- Années d'expérience : 3 ans d'expérience intensive
 
 ## Services Proposés
 
@@ -36,6 +36,12 @@ Sites web modernes, optimisés SEO, avec design responsive et animations fluides
 
 ### 6. Maintenance et Évolutions
 Support technique réactif, maintenance corrective et évolutive, optimisations de performance et mises à jour de sécurité.
+
+### 7. Production Vidéo et Drone
+- Montage vidéo professionnel (Final Cut Pro X)
+- Prises de vue drone (DJI Mavic Air)
+- Vidéos promotionnelles pour entreprises et immobilier
+- Export 4K haute qualité
 
 ## Compétences Techniques
 
@@ -119,25 +125,23 @@ Nombreux sites vitrines modernes créés pour TPE/PME :
 
 ## Tarifs
 
-### Taux Journalier Moyen (TJM)
-**250€/jour** pour missions longues (1 mois+)
-
 ### Projets au Forfait
-- **Site vitrine** : à partir de 1,000€
-- **Application web simple** : à partir de 3,000€
-- **E-commerce complet** : à partir de 5,000€
-- **Plateforme SaaS** : sur devis personnalisé (généralement 10,000€+)
+- **Site One-Page** : 800€ – 1 500€ (idéal artisans, indépendants)
+- **Site Multi-pages** : 1 500€ – 3 000€ (commerces, PME)
+- **Site Sur-mesure** : À partir de 3 000€ (projets complexes, intégration IA)
+- **Vidéo & Drone** : Sur devis
 
-### Maintenance
-- **Forfait maintenance mensuelle** : à partir de 80€/mois
-- Inclut : mises à jour de sécurité, support technique, corrections de bugs
+### Modalités de Paiement
+- 💳 **Paiement en 3x sans frais possible**
+- 30% à la validation du devis
+- 40% à mi-parcours
+- 30% à la livraison
 
 ### Services Complémentaires
-- **Audit technique** : 300€
-- **Consulting (1h)** : 80€
-- **Formation client** : 400€/jour
+- **Maintenance et évolutions** : Sur devis selon besoins
+- **Formation client** : Incluse dans chaque projet
 
-💡 **Offre Actuelle** : Audit gratuit de 30 minutes pour tout nouveau projet
+💡 **Offre Actuelle** : Devis gratuit et sans engagement sous 24h
 
 ## Méthode de Travail
 
@@ -210,8 +214,11 @@ Support réactif (réponse sous 24h), corrections de bugs et évolutions fonctio
 ## Disponibilité
 
 ### Modes de Travail
-- **Remote** : Pour toute la France
-- **Présentiel** : Pyrénées-Atlantiques (64) avec déplacements gratuits possibles dans un rayon de 50km
+- **Remote** : Disponible partout en France à distance (visioconférence, partage d'écran, messagerie)
+- **Présentiel** : Déplacement gratuit dans tout le département des Pyrénées-Atlantiques (64)
+  - Pau, Lescar, Billère, Jurançon, Artix
+  - Bayonne, Biarritz, Anglet, Saint-Jean-de-Luz
+  - Orthez, Oloron-Sainte-Marie, Mourenx
 
 ### Planning
 - Disponible pour missions courtes (1 semaine) ou longues (plusieurs mois)
@@ -259,7 +266,7 @@ Support réactif (réponse sous 24h), corrections de bugs et évolutions fonctio
 Maîtrise complète de la stack MERN (MongoDB, Express, React, Node.js) et Symfony pour des solutions robustes et évolutives.
 
 ### ✅ Projets Réels et Concrets
-Plus de 50 projets livrés avec succès, dont des plateformes gérant des milliers d'utilisateurs quotidiens.
+Projets livrés avec succès, dont des plateformes gérant des milliers d'utilisateurs quotidiens.
 
 ### ✅ Approche Moderne et Innovante
 Toujours à la pointe des dernières technologies (React 18, TypeScript, Next.js 14, IA conversationnelle).
@@ -279,10 +286,9 @@ Ne vous laisse pas tomber après la mise en ligne : support technique réactif e
 ## FAQ - Questions Fréquentes
 
 ### Combien de temps pour développer mon projet ?
-- Site vitrine : 1 à 2 semaines
-- Application web simple : 3 à 6 semaines
-- Plateforme SaaS : 2 à 6 mois
-- E-commerce : 1 à 3 mois
+- Site One-Page : 1 à 2 semaines
+- Site Multi-pages : 2 à 4 semaines
+- Site Sur-mesure / IA : 3 à 6 semaines ou plus selon complexité
 
 *Ces délais sont indicatifs et dépendent de la complexité du projet.*
 
@@ -295,7 +301,7 @@ Oui, deux options :
 Absolument ! J'accompagne tous types de structures, du micro-entrepreneur à la PME.
 
 ### Proposez-vous un paiement échelonné ?
-Oui, paiement en plusieurs fois possible :
+Oui, paiement en 3x sans frais possible :
 - 30% à la validation du devis
 - 40% à mi-parcours
 - 30% à la livraison
@@ -371,6 +377,9 @@ https://www.youtube.com/watch?v=eZ6OYMeT1CM
 **Christophe Mostefaoui**
 Développeur Web Full-Stack Freelance Expert
 Pau (64) - Pyrénées-Atlantiques
-Spécialiste React.js, Node.js, TypeScript & IA
+Spécialiste React.js, Node.js, TypeScript, IA & Production Vidéo/Drone
 
 *Transformons ensemble vos idées en applications web performantes* 🚀
+
+---
+*Dernière mise à jour : 7 janvier 2026*
