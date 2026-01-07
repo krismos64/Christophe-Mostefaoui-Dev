@@ -8,12 +8,10 @@ import AIIntegration from "./components/sections/AIIntegration";
 import Contact from "./components/sections/Contact";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
-import VideoHero from "./components/sections/VideoHero";
+import VideoShowcase from "./components/sections/VideoShowcase";
 import Portfolio from "./components/sections/Portfolio";
 import Services from "./components/sections/Services";
 import Pricing from "./components/sections/Pricing";
-import Testimonials from "./components/sections/Testimonials";
-import VideoPresentation from "./components/sections/VideoPresentation";
 import VideoServices from "./components/sections/VideoServices";
 import ServiceArea from "./components/sections/ServiceArea";
 import WelcomeScreen from "./components/welcome/WelcomeScreen";
@@ -22,7 +20,6 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { useStructuredData } from "./hooks/useStructuredData";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
 import VideoSEOHead from "./components/seo/VideoSEOHead";
-import HiddenReviews from "./components/seo/HiddenReviews";
 import GMBOptimizedContact from "./components/seo/GMBOptimizedContact";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 
@@ -39,7 +36,6 @@ const Home = () => {
     final: finalStructuredData,
     video: videoStructuredData,
     location: locationStructuredData,
-    googleStars: googleStarsData,
     localSEO: localSEOData,
     viralVideo: viralVideoData,
   } = useStructuredData();
@@ -76,15 +72,6 @@ const Home = () => {
       />
     ))}
 
-    {/* Données optimisées pour affichage étoiles Google */}
-    {googleStarsData.map((starsData, index) => (
-      <script
-        key={`stars-data-${index}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(starsData) }}
-      />
-    ))}
-
     {/* Données SEO local pour GMB */}
     {localSEOData.map((localData, index) => (
       <script
@@ -103,26 +90,14 @@ const Home = () => {
       />
     ))}
 
-
-    {/* Témoignages cachés pour SEO */}
-    <HiddenReviews />
-
     <Hero />
-    <VideoHero />
-    <VideoPresentation
-      youtubeUrl="https://www.youtube.com/embed/tdjXblz4mr4"
-      videoTitle="Christophe Mostefaoui - Développeur Web Full-Stack Expert à Pau | React.js Node.js TypeScript"
-      videoDescription="Découvrez mon expertise, concepteur développeur d'applications freelance spécialisé en React.js, Node.js et TypeScript. Création d'applications SaaS performantes, solutions e-commerce sur mesure et sites web modernes à Pau et dans les Pyrénées-Atlantiques. Services de développement web professionnel pour entreprises, associations et particuliers."
-      videoDuration="PT2M30S"
-      videoThumbnail="/assets/images/Christophe-freelance.png"
-    />
+    <VideoShowcase />
     <About />
     <Services />
     <Pricing />
     <FeaturedSnippetsFAQ />
     <AIIntegration />
     <Portfolio />
-    <Testimonials />
     <VideoServices />
     <ServiceArea />
     <GMBOptimizedContact />

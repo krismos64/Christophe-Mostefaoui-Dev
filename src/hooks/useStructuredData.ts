@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { generateFinalStructuredData } from "../utils/structured-data-final";
 import { generateVideoStructuredData } from "../utils/video-seo-optimization";
 import { generateLocationStructuredData } from "../utils/seo-location-data";
-import { generateGoogleStarsSchema } from "../utils/google-stars-optimization";
 import { generateLocalSEOSchema } from "../utils/local-seo-schema";
 import { generateViralVideoSEO } from "../utils/viral-video-seo";
 
@@ -17,7 +16,6 @@ export function useStructuredData() {
       final: generateFinalStructuredData(),
       video: generateVideoStructuredData(),
       location: generateLocationStructuredData(),
-      googleStars: generateGoogleStarsSchema(),
       localSEO: generateLocalSEOSchema(),
       viralVideo: generateViralVideoSEO(),
     };

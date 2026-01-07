@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import {
-  Bot,
   Brain,
   Sparkles,
   MessageSquare,
   TrendingUp,
   Eye,
   BarChart3,
-  Users,
   Zap,
   Shield,
   Code2,
@@ -268,63 +266,6 @@ export default function AIIntegration() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Process Timeline */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Votre Projet IA en 4 Étapes
-          </h3>
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Line connectrice */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 to-pink-600 hidden md:block"></div>
-
-              {[
-                {
-                  title: "Analyse & Conseil",
-                  description:
-                    "Audit de vos besoins, identification des opportunités IA",
-                  icon: <Brain />,
-                },
-                {
-                  title: "Conception Sur Mesure",
-                  description:
-                    "Architecture de la solution, choix des modèles IA adaptés",
-                  icon: <Code2 />,
-                },
-                {
-                  title: "Développement & Tests",
-                  description:
-                    "Implémentation, entraînement des modèles, validation",
-                  icon: <Bot />,
-                },
-                {
-                  title: "Déploiement & Suivi",
-                  description:
-                    "Mise en production, monitoring, optimisation continue",
-                  icon: <Users />,
-                },
-              ].map((step, index) => (
-                <div
-                  key={index}
-                  className="relative flex items-start gap-4 mb-8"
-                >
-                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center text-white shadow-lg z-10">
-                    {step.icon}
-                  </div>
-                  <div className="flex-1 pt-2">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                      {index + 1}. {step.title}
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 

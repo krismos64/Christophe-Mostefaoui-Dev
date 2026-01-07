@@ -526,43 +526,6 @@ Message envoyé depuis le formulaire de contact GMB du site christophe-dev-freel
           </motion.div>
         </div>
 
-        {/* Badges confiance avec animations */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-        >
-          {[
-            { value: "5.0⭐", label: "Note clients", color: "yellow", icon: "⭐" },
-            { value: "47", label: "Avis positifs", color: "green", icon: "👥" },
-            { value: "3 ans", label: "Expérience", color: "blue", icon: "🎯" },
-            { value: "24h", label: "Délai réponse", color: "purple", icon: "⚡" }
-          ].map((badge, index) => (
-            <motion.div
-              key={badge.label}
-              className="bg-white/70 dark:bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-gray-200 dark:border-white/20 hover:bg-white/80 dark:hover:bg-white/15 transition-all duration-300 group cursor-pointer"
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
-              <motion.div
-                className="text-4xl mb-2"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.4 + index * 0.1, type: "spring", stiffness: 300 }}
-              >
-                {badge.icon}
-              </motion.div>
-              <div className={`text-3xl font-bold text-${badge.color}-400 mb-2 group-hover:scale-110 transition-transform`}>
-                {badge.value}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-blue-200 font-medium">{badge.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Schema markup caché pour GMB */}
         <script type="application/ld+json">
           {JSON.stringify({
