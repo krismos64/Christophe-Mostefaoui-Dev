@@ -1,180 +1,132 @@
-import { ExternalLink } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
 import CallToAction from "../common/CallToAction";
 import { Helmet } from "react-helmet-async";
 
 export default function Portfolio() {
   const projects = [
     {
-      title: "methodea.fr",
-      description:
-        "Refonte site vitrine moderne et responsive pour methodea.fr, création d'un formaulaire de contact relié au mail de mon client",
-      image: "/assets/images/methodea.png",
-      alt: "Sites web methodea.fr",
-      tech: [
-        "HTML",
-        "Css modules",
-        "Javascript",
-        "SEO optimisé",
-        "Formulaire de contact",
-      ],
-      link: "https://methodea.netlify.app/",
-    },
-    {
-      title: "coachtfe.fr",
-      description:
-        "Refonte site vitrine moderne et responsive pour coachtfe.fr, création d'un formaulaire de contact relié au mail de mon client",
-      image: "/assets/images/coachtfe.png",
-      alt: "Sites web coachtfe.fr",
-      tech: [
-        "HTML",
-        "Css modules",
-        "Javascript",
-        "SEO optimisé",
-        "Formulaire de contact",
-      ],
-      link: "https://coachtfe.fr/",
-    },
-    {
-      title: "Cabinet infirmier Graslin Nantes",
-      description:
-        "Site vitrine moderne et responsive pour le Cabinet Infirmier Graslin situé à Nantes, quartier Graslin.",
-      image: "/assets/images/graslin.jpg",
-      alt: "Cabinet infirmier Nantes, site web vitrine cabinet infirmier",
-      tech: ["React", "Css modules", "Lottie animations", "SEO optimisé"],
-      link: "https://cabinet-infirmier-graslin.fr/",
-    },
-    {
       title: "LivresStaka.fr",
       description:
-        "Plateforme web enterprise-grade dédiée aux services de correction et d'édition de manuscrits. Cette application monorepo sophistiquée offre une expérience complète aux auteurs avec authentification sécurisée, administration avancée, paiements Stripe intégrés et système de messagerie temps réel. Réalisé from scratch.",
+        "Une plateforme complète pour accompagner les auteurs dans la correction et l'édition de leurs manuscrits. Espace client sécurisé, paiement en ligne et messagerie intégrée pour échanger facilement avec l'équipe éditoriale.",
       image: "/assets/images/livrestaka.jpg",
-      alt: "Projet LivresStaka.fr, plateforme de gestion de livres",
-      tech: ["React", "Node.js", "Express", "TypeScript", "MySQL", "API"],
+      alt: "LivresStaka - Plateforme d'édition et correction de manuscrits",
+      tags: ["Plateforme sur mesure", "Paiement en ligne", "Espace client"],
       link: "https://livrestaka.fr/",
     },
     {
       title: "SmartPlanning.fr",
       description:
-        "SmartPlanning est une application SaaS complète de gestion intelligente des plannings d'équipe avec intégration IA, développée en TypeScript pour une gestion optimisée des ressources humaines. L'application utilise une architecture moderne séparée (frontend React/backend Node.js) avec des fonctionnalités d'IA avancées pour l'optimisation automatique des plannings.",
+        "Application de gestion des plannings d'équipe avec assistant intelligent intégré. Optimisez automatiquement les emplois du temps de vos collaborateurs et gagnez des heures de travail chaque semaine.",
       image: "/assets/images/business-smartplanning.webp",
-      alt: "Projet SmartPlanning, réalisé par un développeur web à Pau",
-      tech: ["React", "Node JS", "IA", "MongoDB", "Python"],
+      alt: "SmartPlanning - Application SaaS de gestion des plannings",
+      tags: ["Application SaaS", "Assistant IA", "Gain de temps"],
       link: "https://smartplanning.fr/",
+    },
+    {
+      title: "Cabinet Infirmier Graslin",
+      description:
+        "Site vitrine élégant pour un cabinet infirmier à Nantes. Présentation des services, prise de rendez-vous facilitée et informations pratiques pour les patients du quartier Graslin.",
+      image: "/assets/images/graslin.jpg",
+      alt: "Cabinet Infirmier Graslin Nantes - Site vitrine professionnel",
+      tags: ["Site vitrine", "Santé", "Référencement local"],
+      link: "https://cabinet-infirmier-graslin.fr/",
     },
     {
       title: "Poulp Fiction",
       description:
-        "Site web vitrine pour un centre de plongée de St Cyprien avec animations Lottie.",
+        "Site web dynamique et immersif pour un centre de plongée à Saint-Cyprien. Animations fluides, présentation des formations et réservation simplifiée pour attirer de nouveaux plongeurs.",
       image: "/assets/images/poulpfiction.jpg",
-      alt: "Projet Poulp Fiction, site vitrine pour centre de plongée",
-      tech: ["HTML", "Javascript", "Lottie animations"],
+      alt: "Poulp Fiction - Site web centre de plongée Saint-Cyprien",
+      tags: ["Site vitrine", "Animations", "Tourisme"],
       link: "https://poulpfiction.netlify.app/",
+    },
+    {
+      title: "methodea.fr",
+      description:
+        "Refonte complète d'un site vitrine pour une meilleure visibilité en ligne. Design moderne, responsive et formulaire de contact connecté pour ne manquer aucune opportunité commerciale.",
+      image: "/assets/images/methodea.png",
+      alt: "Methodea - Refonte site vitrine professionnel",
+      tags: ["Refonte", "Design moderne", "Formulaire contact"],
+      link: "https://methodea.netlify.app/",
+    },
+    {
+      title: "coachtfe.fr",
+      description:
+        "Site professionnel pour un coach sportif avec une présentation claire des prestations. Interface moderne qui inspire confiance et incite les visiteurs à prendre contact.",
+      image: "/assets/images/coachtfe.png",
+      alt: "CoachTFE - Site professionnel coach sportif",
+      tags: ["Site vitrine", "Sport & Bien-être", "Conversion"],
+      link: "https://coachtfe.fr/",
     },
     {
       title: "Garage Parrot",
       description:
-        "Site web de gestion pour un garage automobile avec système de rendez-vous en ligne, vente de véhicule d'occasion avec base de données, espace administrateur pour les membres du garage (rôle avec tous les droits pour le gérant et rôle avec droits limités pour les employés).",
+        "Site complet pour un garage automobile avec système de rendez-vous en ligne et catalogue de véhicules d'occasion. Gestion simplifiée pour le gérant et ses employés via un espace administration dédié.",
       image: "/assets/images/garage.jpg",
-      alt: "Projet Garage Parrot, site de gestion pour garage automobile",
-      tech: ["Symfony", "Twig", "MySQL", "PHP", "Javascript"],
+      alt: "Garage Parrot - Site gestion garage automobile",
+      tags: ["Site complet", "Réservation en ligne", "Espace admin"],
       link: "https://garageparrot.space/",
-    },
-    {
-      title: "Kocinaspeed",
-      description:
-        "Plateforme de recettes de cuisine rapide avec filtres intelligents, espace administrateur pour les gérants qui peuvent créer, modifier, ajouter et supprimer leurs recettes, images, et vidéos.",
-      image: "/assets/images/kocina.jpg",
-      alt: "Projet Kocinaspeed, plateforme de recettes de cuisine",
-      tech: ["Symfony", "Twig", "MySQL", "PHP", "Javascript"],
-      link: "https://kocinaspeed.fr/",
-    },
-    {
-      title: "Metal Gear",
-      description:
-        "Mini-site interactif pour les fans avec timeline interactive, chatbot avec le légendaire Solid Snake",
-      image: "/assets/images/mgs.jpg",
-      alt: "Projet Metal Gear, mini-site interactif pour fans",
-      tech: ["HTML", "CSS", "JavaScript"],
-      link: "https://mgs-quiz-krismos.netlify.app/",
-    },
-    {
-      title: "JDS",
-      description:
-        "Plateforme d'un groupe de soirées jeux de société, site moderne et animé avec espace administrateur pour que les joueurs mettent à jour leurs scores, peuvent créer des nouveux jeux, nouveaux membres et mettent à jour eux mêmes leurs informations.",
-      image: "/assets/images/jds.jpg",
-      alt: "Projet JDS, plateforme pour soirées jeux de société",
-      tech: ["React", "HTML", "CSS", "Javascript"],
-      link: "https://embrouillejds.netlify.app/",
-    },
-    {
-      title: "StacyMakeupCreations",
-      description:
-        "Plateforme d'une maquilleuse professionnelle qui a accès à un espace administrateur et peut gérer ses contenus elle-même.",
-      image: "/assets/images/stacy.jpg",
-      alt: "Projet StacyMakeupCreations, plateforme pour maquilleuse",
-      tech: ["Symfony", "Twig", "MySQL", "PHP", "Javascript"],
-      link: "https://stacymakeupcreations.space/",
-    },
-    {
-      title: "Portfolio",
-      description: "Portfolio personnel pour présenter mes projets",
-      image: "/assets/images/portfolio.jpg",
-      alt: "Ancien portfolio personnel de développeur web",
-      tech: ["HTML", "CSS", "JavaScript"],
-      link: "https://krismos.fr/",
     },
   ];
 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+    skipSnaps: false,
+  });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (emblaApi) emblaApi.scrollTo(index);
+    },
+    [emblaApi]
+  );
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
   // Générer les données structurées pour chaque projet du portfolio
   const generatePortfolioStructuredData = () => {
-    return projects.map((project, index) => ({
+    return projects.map((project) => ({
       "@context": "https://schema.org",
-      "@type": "Product",
-      "name": project.title,
-      "description": project.description,
-      "image": `https://christophe-dev-freelance.fr${project.image}`,
-      "url": project.link,
-      "brand": {
-        "@type": "Brand",
-        "name": "Christophe Mostefaoui Dev"
+      "@type": "CreativeWork",
+      name: project.title,
+      description: project.description,
+      image: `https://christophe-dev-freelance.fr${project.image}`,
+      url: project.link,
+      creator: {
+        "@type": "Person",
+        name: "Christophe Mostefaoui",
+        url: "https://christophe-dev-freelance.fr",
       },
-      "category": "Web Development Project",
-      "offers": {
-        "@type": "Offer",
-        "price": "2500",
-        "priceCurrency": "EUR",
-        "priceValidUntil": "2025-12-31",
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition",
-        "seller": {
-          "@type": "Person",
-          "name": "Christophe Mostefaoui",
-          "url": "https://christophe-dev-freelance.fr"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "reviewCount": "32",
-        "bestRating": "5",
-        "worstRating": "4"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": index % 2 === 0 ? "Client Entreprise" : "Startup Innovante"
-          },
-          "datePublished": "2025-01-15",
-          "reviewBody": `Excellent travail sur ${project.title}. Projet livré dans les délais avec une qualité remarquable.`,
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5"
-          }
-        }
-      ]
+      keywords: project.tags.join(", "),
+      dateCreated: "2024",
     }));
   };
 
@@ -182,10 +134,7 @@ export default function Portfolio() {
     <>
       <Helmet>
         {generatePortfolioStructuredData().map((data, index) => (
-          <script
-            key={`portfolio-product-${index}`}
-            type="application/ld+json"
-          >
+          <script key={`portfolio-product-${index}`} type="application/ld+json">
             {JSON.stringify(data)}
           </script>
         ))}
@@ -193,116 +142,161 @@ export default function Portfolio() {
 
       <section
         id="portfolio"
-        className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+        className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-hidden"
       >
         <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-            Portfolio
-          </h2>
-          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-            Découvrez mes dernières réalisations
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
-            <a
-              key={project.title}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center no-underline transition-transform duration-300 hover:-translate-y-3 animate-slideIn"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* iMac Container */}
-              <div className="relative w-full max-w-[280px] mb-8">
-                {/* iMac Body */}
-                <div className="relative bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-2xl overflow-hidden">
-                  {/* Screen */}
-                  <div className="m-2.5 mt-3 bg-black rounded-lg overflow-hidden" style={{ aspectRatio: '16/10' }}>
-                    <img
-                      src={project.image}
-                      alt={project.alt}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src =
-                          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80";
-                      }}
-                    />
-                  </div>
-
-                  {/* Bottom bezel with camera dot */}
-                  <div className="h-8 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 bg-gray-500 dark:bg-gray-600 rounded-full"></div>
-                  </div>
-                </div>
-
-                {/* Stand */}
-                <div className="absolute left-1/2 -translate-x-1/2 w-3 h-9 bg-gradient-to-b from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800" style={{ top: '100%' }}></div>
-
-                {/* Base */}
-                <div className="absolute left-1/2 -translate-x-1/2 w-20 h-2 bg-gradient-to-b from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-800 rounded-b-xl" style={{ top: 'calc(100% + 2rem)' }}></div>
-              </div>
-
-              {/* Project Info */}
-              <div className="text-center mt-6 px-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-200 rounded-full text-xs transition-all duration-300 hover:bg-blue-200 dark:hover:bg-blue-800"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-col items-center gap-6">
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
-              Vous avez un projet en tête ?
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
-              Transformons ensemble vos idées en solutions digitales
-              performantes
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Mes Réalisations
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">
+              Des projets concrets pour des clients satisfaits
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+          </div>
+
+          {/* Carousel Container */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Navigation Buttons */}
+            <button
+              onClick={scrollPrev}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 -translate-x-4 md:-translate-x-6"
+              aria-label="Projet précédent"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+            </button>
+
+            <button
+              onClick={scrollNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 translate-x-4 md:translate-x-6"
+              aria-label="Projet suivant"
+            >
+              <ChevronRight className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+            </button>
+
+            {/* Embla Carousel */}
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex">
+                {projects.map((project, index) => (
+                  <div
+                    key={project.title}
+                    className="flex-[0_0_100%] min-w-0 md:flex-[0_0_80%] lg:flex-[0_0_70%] px-4"
+                  >
+                    <motion.div
+                      initial={{ opacity: 0.5, scale: 0.95 }}
+                      animate={{
+                        opacity: selectedIndex === index ? 1 : 0.5,
+                        scale: selectedIndex === index ? 1 : 0.95,
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden"
+                    >
+                      {/* Image Container */}
+                      <div className="relative aspect-video overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={project.alt}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src =
+                              "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80";
+                          }}
+                        />
+                        {/* Overlay avec lien */}
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-center pb-6 opacity-0 hover:opacity-100 transition-opacity duration-300"
+                        >
+                          <span className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow">
+                            Voir le site
+                            <ExternalLink className="w-4 h-4" />
+                          </span>
+                        </a>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6 md:p-8">
+                        <div className="flex items-start justify-between gap-4 mb-4">
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                            {project.title}
+                          </h3>
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-shrink-0 p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                            aria-label={`Visiter ${project.title}`}
+                          >
+                            <ExternalLink className="w-5 h-5" />
+                          </a>
+                        </div>
+
+                        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                          {project.description}
+                        </p>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-4 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium border border-blue-100 dark:border-blue-800"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dots Navigation */}
+            <div className="flex justify-center gap-2 mt-8">
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    selectedIndex === index
+                      ? "bg-blue-600 dark:bg-blue-400 w-8"
+                      : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                  }`}
+                  aria-label={`Aller au projet ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-16 text-center">
+            <div className="inline-flex flex-col items-center gap-6">
+              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                Vous avez un projet en tête ?
+              </h3>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+                Discutons de votre projet et voyons comment je peux vous aider
+              </p>
               <CallToAction
-                variant="primary"
-                text="Lancer mon projet"
-                subtext="Devis gratuit sous 24h"
-                icon="arrow"
+                variant="gradient"
+                text="Demander un devis gratuit"
+                subtext="Réponse sous 24h"
+                icon="send"
                 size="large"
                 href="#contact"
                 location="portfolio"
                 testId="portfolio_cta"
               />
-              <CallToAction
-                variant="secondary"
-                text="Voir mes services"
-                icon="arrow"
-                size="large"
-                href="#services"
-                location="portfolio"
-              />
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 }
