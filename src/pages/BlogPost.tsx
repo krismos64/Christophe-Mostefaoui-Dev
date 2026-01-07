@@ -59,8 +59,6 @@ const BlogPost = () => {
       "name": "Christophe Mostefaoui",
       "url": "https://christophe-dev-freelance.fr"
     },
-    "datePublished": post.publishedAt,
-    "dateModified": post.publishedAt,
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `https://christophe-dev-freelance.fr/blog/${post.slug}`
@@ -87,8 +85,7 @@ const BlogPost = () => {
         <meta property="og:url" content={`https://christophe-dev-freelance.fr/blog/${post.slug}`} />
         <meta property="og:image" content={`https://christophe-dev-freelance.fr${post.imageUrl}`} />
         <meta property="article:author" content={post.author} />
-        <meta property="article:published_time" content={post.publishedAt} />
-        <meta property="article:section" content={getCategoryName(post.category)} />
+                <meta property="article:section" content={getCategoryName(post.category)} />
         {post.tags.map((tag, index) => (
           <meta key={index} property="article:tag" content={tag} />
         ))}

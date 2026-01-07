@@ -263,6 +263,14 @@ src/
 
 ## 🆕 Dernières Améliorations
 
+### v4.1 - Optimisation SEO Images & Structure (Janvier 2025)
+
+- **Favicons multi-tailles** - 16px, 32px, 48px, 180px (Apple), 192px et 512px (Android)
+- **Open Graph optimisé** - Image 1200x630px pour réseaux sociaux
+- **Manifest.json PWA** - Icons haute résolution pour installation mobile
+- **Suppression dates SEO** - Retrait datePublished/dateModified pour contenu evergreen
+- **Réorganisation sections** - About placé directement après Hero
+
 ### v4.0 - Refonte PME-Friendly (Janvier 2025)
 
 - **VideoShowcase** - Fusion des 2 sections vidéo en une seule avec modal lightbox

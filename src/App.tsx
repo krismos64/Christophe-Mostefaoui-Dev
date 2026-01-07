@@ -91,8 +91,8 @@ const Home = () => {
     ))}
 
     <Hero />
-    <VideoShowcase />
     <About />
+    <VideoShowcase />
     <Services />
     <Pricing />
     <FeaturedSnippetsFAQ />
@@ -153,11 +153,11 @@ function App() {
           />
           <meta
             property="og:image"
-            content="https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg"
+            content="https://christophe-dev-freelance.fr/assets/images/og-image.png"
           />
-          <meta property="og:image:width" content="1024" />
-          <meta property="og:image:height" content="1024" />
-          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:image:type" content="image/png" />
           <meta property="og:image:alt" content="Christophe Mostefaoui - Développeur Web & Expert IA" />
 
           {/* Twitter Card */}
@@ -172,7 +172,7 @@ function App() {
           />
           <meta
             name="twitter:image"
-            content="https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg"
+            content="https://christophe-dev-freelance.fr/assets/images/og-image.png"
           />
 
           {/* Données structurées JSON-LD pour le SEO */}

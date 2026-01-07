@@ -87,7 +87,6 @@ const Avis = () => {
           "addressLocality": review.location
         }
       },
-      "datePublished": review.date,
       "name": review.title,
       "reviewBody": review.content,
       "publisher": {
@@ -184,10 +183,6 @@ const Avis = () => {
                     </span>
                     <span className="mx-2">•</span>
                     <span itemProp="addressLocality">{review.location}</span>
-                    <span className="mx-2">•</span>
-                    <time itemProp="datePublished" dateTime={review.date}>
-                      {new Date(review.date).toLocaleDateString('fr-FR')}
-                    </time>
                   </div>
                 </header>
 

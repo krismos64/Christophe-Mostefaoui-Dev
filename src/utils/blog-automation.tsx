@@ -118,7 +118,6 @@ export const generateSEOMetadata = (post: BlogPost) => {
       url: `https://christophe-dev-freelance.fr/blog/${post.slug}`,
       type: "article",
       author: post.author,
-      publishedTime: post.publishedAt,
       tags: post.tags
     },
     structuredData: {
@@ -128,8 +127,6 @@ export const generateSEOMetadata = (post: BlogPost) => {
       "description": post.excerpt,
       "image": `https://christophe-dev-freelance.fr${post.imageUrl}`,
       "url": `https://christophe-dev-freelance.fr/blog/${post.slug}`,
-      "datePublished": post.publishedAt,
-      "dateModified": post.publishedAt,
       "author": {
         "@type": "Person",
         "name": post.author,
