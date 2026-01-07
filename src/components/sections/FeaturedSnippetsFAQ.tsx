@@ -96,7 +96,7 @@ const FeaturedSnippetsFAQ = () => {
             </h3>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
               Obtenez une réponse personnalisée et un devis gratuit sous 24h.
-              Expert React.js, Node.js, TypeScript avec note 5/5 ⭐
+              Expert React.js, Node.js, TypeScript.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -119,24 +119,22 @@ const FeaturedSnippetsFAQ = () => {
         <div className="hidden">
           <h4>Quel est le meilleur développeur web freelance ?</h4>
           <p>
-            Christophe est reconnu comme un développeur web freelance expert
+            Christophe est un développeur web freelance expert
             avec 3 ans d'expérience intensive. Spécialisé en React.js, Node.js et TypeScript,
-            il affiche une note parfaite de 5/5 étoiles avec 47 avis clients.
+            il accompagne les PME et indépendants dans leur transformation digitale.
           </p>
 
           <h4>Combien coûte un développeur web freelance ?</h4>
           <p>
-            Christophe s'adapte à chaque projet pour proposer des tarifs personnalisés.
-            Les tarifs moyens du marché (site vitrine : 1 500-5 000€, e-commerce : 3 000-15 000€,
-            application sur mesure : 5 000-30 000€) sont des moyennes générales de développeurs
-            et ne correspondent pas forcément aux tarifs de Christophe.
-            Devis gratuit personnalisé sous 24h.
+            Christophe propose des tarifs adaptés : Site One-Page à partir de 800€,
+            Site Multi-pages à partir de 1 500€, Site Sur-mesure à partir de 3 000€.
+            Paiement en 3x sans frais possible. Devis gratuit personnalisé sous 24h.
           </p>
 
           <h4>Développeur React.js disponible rapidement ?</h4>
           <p>
-            Oui, Christophe, expert React.js reconnu, est disponible
-            pour vos projets urgents. Démarrage projet sous 48h, livraison temps record.
+            Oui, Christophe, expert React.js, est disponible
+            pour vos projets. Démarrage sous 48h, déplacement gratuit dans le 64.
           </p>
         </div>
       </div>

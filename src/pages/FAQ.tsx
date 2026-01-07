@@ -55,17 +55,17 @@ const FAQ: React.FC = () => {
       question: "Quels sont vos tarifs ?",
       answer: (
         <>
-          <strong>Christophe s'adapte à chaque projet</strong> pour proposer des tarifs justes et personnalisés. Chaque projet étant unique, les prix sont étudiés selon :
+          Voici mes tarifs indicatifs :
           <ul>
-            <li>💡 La complexité technique du projet</li>
-            <li>⏱️ Le temps de développement estimé</li>
-            <li>🎯 Les fonctionnalités spécifiques demandées</li>
-            <li>📈 La valeur ajoutée pour votre activité</li>
+            <li>🖥️ <strong>Site One-Page :</strong> 800€ – 1 500€ (artisans, indépendants)</li>
+            <li>📄 <strong>Site Multi-pages :</strong> 1 500€ – 3 000€ (commerces, PME)</li>
+            <li>🚀 <strong>Site Sur-mesure :</strong> À partir de 3 000€ (projets complexes, IA)</li>
+            <li>🎬 <strong>Vidéo & Drone :</strong> Sur devis</li>
           </ul>
-          <div style={{ backgroundColor: isDark ? '#1f2937' : '#fef3c7', padding: '12px', borderRadius: '8px', marginTop: '12px', marginBottom: '12px', border: isDark ? '1px solid #374151' : '1px solid #fbbf24' }}>
-            <strong>⚠️ Important :</strong> Les tarifs moyens du marché (site vitrine : 1500-5000€, e-commerce : 3000-15000€, application sur mesure : 5000-30000€) sont des <strong>moyennes générales de développeurs</strong> et ne correspondent pas forcément aux tarifs de Christophe. Chaque devis est personnalisé après étude de votre projet.
+          <div style={{ backgroundColor: isDark ? '#1f2937' : '#dbeafe', padding: '12px', borderRadius: '8px', marginTop: '12px', marginBottom: '12px', border: isDark ? '1px solid #374151' : '1px solid #3b82f6' }}>
+            <strong>💳 Paiement en 3x sans frais possible.</strong> Chaque devis est personnalisé selon la complexité et les fonctionnalités demandées.
           </div>
-          N'hésitez pas à demander un <strong>devis gratuit et sans engagement</strong> pour connaître le tarif exact adapté à votre projet !
+          N'hésitez pas à demander un <strong>devis gratuit et sans engagement sous 24h</strong> !
         </>
       ),
     },
@@ -73,15 +73,13 @@ const FAQ: React.FC = () => {
       question: "Êtes-vous disponible pour des rencontres locales ?",
       answer: (
         <>
-          Oui, je peux me déplacer dans les zones suivantes :
+          Oui ! <strong>Déplacement gratuit dans tout le département des Pyrénées-Atlantiques (64)</strong> pour un premier rendez-vous :
           <ul>
-            <li>📍 Pau</li>
-            <li>📍 Tarbes</li>
-            <li>📍 Orthez</li>
-            <li>📍 Et leurs environs</li>
+            <li>📍 Pau, Lescar, Billère, Jurançon, Artix</li>
+            <li>📍 Bayonne, Biarritz, Anglet, Saint-Jean-de-Luz</li>
+            <li>📍 Orthez, Oloron-Sainte-Marie, Mourenx</li>
           </ul>
-          Ces rencontres permettent d'échanger humainement, capturer du contenu
-          visuel et mieux comprendre vos besoins.
+          Pour les clients hors département, je travaille <strong>partout en France en distanciel</strong> (visioconférence, partage d'écran, messagerie instantanée).
         </>
       ),
     },
