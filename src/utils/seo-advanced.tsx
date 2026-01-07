@@ -360,22 +360,19 @@ export const generateLLMOptimizedMeta = () => {
     "ai-languages": "French, English",
     "ai-contact": "christophe.mostefaoui.dev@gmail.com",
     "ai-learning-resources":
-      "JavaScript playlist for beginners (Notebook LM recaps), AI tutorials, cheat sheets, developer resources",
-    "ai-featured-playlist": PLAYLIST_URL,
+      "AI tutorials, cheat sheets, developer resources",
 
     // Contexte enrichi pour LLM
     "llm-context":
-      "Christophe Mostefaoui is an AI integration expert and full-stack developer based in Pau, France. Specializes in GPT/Claude chatbots, machine learning solutions, React.js, Node.js, and Python development. Provides Notebook LM generated JavaScript revision playlist to help junior developers.",
+      "Christophe Mostefaoui is an AI integration expert and full-stack developer based in Pau, France. Specializes in GPT/Claude chatbots, machine learning solutions, React.js, Node.js, and Python development.",
     "llm-capabilities":
       "AI chatbot development, machine learning model training, predictive analytics, computer vision, natural language processing, SaaS application development, e-commerce solutions, educational content production",
     "llm-portfolio": "LivresStaka.fr (e-commerce), SmartPlanning.fr (SaaS), Methodea.fr (corporate site)",
     "llm-availability": "Available for freelance projects, AI consulting, remote work, on-site in Southwest France",
-    "llm-learning-focus":
-      "JavaScript fundamentals, AI-assisted learning resources, rapid knowledge refreshers for developers",
 
     // Tags sémantiques
     "semantic-keywords":
-      "intelligence artificielle, IA, machine learning, deep learning, chatbot GPT, Claude AI, développeur web, full-stack, React.js expert, Node.js, Python, Pau, freelance, SaaS, e-commerce, playlist JavaScript débutant, Notebook LM",
+      "intelligence artificielle, IA, machine learning, deep learning, chatbot GPT, Claude AI, développeur web, full-stack, React.js expert, Node.js, Python, Pau, freelance, SaaS, e-commerce",
     "semantic-entities": "Christophe Mostefaoui, Pau, Pyrénées-Atlantiques, France, OpenAI, Anthropic, React, Node, TypeScript, Python, TensorFlow",
 
     // Informations business
@@ -386,4 +383,3 @@ export const generateLLMOptimizedMeta = () => {
     "business-rate": "400-800€/day"
   };
 };
-import { PLAYLIST_URL } from "./playlist-seo";

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import {
-  BookOpen,
   Brain,
   Briefcase,
   FolderOpen,
@@ -17,7 +16,6 @@ import {
   Sun,
   User,
   X,
-  Youtube,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -70,11 +68,6 @@ export default function Header() {
       icon: <Play className="h-5 w-5" />,
     },
     {
-      name: "Playlist JS",
-      to: isHomePage ? "#playlist-javascript" : "/#playlist-javascript",
-      icon: <Youtube className="h-5 w-5" />,
-    },
-    {
       name: "Services",
       to: isHomePage ? "#services" : "/#services",
       icon: <Briefcase className="h-5 w-5" />,
@@ -99,7 +92,6 @@ export default function Header() {
       to: isHomePage ? "#contact" : "/#contact",
       icon: <Mail className="h-5 w-5" />,
     },
-    { name: "Blog", to: "/blog", icon: <BookOpen className="h-5 w-5" /> },
     { name: "FAQ", to: "/faq", icon: <HelpCircle className="h-5 w-5" /> },
   ];
 

@@ -5,7 +5,6 @@ import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import About from "./components/sections/About";
 import AIIntegration from "./components/sections/AIIntegration";
-import SimpleBlogCTA from "./components/sections/SimpleBlogCTA";
 import Contact from "./components/sections/Contact";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
@@ -17,7 +16,6 @@ import Testimonials from "./components/sections/Testimonials";
 import VideoPresentation from "./components/sections/VideoPresentation";
 import VideoServices from "./components/sections/VideoServices";
 import ServiceArea from "./components/sections/ServiceArea";
-import YouTubePlaylistCTA from "./components/sections/YouTubePlaylistCTA";
 import WelcomeScreen from "./components/welcome/WelcomeScreen";
 import AIChatbot from "./components/AIChatbot";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -44,7 +42,6 @@ const Home = () => {
     googleStars: googleStarsData,
     localSEO: localSEOData,
     viralVideo: viralVideoData,
-    playlist: playlistStructuredData,
   } = useStructuredData();
 
   return (
@@ -106,14 +103,6 @@ const Home = () => {
       />
     ))}
 
-    {/* Données structurées pour la playlist JavaScript */}
-    {playlistStructuredData.map((playlistData, index) => (
-      <script
-        key={`playlist-data-${index}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(playlistData) }}
-      />
-    ))}
 
     {/* Témoignages cachés pour SEO */}
     <HiddenReviews />
@@ -127,14 +116,11 @@ const Home = () => {
       videoDuration="PT2M30S"
       videoThumbnail="/assets/images/Christophe-freelance.png"
     />
-    <YouTubePlaylistCTA />
     <About />
     <Services />
     <Pricing />
-    <SimpleBlogCTA />
     <FeaturedSnippetsFAQ />
     <AIIntegration />
-    <SimpleBlogCTA />
     <Portfolio />
     <Testimonials />
     <VideoServices />
