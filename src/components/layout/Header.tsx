@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-react";
 import {
   Brain,
@@ -19,15 +19,51 @@ import {
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import chatbotAnimation from "../../animations/chatbot.json";
-import thinkingAnimation from "../../animations/thinking.json";
 import { useTheme } from "../../context/ThemeContext";
 import { useNavigation } from "../../hooks/useNavigation";
 import { MenuItem } from "../../types/common";
 
 const triggerHapticFeedback = () => {
   if (window.navigator && window.navigator.vibrate) {
-    window.navigator.vibrate(5); // Vibration courte et subtile
+    window.navigator.vibrate(5);
   }
+};
+
+// Variants pour les animations du menu mobile
+const menuOverlayVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.95,
+    transition: { duration: 0.3, ease: "easeInOut" as const }
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4, ease: "easeOut" as const }
+  }
+};
+
+const menuItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.1 + i * 0.08,
+      duration: 0.4,
+      ease: "easeOut" as const
+    }
+  }),
+  exit: { opacity: 0, y: -10, transition: { duration: 0.2 } }
+};
+
+const orbVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: (delay: number) => ({
+    scale: 1,
+    opacity: 0.6,
+    transition: { delay, duration: 0.6, ease: "easeOut" as const }
+  })
 };
 
 export default function Header() {
@@ -90,9 +126,7 @@ export default function Header() {
   ];
 
   const handleMenuNavigation = (to: string) => {
-    // Fermer le menu mobile
     setIsMenuOpen(false);
-    // Utiliser le hook de navigation
     handleNavigation(to);
   };
 
@@ -176,109 +210,220 @@ export default function Header() {
                 )}
               </button>
 
-              <button
+              <motion.button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                whileTap={{ scale: 0.95 }}
               >
                 {isMenuOpen ? (
                   <X className="h-6 w-6 text-gray-600 dark:text-gray-300" />
                 ) : (
                   <Menu className="h-6 w-6 text-gray-600 dark:text-gray-300" />
                 )}
-              </button>
+              </motion.button>
             </div>
           </div>
         </nav>
       </header>
 
-      {/* Menu mobile séparé complètement du header */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 w-full h-full bg-gradient-to-br from-white to-gray-100 dark:from-gray-900 dark:to-black z-[100] flex flex-col items-center justify-center origin-top-right animate-menu-open-anim"
-          style={{ transformOrigin: "top right" }}
-        >
-          {/* Bouton de fermeture à l'intérieur du menu */}
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            className="absolute top-6 right-6 p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label="Fermer le menu"
+      {/* Menu mobile futuriste */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="fixed inset-0 w-full h-full z-[100] overflow-hidden"
+            variants={menuOverlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
           >
-            <X className="h-8 w-8" />
-          </button>
+            {/* Background avec glassmorphism */}
+            <div className="absolute inset-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl" />
 
-          <div className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+            {/* Orbes flottants animés */}
             <motion.div
-              className="absolute"
-              drag="y"
-              dragConstraints={{ top: -80, bottom: 80 }}
-              dragTransition={{ bounceStiffness: 400, bounceDamping: 20 }}
-              dragElastic={0.15}
-              onDragStart={triggerHapticFeedback}
+              className="absolute w-72 h-72 rounded-full glowing-orb-cyan blur-3xl"
+              style={{ left: "5%", top: "10%" }}
+              variants={orbVariants}
+              custom={0.2}
+              initial="hidden"
+              animate="visible"
+            />
+            <motion.div
+              className="absolute w-64 h-64 rounded-full glowing-orb-purple blur-3xl"
+              style={{ right: "5%", top: "40%" }}
+              variants={orbVariants}
+              custom={0.4}
+              initial="hidden"
+              animate="visible"
+            />
+            <motion.div
+              className="absolute w-56 h-56 rounded-full glowing-orb-pink blur-3xl"
+              style={{ left: "30%", bottom: "15%" }}
+              variants={orbVariants}
+              custom={0.6}
+              initial="hidden"
+              animate="visible"
+            />
+
+            {/* Formes géométriques flottantes */}
+            <motion.div
+              className="absolute w-12 h-12 border-2 border-cyan-500/30 dark:border-cyan-400/30"
+              style={{
+                left: "10%",
+                top: "25%",
+                clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
+              }}
+              animate={{
+                y: [0, -15, 0],
+                rotate: [0, 180, 360],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute w-10 h-10 border-2 border-purple-500/30 dark:border-purple-400/30 rounded-full"
+              style={{ right: "15%", top: "20%" }}
+              animate={{
+                y: [0, 20, 0],
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            />
+            <motion.div
+              className="absolute w-8 h-8 border-2 border-pink-500/30 dark:border-pink-400/30 rotate-45"
+              style={{ right: "20%", bottom: "30%" }}
+              animate={{
+                y: [0, -10, 0],
+                rotate: [45, 135, 45],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            />
+
+            {/* Lignes de code décoratives */}
+            <motion.div
+              className="absolute h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent"
+              style={{ width: "40%", left: "5%", top: "35%" }}
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            />
+            <motion.div
+              className="absolute h-px bg-gradient-to-r from-transparent via-purple-500/40 to-transparent"
+              style={{ width: "35%", right: "10%", bottom: "40%" }}
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+            />
+
+            {/* Animation Lottie en haut à gauche */}
+            <motion.div
+              className="absolute top-6 left-6 w-16 sm:w-20 z-10"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.4 }}
             >
-              <nav className="flex flex-col items-center justify-center text-center">
-                {menuItems.map((item, index) => (
-                  <div
-                    key={item.name}
-                    className="animate-menu-item-anim"
-                    style={{ animationDelay: `${150 + index * 100}ms` }}
-                  >
-                    <a
-                      href={item.to}
-                      className={`text-3xl font-semibold my-4 p-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 relative group ${
-                        isActive(item.to)
-                          ? "text-blue-600 dark:text-blue-400"
-                          : ""
-                      }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleMenuNavigation(item.to);
-                      }}
-                    >
-                      {item.name}
-                      <span
-                        className={`absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 group-hover:w-full group-hover:left-0 drop-shadow-[0_0_8px_rgba(59,130,246,0.5)] ${
-                          isActive(item.to) ? "w-full left-0" : ""
-                        }`}
-                      ></span>
-                    </a>
-                  </div>
-                ))}
-              </nav>
+              <Lottie animationData={chatbotAnimation} loop={true} />
             </motion.div>
-          </div>
 
-          <div
-            className="absolute bottom-14 w-full max-w-[120px] mx-auto animate-menu-item-anim"
-            style={{ animationDelay: `${150 + menuItems.length * 100}ms` }}
-          >
-            <Lottie animationData={chatbotAnimation} loop={true} />
-          </div>
+            {/* Bouton de fermeture */}
+            <motion.button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-6 right-6 p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-colors shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-10"
+              aria-label="Fermer le menu"
+              initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.5, rotate: 90 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <X className="h-7 w-7" />
+            </motion.button>
 
-          <div
-            className="absolute bottom-10 flex space-x-6 animate-menu-item-anim"
-            style={{ animationDelay: `${250 + menuItems.length * 100}ms` }}
-          >
-            <a
-              href="https://www.linkedin.com/in/christophemostefaoui/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Profil LinkedIn"
-              className="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              <Linkedin className="h-6 w-6" />
-            </a>
-            <a
-              href="https://github.com/krismos64"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Profil GitHub"
-              className="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              <Github className="h-6 w-6" />
-            </a>
-          </div>
-        </div>
-      )}
+            {/* Contenu du menu */}
+            <div className="relative h-full w-full flex flex-col items-center justify-center z-10">
+              <motion.div
+                className="flex-1 flex items-center justify-center w-full overflow-hidden"
+                drag="y"
+                dragConstraints={{ top: -80, bottom: 80 }}
+                dragTransition={{ bounceStiffness: 400, bounceDamping: 20 }}
+                dragElastic={0.15}
+                onDragStart={triggerHapticFeedback}
+              >
+                <nav className="flex flex-col items-center justify-center text-center py-8">
+                  {menuItems.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      custom={index}
+                      variants={menuItemVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      <motion.a
+                        href={item.to}
+                        className={`flex items-center gap-3 text-xl sm:text-2xl font-semibold my-1.5 sm:my-2 px-5 py-1.5 rounded-xl transition-all duration-300 ${
+                          isActive(item.to)
+                            ? "text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20"
+                            : "text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
+                        }`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleMenuNavigation(item.to);
+                        }}
+                        whileHover={{ scale: 1.05, x: 10 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <span className={`p-2 rounded-lg ${
+                          isActive(item.to)
+                            ? "bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400"
+                            : "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+                        }`}>
+                          {item.icon}
+                        </span>
+                        <span>{item.name}</span>
+                      </motion.a>
+                    </motion.div>
+                  ))}
+                </nav>
+              </motion.div>
+
+              {/* Liens sociaux */}
+              <motion.div
+                className="absolute bottom-12 flex items-center gap-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.4 }}
+              >
+                <motion.a
+                  href="https://www.linkedin.com/in/christophemostefaoui/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Profil LinkedIn"
+                  className="p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-md border border-gray-200/50 dark:border-gray-700/50"
+                  whileHover={{ scale: 1.15, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Linkedin className="h-6 w-6" />
+                </motion.a>
+                <motion.a
+                  href="https://github.com/krismos64"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Profil GitHub"
+                  className="p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-md border border-gray-200/50 dark:border-gray-700/50"
+                  whileHover={{ scale: 1.15, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Github className="h-6 w-6" />
+                </motion.a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

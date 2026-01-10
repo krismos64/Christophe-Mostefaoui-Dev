@@ -1,11 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import CallToAction from "../common/CallToAction";
 import { Helmet } from "react-helmet-async";
+import FuturisticBackground from "../effects/FuturisticBackground";
+import { containerVariants, itemVariants } from "../effects/FuturisticEffects";
 
 export default function Portfolio() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+
   const projects = [
     {
       title: "LivresStaka.fr",
@@ -111,7 +116,6 @@ export default function Portfolio() {
     };
   }, [emblaApi, onSelect]);
 
-  // Générer les données structurées pour chaque projet du portfolio
   const generatePortfolioStructuredData = () => {
     return projects.map((project) => ({
       "@context": "https://schema.org",
@@ -140,39 +144,68 @@ export default function Portfolio() {
         ))}
       </Helmet>
 
-      <section
+      <FuturisticBackground
         id="portfolio"
-        className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-hidden"
+        className="py-20 overflow-hidden"
+        orbs={[
+          { size: 280, colorClass: "glowing-orb-cyan", left: "5%", top: "20%", delay: 0 },
+          { size: 240, colorClass: "glowing-orb-purple", left: "85%", top: "60%", delay: 1.5 },
+          { size: 180, colorClass: "glowing-orb-pink", left: "40%", top: "85%", delay: 3 },
+        ]}
+        shapes={[
+          { delay: 0, duration: 12, size: 45, left: "8%", top: "35%", shape: "hexagon" },
+          { delay: 1.5, duration: 14, size: 50, left: "90%", top: "25%", shape: "circle" },
+          { delay: 2.5, duration: 10, size: 40, left: "95%", top: "80%", shape: "square" },
+        ]}
+        codeLines={[
+          { delay: 0.5, width: "45%" },
+          { delay: 2, width: "60%" },
+        ]}
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
           {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <motion.div
+            className="text-center mb-12"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            >
               Mes Réalisations
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-xl text-gray-600 dark:text-gray-300"
+            >
               Des projets concrets pour des clients satisfaits
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Carousel Container */}
           <div className="relative max-w-6xl mx-auto">
             {/* Navigation Buttons */}
-            <button
+            <motion.button
               onClick={scrollPrev}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 -translate-x-4 md:-translate-x-6"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full shadow-lg hover:shadow-xl transition-all duration-300 -translate-x-4 md:-translate-x-6 border border-gray-200/50 dark:border-gray-700/50"
               aria-label="Projet précédent"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <ChevronLeft className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button
               onClick={scrollNext}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 translate-x-4 md:translate-x-6"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full shadow-lg hover:shadow-xl transition-all duration-300 translate-x-4 md:translate-x-6 border border-gray-200/50 dark:border-gray-700/50"
               aria-label="Projet suivant"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <ChevronRight className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-            </button>
+            </motion.button>
 
             {/* Embla Carousel */}
             <div className="overflow-hidden" ref={emblaRef}>
@@ -189,8 +222,9 @@ export default function Portfolio() {
                         scale: selectedIndex === index ? 1 : 0.95,
                       }}
                       transition={{ duration: 0.3 }}
-                      className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden"
+                      className="card-futuristic overflow-hidden"
                     >
+                      <div className="card-futuristic-glow" />
                       {/* Image Container */}
                       <div className="relative aspect-video overflow-hidden">
                         <img
@@ -219,7 +253,7 @@ export default function Portfolio() {
                       </div>
 
                       {/* Content */}
-                      <div className="p-6 md:p-8">
+                      <div className="p-6 md:p-8 relative z-10">
                         <div className="flex items-start justify-between gap-4 mb-4">
                           <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                             {project.title}
@@ -263,10 +297,10 @@ export default function Portfolio() {
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`h-3 rounded-full transition-all duration-300 ${
                     selectedIndex === index
                       ? "bg-blue-600 dark:bg-blue-400 w-8"
-                      : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                      : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 w-3"
                   }`}
                   aria-label={`Aller au projet ${index + 1}`}
                 />
@@ -275,7 +309,12 @@ export default function Portfolio() {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-16 text-center">
+          <motion.div
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ delay: 0.8 }}
+          >
             <div className="inline-flex flex-col items-center gap-6">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
                 Vous avez un projet en tête ?
@@ -283,20 +322,29 @@ export default function Portfolio() {
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
                 Discutons de votre projet et voyons comment je peux vous aider
               </p>
-              <CallToAction
-                variant="gradient"
-                text="Demander un devis gratuit"
-                subtext="Réponse sous 24h"
-                icon="send"
-                size="large"
-                href="#contact"
-                location="portfolio"
-                testId="portfolio_cta"
-              />
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="cta-glow-wrapper group"
+              >
+                <div className="cta-glow" />
+                <div className="relative">
+                  <CallToAction
+                    variant="gradient"
+                    text="Demander un devis gratuit"
+                    subtext="Réponse sous 24h"
+                    icon="send"
+                    size="large"
+                    href="#contact"
+                    location="portfolio"
+                    testId="portfolio_cta"
+                  />
+                </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </FuturisticBackground>
     </>
   );
 }

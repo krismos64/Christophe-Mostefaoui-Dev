@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   Brain,
   Sparkles,
@@ -12,15 +13,13 @@ import {
   Database,
 } from "lucide-react";
 import CallToAction from "../common/CallToAction";
+import FuturisticBackground from "../effects/FuturisticBackground";
+import { containerVariants, itemVariants, createCardVariants } from "../effects/FuturisticEffects";
 
 export default function AIIntegration() {
   const [activeTab, setActiveTab] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
 
   const useCases = [
     {
@@ -104,173 +103,241 @@ export default function AIIntegration() {
     { value: "24/7", label: "Disponibilité totale" },
   ];
 
+  const cardVariants = createCardVariants(0.2, 0.1);
+
   return (
-    <section
+    <FuturisticBackground
       id="ai-integration"
-      className="py-20 bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20 transition-all duration-300 overflow-hidden"
+      orbs={[
+        { size: 320, colorClass: "glowing-orb-purple", left: "5%", top: "15%", delay: 0 },
+        { size: 280, colorClass: "glowing-orb-pink", left: "80%", top: "50%", delay: 1.5 },
+        { size: 200, colorClass: "glowing-orb-cyan", left: "50%", top: "80%", delay: 3 },
+      ]}
+      shapes={[
+        { delay: 0, duration: 11, size: 55, left: "3%", top: "30%", shape: "hexagon" },
+        { delay: 1, duration: 13, size: 45, left: "92%", top: "20%", shape: "circle" },
+        { delay: 2, duration: 15, size: 50, left: "88%", top: "75%", shape: "square" },
+        { delay: 0.5, duration: 12, size: 40, left: "10%", top: "85%", shape: "circle" },
+      ]}
+      codeLines={[
+        { delay: 0, width: "60%" },
+        { delay: 1.5, width: "45%" },
+        { delay: 3, width: "55%" },
+      ]}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
         {/* Header avec animation */}
-        <div
-          className={`text-center mb-16 transform transition-all duration-1000 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
+        <motion.div
+          className="text-center mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
         >
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full">
+          <motion.div
+            variants={itemVariants}
+            className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-purple-100/80 dark:bg-purple-900/30 backdrop-blur-sm rounded-full border border-purple-200/50 dark:border-purple-700/50"
+          >
             <Brain className="h-5 w-5 text-purple-600 dark:text-purple-400" />
             <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
               Intelligence Artificielle
             </span>
-          </div>
+          </motion.div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+          >
             Propulsez votre business dans{" "}
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               l'ère de l'IA
             </span>
-          </h2>
+          </motion.h2>
 
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+          >
             Transformez vos processus avec des solutions IA sur mesure. De
             l'automatisation intelligente à l'analyse prédictive, je développe
             les outils qui feront la différence.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Stats rapides */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: 0.3 }}
+        >
           {stats.map((stat, index) => (
-            <div
+            <motion.div
               key={index}
-              className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="text-center p-6 card-futuristic"
+              whileHover={{ scale: 1.05, y: -4 }}
             >
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <div className="card-futuristic-glow" />
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent relative z-10">
                 {stat.value}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+              <div className="text-sm text-gray-600 dark:text-gray-400 mt-2 relative z-10">
                 {stat.label}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Use Cases avec tabs */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+          <motion.h3
+            className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.4 }}
+          >
             Solutions IA Concrètes pour Votre Business
-          </h3>
+          </motion.h3>
 
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <motion.div
+            className="flex flex-wrap justify-center gap-2 mb-8"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.5 }}
+          >
             {useCases.map((useCase, index) => (
-              <button
+              <motion.button
                 key={index}
                 onClick={() => setActiveTab(index)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                   activeTab === index
-                    ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg transform scale-105"
-                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
+                    : "bg-white/70 dark:bg-gray-800/70 backdrop-blur-md text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-gray-700/50 hover:border-purple-300 dark:hover:border-purple-600"
                 }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {useCase.icon}
                 <span className="hidden sm:inline">{useCase.title}</span>
-              </button>
+              </motion.button>
             ))}
-          </div>
+          </motion.div>
 
           {/* Tab Content */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 transform transition-all duration-500">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-lg">
-                  {useCases[activeTab].icon}
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                    {useCases[activeTab].title}
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {useCases[activeTab].description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mb-6 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                <p className="text-gray-700 dark:text-gray-300 italic">
-                  <span className="font-semibold">Exemple concret :</span>{" "}
-                  {useCases[activeTab].example}
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                    <Code2 className="h-5 w-5 text-purple-600 dark:text-purple-400" />
-                    Technologies utilisées
-                  </h5>
-                  <div className="flex flex-wrap gap-2">
-                    {useCases[activeTab].technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <div className="card-futuristic p-8">
+              <div className="card-futuristic-glow" />
+              <div className="relative z-10">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="p-3 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-lg">
+                    {useCases[activeTab].icon}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                      {useCases[activeTab].title}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {useCases[activeTab].description}
+                    </p>
                   </div>
                 </div>
 
-                <div>
-                  <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5 text-green-600 dark:text-green-400" />
-                    Bénéfices mesurables
-                  </h5>
-                  <ul className="space-y-1">
-                    {useCases[activeTab].benefits.map((benefit, idx) => (
-                      <li
-                        key={idx}
-                        className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2"
-                      >
-                        <span className="text-green-500">✓</span>
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="mb-6 p-4 bg-purple-50/80 dark:bg-purple-900/20 backdrop-blur-sm rounded-lg border border-purple-200/50 dark:border-purple-700/50">
+                  <p className="text-gray-700 dark:text-gray-300 italic">
+                    <span className="font-semibold">Exemple concret :</span>{" "}
+                    {useCases[activeTab].example}
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <Code2 className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                      Technologies utilisées
+                    </h5>
+                    <div className="flex flex-wrap gap-2">
+                      {useCases[activeTab].technologies.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 bg-gray-100/80 dark:bg-gray-700/80 backdrop-blur-sm text-gray-700 dark:text-gray-300 rounded-full text-sm border border-gray-200/50 dark:border-gray-600/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h5 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+                      <BarChart3 className="h-5 w-5 text-green-600 dark:text-green-400" />
+                      Bénéfices mesurables
+                    </h5>
+                    <ul className="space-y-1">
+                      {useCases[activeTab].benefits.map((benefit, idx) => (
+                        <li
+                          key={idx}
+                          className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-2"
+                        >
+                          <span className="text-green-500">✓</span>
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Features Grid */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+          <motion.h3
+            className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.7 }}
+          >
             Pourquoi Choisir Mes Solutions IA ?
-          </h3>
+          </motion.h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                custom={index}
+                variants={cardVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                whileHover={{ scale: 1.05, y: -8 }}
+                className="text-center p-6 card-futuristic"
               >
-                <div className="inline-flex p-3 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full mb-4 text-purple-600 dark:text-purple-400">
+                <div className="card-futuristic-glow" />
+                <div className="inline-flex p-3 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full mb-4 text-purple-600 dark:text-purple-400 relative z-10">
                   {feature.icon}
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 relative z-10">
                   {feature.title}
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-600 dark:text-gray-300 text-sm relative z-10">
                   {feature.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* CTA Final */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ delay: 0.9 }}
+        >
           <div className="inline-flex flex-col items-center gap-6 p-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl shadow-2xl">
             <h3 className="text-2xl md:text-3xl font-bold text-white">
               Prêt à Révolutionner Votre Business avec l'IA ?
@@ -290,8 +357,8 @@ export default function AIIntegration() {
               testId="ai_cta_primary"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </FuturisticBackground>
   );
 }

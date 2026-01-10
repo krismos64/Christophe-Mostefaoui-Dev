@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   Globe,
   Layers,
@@ -8,8 +10,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import CallToAction from "../common/CallToAction";
+import FuturisticBackground from "../effects/FuturisticBackground";
+import { containerVariants, itemVariants, createCardVariants } from "../effects/FuturisticEffects";
 
 export default function Services() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+
   const services = [
     {
       icon: <Bot className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
@@ -51,43 +58,77 @@ export default function Services() {
     },
   ];
 
+  const cardVariants = createCardVariants(0.2, 0.1);
+
   return (
-    <section
+    <FuturisticBackground
       id="services"
-      className="py-20 transition-colors duration-300 dark:bg-gray-900"
+      orbs={[
+        { size: 280, colorClass: "glowing-orb-cyan", left: "85%", top: "20%", delay: 0 },
+        { size: 220, colorClass: "glowing-orb-purple", left: "5%", top: "40%", delay: 1.5 },
+        { size: 180, colorClass: "glowing-orb-pink", left: "60%", top: "80%", delay: 3 },
+      ]}
+      shapes={[
+        { delay: 0, duration: 10, size: 50, left: "3%", top: "15%", shape: "hexagon" },
+        { delay: 1, duration: 12, size: 40, left: "95%", top: "50%", shape: "circle" },
+        { delay: 2, duration: 14, size: 45, left: "90%", top: "85%", shape: "square" },
+      ]}
+      codeLines={[
+        { delay: 0, width: "55%" },
+        { delay: 1.5, width: "40%" },
+      ]}
+      codeLinesPosition="top-1/3"
     >
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-4">
+      <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
+        <motion.div
+          className="text-center mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center justify-center gap-4 mb-4"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
               Mes Services
             </h2>
-            <img
+            <motion.img
               src="/assets/images/badge-dev.png"
               alt="Certification Développeur"
               className="w-20 h-20 object-contain"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
             />
-          </div>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          </motion.div>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-gray-600 dark:text-gray-300"
+          >
             Des sites web optimisés pour Google et les assistants IA.
             <br className="hidden sm:block" />
             Clients partout en France – déplacement offert dans le 64.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={service.title}
-              className={`group card-hover p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 animate-slideIn relative ${
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              whileHover={{ scale: 1.03, y: -8 }}
+              className={`group card-futuristic p-6 relative ${
                 service.highlight
-                  ? "ring-2 ring-purple-500 dark:ring-purple-400 transform scale-105"
+                  ? "ring-2 ring-purple-500 dark:ring-purple-400"
                   : ""
               }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
+              <div className="card-futuristic-glow" />
               {service.highlight && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
                   <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-bold rounded-full flex items-center gap-1">
                     <Sparkles className="h-4 w-4" />
                     NOUVEAU
@@ -118,28 +159,42 @@ export default function Services() {
               <p className="text-gray-600 dark:text-gray-300">
                 {service.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
           <div className="inline-flex flex-col items-center gap-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Un projet en tête ? Parlons-en !
             </p>
-            <CallToAction
-              variant="gradient"
-              text="Demander un devis gratuit"
-              subtext="Réponse sous 24h"
-              icon="send"
-              size="large"
-              href="#contact"
-              location="services"
-              testId="services_cta"
-            />
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="cta-glow-wrapper group"
+            >
+              <div className="cta-glow" />
+              <div className="relative">
+                <CallToAction
+                  variant="gradient"
+                  text="Demander un devis gratuit"
+                  subtext="Réponse sous 24h"
+                  icon="send"
+                  size="large"
+                  href="#contact"
+                  location="services"
+                  testId="services_cta"
+                />
+              </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </FuturisticBackground>
   );
 }

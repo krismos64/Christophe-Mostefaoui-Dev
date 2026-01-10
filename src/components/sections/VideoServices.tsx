@@ -1,9 +1,17 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Lottie from "lottie-react";
 import { Video, Camera, Sparkles, PlayCircle } from "lucide-react";
 import droneAnimation from "../../animations/Drone Camera.json";
 import videoAnimation from "../../animations/Cut Video.json";
+import FuturisticBackground from "../effects/FuturisticBackground";
+import { containerVariants, itemVariants, lottieVariants, lottieVariantsLeft } from "../effects/FuturisticEffects";
+import CallToAction from "../common/CallToAction";
 
 export default function VideoServices() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+
   const services = [
     {
       icon: <Video className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
@@ -14,7 +22,9 @@ export default function VideoServices() {
         "Effets visuels et transitions",
         "Optimisation pour web et réseaux sociaux",
         "Export 4K et formats multiples"
-      ]
+      ],
+      animation: videoAnimation,
+      lottieVariant: lottieVariantsLeft
     },
     {
       icon: <Camera className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
@@ -25,7 +35,9 @@ export default function VideoServices() {
         "Vues immobilières spectaculaires",
         "Captation de sites industriels et commerciaux",
         "Inspections techniques et suivis de chantier"
-      ]
+      ],
+      animation: droneAnimation,
+      lottieVariant: lottieVariants
     }
   ];
 
@@ -42,114 +54,128 @@ export default function VideoServices() {
     }
   ];
 
+  const stats = [
+    { value: "4K", label: "Résolution Ultra HD" },
+    { value: "360°", label: "Vues panoramiques" },
+    { value: "FCPX", label: "Montage Pro Mac" },
+    { value: "DJI", label: "Technologie Drone" }
+  ];
+
   return (
-    <section
+    <FuturisticBackground
       id="video-services"
-      className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden"
+      orbs={[
+        { size: 260, colorClass: "glowing-orb-cyan", left: "10%", top: "25%", delay: 0 },
+        { size: 220, colorClass: "glowing-orb-purple", left: "85%", top: "55%", delay: 1.5 },
+        { size: 180, colorClass: "glowing-orb-pink", left: "45%", top: "80%", delay: 3 },
+      ]}
+      shapes={[
+        { delay: 0, duration: 11, size: 45, left: "5%", top: "40%", shape: "hexagon" },
+        { delay: 1.5, duration: 13, size: 50, left: "92%", top: "30%", shape: "circle" },
+        { delay: 2.5, duration: 10, size: 40, left: "88%", top: "75%", shape: "square" },
+      ]}
+      codeLines={[
+        { delay: 0.5, width: "50%" },
+        { delay: 2, width: "40%" },
+      ]}
     >
-      {/* Fond décoratif */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 opacity-50"></div>
-      
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
         {/* Titre principal */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-4">
+        <motion.div
+          className="text-center mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
               Production Vidéo & Drone
             </h2>
-            <img
+            <motion.img
               src="/assets/images/badge-drone.png"
               alt="Télépilote Drone Certifié DGAC AlphaTango"
               className="w-20 h-20 object-contain"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
             />
-          </div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          </motion.div>
+          <motion.p variants={itemVariants} className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             🎬 Sublimez votre communication avec des contenus visuels professionnels
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Services principaux avec animations */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          {/* Service Montage Vidéo */}
-          <div className="group relative">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              {/* Animation Lottie */}
-              <div className="w-full md:w-1/3 h-48 md:h-64">
-                <Lottie 
-                  animationData={videoAnimation} 
-                  loop={true}
-                  className="w-full h-full"
-                />
-              </div>
-              
-              {/* Contenu */}
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  {services[0].icon}
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {services[0].title}
-                  </h3>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {services[0].description}
-                </p>
-                <ul className="space-y-2">
-                  {services[0].features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                      <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              className="group card-futuristic p-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ delay: 0.2 + index * 0.2 }}
+              whileHover={{ scale: 1.02, y: -4 }}
+            >
+              <div className="card-futuristic-glow" />
+              <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                {/* Animation Lottie */}
+                <motion.div
+                  className="w-full md:w-1/3 h-48 md:h-64"
+                  variants={service.lottieVariant}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                >
+                  <Lottie
+                    animationData={service.animation}
+                    loop={true}
+                    className="w-full h-full"
+                  />
+                </motion.div>
 
-          {/* Service Drone */}
-          <div className="group relative">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              {/* Animation Lottie */}
-              <div className="w-full md:w-1/3 h-48 md:h-64">
-                <Lottie 
-                  animationData={droneAnimation} 
-                  loop={true}
-                  className="w-full h-full"
-                />
-              </div>
-              
-              {/* Contenu */}
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  {services[1].icon}
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {services[1].title}
-                  </h3>
+                {/* Contenu */}
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-full">
+                      {service.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
+                        <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {services[1].description}
-                </p>
-                <ul className="space-y-2">
-                  {services[1].features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="text-blue-600 dark:text-blue-400 mt-1">✓</span>
-                      <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* Cas d'usage */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white">
+        <motion.div
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white mb-12 shadow-xl"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ delay: 0.6 }}
+        >
           <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
             Des Solutions Visuelles Pour Tous Vos Besoins
           </h3>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {useCases.map((useCase, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all duration-300">
+              <motion.div
+                key={index}
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 hover:bg-white/20 transition-all duration-300 border border-white/20"
+                whileHover={{ scale: 1.03, y: -4 }}
+              >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="p-2 bg-white/20 rounded-lg">
                     {useCase.icon}
@@ -161,45 +187,66 @@ export default function VideoServices() {
                 <p className="text-white/90">
                   {useCase.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-12">
+        {/* Stats */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center p-6 card-futuristic"
+              whileHover={{ scale: 1.05, y: -4 }}
+            >
+              <div className="card-futuristic-glow" />
+              <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent relative z-10">
+                {stat.value}
+              </div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 relative z-10">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ delay: 0.8 }}
+        >
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             Démarquez-vous avec des contenus visuels professionnels qui racontent votre histoire
           </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="cta-glow-wrapper group inline-block"
           >
-            <PlayCircle className="h-5 w-5" />
-            Discutons de votre projet vidéo
-          </a>
-        </div>
-
-        {/* Avantages compétitifs */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className="p-4">
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">4K</div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Résolution Ultra HD</p>
-          </div>
-          <div className="p-4">
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">360°</div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Vues panoramiques</p>
-          </div>
-          <div className="p-4">
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">FCPX</div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Montage Pro Mac</p>
-          </div>
-          <div className="p-4">
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">DJI</div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Technologie Drone</p>
-          </div>
-        </div>
+            <div className="cta-glow" />
+            <div className="relative">
+              <CallToAction
+                variant="gradient"
+                text="Discutons de votre projet vidéo"
+                subtext="Devis gratuit"
+                icon="send"
+                size="large"
+                href="#contact"
+                location="video-services"
+                testId="video_services_cta"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </FuturisticBackground>
   );
 }

@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
   FileText,
   Layers,
@@ -11,8 +13,13 @@ import {
   MapPin,
 } from "lucide-react";
 import CallToAction from "../common/CallToAction";
+import FuturisticBackground from "../effects/FuturisticBackground";
+import { containerVariants, itemVariants, createCardVariants } from "../effects/FuturisticEffects";
 
 export default function Pricing() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+
   const plans = [
     {
       name: "Site One-Page",
@@ -80,37 +87,69 @@ export default function Pricing() {
     },
   ];
 
+  const cardVariants = createCardVariants(0.2, 0.15);
+
   return (
-    <section
+    <FuturisticBackground
       id="tarifs"
-      className="py-20 bg-gray-50 dark:bg-gray-900/50 transition-colors duration-300"
+      orbs={[
+        { size: 300, colorClass: "glowing-orb-cyan", left: "10%", top: "20%", delay: 0 },
+        { size: 250, colorClass: "glowing-orb-purple", left: "80%", top: "60%", delay: 1.5 },
+        { size: 200, colorClass: "glowing-orb-pink", left: "50%", top: "10%", delay: 3 },
+      ]}
+      shapes={[
+        { delay: 0.5, duration: 12, size: 40, left: "8%", top: "35%", shape: "circle" },
+        { delay: 1.5, duration: 14, size: 50, left: "88%", top: "25%", shape: "hexagon" },
+        { delay: 2, duration: 10, size: 35, left: "92%", top: "80%", shape: "square" },
+      ]}
+      codeLines={[
+        { delay: 0.5, width: "50%" },
+        { delay: 2, width: "35%" },
+      ]}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <motion.div
+          className="text-center mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <motion.h2
+            variants={itemVariants}
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
             Tarifs indicatifs
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-gray-600 dark:text-gray-300"
+          >
             Une idée des prix pour préparer votre budget
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Grille 3 cartes */}
         <div className="grid md:grid-cols-3 gap-8 mb-12 items-stretch">
           {plans.map((plan, index) => (
-            <div
+            <motion.div
               key={plan.name}
-              className={`group relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-slideIn ${
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              whileHover={{ scale: 1.03, y: -8 }}
+              className={`group relative card-futuristic p-8 flex flex-col ${
                 plan.popular
                   ? "ring-2 ring-blue-500 dark:ring-blue-400 md:scale-105 z-10"
                   : ""
               }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
+              <div className="card-futuristic-glow" />
+
               {/* Badge populaire */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                   <span className="px-4 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-full whitespace-nowrap">
                     ⭐ Le plus demandé
                   </span>
@@ -175,19 +214,29 @@ export default function Pricing() {
                   {plan.target}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Mention indicative */}
-        <p className="text-center text-gray-500 dark:text-gray-400 italic mb-12 max-w-2xl mx-auto">
+        <motion.p
+          className="text-center text-gray-500 dark:text-gray-400 italic mb-12 max-w-2xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: 0.6 }}
+        >
           Chaque projet est unique. Ces tarifs sont donnés à titre indicatif et
           dépendent de la complexité et du temps de développement. Demandez
           votre devis personnalisé gratuit.
-        </p>
+        </motion.p>
 
         {/* Bloc Vidéo & Drone */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-10 text-white mb-12 shadow-xl">
+        <motion.div
+          className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-10 text-white mb-12 shadow-xl"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ delay: 0.7 }}
+        >
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="flex gap-4">
               <div className="p-3 bg-white/20 rounded-xl">
@@ -209,37 +258,57 @@ export default function Pricing() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Badges réassurance */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: 0.8 }}
+        >
           {reassuranceBadges.map((badge, index) => (
-            <div
+            <motion.div
               key={index}
-              className="flex items-center justify-center gap-2 px-4 py-3 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-xl text-gray-700 dark:text-gray-200 text-sm font-medium shadow-sm"
+              className="badge-futuristic justify-center"
+              whileHover={{ scale: 1.03, y: -2 }}
             >
               <span className="text-blue-600 dark:text-blue-400">
                 {badge.icon}
               </span>
               <span>{badge.text}</span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA */}
-        <div className="text-center">
-          <CallToAction
-            variant="gradient"
-            text="Demander un devis gratuit"
-            subtext="Réponse sous 24h"
-            icon="send"
-            size="large"
-            href="#contact"
-            location="pricing"
-            testId="pricing_cta"
-          />
-        </div>
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ delay: 0.9 }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="cta-glow-wrapper group inline-block"
+          >
+            <div className="cta-glow" />
+            <div className="relative">
+              <CallToAction
+                variant="gradient"
+                text="Demander un devis gratuit"
+                subtext="Réponse sous 24h"
+                icon="send"
+                size="large"
+                href="#contact"
+                location="pricing"
+                testId="pricing_cta"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </FuturisticBackground>
   );
 }

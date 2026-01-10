@@ -1,5 +1,5 @@
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Lottie from "lottie-react";
 import {
   AtSign,
@@ -14,15 +14,20 @@ import {
   Tag,
   User,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import contactAnimation from "../../animations/contact.json";
 import { emailjsConfig, validateEmailjsConfig } from "../../config/emailjs";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import { FormData } from "../../types/common";
 import AnimatedButton from "../common/AnimatedButton";
 import FormField from "../common/FormField";
+import FuturisticBackground from "../effects/FuturisticBackground";
+import { containerVariants, itemVariants, lottieVariants } from "../effects/FuturisticEffects";
 
 export default function Contact() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -138,54 +143,80 @@ export default function Contact() {
     clearErrors();
   };
 
-  return (
-    <section
-      id="contact"
-      className="py-20 transition-colors duration-300 dark:bg-gray-900 relative overflow-hidden"
-    >
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
-      </div>
+  const socialLinks = [
+    {
+      href: "https://www.linkedin.com/in/christophemostefaoui/",
+      icon: Linkedin,
+      label: "LinkedIn",
+      hoverColor: "hover:border-blue-400 hover:text-blue-500",
+    },
+    {
+      href: "https://github.com/krismos64",
+      icon: Github,
+      label: "GitHub",
+      hoverColor: "hover:border-gray-400 hover:text-gray-500",
+    },
+    {
+      href: "https://krismos.fr/",
+      icon: LinkIcon,
+      label: "Portfolio",
+      hoverColor: "hover:border-purple-400 hover:text-purple-500",
+    },
+  ];
 
-      <div className="container mx-auto px-6 relative z-10">
+  return (
+    <FuturisticBackground
+      id="contact"
+      orbs={[
+        { size: 300, colorClass: "glowing-orb-cyan", left: "5%", top: "15%", delay: 0 },
+        { size: 260, colorClass: "glowing-orb-purple", left: "85%", top: "50%", delay: 1.5 },
+        { size: 200, colorClass: "glowing-orb-pink", left: "40%", top: "80%", delay: 3 },
+      ]}
+      shapes={[
+        { delay: 0, duration: 11, size: 50, left: "3%", top: "30%", shape: "hexagon" },
+        { delay: 1.5, duration: 13, size: 45, left: "92%", top: "20%", shape: "circle" },
+        { delay: 2.5, duration: 10, size: 40, left: "88%", top: "75%", shape: "square" },
+      ]}
+      codeLines={[
+        { delay: 0.5, width: "55%" },
+        { delay: 2, width: "45%" },
+      ]}
+    >
+      <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
+        {/* Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
         >
           <motion.h2
+            variants={itemVariants}
             className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
             Travaillons ensemble
           </motion.h2>
           <motion.p
+            variants={itemVariants}
             className="text-xl text-gray-600 dark:text-gray-300 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
           >
             Discutons de votre projet et donnons vie à vos idées
           </motion.p>
           <motion.div
             className="max-w-xs mx-auto"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            variants={lottieVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
           >
             <Lottie animationData={contactAnimation} loop={true} />
           </motion.div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-8"
           >
@@ -194,33 +225,37 @@ export default function Contact() {
                 Restons en contact
               </h3>
               <div className="space-y-6">
+                {/* Email */}
                 <motion.div
-                  className="group flex items-center space-x-4 p-4 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300"
+                  className="group card-futuristic p-4 flex items-center space-x-4"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors">
+                  <div className="card-futuristic-glow" />
+                  <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors relative z-10">
                     <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   </div>
                   <a
                     href="mailto:christophe.mostefaoui.dev@gmail.com"
-                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium relative z-10"
                   >
                     christophe.mostefaoui.dev@gmail.com
                   </a>
                 </motion.div>
 
+                {/* Phone */}
                 <motion.div
-                  className="group flex items-center space-x-4 p-4 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300"
+                  className="group card-futuristic p-4 flex items-center space-x-4"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg group-hover:bg-green-200 dark:group-hover:bg-green-900/50 transition-colors">
+                  <div className="card-futuristic-glow" />
+                  <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg group-hover:bg-green-200 dark:group-hover:bg-green-900/50 transition-colors relative z-10">
                     <Phone className="h-5 w-5 text-green-600 dark:text-green-400" />
                   </div>
                   <a
                     href="tel:+33679088845"
-                    className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors font-medium"
+                    className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors font-medium relative z-10"
                   >
                     +33 6 79 08 88 45
                   </a>
@@ -228,47 +263,28 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Social Links */}
             <div>
               <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                 Suivez-moi
               </h4>
               <div className="flex space-x-4">
-                {[
-                  {
-                    href: "https://www.linkedin.com/in/christophemostefaoui/",
-                    icon: Linkedin,
-                    label: "LinkedIn",
-                    color: "blue",
-                  },
-                  {
-                    href: "https://github.com/krismos64",
-                    icon: Github,
-                    label: "GitHub",
-                    color: "gray",
-                  },
-                  {
-                    href: "https://krismos.fr/",
-                    icon: LinkIcon,
-                    label: "Portfolio",
-                    color: "purple",
-                  },
-                ].map((social, index) => (
+                {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${social.label} de Christophe Mostefaoui`}
-                    className={`p-3 rounded-xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:border-${social.color}-300 dark:hover:border-${social.color}-600 transition-all duration-300 group`}
+                    className={`p-3 card-futuristic group ${social.hoverColor}`}
                     whileHover={{ scale: 1.1, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                   >
-                    <social.icon
-                      className={`h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-${social.color}-600 dark:group-hover:text-${social.color}-400 transition-colors`}
-                    />
+                    <div className="card-futuristic-glow" />
+                    <social.icon className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-current transition-colors relative z-10" />
                   </motion.a>
                 ))}
               </div>
@@ -278,36 +294,40 @@ export default function Contact() {
             <motion.div
               className="mt-8 flex items-center gap-4"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <img
+              <motion.img
                 src="/assets/images/badge-drone.png"
                 alt="Télépilote Drone Certifié DGAC AlphaTango"
                 className="w-24 h-24 object-contain"
+                whileHover={{ scale: 1.1, rotate: 5 }}
               />
-              <img
+              <motion.img
                 src="/assets/images/badge-dev.png"
                 alt="Certification Développeur"
                 className="w-24 h-24 object-contain"
+                whileHover={{ scale: 1.1, rotate: -5 }}
               />
             </motion.div>
           </motion.div>
 
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="relative"
           >
             {submitted ? (
               <motion.div
-                className="relative p-8 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 backdrop-blur-sm"
+                className="card-futuristic p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
-                <div className="text-center">
+                <div className="card-futuristic-glow" />
+                <div className="text-center relative z-10">
                   <motion.div
                     className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4"
                     initial={{ scale: 0 }}
@@ -334,13 +354,12 @@ export default function Contact() {
               </motion.div>
             ) : (
               <motion.div
-                className="relative p-8 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-xl"
+                className="card-futuristic p-8"
                 initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
+                animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                {/* Glassmorphism overlay */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-white/5 dark:from-gray-700/20 dark:to-gray-900/5" />
+                <div className="card-futuristic-glow" />
 
                 <form
                   onSubmit={handleSubmit}
@@ -407,7 +426,7 @@ export default function Contact() {
                   <motion.div
                     className="flex items-start space-x-3"
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
                     transition={{ delay: 0.8 }}
                   >
                     <motion.label
@@ -485,6 +504,6 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </FuturisticBackground>
   );
 }

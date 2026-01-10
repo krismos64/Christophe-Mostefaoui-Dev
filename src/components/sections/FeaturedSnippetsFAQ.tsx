@@ -1,9 +1,14 @@
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
 import { featuredSnippetsContent } from "../../utils/featured-snippets-content";
+import FuturisticBackground, { SUBTLE_CONFIG } from "../effects/FuturisticBackground";
+import { containerVariants, itemVariants } from "../effects/FuturisticEffects";
 
 const FeaturedSnippetsFAQ = () => {
-  const [openItems, setOpenItems] = useState<number[]>([0]); // Premier item ouvert par défaut
+  const [openItems, setOpenItems] = useState<number[]>([0]);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
 
   const toggleItem = (index: number) => {
     setOpenItems(prev =>
@@ -16,31 +21,58 @@ const FeaturedSnippetsFAQ = () => {
   const { questions } = featuredSnippetsContent;
 
   return (
-    <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-blue-900">
-      <div className="max-w-4xl mx-auto px-4">
+    <FuturisticBackground
+      {...SUBTLE_CONFIG}
+      className="py-16"
+      orbs={[
+        { size: 220, colorClass: "glowing-orb-cyan", left: "85%", top: "15%", delay: 0 },
+        { size: 180, colorClass: "glowing-orb-purple", left: "5%", top: "70%", delay: 2 },
+      ]}
+      shapes={[
+        { delay: 0, duration: 12, size: 35, left: "90%", top: "40%", shape: "circle" },
+        { delay: 1.5, duration: 14, size: 40, left: "8%", top: "25%", shape: "hexagon" },
+      ]}
+      showCorners={false}
+    >
+      <div className="max-w-4xl mx-auto px-4 relative z-10" ref={contentRef}>
         {/* Header optimisé pour Featured Snippets */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <motion.div
+          className="text-center mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <motion.h2
+            variants={itemVariants}
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
             Questions Fréquentes
             <span className="block text-lg text-blue-600 dark:text-blue-400 mt-2">
               Tout savoir sur le développement web freelance expert
             </span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+          >
             Découvrez les réponses aux questions les plus posées sur le développement web moderne,
             les tarifs, et l'expertise technique de Christophe Mostefaoui.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* FAQ optimisée pour Google Featured Snippets - Microdata supprimée pour éviter conflit avec JSON-LD */}
+        {/* FAQ */}
         <div className="space-y-4">
           {questions.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.1 + index * 0.1 }}
+              className="card-futuristic overflow-hidden"
             >
+              <div className="card-futuristic-glow" />
               <button
-                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50/50 dark:hover:bg-gray-700/50 transition-colors relative z-10"
                 onClick={() => toggleItem(index)}
                 aria-expanded={openItems.includes(index)}
               >
@@ -58,8 +90,10 @@ const FeaturedSnippetsFAQ = () => {
               </button>
 
               {openItems.includes(index) && (
-                <div
-                  className="px-6 pb-5"
+                <motion.div
+                  className="px-6 pb-5 relative z-10"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
                   itemScope
                   itemType="https://schema.org/Answer"
                 >
@@ -76,21 +110,26 @@ const FeaturedSnippetsFAQ = () => {
                     {item.keywords.map((keyword, keyIndex) => (
                       <span
                         key={keyIndex}
-                        className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full"
+                        className="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full border border-blue-200/50 dark:border-blue-700/50"
                       >
                         {keyword}
                       </span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* CTA optimisé pour conversion */}
-        <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-8 text-white">
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ delay: 0.8 }}
+        >
+          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white shadow-xl">
             <h3 className="text-2xl font-bold mb-4">
               Une question spécifique sur votre projet ?
             </h3>
@@ -99,21 +138,25 @@ const FeaturedSnippetsFAQ = () => {
               Expert React.js, Node.js, TypeScript.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <motion.a
                 href="#contact"
                 className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Poser ma question
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="mailto:christophe.mostefaoui.dev@gmail.com"
                 className="inline-block border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Contact direct
-              </a>
+              </motion.a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contenu caché pour Featured Snippets supplémentaires */}
         <div className="hidden">
@@ -138,7 +181,7 @@ const FeaturedSnippetsFAQ = () => {
           </p>
         </div>
       </div>
-    </section>
+    </FuturisticBackground>
   );
 };
 

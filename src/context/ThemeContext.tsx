@@ -14,14 +14,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     // Vérifier si un thème est déjà stocké dans localStorage
     const savedTheme = localStorage.getItem("theme");
 
-    // Vérifier les préférences système si aucun thème n'est stocké
+    // Si aucun thème stocké, mode sombre par défaut
     if (!savedTheme) {
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
+      return "dark";
     }
 
-    return (savedTheme as Theme) || "light";
+    return savedTheme as Theme;
   });
 
   useEffect(() => {

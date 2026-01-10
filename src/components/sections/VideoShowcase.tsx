@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Play, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useRef } from "react";
+import FuturisticBackground, { LIGHT_CONFIG } from "../effects/FuturisticBackground";
+import { containerVariants, itemVariants } from "../effects/FuturisticEffects";
 
 interface Video {
   id: string;
@@ -13,6 +16,8 @@ interface Video {
 
 export default function VideoShowcase() {
   const [activeVideo, setActiveVideo] = useState<Video | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
 
   const videos: Video[] = [
     {
@@ -45,23 +50,39 @@ export default function VideoShowcase() {
 
   return (
     <>
-      <section
+      <FuturisticBackground
         id="video-showcase"
-        className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300"
+        {...LIGHT_CONFIG}
+        orbs={[
+          { size: 250, colorClass: "glowing-orb-cyan", left: "80%", top: "10%", delay: 0 },
+          { size: 200, colorClass: "glowing-orb-purple", left: "5%", top: "60%", delay: 1.5 },
+          { size: 150, colorClass: "glowing-orb-pink", left: "50%", top: "80%", delay: 3 },
+        ]}
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
           {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <motion.div
+            className="text-center mb-12"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            >
               Découvrez mon{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 expertise en vidéo
               </span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            >
               Prenez quelques minutes pour mieux me connaître et comprendre comment je peux vous accompagner
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Videos Grid */}
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -69,13 +90,12 @@ export default function VideoShowcase() {
               <motion.div
                 key={video.id}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="group cursor-pointer"
                 onClick={() => openModal(video)}
               >
-                <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/70 dark:bg-gray-800/70 backdrop-blur-md border border-gray-200/50 dark:border-gray-700/50">
                   {/* Thumbnail */}
                   <div className="relative aspect-video overflow-hidden">
                     <img
@@ -109,7 +129,7 @@ export default function VideoShowcase() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-5 bg-white dark:bg-gray-800">
+                  <div className="p-5">
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {video.title}
                     </h3>
@@ -123,16 +143,23 @@ export default function VideoShowcase() {
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-12">
-            <a
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <motion.a
               href="#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Discutons de votre projet
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
-      </section>
+      </FuturisticBackground>
 
       {/* Modal Video */}
       <AnimatePresence>
