@@ -8,9 +8,8 @@
     "type": "none"
   },
   "api": {
-    "type": "openapi",
-    "url": "https://christophe-dev-freelance.fr/chatbot-knowledge.txt",
-    "is_user_authenticated": false
+    "type": "none",
+    "has_user_authentication": false
   },
   "logo_url": "https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg",
   "contact_email": "christophe.mostefaoui.dev@gmail.com",
@@ -24,7 +23,7 @@
     "url": "https://christophe-dev-freelance.fr/chatbot-knowledge.txt",
     "format": "text/plain",
     "language": "fr",
-    "last_updated": "2026-01-07"
+    "last_updated": "2026-02-18"
   },
   "services": [
     {

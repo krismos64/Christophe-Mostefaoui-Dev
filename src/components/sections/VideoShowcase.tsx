@@ -122,10 +122,6 @@ export default function VideoShowcase() {
                       </motion.div>
                     </div>
 
-                    {/* Duration badge */}
-                    <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/70 backdrop-blur-sm text-white text-sm font-medium rounded">
-                      {video.duration}
-                    </div>
                   </div>
 
                   {/* Content */}

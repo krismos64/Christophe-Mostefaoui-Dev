@@ -72,8 +72,14 @@ export const generateAdvancedStructuredData = () => {
       "@id": `${baseUrl}/#organization`
     },
     "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "École d'Ingénierie Informatique"
+      "@type": "EducationalOrganization",
+      "name": "La Fabrique Numérique Paloise",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pau",
+        "addressRegion": "Pyrénées-Atlantiques",
+        "addressCountry": "FR"
+      }
     },
     "hasOccupation": [
       {
@@ -107,13 +113,12 @@ export const generateAdvancedStructuredData = () => {
     "hasCredential": [
       {
         "@type": "EducationalOccupationalCredential",
-        "name": "Certification React.js Avancé",
-        "credentialCategory": "certificate"
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "Certification Machine Learning",
-        "credentialCategory": "certificate"
+        "name": "Titre Concepteur Développeur d'Applications (Bac+3/4)",
+        "credentialCategory": "degree",
+        "recognizedBy": {
+          "@type": "EducationalOrganization",
+          "name": "La Fabrique Numérique Paloise"
+        }
       }
     ],
     "knowsAbout": [
@@ -263,7 +268,7 @@ export const generateAdvancedStructuredData = () => {
     "availableChannel": {
       "@type": "ServiceChannel",
       "serviceUrl": baseUrl,
-      "servicePhone": "+33-6-XX-XX-XX-XX",
+      "servicePhone": "+33679088845",
       "availableLanguage": ["fr", "en"]
     }
   };

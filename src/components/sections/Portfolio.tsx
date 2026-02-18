@@ -13,15 +13,6 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "LivresStaka.fr",
-      description:
-        "Une plateforme complète pour accompagner les auteurs dans la correction et l'édition de leurs manuscrits. Espace client sécurisé, paiement en ligne et messagerie intégrée pour échanger facilement avec l'équipe éditoriale.",
-      image: "/assets/images/livrestaka.jpg",
-      alt: "LivresStaka - Plateforme d'édition et correction de manuscrits",
-      tags: ["Plateforme sur mesure", "Paiement en ligne", "Espace client"],
-      link: "https://livrestaka.fr/",
-    },
-    {
       title: "SmartPlanning.fr",
       description:
         "Application de gestion des plannings d'équipe avec assistant intelligent intégré. Optimisez automatiquement les emplois du temps de vos collaborateurs et gagnez des heures de travail chaque semaine.",
@@ -29,6 +20,15 @@ export default function Portfolio() {
       alt: "SmartPlanning - Application SaaS de gestion des plannings",
       tags: ["Application SaaS", "Assistant IA", "Gain de temps"],
       link: "https://smartplanning.fr/",
+    },
+    {
+      title: "LivresStaka.fr",
+      description:
+        "Une plateforme complète pour accompagner les auteurs dans la correction et l'édition de leurs manuscrits. Espace client sécurisé, paiement en ligne et messagerie intégrée pour échanger facilement avec l'équipe éditoriale.",
+      image: "/assets/images/livrestaka.jpg",
+      alt: "LivresStaka - Plateforme d'édition et correction de manuscrits",
+      tags: ["Plateforme sur mesure", "Paiement en ligne", "Espace client"],
+      link: "https://livrestaka.fr/",
     },
     {
       title: "Cabinet Infirmier Graslin",

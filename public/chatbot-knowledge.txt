@@ -13,7 +13,7 @@
 - Localisation : Pau/Artix, Pyrénées-Atlantiques (64)
 
 ### Profil
-- Âge : 37 ans
+- Âge : 38 ans
 - Statut : Freelance Full-Stack MERN + Symfony
 - Années d'expérience : 3 ans d'expérience intensive
 
@@ -382,4 +382,4 @@ Spécialiste React.js, Node.js, TypeScript, IA & Production Vidéo/Drone
 *Transformons ensemble vos idées en applications web performantes* 🚀
 
 ---
-*Dernière mise à jour : 7 janvier 2026*
+*Dernière mise à jour : 18 février 2026*

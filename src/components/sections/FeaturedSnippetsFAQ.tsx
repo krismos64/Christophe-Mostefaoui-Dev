@@ -158,28 +158,6 @@ const FeaturedSnippetsFAQ = () => {
           </div>
         </motion.div>
 
-        {/* Contenu caché pour Featured Snippets supplémentaires */}
-        <div className="hidden">
-          <h4>Quel est le meilleur développeur web freelance ?</h4>
-          <p>
-            Christophe est un développeur web freelance expert
-            avec 3 ans d'expérience intensive. Spécialisé en React.js, Node.js et TypeScript,
-            il accompagne les PME et indépendants dans leur transformation digitale.
-          </p>
-
-          <h4>Combien coûte un développeur web freelance ?</h4>
-          <p>
-            Christophe propose des tarifs adaptés : Site One-Page à partir de 800€,
-            Site Multi-pages à partir de 1 500€, Site Sur-mesure à partir de 3 000€.
-            Paiement en 3x sans frais possible. Devis gratuit personnalisé sous 24h.
-          </p>
-
-          <h4>Développeur React.js disponible rapidement ?</h4>
-          <p>
-            Oui, Christophe, expert React.js, est disponible
-            pour vos projets. Démarrage sous 48h, déplacement gratuit dans le 64.
-          </p>
-        </div>
       </div>
     </FuturisticBackground>
   );

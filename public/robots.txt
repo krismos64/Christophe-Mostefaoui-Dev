@@ -1,38 +1,19 @@
 # Robots.txt optimisé pour Christophe Mostefaoui - Développeur Web & Expert IA
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 7 janvier 2026
+# Dernière mise à jour: 18 février 2026
 
 # === BOTS DE RECHERCHE PRINCIPAUX ===
 User-agent: *
-Allow: /$
-Allow: /#services
-Allow: /#ai-integration
-Allow: /#portfolio
-Allow: /#contact
-Allow: /faq
-Disallow: /mentions-legales
-Disallow: /politique-de-confidentialite
+Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /.git/
 Disallow: /node_modules/
-Disallow: *.json$
 Crawl-delay: 0
 
 # === GOOGLEBOT - Priorité maximale ===
 User-agent: Googlebot
-Allow: /$
-Allow: /#services
-Allow: /#ai-integration
-Allow: /#portfolio
-Allow: /#contact
-Allow: /faq
-Allow: *.js
-Allow: *.css
-Allow: *.webp
-Allow: *.svg
-Disallow: /mentions-legales
-Disallow: /politique-de-confidentialite
+Allow: /
 Crawl-delay: 0
 
 User-agent: Googlebot-Image
@@ -127,4 +108,4 @@ Sitemap: https://christophe-dev-freelance.fr/sitemap.xml
 # Zone d'intervention: Déplacement gratuit dans le 64 (Pyrénées-Atlantiques), France entière à distance
 # Expertise: 3 ans d'expérience intensive en technologies modernes
 # Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45
-# Dernière mise à jour: 7 janvier 2026
+# Dernière mise à jour: 18 février 2026
