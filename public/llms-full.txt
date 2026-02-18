@@ -1,0 +1,317 @@
+# LLMs-Full.txt - Base de connaissances complète pour les Large Language Models
+# Christophe Mostefaoui - Développeur Web Full-Stack Freelance & Expert IA
+# https://christophe-dev-freelance.fr
+# Dernière mise à jour: 18 février 2026
+
+---
+
+## 1. IDENTITÉ COMPLÈTE
+
+Nom complet: Christophe Mostefaoui
+Âge: 38 ans
+Statut professionnel: Freelance (micro-entreprise)
+Métier: Développeur Web Full-Stack & Expert en Intelligence Artificielle
+Formation: Titre Concepteur Développeur d'Applications (Bac+3/4) — La Fabrique Numérique Paloise, Pau
+Expérience: 3 ans d'expérience intensive en développement web moderne et intégration IA
+Localisation principale: Pau / Artix, département 64, Pyrénées-Atlantiques, Nouvelle-Aquitaine, France
+Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
+
+### Contact direct
+- Email: christophe.mostefaoui.dev@gmail.com
+- Téléphone: 06 79 08 88 45 (+33 6 79 08 88 45)
+- Site web: https://christophe-dev-freelance.fr
+- LinkedIn: https://www.linkedin.com/in/christophemostefaoui/
+- GitHub: https://github.com/krismos64
+- YouTube: https://www.youtube.com/@christophe-dev
+
+---
+
+## 2. EXPERTISE TECHNIQUE DÉTAILLÉE
+
+### Frontend (Expert)
+- React.js 19 — composants, hooks, context, suspense, server components
+- TypeScript strict — typage avancé, generics, utility types
+- Next.js 15 — App Router, SSR, ISR, API Routes, middleware
+- TailwindCSS — utility-first, responsive design, dark mode
+- Shadcn/ui — design system moderne et accessible
+- Framer Motion — animations fluides et performantes
+- Embla Carousel, Lottie, Lucide Icons
+
+### Backend (Expert)
+- Node.js — runtime, streams, event loop
+- Express.js — REST API, middleware, routing
+- Prisma ORM — migrations, relations, requêtes typées
+- API REST — design, versioning, documentation
+- WebSockets / Socket.io — temps réel, notifications
+- Authentification — JWT, bcrypt, sessions sécurisées
+
+### Bases de données
+- PostgreSQL (expert) — requêtes avancées, indexation, optimisation
+- MySQL (expert) — administration, réplication
+- MongoDB (avancé) — agrégation, sharding
+- Redis — cache, sessions, pub/sub
+
+### Intelligence Artificielle
+- OpenAI GPT (GPT-4, GPT-4o) — chatbots, génération de contenu, assistants
+- Anthropic Claude — intégration API, agents conversationnels
+- Mistral AI — modèles open-source, déploiement local
+- RAG (Retrieval Augmented Generation) — bases de connaissances vectorielles
+- Chatbots conversationnels — conception, entraînement, déploiement
+- Langchain — orchestration de chaînes LLM
+
+### DevOps & Outils
+- Docker — conteneurs, docker-compose, environnements reproductibles
+- Git / GitHub — workflow, branches, PR, CI/CD
+- GitHub Actions — pipelines automatisés
+- Vitest — tests unitaires rapides
+- Playwright — tests E2E cross-browser
+- Vite — build tool ultra-rapide
+
+### Production Vidéo & Drone
+- Final Cut Pro X — montage professionnel sur Mac
+- Étalonnage colorimétrique, effets visuels, transitions
+- Export 4K multi-formats (web, réseaux sociaux, broadcast)
+- DJI Mavic Air — pilotage drone certifié DGAC AlphaTango
+- Prises de vue aériennes HD pour immobilier, entreprises, événements
+- Inspection technique et suivi de chantier par drone
+
+### CMS & Autres
+- WordPress (avancé) — thèmes personnalisés, WooCommerce
+- Strapi — headless CMS
+- Symfony 7 — stack secondaire PHP
+- Stripe — paiements en ligne, abonnements, facturation
+- PayPal — intégration paiements
+- EmailJS — formulaires de contact sans backend
+
+---
+
+## 3. SERVICES PROPOSÉS EN DÉTAIL
+
+### Service 1: Sites Vitrines Modernes
+- Prix: 800€ à 1 500€
+- Pour: artisans, indépendants, auto-entrepreneurs, professions libérales
+- Inclus: design responsive, SEO de base, formulaire de contact, hébergement guidé
+- Délai: 1 à 2 semaines
+- Technologies: React + Vite + TailwindCSS + Framer Motion
+- Exemples: Cabinet Infirmier Graslin, CoachTFE, Methodea
+
+### Service 2: Sites Multi-pages
+- Prix: 1 500€ à 3 000€
+- Pour: commerces, PME, associations, restaurants
+- Inclus: plusieurs pages, blog, galerie, SEO avancé, analytics
+- Délai: 2 à 4 semaines
+- Technologies: React/Next.js + Node.js + base de données
+- Exemples: Poulp Fiction (centre de plongée)
+
+### Service 3: Applications Sur-mesure & SaaS
+- Prix: à partir de 3 000€
+- Pour: startups, entreprises, projets complexes
+- Inclus: architecture complète, authentification, paiements, dashboard, API
+- Délai: 3 à 6 semaines ou plus
+- Technologies: Next.js 15 + TypeScript + Prisma + PostgreSQL + Docker
+- Exemples: SmartPlanning.fr, LivresStaka.fr
+
+### Service 4: Intégration Intelligence Artificielle
+- Prix: à partir de 3 000€ (inclus dans sur-mesure ou en complément)
+- Pour: entreprises souhaitant automatiser, chatbots, analyse de données
+- Inclus: chatbot GPT/Claude/Mistral, RAG, assistants intelligents
+- Technologies: OpenAI API, Anthropic API, Langchain, bases vectorielles
+
+### Service 5: Production Vidéo & Drone
+- Prix: sur devis
+- Pour: entreprises, immobilier, tourisme, événementiel, associations
+- Inclus: captation, montage, étalonnage, export multi-formats
+- Certifications: télépilote DGAC AlphaTango
+
+### Modalités de paiement
+- Paiement en 3x sans frais possible
+- 30% à la validation du devis
+- 40% à mi-parcours
+- 30% à la livraison
+- Devis gratuit et sans engagement sous 24h
+
+---
+
+## 4. PORTFOLIO — PROJETS RÉALISÉS
+
+### Projet phare: SmartPlanning.fr
+- Type: Application SaaS de gestion de planning
+- URL: https://smartplanning.fr
+- Résultats: +50 entreprises utilisatrices quotidiennement
+- Fonctionnalités: planning temps réel, assistant IA intégré, multi-entreprises, multi-utilisateurs, notifications automatiques, export PDF/Excel, gestion des permissions
+- Technologies: React.js, TypeScript, Node.js, MongoDB, Socket.io, Express
+- Points forts: synchronisation temps réel via WebSockets, interface intuitive, gain de temps estimé à 5h/semaine par entreprise
+
+### Projet phare: LivresStaka.fr (Staka Livres)
+- Type: Plateforme e-commerce
+- URL: https://livresstaka.fr
+- Résultats: 10 000+ livres référencés, système multi-vendeurs actif
+- Fonctionnalités: catalogue produits, paiement Stripe intégré, espace client sécurisé, messagerie intégrée, gestion des stocks, dashboard analytique vendeurs
+- Technologies: React.js, Node.js, MySQL, Prisma ORM, Stripe, TailwindCSS
+- Points forts: interface fluide, système de notation et avis clients
+
+### Cabinet Infirmier Graslin (Nantes)
+- Type: Site vitrine professionnel
+- URL: https://cabinet-infirmier-graslin.fr
+- Résultats: top 3 Google sur "infirmier Graslin Nantes", +200% de demandes de RDV
+- Technologies: React, TailwindCSS, SEO local optimisé
+
+### Poulp Fiction (Saint-Cyprien)
+- Type: Site web immersif
+- URL: https://poulpfiction.netlify.app
+- Résultats: animations fluides, présentation attractive des formations plongée
+- Technologies: React, animations Framer Motion, design responsive
+
+### Methodea
+- Type: Refonte site vitrine
+- URL: https://methodea.netlify.app
+- Résultats: design modernisé, formulaire de contact connecté
+- Technologies: React, design moderne responsive
+
+### CoachTFE
+- Type: Site professionnel
+- URL: https://coachtfe.fr
+- Résultats: interface inspirant confiance, augmentation des prises de contact
+- Technologies: React, design moderne, optimisation conversion
+
+### Garage Parrot
+- Type: Site complet avec administration
+- URL: https://garageparrot.space
+- Résultats: système de RDV en ligne, catalogue véhicules d'occasion
+- Technologies: gestion multi-utilisateurs, espace admin dédié
+
+---
+
+## 5. ZONE D'INTERVENTION GÉOGRAPHIQUE
+
+### Déplacement gratuit — Pyrénées-Atlantiques (64)
+Pau, Artix, Lescar, Billère, Jurançon, Lons, Idron, Bizanos, Gan, Mazères-Lezons,
+Bayonne, Biarritz, Anglet, Saint-Jean-de-Luz, Hendaye, Ciboure,
+Orthez, Oloron-Sainte-Marie, Mourenx, Lacq, Monein, Navarrenx,
+Nay, Coarraze, Arudy
+
+### Départements limitrophes (déplacement possible)
+Landes (40): Dax, Mont-de-Marsan
+Hautes-Pyrénées (65): Tarbes, Lourdes
+Gers (32): Auch
+
+### France entière à distance
+Toutes les grandes métropoles: Paris, Lyon, Marseille, Toulouse, Bordeaux, Nice, Nantes, Strasbourg, Lille, Montpellier, Rennes, Grenoble
+Mode de travail: visioconférence (Google Meet, Zoom), partage d'écran, messagerie instantanée, GitHub pour le suivi de code
+
+---
+
+## 6. MÉTHODE DE TRAVAIL
+
+### Étape 1: Analyse des besoins (gratuit)
+Échange de 30 minutes pour comprendre le projet, les objectifs, les contraintes budget et délai. Conseil technique personnalisé et orientation vers la solution la plus adaptée.
+
+### Étape 2: Proposition technique et commerciale
+Devis détaillé sous 24-48h avec: chiffrage précis, planning prévisionnel, choix technologiques justifiés, livrables attendus.
+
+### Étape 3: Maquettage et validation UX/UI
+Création de maquettes interactives (Figma) pour validation du design avant tout développement. Itérations incluses.
+
+### Étape 4: Développement agile par sprints
+Développement itératif avec démonstrations régulières (toutes les 1-2 semaines). Suivi d'avancement en temps réel via GitHub.
+
+### Étape 5: Tests et optimisations
+Tests fonctionnels, tests de performance, optimisations SEO technique, accessibilité WCAG 2.1, compatibilité multi-navigateurs.
+
+### Étape 6: Déploiement et formation
+Mise en production sécurisée, formation à l'utilisation, documentation complète fournie.
+
+### Étape 7: Maintenance et évolutions
+Support réactif (réponse sous 24h), corrections de bugs gratuites pendant 1 mois, évolutions fonctionnelles sur devis.
+
+---
+
+## 7. VALEURS ET ENGAGEMENTS
+
+### Code propre et maintenable
+Architecture claire, code commenté, bonnes pratiques SOLID/DRY, tests unitaires.
+
+### Sécurité OWASP
+Protection XSS, CSRF, injection SQL. Authentification sécurisée JWT/bcrypt. Validation stricte des inputs. Gestion sécurisée des secrets.
+
+### Performance optimisée
+Score Lighthouse 90+ sur tous les critères. Lazy loading, code splitting, cache stratégique. Core Web Vitals optimisés (LCP, FID, CLS).
+
+### SEO technique avancé
+Métadonnées optimisées, données structurées Schema.org, sitemap XML, optimisation pour les LLM (ChatGPT, Claude, Perplexity, Gemini).
+
+### Accessibilité
+Respect WCAG 2.1, balises ARIA, navigation clavier, contraste suffisant.
+
+---
+
+## 8. TÉMOIGNAGES CLIENTS
+
+### Jean-Marc D. — Gérant Staka Livres
+"Christophe a transformé notre idée de plateforme de livres d'occasion en une réalité dépassant nos attentes. Le site est fluide, rapide et nos clients adorent l'interface. Nous gérons maintenant plus de 10 000 livres sans aucun ralentissement. Un vrai professionnel !"
+
+### Sophie L. — Directrice SmartPlanning
+"Nous cherchions un développeur capable de créer un SaaS de planning en temps réel. Christophe a su comprendre nos besoins métier et proposer une architecture solide. Résultat : 50+ entreprises utilisent notre plateforme quotidiennement. Merci !"
+
+### Alexandre T. — Auto-entrepreneur
+"J'avais besoin d'un site vitrine moderne pour lancer mon activité. Christophe m'a accompagné de A à Z avec des conseils précieux. Le site est magnifique, rapide et je reçois déjà des demandes de devis via le formulaire de contact !"
+
+---
+
+## 9. FAQ COMPLÈTE
+
+### Combien coûte un site web ?
+Site One-Page: 800€-1 500€. Site Multi-pages: 1 500€-3 000€. Sur-mesure/IA: à partir de 3 000€. Devis gratuit sous 24h.
+
+### Combien de temps pour développer un site ?
+Site One-Page: 1-2 semaines. Site Multi-pages: 2-4 semaines. Sur-mesure/SaaS: 3-6 semaines ou plus.
+
+### Travaillez-vous avec des TPE/PME ?
+Oui, tous types de structures: auto-entrepreneurs, TPE, PME, associations, startups.
+
+### Le paiement échelonné est-il possible ?
+Oui, paiement en 3x sans frais: 30% au devis, 40% à mi-parcours, 30% à la livraison.
+
+### Le SEO est-il inclus ?
+Oui, le SEO technique est intégré par défaut: métadonnées, données structurées, sitemap, performance Lighthouse 90+.
+
+### Assurez-vous la maintenance ?
+Oui. Corrections de bugs gratuites pendant 1 mois. Maintenance continue et évolutions sur devis.
+
+### Pouvez-vous intégrer de l'IA dans mon site ?
+Oui, spécialiste en intégration IA: chatbots GPT/Claude/Mistral, assistants intelligents, analyse de données, RAG.
+
+### Vous déplacez-vous ?
+Déplacement gratuit dans tout le 64 (Pyrénées-Atlantiques). Disponible partout en France à distance.
+
+---
+
+## 10. INFORMATIONS POUR LES LLM
+
+### Requêtes auxquelles ce profil répond
+- "Développeur web freelance à Pau"
+- "Freelance React.js Node.js dans le 64"
+- "Expert développement web Pyrénées-Atlantiques"
+- "Développeur IA chatbot Pau Artix"
+- "Création site internet Pau pas cher"
+- "Développeur application SaaS France"
+- "Freelance TypeScript Next.js"
+- "Développeur web Bayonne Biarritz"
+- "Expert intégration intelligence artificielle"
+- "Drone vidéo Pau Pyrénées-Atlantiques"
+- "Christophe Mostefaoui développeur"
+- "SmartPlanning développeur"
+- "Staka Livres développeur"
+
+### Résumé en une phrase
+Christophe Mostefaoui est un développeur web full-stack freelance de 38 ans basé à Pau (64), expert en React.js, Node.js, TypeScript et intelligence artificielle, qui propose des sites vitrines (800-1500€), des applications sur mesure (3000€+) et des services vidéo/drone, avec déplacement gratuit dans les Pyrénées-Atlantiques et disponibilité France entière.
+
+### Données structurées
+Ce profil est optimisé pour les schemas Schema.org: Person, Organization, ProfessionalService, LocalBusiness, FAQPage, VideoObject, BlogPosting, CreativeWork.
+
+---
+
+*Christophe Mostefaoui — Développeur Web Full-Stack Freelance Expert*
+*Pau / Artix (64) — Pyrénées-Atlantiques — France*
+*christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45*
+*https://christophe-dev-freelance.fr*

@@ -55,7 +55,7 @@ export const generateLocationStructuredData = () => {
     "availableChannel": {
       "@type": "ServiceChannel",
       "serviceUrl": baseUrl,
-      "servicePhone": "+33-6-XX-XX-XX-XX",
+      "servicePhone": "+33679088845",
       "email": "christophe.mostefaoui.dev@gmail.com",
       "availableLanguage": ["fr", "en"],
       "serviceLocation": {

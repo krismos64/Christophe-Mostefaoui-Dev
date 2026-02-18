@@ -31,7 +31,7 @@ export const generateLocalSEOSchema = () => {
     },
 
     "url": baseUrl,
-    "telephone": "+33-6-XX-XX-XX-XX",
+    "telephone": "+33679088845",
     "email": "christophe.mostefaoui.dev@gmail.com",
     "image": [
       `${baseUrl}/assets/images/Chris-profil.jpg`,

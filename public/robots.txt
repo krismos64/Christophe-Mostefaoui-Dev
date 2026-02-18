@@ -95,6 +95,7 @@ Disallow: /
 # Fichiers spéciaux pour LLM (ChatGPT, Claude, Perplexity, etc.)
 AI-Knowledge-Base: /chatbot-knowledge.txt
 LLMs-Info: /llms.txt
+LLMs-Full: /llms-full.txt
 AI-Plugin: /.well-known/ai-plugin.json
 
 # === SITEMAP & DIRECTIVES ===

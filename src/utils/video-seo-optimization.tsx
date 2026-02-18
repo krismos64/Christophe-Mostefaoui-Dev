@@ -2,11 +2,11 @@
 export const generateVideoStructuredData = () => {
   const baseUrl = "https://christophe-dev-freelance.fr";
 
-  // VideoObject principal pour l'indexation Google Video
+  // VideoObject secondaire pour enrichissement SEO vidéo (principal dans structured-data-final)
   const videoObject = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "@id": `${baseUrl}/#main-video`,
+    "@id": `${baseUrl}/#video-enriched`,
     "name": "Christophe Mostefaoui - Expert IA & Développement Web Full-Stack",
     "description": "Découvrez mon expertise en intégration IA, développement de chatbots intelligents, machine learning et applications web modernes. Spécialiste React.js, Node.js, TypeScript et Python à Pau.",
     "thumbnailUrl": [
@@ -134,19 +134,6 @@ export const generateVideoStructuredData = () => {
     },
     "copyrightYear": 2024,
     "isAccessibleForFree": true,
-    "commentCount": 0,
-    "interactionStatistic": [
-      {
-        "@type": "InteractionCounter",
-        "interactionType": "https://schema.org/WatchAction",
-        "userInteractionCount": 1250
-      },
-      {
-        "@type": "InteractionCounter",
-        "interactionType": "https://schema.org/LikeAction",
-        "userInteractionCount": 98
-      }
-    ],
     "potentialAction": [
       {
         "@type": "WatchAction",
