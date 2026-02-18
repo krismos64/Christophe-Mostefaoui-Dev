@@ -70,8 +70,11 @@
     {
       "name": "SmartPlanning",
       "url": "https://smartplanning.fr",
-      "description": "SaaS de gestion de planning temps réel",
-      "tech": ["React", "TypeScript", "MongoDB", "WebSockets"]
+      "description": "SaaS freemium de gestion de plannings d'équipe avec assistant IA intégré. Fondé et développé par Christophe Mostefaoui. Lancé en 2026.",
+      "role": "Fondateur, concepteur et développeur",
+      "model": "Freemium",
+      "tech": ["React", "TypeScript", "Node.js", "MongoDB", "WebSockets", "Socket.io", "Express"],
+      "features": ["Planning temps réel", "Assistant IA", "Multi-entreprises", "Export PDF/Excel", "Notifications"]
     }
   ],
   "contact": {

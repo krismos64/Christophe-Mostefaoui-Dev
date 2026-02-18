@@ -128,7 +128,7 @@ function App() {
           </title>
           <meta
             name="description"
-            content="Christophe, développeur web freelance expert ⭐⭐⭐⭐⭐ (47 avis). Spécialiste React.js, Node.js, TypeScript. Disponible France entière. Devis gratuit 24h. Solutions web modernes et performantes."
+            content="Christophe Mostefaoui, développeur web freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript. Fondateur SmartPlanning.fr. Disponible France entière. Devis gratuit 24h."
           />
           <meta
             name="keywords"

@@ -143,7 +143,7 @@ export const generateViralVideoSEO = () => {
         "name": "Qui est Christophe Mostefaoui et pourquoi cette vidéo devient-elle virale ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Christophe Mostefaoui est un développeur full-stack français révolutionnaire basé à Pau, expert en React.js, Node.js et intelligence artificielle. Sa vidéo devient virale car elle révèle des innovations exceptionnelles en IA, des projets SaaS révolutionnaires comme SmartPlanning.fr, et sa capacité unique à transformer les entreprises avec des technologies de pointe. Note parfaite 5/5 étoiles sur 47 avis clients."
+          "text": "Christophe Mostefaoui est un développeur full-stack français révolutionnaire basé à Pau, expert en React.js, Node.js et intelligence artificielle. Sa vidéo devient virale car elle révèle des innovations exceptionnelles en IA, des projets SaaS révolutionnaires comme SmartPlanning.fr, et sa capacité unique à transformer les entreprises avec des technologies de pointe. Fondateur de SmartPlanning.fr, SaaS de gestion de plannings."
         }
       },
       {

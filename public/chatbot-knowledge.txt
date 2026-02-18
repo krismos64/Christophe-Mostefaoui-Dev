@@ -329,16 +329,12 @@ Oui :
 - Nouvelles fonctionnalités : sur devis
 - Maintenance continue : forfait mensuel
 
-## Témoignages Clients
+## Pourquoi Faire Confiance à Christophe ?
 
-### Jean-Marc D. - Gérant Staka Livres
-*"Christophe a transformé notre idée de plateforme de livres d'occasion en une réalité dépassant nos attentes. Le site est fluide, rapide et nos clients adorent l'interface. Nous gérons maintenant plus de 10,000 livres sans aucun ralentissement. Un vrai professionnel !"*
-
-### Sophie L. - Directrice SmartPlanning
-*"Nous cherchions un développeur capable de créer un SaaS de planning en temps réel. Christophe a su comprendre nos besoins métier et proposer une architecture solide. Résultat : 50+ entreprises utilisent notre plateforme quotidiennement. Merci !"*
-
-### Alexandre T. - Auto-entrepreneur
-*"J'avais besoin d'un site vitrine moderne pour lancer mon activité. Christophe m'a accompagné de A à Z avec des conseils précieux. Le site est magnifique, rapide et je reçois déjà des demandes de devis via le formulaire de contact !"*
+- Projets livrés avec succès : SmartPlanning.fr (SaaS fondé par Christophe), LivresStaka.fr (plateforme e-commerce), et de nombreux sites vitrines pour TPE/PME
+- Code propre, sécurisé et maintenable
+- Communication transparente et régulière
+- Support réactif post-livraison
 
 ## Pour Aller Plus Loin
 

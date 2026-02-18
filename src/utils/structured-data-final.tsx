@@ -69,9 +69,20 @@ export const generateFinalStructuredData = () => {
       "Node.js",
       "TypeScript",
       "Chatbots GPT/Claude",
+      "Applications SaaS",
       "Production Vidéo",
       "Drone"
-    ]
+    ],
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@id": `${baseUrl}/#smartplanning`
+      }
+    },
+    "founder": {
+      "@type": "SoftwareApplication",
+      "@id": `${baseUrl}/#smartplanning`
+    }
   };
 
   // LocalBusiness (UNIQUE) - Sans faux avis
@@ -287,5 +298,48 @@ export const generateFinalStructuredData = () => {
     ]
   };
 
-  return [organization, person, localBusiness, videoObject, webPage, faqSchema];
+  // SmartPlanning - SaaS fondé par Christophe
+  const smartPlanning = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": `${baseUrl}/#smartplanning`,
+    "name": "SmartPlanning",
+    "alternateName": "SmartPlanning.fr",
+    "url": "https://smartplanning.fr",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Application SaaS freemium de gestion des plannings d'équipe avec assistant intelligent intégré. Optimisez automatiquement les emplois du temps de vos collaborateurs.",
+    "creator": {
+      "@type": "Person",
+      "@id": `${baseUrl}/#person`,
+      "name": "Christophe Mostefaoui"
+    },
+    "author": {
+      "@type": "Person",
+      "@id": `${baseUrl}/#person`
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Plan gratuit disponible (freemium)",
+      "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+      "Gestion de plannings temps réel",
+      "Assistant IA intégré",
+      "Multi-entreprises et multi-utilisateurs",
+      "Notifications automatiques",
+      "Export PDF et Excel",
+      "Gestion des permissions avancée",
+      "Synchronisation temps réel WebSockets"
+    ],
+    "screenshot": `${baseUrl}/assets/images/business-smartplanning.webp`,
+    "softwareVersion": "1.0",
+    "datePublished": "2026",
+    "inLanguage": "fr-FR",
+    "keywords": "planning, gestion équipe, SaaS, assistant IA, planification, emploi du temps, ressources humaines"
+  };
+
+  return [organization, person, localBusiness, videoObject, webPage, faqSchema, smartPlanning];
 };

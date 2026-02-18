@@ -13,7 +13,7 @@ export const generateLocalSEOSchema = () => {
       "Expert React.js Pau",
       "Développeur Node.js Pyrénées-Atlantiques"
     ],
-    "description": "Développeur web freelance expert avec 3 ans d'expérience. Spécialisé React.js, Node.js, TypeScript. Note 5/5 étoiles, 47 avis clients. Disponible France entière.",
+    "description": "Développeur web freelance expert avec 3 ans d'expérience. Spécialisé React.js, Node.js, TypeScript. Fondateur de SmartPlanning.fr (SaaS). Disponible France entière.",
 
     "address": {
       "@type": "PostalAddress",
@@ -122,14 +122,6 @@ export const generateLocalSEOSchema = () => {
       ]
     },
 
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "bestRating": "5",
-      "worstRating": "1",
-      "reviewCount": "47",
-      "ratingCount": "47"
-    },
 
     "knowsAbout": [
       "React.js",

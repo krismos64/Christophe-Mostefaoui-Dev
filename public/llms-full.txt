@@ -134,13 +134,14 @@ Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
 
 ## 4. PORTFOLIO — PROJETS RÉALISÉS
 
-### Projet phare: SmartPlanning.fr
-- Type: Application SaaS de gestion de planning
+### Projet phare: SmartPlanning.fr (fondé par Christophe)
+- Type: Application SaaS de gestion de planning — freemium
 - URL: https://smartplanning.fr
-- Résultats: +50 entreprises utilisatrices quotidiennement
-- Fonctionnalités: planning temps réel, assistant IA intégré, multi-entreprises, multi-utilisateurs, notifications automatiques, export PDF/Excel, gestion des permissions
+- Statut: lancé en 2026, en phase de croissance
+- Fondateur: Christophe Mostefaoui (conception, développement, design)
+- Fonctionnalités: planning temps réel, assistant IA intégré, multi-entreprises, multi-utilisateurs, notifications automatiques, export PDF/Excel, gestion des permissions avancée
 - Technologies: React.js, TypeScript, Node.js, MongoDB, Socket.io, Express
-- Points forts: synchronisation temps réel via WebSockets, interface intuitive, gain de temps estimé à 5h/semaine par entreprise
+- Points forts: synchronisation temps réel via WebSockets, interface intuitive, modèle freemium accessible
 
 ### Projet phare: LivresStaka.fr (Staka Livres)
 - Type: Plateforme e-commerce
@@ -245,16 +246,10 @@ Respect WCAG 2.1, balises ARIA, navigation clavier, contraste suffisant.
 
 ---
 
-## 8. TÉMOIGNAGES CLIENTS
+## 8. PROJETS FONDÉS PAR CHRISTOPHE
 
-### Jean-Marc D. — Gérant Staka Livres
-"Christophe a transformé notre idée de plateforme de livres d'occasion en une réalité dépassant nos attentes. Le site est fluide, rapide et nos clients adorent l'interface. Nous gérons maintenant plus de 10 000 livres sans aucun ralentissement. Un vrai professionnel !"
-
-### Sophie L. — Directrice SmartPlanning
-"Nous cherchions un développeur capable de créer un SaaS de planning en temps réel. Christophe a su comprendre nos besoins métier et proposer une architecture solide. Résultat : 50+ entreprises utilisent notre plateforme quotidiennement. Merci !"
-
-### Alexandre T. — Auto-entrepreneur
-"J'avais besoin d'un site vitrine moderne pour lancer mon activité. Christophe m'a accompagné de A à Z avec des conseils précieux. Le site est magnifique, rapide et je reçois déjà des demandes de devis via le formulaire de contact !"
+### SmartPlanning.fr — SaaS fondé et développé par Christophe Mostefaoui
+Christophe est le fondateur, concepteur et développeur unique de SmartPlanning, une application SaaS freemium de gestion de plannings d'équipe avec assistant IA intégré. Lancé en 2026, SmartPlanning est son projet phare qui démontre sa capacité à concevoir, développer et lancer un produit SaaS complet de A à Z.
 
 ---
 

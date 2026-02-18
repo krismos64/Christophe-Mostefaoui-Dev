@@ -147,9 +147,11 @@ export const generateLocationStructuredData = () => {
           "position": 2,
           "item": {
             "@type": "SoftwareApplication",
-            "name": "SmartPlanning - SaaS Entreprise",
+            "@id": "https://christophe-dev-freelance.fr/#smartplanning",
+            "name": "SmartPlanning - SaaS de gestion de plannings",
             "url": "https://smartplanning.fr",
-            "description": "Application SaaS complète, TypeScript, optimisation maximale"
+            "applicationCategory": "BusinessApplication",
+            "description": "Application SaaS freemium de gestion de plannings d'équipe avec assistant IA, fondée et développée par Christophe Mostefaoui"
           }
         }
       ]
