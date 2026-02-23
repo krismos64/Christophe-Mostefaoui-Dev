@@ -13,8 +13,8 @@ export const generateFinalStructuredData = () => {
     "logo": {
       "@type": "ImageObject",
       "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
-      "width": 1024,
-      "height": 1024
+      "width": 650,
+      "height": 650
     },
     "image": [
       {
@@ -48,8 +48,8 @@ export const generateFinalStructuredData = () => {
     "image": {
       "@type": "ImageObject",
       "url": `${baseUrl}/assets/images/Chris-profil.jpg`,
-      "width": 1024,
-      "height": 1024,
+      "width": 650,
+      "height": 650,
       "caption": "Christophe Mostefaoui - Développeur Full-Stack Expert"
     },
     "email": "christophe.mostefaoui.dev@gmail.com",
@@ -219,25 +219,23 @@ export const generateFinalStructuredData = () => {
     }
   };
 
-  // WebPage avec mainEntity vidéo
+  // WebPage avec mainEntity Person (pas VideoObject pour éviter la date vidéo dans les SERP)
   const webPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${baseUrl}/#webpage`,
     "url": baseUrl,
-    "name": "Christophe, Concepteur/Développeur d'applications web modernes",
-    "description": "Expert en intégration IA et développement web full-stack",
+    "name": "Christophe Mostefaoui - Développeur Web Freelance Expert à Pau",
+    "description": "Développeur web freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript. Sites vitrines, applications sur mesure, intégration IA.",
     "mainEntity": {
-      "@id": `${baseUrl}/#main-video`
-    },
-    "about": {
       "@id": `${baseUrl}/#person`
     },
     "isPartOf": {
       "@type": "WebSite",
-      "name": "Christophe Mostefaoui Portfolio",
+      "name": "Christophe Mostefaoui - Développeur Web Freelance",
       "url": baseUrl
-    }
+    },
+    "inLanguage": "fr-FR"
   };
 
   // FAQ Schema étendue pour SEO et IA - Données cohérentes

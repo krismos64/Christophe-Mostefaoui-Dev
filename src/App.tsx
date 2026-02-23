@@ -19,7 +19,6 @@ import AIChatbot from "./components/AIChatbot";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useStructuredData } from "./hooks/useStructuredData";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
-import VideoSEOHead from "./components/seo/VideoSEOHead";
 import GMBOptimizedContact from "./components/seo/GMBOptimizedContact";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 
@@ -27,66 +26,22 @@ import ErrorBoundary from "./components/common/ErrorBoundary";
 const FAQ = lazy(() => import("./pages/FAQ"));
 const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
-const Avis = lazy(() => import("./pages/Avis"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 
 const Home = () => {
-  const {
-    final: finalStructuredData,
-    video: videoStructuredData,
-    location: locationStructuredData,
-    localSEO: localSEOData,
-    viralVideo: viralVideoData,
-  } = useStructuredData();
+  const structuredData = useStructuredData();
 
   return (
   <>
     <LLMOptimizedHead />
-    <VideoSEOHead />
 
-    {/* Données structurées consolidées FINALES - Sans doublons */}
-    {finalStructuredData.map((data, index) => (
+    {/* Données structurées JSON-LD - Source unique sans doublons */}
+    {structuredData.map((data, index) => (
       <script
-        key={`final-structured-data-${index}`}
+        key={`structured-data-${index}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-      />
-    ))}
-
-    {/* Données structurées vidéo pour indexation Google Video */}
-    {videoStructuredData.map((videoData, index) => (
-      <script
-        key={`video-data-${index}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoData) }}
-      />
-    ))}
-
-    {/* Données structurées de localisation pour SEO national */}
-    {locationStructuredData.map((locationData, index) => (
-      <script
-        key={`location-data-${index}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(locationData) }}
-      />
-    ))}
-
-    {/* Données SEO local pour GMB */}
-    {localSEOData.map((localData, index) => (
-      <script
-        key={`local-seo-${index}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localData) }}
-      />
-    ))}
-
-    {/* Données structurées VIRAL pour la vidéo YouTube */}
-    {viralVideoData.map((viralData, index) => (
-      <script
-        key={`viral-video-${index}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(viralData) }}
       />
     ))}
 
@@ -124,7 +79,7 @@ function App() {
       <HelmetProvider>
         <Helmet>
           <title>
-            Christophe - Développeur Web Freelance Expert France | React.js Node.js TypeScript
+            Christophe Mostefaoui - Développeur Web Freelance Expert à Pau | React.js, Node.js, TypeScript
           </title>
           <meta
             name="description"
@@ -262,7 +217,6 @@ function App() {
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
-                    <Route path="/avis" element={<Avis />} />
                     <Route path="/mentions-legales" element={<LegalNotice />} />
                     <Route
                       path="/politique-de-confidentialite"
