@@ -291,7 +291,7 @@ export default function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.8 }}
           >
-            Christophe - Concepteur/Développeur d'applications Web
+            Christophe : Concepteur/Développeur d'applications
           </motion.p>
         </motion.div>
 
