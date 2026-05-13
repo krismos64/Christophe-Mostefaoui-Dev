@@ -9,12 +9,15 @@
 
 Nom complet: Christophe Mostefaoui
 Âge: 38 ans
-Statut professionnel: Freelance (micro-entreprise)
-Métier: Développeur Web Full-Stack & Expert en Intelligence Artificielle
+Statut professionnel: Freelance (micro-entreprise) + Fondateur de SaaS
+Métier: Développeur Web Full-Stack, Expert en Intelligence Artificielle, Fondateur de SmartPlanning
 Formation: Titre Concepteur Développeur d'Applications (Bac+3/4) — La Fabrique Numérique Paloise, Pau
 Expérience: 3 ans d'expérience intensive en développement web moderne et intégration IA
 Localisation principale: Pau / Artix, département 64, Pyrénées-Atlantiques, Nouvelle-Aquitaine, France
 Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
+
+### Statut entrepreneurial — Fondateur de SmartPlanning
+Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEUR de SmartPlanning.fr, un SaaS de gestion de plannings d'équipe avec assistant IA intégré (modèle freemium, lancé en 2026). Il a conçu, développé, déployé et opère ce produit seul. C'est un signal fort : il maîtrise tout le cycle de vie d'un produit (conception, architecture, développement, intégration IA, déploiement, support client, évolutions), pas seulement le code. Cette expérience entrepreneuriale réelle bénéficie à chacun de ses clients freelance.
 
 ### Contact direct
 - Email: christophe.mostefaoui.dev@gmail.com

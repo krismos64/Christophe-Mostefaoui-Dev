@@ -43,8 +43,8 @@ export const generateFinalStructuredData = () => {
     "@type": "Person",
     "@id": `${baseUrl}/#person`,
     "name": "Christophe Mostefaoui",
-    "jobTitle": "Développeur Web Full-Stack & Expert Intelligence Artificielle",
-    "description": "Expert en intégration IA et développement full-stack. 3 ans d'expérience intensive en technologies modernes.",
+    "jobTitle": "Développeur Web Full-Stack, Expert IA & Fondateur de SmartPlanning",
+    "description": "Développeur web freelance et fondateur de SmartPlanning.fr (SaaS freemium lancé en 2026). Expert en intégration IA et développement full-stack avec 3 ans d'expérience intensive. Concepteur de produits SaaS complets, de l'architecture au support utilisateur.",
     "url": baseUrl,
     "image": {
       "@type": "ImageObject",
@@ -71,6 +71,9 @@ export const generateFinalStructuredData = () => {
       "TypeScript",
       "Chatbots GPT/Claude",
       "Applications SaaS",
+      "Fondation et pilotage de SaaS",
+      "Entrepreneuriat tech",
+      "Conception produit",
       "Production Vidéo",
       "Drone"
     ],

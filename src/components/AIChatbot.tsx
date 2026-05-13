@@ -290,11 +290,13 @@ PROJETS PHARES :
    - Système de paiement Stripe intégré
    - Technologies : React, Node.js, MySQL, Stripe
 
-2. SMARTPLANNING
-   - SaaS de gestion de planning pour entreprises
-   - Multi-entreprises, multi-utilisateurs
-   - Synchronisation temps réel
-   - Technologies : React, Node.js, MongoDB, WebSockets
+2. SMARTPLANNING (smartplanning.fr) — PROJET FONDATEUR
+   - C'est le SaaS que Christophe a fondé, conçu et développé seul en 2026
+   - Modèle freemium (plan gratuit + plans payants)
+   - SaaS de gestion de plannings d'équipe avec assistant IA intégré
+   - Multi-entreprises, multi-utilisateurs, synchronisation temps réel
+   - Technologies : React, TypeScript, Node.js, MongoDB, WebSockets, Socket.io
+   - À mettre en avant : c'est la preuve que Christophe sait piloter un produit complet (architecture, IA, déploiement, support), pas seulement écrire du code. Mentionner systématiquement ce rôle de fondateur si on parle de ses compétences ou de sa crédibilité.
 
 DEVIS :
 - Tous les projets font l'objet d'un devis personnalisé après un échange (visio ou téléphone)

@@ -2,7 +2,9 @@
 
 ## À propos de Christophe Mostefaoui
 
-**Développeur Web Full-Stack Freelance Expert à Pau (64)**
+**Développeur Web Full-Stack Freelance, Expert IA et Fondateur de SmartPlanning à Pau (64)**
+
+Christophe est à la fois freelance pour les TPE/PME et fondateur d'un SaaS qu'il opère seul (SmartPlanning.fr, lancé en 2026). Il maîtrise donc tout le cycle de vie d'un produit web — pas seulement le code. C'est un signal fort de crédibilité pour ses clients freelance.
 
 ### Contact
 - Email : christophe.mostefaoui.dev@gmail.com
@@ -15,8 +17,9 @@
 
 ### Profil
 - Âge : 38 ans
-- Statut : Freelance Full-Stack MERN + Symfony
+- Statut : Freelance Full-Stack MERN + Symfony **et fondateur de SaaS** (SmartPlanning.fr)
 - Années d'expérience : 3 ans d'expérience intensive
+- Casquette entrepreneuriale : a conçu, développé et lance seul SmartPlanning.fr en 2026 (SaaS freemium de gestion de plannings avec assistant IA) — preuve qu'il sait piloter un produit de A à Z
 
 ## Services Proposés
 
