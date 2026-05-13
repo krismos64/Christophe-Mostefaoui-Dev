@@ -57,6 +57,11 @@ export default function About() {
       description: "Réponse sous 24h, suivi personnalisé",
     },
     {
+      emoji: "🚀",
+      title: "Fondateur d'un SaaS",
+      description: "J'ai conçu SmartPlanning de A à Z : je sais piloter un produit",
+    },
+    {
       emoji: "🤝",
       title: "Présent après livraison",
       description: "Accompagnement et modifications incluses",
@@ -177,10 +182,25 @@ export default function About() {
                 Mon approche : vous écouter, vous conseiller, et créer un site
                 qui travaille pour vous — même quand vous dormez.
               </p>
+              <p className="text-base mt-4 p-4 rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border-l-4 border-indigo-500 dark:border-indigo-400">
+                En parallèle de mes missions freelance, j'ai conçu et lancé{" "}
+                <a
+                  href="https://smartplanning.fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-indigo-700 dark:text-indigo-300 hover:underline"
+                >
+                  SmartPlanning
+                </a>
+                , un SaaS de gestion de plannings d'équipe avec assistant IA
+                intégré (modèle freemium, lancé en 2026). Architecture,
+                développement, IA, déploiement, support : je maîtrise tout le
+                cycle de vie d'un produit — pas juste le code.
+              </p>
             </motion.div>
 
-            {/* 3 points différenciants */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            {/* 4 points différenciants */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
               {differentiators.map((item, index) => (
                 <motion.div
                   key={index}

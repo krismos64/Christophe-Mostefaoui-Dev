@@ -9,6 +9,7 @@ import {
   Code2,
   Rocket,
   ExternalLink,
+  Sparkles,
 } from "lucide-react";
 import {
   Particle,
@@ -107,6 +108,23 @@ export default function Hero() {
       >
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center md:text-left">
+            {/* Badge fondateur SmartPlanning */}
+            <motion.a
+              href="https://smartplanning.fr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={itemVariants}
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 border border-indigo-200/70 dark:border-indigo-700/50 text-sm font-semibold text-indigo-700 dark:text-indigo-300 shadow-sm hover:shadow-md transition-shadow"
+              aria-label="Visiter SmartPlanning.fr, mon SaaS de gestion de planning (nouvel onglet)"
+              data-testid="hero_smartplanning_badge"
+            >
+              <Sparkles className="h-4 w-4 text-indigo-500 dark:text-indigo-400" aria-hidden="true" />
+              <span>Fondateur de SmartPlanning</span>
+              <ExternalLink className="h-3 w-3 opacity-70" aria-hidden="true" />
+            </motion.a>
+
             {/* Titre principal */}
             <motion.h1
               variants={itemVariants}

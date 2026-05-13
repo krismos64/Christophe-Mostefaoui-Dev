@@ -15,11 +15,12 @@ export default function Portfolio() {
     {
       title: "SmartPlanning.fr",
       description:
-        "Application de gestion des plannings d'équipe avec assistant intelligent intégré. Optimisez automatiquement les emplois du temps de vos collaborateurs et gagnez des heures de travail chaque semaine.",
+        "Mon projet entrepreneurial : un SaaS de gestion des plannings d'équipe avec assistant IA intégré, que j'ai conçu, développé et lancé en 2026 (modèle freemium). De l'architecture au déploiement en passant par l'IA et le support, je maîtrise tout le cycle de vie produit.",
       image: "/assets/images/business-smartplanning.webp",
-      alt: "SmartPlanning - Application SaaS de gestion des plannings",
-      tags: ["Application SaaS", "Assistant IA", "Gain de temps"],
+      alt: "SmartPlanning - SaaS de gestion des plannings fondé par Christophe Mostefaoui",
+      tags: ["Projet fondateur", "SaaS Freemium", "Assistant IA", "2026"],
       link: "https://smartplanning.fr/",
+      isFounder: true,
     },
     {
       title: "LivresStaka.fr",
@@ -238,6 +239,15 @@ export default function Portfolio() {
                               "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80";
                           }}
                         />
+                        {/* Badge Projet fondateur */}
+                        {project.isFounder && (
+                          <div className="absolute top-3 left-3 z-10">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg backdrop-blur-sm">
+                              <span aria-hidden="true">🚀</span>
+                              <span>Mon projet entrepreneurial</span>
+                            </span>
+                          </div>
+                        )}
                         {/* Overlay avec lien */}
                         <a
                           href={project.link}
@@ -275,14 +285,21 @@ export default function Portfolio() {
 
                         {/* Tags */}
                         <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-4 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium border border-blue-100 dark:border-blue-800"
-                            >
-                              {tag}
-                            </span>
-                          ))}
+                          {project.tags.map((tag) => {
+                            const isFounderTag = tag === "Projet fondateur";
+                            return (
+                              <span
+                                key={tag}
+                                className={
+                                  isFounderTag
+                                    ? "px-4 py-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full text-sm font-bold shadow-md"
+                                    : "px-4 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium border border-blue-100 dark:border-blue-800"
+                                }
+                              >
+                                {tag}
+                              </span>
+                            );
+                          })}
                         </div>
                       </div>
                     </motion.div>
