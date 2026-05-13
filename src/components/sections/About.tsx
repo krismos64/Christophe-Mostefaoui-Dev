@@ -234,6 +234,60 @@ export default function About() {
                 </div>
               </motion.div>
             </motion.div>
+
+            {/* Encart audience tech */}
+            <motion.a
+              href="https://krismos.fr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={itemVariants}
+              whileHover={{ y: -2, boxShadow: "0 10px 30px -10px rgba(168, 85, 247, 0.25)" }}
+              className="mt-8 block relative overflow-hidden rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 border border-purple-200/60 dark:border-purple-700/40 text-left transition-all group"
+              aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
+              data-testid="about_cta_portfolio"
+            >
+              <div className="flex items-start gap-4">
+                <div className="hidden sm:flex flex-shrink-0 w-12 h-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-md">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs uppercase tracking-wider font-semibold text-purple-600 dark:text-purple-300 mb-1">
+                    Vous êtes recruteur, CTO ou DSI ?
+                  </p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                    Découvrez mon portfolio technique complet
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    CV, parcours, stack détaillée, projets perso et veille techno —
+                    tout sur{" "}
+                    <span className="font-semibold text-purple-600 dark:text-purple-300 group-hover:underline">
+                      krismos.fr
+                    </span>
+                  </p>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-purple-500 dark:text-purple-400 flex-shrink-0 mt-1 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </motion.a>
           </motion.div>
         </div>
       </div>

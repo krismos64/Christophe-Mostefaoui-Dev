@@ -8,6 +8,7 @@ import {
   FileText,
   Code2,
   Rocket,
+  ExternalLink,
 } from "lucide-react";
 import {
   Particle,
@@ -145,10 +146,10 @@ export default function Hero() {
               ))}
             </motion.div>
 
-            {/* Bouton CTA */}
+            {/* Boutons CTA */}
             <motion.div
               variants={itemVariants}
-              className="mt-8 flex flex-col sm:flex-row gap-4"
+              className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
             >
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -169,6 +170,21 @@ export default function Hero() {
                   />
                 </div>
               </motion.div>
+
+              <motion.a
+                href="https://krismos.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-purple-600 dark:text-purple-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-2 border-purple-300/60 dark:border-purple-500/40 hover:border-purple-500 dark:hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-gray-700/80 transition-colors shadow-sm hover:shadow-md"
+                aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
+                data-testid="hero_cta_portfolio"
+              >
+                <Code2 className="w-5 h-5" aria-hidden="true" />
+                <span>Mon portfolio technique</span>
+                <ExternalLink className="w-4 h-4 opacity-70" aria-hidden="true" />
+              </motion.a>
             </motion.div>
 
             {/* Mini-processus de travail */}

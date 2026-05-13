@@ -343,6 +343,62 @@ export default function Portfolio() {
               </motion.div>
             </div>
           </motion.div>
+
+          {/* Bloc alternatif audience tech */}
+          <motion.div
+            className="mt-12 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ delay: 0.9 }}
+          >
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-purple-900/20 dark:via-gray-800/50 dark:to-indigo-900/20 border border-purple-200/60 dark:border-purple-700/40 p-6 sm:p-8 text-center">
+              <p className="text-xs uppercase tracking-wider font-semibold text-purple-600 dark:text-purple-300 mb-2">
+                Profil tech
+              </p>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                Vous cherchez plutôt mes compétences techniques détaillées ?
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto">
+                Recruteurs, CTO, DSI, agences : retrouvez mon CV, ma stack complète,
+                mes projets perso, mes contributions open source et ma veille techno
+                sur mon portfolio dédié.
+              </p>
+              <motion.a
+                href="https://krismos.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 shadow-lg hover:shadow-xl transition-shadow"
+                aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
+                data-testid="portfolio_cta_krismos"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
+                </svg>
+                <span>Visiter krismos.fr</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 opacity-80"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </motion.a>
+            </div>
+          </motion.div>
         </div>
       </FuturisticBackground>
     </>

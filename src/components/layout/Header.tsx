@@ -3,6 +3,8 @@ import Lottie from "lottie-react";
 import {
   Brain,
   Briefcase,
+  Code2,
+  ExternalLink,
   FolderOpen,
   Github,
   HelpCircle,
@@ -154,7 +156,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
               {menuItems.map((item) => (
                 <Link
                   key={item.name}
@@ -172,6 +174,19 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
+
+              {/* Lien externe vers portfolio technique */}
+              <a
+                href="https://krismos.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-purple-600 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700/50 hover:bg-purple-100 dark:hover:bg-purple-900/50 hover:border-purple-400 dark:hover:border-purple-500 transition-colors"
+                aria-label="Mon portfolio technique sur krismos.fr (nouvel onglet)"
+              >
+                <Code2 className="h-4 w-4" aria-hidden="true" />
+                <span>Portfolio tech</span>
+                <ExternalLink className="h-3 w-3 opacity-70" aria-hidden="true" />
+              </a>
 
               {/* Bouton de basculement de thème */}
               <button
@@ -387,6 +402,32 @@ export default function Header() {
                       </motion.a>
                     </motion.div>
                   ))}
+
+                  {/* Lien externe Portfolio technique */}
+                  <motion.div
+                    custom={menuItems.length}
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                  >
+                    <motion.a
+                      href="https://krismos.fr/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="flex items-center gap-3 text-xl sm:text-2xl font-semibold my-1.5 sm:my-2 px-5 py-1.5 rounded-xl transition-all duration-300 text-purple-600 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/30"
+                      whileHover={{ scale: 1.05, x: 10 }}
+                      whileTap={{ scale: 0.98 }}
+                      aria-label="Mon portfolio technique sur krismos.fr (nouvel onglet)"
+                    >
+                      <span className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400">
+                        <Code2 className="h-5 w-5" />
+                      </span>
+                      <span>Portfolio tech</span>
+                      <ExternalLink className="h-4 w-4 opacity-70" aria-hidden="true" />
+                    </motion.a>
+                  </motion.div>
                 </nav>
               </motion.div>
 
