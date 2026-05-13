@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback, lazy, Suspense } from "react";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { lazy, Suspense } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
@@ -14,7 +14,6 @@ import Services from "./components/sections/Services";
 import Pricing from "./components/sections/Pricing";
 import VideoServices from "./components/sections/VideoServices";
 import ServiceArea from "./components/sections/ServiceArea";
-import WelcomeScreen from "./components/welcome/WelcomeScreen";
 import AIChatbot from "./components/AIChatbot";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useStructuredData } from "./hooks/useStructuredData";
@@ -33,168 +32,34 @@ const Home = () => {
   const structuredData = useStructuredData();
 
   return (
-  <>
-    <LLMOptimizedHead />
+    <>
+      <LLMOptimizedHead />
 
-    {/* Données structurées JSON-LD - Source unique sans doublons */}
-    {structuredData.map((data, index) => (
-      <script
-        key={`structured-data-${index}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-      />
-    ))}
+      {/* Données structurées JSON-LD - Source unique sans doublons */}
+      {structuredData.map((data, index) => (
+        <script
+          key={`structured-data-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
 
-    <Hero />
-    <About />
-    <VideoShowcase />
-    <Services />
-    <Pricing />
-    <FeaturedSnippetsFAQ />
-    <AIIntegration />
-    <Portfolio />
-    <VideoServices />
-    <ServiceArea />
-    <GMBOptimizedContact />
-  </>
+      <Hero />
+      <About />
+      <VideoShowcase />
+      <Services />
+      <Pricing />
+      <FeaturedSnippetsFAQ />
+      <AIIntegration />
+      <Portfolio />
+      <VideoServices />
+      <ServiceArea />
+      <GMBOptimizedContact />
+    </>
   );
 };
 
 function App() {
-  const [showWelcome, setShowWelcome] = useState(true);
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
-
-  useEffect(() => {
-    // Afficher le welcome screen à chaque accès/rechargement
-    setIsFirstVisit(true);
-    setShowWelcome(true);
-  }, []);
-
-  const handleWelcomeComplete = useCallback(() => {
-    setShowWelcome(false);
-  }, []);
-
-  if (isFirstVisit && showWelcome) {
-    return (
-      <HelmetProvider>
-        <Helmet>
-          <title>
-            Christophe Mostefaoui - Développeur Web Freelance Expert à Pau | React.js, Node.js, TypeScript
-          </title>
-          <meta
-            name="description"
-            content="Christophe Mostefaoui, développeur web freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript. Fondateur SmartPlanning.fr. Disponible France entière. Devis gratuit 24h."
-          />
-          <meta
-            name="keywords"
-            content="développeur web freelance France, expert React.js, Node.js développeur, TypeScript expert, Christophe Mostefaoui, Christophe, développeur freelance Paris, Lyon, Marseille, Toulouse, Bordeaux, développeur Pau, Artix, applications SaaS, e-commerce, intégration IA, chatbot GPT Claude, développement moderne"
-          />
-          <meta name="robots" content="index, follow" />
-          <meta name="author" content="Christophe Mostefaoui" />
-
-          {/* Open Graph pour les réseaux sociaux */}
-          <meta
-            property="og:title"
-            content="Christophe - Développeur Web & Expert IA"
-          />
-          <meta
-            property="og:description"
-            content="Développeur full-stack et expert en intégration IA. Chatbots, machine learning, analyse prédictive. React.js, Node.js, Python. Solutions digitales innovantes à Pau."
-          />
-          <meta property="og:type" content="website" />
-          <meta
-            property="og:url"
-            content="https://christophe-dev-freelance.fr/"
-          />
-          <meta
-            property="og:image"
-            content="https://christophe-dev-freelance.fr/assets/images/og-image.png"
-          />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <meta property="og:image:type" content="image/png" />
-          <meta property="og:image:alt" content="Christophe Mostefaoui - Développeur Web & Expert IA" />
-
-          {/* Twitter Card */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            name="twitter:title"
-            content="Christophe - Développeur Web & IA Expert"
-          />
-          <meta
-            name="twitter:description"
-            content="Expert intégration IA & développeur full-stack. Chatbots, ML, React.js, Node.js, Python"
-          />
-          <meta
-            name="twitter:image"
-            content="https://christophe-dev-freelance.fr/assets/images/og-image.png"
-          />
-
-          {/* Données structurées JSON-LD pour le SEO */}
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Christophe Mostefaoui",
-              jobTitle: "Développeur Web Full-Stack & Expert IA",
-              description:
-                "Développeur web expert spécialisé en intégration IA, React.js, Node.js, TypeScript et Python",
-              url: "https://christophe-dev-freelance.fr",
-              image:
-                "https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg",
-              sameAs: [
-                "https://www.linkedin.com/in/christophemostefaoui/",
-                "https://github.com/krismos64",
-              ],
-              knowsAbout: [
-                "Intelligence Artificielle",
-                "Machine Learning",
-                "Chatbots GPT/Claude",
-                "Python",
-                "React.js",
-                "Node.js",
-                "TypeScript",
-                "JavaScript",
-                "Full-Stack Development",
-                "SaaS Applications",
-                "Analyse Prédictive",
-                "Vision par Ordinateur",
-              ],
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Pau",
-                addressRegion: "Pyrénées-Atlantiques",
-                addressCountry: "France",
-              },
-              hasOccupation: {
-                "@type": "Occupation",
-                name: "Développeur Web Full-Stack & Expert IA",
-                occupationLocation: {
-                  "@type": "City",
-                  name: "Pau",
-                },
-                skills:
-                  "IA/ML, Python, ChatGPT/Claude, React.js, Node.js, TypeScript, JavaScript, MongoDB, MySQL, API REST, TensorFlow, Scikit-learn",
-              },
-            })}
-          </script>
-
-          {/* Preload des ressources critiques */}
-          <link
-            rel="preload"
-            href="/assets/videos/animation-chris-dev.mp4"
-            as="video"
-            type="video/mp4"
-          />
-
-          {/* Canonical URL */}
-          <link rel="canonical" href="https://christophe-dev-freelance.fr/" />
-        </Helmet>
-        <WelcomeScreen onComplete={handleWelcomeComplete} />
-      </HelmetProvider>
-    );
-  }
-
   return (
     <ErrorBoundary>
       <HelmetProvider>
