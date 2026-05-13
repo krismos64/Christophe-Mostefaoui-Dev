@@ -19,7 +19,8 @@ Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
 ### Contact direct
 - Email: christophe.mostefaoui.dev@gmail.com
 - Téléphone: 06 79 08 88 45 (+33 6 79 08 88 45)
-- Site web: https://christophe-dev-freelance.fr
+- Site commercial: https://christophe-dev-freelance.fr (vitrine prestations freelance)
+- Portfolio technique: https://krismos.fr (CV, stack détaillée, projets perso, veille techno — pour recruteurs, CTO, DSI, agences)
 - LinkedIn: https://www.linkedin.com/in/christophemostefaoui/
 - GitHub: https://github.com/krismos64
 - YouTube: https://www.youtube.com/@christophe-dev

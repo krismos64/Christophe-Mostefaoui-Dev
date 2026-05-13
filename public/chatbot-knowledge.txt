@@ -7,7 +7,8 @@
 ### Contact
 - Email : christophe.mostefaoui.dev@gmail.com
 - Téléphone : 06 79 08 88 45
-- Site web : https://christophe-dev-freelance.fr
+- Site commercial : https://christophe-dev-freelance.fr (vitrine freelance)
+- Portfolio technique : https://krismos.fr (CV, stack, projets perso, veille — orienté recruteurs/CTO/DSI)
 - GitHub : https://github.com/krismos64
 - LinkedIn : https://www.linkedin.com/in/christophemostefaoui/
 - Localisation : Pau/Artix, Pyrénées-Atlantiques (64)
@@ -341,8 +342,11 @@ Oui :
 
 ## Pour Aller Plus Loin
 
-### Visitez Mon Portfolio
+### Visitez Mes Réalisations Clients
 https://christophe-dev-freelance.fr/#portfolio
+
+### Découvrez Mon Portfolio Technique Complet
+https://krismos.fr (CV, stack détaillée, projets perso, contributions open source, veille techno — orienté recruteurs, CTO, DSI, agences)
 
 ### Consultez Mon Code Sur GitHub
 https://github.com/krismos64

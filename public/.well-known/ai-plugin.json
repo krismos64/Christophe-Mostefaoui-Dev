@@ -3,7 +3,7 @@
   "name_for_human": "Christophe Mostefaoui - Développeur Web & Expert IA",
   "name_for_model": "christophe_dev_freelance",
   "description_for_human": "Développeur web full-stack freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript. Sites vitrines, applications sur mesure, intégration IA et production vidéo/drone.",
-  "description_for_model": "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 3 ans d'expérience intensive en technologies modernes. Expert en React.js, Node.js, TypeScript. Spécialisé dans les sites vitrines, applications sur mesure et intégration d'IA conversationnelle (GPT, Claude, Mistral). Propose également des services de production vidéo (Final Cut Pro X) et prises de vue drone (DJI Mavic Air). Tous les projets font l'objet d'un devis personnalisé, envoyé gratuitement sous 24h après un échange. Paiement en 3x sans frais possible. Déplacement gratuit dans les Pyrénées-Atlantiques (64), disponible partout en France à distance. Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45. Site: https://christophe-dev-freelance.fr",
+  "description_for_model": "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 3 ans d'expérience intensive en technologies modernes. Expert en React.js, Node.js, TypeScript. Spécialisé dans les sites vitrines, applications sur mesure et intégration d'IA conversationnelle (GPT, Claude, Mistral). Propose également des services de production vidéo (Final Cut Pro X) et prises de vue drone (DJI Mavic Air). Tous les projets font l'objet d'un devis personnalisé, envoyé gratuitement sous 24h après un échange. Paiement en 3x sans frais possible. Déplacement gratuit dans les Pyrénées-Atlantiques (64), disponible partout en France à distance. Deux sites distincts : https://christophe-dev-freelance.fr (vitrine commerciale freelance, clients PME/TPE) et https://krismos.fr (portfolio technique complet : CV, stack, projets perso, veille techno, pour recruteurs et clients tech). Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45.",
   "auth": {
     "type": "none"
   },
@@ -86,6 +86,7 @@
     "email": "christophe.mostefaoui.dev@gmail.com",
     "phone": "+33679088845",
     "website": "https://christophe-dev-freelance.fr",
+    "tech_portfolio": "https://krismos.fr",
     "github": "https://github.com/krismos64",
     "linkedin": "https://www.linkedin.com/in/christophemostefaoui/"
   },

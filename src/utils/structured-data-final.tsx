@@ -32,7 +32,8 @@ export const generateFinalStructuredData = () => {
     },
     "sameAs": [
       "https://www.linkedin.com/in/christophemostefaoui/",
-      "https://github.com/krismos64"
+      "https://github.com/krismos64",
+      "https://krismos.fr/"
     ]
   };
 
@@ -82,7 +83,12 @@ export const generateFinalStructuredData = () => {
     "founder": {
       "@type": "SoftwareApplication",
       "@id": `${baseUrl}/#smartplanning`
-    }
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/christophemostefaoui/",
+      "https://github.com/krismos64",
+      "https://krismos.fr/"
+    ]
   };
 
   // LocalBusiness (UNIQUE) - Sans faux avis
@@ -262,7 +268,7 @@ export const generateFinalStructuredData = () => {
         "name": "Comment contacter Christophe Mostefaoui ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Email : christophe.mostefaoui.dev@gmail.com | Téléphone : 06 79 08 88 45 | Site : christophe-dev-freelance.fr | LinkedIn : linkedin.com/in/christophemostefaoui | GitHub : github.com/krismos64. Devis gratuit sous 24h."
+          "text": "Email : christophe.mostefaoui.dev@gmail.com | Téléphone : 06 79 08 88 45 | Site commercial : christophe-dev-freelance.fr | Portfolio technique (CV, stack, projets perso, veille) : krismos.fr | LinkedIn : linkedin.com/in/christophemostefaoui | GitHub : github.com/krismos64. Devis gratuit sous 24h."
         }
       },
       {
