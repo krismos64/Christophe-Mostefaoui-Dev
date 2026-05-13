@@ -3,7 +3,7 @@
   "name_for_human": "Christophe Mostefaoui - Développeur Web & Expert IA",
   "name_for_model": "christophe_dev_freelance",
   "description_for_human": "Développeur web full-stack freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript. Sites vitrines, applications sur mesure, intégration IA et production vidéo/drone.",
-  "description_for_model": "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 3 ans d'expérience intensive en technologies modernes. Expert en React.js, Node.js, TypeScript. Spécialisé dans les sites vitrines, applications sur mesure et intégration d'IA conversationnelle (GPT, Claude, Mistral). Propose également des services de production vidéo (Final Cut Pro X) et prises de vue drone (DJI Mavic Air). Tarifs: Site One-Page 800€-1500€, Site Multi-pages 1500€-3000€, Sur-mesure à partir de 3000€, Vidéo/Drone sur devis. Paiement en 3x sans frais possible. Déplacement gratuit dans les Pyrénées-Atlantiques (64), disponible partout en France à distance. Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45. Site: https://christophe-dev-freelance.fr",
+  "description_for_model": "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 3 ans d'expérience intensive en technologies modernes. Expert en React.js, Node.js, TypeScript. Spécialisé dans les sites vitrines, applications sur mesure et intégration d'IA conversationnelle (GPT, Claude, Mistral). Propose également des services de production vidéo (Final Cut Pro X) et prises de vue drone (DJI Mavic Air). Tous les projets font l'objet d'un devis personnalisé, envoyé gratuitement sous 24h après un échange. Paiement en 3x sans frais possible. Déplacement gratuit dans les Pyrénées-Atlantiques (64), disponible partout en France à distance. Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45. Site: https://christophe-dev-freelance.fr",
   "auth": {
     "type": "none"
   },
@@ -27,24 +27,29 @@
   },
   "services": [
     {
-      "name": "Site One-Page",
-      "description": "Site vitrine moderne pour artisans et indépendants",
-      "pricing": "800€ - 1 500€"
+      "name": "Site vitrine",
+      "description": "Site vitrine moderne pour artisans, indépendants et PME",
+      "pricing": "Devis sur mesure"
     },
     {
-      "name": "Site Multi-pages",
-      "description": "Site web complet pour commerces et PME",
-      "pricing": "1 500€ - 3 000€"
+      "name": "Site web multi-pages",
+      "description": "Site web complet pour commerces, PME et associations",
+      "pricing": "Devis sur mesure"
     },
     {
-      "name": "Site Sur-mesure",
-      "description": "Projets complexes avec intégration IA (chatbots GPT/Claude)",
-      "pricing": "À partir de 3 000€"
+      "name": "Application web sur mesure & SaaS",
+      "description": "Applications SaaS, e-commerce, plateformes métiers (Next.js, TypeScript, Prisma)",
+      "pricing": "Devis sur mesure"
+    },
+    {
+      "name": "Intégration IA & chatbot",
+      "description": "Chatbots conversationnels GPT/Claude/Mistral, RAG, assistants intelligents",
+      "pricing": "Devis sur mesure"
     },
     {
       "name": "Production Vidéo & Drone",
       "description": "Montage vidéo professionnel (Final Cut Pro X) et prises de vue drone (DJI Mavic Air)",
-      "pricing": "Sur devis"
+      "pricing": "Devis sur mesure"
     }
   ],
   "tech_stack": {

@@ -9,9 +9,9 @@ export const featuredSnippetsContent = {
       structure: "definition"
     },
     {
-      query: "Combien coûte un développeur web freelance ?",
-      answer: "Christophe propose des tarifs adaptés à chaque projet :\n\n• Site One-Page : 800€ – 1 500€ (idéal artisans, indépendants)\n• Site Multi-pages : 1 500€ – 3 000€ (commerces, PME)\n• Site Sur-mesure : À partir de 3 000€ (projets complexes, IA)\n• Vidéo & Drone : Sur devis\n\nChaque devis est personnalisé selon la complexité technique et les fonctionnalités demandées. Paiement en 3x sans frais possible.\n\nDemandez un devis gratuit et sans engagement sous 24h !",
-      keywords: ["tarif développeur freelance", "prix développement web", "devis personnalisé", "tarifs adaptés"],
+      query: "Comment obtenir un devis avec un développeur web freelance ?",
+      answer: "Christophe établit des devis 100% personnalisés, car chaque projet est unique :\n\n• Étape 1 : échange en visio ou téléphone pour comprendre vos besoins et objectifs\n• Étape 2 : proposition détaillée envoyée sous 24h (périmètre, technologies, planning)\n• Étape 3 : validation et démarrage, sans engagement avant signature\n\nPaiement en 3x sans frais possible. Aucun frais caché : tout est défini avant le démarrage.\n\nDevis gratuit et sans engagement sous 24h !",
+      keywords: ["devis développeur freelance", "obtenir devis web", "devis personnalisé"],
       structure: "list"
     },
     {
@@ -34,13 +34,13 @@ export const featuredSnippetsContent = {
     },
     {
       query: "Intégration IA dans site web ?",
-      answer: "L'intégration IA transforme votre site web avec des fonctionnalités avancées :\n• Chatbots intelligents GPT/Claude pour support client 24/7\n• Analyse prédictive pour optimiser conversions\n• Recommandations personnalisées en temps réel\n• Automatisation des tâches répétitives\nChristophe, expert en intégration IA, réalise ces solutions avec React.js, Node.js et les dernières technologies IA. Tarifs sur mesure selon votre projet.",
+      answer: "L'intégration IA transforme votre site web avec des fonctionnalités avancées :\n• Chatbots intelligents GPT/Claude pour support client 24/7\n• Analyse prédictive pour optimiser conversions\n• Recommandations personnalisées en temps réel\n• Automatisation des tâches répétitives\nChristophe, expert en intégration IA, réalise ces solutions avec React.js, Node.js et les dernières technologies IA. Devis sur mesure selon votre projet.",
       keywords: ["intégration IA site web", "chatbot intelligent", "expert IA"],
       structure: "benefits"
     },
     {
       query: "Site web sur mesure pour PME ?",
-      answer: "Christophe accompagne les PME dans leur transformation digitale avec des sites web modernes :\n• Site vitrine optimisé Google et IA (ChatGPT, Claude)\n• Design responsive adapté mobile/tablette\n• Formulaires de contact et fonctionnalités sur mesure\n• Référencement SEO complet\n• Formation à l'utilisation incluse\n• Maintenance et accompagnement\nTarifs à partir de 800€. Devis gratuit sous 24h.",
+      answer: "Christophe accompagne les PME dans leur transformation digitale avec des sites web modernes :\n• Site vitrine optimisé Google et IA (ChatGPT, Claude)\n• Design responsive adapté mobile/tablette\n• Formulaires de contact et fonctionnalités sur mesure\n• Référencement SEO complet\n• Formation à l'utilisation incluse\n• Maintenance et accompagnement\nDevis personnalisé gratuit sous 24h.",
       keywords: ["site web PME", "création site entreprise", "développeur PME"],
       structure: "features"
     },
@@ -55,7 +55,7 @@ export const featuredSnippetsContent = {
   // Réponses courtes pour voice search
   voiceSearchAnswers: {
     "développeur web freelance": "Christophe, expert React.js Node.js, basé Pau, disponible France entière",
-    "tarif site web": "Site one-page à partir de 800 euros, site multi-pages à partir de 1500 euros",
+    "tarif site web": "Devis sur mesure, gratuit, envoyé sous 24h après un échange",
     "expert Node.js": "Christophe, 3 ans expérience, basé Pau, disponible remote",
     "intégration IA": "Chatbots GPT Claude, automatisation, solutions IA sur mesure"
   },
@@ -63,7 +63,7 @@ export const featuredSnippetsContent = {
   // Meta descriptions optimisées
   metaDescriptions: {
     homepage: "Christophe, développeur web freelance expert. Spécialiste React.js, Node.js, TypeScript. Disponible France entière, déplacement gratuit dans le 64. Devis gratuit 24h.",
-    services: "Services développement web : Sites vitrines, applications sur mesure, intégration IA. React.js, Node.js, TypeScript. À partir de 800€. Devis gratuit.",
+    services: "Services développement web : Sites vitrines, applications sur mesure, intégration IA. React.js, Node.js, TypeScript. Devis personnalisé gratuit sous 24h.",
     contact: "Contactez Christophe, développeur web expert. Réponse sous 24h, devis gratuit. Disponible France entière, déplacement gratuit Pyrénées-Atlantiques."
   }
 };

@@ -1,70 +1,43 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  FileText,
-  Layers,
-  Rocket,
-  Check,
+  Sparkles,
   Video,
   Camera,
   CreditCard,
   RefreshCw,
   Phone,
   MapPin,
+  Target,
+  Lightbulb,
+  HeartHandshake,
 } from "lucide-react";
 import CallToAction from "../common/CallToAction";
 import FuturisticBackground from "../effects/FuturisticBackground";
-import { containerVariants, itemVariants, createCardVariants } from "../effects/FuturisticEffects";
+import { containerVariants, itemVariants } from "../effects/FuturisticEffects";
 
 export default function Pricing() {
   const contentRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(contentRef, { once: true, margin: "-100px" });
 
-  const plans = [
+  const valueProps = [
     {
-      name: "Site One-Page",
-      price: "800€ – 1 500€",
-      description: "Idéal pour démarrer",
-      features: [
-        "Site vitrine une page",
-        "Design responsive mobile",
-        "Formulaire de contact",
-        "Optimisation Google & IA",
-      ],
-      target: "Artisans, indépendants",
-      icon: <FileText className="h-8 w-8" />,
-      popular: false,
+      icon: <Target className="h-6 w-6" />,
+      title: "Analyse de vos besoins",
+      description:
+        "Échange en visio ou téléphone pour comprendre votre projet, vos objectifs et votre cible.",
     },
     {
-      name: "Site Multi-pages",
-      price: "1 500€ – 3 000€",
-      description: "Le plus complet",
-      features: [
-        "Plusieurs pages sur mesure",
-        "Blog intégré",
-        "Formulaires avancés",
-        "SEO complet Google & IA",
-        "Statistiques de visite",
-        "Formation à l'utilisation",
-      ],
-      target: "Commerces, PME",
-      icon: <Layers className="h-8 w-8" />,
-      popular: true,
+      icon: <Lightbulb className="h-6 w-6" />,
+      title: "Proposition sur mesure",
+      description:
+        "Devis détaillé avec périmètre clair, technologies adaptées et planning réaliste.",
     },
     {
-      name: "Site Sur-mesure",
-      price: "À partir de 3 000€",
-      description: "Pour vos projets ambitieux",
-      features: [
-        "Projet complexe personnalisé",
-        "Fonctionnalités spécifiques",
-        "Intégration chatbot IA",
-        "Formation complète",
-        "Maintenance incluse",
-      ],
-      target: "Entreprises, projets spécifiques",
-      icon: <Rocket className="h-8 w-8" />,
-      popular: false,
+      icon: <HeartHandshake className="h-6 w-6" />,
+      title: "Accompagnement complet",
+      description:
+        "Suivi de A à Z, formation à l'utilisation, maintenance et support après livraison.",
     },
   ];
 
@@ -86,8 +59,6 @@ export default function Pricing() {
       text: "Partout en France",
     },
   ];
-
-  const cardVariants = createCardVariants(0.2, 0.15);
 
   return (
     <FuturisticBackground
@@ -119,116 +90,67 @@ export default function Pricing() {
             variants={itemVariants}
             className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
           >
-            Tarifs indicatifs
+            Un devis sur mesure pour votre projet
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 dark:text-gray-300"
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
           >
-            Une idée des prix pour préparer votre budget
+            Chaque projet est unique. Parlons de vos besoins et construisons
+            ensemble la solution qui vous correspond.
           </motion.p>
         </motion.div>
 
-        {/* Grille 3 cartes */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12 items-stretch">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              whileHover={{ scale: 1.03, y: -8 }}
-              className={`group relative card-futuristic p-8 flex flex-col ${
-                plan.popular
-                  ? "ring-2 ring-blue-500 dark:ring-blue-400 md:scale-105 z-10"
-                  : ""
-              }`}
-            >
-              <div className="card-futuristic-glow" />
-
-              {/* Badge populaire */}
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                  <span className="px-4 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-bold rounded-full whitespace-nowrap">
-                    ⭐ Le plus demandé
-                  </span>
-                </div>
-              )}
-
-              {/* Icône */}
-              <div className="mb-6">
-                <div
-                  className={`p-4 rounded-2xl inline-block transition-transform duration-300 group-hover:scale-110 ${
-                    plan.popular
-                      ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
-                      : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400"
-                  }`}
-                >
-                  {plan.icon}
-                </div>
-              </div>
-
-              {/* Nom et description */}
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                {plan.name}
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400 mb-4">
-                {plan.description}
-              </p>
-
-              {/* Prix */}
-              <div className="mb-6">
-                <span
-                  className={`text-3xl font-bold ${
-                    plan.popular
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-900 dark:text-white"
-                  }`}
-                >
-                  {plan.price}
-                </span>
-              </div>
-
-              {/* Features */}
-              <ul className="space-y-3 mb-6 flex-grow">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <Check
-                      className={`h-5 w-5 mt-0.5 flex-shrink-0 ${
-                        plan.popular
-                          ? "text-blue-500 dark:text-blue-400"
-                          : "text-green-500 dark:text-green-400"
-                      }`}
-                    />
-                    <span className="text-gray-600 dark:text-gray-300">
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Cible */}
-              <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-sm">
-                  {plan.target}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Mention indicative */}
-        <motion.p
-          className="text-center text-gray-500 dark:text-gray-400 italic mb-12 max-w-2xl mx-auto"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.6 }}
+        {/* Bloc principal "Devis sur mesure" */}
+        <motion.div
+          className="card-futuristic p-8 md:p-12 mb-12 relative overflow-hidden"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Chaque projet est unique. Ces tarifs sont donnés à titre indicatif et
-          dépendent de la complexité et du temps de développement. Demandez
-          votre devis personnalisé gratuit.
-        </motion.p>
+          <div className="card-futuristic-glow" />
+
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-2xl mb-4">
+              <Sparkles className="h-8 w-8" />
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+              Une approche personnalisée, sans surprise
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Site vitrine, application SaaS, e-commerce, intégration IA ou
+              chatbot : je conçois des solutions adaptées à vos objectifs et à
+              votre budget.
+            </p>
+          </div>
+
+          {/* 3 étapes valeur */}
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {valueProps.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  isInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: 20 }
+                }
+                transition={{ delay: 0.3 + index * 0.15, duration: 0.5 }}
+                className="flex flex-col items-center text-center p-6 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50"
+              >
+                <div className="p-3 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4">
+                  {item.icon}
+                </div>
+                <h4 className="font-bold text-gray-900 dark:text-white mb-2">
+                  {item.title}
+                </h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Bloc Vidéo & Drone */}
         <motion.div
@@ -248,7 +170,7 @@ export default function Pricing() {
             </div>
             <div className="flex-1 text-center md:text-left">
               <h3 className="text-2xl font-bold mb-2">
-                🎬 Montage Vidéo & Prises de Vue Drone — Sur devis
+                🎬 Montage Vidéo & Prises de Vue Drone
               </h3>
               <p className="text-white/90">
                 Je monte vos vidéos professionnelles (Final Cut Pro) et réalise
@@ -297,7 +219,7 @@ export default function Pricing() {
             <div className="relative">
               <CallToAction
                 variant="gradient"
-                text="Demander un devis gratuit"
+                text="Demander mon devis gratuit"
                 subtext="Réponse sous 24h"
                 icon="send"
                 size="large"

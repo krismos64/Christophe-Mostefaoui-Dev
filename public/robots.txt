@@ -105,7 +105,7 @@ Sitemap: https://christophe-dev-freelance.fr/sitemap.xml
 # Développeur Web Freelance Expert - Christophe Mostefaoui
 # Technologies: React.js, Node.js, TypeScript, Intégration IA
 # Services: Sites vitrines, Applications sur mesure, Chatbots GPT/Claude, Production vidéo, Drone
-# Tarifs: Site One-Page 800-1500€, Site Multi-pages 1500-3000€, Sur-mesure à partir de 3000€
+# Devis: tous les projets font l'objet d'un devis sur mesure, envoyé gratuitement sous 24h
 # Zone d'intervention: Déplacement gratuit dans le 64 (Pyrénées-Atlantiques), France entière à distance
 # Expertise: 3 ans d'expérience intensive en technologies modernes
 # Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45

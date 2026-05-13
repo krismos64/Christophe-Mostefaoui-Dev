@@ -155,44 +155,24 @@ export const generateFinalStructuredData = () => {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Site One-Page",
-            "description": "Site vitrine moderne pour artisans et indépendants"
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": "800",
-            "priceCurrency": "EUR",
-            "minPrice": "800",
-            "maxPrice": "1500"
+            "name": "Site vitrine",
+            "description": "Site vitrine moderne pour artisans, indépendants et PME — devis sur mesure"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Site Multi-pages",
-            "description": "Site web complet pour commerces et PME"
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": "1500",
-            "priceCurrency": "EUR",
-            "minPrice": "1500",
-            "maxPrice": "3000"
+            "name": "Application web sur mesure",
+            "description": "Applications SaaS, e-commerce et plateformes métiers — devis sur mesure"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Site Sur-mesure",
-            "description": "Projets complexes avec intégration IA"
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": "3000",
-            "priceCurrency": "EUR",
-            "minPrice": "3000"
+            "name": "Intégration IA & chatbot",
+            "description": "Chatbots intelligents (GPT, Claude, Mistral) et intégrations IA — devis sur mesure"
           }
         }
       ]
@@ -255,10 +235,10 @@ export const generateFinalStructuredData = () => {
       },
       {
         "@type": "Question",
-        "name": "Quels sont les tarifs de Christophe Mostefaoui ?",
+        "name": "Comment obtenir un devis ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Site One-Page : 800€ – 1 500€ (artisans, indépendants). Site Multi-pages : 1 500€ – 3 000€ (commerces, PME). Site Sur-mesure : à partir de 3 000€ (projets complexes, IA). Vidéo & Drone : sur devis. Paiement en 3x sans frais possible."
+          "text": "Chaque projet étant unique, les devis sont établis sur mesure après un échange (visio ou téléphone) pour comprendre vos besoins, vos objectifs et votre cible. Proposition détaillée envoyée sous 24h avec périmètre, technologies et planning. Paiement en 3x sans frais possible."
         }
       },
       {

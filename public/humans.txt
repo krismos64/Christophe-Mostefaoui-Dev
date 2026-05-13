@@ -14,10 +14,11 @@ Technologies: React.js 18, TypeScript, Vite, TailwindCSS, Framer Motion
 Hébergement: Hostinger
 
 /* SERVICES */
-Sites vitrines: 800€ - 1 500€
-Sites multi-pages: 1 500€ - 3 000€
-Sites sur-mesure: À partir de 3 000€
-Vidéo & Drone: Sur devis
+Sites vitrines: devis sur mesure
+Sites multi-pages: devis sur mesure
+Applications sur mesure & SaaS: devis sur mesure
+Intégration IA & chatbots: devis sur mesure
+Vidéo & Drone: devis sur mesure
 
 /* ZONE D'INTERVENTION */
 Déplacement gratuit: Pyrénées-Atlantiques (64)

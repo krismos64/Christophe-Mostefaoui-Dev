@@ -57,21 +57,20 @@ const FAQ: React.FC = () => {
       ),
     },
     {
-      question: "Quels sont vos tarifs ?",
+      question: "Comment obtenir un devis ?",
       answer: (
         <>
-          Voici mes tarifs indicatifs :
+          Chaque projet étant unique, je préfère établir des <strong>devis 100% personnalisés</strong> plutôt que d'afficher des grilles qui ne reflètent pas la réalité de votre besoin.
           <ul className="mt-2 space-y-1">
-            <li>🖥️ <strong>Site One-Page :</strong> 800€ – 1 500€ (artisans, indépendants)</li>
-            <li>📄 <strong>Site Multi-pages :</strong> 1 500€ – 3 000€ (commerces, PME)</li>
-            <li>🚀 <strong>Site Sur-mesure :</strong> À partir de 3 000€ (projets complexes, IA)</li>
-            <li>🎬 <strong>Vidéo & Drone :</strong> Sur devis</li>
+            <li>📞 <strong>1. Premier échange</strong> (visio ou téléphone, 30 à 60 min) pour comprendre vos objectifs</li>
+            <li>📝 <strong>2. Proposition détaillée</strong> envoyée sous 24h : périmètre, technologies, planning</li>
+            <li>✅ <strong>3. Validation et démarrage</strong> sans engagement avant signature</li>
           </ul>
           <div className="mt-4 p-4 rounded-xl bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20">
-            <strong>💳 Paiement en 3x sans frais possible.</strong> Chaque devis est personnalisé selon la complexité et les fonctionnalités demandées.
+            <strong>💳 Paiement en 3x sans frais possible.</strong> Aucun frais caché : tout est défini avant le démarrage du projet.
           </div>
           <p className="mt-3">
-            N'hésitez pas à demander un <strong>devis gratuit et sans engagement sous 24h</strong> !
+            Demandez votre <strong>devis gratuit et sans engagement sous 24h</strong> via le formulaire de contact !
           </p>
         </>
       ),

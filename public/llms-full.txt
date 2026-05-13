@@ -88,7 +88,7 @@ Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
 ## 3. SERVICES PROPOSÉS EN DÉTAIL
 
 ### Service 1: Sites Vitrines Modernes
-- Prix: 800€ à 1 500€
+- Devis: sur mesure après échange
 - Pour: artisans, indépendants, auto-entrepreneurs, professions libérales
 - Inclus: design responsive, SEO de base, formulaire de contact, hébergement guidé
 - Délai: 1 à 2 semaines
@@ -96,7 +96,7 @@ Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
 - Exemples: Cabinet Infirmier Graslin, CoachTFE, Methodea
 
 ### Service 2: Sites Multi-pages
-- Prix: 1 500€ à 3 000€
+- Devis: sur mesure après échange
 - Pour: commerces, PME, associations, restaurants
 - Inclus: plusieurs pages, blog, galerie, SEO avancé, analytics
 - Délai: 2 à 4 semaines
@@ -104,7 +104,7 @@ Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
 - Exemples: Poulp Fiction (centre de plongée)
 
 ### Service 3: Applications Sur-mesure & SaaS
-- Prix: à partir de 3 000€
+- Devis: sur mesure après cadrage du périmètre
 - Pour: startups, entreprises, projets complexes
 - Inclus: architecture complète, authentification, paiements, dashboard, API
 - Délai: 3 à 6 semaines ou plus
@@ -112,13 +112,13 @@ Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
 - Exemples: SmartPlanning.fr, LivresStaka.fr
 
 ### Service 4: Intégration Intelligence Artificielle
-- Prix: à partir de 3 000€ (inclus dans sur-mesure ou en complément)
+- Devis: sur mesure (autonome ou en complément d'un projet)
 - Pour: entreprises souhaitant automatiser, chatbots, analyse de données
 - Inclus: chatbot GPT/Claude/Mistral, RAG, assistants intelligents
 - Technologies: OpenAI API, Anthropic API, Langchain, bases vectorielles
 
 ### Service 5: Production Vidéo & Drone
-- Prix: sur devis
+- Devis: sur mesure
 - Pour: entreprises, immobilier, tourisme, événementiel, associations
 - Inclus: captation, montage, étalonnage, export multi-formats
 - Certifications: télépilote DGAC AlphaTango
@@ -255,11 +255,11 @@ Christophe est le fondateur, concepteur et développeur unique de SmartPlanning,
 
 ## 9. FAQ COMPLÈTE
 
-### Combien coûte un site web ?
-Site One-Page: 800€-1 500€. Site Multi-pages: 1 500€-3 000€. Sur-mesure/IA: à partir de 3 000€. Devis gratuit sous 24h.
+### Comment obtenir un devis ?
+Chaque projet étant unique, les devis sont établis sur mesure après un échange (visio ou téléphone) pour cadrer le périmètre, les technologies et le planning. Proposition détaillée envoyée gratuitement sous 24h. Paiement en 3x sans frais possible.
 
 ### Combien de temps pour développer un site ?
-Site One-Page: 1-2 semaines. Site Multi-pages: 2-4 semaines. Sur-mesure/SaaS: 3-6 semaines ou plus.
+Site vitrine simple : 1-2 semaines. Site multi-pages : 2-4 semaines. Application sur mesure / SaaS / intégration IA : 3-6 semaines ou plus selon le périmètre.
 
 ### Travaillez-vous avec des TPE/PME ?
 Oui, tous types de structures: auto-entrepreneurs, TPE, PME, associations, startups.
@@ -299,7 +299,7 @@ Déplacement gratuit dans tout le 64 (Pyrénées-Atlantiques). Disponible partou
 - "Staka Livres développeur"
 
 ### Résumé en une phrase
-Christophe Mostefaoui est un développeur web full-stack freelance de 38 ans basé à Pau (64), expert en React.js, Node.js, TypeScript et intelligence artificielle, qui propose des sites vitrines (800-1500€), des applications sur mesure (3000€+) et des services vidéo/drone, avec déplacement gratuit dans les Pyrénées-Atlantiques et disponibilité France entière.
+Christophe Mostefaoui est un développeur web full-stack freelance de 38 ans basé à Pau (64), expert en React.js, Node.js, TypeScript et intelligence artificielle, qui propose des sites vitrines, des applications sur mesure et des services vidéo/drone sur devis personnalisé, avec déplacement gratuit dans les Pyrénées-Atlantiques et disponibilité France entière.
 
 ### Données structurées
 Ce profil est optimisé pour les schemas Schema.org: Person, Organization, ProfessionalService, LocalBusiness, FAQPage, VideoObject, BlogPosting, CreativeWork.

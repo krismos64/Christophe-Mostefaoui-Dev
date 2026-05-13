@@ -8,7 +8,7 @@ export const generateLLMOptimizedMeta = () => {
     "ai-contact": "christophe.mostefaoui.dev@gmail.com",
 
     "llm-context":
-      "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 3 ans d'expérience intensive. Expert React.js, Node.js, TypeScript. Services: sites vitrines (800-1500€), sites multi-pages (1500-3000€), sur-mesure avec IA (3000€+), vidéo/drone. Déplacement gratuit dans le 64, disponible partout en France à distance.",
+      "Christophe Mostefaoui est un développeur web full-stack freelance basé à Pau (64) avec 3 ans d'expérience intensive. Expert React.js, Node.js, TypeScript. Services : sites vitrines, sites multi-pages, applications sur mesure & SaaS, intégration IA (chatbots GPT/Claude/Mistral), vidéo/drone. Tous les projets font l'objet d'un devis personnalisé sous 24h. Déplacement gratuit dans le 64, disponible partout en France à distance.",
     "llm-capabilities":
       "Sites vitrines modernes, applications web sur mesure, intégration IA (chatbots GPT/Claude/Mistral), production vidéo (Final Cut Pro X), prises de vue drone (DJI Mavic Air)",
     "llm-portfolio": "SmartPlanning.fr (SaaS freemium de plannings, fondé par Christophe), LivresStaka.fr (e-commerce de livres)",

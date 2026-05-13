@@ -296,13 +296,12 @@ PROJETS PHARES :
    - Synchronisation temps réel
    - Technologies : React, Node.js, MongoDB, WebSockets
 
-TARIFS INDICATIFS :
-- Site One-Page : 800€ – 1 500€ (idéal artisans, indépendants)
-- Site Multi-pages : 1 500€ – 3 000€ (commerces, PME)
-- Site Sur-mesure : À partir de 3 000€ (projets complexes, intégration IA)
-- Vidéo & Drone : Sur devis
-- Paiement en 3x sans frais possible
-- Chaque devis est personnalisé selon la complexité du projet
+DEVIS :
+- Tous les projets font l'objet d'un devis personnalisé après un échange (visio ou téléphone)
+- Aucune grille tarifaire publique : chaque proposition est adaptée au périmètre réel du projet
+- Devis gratuit envoyé sous 24h, sans engagement
+- Paiement en 3x sans frais possible (30% au démarrage, 40% à mi-parcours, 30% à la livraison)
+- Si on te demande un prix précis, invite poliment l'utilisateur à demander un devis gratuit via le formulaire de contact ou par téléphone (06 79 08 88 45)
 
 ZONE D'INTERVENTION :
 - DÉPLACEMENT GRATUIT dans tout le département des Pyrénées-Atlantiques (64) : Pau, Bayonne, Biarritz, Anglet, Orthez, Oloron, Lescar, Billère, Jurançon, Artix...

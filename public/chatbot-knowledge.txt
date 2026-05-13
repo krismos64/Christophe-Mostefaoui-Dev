@@ -123,13 +123,16 @@ Nombreux sites vitrines modernes créés pour TPE/PME :
 - Solutions de facturation
 - Systèmes de réservation
 
-## Tarifs
+## Devis
 
-### Projets au Forfait
-- **Site One-Page** : 800€ – 1 500€ (idéal artisans, indépendants)
-- **Site Multi-pages** : 1 500€ – 3 000€ (commerces, PME)
-- **Site Sur-mesure** : À partir de 3 000€ (projets complexes, intégration IA)
-- **Vidéo & Drone** : Sur devis
+### Approche sur mesure
+Chaque projet est unique : tous les devis sont établis individuellement après un échange (visio ou téléphone) pour comprendre vos besoins, vos objectifs et votre cible. Aucune grille tarifaire publique, car chaque proposition est adaptée au périmètre réel du projet.
+
+### Processus
+1. Premier contact (formulaire, email ou téléphone)
+2. Échange de cadrage (30 à 60 minutes)
+3. Proposition détaillée envoyée sous 24h avec périmètre, technologies et planning
+4. Validation et démarrage
 
 ### Modalités de Paiement
 - 💳 **Paiement en 3x sans frais possible**
@@ -138,10 +141,10 @@ Nombreux sites vitrines modernes créés pour TPE/PME :
 - 30% à la livraison
 
 ### Services Complémentaires
-- **Maintenance et évolutions** : Sur devis selon besoins
-- **Formation client** : Incluse dans chaque projet
+- **Maintenance et évolutions** : sur devis selon besoins
+- **Formation client** : incluse dans chaque projet
 
-💡 **Offre Actuelle** : Devis gratuit et sans engagement sous 24h
+💡 **Devis gratuit et sans engagement sous 24h**
 
 ## Méthode de Travail
 
@@ -277,8 +280,8 @@ Tous les projets sont optimisés pour atteindre un score Lighthouse de 90+ sur t
 ### ✅ Communication Claire et Régulière
 Points d'avancement fréquents, transparence totale sur l'état du projet et documentation exhaustive.
 
-### ✅ Tarifs Transparents et Compétitifs
-Devis détaillé avant chaque projet, pas de frais cachés, paiements échelonnés possibles.
+### ✅ Devis Clair et Sans Surprise
+Proposition détaillée avant chaque projet : périmètre précis, technologies adaptées, planning réaliste, pas de frais cachés, paiements échelonnés possibles.
 
 ### ✅ Support Réactif Post-Livraison
 Ne vous laisse pas tomber après la mise en ligne : support technique réactif et maintenance à long terme.
@@ -286,9 +289,9 @@ Ne vous laisse pas tomber après la mise en ligne : support technique réactif e
 ## FAQ - Questions Fréquentes
 
 ### Combien de temps pour développer mon projet ?
-- Site One-Page : 1 à 2 semaines
-- Site Multi-pages : 2 à 4 semaines
-- Site Sur-mesure / IA : 3 à 6 semaines ou plus selon complexité
+- Site vitrine simple : 1 à 2 semaines
+- Site web multi-pages : 2 à 4 semaines
+- Application sur mesure / SaaS / intégration IA : 3 à 6 semaines ou plus selon complexité
 
 *Ces délais sont indicatifs et dépendent de la complexité du projet.*
 

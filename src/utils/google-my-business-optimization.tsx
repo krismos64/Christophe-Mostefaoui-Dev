@@ -48,32 +48,32 @@ Devis gratuit sous 24h`,
       {
         name: "Développement d'applications React.js",
         description: "Applications web modernes, performantes et responsive avec React.js 18, TypeScript et design moderne",
-        price: "À partir de 450€/jour"
+        price: "Devis sur mesure"
       },
       {
         name: "Applications SaaS sur mesure",
         description: "Solutions cloud complètes avec authentification, paiements, dashboard admin et APIs scalables",
-        price: "10 000€ - 50 000€"
+        price: "Devis sur mesure"
       },
       {
         name: "Plateformes e-commerce",
         description: "Sites marchands avec Stripe, gestion stocks, paniers, commandes et interface d'administration",
-        price: "5 000€ - 15 000€"
+        price: "Devis sur mesure"
       },
       {
         name: "Intégration Intelligence Artificielle",
         description: "Chatbots GPT/Claude, machine learning, analyse prédictive et vision par ordinateur",
-        price: "À partir de 3 000€"
+        price: "Devis sur mesure"
       },
       {
         name: "APIs Node.js performantes",
         description: "Backends robustes avec Node.js, Express, bases de données optimisées et sécurité avancée",
-        price: "À partir de 400€/jour"
+        price: "Devis sur mesure"
       },
       {
         name: "Consultation technique",
         description: "Audit code, architecture, optimisation performance et conseil stratégique technologique",
-        price: "150€/heure"
+        price: "Devis sur mesure"
       }
     ]
   },
@@ -166,17 +166,18 @@ Formation sur mesure disponible.`,
   // Questions & Réponses pré-remplies
   qnaPreset: [
     {
-      question: "Quels sont vos tarifs pour un site web ?",
-      answer: `Mes tarifs varient selon la complexité :
+      question: "Comment obtenir un devis pour un site web ?",
+      answer: `Chaque projet étant unique, je préfère établir des devis 100% personnalisés :
 
-• Site vitrine : 2 000 - 5 000€
-• E-commerce : 5 000 - 15 000€
-• Application SaaS : 10 000 - 50 000€
-• Intégration IA : à partir de 3 000€
-• Tarif journalier : 450-650€/jour
+1. Premier échange (visio ou téléphone) pour comprendre vos besoins
+2. Proposition détaillée envoyée sous 24h (périmètre, technologies, planning)
+3. Validation et démarrage sans engagement avant signature
 
-Devis gratuit personnalisé sous 24h.
-Contact : christophe.mostefaoui.dev@gmail.com`
+✅ Devis gratuit et sans engagement
+✅ Paiement en 3x sans frais possible
+✅ Aucun frais caché
+
+Contact : christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45`
     },
     {
       question: "Travaillez-vous à distance ?",
@@ -231,7 +232,7 @@ Estimation précise après analyse gratuite.`
     },
     {
       question: "Proposez-vous de la maintenance ?",
-      answer: `Oui, contrats maintenance adaptés :
+      answer: `Oui, contrats maintenance adaptés à chaque projet :
 
 🔧 Maintenance corrective (bugs)
 🔄 Mises à jour sécurité
@@ -239,8 +240,7 @@ Estimation précise après analyse gratuite.`
 📊 Monitoring performance
 🛡️ Sauvegardes automatiques
 
-Forfaits mensuels : 200-800€/mois
-Support urgent : 150€/heure
+Forfait mensuel sur mesure selon vos besoins.
 Interventions à distance prioritaires.
 
 Support France entière + local Pau.`
