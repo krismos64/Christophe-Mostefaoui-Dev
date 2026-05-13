@@ -14,6 +14,7 @@ import Services from "./components/sections/Services";
 import Pricing from "./components/sections/Pricing";
 import VideoServices from "./components/sections/VideoServices";
 import ServiceArea from "./components/sections/ServiceArea";
+import SmartPlanningShowcase from "./components/sections/SmartPlanningShowcase";
 import AIChatbot from "./components/AIChatbot";
 import { ThemeProvider } from "./context/ThemeContext";
 import { useStructuredData } from "./hooks/useStructuredData";
@@ -46,6 +47,7 @@ const Home = () => {
 
       <Hero />
       <About />
+      <SmartPlanningShowcase />
       <VideoShowcase />
       <Services />
       <Pricing />
