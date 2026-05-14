@@ -1,200 +1,222 @@
-import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
+  ArrowUpRight,
+  Bot,
   Globe,
   Layers,
   RefreshCw,
   Search,
-  Bot,
   Video,
-  Sparkles,
 } from "lucide-react";
-import CallToAction from "../common/CallToAction";
-import FuturisticBackground from "../effects/FuturisticBackground";
-import { containerVariants, itemVariants, createCardVariants } from "../effects/FuturisticEffects";
+import { useRef } from "react";
 
 export default function Services() {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-80px" });
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   const services = [
     {
-      icon: <Bot className="h-8 w-8 text-purple-600 dark:text-purple-400" />,
-      title: "Intégration IA sur mesure",
-      description:
-        "Ajoutez un assistant virtuel intelligent à votre site pour répondre aux questions de vos clients 24h/24, 7j/7",
-      highlight: true,
-    },
-    {
-      icon: <Globe className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      numeral: "I",
+      icon: Globe,
       title: "Site Vitrine Moderne",
       description:
-        "Un site professionnel qui vous représente, visible sur Google et référencé par les assistants IA comme ChatGPT ou Claude",
+        "Une présence en ligne professionnelle, visible sur Google et référencée par les assistants IA comme ChatGPT ou Claude.",
     },
     {
-      icon: <Layers className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      numeral: "II",
+      icon: Layers,
       title: "Site Multi-pages",
       description:
-        "Un site complet avec plusieurs pages, un blog pour votre actualité et un formulaire de contact pour vos prospects",
+        "Un site complet avec blog, formulaire de contact et CMS pour gérer votre actualité en autonomie.",
     },
     {
-      icon: <RefreshCw className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      numeral: "III",
+      icon: RefreshCw,
       title: "Refonte de Site",
       description:
-        "Modernisez votre site existant pour une image professionnelle et une meilleure visibilité en ligne",
+        "Modernisation d'un site existant pour une image professionnelle et de meilleures performances.",
     },
     {
-      icon: <Search className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
+      numeral: "IV",
+      icon: Bot,
+      title: "Chatbot intelligent",
+      description:
+        "Un assistant IA intégré à votre site, capable de répondre à vos clients 24h/24, comme celui visible en bas à droite de ce site.",
+    },
+    {
+      numeral: "V",
+      icon: Search,
       title: "Référencement Google & IA",
       description:
-        "Soyez trouvé sur Google ET recommandé par les intelligences artificielles comme ChatGPT, Claude ou Perplexity",
+        "Soyez trouvé sur Google ET recommandé par les intelligences artificielles comme ChatGPT, Claude ou Perplexity.",
     },
     {
-      icon: <Video className="h-8 w-8 text-blue-600 dark:text-blue-400" />,
-      title: "Vidéo & Drone",
+      numeral: "VI",
+      icon: Video,
+      title: "Vidéo & Drone (DGAC)",
       description:
-        "Valorisez votre entreprise avec des vidéos professionnelles et des prises de vue aériennes spectaculaires",
-      badge: "/assets/images/badge-drone.png",
+        "Vidéos professionnelles et prises de vue aériennes certifiées par la Direction Générale de l'Aviation Civile.",
     },
   ];
 
-  const cardVariants = createCardVariants(0.2, 0.1);
+  const stagger = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  };
 
   return (
-    <FuturisticBackground
+    <section
+      ref={containerRef}
       id="services"
-      orbs={[
-        { size: 280, colorClass: "glowing-orb-cyan", left: "85%", top: "20%", delay: 0 },
-        { size: 220, colorClass: "glowing-orb-purple", left: "5%", top: "40%", delay: 1.5 },
-        { size: 180, colorClass: "glowing-orb-pink", left: "60%", top: "80%", delay: 3 },
-      ]}
-      shapes={[
-        { delay: 0, duration: 10, size: 50, left: "3%", top: "15%", shape: "hexagon" },
-        { delay: 1, duration: 12, size: 40, left: "95%", top: "50%", shape: "circle" },
-        { delay: 2, duration: 14, size: 45, left: "90%", top: "85%", shape: "square" },
-      ]}
-      codeLines={[
-        { delay: 0, width: "55%" },
-        { delay: 1.5, width: "40%" },
-      ]}
-      codeLinesPosition="top-1/3"
+      className="relative w-full overflow-hidden bg-[#F4EFE6] dark:bg-[#13110F] py-20 sm:py-28 md:py-32"
+      aria-label="Mes services de développement web"
     >
-      <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
+      {/* Texture grain papier */}
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply dark:mix-blend-overlay"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+        {/* Header édito */}
         <motion.div
-          className="text-center mb-16"
-          variants={containerVariants}
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
+        >
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60 mb-2">
+            IV. — Services
+          </p>
+          <h2 className="hero-display text-[#1A1715] dark:text-[#F4EFE6]">
+            Six manières de donner vie à votre projet.
+          </h2>
+          <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80">
+            Des sites web optimisés pour Google et les assistants IA. Clients
+            partout en France,{" "}
+            <strong className="font-medium text-[#1A1715] dark:text-[#F4EFE6]">
+              déplacement offert dans le 64
+            </strong>
+            .
+          </p>
+        </motion.div>
+
+        {/* Grille 2 colonnes : 6 services en 3 lignes × 2 */}
+        <motion.ul
+          variants={stagger}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16"
         >
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center justify-center gap-4 mb-4"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-              Mes Services
-            </h2>
-            <motion.img
-              src="/assets/images/badge-dev.png"
-              alt="Certification Développeur"
-              className="w-20 h-20 object-contain"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            />
-          </motion.div>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-600 dark:text-gray-300"
-          >
-            Des sites web optimisés pour Google et les assistants IA.
-            <br className="hidden sm:block" />
-            Clients partout en France – déplacement offert dans le 64.
-          </motion.p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              whileHover={{ scale: 1.03, y: -8 }}
-              className={`group card-futuristic p-6 relative ${
-                service.highlight
-                  ? "ring-2 ring-purple-500 dark:ring-purple-400"
-                  : ""
-              }`}
-            >
-              <div className="card-futuristic-glow" />
-              {service.highlight && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                  <span className="px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-bold rounded-full flex items-center gap-1">
-                    <Sparkles className="h-4 w-4" />
-                    NOUVEAU
+          {services.map((s) => {
+            const Icon = s.icon;
+            return (
+              <motion.li
+                key={s.numeral}
+                variants={item}
+                className="group relative pt-7 pb-9 sm:pt-8 sm:pb-10 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15 transition-colors duration-300 hover:border-[#F4D35E]/70"
+              >
+                <div className="flex items-start gap-4 sm:gap-5">
+                  <span
+                    className="text-[12px] font-mono tabular-nums tracking-wider text-[#1A1715]/40 dark:text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors w-8 flex-shrink-0 pt-1.5"
+                    aria-hidden="true"
+                  >
+                    {s.numeral}.
                   </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-3 mb-2.5">
+                      <h3
+                        style={{
+                          fontFamily: '"Fraunces", "Times New Roman", serif',
+                          fontStyle: "italic",
+                          fontWeight: 500,
+                        }}
+                        className="text-[22px] sm:text-[26px] leading-tight text-[#1A1715] dark:text-[#F4EFE6]"
+                      >
+                        {s.title}
+                      </h3>
+                      <Icon
+                        className="h-5 w-5 mt-1.5 flex-shrink-0 text-[#1A1715]/40 dark:text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors"
+                        aria-hidden="true"
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                    <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#1A1715]/70 dark:text-[#F4EFE6]/70">
+                      {s.description}
+                    </p>
+                  </div>
                 </div>
-              )}
-              {service.badge && (
-                <img
-                  src={service.badge}
-                  alt="Badge certification DGAC"
-                  className="absolute top-4 right-4 w-16 h-16 object-contain"
-                />
-              )}
-              <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
-                <div
-                  className={`p-3 ${
-                    service.highlight
-                      ? "bg-purple-50 dark:bg-purple-900/30"
-                      : "bg-blue-50 dark:bg-blue-900/30"
-                  } rounded-full inline-block`}
-                >
-                  {service.icon}
-                </div>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+              </motion.li>
+            );
+          })}
+        </motion.ul>
 
+        {/* Trait fin de section */}
+        <div
+          className="h-px w-full bg-[#1A1715]/15 dark:bg-[#F4EFE6]/15 mt-2"
+          aria-hidden="true"
+        />
+
+        {/* CTA + transition */}
         <motion.div
-          className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-12 sm:mt-16 flex flex-col items-start gap-5"
         >
-          <div className="inline-flex flex-col items-center gap-6">
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Un projet en tête ? Parlons-en !
-            </p>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="cta-glow-wrapper group"
-            >
-              <div className="cta-glow" />
-              <div className="relative">
-                <CallToAction
-                  variant="gradient"
-                  text="Demander un devis gratuit"
-                  subtext="Réponse sous 24h"
-                  icon="send"
-                  size="large"
-                  href="#contact"
-                  location="services"
-                  testId="services_cta"
-                />
-              </div>
-            </motion.div>
-          </div>
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60">
+            un projet en tête ?
+          </p>
+          <button
+            onClick={() => scrollTo("contact")}
+            className="hero-cta-primary group"
+            aria-label="Demander un devis gratuit"
+            data-testid="services_cta"
+          >
+            <span>Demander un devis</span>
+            <span className="hero-cta-sub">gratuit · sous 24h</span>
+            <ArrowUpRight
+              className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden="true"
+            />
+          </button>
         </motion.div>
+
+        {/* Citation manuscrite signée */}
+        <motion.figcaption
+          initial={{ opacity: 0, y: 14 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 sm:mt-20 max-w-xl"
+        >
+          <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90 dark:text-[#F4D35E]">
+            « Six services, une seule promesse : un site qui vous ressemble. »
+          </p>
+          <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50 dark:text-[#F4EFE6]/50">
+            — C.M.
+          </p>
+        </motion.figcaption>
       </div>
-    </FuturisticBackground>
+    </section>
   );
 }
