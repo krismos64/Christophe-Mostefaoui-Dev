@@ -1,16 +1,24 @@
-import { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { PhoneIcon, MapPinIcon, ClockIcon, StarIcon } from "@heroicons/react/24/outline";
-import { Mail, Send, User, MessageSquare, CheckCircle2, ArrowRight } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { motion, useInView } from "framer-motion";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Clock,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Send,
+  User,
+} from "lucide-react";
+import { useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { emailjsConfig, validateEmailjsConfig } from "../../config/emailjs";
 import VideoEmbed from "../common/VideoEmbed";
-import FuturisticBackground from "../effects/FuturisticBackground";
-import { containerVariants, itemVariants, createCardVariants } from "../effects/FuturisticEffects";
 
 const GMBOptimizedContact = () => {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-80px" });
 
   const [formData, setFormData] = useState({
     name: "",
@@ -18,19 +26,18 @@ const GMBOptimizedContact = () => {
     phone: "",
     city: "",
     projectType: "",
-    description: ""
+    description: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [status, setStatus] = useState("");
 
-  const cardVariants = createCardVariants(0.2, 0.15);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,17 +65,17 @@ NOUVEAU CONTACT - Devis Gratuit 24h
 👤 INFORMATIONS CLIENT:
 Nom: ${formData.name}
 Email: ${formData.email}
-Téléphone: ${formData.phone || 'Non renseigné'}
-Ville: ${formData.city || 'Non spécifiée'}
+Téléphone: ${formData.phone || "Non renseigné"}
+Ville: ${formData.city || "Non spécifiée"}
 
 🎯 PROJET:
 Type: ${formData.projectType}
 
 📝 DESCRIPTION:
-${formData.description || 'Aucune description fournie'}
+${formData.description || "Aucune description fournie"}
 
 ---
-Message envoyé depuis le formulaire de contact GMB du site christophe-dev-freelance.fr
+Message envoyé depuis le formulaire de contact du site christophe-dev-freelance.fr
       `.trim();
 
       await emailjs.send(
@@ -92,7 +99,7 @@ Message envoyé depuis le formulaire de contact GMB du site christophe-dev-freel
         phone: "",
         city: "",
         projectType: "",
-        description: ""
+        description: "",
       });
     } catch (error) {
       setStatus("Erreur lors de l'envoi du message. Veuillez réessayer.");
@@ -104,112 +111,106 @@ Message envoyé depuis le formulaire de contact GMB du site christophe-dev-freel
 
   const contactInfos = [
     {
-      icon: <PhoneIcon className="h-6 w-6" />,
+      icon: Phone,
       label: "Téléphone",
-      value: "+33 6 79 08 88 45",
+      value: "06 79 08 88 45",
       href: "tel:+33679088845",
-      colorClass: "bg-green-500/20 group-hover:bg-green-500/30",
-      iconColor: "text-green-600 dark:text-green-400"
+      mono: true,
     },
     {
-      icon: <Mail className="h-6 w-6" />,
+      icon: Mail,
       label: "Email",
       value: "christophe.mostefaoui.dev@gmail.com",
       href: "mailto:christophe.mostefaoui.dev@gmail.com",
-      colorClass: "bg-blue-500/20 group-hover:bg-blue-500/30",
-      iconColor: "text-blue-600 dark:text-blue-400"
+      mono: false,
     },
     {
-      icon: <MapPinIcon className="h-6 w-6" />,
+      icon: MapPin,
       label: "Localisation",
-      value: "Pau, Pyrénées-Atlantiques (64)",
-      subValue: "Disponible France entière à distance",
-      colorClass: "bg-purple-500/20 group-hover:bg-purple-500/30",
-      iconColor: "text-purple-600 dark:text-purple-400"
+      value: "Artix / Pau (64)",
+      sub: "Pyrénées-Atlantiques · France entière en distanciel",
+      mono: false,
     },
     {
-      icon: <ClockIcon className="h-6 w-6" />,
+      icon: Clock,
       label: "Horaires",
-      value: "Lun-Ven : 8h30 - 18h00",
-      subValue: "Urgences acceptées",
-      colorClass: "bg-yellow-500/20 group-hover:bg-yellow-500/30",
-      iconColor: "text-yellow-600 dark:text-yellow-400"
-    }
+      value: "Lun → Ven, 8h30 — 18h00",
+      sub: "Réponse sous 24h en jours ouvrés",
+      mono: false,
+    },
   ];
 
-  const cities = ["Pau centre", "Artix", "Lescar", "Billère", "Jurançon", "Bayonne", "Biarritz", "France entière"];
+  // Schema LocalBusiness conforme : vrai numéro, sans aggregateRating inventé
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    mainEntity: {
+      "@type": "LocalBusiness",
+      name: "Christophe Mostefaoui — Développeur Web Freelance",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Pau",
+        addressRegion: "Pyrénées-Atlantiques",
+        addressCountry: "FR",
+      },
+      telephone: "+33679088845",
+      email: "christophe.mostefaoui.dev@gmail.com",
+      openingHours: "Mo-Fr 08:30-18:00",
+    },
+  };
 
   return (
-    <FuturisticBackground
-      id="contact"
-      orbs={[
-        { size: 320, colorClass: "glowing-orb-cyan", left: "5%", top: "10%", delay: 0 },
-        { size: 280, colorClass: "glowing-orb-purple", left: "85%", top: "45%", delay: 1.5 },
-        { size: 220, colorClass: "glowing-orb-pink", left: "40%", top: "80%", delay: 3 },
-      ]}
-      shapes={[
-        { delay: 0, duration: 11, size: 55, left: "3%", top: "25%", shape: "hexagon" },
-        { delay: 1.5, duration: 13, size: 50, left: "92%", top: "15%", shape: "circle" },
-        { delay: 2.5, duration: 10, size: 45, left: "88%", top: "70%", shape: "square" },
-        { delay: 0.5, duration: 12, size: 40, left: "10%", top: "85%", shape: "circle" },
-      ]}
-      codeLines={[
-        { delay: 0.5, width: "60%" },
-        { delay: 2, width: "45%" },
-        { delay: 3.5, width: "55%" },
-      ]}
-    >
-      <div className="max-w-6xl mx-auto px-4 relative z-10" ref={contentRef}>
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
-          >
-            Contact - Développeur Web Expert Pau
-            <motion.span
-              className="block text-xl text-blue-600 dark:text-blue-400 mt-3 font-normal"
-              variants={itemVariants}
-            >
-              Pyrénées-Atlantiques • France entière à distance
-            </motion.span>
-          </motion.h2>
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(contactSchema)}
+        </script>
+      </Helmet>
 
+      <section
+        ref={containerRef}
+        id="contact"
+        className="relative w-full overflow-hidden bg-[#F4EFE6] dark:bg-[#13110F] py-20 sm:py-28 md:py-32"
+        aria-label="Contact"
+      >
+        {/* Texture grain papier */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply dark:mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-6xl">
+          {/* Header édito */}
           <motion.div
-            className="flex items-center justify-center gap-2 text-yellow-400 mb-6"
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-12 sm:mb-16 max-w-4xl"
           >
-            {[...Array(5)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, rotate: -180 }}
-                animate={isInView ? { opacity: 1, rotate: 0 } : { opacity: 0, rotate: -180 }}
-                transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
-              >
-                <StarIcon className="h-7 w-7 drop-shadow-lg" />
-              </motion.div>
-            ))}
-            <motion.span
-              className="text-gray-700 dark:text-gray-300 ml-3 font-semibold text-lg"
-              variants={itemVariants}
-            >
-              5.0/5 • 47 avis clients
-            </motion.span>
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60 mb-2">
+              IX. — Contact
+            </p>
+            <h2 className="hero-display text-[#1A1715] dark:text-[#F4EFE6]">
+              Parlons de votre projet.
+            </h2>
+            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80">
+              Premier échange gratuit, sans engagement. Je réponds personnellement
+              à chaque message, sous 24h en jours ouvrés.
+            </p>
           </motion.div>
 
-          {/* Vidéo de présentation : Présentation Expert */}
+          {/* Vidéo de présentation */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl mx-auto mt-8 mb-4 text-left"
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-3xl mb-16 sm:mb-20"
           >
-            <p className="hero-handwritten text-[15px] sm:text-[17px] text-gray-500 dark:text-gray-400 mb-3">
+            <p className="hero-handwritten text-[15px] sm:text-[17px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-3">
               ✏ avant de m'écrire, rencontrez-moi
             </p>
             <VideoEmbed
@@ -223,361 +224,329 @@ Message envoyé depuis le formulaire de contact GMB du site christophe-dev-freel
               ariaLabel="Lire la vidéo : Présentation Expert"
             />
           </motion.div>
-        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Informations de contact */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {/* Card 1: Infos contact */}
+          {/* Trait de séparation */}
+          <div
+            className="h-px w-full bg-[#1A1715]/15 dark:bg-[#F4EFE6]/15 mb-12 sm:mb-16"
+            aria-hidden="true"
+          />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+            {/* Bloc infos contact */}
             <motion.div
-              custom={0}
-              variants={cardVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              className="card-futuristic p-8"
-              whileHover={{ scale: 1.02, y: -5 }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5"
             >
-              <div className="card-futuristic-glow" />
-              <div className="relative z-10">
-                <motion.h3
-                  className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white"
-                  variants={itemVariants}
-                >
-                  Christophe Mostefaoui
-                  <span className="block text-lg text-blue-600 dark:text-blue-400 mt-2 font-normal">
-                    Développeur Web Freelance Expert
-                  </span>
-                </motion.h3>
-
-                <div className="space-y-4">
-                  {contactInfos.map((info, index) => (
-                    <motion.div
-                      key={info.label}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-gray-50/50 dark:bg-white/5 hover:bg-gray-100/70 dark:hover:bg-white/10 transition-all duration-300 group cursor-pointer"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                      whileHover={{ x: 5 }}
-                    >
-                      <div className={`p-3 rounded-xl transition-colors ${info.colorClass}`}>
-                        <span className={info.iconColor}>{info.icon}</span>
-                      </div>
-                      <div>
-                        <div className="font-semibold text-lg text-gray-900 dark:text-white">{info.label}</div>
-                        {info.href ? (
-                          <a
-                            href={info.href}
-                            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors text-lg font-medium break-all"
-                          >
-                            {info.value}
-                          </a>
-                        ) : (
-                          <div className="text-blue-600 dark:text-blue-400 text-lg font-medium">{info.value}</div>
-                        )}
-                        {info.subValue && (
-                          <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">{info.subValue}</div>
+              <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-6">
+                ↳ par téléphone ou email
+              </p>
+              <ul className="space-y-6">
+                {contactInfos.map((info) => {
+                  const Icon = info.icon;
+                  const content = (
+                    <div className="flex items-start gap-4">
+                      <Icon
+                        className="h-5 w-5 mt-1 flex-shrink-0 text-[#F4D35E]"
+                        aria-hidden="true"
+                        strokeWidth={1.5}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="hero-body text-[12px] uppercase tracking-[0.18em] text-[#1A1715]/45 dark:text-[#F4EFE6]/45 mb-1">
+                          {info.label}
+                        </p>
+                        <p
+                          className={`text-[15px] sm:text-[16px] text-[#1A1715] dark:text-[#F4EFE6] ${
+                            info.mono ? "font-mono tabular-nums" : "hero-body"
+                          }`}
+                        >
+                          {info.value}
+                        </p>
+                        {info.sub && (
+                          <p className="hero-body text-[13px] mt-1 text-[#1A1715]/55 dark:text-[#F4EFE6]/55">
+                            {info.sub}
+                          </p>
                         )}
                       </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+                    </div>
+                  );
+                  return (
+                    <li key={info.label}>
+                      {info.href ? (
+                        <a
+                          href={info.href}
+                          className="group block transition-colors hover:text-[#F4D35E]"
+                          aria-label={`${info.label} : ${info.value}`}
+                        >
+                          {content}
+                        </a>
+                      ) : (
+                        content
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </motion.div>
 
-            {/* Card 2: Services locaux */}
+            {/* Bloc formulaire */}
             <motion.div
-              custom={1}
-              variants={cardVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              className="card-futuristic p-8"
-              whileHover={{ scale: 1.02, y: -5 }}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-7"
             >
-              <div className="card-futuristic-glow" />
-              <div className="relative z-10">
-                <h4 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Services Pau & Région
-                </h4>
-                <div className="grid grid-cols-2 gap-3">
-                  {cities.map((city, index) => (
-                    <motion.div
-                      key={city}
-                      className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-xl p-3 text-center font-medium text-gray-800 dark:text-gray-200 hover:from-blue-600/30 hover:to-purple-600/30 transition-all duration-300 cursor-pointer border border-blue-200/30 dark:border-white/10"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ duration: 0.3, delay: 0.8 + index * 0.05 }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                    >
-                      ✅ {city}
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+              <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-6">
+                ↳ par message
+              </p>
 
-          {/* Card 3: Formulaire */}
-          <motion.div
-            custom={2}
-            variants={cardVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="card-futuristic p-8"
-          >
-            <div className="card-futuristic-glow" />
-            <div className="relative z-10">
               {isSubmitted ? (
                 <motion.div
-                  className="text-center py-8"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ type: "spring", stiffness: 200 }}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="border-l-2 border-[#F4D35E] pl-6 py-6"
                 >
-                  <motion.div
-                    className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
+                  <CheckCircle2
+                    className="h-8 w-8 text-[#F4D35E] mb-4"
+                    strokeWidth={1.5}
+                  />
+                  <h3
+                    style={{
+                      fontFamily: '"Fraunces", "Times New Roman", serif',
+                      fontStyle: "italic",
+                      fontWeight: 500,
+                    }}
+                    className="text-[26px] sm:text-[30px] leading-tight text-[#1A1715] dark:text-[#F4EFE6] mb-3"
                   >
-                    <CheckCircle2 className="h-10 w-10 text-green-500 dark:text-green-400" />
-                  </motion.div>
-                  <h3 className="text-3xl font-bold mb-4 text-green-600 dark:text-green-400">Message envoyé !</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg">
-                    Merci pour votre message. Je vous répondrai dans les plus brefs délais.
+                    Message envoyé.
+                  </h3>
+                  <p className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/75 dark:text-[#F4EFE6]/75 mb-6 max-w-md">
+                    Merci pour votre message. Je vous réponds personnellement
+                    sous 24h en jours ouvrés.
                   </p>
-                  <motion.button
+                  <button
+                    type="button"
                     onClick={() => {
                       setIsSubmitted(false);
                       setStatus("");
-                      setFormData({ name: "", email: "", phone: "", city: "", projectType: "", description: "" });
                     }}
-                    className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold py-3 px-6 rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all flex items-center gap-2 mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
                   >
-                    Envoyer un autre message
-                    <ArrowRight className="h-4 w-4" />
-                  </motion.button>
+                    <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                      envoyer un autre message
+                    </span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </button>
                 </motion.div>
               ) : (
-                <>
-                  <motion.h3
-                    className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-                    variants={itemVariants}
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <FieldInput
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Votre nom"
+                      icon={User}
+                      required
+                    />
+                    <FieldInput
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Votre email"
+                      icon={Mail}
+                      required
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <FieldInput
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Téléphone (optionnel)"
+                      icon={Phone}
+                    />
+                    <FieldInput
+                      name="city"
+                      type="text"
+                      value={formData.city}
+                      onChange={handleChange}
+                      placeholder="Votre ville"
+                      icon={MapPin}
+                    />
+                  </div>
+
+                  <FieldSelect
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={handleChange}
+                    required
                   >
-                    Devis Gratuit 24h
-                    <span className="block text-lg text-blue-600 dark:text-blue-400 mt-2 font-normal">
-                      Réponse garantie sous 24h
-                    </span>
-                  </motion.h3>
+                    <option value="">Type de projet…</option>
+                    <option value="Site Vitrine Moderne">
+                      I. Site vitrine moderne
+                    </option>
+                    <option value="Site Multi-pages">
+                      II. Site multi-pages avec blog
+                    </option>
+                    <option value="Refonte de Site">
+                      III. Refonte de site existant
+                    </option>
+                    <option value="Chatbot intelligent">
+                      IV. Chatbot intelligent (IA)
+                    </option>
+                    <option value="Référencement Google & IA">
+                      V. Référencement Google & IA
+                    </option>
+                    <option value="Vidéo & Drone">
+                      VI. Vidéo & Drone (DGAC)
+                    </option>
+                    <option value="Autre demande">Autre demande</option>
+                  </FieldSelect>
 
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    {/* Nom */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ duration: 0.5, delay: 0.8 }}
-                    >
-                      <div className="relative">
-                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-blue-500 dark:text-blue-400 z-10" />
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-lg"
-                          placeholder="Quel est votre nom ?"
-                          required
-                        />
-                      </div>
-                    </motion.div>
+                  <FieldTextarea
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                    placeholder="Décrivez votre projet : besoins, objectifs, contexte, délais, budget approximatif…"
+                    icon={MessageSquare}
+                    rows={5}
+                  />
 
-                    {/* Email */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ duration: 0.5, delay: 0.9 }}
-                    >
-                      <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-blue-500 dark:text-blue-400 z-10" />
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-lg"
-                          placeholder="Votre email ?"
-                          required
-                        />
-                      </div>
-                    </motion.div>
-
-                    {/* Téléphone */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ duration: 0.5, delay: 1.0 }}
-                    >
-                      <div className="relative">
-                        <PhoneIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-blue-500 dark:text-blue-400 z-10" />
-                        <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-lg"
-                          placeholder="Votre téléphone (optionnel)"
-                        />
-                      </div>
-                    </motion.div>
-
-                    {/* Ville */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ duration: 0.5, delay: 1.1 }}
-                    >
-                      <input
-                        type="text"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                        className="w-full px-4 py-4 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-lg"
-                        placeholder="Votre ville (Pau, Paris, Lyon...)"
-                      />
-                    </motion.div>
-
-                    {/* Type de projet */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ duration: 0.5, delay: 1.2 }}
-                    >
-                      <select
-                        name="projectType"
-                        value={formData.projectType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-4 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 text-lg"
-                        required
-                      >
-                        <option value="">Type de projet souhaité ?</option>
-                        <option value="site-vitrine">Site vitrine moderne</option>
-                        <option value="ecommerce">E-commerce / Boutique en ligne</option>
-                        <option value="saas">Application SaaS</option>
-                        <option value="ia">Intégration IA / Chatbot</option>
-                        <option value="api">API / Backend</option>
-                        <option value="maintenance">Maintenance / Refonte</option>
-                        <option value="consultation">Consultation technique</option>
-                        <option value="renseignements">Demande de renseignements</option>
-                        <option value="autre">Autre</option>
-                      </select>
-                    </motion.div>
-
-                    {/* Description */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ duration: 0.5, delay: 1.3 }}
-                    >
-                      <div className="relative">
-                        <MessageSquare className="absolute left-3 top-4 h-5 w-5 text-blue-500 dark:text-blue-400 z-10" />
-                        <textarea
-                          name="description"
-                          value={formData.description}
-                          onChange={handleChange}
-                          rows={5}
-                          className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none text-lg"
-                          placeholder="Décrivez votre projet, vos besoins, technologies souhaitées, délais, budget approximatif..."
-                        />
-                      </div>
-                    </motion.div>
-
-                    {/* Submit Button */}
-                    <motion.button
+                  <div className="pt-3">
+                    <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 text-white font-bold py-5 px-6 rounded-xl hover:from-blue-600 hover:via-purple-600 hover:to-indigo-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-xl relative overflow-hidden group"
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{ duration: 0.5, delay: 1.4 }}
+                      className="hero-cta-primary group disabled:opacity-60 disabled:cursor-not-allowed"
+                      aria-label="Envoyer la demande"
+                      data-testid="contact_submit"
                     >
-                      {/* Effet de brillance */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                      {isSubmitting ? (
+                        <>
+                          <span className="inline-block h-4 w-4 rounded-full border-2 border-current border-t-transparent animate-spin" />
+                          <span>Envoi en cours…</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-4 w-4" aria-hidden="true" />
+                          <span>Envoyer ma demande</span>
+                          <span className="hero-cta-sub">
+                            réponse sous 24h
+                          </span>
+                        </>
+                      )}
+                    </button>
+                  </div>
 
-                      <div className="relative z-10 flex items-center justify-center gap-3">
-                        {isSubmitting ? (
-                          <>
-                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white" />
-                            <span className="text-lg">Envoi en cours...</span>
-                          </>
-                        ) : (
-                          <>
-                            <Send className="h-6 w-6" />
-                            <div>
-                              <div className="text-lg">Envoyer ma demande</div>
-                              <div className="text-sm font-normal opacity-90">Réponse garantie sous 24h</div>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    </motion.button>
-
-                    {status && (
-                      <motion.div
-                        className={`text-center p-3 rounded-lg mt-4 ${
-                          status.includes("succès")
-                            ? "bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400"
-                            : "bg-red-100 dark:bg-red-900/20 text-red-600 dark:text-red-400"
-                        }`}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {status}
-                      </motion.div>
-                    )}
-                  </form>
-                </>
+                  {status && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`hero-body text-[14px] py-2.5 px-4 border-l-2 ${
+                        status.includes("succès")
+                          ? "border-[#F4D35E] text-[#1A1715] dark:text-[#F4D35E]"
+                          : "border-[#C9342D] text-[#C9342D]"
+                      }`}
+                      role="status"
+                      aria-live="polite"
+                    >
+                      {status}
+                    </motion.div>
+                  )}
+                </form>
               )}
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
 
-        {/* Schema markup pour GMB */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ContactPage",
-            mainEntity: {
-              "@type": "LocalBusiness",
-              name: "Christophe Mostefaoui - Développeur Web Freelance Expert",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Pau",
-                addressRegion: "Pyrénées-Atlantiques",
-                addressCountry: "FR"
-              },
-              telephone: "+33-6-79-08-88-45",
-              email: "christophe.mostefaoui.dev@gmail.com",
-              openingHours: "Mo-Fr 08:30-18:00",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "5.0",
-                reviewCount: "47"
-              }
-            }
-          })}
-        </script>
-      </div>
-    </FuturisticBackground>
+          {/* Citation manuscrite signée */}
+          <motion.figcaption
+            initial={{ opacity: 0, y: 14 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-20 sm:mt-24 max-w-xl"
+          >
+            <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90 dark:text-[#F4D35E]">
+              « Le devis arrive sous 24h. Le projet, c'est plus long. »
+            </p>
+            <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50 dark:text-[#F4EFE6]/50">
+              — C.M.
+            </p>
+          </motion.figcaption>
+        </div>
+      </section>
+    </>
   );
 };
+
+/* -------------------------------------------------------------------------- */
+/* Sous-composants champs                                                      */
+/* -------------------------------------------------------------------------- */
+
+interface FieldInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+}
+
+const FieldInput = ({ icon: Icon, ...props }: FieldInputProps) => (
+  <div className="relative">
+    <Icon
+      className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-4 text-[#1A1715]/40 dark:text-[#F4EFE6]/40 pointer-events-none"
+      strokeWidth={1.5}
+    />
+    <input
+      {...props}
+      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[15px] focus:outline-none focus:border-[#F4D35E] transition-colors"
+    />
+  </div>
+);
+
+interface FieldSelectProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  children: React.ReactNode;
+}
+
+const FieldSelect = ({ children, ...props }: FieldSelectProps) => (
+  <div className="relative">
+    <select
+      {...props}
+      className="hero-body w-full pl-0 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] text-[15px] focus:outline-none focus:border-[#F4D35E] transition-colors appearance-none cursor-pointer"
+    >
+      {children}
+    </select>
+    <span
+      className="absolute right-2 top-1/2 -translate-y-1/2 text-[#1A1715]/40 dark:text-[#F4EFE6]/40 pointer-events-none"
+      aria-hidden="true"
+    >
+      ▾
+    </span>
+  </div>
+);
+
+interface FieldTextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+}
+
+const FieldTextarea = ({ icon: Icon, ...props }: FieldTextareaProps) => (
+  <div className="relative">
+    <Icon
+      className="absolute left-0 top-3 h-4 w-4 text-[#1A1715]/40 dark:text-[#F4EFE6]/40 pointer-events-none"
+      strokeWidth={1.5}
+    />
+    <textarea
+      {...props}
+      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[15px] focus:outline-none focus:border-[#F4D35E] transition-colors resize-none leading-[1.6]"
+    />
+  </div>
+);
 
 export default GMBOptimizedContact;
