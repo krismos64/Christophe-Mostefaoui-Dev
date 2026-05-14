@@ -1,16 +1,14 @@
 import Lottie from "lottie-react";
 import {
+  ArrowUpRight,
   ExternalLink,
-  Eye,
   Github,
   Linkedin,
   Send,
-  Video,
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import chatbotAnimation from "../animations/chatbot.json";
-import { useTheme } from "../context/ThemeContext";
 
 interface Message {
   id: string;
@@ -26,482 +24,365 @@ interface MediaAttachment {
   title: string;
   description?: string;
   url: string;
-  thumbnail?: string;
   tags?: string[];
 }
 
-// Composant pour l'effet machine à écrire
-const TypewriterText = ({
-  text,
-  speed = 20,
-}: {
-  text: string;
-  speed?: number;
-}) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + text[currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-      }, speed);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, text, speed]);
-
-  return (
-    <span>
-      {displayedText}
-      <span className="animate-pulse">|</span>
-    </span>
-  );
-};
-
-// Composant pour afficher un média attaché
-const MediaCard = ({
-  media,
-  isDarkMode,
-}: {
-  media: MediaAttachment;
-  isDarkMode: boolean;
-}) => {
+/* -------------------------------------------------------------------------- */
+/* Carte média (réponses enrichies)                                            */
+/* -------------------------------------------------------------------------- */
+const MediaCard = ({ media }: { media: MediaAttachment }) => {
   const getIcon = () => {
-    if (media.url.includes("github")) return <Github className="w-4 h-4" />;
-    if (media.url.includes("linkedin")) return <Linkedin className="w-4 h-4" />;
-    if (media.type === "project") return <Eye className="w-4 h-4" />;
-    return <ExternalLink className="w-4 h-4" />;
+    if (media.url.includes("github")) return Github;
+    if (media.url.includes("linkedin")) return Linkedin;
+    return ExternalLink;
   };
+  const Icon = getIcon();
+  const isInternal = media.url.startsWith("#");
 
   return (
     <a
       href={media.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`block p-3 rounded-xl border transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm group ${
-        isDarkMode
-          ? "bg-gray-800/60 border-cyan-500/20 hover:border-cyan-400/40 hover:shadow-cyan-500/10"
-          : "bg-white/60 border-blue-500/20 hover:border-blue-400/40 hover:shadow-blue-500/10"
-      } shadow-lg hover:shadow-xl`}
+      target={isInternal ? undefined : "_blank"}
+      rel={isInternal ? undefined : "noopener noreferrer"}
+      className="group block border-l-2 border-[#F4D35E]/60 pl-3 py-1.5 hover:border-[#F4D35E] transition-colors"
     >
-      <div className="flex items-start gap-3">
-        {media.thumbnail && (
-          <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
-            <img
-              src={media.thumbnail}
-              alt={media.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              onError={(e) => {
-                // Fallback si l'image n'existe pas
-                const target = e.target as HTMLImageElement;
-                target.style.display = "none";
-              }}
-            />
-          </div>
-        )}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-2">
-            <h4
-              className={`font-medium text-sm leading-tight ${
-                isDarkMode ? "text-white" : "text-gray-900"
-              }`}
-            >
-              {media.title}
-            </h4>
-            <div
-              className={`p-1 rounded-full ${
-                isDarkMode ? "text-cyan-400" : "text-blue-600"
-              }`}
-            >
-              {getIcon()}
-            </div>
-          </div>
-          {media.description && (
-            <p
-              className={`text-xs mt-1 leading-relaxed ${
-                isDarkMode ? "text-gray-300" : "text-gray-600"
-              }`}
-            >
-              {media.description}
-            </p>
-          )}
-          {media.tags && media.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-2">
-              {media.tags.slice(0, 3).map((tag, index) => (
-                <span
-                  key={index}
-                  className={`text-xs px-2 py-0.5 rounded-full ${
-                    isDarkMode
-                      ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30"
-                      : "bg-blue-500/20 text-blue-700 border border-blue-500/30"
-                  }`}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+      <div className="flex items-start justify-between gap-2 mb-0.5">
+        <span
+          style={{
+            fontFamily: '"Fraunces", "Times New Roman", serif',
+            fontStyle: "italic",
+            fontWeight: 500,
+          }}
+          className="text-[14px] leading-tight text-[#1A1715] dark:text-[#F4EFE6] group-hover:text-[#F4D35E] transition-colors"
+        >
+          {media.title}
+        </span>
+        <Icon
+          className="h-3.5 w-3.5 mt-1 flex-shrink-0 text-[#1A1715]/40 dark:text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors"
+          aria-hidden="true"
+          strokeWidth={1.5}
+        />
       </div>
+      {media.description && (
+        <p className="hero-body text-[12px] leading-snug text-[#1A1715]/65 dark:text-[#F4EFE6]/65">
+          {media.description}
+        </p>
+      )}
+      {media.tags && media.tags.length > 0 && (
+        <p className="hero-body text-[11px] mt-1 text-[#1A1715]/45 dark:text-[#F4EFE6]/45 flex flex-wrap items-center gap-x-1.5">
+          {media.tags.slice(0, 4).map((tag, i) => (
+            <span key={i}>
+              {tag}
+              {i < Math.min(media.tags!.length, 4) - 1 && (
+                <span className="text-[#F4D35E]/60 ml-1.5" aria-hidden="true">
+                  ·
+                </span>
+              )}
+            </span>
+          ))}
+        </p>
+      )}
     </a>
   );
 };
 
+/* -------------------------------------------------------------------------- */
+/* Chatbot                                                                     */
+/* -------------------------------------------------------------------------- */
 const AIChatbot = () => {
-  const { theme } = useTheme();
-  const isDarkMode = theme === "dark";
-
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showWelcome, setShowWelcome] = useState(false);
   const [showRobotBubble, setShowRobotBubble] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
-  const [currentStreamingMessage, setCurrentStreamingMessage] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true);
-  const [showVideoModal, setShowVideoModal] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const hasShownBubble = useRef(false);
 
   // Cache local pour les réponses
   const responseCache = useRef<Map<string, string>>(new Map());
 
-  // Limite de contexte (garder seulement les 10 derniers messages)
+  // Limite de contexte (10 derniers messages)
   const MAX_CONTEXT_MESSAGES = 10;
 
-  // Suggestions de questions pour engager la conversation
+  // Suggestions de questions sobres (sans emoji)
   const SUGGESTED_QUESTIONS = [
-    "🚀 Quels services proposez-vous ?",
-    "💻 Quelles technologies maîtrisez-vous ?",
-    "📂 Pouvez-vous me parler de vos projets ?",
-    "💰 Quels sont vos tarifs ?",
-    "📅 Êtes-vous disponible pour un nouveau projet ?",
-    "🎯 Comment travaillez-vous avec vos clients ?",
+    "Combien coûte un site web ?",
+    "Quels sont vos délais ?",
+    "Pouvez-vous refondre mon site existant ?",
+    "Comment vous contacter directement ?",
   ];
 
-  // Base de données des médias pour enrichir les réponses
-  const MEDIA_DATABASE: { [key: string]: MediaAttachment[] } = {
+  // Base de données médias enrichis
+  const MEDIA_DATABASE: Record<string, MediaAttachment[]> = {
     staka: [
       {
         type: "project",
-        title: "Staka Livres",
+        title: "LivresStaka.fr",
         description:
-          "Plateforme e-commerce de livres d'occasion avec 10,000+ références",
+          "Plateforme d'édition et correction de manuscrits avec espace client et paiement en ligne.",
         url: "https://livrestaka.fr",
-        thumbnail: "/assets/images/livrestaka.jpg",
-        tags: ["React", "Node.js", "MySQL", "Stripe", "E-commerce"],
+        tags: ["React", "Node.js", "Stripe", "Plateforme"],
       },
     ],
     smartplanning: [
       {
         type: "project",
-        title: "SmartPlanning SaaS",
+        title: "SmartPlanning.fr",
         description:
-          "Solution de gestion de planning temps réel pour entreprises",
+          "Mon SaaS de gestion de plannings d'équipe, conçu et lancé en 2026 (modèle freemium).",
         url: "https://smartplanning.fr",
-        thumbnail: "/assets/images/business-smartplanning.webp",
-        tags: ["React", "Node.js", "MongoDB", "WebSockets", "SaaS"],
+        tags: ["SaaS", "React", "Node.js", "Solo founder"],
       },
     ],
     portfolio: [
       {
         type: "link",
-        title: "Portfolio Complet",
-        description: "Découvrez tous les projets de Christophe",
+        title: "Voir mes réalisations",
+        description: "7 projets clients sur le portfolio.",
         url: "#portfolio",
-        thumbnail: "/assets/images/portfolio.jpg",
-        tags: ["Portfolio", "Projets", "Réalisations"],
+        tags: ["Portfolio"],
       },
     ],
     github: [
       {
         type: "link",
-        title: "GitHub - krismos64",
-        description: "Code source et projets open-source",
+        title: "GitHub — krismos64",
+        description: "Code source et projets open-source.",
         url: "https://github.com/krismos64",
-        thumbnail: "/assets/images/Chris-profil.jpg",
-        tags: ["Code", "Open Source", "GitHub"],
+        tags: ["Code", "Open Source"],
       },
     ],
     linkedin: [
       {
         type: "link",
-        title: "LinkedIn - Christophe Mostefaoui",
-        description: "Profil professionnel et recommandations",
+        title: "LinkedIn — Christophe Mostefaoui",
+        description: "Profil professionnel et parcours.",
         url: "https://www.linkedin.com/in/christophemostefaoui/",
-        thumbnail: "/assets/images/Chris-profil.jpg",
-        tags: ["LinkedIn", "Profil", "Réseau"],
+        tags: ["Profil", "Réseau"],
       },
     ],
     contact: [
       {
         type: "link",
-        title: "Contactez Christophe",
-        description: "Email, téléphone et formulaire de contact",
+        title: "Demander un devis",
+        description: "Réponse personnelle sous 24h en jours ouvrés.",
         url: "#contact",
-        thumbnail: "/assets/images/Chris-profil.jpg",
-        tags: ["Contact", "Email", "Devis"],
+        tags: ["Contact", "Devis gratuit"],
+      },
+    ],
+    krismos: [
+      {
+        type: "link",
+        title: "krismos.fr",
+        description: "Mon portfolio technique détaillé.",
+        url: "https://krismos.fr/",
+        tags: ["Portfolio tech"],
       },
     ],
   };
 
-  // Contexte complet de Christophe pour Mistral AI
-  const SYSTEM_CONTEXT = `Tu es l'assistant virtuel de Christophe Mostefaoui, développeur web freelance expert basé à Pau (64).
+  // Contexte système (corrigé : âge, email, expérience, services à jour)
+  const SYSTEM_CONTEXT = `Tu es l'assistant virtuel de Christophe Mostefaoui, développeur web freelance basé à Pau et Artix (64).
 
-INFORMATIONS IMPORTANTES SUR CHRISTOPHE :
-
-PROFIL :
+INFORMATIONS SUR CHRISTOPHE :
 - Nom : Christophe Mostefaoui
-- Âge : 37 ans
-- Localisation : Pau/Artix, Pyrénées-Atlantiques (64)
-- Statut : Freelance Full-Stack MERN + Symfony
-- Expérience : 3 ans d'expérience intensive
+- Âge : 38 ans
+- Localisation : Artix / Pau, Pyrénées-Atlantiques (64)
+- Statut : Développeur freelance
+- Expérience : plus de 10 ans dans l'informatique (12 ans dans le conseil client multimédia, puis le freelance et le développement)
 - Site web : christophe-dev-freelance.fr
 - Email : christophe.mostefaoui.dev@gmail.com
 - Téléphone : 06 79 08 88 45
 - GitHub : github.com/krismos64
 - LinkedIn : https://www.linkedin.com/in/christophemostefaoui/
+- Portfolio technique : krismos.fr
 
-SERVICES PROPOSÉS :
-1. Site Vitrine Moderne - visible sur Google et référencé par les assistants IA
-2. Site Multi-pages - avec blog et formulaires avancés
-3. Site Sur-mesure - projets complexes et intégration IA
-4. Refonte de Site - modernisation de sites existants
-5. Référencement Google & IA - optimisation SEO pour Google et ChatGPT/Claude
-6. Vidéo & Drone - montage vidéo professionnel (Final Cut Pro) et prises de vue aériennes (DJI Mavic Air)
-7. Intégration IA sur mesure - chatbots intelligents 24/7
+SERVICES (alignés sur la section Services I-VI du site) :
+I. Site Vitrine Moderne — présence en ligne professionnelle, visible sur Google et référencée par les assistants IA.
+II. Site Multi-pages — site complet avec blog, formulaire et CMS pour gérer en autonomie.
+III. Refonte de Site — modernisation d'un site existant pour une meilleure image et de meilleures performances.
+IV. Chatbot intelligent — assistant IA intégré au site (comme celui-ci, visible en bas à droite), capable de répondre aux clients 24h/24.
+V. Référencement Google & IA — optimisation SEO pour Google ET les assistants IA (ChatGPT, Claude, Perplexity).
+VI. Vidéo & Drone (DGAC) — vidéos professionnelles (Final Cut Pro) et prises de vue aériennes certifiées par la Direction Générale de l'Aviation Civile.
 
 COMPÉTENCES TECHNIQUES :
-- Frontend : React.js 18, TypeScript, Next.js, TailwindCSS, Framer Motion
+- Frontend : React, TypeScript, Next.js, TailwindCSS, Framer Motion
 - Backend : Node.js, Express, API REST
 - Bases de données : MySQL, MongoDB, Prisma ORM
-- DevOps : Docker, CI/CD, GitHub Actions
+- DevOps : Docker, CI/CD
 - Paiement : Stripe
 - Temps réel : WebSockets, Socket.io
-- IA : Intégration OpenAI GPT, Anthropic Claude, Mistral
-- Vidéo : Final Cut Pro X, DJI Mavic Air
-- PHP : Symfony 7 (stack secondaire)
+- IA : intégration OpenAI GPT, Anthropic Claude, Mistral
 
 PROJETS PHARES :
-1. STAKA LIVRES (livrestaka.fr)
-   - Plateforme e-commerce de livres d'occasion
-   - 10,000+ livres référencés
-   - Système de paiement Stripe intégré
-   - Technologies : React, Node.js, MySQL, Stripe
+1. SMARTPLANNING (smartplanning.fr) — PROJET FONDATEUR
+   - SaaS de gestion de plannings d'équipe, conçu, développé et lancé seul en 2026
+   - Modèle freemium
+   - À mettre en avant : Christophe a piloté tout le cycle de vie produit (architecture, développement, déploiement, support), pas seulement le code.
 
-2. SMARTPLANNING (smartplanning.fr) — PROJET FONDATEUR
-   - C'est le SaaS que Christophe a fondé, conçu et développé seul en 2026
-   - Modèle freemium (plan gratuit + plans payants)
-   - SaaS de gestion de plannings d'équipe avec assistant IA intégré
-   - Multi-entreprises, multi-utilisateurs, synchronisation temps réel
-   - Technologies : React, TypeScript, Node.js, MongoDB, WebSockets, Socket.io
-   - À mettre en avant : c'est la preuve que Christophe sait piloter un produit complet (architecture, IA, déploiement, support), pas seulement écrire du code. Mentionner systématiquement ce rôle de fondateur si on parle de ses compétences ou de sa crédibilité.
+2. LIVRESTAKA (livrestaka.fr)
+   - Plateforme d'édition et correction de manuscrits
+   - Espace client sécurisé, paiement Stripe, messagerie intégrée
 
-DEVIS :
-- Tous les projets font l'objet d'un devis personnalisé après un échange (visio ou téléphone)
-- Aucune grille tarifaire publique : chaque proposition est adaptée au périmètre réel du projet
-- Devis gratuit envoyé sous 24h, sans engagement
-- Paiement en 3x sans frais possible (30% au démarrage, 40% à mi-parcours, 30% à la livraison)
-- Si on te demande un prix précis, invite poliment l'utilisateur à demander un devis gratuit via le formulaire de contact ou par téléphone (06 79 08 88 45)
+3. Cabinet Infirmier Graslin, Poulp Fiction (plongée), Methodea, CoachTFE, Garage Parrot — 5 autres projets clients visibles dans le portfolio.
+
+DEVIS ET TARIFS :
+- Aucune grille tarifaire publique : chaque projet fait l'objet d'un devis personnalisé
+- Premier échange gratuit (visio ou téléphone), devis envoyé sous 24h
+- Paiement en 3× sans frais possible
+- Si on te demande un prix précis, invite poliment à demander un devis gratuit via le formulaire de contact (#contact) ou au 06 79 08 88 45
 
 ZONE D'INTERVENTION :
-- DÉPLACEMENT GRATUIT dans tout le département des Pyrénées-Atlantiques (64) : Pau, Bayonne, Biarritz, Anglet, Orthez, Oloron, Lescar, Billère, Jurançon, Artix...
-- PARTOUT EN FRANCE en distanciel (visioconférence, partage d'écran, messagerie)
+- DÉPLACEMENT GRATUIT dans tout le département des Pyrénées-Atlantiques (64) : Pau, Bayonne, Biarritz, Anglet, Orthez, Oloron, Lescar, Billère, Jurançon, Artix, Saint-Jean-de-Luz, Hendaye...
+- PARTOUT EN FRANCE en distanciel (visio, partage d'écran)
 
-MÉTHODE DE TRAVAIL :
-1. Premier échange gratuit (téléphone, mail ou visio)
-2. Devis détaillé sous 24/48h
-3. Lancement après validation
-4. Suivi régulier jusqu'à la livraison
-5. Formation à l'utilisation incluse
+MÉTHODE DE TRAVAIL (3 étapes) :
+1. Analyse de vos besoins : premier échange gratuit pour comprendre votre projet
+2. Proposition sur mesure : devis détaillé sous 24h
+3. Accompagnement complet : développement, formation, support après livraison
 
-VALEURS & APPROCHE :
-- Code propre et maintenable
-- Sécurité OWASP
-- Performance optimisée (Core Web Vitals 90+)
-- SEO technique avancé (Google ET assistants IA)
-- Design moderne et UX soignée
-- Accompagnement personnalisé
-- Réponse sous 24h
+RÈGLES DE COMMUNICATION :
+1. Tu réponds aux questions concernant Christophe et ses services
+2. Si on te pose une question hors sujet, fais un rebond élégant vers une compétence pertinente, sans emoji.
+3. Termine systématiquement par un CTA discret et naturel :
+   - "Vous pouvez demander un devis gratuit via le formulaire de contact."
+   - "Christophe répond personnellement sous 24h à christophe.mostefaoui.dev@gmail.com."
+   - "Souhaitez-vous plus de détails sur un projet en particulier ?"
+4. Ton : professionnel, chaleureux, sobre. Évite les emojis dans tes réponses (un seul à la rigueur si vraiment justifié).
+5. Pour les questions sur l'expérience ou la crédibilité, mentionne le rôle de fondateur de SmartPlanning et les plus de 10 ans dans l'informatique.
+6. Pour les questions techniques, reste accessible : ta cible est composée de PME, TPE et indépendants, pas de développeurs.
+7. Ne réponds JAMAIS avec des stats inventées (taux de satisfaction, nombre d'avis, nombre de projets précis non vérifiable).`;
 
-RÈGLES IMPORTANTES :
-1. Tu réponds UNIQUEMENT aux questions concernant Christophe et ses services
-2. Si on te demande quelque chose hors sujet, fais un "rebound" créatif qui relie le sujet à l'expertise de Christophe :
-   - Météo → "Je ne peux pas donner la météo, mais Christophe pourrait créer une superbe app météo en React avec API temps réel ! 🌤️"
-   - Cuisine → "Je ne suis pas chef, mais Christophe développe des sites vitrines parfaits pour restaurants et traiteurs ! 👨‍🍳"
-   - Sport → "Je ne donne pas de conseils sport, mais Christophe peut créer des apps de coaching ou filmer vos événements sportifs avec son drone ! 🏃‍♂️"
-   - Toujours rebondir de manière positive vers ses compétences tech
-3. TOUJOURS terminer par un CTA (Call-To-Action) clair et engageant :
-   - "👉 Contactez Christophe : christophe.mostefaoui.dev@gmail.com"
-   - "📞 Appelez-le au 06 79 08 88 45 pour discuter de votre projet"
-   - "💬 Voulez-vous que je vous donne plus de détails sur ses réalisations ?"
-   - "📅 Souhaitez-vous planifier un appel découverte gratuit ?"
-   - "🚀 Prêt à lancer votre projet ? Christophe peut vous accompagner !"
-4. Sois professionnel mais chaleureux, avec une pointe d'humour quand approprié
-5. Pour les demandes de devis, mentionne : "Devis gratuit et sans engagement sous 24h !"
-6. Mets en avant l'expertise avec des chiffres concrets : "3 ans d'expérience intensive", "10,000+ livres gérés sur Staka", "Déplacement gratuit dans le 64"
-7. Utilise des emojis stratégiquement pour guider l'œil vers les CTAs`;
-
-  // Clé API Mistral
-  const MISTRAL_API_KEY = "FwtWUW9ylbegvlKbEAP94tMg2vRgRWI7";
+  // Clé API Mistral via variable d'environnement
+  const MISTRAL_API_KEY = import.meta.env.VITE_MISTRAL_API_KEY as string | undefined;
   const MISTRAL_API_URL = "https://api.mistral.ai/v1/chat/completions";
 
+  // Bulle de salut : apparition unique après 30 secondes
   useEffect(() => {
-    // Bulle robot qui apparaît toutes les 3 secondes
-    const robotBubbleTimer = setInterval(() => {
-      if (!isOpen) {
+    if (hasShownBubble.current) return;
+    const timer = setTimeout(() => {
+      if (!isOpen && !hasShownBubble.current) {
         setShowRobotBubble(true);
-        // La bulle disparaît après 2 secondes
-        setTimeout(() => setShowRobotBubble(false), 2000);
+        hasShownBubble.current = true;
+        setTimeout(() => setShowRobotBubble(false), 6000);
       }
-    }, 3000);
-
-    return () => clearInterval(robotBubbleTimer);
+    }, 30000);
+    return () => clearTimeout(timer);
   }, [isOpen]);
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
-
-  const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [messages]);
 
   const handleOpen = () => {
     setIsOpen(true);
-    setShowWelcome(false);
     setShowRobotBubble(false);
 
-    // Message de bienvenue initial
     if (messages.length === 0) {
       const welcomeMessage: Message = {
         id: Date.now().toString(),
         role: "assistant",
         content:
-          "Bonjour ! 👋 Je suis l'assistant de Christophe ! Comment puis-je vous aider avant de le contacter ?",
+          "Bonjour ! Je suis l'assistant de Christophe. Comment puis-je vous aider avant de le contacter ?",
         timestamp: new Date(),
       };
       setMessages([welcomeMessage]);
     }
   };
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const handleClose = () => setIsOpen(false);
 
-  // Fonction pour normaliser les questions et détecter les doublons
-  const normalizeQuestion = (question: string): string => {
-    return question
+  const normalizeQuestion = (question: string): string =>
+    question
       .toLowerCase()
       .replace(/[^\w\s]/g, "")
       .replace(/\s+/g, " ")
       .trim();
-  };
 
-  // Fonction pour obtenir le contexte limité
-  const getLimitedContext = (allMessages: Message[]): any[] => {
-    const recentMessages = allMessages.slice(-MAX_CONTEXT_MESSAGES);
-    return recentMessages.map((m) => ({ role: m.role, content: m.content }));
-  };
+  const getLimitedContext = (allMessages: Message[]) =>
+    allMessages
+      .slice(-MAX_CONTEXT_MESSAGES)
+      .map((m) => ({ role: m.role, content: m.content }));
 
-  // Fonction pour enrichir les réponses avec des médias
   const enrichResponseWithMedia = (response: string): MediaAttachment[] => {
     const mediaAttachments: MediaAttachment[] = [];
-    const lowerResponse = response.toLowerCase();
+    const lower = response.toLowerCase();
 
-    // Détecter les mots-clés et ajouter les médias correspondants
     Object.keys(MEDIA_DATABASE).forEach((keyword) => {
-      if (lowerResponse.includes(keyword)) {
+      if (lower.includes(keyword)) {
         const medias = MEDIA_DATABASE[keyword];
-        if (medias) {
-          mediaAttachments.push(...medias);
-        }
+        if (medias) mediaAttachments.push(...medias);
       }
     });
 
-    // Détecter des variations de mots-clés
-    if (
-      lowerResponse.includes("projet") ||
-      lowerResponse.includes("réalisation")
-    ) {
+    if (lower.includes("projet") || lower.includes("réalisation")) {
       mediaAttachments.push(...(MEDIA_DATABASE["portfolio"] || []));
     }
-
-    if (lowerResponse.includes("code") || lowerResponse.includes("source")) {
+    if (lower.includes("code") || lower.includes("source")) {
       mediaAttachments.push(...(MEDIA_DATABASE["github"] || []));
     }
-
-    if (
-      lowerResponse.includes("profil") ||
-      lowerResponse.includes("expérience")
-    ) {
+    if (lower.includes("profil") || lower.includes("expérience")) {
       mediaAttachments.push(...(MEDIA_DATABASE["linkedin"] || []));
     }
-
     if (
-      lowerResponse.includes("contact") ||
-      lowerResponse.includes("email") ||
-      lowerResponse.includes("devis")
+      lower.includes("contact") ||
+      lower.includes("email") ||
+      lower.includes("devis")
     ) {
       mediaAttachments.push(...(MEDIA_DATABASE["contact"] || []));
     }
-
-    if (
-      lowerResponse.includes("livre") ||
-      lowerResponse.includes("e-commerce")
-    ) {
+    if (lower.includes("livre") || lower.includes("e-commerce")) {
       mediaAttachments.push(...(MEDIA_DATABASE["staka"] || []));
     }
-
-    if (lowerResponse.includes("planning") || lowerResponse.includes("saas")) {
+    if (lower.includes("planning") || lower.includes("saas")) {
       mediaAttachments.push(...(MEDIA_DATABASE["smartplanning"] || []));
     }
 
-    // Retirer les doublons
     const uniqueMedia = mediaAttachments.filter(
       (media, index, self) =>
         index === self.findIndex((m) => m.url === media.url)
     );
 
-    return uniqueMedia.slice(0, 3); // Limiter à 3 médias maximum
+    return uniqueMedia.slice(0, 3);
   };
 
-  const handleSend = async () => {
-    if (!input.trim() || isLoading || isStreaming) return;
+  /**
+   * Envoie une question à l'API Mistral en streaming
+   */
+  const sendQuestion = async (questionText: string) => {
+    if (!questionText.trim() || isLoading || isStreaming) return;
 
-    const normalizedInput = normalizeQuestion(input.trim());
+    const normalizedInput = normalizeQuestion(questionText.trim());
 
-    // Vérifier le cache d'abord
+    // Cache : réponse instantanée
     if (responseCache.current.has(normalizedInput)) {
       const cachedResponse = responseCache.current.get(normalizedInput)!;
-
       const userMessage: Message = {
         id: Date.now().toString(),
         role: "user",
-        content: input.trim(),
+        content: questionText.trim(),
         timestamp: new Date(),
       };
-
       const mediaAttachments = enrichResponseWithMedia(cachedResponse);
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: cachedResponse + "\n\n💡 *Réponse instantanée (cache)*",
+        content: cachedResponse,
         timestamp: new Date(),
         media: mediaAttachments,
       };
-
       setMessages((prev) => [...prev, userMessage, assistantMessage]);
       setInput("");
-      setShowSuggestions(false); // Masquer les suggestions même pour le cache
+      setShowSuggestions(false);
       return;
     }
 
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
-      content: input.trim(),
+      content: questionText.trim(),
       timestamp: new Date(),
     };
 
@@ -509,14 +390,15 @@ RÈGLES IMPORTANTES :
     setInput("");
     setIsLoading(true);
     setIsStreaming(true);
-    setCurrentStreamingMessage("");
-    setShowSuggestions(false); // Masquer les suggestions après la première question
+    setShowSuggestions(false);
 
     try {
-      // Contexte limité pour éviter la surcharge
+      if (!MISTRAL_API_KEY) {
+        throw new Error("MISTRAL_API_KEY_MISSING");
+      }
+
       const limitedContext = getLimitedContext(messages);
 
-      // Appel à l'API Mistral avec streaming
       const response = await fetch(MISTRAL_API_URL, {
         method: "POST",
         headers: {
@@ -528,24 +410,20 @@ RÈGLES IMPORTANTES :
           messages: [
             { role: "system", content: SYSTEM_CONTEXT },
             ...limitedContext,
-            { role: "user", content: input.trim() },
+            { role: "user", content: questionText.trim() },
           ],
           temperature: 0.7,
           max_tokens: 500,
-          stream: true, // Activation du streaming
+          stream: true,
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Erreur API Mistral");
-      }
+      if (!response.ok) throw new Error("Erreur API Mistral");
 
-      // Streaming de la réponse token par token
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let fullResponse = "";
 
-      // Créer le message assistant vide pour le streaming
       const assistantMessageId = (Date.now() + 1).toString();
       const assistantMessage: Message = {
         id: assistantMessageId,
@@ -562,7 +440,6 @@ RÈGLES IMPORTANTES :
         while (true) {
           const { done, value } = await reader.read();
           if (done) break;
-
           const chunk = decoder.decode(value);
           const lines = chunk.split("\n");
 
@@ -570,16 +447,11 @@ RÈGLES IMPORTANTES :
             if (line.startsWith("data: ")) {
               const jsonStr = line.slice(6);
               if (jsonStr === "[DONE]") continue;
-
               try {
                 const data = JSON.parse(jsonStr);
                 const token = data.choices?.[0]?.delta?.content;
-
                 if (token) {
                   fullResponse += token;
-                  setCurrentStreamingMessage(fullResponse);
-
-                  // Mettre à jour le message en temps réel
                   setMessages((prev) =>
                     prev.map((msg) =>
                       msg.id === assistantMessageId
@@ -588,19 +460,16 @@ RÈGLES IMPORTANTES :
                     )
                   );
                 }
-              } catch (e) {
-                // Ignorer les erreurs de parsing JSON
+              } catch {
+                /* ignore JSON parsing errors */
               }
             }
           }
         }
       }
 
-      // Sauvegarder dans le cache et enrichir avec médias
       if (fullResponse.trim()) {
         responseCache.current.set(normalizedInput, fullResponse);
-
-        // Ajouter les médias à la réponse finale et désactiver le streaming
         const mediaAttachments = enrichResponseWithMedia(fullResponse);
         setMessages((prev) =>
           prev.map((msg) =>
@@ -610,7 +479,6 @@ RÈGLES IMPORTANTES :
           )
         );
 
-        // Limiter la taille du cache (garder seulement 50 entrées)
         if (responseCache.current.size > 50) {
           const firstKey = responseCache.current.keys().next().value;
           if (firstKey !== undefined) {
@@ -620,22 +488,21 @@ RÈGLES IMPORTANTES :
       }
     } catch (error) {
       console.error("Erreur:", error);
-
-      // Message d'erreur avec fallback
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
         content:
-          "⚠️ La connexion avec l'IA n'est pas configurée. Pour activer le chatbot :\n\n1. Créez un compte gratuit sur console.mistral.ai\n2. Générez une clé API\n3. Remplacez VOTRE_CLE_API_MISTRAL_ICI dans le fichier AIChatbot.tsx\n\nEn attendant, contactez directement Christophe à contact@christophe-dev-freelance.fr",
+          "Désolé, l'assistant rencontre un problème technique. Vous pouvez contacter directement Christophe à christophe.mostefaoui.dev@gmail.com ou au 06 79 08 88 45.",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
       setIsStreaming(false);
-      setCurrentStreamingMessage("");
     }
   };
+
+  const handleSend = () => sendQuestion(input);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -644,387 +511,123 @@ RÈGLES IMPORTANTES :
     }
   };
 
-  const handleSuggestionClick = async (suggestion: string) => {
-    // Retirer l'emoji du début pour la question
-    const cleanQuestion = suggestion.replace(/^[^\s]+\s/, "");
-    setInput(cleanQuestion);
-
-    // Simuler l'envoi automatique après un petit délai
-    setTimeout(async () => {
-      if (!cleanQuestion.trim() || isLoading || isStreaming) return;
-
-      const normalizedInput = normalizeQuestion(cleanQuestion.trim());
-
-      // Vérifier le cache d'abord
-      if (responseCache.current.has(normalizedInput)) {
-        const cachedResponse = responseCache.current.get(normalizedInput)!;
-
-        const userMessage: Message = {
-          id: Date.now().toString(),
-          role: "user",
-          content: cleanQuestion.trim(),
-          timestamp: new Date(),
-        };
-
-        const mediaAttachments = enrichResponseWithMedia(cachedResponse);
-        const assistantMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          role: "assistant",
-          content: cachedResponse + "\n\n💡 *Réponse instantanée (cache)*",
-          timestamp: new Date(),
-          media: mediaAttachments,
-        };
-
-        setMessages((prev) => [...prev, userMessage, assistantMessage]);
-        setInput("");
-        setShowSuggestions(false);
-        return;
-      }
-
-      // Sinon traiter comme un envoi normal
-      const userMessage: Message = {
-        id: Date.now().toString(),
-        role: "user",
-        content: cleanQuestion.trim(),
-        timestamp: new Date(),
-      };
-
-      setMessages((prev) => [...prev, userMessage]);
-      setInput("");
-      setIsLoading(true);
-      setIsStreaming(true);
-      setCurrentStreamingMessage("");
-      setShowSuggestions(false);
-
-      // Appeler la logique d'envoi existante (copie du code principal)
-      try {
-        const limitedContext = getLimitedContext(messages);
-
-        const response = await fetch(MISTRAL_API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${MISTRAL_API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: "open-mistral-7b",
-            messages: [
-              { role: "system", content: SYSTEM_CONTEXT },
-              ...limitedContext,
-              { role: "user", content: cleanQuestion.trim() },
-            ],
-            temperature: 0.7,
-            max_tokens: 500,
-            stream: true,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Erreur API Mistral");
-        }
-
-        const reader = response.body?.getReader();
-        const decoder = new TextDecoder();
-        let fullResponse = "";
-
-        const assistantMessageId = (Date.now() + 1).toString();
-        const assistantMessage: Message = {
-          id: assistantMessageId,
-          role: "assistant",
-          content: "",
-          timestamp: new Date(),
-          isStreaming: true,
-        };
-
-        setMessages((prev) => [...prev, assistantMessage]);
-        setIsLoading(false);
-
-        if (reader) {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-
-            const chunk = decoder.decode(value);
-            const lines = chunk.split("\n");
-
-            for (const line of lines) {
-              if (line.startsWith("data: ")) {
-                const jsonStr = line.slice(6);
-                if (jsonStr === "[DONE]") continue;
-
-                try {
-                  const data = JSON.parse(jsonStr);
-                  const token = data.choices?.[0]?.delta?.content;
-
-                  if (token) {
-                    fullResponse += token;
-                    setCurrentStreamingMessage(fullResponse);
-
-                    setMessages((prev) =>
-                      prev.map((msg) =>
-                        msg.id === assistantMessageId
-                          ? { ...msg, content: fullResponse }
-                          : msg
-                      )
-                    );
-                  }
-                } catch (e) {
-                  // Ignorer les erreurs de parsing JSON
-                }
-              }
-            }
-          }
-        }
-
-        if (fullResponse.trim()) {
-          responseCache.current.set(normalizedInput, fullResponse);
-
-          // Ajouter les médias et désactiver le streaming
-          const mediaAttachments = enrichResponseWithMedia(fullResponse);
-          setMessages((prev) =>
-            prev.map((msg) =>
-              msg.id === assistantMessageId
-                ? { ...msg, media: mediaAttachments, isStreaming: false }
-                : msg
-            )
-          );
-
-          if (responseCache.current.size > 50) {
-            const firstKey = responseCache.current.keys().next().value;
-            if (firstKey !== undefined) {
-              responseCache.current.delete(firstKey);
-            }
-          }
-        }
-      } catch (error) {
-        console.error("Erreur:", error);
-
-        const errorMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          role: "assistant",
-          content:
-            "⚠️ La connexion avec l'IA n'est pas configurée. Pour activer le chatbot :\n\n1. Créez un compte gratuit sur console.mistral.ai\n2. Générez une clé API\n3. Remplacez VOTRE_CLE_API_MISTRAL_ICI dans le fichier AIChatbot.tsx\n\nEn attendant, contactez directement Christophe à contact@christophe-dev-freelance.fr",
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, errorMessage]);
-      } finally {
-        setIsLoading(false);
-        setIsStreaming(false);
-        setCurrentStreamingMessage("");
-      }
-    }, 100);
+  const handleSuggestionClick = (suggestion: string) => {
+    sendQuestion(suggestion);
   };
 
   return (
     <>
-      {/* Bulle de salut du robot - Design futuriste */}
+      {/* Bulle de salut sobre — apparition unique */}
       {showRobotBubble && !isOpen && (
-        <div
-          className={`fixed bottom-32 right-4 p-4 rounded-2xl shadow-2xl max-w-xs animate-bounce cursor-pointer z-40 backdrop-blur-md border transition-all duration-300 hover:scale-105 ${
-            isDarkMode
-              ? "bg-gray-900/90 text-white border-cyan-500/30 shadow-cyan-500/20"
-              : "bg-white/90 text-gray-900 border-blue-500/30 shadow-blue-500/20"
-          }`}
+        <button
+          type="button"
           onClick={handleOpen}
+          className="fixed bottom-28 right-5 max-w-[260px] z-40 bg-[#F4EFE6] dark:bg-[#13110F] text-[#1A1715] dark:text-[#F4EFE6] border border-[#1A1715]/15 dark:border-[#F4EFE6]/15 shadow-xl px-4 py-3 text-left transition-all duration-300 hover:border-[#F4D35E]"
+          style={{ animation: "fade-in 0.5s ease-out" }}
+          aria-label="Ouvrir le chat"
         >
-          <div className="flex items-center gap-2">
-            <div
-              className={`w-2 h-2 rounded-full animate-pulse ${
-                isDarkMode ? "bg-cyan-400" : "bg-blue-500"
-              }`}
-            ></div>
-            <p className="text-sm font-medium">👋 Salut ! Besoin d'aide ?</p>
-          </div>
-          <div
-            className={`absolute bottom-0 right-8 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent transform translate-y-full ${
-              isDarkMode ? "border-t-gray-900/90" : "border-t-white/90"
-            }`}
-          ></div>
-        </div>
+          <p className="hero-handwritten text-[16px] text-[#F4D35E] mb-0.5">
+            ✏ besoin d'aide ?
+          </p>
+          <p className="hero-body text-[13px] leading-snug text-[#1A1715]/75 dark:text-[#F4EFE6]/75">
+            Posez-moi une question sur Christophe.
+          </p>
+          <span
+            aria-hidden="true"
+            className="absolute -bottom-2 right-8 w-3 h-3 bg-[#F4EFE6] dark:bg-[#13110F] border-r border-b border-[#1A1715]/15 dark:border-[#F4EFE6]/15 transform rotate-45"
+          />
+        </button>
       )}
 
-      {/* Robot animé flottant - Design futuriste */}
+      {/* Bouton flottant chatbot */}
       {!isOpen && (
         <div className="fixed bottom-6 right-6 z-50">
           <button
             onClick={handleOpen}
-            className="relative bg-transparent transition-all duration-500 hover:scale-110 focus:outline-none group"
-            aria-label="Ouvrir le chat"
+            className="relative bg-transparent transition-transform duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] focus-visible:ring-offset-2 group"
+            aria-label="Ouvrir le chatbot"
           >
-            {/* Cercles d'onde futuristes */}
-            <div
-              className={`absolute inset-0 rounded-full animate-ping ${
-                isDarkMode ? "bg-cyan-400/30" : "bg-blue-500/30"
-              }`}
-            ></div>
-            <div
-              className={`absolute inset-2 rounded-full animate-ping delay-1000 ${
-                isDarkMode ? "bg-purple-400/20" : "bg-indigo-500/20"
-              }`}
-            ></div>
-
-            {/* Robot avec effet glassmorphism */}
-            <div className="relative bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20 shadow-2xl">
+            <div className="relative">
               <Lottie
                 animationData={chatbotAnimation}
                 loop={true}
-                className="w-16 h-16 drop-shadow-lg filter group-hover:brightness-110 transition-all duration-300"
+                className="w-16 h-16 sm:w-[72px] sm:h-[72px]"
               />
             </div>
-
-            {/* Effet de halo au hover */}
-            <div
-              className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300 ${
-                isDarkMode
-                  ? "bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500"
-                  : "bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
-              } blur-xl`}
-            ></div>
           </button>
         </div>
       )}
 
-      {/* Fenêtre de chat - Design futuriste */}
+      {/* Fenêtre de chat — design éditorial */}
       {isOpen && (
         <div
-          className={`fixed bottom-6 right-6 w-96 h-[600px] rounded-3xl shadow-2xl flex flex-col z-50 backdrop-blur-xl border overflow-hidden transition-all duration-500 ${
-            isDarkMode
-              ? "bg-gray-900/95 border-cyan-500/30 shadow-cyan-500/20"
-              : "bg-white border-blue-400/40 shadow-xl"
-          }`}
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[600px] max-h-[calc(100vh-3rem)] z-50 flex flex-col bg-[#F4EFE6] dark:bg-[#13110F] border border-[#1A1715]/15 dark:border-[#F4EFE6]/15 shadow-2xl overflow-hidden"
         >
-          {/* Header futuriste */}
-          <div
-            className={`relative p-4 flex items-center justify-between overflow-hidden ${
-              isDarkMode
-                ? "bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 text-white"
-                : "bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white"
-            }`}
-          >
-            {/* Effet de particules animées */}
-            <div className="absolute inset-0 opacity-30">
-              <div
-                className={`absolute top-2 left-4 w-1 h-1 rounded-full animate-pulse ${
-                  isDarkMode ? "bg-cyan-400" : "bg-white"
-                }`}
-              ></div>
-              <div
-                className={`absolute top-6 right-8 w-0.5 h-0.5 rounded-full animate-pulse delay-500 ${
-                  isDarkMode ? "bg-purple-400" : "bg-white"
-                }`}
-              ></div>
-              <div
-                className={`absolute bottom-3 left-12 w-0.5 h-0.5 rounded-full animate-pulse delay-1000 ${
-                  isDarkMode ? "bg-pink-400" : "bg-white"
-                }`}
-              ></div>
-            </div>
-            <div className="relative flex items-center gap-3 z-10">
-              <div className="relative">
-                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/50 shadow-lg">
-                  <img
-                    src="/assets/images/Chris-profil.jpg"
-                    alt="Christophe Mostefaoui"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {/* Indicateur en ligne */}
-                <div
-                  className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full border-2 border-white animate-pulse ${
-                    isDarkMode ? "bg-cyan-400" : "bg-green-400"
-                  }`}
-                ></div>
+          {/* Header sobre */}
+          <div className="relative flex items-center justify-between gap-3 px-4 py-3.5 border-b border-[#1A1715]/15 dark:border-[#F4EFE6]/15 bg-[#0B0805] text-[#F4EFE6]">
+            <div className="flex items-center gap-3 min-w-0 flex-1">
+              <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-[#F4D35E]/40">
+                <img
+                  src="/assets/images/Chris-profil.jpg"
+                  alt="Christophe Mostefaoui"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-white/95">
-                  Assistant virtuel de Christophe
-                </h3>
-                <div className="flex items-center gap-2">
-                  <p className="text-xs text-white/70">
-                    Concepteur développeur d'applications web
-                  </p>
-                  {isStreaming && (
-                    <div className="flex items-center gap-1">
-                      <div
-                        className={`w-1 h-1 rounded-full animate-pulse ${
-                          isDarkMode ? "bg-cyan-400" : "bg-green-400"
-                        }`}
-                      ></div>
-                      <span className="text-xs text-white/70">En direct</span>
-                    </div>
-                  )}
-                  {responseCache.current.size > 0 && (
-                    <div className="text-xs text-white/70">
-                      💾 {responseCache.current.size}/50
-                    </div>
-                  )}
-                </div>
+              <div className="min-w-0 flex-1">
+                <p
+                  style={{
+                    fontFamily: '"Fraunces", "Times New Roman", serif',
+                    fontStyle: "italic",
+                    fontWeight: 500,
+                  }}
+                  className="text-[15px] leading-tight text-[#F4EFE6]"
+                >
+                  Assistant de Christophe
+                </p>
+                <p className="hero-body text-[11px] text-[#F4EFE6]/60 truncate">
+                  {isStreaming
+                    ? "écrit…"
+                    : "développeur freelance · Pau (64)"}
+                </p>
               </div>
             </div>
-            <div className="relative z-10 flex items-center gap-2">
-              {/* Bouton Pitch Vidéo */}
-              <button
-                onClick={() => setShowVideoModal(true)}
-                className="hover:bg-white/20 p-2 rounded-full transition-all duration-300 hover:scale-110 group relative"
-                aria-label="Voir le pitch vidéo"
-                title="Voir le pitch vidéo de Christophe"
-              >
-                <Video className="w-5 h-5 group-hover:text-white/90 transition-colors duration-300" />
-                <span className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-white/0 group-hover:text-white/80 transition-all duration-300 whitespace-nowrap">
-                  Pitch
-                </span>
-              </button>
-
-              {/* Bouton Fermer */}
-              <button
-                onClick={handleClose}
-                className="hover:bg-white/20 p-2 rounded-full transition-all duration-300 hover:scale-110 group"
-                aria-label="Fermer le chat"
-              >
-                <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleClose}
+              className="p-1.5 text-[#F4EFE6]/70 hover:text-[#F4D35E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded"
+              aria-label="Fermer le chat"
+            >
+              <X className="w-5 h-5" strokeWidth={1.5} />
+            </button>
           </div>
 
-          {/* Messages avec effet glassmorphism */}
-          <div
-            className={`flex-1 overflow-y-auto p-4 space-y-4 relative ${
-              isDarkMode
-                ? "bg-gradient-to-b from-gray-900/50 to-gray-800/50"
-                : "bg-gradient-to-b from-gray-50 to-blue-50/30"
-            }`}
-          >
-            {/* Effet de grille futuriste en arrière-plan */}
-            <div
-              className={`absolute inset-0 opacity-5 ${
-                isDarkMode ? "bg-cyan-500" : "bg-blue-500"
-              }`}
-              style={{
-                backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-                backgroundSize: "20px 20px",
-              }}
-            ></div>
+          {/* Zone messages */}
+          <div className="flex-1 overflow-y-auto px-4 py-5 space-y-5">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`relative animate-fade-in ${
+                className={`relative ${
                   message.role === "user" ? "flex justify-end" : ""
                 }`}
+                style={{ animation: "fade-in 0.4s ease-out" }}
               >
                 <div
-                  className={`relative max-w-[80%] p-4 rounded-2xl backdrop-blur-sm border transition-all duration-300 hover:scale-[1.02] ${
+                  className={`max-w-[85%] ${
                     message.role === "user"
-                      ? "bg-gradient-to-r from-blue-500/90 to-purple-600/90 text-white border-blue-400/30 shadow-blue-500/20"
-                      : isDarkMode
-                      ? "bg-gray-800/80 border-cyan-500/20 text-white shadow-cyan-500/10"
-                      : "bg-white border-gray-200 text-gray-900 shadow-md"
-                  } shadow-xl`}
+                      ? "border-r-2 border-[#F4D35E] pr-3 py-2 bg-[#F4D35E]/10"
+                      : "border-l-2 border-[#1A1715]/30 dark:border-[#F4EFE6]/30 pl-3 py-2"
+                  }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">
-                    {message.isStreaming && message.role === "assistant" ? (
-                      <TypewriterText text={message.content} speed={15} />
-                    ) : (
-                      message.content
+                  <p
+                    className={`hero-body text-[14px] leading-[1.6] whitespace-pre-wrap ${
+                      message.role === "user"
+                        ? "text-[#1A1715] dark:text-[#F4EFE6]"
+                        : "text-[#1A1715] dark:text-[#F4EFE6]"
+                    }`}
+                  >
+                    {message.content}
+                    {message.isStreaming && message.role === "assistant" && (
+                      <span className="inline-block w-2 h-4 ml-0.5 bg-[#F4D35E] align-middle animate-pulse" />
                     )}
                   </p>
 
@@ -1032,24 +635,18 @@ RÈGLES IMPORTANTES :
                   {message.media &&
                     message.media.length > 0 &&
                     message.role === "assistant" && (
-                      <div className="mt-3 space-y-2">
+                      <div className="mt-3 space-y-2.5">
                         {message.media.map((media, index) => (
-                          <MediaCard
-                            key={index}
-                            media={media}
-                            isDarkMode={isDarkMode}
-                          />
+                          <MediaCard key={index} media={media} />
                         ))}
                       </div>
                     )}
 
                   <p
-                    className={`text-xs mt-2 ${
+                    className={`font-mono tabular-nums text-[10px] mt-1.5 ${
                       message.role === "user"
-                        ? "text-blue-100"
-                        : isDarkMode
-                        ? "text-gray-400"
-                        : "text-gray-500"
+                        ? "text-[#1A1715]/40 dark:text-[#F4EFE6]/40"
+                        : "text-[#1A1715]/40 dark:text-[#F4EFE6]/40"
                     }`}
                   >
                     {message.timestamp.toLocaleTimeString("fr-FR", {
@@ -1060,224 +657,89 @@ RÈGLES IMPORTANTES :
                 </div>
               </div>
             ))}
-            {(isLoading || isStreaming) && (
-              <div className="relative animate-fade-in">
-                <div
-                  className={`relative max-w-[80%] p-4 rounded-2xl backdrop-blur-sm border shadow-xl ${
-                    isDarkMode
-                      ? "bg-gray-800/80 border-cyan-500/20 shadow-cyan-500/10"
-                      : "bg-white border-gray-200 shadow-md"
-                  }`}
-                >
-                  <div className="flex gap-2 items-center">
-                    <div
-                      className={`w-2 h-2 rounded-full animate-bounce ${
-                        isDarkMode ? "bg-cyan-400" : "bg-blue-500"
-                      }`}
-                    />
-                    <div
-                      className={`w-2 h-2 rounded-full animate-bounce delay-100 ${
-                        isDarkMode ? "bg-purple-400" : "bg-indigo-500"
-                      }`}
-                    />
-                    <div
-                      className={`w-2 h-2 rounded-full animate-bounce delay-200 ${
-                        isDarkMode ? "bg-pink-400" : "bg-purple-500"
-                      }`}
+
+            {/* Indicateur "Christophe réfléchit…" */}
+            {isLoading && !isStreaming && (
+              <div className="border-l-2 border-[#F4D35E]/40 pl-3 py-2 max-w-[85%]">
+                <p className="hero-handwritten text-[14px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 flex items-center gap-2">
+                  <span className="inline-flex gap-1">
+                    <span className="w-1 h-1 rounded-full bg-current animate-bounce" />
+                    <span
+                      className="w-1 h-1 rounded-full bg-current animate-bounce"
+                      style={{ animationDelay: "0.15s" }}
                     />
                     <span
-                      className={`text-xs ml-2 ${
-                        isDarkMode ? "text-gray-300" : "text-gray-600"
-                      }`}
-                    >
-                      {isStreaming
-                        ? "Christophe écrit..."
-                        : "Christophe réfléchit..."}
-                    </span>
-                    {isStreaming && (
-                      <div
-                        className={`w-1 h-4 ml-1 animate-pulse ${
-                          isDarkMode ? "bg-cyan-400" : "bg-blue-500"
-                        }`}
-                      ></div>
-                    )}
-                  </div>
-                </div>
+                      className="w-1 h-1 rounded-full bg-current animate-bounce"
+                      style={{ animationDelay: "0.3s" }}
+                    />
+                  </span>
+                  l'assistant réfléchit…
+                </p>
               </div>
             )}
 
-            {/* Suggestions de questions */}
+            {/* Suggestions de questions sobres */}
             {showSuggestions && messages.length <= 1 && (
-              <div className="relative animate-fade-in p-3">
-                <p
-                  className={`text-xs mb-3 text-center font-medium ${
-                    isDarkMode ? "text-gray-400" : "text-gray-700"
-                  }`}
-                >
-                  💡 Questions fréquentes :
+              <div
+                className="pt-2"
+                style={{ animation: "fade-in 0.5s ease-out" }}
+              >
+                <p className="hero-handwritten text-[14px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-3">
+                  ↳ vous pouvez aussi demander :
                 </p>
-                <div className="grid grid-cols-1 gap-2">
+                <ul className="space-y-2">
                   {SUGGESTED_QUESTIONS.map((suggestion, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleSuggestionClick(suggestion)}
-                      className={`text-left text-sm p-3 rounded-xl border transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm ${
-                        isDarkMode
-                          ? "bg-gray-800/60 border-cyan-500/20 text-white hover:border-cyan-400/40 hover:shadow-cyan-500/10"
-                          : "bg-white border-gray-200 text-gray-900 hover:border-blue-400 hover:shadow-md"
-                      } shadow-lg hover:shadow-xl`}
-                    >
-                      {suggestion}
-                    </button>
+                    <li key={index}>
+                      <button
+                        type="button"
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className="group w-full text-left flex items-start gap-2 py-1.5 hover:text-[#F4D35E] transition-colors"
+                      >
+                        <ArrowUpRight
+                          className="h-3.5 w-3.5 mt-1 flex-shrink-0 text-[#1A1715]/40 dark:text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors"
+                          aria-hidden="true"
+                          strokeWidth={1.5}
+                        />
+                        <span className="hero-body text-[14px] leading-snug text-[#1A1715]/85 dark:text-[#F4EFE6]/85 group-hover:text-[#F4D35E] border-b border-transparent group-hover:border-[#F4D35E]/40 pb-0.5">
+                          {suggestion}
+                        </span>
+                      </button>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
 
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input futuriste */}
-          <div
-            className={`relative p-4 backdrop-blur-xl border-t overflow-hidden ${
-              isDarkMode
-                ? "bg-gray-900/90 border-cyan-500/20"
-                : "bg-gray-50 border-gray-200"
-            }`}
-          >
-            {/* Effet de lueur en bas */}
-            <div
-              className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${
-                isDarkMode
-                  ? "from-transparent via-cyan-500 to-transparent"
-                  : "from-transparent via-blue-500 to-transparent"
-              } opacity-50`}
-            ></div>
-
-            <div className="relative flex gap-3">
-              <div className="relative flex-1">
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="Posez votre question à Christophe..."
-                  className={`w-full px-5 py-3 rounded-2xl border-2 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:scale-[1.02] ${
-                    isDarkMode
-                      ? "bg-gray-800/80 border-cyan-500/30 text-white placeholder-gray-400 focus:border-cyan-400 focus:shadow-cyan-500/20"
-                      : "bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:shadow-lg"
-                  } focus:shadow-xl`}
-                  disabled={isLoading}
-                />
-                {/* Indicateur de saisie */}
-                {input && (
-                  <div
-                    className={`absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full animate-pulse ${
-                      isDarkMode ? "bg-cyan-400" : "bg-blue-500"
-                    }`}
-                  ></div>
-                )}
-              </div>
-
+          {/* Input zone */}
+          <div className="px-4 py-3 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15">
+            <div className="flex items-end gap-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Posez votre question…"
+                className="hero-body flex-1 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[14px] py-2 focus:outline-none focus:border-[#F4D35E] transition-colors"
+                disabled={isLoading || isStreaming}
+                aria-label="Votre question"
+              />
               <button
+                type="button"
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading || isStreaming}
-                className={`relative px-4 py-3 rounded-2xl transition-all duration-300 hover:scale-110 disabled:scale-100 focus:outline-none group overflow-hidden ${
-                  !input.trim() || isLoading || isStreaming
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : isDarkMode
-                    ? "bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500"
-                    : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500"
-                } text-white shadow-lg hover:shadow-xl`}
-                aria-label="Envoyer"
+                className="flex-shrink-0 p-2 text-[#1A1715] dark:text-[#F4EFE6] hover:text-[#F4D35E] disabled:text-[#1A1715]/30 dark:disabled:text-[#F4EFE6]/30 disabled:cursor-not-allowed transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E]"
+                aria-label="Envoyer la question"
               >
-                {/* Effet de brillance au hover */}
-                <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                 <Send
-                  className={`relative w-5 h-5 transition-transform duration-300 ${
-                    isLoading || isStreaming
-                      ? "animate-spin"
-                      : "group-hover:translate-x-0.5"
+                  className={`w-5 h-5 ${
+                    isStreaming || isLoading ? "animate-pulse" : ""
                   }`}
+                  strokeWidth={1.5}
                 />
               </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Modal Vidéo Pitch */}
-      {showVideoModal && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in"
-          onClick={() => setShowVideoModal(false)}
-        >
-          <div
-            className={`relative w-[90%] max-w-4xl rounded-3xl overflow-hidden shadow-2xl border ${
-              isDarkMode
-                ? "bg-gray-900/95 border-cyan-500/30"
-                : "bg-white/95 border-blue-500/30"
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header Modal */}
-            <div
-              className={`relative p-4 flex items-center justify-between ${
-                isDarkMode
-                  ? "bg-gradient-to-r from-gray-900/90 via-gray-800/90 to-gray-900/90 text-white"
-                  : "bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <Video className="w-6 h-6" />
-                <h3 className="font-semibold text-lg">
-                  Pitch Vidéo - Christophe Mostefaoui
-                </h3>
-              </div>
-              <button
-                onClick={() => setShowVideoModal(false)}
-                className="hover:bg-white/20 p-2 rounded-full transition-all duration-300 hover:scale-110 group"
-                aria-label="Fermer la vidéo"
-              >
-                <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
-              </button>
-            </div>
-
-            {/* Conteneur Vidéo */}
-            <div className="relative w-full aspect-video bg-black">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/eZ6OYMeT1CM?autoplay=1"
-                title="Pitch Vidéo - Christophe Mostefaoui"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-
-            {/* Footer avec CTA */}
-            <div
-              className={`p-4 ${
-                isDarkMode ? "bg-gray-900/50" : "bg-gray-50/50"
-              }`}
-            >
-              <p
-                className={`text-sm text-center ${
-                  isDarkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
-                💡 Besoin d'un développeur full-stack expert ?
-                <a
-                  href="#contact"
-                  className={`ml-2 font-semibold underline transition-colors ${
-                    isDarkMode
-                      ? "text-cyan-400 hover:text-cyan-300"
-                      : "text-blue-600 hover:text-blue-700"
-                  }`}
-                  onClick={() => setShowVideoModal(false)}
-                >
-                  Contactez-moi !
-                </a>
-              </p>
             </div>
           </div>
         </div>
