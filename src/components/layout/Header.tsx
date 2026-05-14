@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-react";
 import {
   ArrowUpRight,
-  Brain,
   Briefcase,
   ExternalLink,
   FolderOpen,
@@ -99,7 +98,6 @@ export default function Header() {
   const menuItems: MenuItem[] = [
     { name: "À propos", to: isHomePage ? "#about" : "/#about", icon: <User className="h-5 w-5" /> },
     { name: "Services", to: isHomePage ? "#services" : "/#services", icon: <Briefcase className="h-5 w-5" /> },
-    { name: "Solutions IA", to: isHomePage ? "#ai-integration" : "/#ai-integration", icon: <Brain className="h-5 w-5" /> },
     { name: "Portfolio", to: isHomePage ? "#portfolio" : "/#portfolio", icon: <FolderOpen className="h-5 w-5" /> },
     { name: "Contact", to: isHomePage ? "#contact" : "/#contact", icon: <Mail className="h-5 w-5" /> },
     { name: "FAQ", to: "/faq", icon: <HelpCircle className="h-5 w-5" /> },

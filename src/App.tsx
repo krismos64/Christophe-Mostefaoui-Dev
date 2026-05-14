@@ -4,7 +4,6 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import About from "./components/sections/About";
-import AIIntegration from "./components/sections/AIIntegration";
 import Contact from "./components/sections/Contact";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
@@ -50,7 +49,6 @@ const Home = () => {
       <Services />
       <Pricing />
       <FeaturedSnippetsFAQ />
-      <AIIntegration />
       <Portfolio />
       <VideoServices />
       <ServiceArea />

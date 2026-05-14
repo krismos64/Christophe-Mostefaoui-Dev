@@ -67,10 +67,10 @@
   ],
   "shortcuts": [
     {
-      "name": "Solutions IA",
-      "short_name": "IA",
-      "description": "Découvrir les solutions d'intégration IA",
-      "url": "/#ai-integration",
+      "name": "Services",
+      "short_name": "Services",
+      "description": "Découvrir mes services de développement web",
+      "url": "/#services",
       "icons": [
         {
           "src": "/favicons/favicon.png",
