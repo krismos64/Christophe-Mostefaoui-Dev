@@ -10,7 +10,6 @@ import Hero from "./components/sections/Hero";
 import Portfolio from "./components/sections/Portfolio";
 import Services from "./components/sections/Services";
 import Pricing from "./components/sections/Pricing";
-import VideoServices from "./components/sections/VideoServices";
 import ServiceArea from "./components/sections/ServiceArea";
 import SmartPlanningShowcase from "./components/sections/SmartPlanningShowcase";
 import AIChatbot from "./components/AIChatbot";
@@ -50,7 +49,6 @@ const Home = () => {
       <Pricing />
       <FeaturedSnippetsFAQ />
       <Portfolio />
-      <VideoServices />
       <ServiceArea />
       <GMBOptimizedContact />
     </>
