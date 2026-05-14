@@ -67,9 +67,9 @@ function App() {
       <HelmetProvider>
         <ThemeProvider>
           <Router basename="/">
-            <div className="App min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div className="App min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden max-w-[100vw]">
               <Header />
-              <main role="main">
+              <main role="main" className="overflow-x-hidden max-w-[100vw]">
                 <Suspense
                   fallback={
                     <div className="flex items-center justify-center min-h-screen">

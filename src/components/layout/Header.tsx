@@ -8,7 +8,6 @@ import {
   FolderOpen,
   Github,
   HelpCircle,
-  Home,
   Linkedin,
   Mail,
   Menu,
@@ -90,11 +89,6 @@ export default function Header() {
 
   const menuItems: MenuItem[] = [
     {
-      name: "Accueil",
-      to: isHomePage ? "#home" : "/",
-      icon: <Home className="h-5 w-5" />,
-    },
-    {
       name: "À propos",
       to: isHomePage ? "#about" : "/#about",
       icon: <User className="h-5 w-5" />,
@@ -136,10 +130,19 @@ export default function Header() {
     <>
       <header className="fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm z-50 shadow-sm transition-colors duration-300">
         <div className="accent-line-rgb"></div>
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="h-12 w-12 rounded-full overflow-hidden">
+        <nav className="container mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4">
+          <div className="flex items-center justify-between gap-2">
+            <Link
+              to="/"
+              className="flex items-center space-x-2 min-w-0 flex-shrink"
+              onClick={(e) => {
+                if (isHomePage) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+            >
+              <div className="h-9 w-9 sm:h-10 sm:w-10 lg:h-12 lg:w-12 rounded-full overflow-hidden flex-shrink-0">
                 <video
                   src="/assets/videos/animation-chris-dev.mp4"
                   autoPlay
@@ -150,18 +153,18 @@ export default function Header() {
                   aria-label="Animation Christophe développeur"
                 />
               </div>
-              <span className="text-xl font-bold text-gray-900 dark:text-white">
+              <span className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-gray-900 dark:text-white truncate">
                 Christophe, <span className="rgb-text">développeur web</span>
               </span>
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+            <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               {menuItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.to}
-                  className={`text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  className={`text-[13px] xl:text-sm text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap ${
                     isActive(item.to)
                       ? "text-blue-600 dark:text-blue-400 font-medium"
                       : ""
@@ -180,10 +183,10 @@ export default function Header() {
                 href="https://krismos.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-purple-600 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700/50 hover:bg-purple-100 dark:hover:bg-purple-900/50 hover:border-purple-400 dark:hover:border-purple-500 transition-colors"
+                className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] xl:text-xs font-medium text-purple-600 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700/50 hover:bg-purple-100 dark:hover:bg-purple-900/50 hover:border-purple-400 dark:hover:border-purple-500 transition-colors whitespace-nowrap"
                 aria-label="Mon portfolio technique sur krismos.fr (nouvel onglet)"
               >
-                <Code2 className="h-4 w-4" aria-hidden="true" />
+                <Code2 className="h-3.5 w-3.5" aria-hidden="true" />
                 <span>Portfolio tech</span>
                 <ExternalLink className="h-3 w-3 opacity-70" aria-hidden="true" />
               </a>
@@ -207,7 +210,7 @@ export default function Header() {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center space-x-4">
+            <div className="lg:hidden flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
               {/* Bouton de basculement de thème (mobile) */}
               <button
                 onClick={toggleTheme}
