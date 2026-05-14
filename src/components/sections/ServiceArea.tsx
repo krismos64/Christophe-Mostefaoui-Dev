@@ -1,21 +1,16 @@
-import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  FileText,
-  Globe,
-  MapPin,
-  Phone,
-  RefreshCw,
-  Rocket,
-} from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
+import { Fragment, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import CallToAction from "../common/CallToAction";
-import FuturisticBackground from "../effects/FuturisticBackground";
-import { containerVariants, itemVariants, createCardVariants } from "../effects/FuturisticEffects";
 
 export default function ServiceArea() {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-80px" });
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   const localCities = [
     "Pau",
@@ -48,44 +43,15 @@ export default function ServiceArea() {
     "Montpellier",
   ];
 
-  const processSteps = [
-    {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Premier échange",
-      description: "Téléphone, mail ou visio (gratuit)",
-      step: 1,
-    },
-    {
-      icon: <FileText className="h-6 w-6" />,
-      title: "Devis détaillé",
-      description: "Sous 24/48h",
-      step: 2,
-    },
-    {
-      icon: <Rocket className="h-6 w-6" />,
-      title: "Lancement",
-      description: "Après validation",
-      step: 3,
-    },
-    {
-      icon: <RefreshCw className="h-6 w-6" />,
-      title: "Suivi régulier",
-      description: "Jusqu'à la livraison",
-      step: 4,
-    },
-  ];
-
-  const cardVariants = createCardVariants(0.2, 0.15);
-
-  // Schema.org pour SEO local
+  // Schema.org pour SEO local (vrai numéro de téléphone)
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Christophe Mostefaoui - Développeur Web Freelance",
+    name: "Christophe Mostefaoui — Développeur Web Freelance",
     description:
       "Développeur web freelance spécialisé en création de sites internet, applications web et intégration IA. Déplacement gratuit dans les Pyrénées-Atlantiques (64), disponible partout en France en distanciel.",
     url: "https://christophe-dev-freelance.fr",
-    telephone: "+33-6-XX-XX-XX-XX",
+    telephone: "+33679088845",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Pau",
@@ -127,6 +93,18 @@ export default function ServiceArea() {
     },
   };
 
+  const renderCities = (cities: string[]) =>
+    cities.map((city, i) => (
+      <Fragment key={city}>
+        <span className="text-[#1A1715] dark:text-[#F4EFE6]">{city}</span>
+        {i < cities.length - 1 && (
+          <span className="text-[#F4D35E]/60 mx-2" aria-hidden="true">
+            ·
+          </span>
+        )}
+      </Fragment>
+    ));
+
   return (
     <>
       <Helmet>
@@ -135,215 +113,149 @@ export default function ServiceArea() {
         </script>
       </Helmet>
 
-      <FuturisticBackground
+      <section
+        ref={containerRef}
         id="zone-intervention"
-        orbs={[
-          { size: 280, colorClass: "glowing-orb-cyan", left: "8%", top: "20%", delay: 0 },
-          { size: 240, colorClass: "glowing-orb-purple", left: "88%", top: "60%", delay: 1.5 },
-          { size: 180, colorClass: "glowing-orb-pink", left: "50%", top: "85%", delay: 3 },
-        ]}
-        shapes={[
-          { delay: 0, duration: 12, size: 45, left: "5%", top: "35%", shape: "hexagon" },
-          { delay: 1.5, duration: 14, size: 50, left: "93%", top: "25%", shape: "circle" },
-          { delay: 2.5, duration: 10, size: 40, left: "90%", top: "80%", shape: "square" },
-        ]}
-        codeLines={[
-          { delay: 0.5, width: "45%" },
-          { delay: 2, width: "55%" },
-        ]}
+        className="relative w-full overflow-hidden bg-[#F4EFE6] dark:bg-[#13110F] py-20 sm:py-28 md:py-32"
+        aria-label="Zone d'intervention géographique"
       >
-        <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
-          {/* Header */}
+        {/* Texture grain papier */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply dark:mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-5xl">
+          {/* Header édito */}
           <motion.div
-            className="text-center mb-12"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
           >
-            <motion.h2
-              variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-            >
-              Zone d'intervention
-            </motion.h2>
-            <motion.p
-              variants={itemVariants}
-              className="text-xl text-gray-600 dark:text-gray-300"
-            >
-              Proche de vous ou à distance, je m'adapte à vos besoins
-            </motion.p>
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60 mb-2">
+              VIII. — Zone d'intervention
+            </p>
+            <h2 className="hero-display text-[#1A1715] dark:text-[#F4EFE6]">
+              Proche, ou à distance. Toujours présent.
+            </h2>
+            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80">
+              Je me déplace gratuitement pour un premier rendez-vous dans tout
+              le département des Pyrénées-Atlantiques. Partout ailleurs en
+              France, tout se passe en visio — un format que je maîtrise et qui
+              n'a aucun impact sur la qualité du suivi.
+            </p>
           </motion.div>
 
-          {/* 2 blocs côte à côte */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {/* Bloc Local (64) */}
-            <motion.div
-              custom={0}
-              variants={cardVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              whileHover={{ scale: 1.02, y: -4 }}
-              className="group card-futuristic p-8"
-            >
-              <div className="card-futuristic-glow" />
-              <div className="relative z-10">
-                {/* Icône */}
-                <div className="mb-6">
-                  <div className="p-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl inline-block text-white transition-transform duration-300 group-hover:scale-110">
-                    <MapPin className="h-8 w-8" />
-                  </div>
-                </div>
-
-                {/* Titre */}
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                  Déplacement gratuit dans le 64
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  Je me déplace gratuitement pour un premier rendez-vous dans tout
-                  le département des Pyrénées-Atlantiques :
-                </p>
-
-                {/* Villes en pills */}
-                <div className="flex flex-wrap gap-2">
-                  {localCities.map((city) => (
-                    <span
-                      key={city}
-                      className="px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium border border-blue-100 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
-                    >
-                      {city}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Bloc France */}
-            <motion.div
-              custom={1}
-              variants={cardVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              whileHover={{ scale: 1.02, y: -4 }}
-              className="group card-futuristic p-8"
-            >
-              <div className="card-futuristic-glow" />
-              <div className="relative z-10">
-                {/* Icône */}
-                <div className="mb-6">
-                  <div className="p-4 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl inline-block text-white transition-transform duration-300 group-hover:scale-110">
-                    <Globe className="h-8 w-8" />
-                  </div>
-                </div>
-
-                {/* Titre */}
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                  Partout en France en distanciel
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                  Je travaille avec des clients dans toute la France grâce aux
-                  outils modernes : visioconférence, partage d'écran, messagerie
-                  instantanée.
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 mb-6 font-medium">
-                  La distance n'est pas un obstacle !
-                </p>
-
-                {/* Grandes villes pour SEO */}
-                <div className="flex flex-wrap gap-2">
-                  {nationalCities.map((city) => (
-                    <span
-                      key={city}
-                      className="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium border border-emerald-100 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition-colors"
-                    >
-                      {city}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Timeline "Comment ça se passe" */}
+          {/* Bloc 1 : Déplacement gratuit dans le 64 */}
           <motion.div
-            className="card-futuristic p-8 md:p-10 mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ delay: 0.4 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              delay: 0.2,
+              duration: 0.7,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="mb-12 sm:mb-14 pt-8 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15"
           >
-            <div className="card-futuristic-glow" />
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
-                Un projet ? Voici comment on travaille ensemble
-              </h3>
+            <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-4">
+              ↳ déplacement gratuit · Pyrénées-Atlantiques (64)
+            </p>
+            <p className="hero-body text-[16px] sm:text-[18px] leading-[1.85] text-[#1A1715]/80 dark:text-[#F4EFE6]/80">
+              {renderCities(localCities)}
+            </p>
+          </motion.div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {processSteps.map((step, index) => (
-                  <motion.div
-                    key={step.step}
-                    className="relative flex flex-col items-center text-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    {/* Ligne de connexion (sauf dernier élément) */}
-                    {index < processSteps.length - 1 && (
-                      <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gradient-to-r from-blue-300 to-indigo-300 dark:from-blue-700 dark:to-indigo-700" />
-                    )}
+          {/* Bloc 2 : Distanciel France entière */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              delay: 0.3,
+              duration: 0.7,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="mb-14 sm:mb-16 pt-8 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15"
+          >
+            <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-4">
+              ↳ en distanciel · France entière
+            </p>
+            <p className="hero-body text-[16px] sm:text-[18px] leading-[1.85] text-[#1A1715]/80 dark:text-[#F4EFE6]/80">
+              {renderCities(nationalCities)}
+              <span className="text-[#F4D35E]/60 mx-2" aria-hidden="true">
+                ·
+              </span>
+              <span className="italic text-[#1A1715]/60 dark:text-[#F4EFE6]/60">
+                et toutes les autres villes
+              </span>
+            </p>
+          </motion.div>
 
-                    {/* Numéro avec icône */}
-                    <motion.div
-                      className="relative z-10 w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white mb-4 shadow-lg"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      {step.icon}
-                    </motion.div>
+          {/* Trait final */}
+          <div
+            className="h-px w-full bg-[#1A1715]/15 dark:bg-[#F4EFE6]/15"
+            aria-hidden="true"
+          />
 
-                    {/* Texte */}
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                      {step.title}
-                    </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {step.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+          {/* CTA + téléphone direct */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-12 sm:mt-16 flex flex-col items-start gap-5"
+          >
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60">
+              ↳ envie de démarrer ?
+            </p>
+            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
+              <button
+                onClick={() => scrollTo("contact")}
+                className="hero-cta-primary group"
+                aria-label="Discuter de votre projet"
+                data-testid="service_area_cta"
+              >
+                <span>Discutons de votre projet</span>
+                <span className="hero-cta-sub">premier échange gratuit</span>
+                <ArrowUpRight
+                  className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+              </button>
+
+              <a
+                href="tel:+33679088845"
+                className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#1A1715]/85 dark:text-[#F4EFE6]/85 hover:text-[#F4D35E] transition-colors"
+                aria-label="Appeler Christophe au 06 79 08 88 45"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E] font-mono tabular-nums">
+                  06 79 08 88 45
+                </span>
+              </a>
             </div>
           </motion.div>
 
-          {/* CTA */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ delay: 0.8 }}
+          {/* Citation manuscrite signée */}
+          <motion.figcaption
+            initial={{ opacity: 0, y: 14 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-16 sm:mt-20 max-w-xl"
           >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="cta-glow-wrapper group inline-block"
-            >
-              <div className="cta-glow" />
-              <div className="relative">
-                <CallToAction
-                  variant="gradient"
-                  text="Discutons de votre projet"
-                  subtext="Premier échange gratuit"
-                  icon="message"
-                  size="large"
-                  href="#contact"
-                  location="service-area"
-                  testId="service_area_cta"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
+            <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90 dark:text-[#F4D35E]">
+              « Une heure de route pour la première rencontre, ça vaut tous les
+              mails du monde. »
+            </p>
+            <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50 dark:text-[#F4EFE6]/50">
+              — C.M.
+            </p>
+          </motion.figcaption>
         </div>
-      </FuturisticBackground>
+      </section>
     </>
   );
 }
