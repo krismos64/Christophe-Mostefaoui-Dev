@@ -1,322 +1,249 @@
-import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, useMotionValue, useSpring, useInView } from "framer-motion";
-import Lottie from "lottie-react";
-import chatbotAnimation from "../../animations/chatbot.json";
-import CallToAction from "../common/CallToAction";
-import {
-  Particle,
-  GeometricShape,
-  GlowingOrb,
-  CodeLine,
-  AnimatedParticle,
-  MouseGlow,
-  containerVariants,
-  itemVariants,
-  lottieVariantsLeft,
-  createCardVariants,
-  generateParticles,
-} from "../effects/FuturisticEffects";
+import { motion, useInView } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
-  const [particles, setParticles] = useState<Particle[]>([]);
+  const isInView = useInView(containerRef, { once: true, margin: "-80px" });
 
-  // Suivi de la souris pour effet magnétique
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothMouseX = useSpring(mouseX, { damping: 50, stiffness: 300 });
-  const smoothMouseY = useSpring(mouseY, { damping: 50, stiffness: 300 });
-
-  // Initialiser les particules
-  useEffect(() => {
-    setParticles(generateParticles(20));
-  }, []);
-
-  // Gestionnaire de mouvement de souris
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      mouseX.set(e.clientX - rect.left);
-      mouseY.set(e.clientY - rect.top);
-    },
-    [mouseX, mouseY]
-  );
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   const differentiators = [
     {
-      emoji: "💬",
+      numeral: "I",
       title: "Je parle votre langue",
-      description: "Pas de jargon technique, des explications claires",
+      description: "Pas de jargon technique, des explications claires.",
     },
     {
-      emoji: "⚡",
+      numeral: "II",
       title: "Disponible et réactif",
-      description: "Réponse sous 24h, suivi personnalisé",
+      description: "Réponse sous 24h, suivi personnalisé.",
     },
     {
-      emoji: "🚀",
+      numeral: "III",
       title: "Fondateur d'un SaaS",
-      description: "J'ai conçu SmartPlanning de A à Z : je sais piloter un produit",
+      description:
+        "SmartPlanning conçu de A à Z : je sais piloter un produit, pas juste écrire du code.",
     },
     {
-      emoji: "🤝",
-      title: "Présent après livraison",
-      description: "Accompagnement et modifications incluses",
+      numeral: "IV",
+      title: "Présent après la livraison",
+      description: "Accompagnement et modifications incluses.",
     },
   ];
 
-  // Variants pour les cartes
-  const cardVariants = createCardVariants(0.3, 0.1);
+  const stagger = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  };
 
   return (
     <section
       ref={containerRef}
       id="about"
-      className="section-futuristic py-20"
-      onMouseMove={handleMouseMove}
+      className="relative w-full overflow-hidden bg-[#F4EFE6] dark:bg-[#13110F] py-20 sm:py-28 md:py-32"
+      aria-label="À propos de Christophe"
     >
-      {/* Grille animée en fond */}
-      <div className="absolute inset-0 bg-grid-opacity">
-        <div className="absolute inset-0 bg-grid-pattern" />
-      </div>
+      {/* Texture grain papier subtile */}
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply dark:mix-blend-overlay"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+        }}
+        aria-hidden="true"
+      />
 
-      {/* Orbes lumineuses */}
-      <GlowingOrb size={300} colorClass="glowing-orb-cyan" left="75%" top="15%" delay={0} />
-      <GlowingOrb size={250} colorClass="glowing-orb-purple" left="-5%" top="50%" delay={1.5} />
-      <GlowingOrb size={180} colorClass="glowing-orb-pink" left="45%" top="75%" delay={3} />
+      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+        {/* Header édito : numéro de section + titre */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 sm:mb-16 md:mb-20"
+        >
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60 mb-2">
+            II. — Qui suis-je
+          </p>
+          <h2 className="hero-display max-w-3xl text-[#1A1715] dark:text-[#F4EFE6]">
+            Douze ans à conseiller des clients, puis le code.
+          </h2>
+        </motion.div>
 
-      {/* Formes géométriques flottantes */}
-      <div className="hidden md:block">
-        <GeometricShape delay={0.5} duration={11} size={45} left="5%" top="20%" shape="circle" />
-        <GeometricShape delay={1.5} duration={13} size={55} left="92%" top="35%" shape="hexagon" />
-        <GeometricShape delay={2.5} duration={15} size={40} left="85%" top="75%" shape="square" />
-        <GeometricShape delay={0} duration={12} size={35} left="10%" top="80%" shape="hexagon" />
-      </div>
-
-      {/* Lignes de code animées */}
-      <div className="absolute left-0 right-0 top-1/4 space-y-16 opacity-40 hidden lg:block">
-        <CodeLine delay={0.5} width="45%" />
-        <CodeLine delay={1.5} width="60%" />
-        <CodeLine delay={2.5} width="35%" />
-      </div>
-
-      {/* Système de particules */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {particles.map((particle) => (
-          <AnimatedParticle key={particle.id} particle={particle} />
-        ))}
-      </div>
-
-      {/* Lueur qui suit la souris */}
-      <MouseGlow smoothMouseX={smoothMouseX} smoothMouseY={smoothMouseY} />
-
-      {/* Animation Lottie en arrière-plan pour mobile */}
-      <div className="absolute inset-0 opacity-5 md:hidden pointer-events-none">
-        <Lottie animationData={chatbotAnimation} loop={true} />
-      </div>
-
-      {/* Contenu principal */}
-      <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          {/* Animation Lottie - Desktop uniquement */}
-          <motion.div
-            variants={lottieVariantsLeft}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="hidden md:block flex-1 relative max-w-sm lg:max-w-md mx-auto"
+        {/* Grille principale : portrait + texte */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 lg:gap-20 items-start">
+          {/* Portrait */}
+          <motion.figure
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-5 lg:col-span-5"
           >
-            <div className="lottie-glow animate-pulse" />
-            <div className="relative scale-95">
-              <Lottie animationData={chatbotAnimation} loop={true} />
-            </div>
-          </motion.div>
-
-          {/* Contenu */}
-          <motion.div
-            className="flex-1 text-center md:text-left"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            {/* Header avec badge discret */}
-            <motion.div
-              variants={itemVariants}
-              className="flex items-center justify-center md:justify-start gap-3 mb-6"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-                Qui suis-je ?
-              </h2>
-              <motion.img
-                src="/assets/images/badge-dev.png"
-                alt="Certification Développeur"
-                className="w-12 h-12 object-contain"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+            <div className="relative">
+              <img
+                src="/assets/images/montagne.png"
+                alt="Christophe Mostefaoui codant face aux Pyrénées au coucher du soleil, avec un refuge en pierre et la vallée en contrebas"
+                className="w-full h-auto aspect-[4/5] object-cover object-[60%_center]"
+                loading="lazy"
               />
+              {/* Cadre fin */}
+              <div
+                className="absolute inset-0 ring-1 ring-[#1A1715]/15 dark:ring-[#F4EFE6]/20 pointer-events-none"
+                aria-hidden="true"
+              />
+            </div>
+            <figcaption className="hero-handwritten mt-4 text-[16px] sm:text-[18px] text-[#1A1715]/70 dark:text-[#F4EFE6]/70 text-right">
+              — bureau d'altitude, face aux Pyrénées
+            </figcaption>
+          </motion.figure>
+
+          {/* Contenu texte */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="md:col-span-7 lg:col-span-7"
+          >
+            <motion.div
+              variants={item}
+              className="hero-body space-y-5 text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/85 dark:text-[#F4EFE6]/85 max-w-2xl"
+            >
+              <p>
+                Après douze ans dans le conseil client en multimédia, j'ai
+                choisi de mettre cette expérience au service des entrepreneurs
+                et des PME. Je connais vos contraintes : un budget à respecter,
+                un besoin de résultats concrets, et pas de temps à perdre en
+                aller-retours techniques.
+              </p>
+              <p className="font-medium text-[#1A1715] dark:text-[#F4EFE6]">
+                Mon approche : vous écouter, vous conseiller, et créer un site
+                qui travaille pour vous, même quand vous dormez.
+              </p>
             </motion.div>
 
-            {/* Paragraphes présentation */}
-            <motion.div
-              variants={itemVariants}
-              className="space-y-4 text-gray-600 dark:text-gray-300 mb-8"
+            {/* Encart SmartPlanning — sobre */}
+            <motion.aside
+              variants={item}
+              className="mt-8 border-l-2 border-[#F4D35E] pl-5 py-1"
             >
-              <p className="text-lg">
-                Je m'appelle{" "}
-                <strong className="text-gray-900 dark:text-white">
-                  Christophe
-                </strong>
-                , développeur web freelance basé à{" "}
-                <strong className="text-gray-900 dark:text-white">Artix</strong>
-                , près de Pau.
-              </p>
-              <p>
-                Après 12 ans dans le conseil client en multimédia, j'ai choisi
-                de mettre mon expertise au service des entrepreneurs et des PME.
-                Je comprends vos contraintes : budget à respecter, besoin de
-                résultats concrets, pas de temps à perdre.
-              </p>
-              <p className="font-medium text-gray-900 dark:text-white">
-                Mon approche : vous écouter, vous conseiller, et créer un site
-                qui travaille pour vous — même quand vous dormez.
-              </p>
-              <p className="text-base mt-4 p-4 rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border-l-4 border-indigo-500 dark:border-indigo-400">
+              <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#1A1715]/80 dark:text-[#F4EFE6]/80">
                 En parallèle de mes missions freelance, j'ai conçu et lancé{" "}
                 <a
                   href="https://smartplanning.fr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-indigo-700 dark:text-indigo-300 hover:underline"
+                  className="font-medium text-[#1A1715] dark:text-[#F4EFE6] underline underline-offset-4 decoration-[#F4D35E] decoration-2 hover:decoration-[3px] transition-all"
                 >
                   SmartPlanning
                 </a>
                 , un SaaS de gestion de plannings d'équipe avec assistant IA
-                intégré (modèle freemium, lancé en 2026). Architecture,
-                développement, IA, déploiement, support : je maîtrise tout le
-                cycle de vie d'un produit — pas juste le code.
+                intégré. Architecture, développement, IA, déploiement, support,
+                je maîtrise tout le cycle de vie d'un produit, pas juste le
+                code.
               </p>
-            </motion.div>
+            </motion.aside>
 
-            {/* 4 points différenciants */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              {differentiators.map((item, index) => (
-                <motion.div
-                  key={index}
-                  custom={index}
-                  variants={cardVariants}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
-                  whileHover={{ scale: 1.03, y: -4 }}
-                  className="card-futuristic group"
-                >
-                  <div className="card-futuristic-glow" />
-                  <motion.span
-                    className="text-3xl mb-2 block"
-                    whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    {item.emoji}
-                  </motion.span>
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {item.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* CTA unique */}
+            {/* Trait séparateur */}
             <motion.div
-              variants={itemVariants}
-              className="flex justify-center md:justify-start"
+              variants={item}
+              className="my-10 h-px w-24 bg-[#1A1715]/25 dark:bg-[#F4EFE6]/25"
+              aria-hidden="true"
+            />
+
+            {/* 4 différenciateurs en chiffres romains */}
+            <motion.ul
+              variants={stagger}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7"
             >
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="cta-glow-wrapper group"
+              {differentiators.map((d) => (
+                <motion.li key={d.numeral} variants={item} className="group">
+                  <div className="flex items-baseline gap-3 mb-1.5">
+                    <span
+                      className="text-[12px] font-mono tabular-nums tracking-wider text-[#1A1715]/40 dark:text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors w-7 flex-shrink-0"
+                      aria-hidden="true"
+                    >
+                      {d.numeral}.
+                    </span>
+                    <h3
+                      style={{
+                        fontFamily: '"Fraunces", "Times New Roman", serif',
+                        fontStyle: "italic",
+                        fontWeight: 500,
+                      }}
+                      className="text-[20px] sm:text-[22px] leading-tight text-[#1A1715] dark:text-[#F4EFE6]"
+                    >
+                      {d.title}
+                    </h3>
+                  </div>
+                  <p className="hero-body text-[14px] sm:text-[15px] leading-[1.6] text-[#1A1715]/70 dark:text-[#F4EFE6]/70 pl-10">
+                    {d.description}
+                  </p>
+                </motion.li>
+              ))}
+            </motion.ul>
+
+            {/* CTAs sobres */}
+            <motion.div
+              variants={item}
+              className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8"
+            >
+              <button
+                onClick={() => scrollTo("contact")}
+                className="hero-cta-primary group"
+                aria-label="Discuter de votre projet"
               >
-                <div className="cta-glow" />
-                <div className="relative">
-                  <CallToAction
-                    variant="gradient"
-                    text="Discutons de votre projet"
-                    subtext="Premier échange gratuit"
-                    icon="message"
-                    size="large"
-                    href="#contact"
-                    location="about"
-                    testId="about_cta"
-                  />
-                </div>
-              </motion.div>
+                <span>Discutons de votre projet</span>
+                <span className="hero-cta-sub">premier échange gratuit</span>
+                <ArrowUpRight
+                  className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+              </button>
+
+              <a
+                href="https://krismos.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+                aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
+              >
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                  krismos.fr
+                </span>
+                <span className="opacity-70">ma version technique longue</span>
+                <ArrowUpRight
+                  className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+              </a>
             </motion.div>
 
-            {/* Encart audience tech */}
-            <motion.a
-              href="https://krismos.fr/"
-              target="_blank"
-              rel="noopener noreferrer"
-              variants={itemVariants}
-              whileHover={{ y: -2, boxShadow: "0 10px 30px -10px rgba(168, 85, 247, 0.25)" }}
-              className="mt-8 block relative overflow-hidden rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 border border-purple-200/60 dark:border-purple-700/40 text-left transition-all group"
-              aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
-              data-testid="about_cta_portfolio"
-            >
-              <div className="flex items-start gap-4">
-                <div className="hidden sm:flex flex-shrink-0 w-12 h-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-md">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-purple-600 dark:text-purple-300 mb-1">
-                    Vous êtes recruteur, CTO ou DSI ?
-                  </p>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                    Découvrez mon portfolio technique complet
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    CV, parcours, stack détaillée, projets perso et veille techno —
-                    tout sur{" "}
-                    <span className="font-semibold text-purple-600 dark:text-purple-300 group-hover:underline">
-                      krismos.fr
-                    </span>
-                  </p>
-                </div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-purple-500 dark:text-purple-400 flex-shrink-0 mt-1 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </div>
-            </motion.a>
+            {/* Citation manuscrite signée */}
+            <motion.figcaption variants={item} className="mt-12 max-w-md">
+              <p className="hero-handwritten text-[20px] sm:text-[22px] leading-snug text-[#1A1715]/90 dark:text-[#F4D35E]">
+                « Douze ans à écouter, ça change la façon de coder. »
+              </p>
+              <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50 dark:text-[#F4EFE6]/50">
+                — C.M.
+              </p>
+            </motion.figcaption>
           </motion.div>
         </div>
       </div>
-
-      {/* Décorations de coins */}
-      <div className="corner-decoration corner-top-left" />
-      <div className="corner-decoration corner-top-right" />
-      <div className="corner-decoration corner-bottom-left" />
-      <div className="corner-decoration corner-bottom-right" />
     </section>
   );
 }
