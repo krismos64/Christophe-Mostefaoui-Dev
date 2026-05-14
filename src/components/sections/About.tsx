@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
+import VideoEmbed from "../common/VideoEmbed";
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -243,6 +244,41 @@ export default function About() {
             </motion.figcaption>
           </motion.div>
         </div>
+
+        {/* Vidéo : Mon Univers Digital */}
+        <motion.div
+          id="video-presentation"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-20 sm:mt-24 md:mt-28 max-w-4xl mx-auto"
+        >
+          <div className="mb-6">
+            <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-1.5">
+              ✏ en deux minutes
+            </p>
+            <h3
+              style={{
+                fontFamily: '"Fraunces", "Times New Roman", serif',
+                fontStyle: "italic",
+                fontWeight: 500,
+              }}
+              className="text-[24px] sm:text-[28px] md:text-[32px] leading-tight text-[#1A1715] dark:text-[#F4EFE6]"
+            >
+              Mon univers digital, raconté.
+            </h3>
+          </div>
+          <VideoEmbed
+            youtubeId="eZ6OYMeT1CM"
+            thumbnail="/assets/images/chris-youtube.JPG"
+            title="Mon Univers Digital — Christophe Mostefaoui"
+            caption="— mon approche du développement web"
+            duration="2:45"
+            channelUrl="https://www.youtube.com/@christophe-dev-freelance/videos"
+            theme="light"
+            ariaLabel="Lire la vidéo : Mon Univers Digital"
+          />
+        </motion.div>
       </div>
     </section>
   );

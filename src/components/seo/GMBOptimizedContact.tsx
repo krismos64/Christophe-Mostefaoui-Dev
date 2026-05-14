@@ -1,13 +1,12 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { PhoneIcon, MapPinIcon, ClockIcon, StarIcon } from "@heroicons/react/24/outline";
-import Lottie from "lottie-react";
 import { Mail, Send, User, MessageSquare, CheckCircle2, ArrowRight } from "lucide-react";
 import emailjs from "@emailjs/browser";
-import contactAnimation from "../../animations/contact.json";
 import { emailjsConfig, validateEmailjsConfig } from "../../config/emailjs";
+import VideoEmbed from "../common/VideoEmbed";
 import FuturisticBackground from "../effects/FuturisticBackground";
-import { containerVariants, itemVariants, lottieVariants, createCardVariants } from "../effects/FuturisticEffects";
+import { containerVariants, itemVariants, createCardVariants } from "../effects/FuturisticEffects";
 
 const GMBOptimizedContact = () => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -203,14 +202,26 @@ Message envoyé depuis le formulaire de contact GMB du site christophe-dev-freel
             </motion.span>
           </motion.div>
 
-          {/* Animation Lottie */}
+          {/* Vidéo de présentation : Présentation Expert */}
           <motion.div
-            className="max-w-xs mx-auto mb-4"
-            variants={lottieVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-3xl mx-auto mt-8 mb-4 text-left"
           >
-            <Lottie animationData={contactAnimation} loop={true} />
+            <p className="hero-handwritten text-[15px] sm:text-[17px] text-gray-500 dark:text-gray-400 mb-3">
+              ✏ avant de m'écrire, rencontrez-moi
+            </p>
+            <VideoEmbed
+              youtubeId="tdjXblz4mr4"
+              thumbnail="/assets/images/Christophe-freelance.png"
+              title="Présentation Expert — Christophe Mostefaoui"
+              caption="— React, Node, TypeScript & solutions sur mesure"
+              duration="2:30"
+              channelUrl="https://www.youtube.com/@christophe-dev-freelance/videos"
+              theme="light"
+              ariaLabel="Lire la vidéo : Présentation Expert"
+            />
           </motion.div>
         </motion.div>
 

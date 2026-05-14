@@ -8,7 +8,6 @@ import AIIntegration from "./components/sections/AIIntegration";
 import Contact from "./components/sections/Contact";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
-import VideoShowcase from "./components/sections/VideoShowcase";
 import Portfolio from "./components/sections/Portfolio";
 import Services from "./components/sections/Services";
 import Pricing from "./components/sections/Pricing";
@@ -48,7 +47,6 @@ const Home = () => {
       <Hero />
       <About />
       <SmartPlanningShowcase />
-      <VideoShowcase />
       <Services />
       <Pricing />
       <FeaturedSnippetsFAQ />
