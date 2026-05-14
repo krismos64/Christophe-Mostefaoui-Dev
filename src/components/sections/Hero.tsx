@@ -1,290 +1,261 @@
-import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import Lottie from "lottie-react";
-import companyAnimation from "../../animations/company.json";
-import CallToAction from "../common/CallToAction";
-import {
-  Phone,
-  FileText,
-  Code2,
-  Rocket,
-  ExternalLink,
-  Sparkles,
-} from "lucide-react";
-import {
-  Particle,
-  GeometricShape,
-  GlowingOrb,
-  CodeLine,
-  AnimatedParticle,
-  MouseGlow,
-  containerVariants,
-  itemVariants,
-  lottieVariants,
-  generateParticles,
-} from "../effects/FuturisticEffects";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, ExternalLink, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [particles, setParticles] = useState<Particle[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
-  // Suivi de la souris pour effet magnétique
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothMouseX = useSpring(mouseX, { damping: 50, stiffness: 300 });
-  const smoothMouseY = useSpring(mouseY, { damping: 50, stiffness: 300 });
+  const scrollToContact = () => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
-  // Initialiser les particules
-  useEffect(() => {
-    setParticles(generateParticles(30));
-    setTimeout(() => setIsLoaded(true), 100);
-  }, []);
-
-  // Gestionnaire de mouvement de souris
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      mouseX.set(e.clientX - rect.left);
-      mouseY.set(e.clientY - rect.top);
+  const titleStagger = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: prefersReducedMotion ? 0 : 0.08,
+        delayChildren: 0.2,
+      },
     },
-    [mouseX, mouseY]
-  );
+  };
+
+  const lineUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 12 },
+    visible: (delay: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+    }),
+  };
 
   return (
     <section
-      ref={containerRef}
       id="home"
-      className="section-futuristic pt-24 pb-12 md:pt-32 md:pb-20"
-      onMouseMove={handleMouseMove}
+      className="relative min-h-screen w-full overflow-hidden bg-[#0B0805]"
+      aria-label="Présentation"
     >
-      {/* Grille animée en fond */}
-      <div className="absolute inset-0 bg-grid-opacity">
-        <div className="absolute inset-0 bg-grid-pattern" />
-      </div>
-
-      {/* Orbes lumineuses */}
-      <GlowingOrb size={350} colorClass="glowing-orb-cyan" left="-5%" top="10%" delay={0} />
-      <GlowingOrb size={280} colorClass="glowing-orb-purple" left="65%" top="50%" delay={1.5} />
-      <GlowingOrb size={200} colorClass="glowing-orb-pink" left="40%" top="5%" delay={3} />
-
-      {/* Formes géométriques flottantes */}
-      <div className="hidden md:block">
-        <GeometricShape delay={0} duration={10} size={50} left="8%" top="25%" shape="hexagon" />
-        <GeometricShape delay={1} duration={12} size={35} left="88%" top="20%" shape="circle" />
-        <GeometricShape delay={2} duration={14} size={60} left="80%" top="65%" shape="square" />
-        <GeometricShape delay={0.5} duration={11} size={40} left="15%" top="70%" shape="circle" />
-      </div>
-
-      {/* Lignes de code animées */}
-      <div className="absolute left-0 right-0 top-1/3 space-y-12 opacity-40 hidden lg:block">
-        <CodeLine delay={0} width="50%" />
-        <CodeLine delay={0.8} width="35%" />
-        <CodeLine delay={1.6} width="65%" />
-      </div>
-
-      {/* Système de particules */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {particles.map((particle) => (
-          <AnimatedParticle key={particle.id} particle={particle} />
-        ))}
-      </div>
-
-      {/* Lueur qui suit la souris */}
-      <MouseGlow smoothMouseX={smoothMouseX} smoothMouseY={smoothMouseY} />
-
-      {/* Animation Lottie en arrière-plan pour mobile */}
-      <div className="absolute inset-0 opacity-10 md:hidden pointer-events-none">
-        <Lottie animationData={companyAnimation} loop={true} />
+      {/* Image de fond : Christophe codant à Pau au coucher du soleil */}
+      <div className="absolute inset-0 z-0">
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="/assets/images/chris-pau-smartphone.png"
+          />
+          <img
+            src="/assets/images/chris-pau.png"
+            alt="Christophe Mostefaoui travaillant sur son ordinateur portable à Pau au coucher du soleil, avec les Pyrénées et le château en arrière-plan"
+            className="h-full w-full object-cover object-[center_top] md:object-[65%_center]"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </picture>
+        {/* Overlay : sur mobile, dégradé vertical (haut sombre pour le texte) — sur desktop, dégradé horizontal */}
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(11,8,5,0.88) 0%, rgba(11,8,5,0.72) 22%, rgba(11,8,5,0.35) 45%, rgba(11,8,5,0.15) 65%, rgba(11,8,5,0.5) 88%, rgba(11,8,5,0.9) 100%)",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 hidden md:block"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(11,8,5,0.92) 0%, rgba(11,8,5,0.78) 28%, rgba(11,8,5,0.45) 55%, rgba(11,8,5,0.15) 80%, rgba(11,8,5,0.05) 100%)",
+          }}
+          aria-hidden="true"
+        />
+        {/* Voile supplémentaire en bas pour la légende manuscrite (desktop uniquement) */}
+        <div
+          className="absolute inset-x-0 bottom-0 hidden h-48 md:block"
+          style={{
+            background:
+              "linear-gradient(180deg, transparent 0%, rgba(11,8,5,0.55) 60%, rgba(11,8,5,0.85) 100%)",
+          }}
+          aria-hidden="true"
+        />
+        {/* Voile horizontal en haut pour ne pas écraser le header */}
+        <div
+          className="absolute inset-x-0 top-0 h-32"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(11,8,5,0.55) 0%, transparent 100%)",
+          }}
+          aria-hidden="true"
+        />
       </div>
 
       {/* Contenu principal */}
-      <motion.div
-        className="container mx-auto px-6 relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isLoaded ? "visible" : "hidden"}
-      >
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-          <div className="flex-1 text-center md:text-left">
-            {/* Badge fondateur SmartPlanning */}
-            <motion.a
-              href="https://smartplanning.fr/"
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-start px-5 pt-24 pb-44 sm:px-8 md:justify-center md:px-12 md:pt-32 md:pb-40 lg:px-16">
+        <motion.div
+          className="max-w-2xl"
+          initial="hidden"
+          animate="visible"
+          variants={titleStagger}
+        >
+          {/* Méta-info en haut : localisation manuscrite */}
+          <motion.div
+            variants={lineUp}
+            className="mb-8 flex items-center gap-3"
+          >
+            <span
+              className="hero-handwritten flex items-center gap-2 text-[19px] sm:text-[22px] text-[#F4D35E]"
+              aria-label="Localisation"
+            >
+              <MapPin className="h-4 w-4" aria-hidden="true" />
+              depuis Pau, Pyrénées-Atlantiques (64)
+            </span>
+          </motion.div>
+
+          {/* Titre principal manifeste en serif italique */}
+          <motion.h1 variants={lineUp} className="hero-display text-[#F4EFE6]">
+            <span className="block">Je code</span>
+            <span className="block">
+              des sites <em className="not-italic font-medium">qui</em>
+            </span>
+            <span className="block">
+              ressemblent <em className="not-italic font-medium">à</em>
+            </span>
+            <span className="block">leurs propriétaires.</span>
+          </motion.h1>
+
+          {/* Trait fin façon règle de magazine */}
+          <motion.div
+            variants={lineUp}
+            className="my-8 h-px w-24 bg-[#F4EFE6]/40"
+            aria-hidden="true"
+          />
+
+          {/* Bio courte */}
+          <motion.p
+            custom={0.9}
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
+            className="hero-body max-w-xl text-[17px] leading-[1.65] text-[#F4EFE6]/85 sm:text-[18px]"
+          >
+            Christophe Mostefaoui, développeur freelance basé à Pau et Artix
+            (64). Je conçois des sites et applications web sur mesure, de
+            l'analyse des besoins à la mise en ligne.
+          </motion.p>
+
+          {/* Badge fondateur SmartPlanning */}
+          <motion.a
+            custom={1.05}
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
+            href="https://smartplanning.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-body group mt-5 inline-flex items-center gap-2 text-[15px] text-[#F4EFE6]/80 transition-colors hover:text-[#F4D35E]"
+            aria-label="Visiter SmartPlanning.fr (nouvel onglet)"
+            data-testid="hero_smartplanning_badge"
+          >
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#F4D35E]" />
+            Fondateur de
+            <span className="font-medium underline-offset-4 group-hover:underline">
+              SmartPlanning
+            </span>
+            <ExternalLink
+              className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden="true"
+            />
+          </motion.a>
+
+          {/* CTAs */}
+          <motion.div
+            custom={1.2}
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
+            className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7"
+          >
+            <button
+              onClick={scrollToContact}
+              className="hero-cta-primary group"
+              data-testid="hero_cta_primary"
+              aria-label="Demander un devis gratuit"
+            >
+              <span>Demander un devis</span>
+              <span className="hero-cta-sub">gratuit · sous 24h</span>
+              <ArrowRight
+                className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              />
+            </button>
+
+            <a
+              href="https://krismos.fr/"
               target="_blank"
               rel="noopener noreferrer"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 border border-indigo-200/70 dark:border-indigo-700/50 text-sm font-semibold text-indigo-700 dark:text-indigo-300 shadow-sm hover:shadow-md transition-shadow"
-              aria-label="Visiter SmartPlanning.fr, mon SaaS de gestion de planning (nouvel onglet)"
-              data-testid="hero_smartplanning_badge"
+              className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#F4EFE6]/90 transition-colors hover:text-[#F4D35E]"
+              aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
+              data-testid="hero_cta_portfolio"
             >
-              <Sparkles className="h-4 w-4 text-indigo-500 dark:text-indigo-400" aria-hidden="true" />
-              <span>Fondateur de SmartPlanning</span>
-              <ExternalLink className="h-3 w-3 opacity-70" aria-hidden="true" />
-            </motion.a>
-
-            {/* Titre principal */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight"
-            >
-              Création de Sites Internet à{" "}
-              <span className="hero-location-text">Pau</span>
-            </motion.h1>
-
-            {/* Sous-titre */}
-            <motion.p
-              variants={itemVariants}
-              className="mt-6 text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
-            >
-              Des sites web modernes qui attirent vos clients et valorisent
-              votre activité
-            </motion.p>
-
-            {/* Badges de réassurance */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-6 flex flex-wrap justify-center md:justify-start gap-3"
-            >
-              {[
-                { icon: "📍", text: "Déplacement gratuit dans le 64" },
-                { icon: "⚡", text: "Devis sous 24h" },
-                { icon: "💳", text: "Paiement en 3x sans frais" },
-              ].map((badge, index) => (
-                <motion.span
-                  key={index}
-                  className="badge-futuristic"
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {badge.icon} {badge.text}
-                </motion.span>
-              ))}
-            </motion.div>
-
-            {/* Boutons CTA */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
-            >
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="cta-glow-wrapper group"
-              >
-                <div className="cta-glow" />
-                <div className="relative">
-                  <CallToAction
-                    variant="gradient"
-                    text="Demander un devis gratuit"
-                    subtext="Réponse sous 24h"
-                    icon="send"
-                    size="large"
-                    href="#contact"
-                    location="hero"
-                    testId="hero_cta_primary"
-                  />
-                </div>
-              </motion.div>
-
-              <motion.a
-                href="https://krismos.fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-purple-600 dark:text-purple-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-2 border-purple-300/60 dark:border-purple-500/40 hover:border-purple-500 dark:hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-gray-700/80 transition-colors shadow-sm hover:shadow-md"
-                aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
-                data-testid="hero_cta_portfolio"
-              >
-                <Code2 className="w-5 h-5" aria-hidden="true" />
-                <span>Mon portfolio technique</span>
-                <ExternalLink className="w-4 h-4 opacity-70" aria-hidden="true" />
-              </motion.a>
-            </motion.div>
-
-            {/* Mini-processus de travail */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-10 pt-8 border-t border-gray-200/50 dark:border-gray-700/50"
-            >
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 text-center md:text-left">
-                Comment ça se passe ?
-              </p>
-              <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-3">
-                {[
-                  { icon: <Phone className="h-4 w-4" />, text: "Échange gratuit", step: 1 },
-                  { icon: <FileText className="h-4 w-4" />, text: "Devis 24h", step: 2 },
-                  { icon: <Code2 className="h-4 w-4" />, text: "Développement", step: 3 },
-                  { icon: <Rocket className="h-4 w-4" />, text: "Livraison", step: 4 },
-                ].map((item, index) => (
-                  <motion.div
-                    key={item.step}
-                    className="flex items-center gap-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 + index * 0.15 }}
-                  >
-                    <div className="flex items-center gap-2 px-3 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg border border-gray-200/50 dark:border-gray-700/50 shadow-sm">
-                      <span className="flex items-center justify-center w-5 h-5 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-full text-xs font-bold">
-                        {item.step}
-                      </span>
-                      <span className="text-gray-600 dark:text-gray-300">
-                        {item.icon}
-                      </span>
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
-                        {item.text}
-                      </span>
-                    </div>
-                    {index < 3 && (
-                      <span className="text-gray-400 dark:text-gray-500 hidden sm:block">→</span>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Animation Lottie - visible sur desktop */}
-          <motion.div
-            variants={lottieVariants}
-            className="flex-1 hidden md:block relative max-w-md lg:max-w-lg mx-auto"
-          >
-            <div className="lottie-glow animate-pulse" />
-            <div className="relative scale-95">
-              <Lottie animationData={companyAnimation} loop={true} />
-            </div>
+              <span className="border-b border-[#F4EFE6]/40 pb-0.5 transition-colors group-hover:border-[#F4D35E]">
+                krismos.fr
+              </span>
+              <span className="opacity-70">mon laboratoire technique</span>
+              <ExternalLink
+                className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                aria-hidden="true"
+              />
+            </a>
           </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Décorations de coins */}
-      <div className="corner-decoration corner-top-left" />
-      <div className="corner-decoration corner-top-right" />
-      <div className="corner-decoration corner-bottom-left" />
-      <div className="corner-decoration corner-bottom-right" />
-
-      {/* Indicateur de scroll */}
-      <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
-      >
-        <motion.div
-          className="scroll-indicator"
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <motion.div
-            className="scroll-indicator-dot"
-            animate={{ y: [0, 8, 0], opacity: [1, 0.5, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
         </motion.div>
-      </motion.div>
+
+        {/* Légende manuscrite signée — centrée en bas sur mobile, à droite en desktop */}
+        <motion.figcaption
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.6, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute bottom-16 left-5 right-5 mx-auto max-w-[280px] text-center md:bottom-12 md:left-auto md:right-14 md:mx-0 md:max-w-sm md:text-right"
+        >
+          <p className="hero-handwritten text-[19px] leading-snug text-[#F4D35E] sm:text-[22px] md:text-[26px]">
+            « Cette vue, je l'ai pendant que je code. »
+          </p>
+          <p className="hero-handwritten mt-1 text-[15px] text-[#F4EFE6]/70 sm:text-[17px] md:text-[18px]">
+            — C.M., un soir de mai à Pau
+          </p>
+        </motion.figcaption>
+      </div>
+
+      {/* Indicateur de scroll discret */}
+      <Link
+        to="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          const el = document.getElementById("about");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }}
+        className="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-1.5 text-[#F4EFE6]/50 transition-colors hover:text-[#F4D35E] md:flex"
+        aria-label="Faire défiler vers la suite"
+      >
+        <span className="hero-handwritten text-[14px]">la suite</span>
+        <motion.span
+          className="inline-block h-6 w-px bg-current"
+          style={{ transformOrigin: "top" }}
+          animate={
+            prefersReducedMotion
+              ? { scaleY: 1 }
+              : { scaleY: [0.4, 1, 0.4] }
+          }
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden="true"
+        />
+      </Link>
     </section>
   );
 }
