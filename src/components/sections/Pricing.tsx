@@ -1,40 +1,46 @@
-import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Lottie from "lottie-react";
 import {
-  Sparkles,
-  Video,
-  Camera,
+  ArrowUpRight,
   CreditCard,
-  RefreshCw,
-  Phone,
-  MapPin,
-  Target,
-  Lightbulb,
   HeartHandshake,
+  Lightbulb,
+  MapPin,
+  Phone,
+  RefreshCw,
+  Target,
 } from "lucide-react";
-import CallToAction from "../common/CallToAction";
-import FuturisticBackground from "../effects/FuturisticBackground";
-import { containerVariants, itemVariants } from "../effects/FuturisticEffects";
+import { useRef } from "react";
+import cutVideoAnimation from "../../animations/Cut Video.json";
+import droneCameraAnimation from "../../animations/Drone Camera.json";
 
 export default function Pricing() {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-80px" });
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   const valueProps = [
     {
-      icon: <Target className="h-6 w-6" />,
+      numeral: "I",
+      icon: Target,
       title: "Analyse de vos besoins",
       description:
         "Échange en visio ou téléphone pour comprendre votre projet, vos objectifs et votre cible.",
     },
     {
-      icon: <Lightbulb className="h-6 w-6" />,
+      numeral: "II",
+      icon: Lightbulb,
       title: "Proposition sur mesure",
       description:
         "Devis détaillé avec périmètre clair, technologies adaptées et planning réaliste.",
     },
     {
-      icon: <HeartHandshake className="h-6 w-6" />,
+      numeral: "III",
+      icon: HeartHandshake,
       title: "Accompagnement complet",
       description:
         "Suivi de A à Z, formation à l'utilisation, maintenance et support après livraison.",
@@ -42,195 +48,247 @@ export default function Pricing() {
   ];
 
   const reassuranceBadges = [
-    {
-      icon: <CreditCard className="h-5 w-5" />,
-      text: "Paiement en 3x sans frais",
-    },
-    {
-      icon: <RefreshCw className="h-5 w-5" />,
-      text: "Modifications incluses",
-    },
-    {
-      icon: <Phone className="h-5 w-5" />,
-      text: "Accompagnement personnalisé",
-    },
-    {
-      icon: <MapPin className="h-5 w-5" />,
-      text: "Partout en France",
-    },
+    { icon: CreditCard, text: "Paiement en 3× sans frais" },
+    { icon: RefreshCw, text: "Modifications incluses" },
+    { icon: Phone, text: "Accompagnement personnalisé" },
+    { icon: MapPin, text: "Partout en France" },
   ];
 
+  const stagger = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+    },
+  };
+
   return (
-    <FuturisticBackground
+    <section
+      ref={containerRef}
       id="tarifs"
-      orbs={[
-        { size: 300, colorClass: "glowing-orb-cyan", left: "10%", top: "20%", delay: 0 },
-        { size: 250, colorClass: "glowing-orb-purple", left: "80%", top: "60%", delay: 1.5 },
-        { size: 200, colorClass: "glowing-orb-pink", left: "50%", top: "10%", delay: 3 },
-      ]}
-      shapes={[
-        { delay: 0.5, duration: 12, size: 40, left: "8%", top: "35%", shape: "circle" },
-        { delay: 1.5, duration: 14, size: 50, left: "88%", top: "25%", shape: "hexagon" },
-        { delay: 2, duration: 10, size: 35, left: "92%", top: "80%", shape: "square" },
-      ]}
-      codeLines={[
-        { delay: 0.5, width: "50%" },
-        { delay: 2, width: "35%" },
-      ]}
+      className="relative w-full overflow-hidden bg-[#13110F] py-20 sm:py-28 md:py-32"
+      aria-label="Mon approche tarifaire et ma méthode"
     >
-      <div className="container mx-auto px-6 relative z-10" ref={contentRef}>
-        {/* Header */}
+      {/* Texture grain papier */}
+      <div
+        className="absolute inset-0 opacity-[0.06] pointer-events-none mix-blend-overlay"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+        {/* Header édito */}
         <motion.div
-          className="text-center mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-          >
-            Un devis sur mesure pour votre projet
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
-          >
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#F4EFE6]/60 mb-2">
+            V. — Tarifs
+          </p>
+          <h2 className="hero-display text-[#F4EFE6]">
+            Un devis sur mesure pour votre projet.
+          </h2>
+          <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#F4EFE6]/80">
             Chaque projet est unique. Parlons de vos besoins et construisons
             ensemble la solution qui vous correspond.
-          </motion.p>
+          </p>
         </motion.div>
 
-        {/* Bloc principal "Devis sur mesure" */}
+        {/* Sous-titre approche personnalisée */}
         <motion.div
-          className="card-futuristic p-8 md:p-12 mb-12 relative overflow-hidden"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 sm:mb-12 max-w-3xl"
         >
-          <div className="card-futuristic-glow" />
+          <h3
+            style={{
+              fontFamily: '"Fraunces", "Times New Roman", serif',
+              fontStyle: "italic",
+              fontWeight: 500,
+            }}
+            className="text-[26px] sm:text-[30px] md:text-[34px] leading-tight text-[#F4EFE6] mb-4"
+          >
+            Une approche personnalisée, sans surprise.
+          </h3>
+          <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#F4EFE6]/75">
+            Site vitrine, application SaaS, e-commerce, intégration IA ou
+            chatbot : je conçois des solutions adaptées à vos objectifs et à
+            votre budget.
+          </p>
+        </motion.div>
 
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center p-4 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-2xl mb-4">
-              <Sparkles className="h-8 w-8" />
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
-              Une approche personnalisée, sans surprise
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Site vitrine, application SaaS, e-commerce, intégration IA ou
-              chatbot : je conçois des solutions adaptées à vos objectifs et à
-              votre budget.
-            </p>
-          </div>
-
-          {/* 3 étapes valeur */}
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
-            {valueProps.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={
-                  isInView
-                    ? { opacity: 1, y: 0 }
-                    : { opacity: 0, y: 20 }
-                }
-                transition={{ delay: 0.3 + index * 0.15, duration: 0.5 }}
-                className="flex flex-col items-center text-center p-6 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/50"
+        {/* 3 étapes valeur — liste verticale sobre */}
+        <motion.ul
+          variants={stagger}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="mb-20 sm:mb-24"
+        >
+          {valueProps.map((v) => {
+            const Icon = v.icon;
+            return (
+              <motion.li
+                key={v.numeral}
+                variants={item}
+                className="group relative pt-7 pb-7 sm:pt-8 sm:pb-8 border-t border-[#F4EFE6]/15 transition-colors duration-300 hover:border-[#F4D35E]/70 last:border-b last:border-b-[#F4EFE6]/15"
               >
-                <div className="p-3 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4">
-                  {item.icon}
+                <div className="flex items-start gap-4 sm:gap-6">
+                  <span
+                    className="text-[12px] font-mono tabular-nums tracking-wider text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors w-8 flex-shrink-0 pt-1.5"
+                    aria-hidden="true"
+                  >
+                    {v.numeral}.
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-3 mb-2.5">
+                      <h4
+                        style={{
+                          fontFamily: '"Fraunces", "Times New Roman", serif',
+                          fontStyle: "italic",
+                          fontWeight: 500,
+                        }}
+                        className="text-[22px] sm:text-[26px] leading-tight text-[#F4EFE6]"
+                      >
+                        {v.title}
+                      </h4>
+                      <Icon
+                        className="h-5 w-5 mt-1.5 flex-shrink-0 text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors"
+                        aria-hidden="true"
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                    <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#F4EFE6]/70 max-w-2xl">
+                      {v.description}
+                    </p>
+                  </div>
                 </div>
-                <h4 className="font-bold text-gray-900 dark:text-white mb-2">
-                  {item.title}
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              </motion.li>
+            );
+          })}
+        </motion.ul>
 
-        {/* Bloc Vidéo & Drone */}
-        <motion.div
-          className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-10 text-white mb-12 shadow-xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 0.7 }}
+        {/* Bloc Vidéo & Drone — encart bordure jaune avec Lottie */}
+        <motion.aside
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20 sm:mb-24 border-l-2 border-[#F4D35E] pl-6 sm:pl-8 md:pl-10 py-4 sm:py-6"
         >
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="flex gap-4">
-              <div className="p-3 bg-white/20 rounded-xl">
-                <Video className="h-8 w-8" />
-              </div>
-              <div className="p-3 bg-white/20 rounded-xl">
-                <Camera className="h-8 w-8" />
-              </div>
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <h3 className="text-2xl font-bold mb-2">
-                🎬 Montage Vidéo & Prises de Vue Drone
+          <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#F4EFE6]/55 mb-2">
+            ✏ aérien & post-production
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-center">
+            <div>
+              <h3
+                style={{
+                  fontFamily: '"Fraunces", "Times New Roman", serif',
+                  fontStyle: "italic",
+                  fontWeight: 500,
+                }}
+                className="text-[26px] sm:text-[32px] md:text-[36px] leading-tight text-[#F4EFE6] mb-4"
+              >
+                Montage Vidéo & Prises de Vue Drone.
               </h3>
-              <p className="text-white/90">
+              <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#F4EFE6]/80 max-w-xl">
                 Je monte vos vidéos professionnelles (Final Cut Pro) et réalise
                 des prises de vue aériennes avec drone DJI Mavic Air pour
                 valoriser votre entreprise, vos biens immobiliers ou vos
                 événements.
               </p>
             </div>
+            {/* 2 Lottie côte à côte : Cut Video + Drone Camera */}
+            <div className="flex items-center justify-center md:justify-end gap-2 sm:gap-3">
+              <div className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px]">
+                <Lottie animationData={cutVideoAnimation} loop={true} />
+              </div>
+              <div className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px]">
+                <Lottie animationData={droneCameraAnimation} loop={true} />
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </motion.aside>
 
-        {/* Badges réassurance */}
+        {/* 4 garanties sobres */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 sm:mb-16"
         >
-          {reassuranceBadges.map((badge, index) => (
-            <motion.div
-              key={index}
-              className="badge-futuristic justify-center"
-              whileHover={{ scale: 1.03, y: -2 }}
-            >
-              <span className="text-blue-600 dark:text-blue-400">
-                {badge.icon}
-              </span>
-              <span>{badge.text}</span>
-            </motion.div>
-          ))}
+          <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#F4EFE6]/55 mb-5">
+            ↳ 4 garanties
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
+            {reassuranceBadges.map((b) => {
+              const Icon = b.icon;
+              return (
+                <li
+                  key={b.text}
+                  className="hero-body flex items-center gap-2.5 text-[14px] sm:text-[15px] text-[#F4EFE6]/85"
+                >
+                  <Icon
+                    className="h-4 w-4 flex-shrink-0 text-[#F4D35E]"
+                    aria-hidden="true"
+                    strokeWidth={1.75}
+                  />
+                  <span>{b.text}</span>
+                </li>
+              );
+            })}
+          </ul>
         </motion.div>
 
         {/* CTA */}
         <motion.div
-          className="text-center"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ delay: 0.9 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.7, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-start gap-5"
         >
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="cta-glow-wrapper group inline-block"
+          <button
+            onClick={() => scrollTo("contact")}
+            className="hero-cta-primary group"
+            aria-label="Demander mon devis gratuit"
+            data-testid="pricing_cta"
           >
-            <div className="cta-glow" />
-            <div className="relative">
-              <CallToAction
-                variant="gradient"
-                text="Demander mon devis gratuit"
-                subtext="Réponse sous 24h"
-                icon="send"
-                size="large"
-                href="#contact"
-                location="pricing"
-                testId="pricing_cta"
-              />
-            </div>
-          </motion.div>
+            <span>Demander mon devis</span>
+            <span className="hero-cta-sub">gratuit · sous 24h</span>
+            <ArrowUpRight
+              className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden="true"
+            />
+          </button>
         </motion.div>
+
+        {/* Citation manuscrite signée */}
+        <motion.figcaption
+          initial={{ opacity: 0, y: 14 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.9, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-16 sm:mt-20 max-w-xl"
+        >
+          <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#F4D35E]">
+            « Un devis bien fait, c'est un projet déjà à moitié réussi. »
+          </p>
+          <p className="hero-handwritten mt-1 text-[15px] text-[#F4EFE6]/50">
+            — C.M.
+          </p>
+        </motion.figcaption>
       </div>
-    </FuturisticBackground>
+    </section>
   );
 }
