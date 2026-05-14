@@ -72,6 +72,64 @@
   margin-left: 0.15rem;
 }
 
+/* Navbar — liens avec underline animé */
+.nav-link {
+  position: relative;
+  font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  transition: color 0.25s ease;
+  padding-bottom: 2px;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background-color: #F4D35E;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after,
+.nav-link-active::after {
+  transform: scaleX(1);
+}
+
+.nav-link-active {
+  color: #F4D35E !important;
+}
+
+/* Navbar — CTA "Devis" sobre */
+.hero-cta-nav {
+  position: relative;
+  padding: 0.55rem 1rem;
+  color: #1A1715;
+  background: #F4D35E;
+  border-radius: 3px;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.25s ease,
+              color 0.25s ease,
+              box-shadow 0.25s ease;
+  box-shadow: 0 2px 8px -2px rgba(244, 211, 94, 0.4);
+}
+
+.hero-cta-nav:hover {
+  background: #F4EFE6;
+  color: #1A1715;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px -2px rgba(244, 211, 94, 0.55);
+}
+
+.hero-cta-nav:active {
+  transform: translateY(0);
+}
+
+/* Mode transparent (Hero) — fond crème conservé pour visibilité */
+
 /* Animations futuristes pour le chatbot */
 @keyframes fade-in {
   from {
