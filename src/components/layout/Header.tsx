@@ -345,7 +345,7 @@ export default function Header() {
             {/* Bouton de fermeture */}
             <motion.button
               onClick={() => setIsMenuOpen(false)}
-              className="absolute top-6 right-6 p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-colors shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-10"
+              className="absolute top-6 right-6 p-3 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 transition-colors shadow-lg border border-gray-200/50 dark:border-gray-700/50 z-20"
               aria-label="Fermer le menu"
               initial={{ opacity: 0, scale: 0.5, rotate: -90 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
