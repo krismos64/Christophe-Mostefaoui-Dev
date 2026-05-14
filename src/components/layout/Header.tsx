@@ -12,7 +12,6 @@ import {
   Mail,
   Menu,
   Moon,
-  Play,
   Sun,
   User,
   X,
@@ -99,7 +98,6 @@ export default function Header() {
 
   const menuItems: MenuItem[] = [
     { name: "À propos", to: isHomePage ? "#about" : "/#about", icon: <User className="h-5 w-5" /> },
-    { name: "Présentation", to: isHomePage ? "#video-presentation" : "/#video-presentation", icon: <Play className="h-5 w-5" /> },
     { name: "Services", to: isHomePage ? "#services" : "/#services", icon: <Briefcase className="h-5 w-5" /> },
     { name: "Solutions IA", to: isHomePage ? "#ai-integration" : "/#ai-integration", icon: <Brain className="h-5 w-5" /> },
     { name: "Portfolio", to: isHomePage ? "#portfolio" : "/#portfolio", icon: <FolderOpen className="h-5 w-5" /> },

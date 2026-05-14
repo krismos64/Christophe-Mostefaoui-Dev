@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, BookOpen, Linkedin, Youtube } from "lucide-react";
 import { useRef } from "react";
 
 export default function SmartPlanningShowcase() {
@@ -21,9 +21,9 @@ export default function SmartPlanningShowcase() {
     },
     {
       numeral: "III",
-      title: "Intégration IA en production",
+      title: "Itération produit en continu",
       description:
-        "Assistant intelligent intégré au cœur du produit, pas un gadget — vraiment utilisé par les clients.",
+        "Roadmap, retours utilisateurs, priorisation : je fais évoluer le produit en fonction des usages réels.",
     },
     {
       numeral: "IV",
@@ -89,12 +89,10 @@ export default function SmartPlanningShowcase() {
           <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#F4EFE6]/60 mb-2">
             III. — Mon projet entrepreneurial
           </p>
-          <h2 className="hero-display text-[#F4EFE6]">
-            J'ai fondé un SaaS.
-          </h2>
+          <h2 className="hero-display text-[#F4EFE6]">J'ai fondé un SaaS.</h2>
           <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#F4EFE6]/80">
-            Un SaaS de gestion de plannings d'équipe avec assistant IA intégré.
-            Conçu, développé et lancé seul en 2026, modèle freemium.{" "}
+            Un SaaS de gestion de plannings d'équipe, conçu, développé et lancé
+            seul en 2026.{" "}
             <strong className="font-medium text-[#F4EFE6]">
               La preuve que je sais piloter un produit, pas juste écrire du
               code.
@@ -120,19 +118,22 @@ export default function SmartPlanningShowcase() {
               data-testid="smartplanning_showcase_image"
             >
               <img
-                src="/assets/images/business-smartplanning.webp"
-                alt="Aperçu de SmartPlanning, SaaS de gestion de plannings fondé par Christophe Mostefaoui"
+                src="/assets/images/logosp.png"
+                alt="Logo SmartPlanning, SaaS de gestion de plannings fondé par Christophe Mostefaoui"
                 loading="lazy"
-                className="w-full h-auto object-cover transition-transform duration-500 ease-out group-hover:scale-[1.01]"
+                className="w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                style={{ aspectRatio: "1482 / 1384" }}
               />
               <div
-                className="absolute inset-0 ring-1 ring-[#F4EFE6]/15 group-hover:ring-[#F4D35E]/40 transition-colors duration-300 pointer-events-none"
+                className="absolute inset-0 ring-1 ring-[#F4EFE6]/10 group-hover:ring-[#F4D35E]/40 transition-colors duration-300 pointer-events-none"
                 aria-hidden="true"
               />
             </a>
             <figcaption className="hero-handwritten mt-4 text-[16px] sm:text-[18px] text-[#F4EFE6]/65 flex items-center gap-2">
               <span>↗ smartplanning.fr</span>
-              <span className="text-[#F4EFE6]/40">— en service depuis 2026</span>
+              <span className="text-[#F4EFE6]/40">
+                — en service depuis 2026
+              </span>
             </figcaption>
           </motion.figure>
 
@@ -196,6 +197,81 @@ export default function SmartPlanningShowcase() {
                 aria-hidden="true"
               />
             </motion.a>
+
+            {/* Suivre SmartPlanning : LinkedIn / YouTube / blog */}
+            <motion.div
+              variants={item}
+              className="mt-10 pt-8 border-t border-[#F4EFE6]/15"
+            >
+              <p className="hero-handwritten text-[15px] sm:text-[16px] text-[#F4EFE6]/55 mb-4">
+                suivre les coulisses du projet
+              </p>
+              <ul className="flex flex-col gap-3 sm:gap-2.5">
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/smartplanning-fr/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-body group/link inline-flex items-baseline gap-3 text-[15px] text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+                    aria-label="Page LinkedIn de SmartPlanning (nouvel onglet)"
+                  >
+                    <Linkedin className="h-4 w-4 self-center flex-shrink-0" aria-hidden="true" />
+                    <span className="border-b border-[#F4EFE6]/30 pb-0.5 group-hover/link:border-[#F4D35E]">
+                      LinkedIn
+                    </span>
+                    <span className="text-[13px] text-[#F4EFE6]/55 group-hover/link:text-[#F4D35E]/70">
+                      actualités & coulisses
+                    </span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-60 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/@SmartPlanning-x2c"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-body group/link inline-flex items-baseline gap-3 text-[15px] text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+                    aria-label="Chaîne YouTube SmartPlanning (nouvel onglet)"
+                  >
+                    <Youtube className="h-4 w-4 self-center flex-shrink-0" aria-hidden="true" />
+                    <span className="border-b border-[#F4EFE6]/30 pb-0.5 group-hover/link:border-[#F4D35E]">
+                      YouTube
+                    </span>
+                    <span className="text-[13px] text-[#F4EFE6]/55 group-hover/link:text-[#F4D35E]/70">
+                      démos & tutoriels
+                    </span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-60 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://krismos.fr/blog/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-body group/link inline-flex items-baseline gap-3 text-[15px] text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+                    aria-label="Articles de conception sur krismos.fr (nouvel onglet)"
+                  >
+                    <BookOpen className="h-4 w-4 self-center flex-shrink-0" aria-hidden="true" />
+                    <span className="border-b border-[#F4EFE6]/30 pb-0.5 group-hover/link:border-[#F4D35E]">
+                      krismos.fr/blog
+                    </span>
+                    <span className="text-[13px] text-[#F4EFE6]/55 group-hover/link:text-[#F4D35E]/70">
+                      conception détaillée du SaaS
+                    </span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 opacity-60 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -209,10 +285,7 @@ export default function SmartPlanningShowcase() {
           <p className="hero-handwritten text-[17px] sm:text-[19px] text-[#F4EFE6]/55 mb-2">
             ce que SmartPlanning prouve concrètement
           </p>
-          <div
-            className="h-px w-24 bg-[#F4EFE6]/30"
-            aria-hidden="true"
-          />
+          <div className="h-px w-24 bg-[#F4EFE6]/30" aria-hidden="true" />
         </motion.div>
 
         {/* 6 piliers en grille 2×3 sur desktop, 1 col mobile */}
