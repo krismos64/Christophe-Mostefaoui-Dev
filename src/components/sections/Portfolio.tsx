@@ -79,10 +79,10 @@ export default function Portfolio() {
       numeral: "V",
       title: "coachtfe.fr",
       description:
-        "Site professionnel pour un coach sportif avec une présentation claire des prestations. Interface moderne qui inspire confiance et incite les visiteurs à prendre contact.",
+        "Site professionnel pour une équipe de soignants et d'enseignants spécialisés en méthodologie de recherche infirmière. Présentation claire de l'accompagnement proposé aux étudiants pour leur Travail de Fin d'Études (TFE), avec parcours de contact dédié.",
       image: "/assets/images/coachtfe.png",
-      alt: "CoachTFE — Site professionnel coach sportif",
-      tags: ["Site vitrine", "Sport & Bien-être", "Conversion"],
+      alt: "CoachTFE — Accompagnement méthodologie de recherche infirmière (TFE)",
+      tags: ["Site vitrine", "Santé & Éducation", "Méthodologie TFE"],
       link: "https://coachtfe.fr/",
     },
     {

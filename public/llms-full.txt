@@ -174,9 +174,10 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 - Technologies: React, design moderne responsive
 
 ### CoachTFE
-- Type: Site professionnel
+- Type: Site vitrine professionnel pour une équipe de soignants et enseignants spécialisés en méthodologie de recherche infirmière
 - URL: https://coachtfe.fr
-- Résultats: interface inspirant confiance, augmentation des prises de contact
+- Public: étudiants infirmiers en cours de Travail de Fin d'Études (TFE) cherchant un accompagnement méthodologique
+- Résultats: présentation claire de l'accompagnement proposé, parcours de contact dédié
 - Technologies: React, design moderne, optimisation conversion
 
 ### Garage Parrot

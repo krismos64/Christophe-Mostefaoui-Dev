@@ -78,7 +78,7 @@ Testing: Vitest (unit), Playwright (E2E)
 3. Cabinet Infirmier Graslin - Site vitrine avec SEO local
 4. Poulp Fiction - Site immersif pour centre de plongée
 5. Methodea - Refonte site vitrine professionnel
-6. CoachTFE - Site professionnel coach sportif
+6. CoachTFE - Site vitrine pour une équipe de soignants et enseignants spécialisés en méthodologie de recherche infirmière (accompagnement TFE)
 
 ## Délais Moyens
 - Site vitrine simple : 1 à 2 semaines
