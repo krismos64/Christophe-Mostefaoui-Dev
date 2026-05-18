@@ -221,12 +221,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.6, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute bottom-16 left-5 right-5 mx-auto max-w-[280px] text-center md:bottom-12 md:left-auto md:right-14 md:mx-0 md:max-w-sm md:text-right"
+          className="absolute bottom-10 left-5 right-5 mx-auto text-center md:bottom-12 md:left-auto md:right-14 md:mx-0 md:max-w-sm md:text-right"
         >
-          <p className="hero-handwritten text-[19px] leading-snug text-[#F4D35E] sm:text-[22px] md:text-[26px]">
+          <p className="hero-handwritten text-[18px] leading-snug text-[#F4D35E] sm:text-[22px] md:text-[26px]">
             « Cette vue, je l'ai pendant que je code. »
           </p>
-          <p className="hero-handwritten mt-1 text-[15px] text-[#F4EFE6]/70 sm:text-[17px] md:text-[18px]">
+          <p className="hero-handwritten mt-1 text-[14px] text-[#F4EFE6]/70 sm:text-[17px] md:text-[18px]">
             — C.M., un soir de mai à Pau
           </p>
         </motion.figcaption>

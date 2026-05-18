@@ -211,11 +211,11 @@ export default function Pricing() {
               </p>
             </div>
             {/* 2 Lottie côte à côte : Cut Video + Drone Camera */}
-            <div className="flex items-center justify-center md:justify-end gap-2 sm:gap-3">
-              <div className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px]">
+            <div className="flex items-center justify-center md:justify-end gap-3 sm:gap-3">
+              <div className="w-[140px] h-[140px] sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px]">
                 <Lottie animationData={cutVideoAnimation} loop={true} />
               </div>
-              <div className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px]">
+              <div className="w-[140px] h-[140px] sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px]">
                 <Lottie animationData={droneCameraAnimation} loop={true} />
               </div>
             </div>

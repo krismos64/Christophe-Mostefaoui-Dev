@@ -197,7 +197,7 @@ export default function Portfolio() {
                 href={founderProject.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="md:col-span-5 lg:col-span-5 group block relative"
+                className="md:col-span-5 lg:col-span-5 group block relative max-w-[280px] mx-auto md:max-w-none md:mx-0"
                 aria-label={`Visiter ${founderProject.title} (nouvel onglet)`}
               >
                 <img

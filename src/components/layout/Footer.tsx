@@ -64,9 +64,9 @@ export default function Footer() {
       />
 
       <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 lg:gap-16">
-          {/* Bloc identité */}
-          <div className="md:col-span-5 lg:col-span-4">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-x-6 gap-y-10 md:gap-12 lg:gap-16">
+          {/* Bloc identité — pleine largeur sur mobile */}
+          <div className="col-span-2 md:col-span-5 lg:col-span-4">
             <p
               style={{
                 fontFamily: '"Fraunces", "Times New Roman", serif',
@@ -181,8 +181,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Bloc Contact */}
-          <div className="md:col-span-12 lg:col-span-3">
+          {/* Bloc Contact — pleine largeur sur mobile */}
+          <div className="col-span-2 md:col-span-12 lg:col-span-3">
             <p className="hero-body text-[12px] uppercase tracking-[0.18em] text-[#F4EFE6]/45 mb-5">
               Contact
             </p>

@@ -722,7 +722,9 @@ RÈGLES DE COMMUNICATION :
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Posez votre question…"
-                className="hero-body flex-1 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[14px] py-2 focus:outline-none focus:border-[#F4D35E] transition-colors"
+                autoComplete="off"
+                autoCapitalize="sentences"
+                className="hero-body flex-1 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[16px] py-2 focus:outline-none focus:border-[#F4D35E] transition-colors"
                 disabled={isLoading || isStreaming}
                 aria-label="Votre question"
               />

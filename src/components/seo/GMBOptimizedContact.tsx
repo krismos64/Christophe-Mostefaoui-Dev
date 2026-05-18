@@ -433,6 +433,8 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       onChange={handleChange}
                       placeholder="Votre nom"
                       icon={User}
+                      autoComplete="name"
+                      autoCapitalize="words"
                       required
                     />
                     <FieldInput
@@ -442,6 +444,10 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       onChange={handleChange}
                       placeholder="Votre email"
                       icon={Mail}
+                      autoComplete="email"
+                      autoCapitalize="off"
+                      inputMode="email"
+                      spellCheck={false}
                       required
                     />
                   </div>
@@ -454,6 +460,8 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       onChange={handleChange}
                       placeholder="Téléphone (optionnel)"
                       icon={Phone}
+                      autoComplete="tel"
+                      inputMode="tel"
                     />
                     <FieldInput
                       name="city"
@@ -462,6 +470,8 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       onChange={handleChange}
                       placeholder="Votre ville"
                       icon={MapPin}
+                      autoComplete="address-level2"
+                      autoCapitalize="words"
                     />
                   </div>
 
@@ -584,7 +594,7 @@ const FieldInput = ({ icon: Icon, ...props }: FieldInputProps) => (
     />
     <input
       {...props}
-      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[15px] focus:outline-none focus:border-[#F4D35E] transition-colors"
+      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[16px] focus:outline-none focus:border-[#F4D35E] transition-colors"
     />
   </div>
 );
@@ -598,7 +608,7 @@ const FieldSelect = ({ children, ...props }: FieldSelectProps) => (
   <div className="relative">
     <select
       {...props}
-      className="hero-body w-full pl-0 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] text-[15px] focus:outline-none focus:border-[#F4D35E] transition-colors appearance-none cursor-pointer"
+      className="hero-body w-full pl-0 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] text-[16px] focus:outline-none focus:border-[#F4D35E] transition-colors appearance-none cursor-pointer"
     >
       {children}
     </select>
@@ -624,7 +634,7 @@ const FieldTextarea = ({ icon: Icon, ...props }: FieldTextareaProps) => (
     />
     <textarea
       {...props}
-      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[15px] focus:outline-none focus:border-[#F4D35E] transition-colors resize-none leading-[1.6]"
+      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[16px] focus:outline-none focus:border-[#F4D35E] transition-colors resize-none leading-[1.6]"
     />
   </div>
 );
