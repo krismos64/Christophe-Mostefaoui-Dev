@@ -343,7 +343,7 @@ export const generateFinalStructuredData = () => {
       "Gestion des permissions avancée",
       "Synchronisation temps réel WebSockets"
     ],
-    "screenshot": `${baseUrl}/assets/images/business-smartplanning.webp`,
+    "screenshot": `${baseUrl}/assets/images/logosp.png`,
     "softwareVersion": "1.0",
     "datePublished": "2026",
     "inLanguage": "fr-FR",

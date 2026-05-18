@@ -4,7 +4,6 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-d
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import About from "./components/sections/About";
-import Contact from "./components/sections/Contact";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
 import Portfolio from "./components/sections/Portfolio";
