@@ -1,255 +1,318 @@
-# Portfolio Développeur Web Freelance - Christophe Mostefaoui
+# Portfolio — Christophe Mostefaoui, développeur web freelance
 
-![React](https://img.shields.io/badge/React-18.3.1-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.5.3-blue)
-![Vite](https://img.shields.io/badge/Vite-5.4.2-blue)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4.15-blue)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.17.3-purple)
-![SEO](https://img.shields.io/badge/SEO-Expert-green)
-![React Helmet Async](https://img.shields.io/badge/React_Helmet_Async-2.0.5-blue)
+![React](https://img.shields.io/badge/React-18.3-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)
+![Vite](https://img.shields.io/badge/Vite-5.4-blue)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-blue)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.17-purple)
 
-Site web portfolio professionnel moderne présentant les services de Christophe Mostefaoui : développement web full-stack (React.js/Node.js), production vidéo (FCPX), prises de vue drone (DJI Mavic Air), et intégration IA. Basé à Pau / Artix (64) avec services à distance partout en France.
+Site vitrine professionnel de **Christophe Mostefaoui**, développeur web full-stack freelance basé à **Pau et Artix (64)**, fondateur de [SmartPlanning.fr](https://smartplanning.fr/). Plus de 10 ans dans l'informatique. Services à distance partout en France, déplacement gratuit dans le 64.
 
-## Fonctionnalités
+> Site en ligne : [christophe-dev-freelance.fr](https://christophe-dev-freelance.fr)
 
-- **Design moderne et épuré** - Interface glassmorphism avec effets futuristes (orbs, shapes, code lines)
-- **Mode sombre/clair** - Basculement intelligent avec persistance localStorage et détection système
-- **Animations avancées** - Framer Motion + Lottie avec micro-interactions
-- **Formulaire de contact optimisé** - Validation temps réel, EmailJS, animations de feedback
-- **Portfolio interactif** - Carousel Embla avec 7 projets (SmartPlanning en avant)
-- **Section Production Vidéo & Drone** - Services audiovisuels avec animations Lottie
-- **VideoShowcase** - 2 vidéos YouTube en grille avec modal lightbox
-- **Section Zone d'intervention** - SEO local avec couverture géographique (64 + France)
-- **Chatbot IA intégré** - Assistant conversationnel flottant
-- **Blog** - 5 articles avec SEO automatisé (BlogPosting schema)
-- **Page Avis** - Témoignages clients
-- **Navigation intuitive** - Menu mobile animé avec smooth scroll
-- **Architecture modulaire** - Components réutilisables et hooks personnalisés
-- **SEO Expert & LLM Ready** - Schemas JSON-LD, métadonnées enrichies, llms.txt, llms-full.txt
-- **Performance optimisée** - Core Web Vitals, lazy loading, code splitting
-- **Accessibilité** - ARIA labels, WCAG compliance, sémantique HTML
+---
 
-## Stack Technique
+## Parti pris éditorial
+
+Le site assume un **design éditorial sobre et humain**, à contre-courant de l'esthétique « SaaS futuriste » générée par IA (gradients bleu/violet, glassmorphism, orbes flous, particules, emojis pills). L'objectif : que personne ne puisse dire « ce site a été vibe-codé en 10 minutes ».
+
+**Palette unique** :
+- `#0B0805` — encre profonde (Hero, Footer)
+- `#13110F` — encre (sections sombres alternées)
+- `#F4EFE6` — papier crème (sections claires)
+- `#F4D35E` — jaune surligneur (seul accent couleur)
+- `#1A1715` — encre texte sur fond clair
+
+**Typographie** :
+- **Fraunces** (italique) — titres et accents éditoriaux
+- **Inter Tight** — corps de texte
+- **Caveat** — légendes manuscrites et signatures
+
+**Vocabulaire visuel récurrent** :
+- Numérotation en chiffres romains (`I. II. III.` …) — sommaire de magazine
+- Hairlines (traits 1px) entre les blocs au lieu de cartes arrondies
+- Citations manuscrites signées en bas de chaque section
+- Aucun gradient, aucun glassmorphism, aucun emoji décoratif
+- Animations Framer Motion **discrètes** (fade + translation, jamais de scale agressif)
+
+---
+
+## Structure du site
+
+Le site est une **single page** avec ancres + 3 pages secondaires.
+
+### Sections de la home (9 sections, ordre narratif)
+
+| # | Section | Composant | Fond | Rôle |
+|---|---------|-----------|------|------|
+| I | Hero | `Hero.tsx` | image Pau coucher de soleil | Promesse |
+| II | À propos | `About.tsx` | crème | Identité + portrait montagne + vidéo 1 |
+| III | SmartPlanning | `SmartPlanningShowcase.tsx` | sombre | Projet entrepreneurial + liens sociaux |
+| IV | Services | `Services.tsx` | crème | 6 services en grille 2 colonnes |
+| V | Tarifs | `Pricing.tsx` | sombre | Méthode + encart Vidéo & Drone (Lottie) |
+| VI | FAQ | `FeaturedSnippetsFAQ.tsx` | crème | 9 questions à la 1ère personne |
+| VII | Portfolio | `Portfolio.tsx` | sombre | Projet fondateur + mosaïque 6 projets |
+| VIII | Zone d'intervention | `ServiceArea.tsx` | crème | SEO local (25 villes) |
+| IX | Contact | `seo/GMBOptimizedContact.tsx` | crème | Formulaire + vidéo 2 + infos |
+
+### Pages secondaires
+
+- `/mentions-legales` — `pages/LegalNotice.tsx`
+- `/politique-de-confidentialite` — `pages/PrivacyPolicy.tsx`
+- `/blog` + `/blog/:slug` — pages satellites SEO (non liées depuis la home)
+- `/faq` — redirige vers `/#faq` (ancre home)
+- `*` — page 404 éditoriale (`pages/NotFound.tsx`)
+
+### Layout
+
+- `layout/Header.tsx` — Navbar transparente sur Hero, opaque crème au scroll
+- `layout/Footer.tsx` — Footer encre 4 colonnes avec colophon manuscrit
+- `AIChatbot.tsx` — Widget assistant Mistral en bas à droite
+
+---
+
+## Stack technique
 
 ### Core
-- **Frontend Framework**: React 18.3.1 avec TypeScript 5.5.3 (strict mode)
-- **Build Tool**: Vite 5.4.2 avec optimisations avancées
-- **Styling**: Tailwind CSS 3.4.15 + PostCSS + cssnano
-- **Routing**: React Router DOM 6.22.3 avec lazy loading
+- **React 18.3** avec **TypeScript 5.5** (strict mode, `exactOptionalPropertyTypes`, `noUncheckedIndexedAccess`)
+- **Vite 5.4** — build optimisé, Terser, cssnano, code splitting
+- **Tailwind CSS 3.4** + PostCSS + Autoprefixer
+- **React Router DOM 6.22** avec lazy loading
 
 ### UI & Animations
-- **Animations**: Framer Motion 12.17.3 + Lottie React 2.4.1
-- **Carousel**: Embla Carousel React pour le portfolio
-- **Icons**: Lucide React 0.344.0 + Heroicons
-- **Formulaires**: EmailJS 4.4.1 + React Hot Toast 2.4.1
+- **Framer Motion 12.17** — animations sobres (fade + translation, courbe ease-out)
+- **Lottie React 2.4** — animations chatbot, drone, montage vidéo, thinking (footer)
+- **Lucide React** — icônes vectorielles cohérentes (strokeWidth 1.5)
+- **Heroicons** — utilisé uniquement sur la page Blog (intouchée)
 
-### SEO & Performance
-- **SEO**: React Helmet Async 2.0.5 + hook personnalisé `useStructuredData`
-- **Compression**: Terser 5.44.0 + cssnano 7.1.1
-- **Code Splitting**: React.lazy + Suspense (6 pages lazy-loaded)
-- **Error Handling**: Error Boundaries personnalisés
+### Formulaires & Communication
+- **EmailJS 4.4** — formulaire de contact sans backend
+- **React Hot Toast 2.4** — notifications
 
-### Optimisations Build
-- **TypeScript**: Configuration stricte (`noImplicitReturns`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`)
-- **Vite Plugins**: vite-plugin-static-copy pour .htaccess
-- **Performance**: Server warmup, optimizeDeps, manualChunks (vendor, animations, ui, helmet)
+### SEO
+- **React Helmet Async 2.0** — meta tags dynamiques
+- Hook personnalisé `useStructuredData` — agrège 5 sources de schemas JSON-LD
+- Schemas : `Organization`, `Person`, `ProfessionalService`, `LocalBusiness`, `FAQPage`, `VideoObject`, `CreativeWork`, `WebSite`, `BreadcrumbList`, `ContactPage`
+
+### Chatbot IA
+- API **Mistral AI** (`open-mistral-7b`) en streaming
+- Clé API en variable d'environnement (`VITE_MISTRAL_API_KEY`)
+- Cache local des réponses (50 entrées max)
+- Système prompt à jour (services I-VI, vraie expérience, vrai numéro)
+
+---
 
 ## Installation
 
 ```bash
 # Cloner le repository
 git clone https://github.com/krismos64/Christophe-Mostefaoui-Dev
-
-# Accéder au répertoire
 cd Christophe-Mostefaoui-Dev
 
 # Installer les dépendances
 npm install
 
+# Copier le template de variables d'environnement
+cp .env.example .env
+# Puis remplir .env avec les clés EmailJS et Mistral
+
 # Lancer le serveur de développement
 npm run dev
 ```
 
-## Configuration
+### Variables d'environnement
 
-### EmailJS (Formulaire de Contact)
-
-1. Créer un compte sur [EmailJS](https://www.emailjs.com/)
-2. Créer un fichier `.env` à la racine :
+Voir `.env.example` pour le template complet.
 
 ```env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_USER_ID=your_user_id
+# EmailJS — formulaire de contact
+VITE_EMAILJS_SERVICE_ID=...
+VITE_EMAILJS_TEMPLATE_ID=...
+VITE_EMAILJS_USER_ID=...
+
+# Mistral AI — chatbot
+# ⚠️ Cette clé est exposée dans le bundle client.
+# Configurez des rate limits + budget caps sur console.mistral.ai
+VITE_MISTRAL_API_KEY=...
 ```
 
-## Déploiement
+---
 
-### Build de Production
-
-```bash
-npm run build      # Build optimisé avec Terser, cssnano, et code splitting
-npm run preview    # Preview de la version de production
-```
-
-### Déploiement Hostinger
-
-Le build génère automatiquement :
-- **dist/.htaccess** : Configuration Apache optimisée (HTTPS, GZIP, cache 1 an, React Router SPA)
-- **Chunks JS optimisés** : vendor (~161 KB), animations (~456 KB), ui, helmet, pages lazy-loaded
-- **CSS minifié** : ~89 KB → ~14.5 KB gzip
-- **Assets optimisés** : Compression terser + cache immutable
-
-Upload sur Hostinger :
-1. `npm run build`
-2. Uploader tout le contenu de `dist/` via FTP/SFTP
-3. Le `.htaccess` configure automatiquement Apache
-
-## Architecture du Projet
+## Architecture du projet
 
 ```
 src/
 ├── components/
-│   ├── common/          # Composants réutilisables
+│   ├── common/
 │   │   ├── AnimatedButton.tsx
 │   │   ├── AnimatedSection.tsx
 │   │   ├── Button.tsx
 │   │   ├── CallToAction.tsx
 │   │   ├── Card.tsx
 │   │   ├── ErrorBoundary.tsx
-│   │   └── FormField.tsx
-│   ├── layout/          # Mise en page
-│   │   ├── Header.tsx
-│   │   └── Footer.tsx
-│   ├── sections/        # Sections de la page d'accueil
+│   │   ├── FormField.tsx
+│   │   └── VideoEmbed.tsx        # Embed YouTube inline réutilisable
+│   ├── layout/
+│   │   ├── Header.tsx            # Navbar éditoriale + menu mobile chiffres romains
+│   │   └── Footer.tsx            # 4 cols + colophon manuscrit
+│   ├── sections/                 # Sections de la home (ordre narratif I→IX)
 │   │   ├── Hero.tsx
 │   │   ├── About.tsx
-│   │   ├── VideoShowcase.tsx
+│   │   ├── SmartPlanningShowcase.tsx
 │   │   ├── Services.tsx
 │   │   ├── Pricing.tsx
 │   │   ├── FeaturedSnippetsFAQ.tsx
-│   │   ├── AIIntegration.tsx
 │   │   ├── Portfolio.tsx
-│   │   ├── VideoServices.tsx
 │   │   ├── ServiceArea.tsx
-│   │   └── Contact.tsx
-│   ├── seo/             # Composants SEO
-│   │   ├── GMBOptimizedContact.tsx
-│   │   ├── LLMOptimizedHead.tsx
+│   │   ├── BlogSection.tsx       # utilisé uniquement par /blog
+│   │   └── Contact.tsx           # ⚠️ non rendu (GMBOptimizedContact à la place)
+│   ├── seo/
+│   │   ├── GMBOptimizedContact.tsx   # Section Contact effective de la home
+│   │   ├── LLMOptimizedHead.tsx      # Meta tags pour LLM
 │   │   └── VideoSEOHead.tsx
-│   ├── effects/         # Effets visuels
-│   │   ├── FuturisticBackground.tsx
-│   │   └── FuturisticEffects.tsx
-│   └── welcome/
-│       └── WelcomeScreen.tsx
-├── pages/               # Pages de routing (lazy-loaded)
-│   ├── Avis.tsx
+│   ├── effects/                  # Effets résiduels (utilisés par blog uniquement)
+│   ├── welcome/
+│   │   └── WelcomeScreen.tsx
+│   └── AIChatbot.tsx             # Widget Mistral éditorial
+├── pages/                        # Pages routées (lazy-loaded)
 │   ├── Blog.tsx
 │   ├── BlogPost.tsx
-│   ├── FAQ.tsx
 │   ├── LegalNotice.tsx
-│   └── PrivacyPolicy.tsx
-├── utils/               # Utilitaires SEO
-│   ├── structured-data-final.tsx
-│   ├── seo-advanced.tsx
-│   ├── video-seo-optimization.tsx
-│   ├── viral-video-seo.tsx
+│   ├── PrivacyPolicy.tsx
+│   └── NotFound.tsx              # Catch-all
+├── utils/
+│   ├── structured-data-final.tsx # Schemas JSON-LD agrégés
+│   ├── seo-advanced.tsx          # Meta LLM optimisés
+│   ├── featured-snippets-content.tsx  # FAQ 1ère personne
+│   ├── blog-automation.tsx
 │   ├── local-seo-schema.tsx
 │   ├── seo-location-data.tsx
-│   ├── featured-snippets-content.tsx
-│   ├── blog-automation.tsx
-│   └── google-my-business-optimization.tsx
-├── hooks/               # Hooks personnalisés
+│   ├── video-seo-optimization.tsx
+│   └── viral-video-seo.tsx
+├── hooks/
 │   ├── useStructuredData.ts
 │   ├── useNavigation.ts
 │   └── useFormValidation.ts
 ├── data/
-│   └── blogPosts.ts     # 5 articles de blog
+│   └── blogPosts.ts              # Pages satellites SEO
 ├── context/
-│   └── ThemeContext.tsx
+│   └── ThemeContext.tsx          # Mode clair/sombre + localStorage
 ├── config/
 │   └── emailjs.ts
 └── App.tsx
 ```
 
-### Fichiers publics SEO & LLM
+### Fichiers publics (SEO + LLM)
 
 ```
 public/
-├── sitemap.xml              # 11 URLs indexées
-├── robots.txt               # Bots IA autorisés, bots spam bloqués
-├── llms.txt                 # Fiche synthétique pour LLM
-├── llms-full.txt            # Base de connaissances complète pour LLM
-├── chatbot-knowledge.txt    # Base de connaissances chatbot IA
-├── humans.txt               # Crédits humains
-├── manifest.json            # PWA manifest
+├── sitemap.xml                 # 9 URLs (home + 2 légales + 6 blog)
+├── robots.txt                  # GPTBot, Claude-Web, ChatGPT-User, CCBot autorisés
+├── llms.txt                    # Fiche synthétique pour LLM
+├── llms-full.txt               # Base de connaissances complète
+├── chatbot-knowledge.txt       # Base de connaissances du chatbot
+├── humans.txt                  # Crédits humains
+├── manifest.json               # PWA manifest
 └── .well-known/
-    └── ai-plugin.json       # Plugin IA standard
+    └── ai-plugin.json          # Plugin IA standard
 ```
+
+---
+
+## Services proposés
+
+> **Devis sur mesure uniquement.** Aucune grille tarifaire publique : chaque projet fait l'objet d'une proposition adaptée après un premier échange gratuit. Devis sous 24h.
+
+| # | Service | Description |
+|---|---------|-------------|
+| I | Site Vitrine Moderne | Présence en ligne pro, visible Google + assistants IA |
+| II | Site Multi-pages | Site complet avec blog, formulaire, CMS autonome |
+| III | Refonte de Site | Modernisation d'un site existant |
+| IV | Chatbot intelligent | Assistant IA 24h/24 (démontré par le chatbot du site) |
+| V | Référencement Google & IA | SEO classique + optimisation LLM (ChatGPT, Claude, Perplexity) |
+| VI | Vidéo & Drone (DGAC) | Final Cut Pro + DJI Mavic Air certifié DGAC |
+
+---
+
+## Déploiement
+
+### Build de production
+
+```bash
+npm run build      # tsc + vite build (Terser, cssnano, code splitting)
+npm run preview    # Aperçu local du build
+```
+
+### Déploiement Hostinger
+
+Le build génère automatiquement :
+- `dist/.htaccess` — config Apache (HTTPS, GZIP, cache 1 an, fallback SPA)
+- Chunks JS optimisés (vendor, animations, ui, helmet, pages lazy)
+- CSS minifié + assets versionnés
+
+Upload :
+1. `npm run build`
+2. Uploader le contenu de `dist/` via FTP/SFTP sur Hostinger
+3. Le `.htaccess` configure Apache automatiquement
+
+---
 
 ## Optimisations SEO
 
-### SEO Technique
-- **Title optimisé** avec nom, localisation et technologies dans le HTML statique
-- **Meta description** ciblée (Pau, 64, React.js, Node.js, IA)
-- **Open Graph** avec image 1200x630 en URL absolue
-- **Twitter Cards** summary_large_image
-- **Canonical URLs** dynamiques sur toutes les pages (y compris blog)
-- **Google Search Console** vérifié via balise meta
-- **Sitemap XML** complet et cohérent avec robots.txt
+### SEO technique
+- Title HTML statique avec nom + localisation + technologies (lu par les bots avant le JS)
+- Meta description ciblée (Pau, 64, React, Node, TypeScript)
+- Open Graph (image 1200×630 absolue) + Twitter Card `summary_large_image`
+- Canonical URLs dynamiques
+- Sitemap XML synchronisé avec robots.txt
+- Page 404 éditoriale avec `noindex` (évite le crawl des URLs cassées)
 
-### Données Structurées JSON-LD
-- **Organization** - Profil entreprise
-- **Person** - Profil expert avec formation et credentials
-- **ProfessionalService** - Services détaillés avec géolocalisation et tarifs
-- **LocalBusiness** - SEO local GMB avec areaServed
-- **FAQPage** - Questions optimisées pour featured snippets
-- **VideoObject** - SEO vidéo YouTube (2 vidéos)
-- **BlogPosting** - Articles de blog avec schema automatique
-- **CreativeWork** - Portfolio projets
-- **WebSite** - SearchAction pour sitelinks
-- **BreadcrumbList** - Navigation structurée
+### Schemas JSON-LD
+- **Organization** + **Person** — entité principale
+- **ProfessionalService** + **LocalBusiness** — SEO local (Pau + zone 64 + France)
+- **FAQPage** — 9 questions/réponses pour featured snippets
+- **VideoObject** — 2 vidéos YouTube
+- **CreativeWork** — 7 projets portfolio (1 fondateur + 6 clients)
+- **BreadcrumbList**, **WebSite**, **ContactPage**
 
 ### Optimisation LLM (ChatGPT, Claude, Perplexity, Gemini)
-- **llms.txt** - Fiche synthétique avec mots-clés locaux et résultats clients
-- **llms-full.txt** - Base de connaissances exhaustive (portfolio, témoignages, FAQ, zones)
-- **chatbot-knowledge.txt** - Base de connaissances pour chatbot intégré
-- **ai-plugin.json** - Plugin IA standard (.well-known)
-- **Meta tags LLM** - ai-content-type, llm-context, semantic-keywords via LLMOptimizedHead
-- **robots.txt** - GPTBot, Claude-Web, ChatGPT-User, CCBot autorisés
-- **Contenu structuré** - Couverture géographique (15 villes 64 + France entière)
+- `llms.txt` + `llms-full.txt` — base de connaissances structurée
+- `chatbot-knowledge.txt` — contexte chatbot
+- `.well-known/ai-plugin.json` — plugin IA standard
+- Meta tags `ai-content-type`, `llm-context`, `llm-capabilities` via `LLMOptimizedHead`
+- `robots.txt` autorisant les bots IA légitimes
 
-## Services Présentés
+### Conformité E-E-A-T
+- Aucune stat inventée (notes, nombre d'avis, témoignages factices)
+- Aucun numéro de téléphone fictif
+- Cohérence du nom, des services et de l'expérience sur tous les schemas
 
-### Développement Web
-- **Site Vitrine Moderne** - 800€ à 1 500€
-- **Site Multi-pages** - 1 500€ à 3 000€
-- **Application Sur-mesure / SaaS** - À partir de 3 000€
-- **Intégration IA** - Chatbots GPT/Claude/Mistral
-- **Maintenance & Support**
-- **Refonte de Site**
-
-### Production Audiovisuelle
-- **Montage Vidéo Professionnel** - Final Cut Pro X, exports 4K
-- **Prises de Vue Drone** - DJI Mavic Air, certifié DGAC AlphaTango
+---
 
 ## Contact
 
-- **Email**: christophe.mostefaoui.dev@gmail.com
-- **Téléphone**: 06 79 08 88 45
-- **Localisation**: Pau / Artix (64) - Pyrénées-Atlantiques
-- **Site**: [christophe-dev-freelance.fr](https://christophe-dev-freelance.fr)
-- **LinkedIn**: [christophemostefaoui](https://www.linkedin.com/in/christophemostefaoui/)
-- **GitHub**: [krismos64](https://github.com/krismos64)
+- **Email** : christophe.mostefaoui.dev@gmail.com
+- **Téléphone** : 06 79 08 88 45
+- **Localisation** : Artix / Pau (64) — Pyrénées-Atlantiques
+- **Site** : [christophe-dev-freelance.fr](https://christophe-dev-freelance.fr)
+- **Portfolio technique** : [krismos.fr](https://krismos.fr/)
+- **SmartPlanning** : [smartplanning.fr](https://smartplanning.fr/)
+- **LinkedIn** : [christophemostefaoui](https://www.linkedin.com/in/christophemostefaoui/)
+- **GitHub** : [krismos64](https://github.com/krismos64)
+- **YouTube** : [@christophe-dev-freelance](https://www.youtube.com/@christophe-dev-freelance/videos)
+
+---
 
 ## Scripts disponibles
 
 ```bash
-npm run dev          # Serveur de développement
+npm run dev          # Serveur de développement (Vite HMR)
 npm run build        # Build de production (tsc + vite build)
 npm run preview      # Preview du build
 ```
 
+---
+
 ## Licence
 
-Copyright 2026 Christophe Mostefaoui. Tous droits réservés.
+© 2026 Christophe Mostefaoui — Tous droits réservés.
