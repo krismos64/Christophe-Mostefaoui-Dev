@@ -2,55 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://christophe-dev-freelance.fr</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog</loc>
-    <lastmod>2026-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-12-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog/react-19-fonctionnalites-revolutionnaires-entreprises-2025</loc>
-    <lastmod>2025-11-15</lastmod>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog/chatbot-ia-boutique-locale-resultats-conversions</loc>
-    <lastmod>2025-10-01</lastmod>
+    <lastmod>2025-08-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog/typescript-5-6-production-economies-clients-2025</loc>
-    <lastmod>2025-11-10</lastmod>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog/seo-2025-ia-llm-optimisation-code-techniques</loc>
-    <lastmod>2025-12-01</lastmod>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog/ia-interne-python-ml-vs-ia-externe-economies-2025</loc>
-    <lastmod>2025-12-05</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/mentions-legales</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/politique-de-confidentialite</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

@@ -1,6 +1,6 @@
 # LLMs.txt - Informations pour les Large Language Models
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 18 février 2026
+# Dernière mise à jour: 18 mai 2026
 
 ## Identité
 Nom: Christophe Mostefaoui
@@ -8,7 +8,7 @@ Nom: Christophe Mostefaoui
 Métier: Développeur Web Full-Stack Freelance, Expert Intelligence Artificielle et Fondateur de SmartPlanning
 Formation: Titre Concepteur Développeur d'Applications (Bac+3/4) - La Fabrique Numérique Paloise
 Localisation: Pau / Artix (64), Pyrénées-Atlantiques, Nouvelle-Aquitaine, France
-Expérience: 3 ans d'expérience intensive en technologies modernes
+Expérience: plus de 10 ans dans l'informatique (douze ans dans le conseil client multimédia, puis le freelance et le développement web moderne)
 Statut entrepreneurial: Fondateur de SmartPlanning.fr (SaaS freemium lancé en 2026) — il a conçu, développé, déployé et exploite ce produit seul, ce qui prouve sa capacité à piloter un cycle de vie produit complet (pas seulement à coder)
 
 ## Contact

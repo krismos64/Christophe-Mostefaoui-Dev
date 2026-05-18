@@ -44,7 +44,7 @@ export const generateFinalStructuredData = () => {
     "@id": `${baseUrl}/#person`,
     "name": "Christophe Mostefaoui",
     "jobTitle": "Développeur Web Full-Stack, Expert IA & Fondateur de SmartPlanning",
-    "description": "Développeur web freelance et fondateur de SmartPlanning.fr (SaaS freemium lancé en 2026). Expert en intégration IA et développement full-stack avec 3 ans d'expérience intensive. Concepteur de produits SaaS complets, de l'architecture au support utilisateur.",
+    "description": "Développeur web freelance et fondateur de SmartPlanning.fr (SaaS freemium lancé en 2026). Plus de 10 ans dans l'informatique (douze ans dans le conseil client puis le freelance). Concepteur de produits web complets, de l'architecture au support utilisateur.",
     "url": baseUrl,
     "image": {
       "@type": "ImageObject",
@@ -239,7 +239,7 @@ export const generateFinalStructuredData = () => {
         "name": "Qui est Christophe Mostefaoui ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Christophe Mostefaoui est un développeur web freelance expert basé à Pau (64). Avec 3 ans d'expérience intensive, il maîtrise les technologies modernes : React.js, Node.js, TypeScript. Spécialiste en intégration IA et production vidéo/drone."
+          "text": "Christophe Mostefaoui est un développeur web freelance basé à Pau et Artix (64). Avec plus de 10 ans dans l'informatique (douze ans dans le conseil client puis le freelance), il maîtrise les technologies modernes : React.js, Node.js, TypeScript. Spécialiste en chatbots IA et fondateur du SaaS SmartPlanning.fr."
         }
       },
       {

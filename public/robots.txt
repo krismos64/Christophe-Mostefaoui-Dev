@@ -1,6 +1,6 @@
 # Robots.txt optimisé pour Christophe Mostefaoui - Développeur Web & Expert IA
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 18 février 2026
+# Dernière mise à jour: 18 mai 2026
 
 # === BOTS DE RECHERCHE PRINCIPAUX ===
 User-agent: *
@@ -107,6 +107,6 @@ Sitemap: https://christophe-dev-freelance.fr/sitemap.xml
 # Services: Sites vitrines, Applications sur mesure, Chatbots GPT/Claude, Production vidéo, Drone
 # Devis: tous les projets font l'objet d'un devis sur mesure, envoyé gratuitement sous 24h
 # Zone d'intervention: Déplacement gratuit dans le 64 (Pyrénées-Atlantiques), France entière à distance
-# Expertise: 3 ans d'expérience intensive en technologies modernes
+# Expertise: plus de 10 ans dans l'informatique (conseil client puis développement)
 # Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45
-# Dernière mise à jour: 18 février 2026
+# Dernière mise à jour: 18 mai 2026

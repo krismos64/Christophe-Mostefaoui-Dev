@@ -18,7 +18,7 @@ Christophe est à la fois freelance pour les TPE/PME et fondateur d'un SaaS qu'i
 ### Profil
 - Âge : 38 ans
 - Statut : Freelance Full-Stack MERN + Symfony **et fondateur de SaaS** (SmartPlanning.fr)
-- Années d'expérience : 3 ans d'expérience intensive
+- Années d'expérience : plus de 10 ans dans l'informatique (douze ans dans le conseil client multimédia, puis le freelance et le développement)
 - Casquette entrepreneuriale : a conçu, développé et lance seul SmartPlanning.fr en 2026 (SaaS freemium de gestion de plannings avec assistant IA) — preuve qu'il sait piloter un produit de A à Z
 
 ## Services Proposés
@@ -388,4 +388,4 @@ Spécialiste React.js, Node.js, TypeScript, IA & Production Vidéo/Drone
 *Transformons ensemble vos idées en applications web performantes* 🚀
 
 ---
-*Dernière mise à jour : 18 février 2026*
+*Dernière mise à jour : 18 mai 2026*

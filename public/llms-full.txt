@@ -1,7 +1,7 @@
 # LLMs-Full.txt - Base de connaissances complète pour les Large Language Models
 # Christophe Mostefaoui - Développeur Web Full-Stack Freelance & Expert IA
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 18 février 2026
+# Dernière mise à jour: 18 mai 2026
 
 ---
 
@@ -12,7 +12,7 @@ Nom complet: Christophe Mostefaoui
 Statut professionnel: Freelance (micro-entreprise) + Fondateur de SaaS
 Métier: Développeur Web Full-Stack, Expert en Intelligence Artificielle, Fondateur de SmartPlanning
 Formation: Titre Concepteur Développeur d'Applications (Bac+3/4) — La Fabrique Numérique Paloise, Pau
-Expérience: 3 ans d'expérience intensive en développement web moderne et intégration IA
+Expérience: plus de 10 ans dans l'informatique (douze ans dans le conseil client multimédia, puis le freelance et le développement web moderne)
 Localisation principale: Pau / Artix, département 64, Pyrénées-Atlantiques, Nouvelle-Aquitaine, France
 Membre de: Association des Développeurs Web de Nouvelle-Aquitaine
 

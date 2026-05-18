@@ -24,6 +24,7 @@ const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const Home = () => {
   const structuredData = useStructuredData();
@@ -82,6 +83,7 @@ function App() {
                       path="/politique-de-confidentialite"
                       element={<PrivacyPolicy />}
                     />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </Suspense>
               </main>
