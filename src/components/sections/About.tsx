@@ -270,10 +270,10 @@ export default function About() {
           </div>
           <VideoEmbed
             youtubeId="eZ6OYMeT1CM"
-            thumbnail="/assets/images/chris-youtube.JPG"
+            thumbnail="/assets/images/miniature.png"
             title="Mon Univers Digital — Christophe Mostefaoui"
             caption="— mon approche du développement web"
-            duration="2:45"
+            duration="1:31"
             channelUrl="https://www.youtube.com/@christophe-dev-freelance/videos"
             theme="light"
             ariaLabel="Lire la vidéo : Mon Univers Digital"

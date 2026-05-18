@@ -188,24 +188,46 @@ export const generateFinalStructuredData = () => {
     }
   };
 
-  // VideoObject pour l'indexation vidéo
+  // VideoObject 1 — "Présentation Expert" (intégrée dans la section Contact)
   const videoObject = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "@id": `${baseUrl}/#main-video`,
-    "name": "Présentation Christophe Mostefaoui - Expert IA & Développement",
-    "description": "Découvrez mon expertise en intégration IA, chatbots intelligents et développement web moderne",
+    "@id": `${baseUrl}/#video-presentation-expert`,
+    "name": "Présentation Expert — Christophe Mostefaoui, développeur web freelance",
+    "description":
+      "Présentation détaillée de mon expertise : React, Node.js, TypeScript et solutions sur mesure pour PME et indépendants.",
     "thumbnailUrl": `${baseUrl}/assets/images/Christophe-freelance.png`,
     "uploadDate": "2024-12-01T10:00:00+01:00",
     "duration": "PT2M30S",
-    "contentUrl": `${baseUrl}/assets/videos/animation-chris-dev.mp4`,
     "embedUrl": "https://www.youtube.com/embed/tdjXblz4mr4",
+    "contentUrl": "https://www.youtube.com/watch?v=tdjXblz4mr4",
     "width": "1920",
     "height": "1080",
     "creator": {
       "@type": "Person",
-      "name": "Christophe Mostefaoui"
-    }
+      "name": "Christophe Mostefaoui",
+    },
+  };
+
+  // VideoObject 2 — "Mon Univers Digital" (intégrée dans la section À propos)
+  const videoObjectUnivers = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${baseUrl}/#video-univers-digital`,
+    "name": "Mon Univers Digital — Christophe Mostefaoui",
+    "description":
+      "Découvrez mon approche du développement web : créer des sites qui ressemblent à leurs propriétaires.",
+    "thumbnailUrl": `${baseUrl}/assets/images/miniature.png`,
+    "uploadDate": "2024-09-15T10:00:00+02:00",
+    "duration": "PT1M31S",
+    "embedUrl": "https://www.youtube.com/embed/eZ6OYMeT1CM",
+    "contentUrl": "https://www.youtube.com/watch?v=eZ6OYMeT1CM",
+    "width": "1920",
+    "height": "1080",
+    "creator": {
+      "@type": "Person",
+      "name": "Christophe Mostefaoui",
+    },
   };
 
   // WebPage avec mainEntity Person (pas VideoObject pour éviter la date vidéo dans les SERP)
@@ -328,5 +350,5 @@ export const generateFinalStructuredData = () => {
     "keywords": "planning, gestion équipe, SaaS, assistant IA, planification, emploi du temps, ressources humaines"
   };
 
-  return [organization, person, localBusiness, videoObject, webPage, faqSchema, smartPlanning];
+  return [organization, person, localBusiness, videoObject, videoObjectUnivers, webPage, faqSchema, smartPlanning];
 };
