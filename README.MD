@@ -93,7 +93,7 @@ Le site est une **single page** avec ancres + 3 pages secondaires.
 ### Formulaires & Communication
 
 - **EmailJS 4.4** — formulaire de contact sans backend
-- **React Hot Toast 2.4** — notifications
+- Inputs HTML5 optimisés mobile (`autoComplete`, `inputMode`, `autoCapitalize`)
 
 ### SEO
 
@@ -107,6 +107,26 @@ Le site est une **single page** avec ancres + 3 pages secondaires.
 - Clé API en variable d'environnement (`VITE_MISTRAL_API_KEY`)
 - Cache local des réponses (50 entrées max)
 - Système prompt à jour (services I-VI, vraie expérience, vrai numéro)
+
+---
+
+## Mobile-first
+
+Le site est pensé d'abord pour mobile (375px et plus). Détails techniques :
+
+- **Viewport meta** : `width=device-width, initial-scale=1.0`
+- **Anti-overflow horizontal** : `overflow-x: hidden` sur `html`, `body`, `#root`, `.App`, `main`
+- **Inputs formulaire à 16px** pour empêcher le zoom automatique de Safari iOS au focus
+- **Attributs HTML5 mobiles** systématiques :
+  - `autoComplete` (name, email, tel, address-level2)
+  - `inputMode` (email, tel) — déclenche le bon clavier
+  - `autoCapitalize` (words, sentences, off selon le champ)
+  - `spellCheck={false}` sur l'email
+- **Target sizes** : CTA principaux dimensionnés ≥ 44×44px
+- **Pas de hover-only** : tous les états interactifs ont une version focus/active visible
+- **Lock du scroll body** quand le menu mobile est ouvert (jusqu'à 1023px)
+- **Footer** : grille 2 colonnes sur mobile (Navigation + Ailleurs côte à côte) pour éviter le scroll excessif
+- **Lottie** dimensionnés en fonction du breakpoint (taille minimum garantie sur mobile)
 
 ---
 
@@ -152,18 +172,12 @@ VITE_MISTRAL_API_KEY=...
 src/
 ├── components/
 │   ├── common/
-│   │   ├── AnimatedButton.tsx
-│   │   ├── AnimatedSection.tsx
-│   │   ├── Button.tsx
-│   │   ├── CallToAction.tsx
-│   │   ├── Card.tsx
-│   │   ├── ErrorBoundary.tsx
-│   │   ├── FormField.tsx
-│   │   └── VideoEmbed.tsx        # Embed YouTube inline réutilisable
+│   │   ├── ErrorBoundary.tsx       # Error boundary global
+│   │   └── VideoEmbed.tsx          # Embed YouTube inline réutilisable
 │   ├── layout/
-│   │   ├── Header.tsx            # Navbar éditoriale + menu mobile chiffres romains
-│   │   └── Footer.tsx            # 4 cols + colophon manuscrit
-│   ├── sections/                 # Sections de la home (ordre narratif I→IX)
+│   │   ├── Header.tsx              # Navbar éditoriale + menu mobile chiffres romains
+│   │   └── Footer.tsx              # Footer 4 cols + colophon manuscrit
+│   ├── sections/                   # Sections de la home (ordre narratif I→VIII)
 │   │   ├── Hero.tsx
 │   │   ├── About.tsx
 │   │   ├── SmartPlanningShowcase.tsx
@@ -172,41 +186,38 @@ src/
 │   │   ├── FeaturedSnippetsFAQ.tsx
 │   │   ├── Portfolio.tsx
 │   │   ├── ServiceArea.tsx
-│   │   ├── BlogSection.tsx       # utilisé uniquement par /blog
-│   │   └── Contact.tsx           # ⚠️ non rendu (GMBOptimizedContact à la place)
+│   │   └── BlogSection.tsx         # Utilisé uniquement par /blog
 │   ├── seo/
-│   │   ├── GMBOptimizedContact.tsx   # Section Contact effective de la home
-│   │   ├── LLMOptimizedHead.tsx      # Meta tags pour LLM
-│   │   └── VideoSEOHead.tsx
-│   ├── effects/                  # Effets résiduels (utilisés par blog uniquement)
-│   ├── welcome/
-│   │   └── WelcomeScreen.tsx
-│   └── AIChatbot.tsx             # Widget Mistral éditorial
-├── pages/                        # Pages routées (lazy-loaded)
+│   │   ├── GMBOptimizedContact.tsx # Section Contact effective de la home (IX)
+│   │   └── LLMOptimizedHead.tsx    # Meta tags optimisés LLM
+│   └── AIChatbot.tsx               # Widget Mistral éditorial
+├── pages/                          # Pages routées (lazy-loaded)
 │   ├── Blog.tsx
 │   ├── BlogPost.tsx
 │   ├── LegalNotice.tsx
 │   ├── PrivacyPolicy.tsx
-│   └── NotFound.tsx              # Catch-all
+│   └── NotFound.tsx                # Catch-all éditorial
 ├── utils/
-│   ├── structured-data-final.tsx # Schemas JSON-LD agrégés
-│   ├── seo-advanced.tsx          # Meta LLM optimisés
+│   ├── structured-data-final.tsx   # Schemas JSON-LD agrégés
+│   ├── seo-advanced.tsx            # Meta LLM optimisés
 │   ├── featured-snippets-content.tsx  # FAQ 1ère personne
-│   ├── blog-automation.tsx
-│   ├── local-seo-schema.tsx
-│   ├── seo-location-data.tsx
-│   ├── video-seo-optimization.tsx
-│   └── viral-video-seo.tsx
+│   └── analytics.ts                # Helpers GTM (initGoogleAnalytics, trackEvent…)
 ├── hooks/
 │   ├── useStructuredData.ts
-│   ├── useNavigation.ts
-│   └── useFormValidation.ts
+│   └── useNavigation.ts
 ├── data/
-│   └── blogPosts.ts              # Pages satellites SEO
+│   └── blogPosts.ts                # Pages satellites SEO (5 articles)
 ├── context/
-│   └── ThemeContext.tsx          # Mode clair/sombre + localStorage
+│   └── ThemeContext.tsx            # Mode clair/sombre + localStorage
 ├── config/
 │   └── emailjs.ts
+├── animations/                     # Lottie (4 fichiers)
+│   ├── chatbot.json                # Bouton flottant + menu mobile
+│   ├── thinking.json               # Footer
+│   ├── Drone Camera.json           # Section Pricing
+│   └── Cut Video.json              # Section Pricing
+├── types/
+│   └── common.ts                   # MenuItem, Theme, ThemeContextType
 └── App.tsx
 ```
 
