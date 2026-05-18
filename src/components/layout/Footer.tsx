@@ -13,7 +13,7 @@ export default function Footer() {
     { name: "Services", to: isHomePage ? "#services" : "/#services" },
     { name: "Portfolio", to: isHomePage ? "#portfolio" : "/#portfolio" },
     { name: "Tarifs", to: isHomePage ? "#tarifs" : "/#tarifs" },
-    { name: "FAQ", to: isHomePage ? "#faq" : "/faq" },
+    { name: "FAQ", to: isHomePage ? "#faq" : "/#faq" },
     { name: "Contact", to: isHomePage ? "#contact" : "/#contact" },
   ];
 

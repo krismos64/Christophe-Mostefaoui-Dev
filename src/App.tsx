@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import About from "./components/sections/About";
@@ -20,7 +20,6 @@ import GMBOptimizedContact from "./components/seo/GMBOptimizedContact";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 
 // Lazy loading des pages pour optimiser le code-splitting
-const FAQ = lazy(() => import("./pages/FAQ"));
 const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -75,7 +74,7 @@ function App() {
                 >
                   <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/faq" element={<FAQ />} />
+                    <Route path="/faq" element={<Navigate to="/#faq" replace />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/mentions-legales" element={<LegalNotice />} />

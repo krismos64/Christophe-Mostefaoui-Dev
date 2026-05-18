@@ -100,7 +100,7 @@ export default function Header() {
     { name: "Services", to: isHomePage ? "#services" : "/#services", icon: <Briefcase className="h-5 w-5" /> },
     { name: "Portfolio", to: isHomePage ? "#portfolio" : "/#portfolio", icon: <FolderOpen className="h-5 w-5" /> },
     { name: "Contact", to: isHomePage ? "#contact" : "/#contact", icon: <Mail className="h-5 w-5" /> },
-    { name: "FAQ", to: "/faq", icon: <HelpCircle className="h-5 w-5" /> },
+    { name: "FAQ", to: isHomePage ? "#faq" : "/#faq", icon: <HelpCircle className="h-5 w-5" /> },
   ];
 
   const handleMenuNavigation = (to: string) => {
