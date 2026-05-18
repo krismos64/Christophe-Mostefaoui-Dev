@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Lottie from "lottie-react";
 import {
   ArrowUpRight,
@@ -29,8 +29,14 @@ const triggerHapticFeedback = () => {
 };
 
 const overlayVariants = {
-  hidden: { opacity: 0, transition: { duration: 0.3, ease: "easeInOut" as const } },
-  visible: { opacity: 1, transition: { duration: 0.4, ease: "easeOut" as const } },
+  hidden: {
+    opacity: 0,
+    transition: { duration: 0.3, ease: "easeInOut" as const },
+  },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.4, ease: "easeOut" as const },
+  },
 };
 
 const itemVariants = {
@@ -96,11 +102,31 @@ export default function Header() {
   }, [isMenuOpen]);
 
   const menuItems: MenuItem[] = [
-    { name: "À propos", to: isHomePage ? "#about" : "/#about", icon: <User className="h-5 w-5" /> },
-    { name: "Services", to: isHomePage ? "#services" : "/#services", icon: <Briefcase className="h-5 w-5" /> },
-    { name: "Portfolio", to: isHomePage ? "#portfolio" : "/#portfolio", icon: <FolderOpen className="h-5 w-5" /> },
-    { name: "Contact", to: isHomePage ? "#contact" : "/#contact", icon: <Mail className="h-5 w-5" /> },
-    { name: "FAQ", to: isHomePage ? "#faq" : "/#faq", icon: <HelpCircle className="h-5 w-5" /> },
+    {
+      name: "À propos",
+      to: isHomePage ? "#about" : "/#about",
+      icon: <User className="h-5 w-5" />,
+    },
+    {
+      name: "Services",
+      to: isHomePage ? "#services" : "/#services",
+      icon: <Briefcase className="h-5 w-5" />,
+    },
+    {
+      name: "Portfolio",
+      to: isHomePage ? "#portfolio" : "/#portfolio",
+      icon: <FolderOpen className="h-5 w-5" />,
+    },
+    {
+      name: "Contact",
+      to: isHomePage ? "#contact" : "/#contact",
+      icon: <Mail className="h-5 w-5" />,
+    },
+    {
+      name: "FAQ",
+      to: isHomePage ? "#faq" : "/#faq",
+      icon: <HelpCircle className="h-5 w-5" />,
+    },
   ];
 
   const handleMenuNavigation = (to: string) => {
@@ -150,11 +176,17 @@ export default function Header() {
                   aria-label="Animation Christophe développeur"
                 />
               </div>
-              <span className={`hero-body text-[15px] sm:text-base lg:text-[17px] font-medium whitespace-nowrap transition-colors ${textColor}`}>
+              <span
+                className={`hero-body text-[15px] sm:text-base lg:text-[17px] font-medium whitespace-nowrap transition-colors ${textColor}`}
+              >
                 Christophe,{" "}
                 <span
                   className="hero-display-inline italic"
-                  style={{ fontFamily: '"Fraunces", "Times New Roman", serif', fontStyle: "italic", fontWeight: 500 }}
+                  style={{
+                    fontFamily: '"Fraunces", "Times New Roman", serif',
+                    fontStyle: "italic",
+                    fontWeight: 500,
+                  }}
                 >
                   développeur web
                 </span>
@@ -195,31 +227,51 @@ export default function Header() {
                 <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
                   krismos.fr
                 </span>
-                <ArrowUpRight className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                <ArrowUpRight
+                  className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
               </a>
 
               {/* Toggle theme */}
               <button
                 onClick={toggleTheme}
                 className={`p-1.5 transition-colors hover:text-[#F4D35E] ${textColor}`}
-                aria-label={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
+                aria-label={
+                  theme === "light"
+                    ? "Activer le mode sombre"
+                    : "Activer le mode clair"
+                }
               >
-                {theme === "light" ? <Moon className="h-[18px] w-[18px]" /> : <Sun className="h-[18px] w-[18px]" />}
+                {theme === "light" ? (
+                  <Moon className="h-[18px] w-[18px]" />
+                ) : (
+                  <Sun className="h-[18px] w-[18px]" />
+                )}
               </button>
 
               {/* CTA Devis */}
               <button
-                onClick={() => handleMenuNavigation(isHomePage ? "#contact" : "/#contact")}
+                onClick={() =>
+                  handleMenuNavigation(isHomePage ? "#contact" : "/#contact")
+                }
                 className="hero-cta-nav group inline-flex items-center gap-1.5"
                 aria-label="Demander un devis"
               >
                 <span
-                  style={{ fontFamily: '"Fraunces", serif', fontStyle: "italic", fontWeight: 500 }}
+                  style={{
+                    fontFamily: '"Fraunces", serif',
+                    fontStyle: "italic",
+                    fontWeight: 500,
+                  }}
                   className="text-[15px]"
                 >
                   Devis
                 </span>
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                <ArrowUpRight
+                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
               </button>
             </div>
 
@@ -228,9 +280,17 @@ export default function Header() {
               <button
                 onClick={toggleTheme}
                 className={`p-1.5 transition-colors hover:text-[#F4D35E] ${textColor}`}
-                aria-label={theme === "light" ? "Activer le mode sombre" : "Activer le mode clair"}
+                aria-label={
+                  theme === "light"
+                    ? "Activer le mode sombre"
+                    : "Activer le mode clair"
+                }
               >
-                {theme === "light" ? <Moon className="h-[18px] w-[18px]" /> : <Sun className="h-[18px] w-[18px]" />}
+                {theme === "light" ? (
+                  <Moon className="h-[18px] w-[18px]" />
+                ) : (
+                  <Sun className="h-[18px] w-[18px]" />
+                )}
               </button>
 
               <motion.button
@@ -240,7 +300,11 @@ export default function Header() {
                 aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
                 aria-expanded={isMenuOpen}
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </motion.button>
             </div>
           </div>
@@ -372,16 +436,21 @@ export default function Header() {
                 >
                   <span className="inline-flex items-center gap-1.5">
                     <span
-                      style={{ fontFamily: '"Fraunces", serif', fontStyle: "italic", fontWeight: 500 }}
+                      style={{
+                        fontFamily: '"Fraunces", serif',
+                        fontStyle: "italic",
+                        fontWeight: 500,
+                      }}
                       className="text-[22px] sm:text-[26px] border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]"
                     >
                       krismos.fr
                     </span>
-                    <ExternalLink className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+                    <ExternalLink
+                      className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
                   </span>
-                  <span
-                    className="hero-handwritten text-[16px] sm:text-[18px] text-[#F4EFE6]/60 group-hover:text-[#F4D35E]/80"
-                  >
+                  <span className="hero-handwritten text-[16px] sm:text-[18px] text-[#F4EFE6]/60 group-hover:text-[#F4D35E]/80">
                     mon laboratoire technique
                   </span>
                 </motion.a>
@@ -419,7 +488,7 @@ export default function Header() {
                   </a>
                 </div>
                 <span className="hero-handwritten text-[14px] text-[#F4EFE6]/40">
-                  C.M. — Pau, MMXXVI
+                  C.M. — Pau, 2026
                 </span>
               </motion.div>
             </div>

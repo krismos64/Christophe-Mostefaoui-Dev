@@ -4,12 +4,15 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Clock,
+  Github,
+  Linkedin,
   Mail,
   MapPin,
   MessageSquare,
   Phone,
   Send,
   User,
+  Youtube,
 } from "lucide-react";
 import { useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
@@ -287,6 +290,83 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                     </li>
                   );
                 })}
+              </ul>
+
+              {/* Trait séparateur + liens sociaux */}
+              <div
+                className="h-px w-12 bg-[#1A1715]/20 dark:bg-[#F4EFE6]/20 my-8"
+                aria-hidden="true"
+              />
+              <p className="hero-handwritten text-[15px] sm:text-[17px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-4">
+                ↳ faisons connaissance ailleurs
+              </p>
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-3">
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/christophemostefaoui/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Profil LinkedIn (nouvel onglet)"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+                  >
+                    <Linkedin
+                      className="h-4 w-4 flex-shrink-0"
+                      aria-hidden="true"
+                      strokeWidth={1.5}
+                    />
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-[#F4D35E]">
+                      LinkedIn
+                    </span>
+                    <ArrowUpRight
+                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/krismos64"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Profil GitHub (nouvel onglet)"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+                  >
+                    <Github
+                      className="h-4 w-4 flex-shrink-0"
+                      aria-hidden="true"
+                      strokeWidth={1.5}
+                    />
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-[#F4D35E]">
+                      GitHub
+                    </span>
+                    <ArrowUpRight
+                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/@christophe-dev-freelance/videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Chaîne YouTube (nouvel onglet)"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+                  >
+                    <Youtube
+                      className="h-4 w-4 flex-shrink-0"
+                      aria-hidden="true"
+                      strokeWidth={1.5}
+                    />
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-[#F4D35E]">
+                      YouTube
+                    </span>
+                    <ArrowUpRight
+                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
               </ul>
             </motion.div>
 
