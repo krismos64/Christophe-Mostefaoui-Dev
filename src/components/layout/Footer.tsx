@@ -91,7 +91,10 @@ export default function Footer() {
           </div>
 
           {/* Bloc Navigation */}
-          <nav className="md:col-span-3 lg:col-span-2" aria-label="Navigation du site">
+          <nav
+            className="md:col-span-3 lg:col-span-2"
+            aria-label="Navigation du site"
+          >
             <p className="hero-body text-[12px] uppercase tracking-[0.18em] text-[#F4EFE6]/45 mb-5">
               Navigation
             </p>
@@ -225,7 +228,7 @@ export default function Footer() {
         {/* Bottom strip : copyright + mentions */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-[13px] text-[#F4EFE6]/55">
           <p className="hero-body">
-            © <span className="font-mono">MMXXVI</span> Christophe Mostefaoui
+            © Christophe Mostefaoui
             <span className="mx-2 text-[#F4EFE6]/30" aria-hidden="true">
               ·
             </span>

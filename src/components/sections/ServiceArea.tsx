@@ -146,7 +146,7 @@ export default function ServiceArea() {
             <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80">
               Je me déplace gratuitement pour un premier rendez-vous dans tout
               le département des Pyrénées-Atlantiques. Partout ailleurs en
-              France, tout se passe en visio — un format que je maîtrise et qui
+              France, tout se passe en visio, un format que je maîtrise et qui
               n'a aucun impact sur la qualité du suivi.
             </p>
           </motion.div>
@@ -231,7 +231,11 @@ export default function ServiceArea() {
                 className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#1A1715]/85 dark:text-[#F4EFE6]/85 hover:text-[#F4D35E] transition-colors"
                 aria-label="Appeler Christophe au 06 79 08 88 45"
               >
-                <Phone className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
+                <Phone
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                  strokeWidth={1.5}
+                />
                 <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E] font-mono tabular-nums">
                   06 79 08 88 45
                 </span>

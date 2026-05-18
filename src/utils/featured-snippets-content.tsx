@@ -41,7 +41,7 @@ export const featuredSnippetsContent = {
     {
       query: "Travaillez-vous à distance ou il faut être à Pau ?",
       answer:
-        "Les deux fonctionnent très bien. Je suis basé à Artix, près de Pau (64), et j'accompagne des clients partout en France à distance grâce à la visio et aux outils collaboratifs.\n\nPour les clients du département 64 (Pau, Lescar, Billère, Jurançon, Bayonne, Biarritz, Oloron, Orthez…), je me déplace gratuitement pour la première rencontre. C'est souvent plus simple pour faire connaissance et bien cerner votre projet.\n\nPour les autres régions, tout se passe en visio — un format que je maîtrise et qui n'a aucun impact sur la qualité du suivi.",
+        "Les deux fonctionnent très bien. Je suis basé à Artix, près de Pau (64), et j'accompagne des clients partout en France à distance grâce à la visio et aux outils collaboratifs.\n\nPour les clients du département 64 (Pau, Lescar, Billère, Jurançon, Bayonne, Biarritz, Oloron, Orthez…), je me déplace gratuitement pour la première rencontre. C'est souvent plus simple pour faire connaissance et bien cerner votre projet.\n\nPour les autres régions, tout se passe en visio, un format que je maîtrise et qui n'a aucun impact sur la qualité du suivi.",
       keywords: [
         "développeur web Pau",
         "freelance distance Pyrénées-Atlantiques",
@@ -63,7 +63,8 @@ export const featuredSnippetsContent = {
       structure: "list",
     },
     {
-      query: "Mon site sera-t-il bien référencé sur Google et les IA comme ChatGPT ?",
+      query:
+        "Mon site sera-t-il bien référencé sur Google et les IA comme ChatGPT ?",
       answer:
         "Oui, c'est un point sur lequel je suis particulièrement vigilant. Aujourd'hui, être visible ne suffit plus sur Google : il faut aussi être recommandé par les assistants IA (ChatGPT, Claude, Perplexity, Gemini).\n\nCe que j'inclus systématiquement :\n\n• Structure technique optimisée pour Google (sitemap, balises, performances)\n• Contenu riche et bien hiérarchisé pour le SEO classique\n• Données structurées JSON-LD (Schema.org) pour aider Google et les IA à comprendre votre activité\n• Fichiers dédiés aux assistants IA (llms.txt, robots.txt adaptés)\n• Optimisation pour la recherche vocale et les featured snippets\n\nMon propre site est un exemple concret : il est référencé sur les principaux moteurs et compatible avec les IA modernes.",
       keywords: [
@@ -140,6 +141,6 @@ export const featuredSnippetsContent = {
 // Fonction pour injecter le contenu dans les composants
 export const getSnippetContent = (query: string) => {
   return featuredSnippetsContent.questions.find((q) =>
-    q.query.toLowerCase().includes(query.toLowerCase())
+    q.query.toLowerCase().includes(query.toLowerCase()),
   );
 };

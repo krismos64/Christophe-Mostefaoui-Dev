@@ -196,9 +196,9 @@ export const generateFinalStructuredData = () => {
     "name": "Présentation Expert — Christophe Mostefaoui, développeur web freelance",
     "description":
       "Présentation détaillée de mon expertise : React, Node.js, TypeScript et solutions sur mesure pour PME et indépendants.",
-    "thumbnailUrl": `${baseUrl}/assets/images/Christophe-freelance.png`,
+    "thumbnailUrl": `${baseUrl}/assets/images/miniature-2.png`,
     "uploadDate": "2024-12-01T10:00:00+01:00",
-    "duration": "PT2M30S",
+    "duration": "PT1M40S",
     "embedUrl": "https://www.youtube.com/embed/tdjXblz4mr4",
     "contentUrl": "https://www.youtube.com/watch?v=tdjXblz4mr4",
     "width": "1920",
