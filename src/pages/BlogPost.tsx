@@ -168,17 +168,39 @@ const BlogPost = () => {
           {/* Image principale */}
           <div className="mb-12">
             <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-              <img
-                src={post.imageUrl}
-                alt={post.imageAlt}
-                className="w-full h-full object-cover"
-                loading="eager"
-                onError={(e) => {
-                  // Fallback vers placeholder si image non trouvée
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling.style.display = 'flex';
-                }}
-              />
+              {(() => {
+                const lastSlash = post.imageUrl.lastIndexOf("/");
+                const dir = post.imageUrl.slice(0, lastSlash);
+                const name = post.imageUrl.slice(lastSlash + 1).replace(/\.[^.]+$/, "");
+                const optDir = `${dir}/optimized`;
+                return (
+                  <picture>
+                    <source
+                      type="image/avif"
+                      srcSet={`${optDir}/${name}-400.avif 400w, ${optDir}/${name}-800.avif 800w`}
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={`${optDir}/${name}-400.webp 400w, ${optDir}/${name}-800.webp 800w`}
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                    <img
+                      src={`${optDir}/${name}-800.webp`}
+                      alt={post.imageAlt}
+                      className="w-full h-full object-cover"
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                      onError={(e) => {
+                        // Fallback vers placeholder si image non trouvée
+                        e.currentTarget.style.display = 'none';
+                        (e.currentTarget.nextElementSibling as HTMLElement | null)?.style.setProperty('display', 'flex');
+                      }}
+                    />
+                  </picture>
+                );
+              })()}
               <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-gray-700 dark:to-gray-600 rounded-xl hidden items-center justify-center">
                 <div className="text-center p-8">
                   <div className="w-20 h-20 bg-blue-600 rounded-xl flex items-center justify-center mb-6 mx-auto">

@@ -14,27 +14,31 @@ export default function Hero() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.08,
-        delayChildren: 0.2,
+        staggerChildren: prefersReducedMotion ? 0 : 0.06,
+        delayChildren: 0,
       },
     },
   };
 
   const lineUp = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 16 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
+      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
   const fadeIn = {
-    hidden: { opacity: 0, y: 12 },
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 8 },
     visible: (delay: number) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+      transition: {
+        duration: prefersReducedMotion ? 0 : 0.5,
+        delay: prefersReducedMotion ? 0 : delay * 0.5,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
     }),
   };
 
@@ -47,16 +51,43 @@ export default function Hero() {
       {/* Image de fond : Christophe codant à Pau au coucher du soleil */}
       <div className="absolute inset-0 z-0">
         <picture>
+          {/* Mobile (≤767px) : portrait 720x1456 — AVIF, WebP, PNG fallback */}
+          <source
+            media="(max-width: 767px)"
+            type="image/avif"
+            srcSet="/assets/images/hero/chris-pau-mobile-480.avif 480w, /assets/images/hero/chris-pau-mobile-768.avif 768w"
+            sizes="100vw"
+          />
+          <source
+            media="(max-width: 767px)"
+            type="image/webp"
+            srcSet="/assets/images/hero/chris-pau-mobile-480.webp 480w, /assets/images/hero/chris-pau-mobile-768.webp 768w"
+            sizes="100vw"
+          />
           <source
             media="(max-width: 767px)"
             srcSet="/assets/images/chris-pau-smartphone.png"
           />
+          {/* Desktop (≥768px) : paysage 1536x1024 — AVIF, WebP, PNG fallback */}
+          <source
+            type="image/avif"
+            srcSet="/assets/images/hero/chris-pau-768.avif 768w, /assets/images/hero/chris-pau-1024.avif 1024w, /assets/images/hero/chris-pau-1536.avif 1536w"
+            sizes="100vw"
+          />
+          <source
+            type="image/webp"
+            srcSet="/assets/images/hero/chris-pau-768.webp 768w, /assets/images/hero/chris-pau-1024.webp 1024w, /assets/images/hero/chris-pau-1536.webp 1536w"
+            sizes="100vw"
+          />
           <img
             src="/assets/images/chris-pau.png"
             alt="Christophe Mostefaoui travaillant sur son ordinateur portable à Pau au coucher du soleil, avec les Pyrénées et le château en arrière-plan"
+            width={1536}
+            height={1024}
             className="h-full w-full object-cover object-[center_top] md:object-[65%_center]"
             loading="eager"
             fetchPriority="high"
+            decoding="async"
           />
         </picture>
         {/* Overlay : sur mobile, dégradé vertical (haut sombre pour le texte) — sur desktop, dégradé horizontal */}

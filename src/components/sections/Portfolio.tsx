@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { Fragment, useRef } from "react";
+import OptimizedPicture from "../common/OptimizedPicture";
 
 interface Project {
   numeral?: string;
@@ -200,9 +201,11 @@ export default function Portfolio() {
                 className="md:col-span-5 lg:col-span-5 group block relative max-w-[280px] mx-auto md:max-w-none md:mx-0"
                 aria-label={`Visiter ${founderProject.title} (nouvel onglet)`}
               >
-                <img
+                <OptimizedPicture
                   src={founderProject.image}
                   alt={founderProject.alt}
+                  widths={[320, 640, 960]}
+                  sizes="(max-width: 768px) 80vw, 35vw"
                   loading="lazy"
                   className="w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   style={{ aspectRatio: "1482 / 1384" }}
@@ -277,9 +280,11 @@ export default function Portfolio() {
                   className="block relative aspect-video overflow-hidden mb-5"
                   aria-label={`Visiter ${p.title} (nouvel onglet)`}
                 >
-                  <img
+                  <OptimizedPicture
                     src={p.image}
                     alt={p.alt}
+                    widths={[400, 800]}
+                    sizes="(max-width: 768px) 100vw, 45vw"
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />

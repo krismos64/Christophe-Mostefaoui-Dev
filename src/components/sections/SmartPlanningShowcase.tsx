@@ -117,13 +117,28 @@ export default function SmartPlanningShowcase() {
               aria-label="Visiter SmartPlanning.fr (nouvel onglet)"
               data-testid="smartplanning_showcase_image"
             >
-              <img
-                src="/assets/images/logosp.png"
-                alt="Logo SmartPlanning, SaaS de gestion de plannings fondé par Christophe Mostefaoui"
-                loading="lazy"
-                className="w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                style={{ aspectRatio: "1482 / 1384" }}
-              />
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet="/assets/images/optimized/logosp-320.avif 320w, /assets/images/optimized/logosp-640.avif 640w, /assets/images/optimized/logosp-960.avif 960w"
+                  sizes="(max-width: 768px) 80vw, 40vw"
+                />
+                <source
+                  type="image/webp"
+                  srcSet="/assets/images/optimized/logosp-320.webp 320w, /assets/images/optimized/logosp-640.webp 640w, /assets/images/optimized/logosp-960.webp 960w"
+                  sizes="(max-width: 768px) 80vw, 40vw"
+                />
+                <img
+                  src="/assets/images/optimized/logosp-640.webp"
+                  alt="Logo SmartPlanning, SaaS de gestion de plannings fondé par Christophe Mostefaoui"
+                  width={1482}
+                  height={1384}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  style={{ aspectRatio: "1482 / 1384" }}
+                />
+              </picture>
               <div
                 className="absolute inset-0 ring-1 ring-[#F4EFE6]/10 group-hover:ring-[#F4D35E]/40 transition-colors duration-300 pointer-events-none"
                 aria-hidden="true"

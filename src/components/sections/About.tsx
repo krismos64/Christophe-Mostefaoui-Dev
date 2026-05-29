@@ -95,12 +95,27 @@ export default function About() {
             className="md:col-span-5 lg:col-span-5"
           >
             <div className="relative">
-              <img
-                src="/assets/images/montagne.png"
-                alt="Christophe Mostefaoui codant face aux Pyrénées au coucher du soleil, avec un refuge en pierre et la vallée en contrebas"
-                className="w-full h-auto aspect-[4/5] object-cover object-[60%_center]"
-                loading="lazy"
-              />
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet="/assets/images/optimized/montagne-480.avif 480w, /assets/images/optimized/montagne-768.avif 768w, /assets/images/optimized/montagne-1200.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                />
+                <source
+                  type="image/webp"
+                  srcSet="/assets/images/optimized/montagne-480.webp 480w, /assets/images/optimized/montagne-768.webp 768w, /assets/images/optimized/montagne-1200.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                />
+                <img
+                  src="/assets/images/optimized/montagne-768.webp"
+                  alt="Christophe Mostefaoui codant face aux Pyrénées au coucher du soleil, avec un refuge en pierre et la vallée en contrebas"
+                  width={1200}
+                  height={1500}
+                  className="w-full h-auto aspect-[4/5] object-cover object-[60%_center]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               {/* Cadre fin */}
               <div
                 className="absolute inset-0 ring-1 ring-[#1A1715]/15 dark:ring-[#F4EFE6]/20 pointer-events-none"

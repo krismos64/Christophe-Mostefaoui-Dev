@@ -53,12 +53,36 @@ export default function VideoEmbed({
           />
         ) : (
           <>
-            <img
-              src={thumbnail}
-              alt={title}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-            />
+            <picture>
+              {(() => {
+                // Dérive le chemin "/optimized/" depuis le thumbnail original
+                const lastSlash = thumbnail.lastIndexOf("/");
+                const dir = thumbnail.slice(0, lastSlash);
+                const name = thumbnail.slice(lastSlash + 1).replace(/\.[^.]+$/, "");
+                const optDir = `${dir}/optimized`;
+                return (
+                  <>
+                    <source
+                      type="image/avif"
+                      srcSet={`${optDir}/${name}-400.avif 400w, ${optDir}/${name}-800.avif 800w`}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={`${optDir}/${name}-400.webp 400w, ${optDir}/${name}-800.webp 800w`}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </>
+                );
+              })()}
+              <img
+                src={thumbnail}
+                alt={title}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              />
+            </picture>
             {/* Overlay sobre, sans gradient bleu/violet */}
             <div
               className="absolute inset-0 bg-[#0B0805]/30 group-hover:bg-[#0B0805]/45 transition-colors duration-300 pointer-events-none"

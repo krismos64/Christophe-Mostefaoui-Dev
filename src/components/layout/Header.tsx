@@ -165,13 +165,14 @@ export default function Header() {
                 }
               }}
             >
-              <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-[#F4D35E]/30">
+              <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-[#F4D35E]/30 bg-[#0B0805]">
                 <video
                   src="/assets/videos/animation-chris-dev.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="none"
                   className="w-full h-full object-cover"
                   aria-label="Animation Christophe développeur"
                 />

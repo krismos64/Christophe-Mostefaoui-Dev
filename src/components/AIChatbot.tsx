@@ -567,11 +567,25 @@ RÈGLES DE COMMUNICATION :
           <div className="relative flex items-center justify-between gap-3 px-4 py-3.5 border-b border-[#1A1715]/15 dark:border-[#F4EFE6]/15 bg-[#0B0805] text-[#F4EFE6]">
             <div className="flex items-center gap-3 min-w-0 flex-1">
               <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-[#F4D35E]/40">
-                <img
-                  src="/assets/images/Chris-profil.jpg"
-                  alt="Christophe Mostefaoui"
-                  className="w-full h-full object-cover"
-                />
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet="/assets/images/optimized/Chris-profil-256.avif"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet="/assets/images/optimized/Chris-profil-256.webp"
+                  />
+                  <img
+                    src="/assets/images/optimized/Chris-profil-256.webp"
+                    alt="Christophe Mostefaoui"
+                    width={256}
+                    height={256}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
               </div>
               <div className="min-w-0 flex-1">
                 <p

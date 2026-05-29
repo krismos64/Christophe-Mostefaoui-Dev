@@ -83,28 +83,82 @@
 
     <title>Christophe Mostefaoui - Développeur Web Freelance Expert à Pau | React.js, Node.js, TypeScript</title>
 
-    <!-- Google Tag Manager -->
+    <!-- Google Tag Manager - chargé après l'interactivité pour ne pas bloquer le LCP -->
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KLGC32HC");
+      window.dataLayer = window.dataLayer || [];
+      (function () {
+        var loaded = false;
+        function loadGTM() {
+          if (loaded) return;
+          loaded = true;
+          window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = document.getElementsByTagName("script")[0];
+          var j = document.createElement("script");
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=GTM-KLGC32HC";
+          f.parentNode.insertBefore(j, f);
+        }
+        // Charge GTM après la 1ère interaction OU après 3s (selon ce qui arrive en premier)
+        var events = ["scroll", "mousemove", "touchstart", "keydown", "click"];
+        function onInteract() {
+          events.forEach(function (e) {
+            window.removeEventListener(e, onInteract, { passive: true });
+          });
+          loadGTM();
+        }
+        events.forEach(function (e) {
+          window.addEventListener(e, onInteract, { passive: true });
+        });
+        if (document.readyState === "complete") {
+          setTimeout(loadGTM, 3000);
+        } else {
+          window.addEventListener("load", function () {
+            setTimeout(loadGTM, 3000);
+          });
+        }
+      })();
     </script>
     <!-- End Google Tag Manager -->
 
-    <!-- Fonts: Fraunces (display italic) + Caveat (manuscrit) -->
+    <!-- Préchargement image LCP hero (responsive : mobile portrait vs desktop landscape) -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/hero/chris-pau-mobile-768.avif"
+      type="image/avif"
+      media="(max-width: 767px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/hero/chris-pau-1024.avif"
+      type="image/avif"
+      media="(min-width: 768px)"
+      fetchpriority="high"
+    />
+
+    <!-- Fonts: Fraunces (display italic) + Caveat (manuscrit) + Inter Tight (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Préchargement non-bloquant pour LCP -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Caveat:wght@500;600&family=Inter+Tight:wght@400;500;600&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&family=Caveat:wght@500&family=Inter+Tight:wght@400;500;600&display=swap"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&family=Caveat:wght@500&family=Inter+Tight:wght@400;500;600&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&family=Caveat:wght@500&family=Inter+Tight:wght@400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <script type="module" src="/src/main.tsx" defer></script>
   </head>
