@@ -1,14 +1,18 @@
+import emailjs from "@emailjs/browser";
 import Lottie from "lottie-react";
 import {
   ArrowUpRight,
   ExternalLink,
   Github,
   Linkedin,
+  Mail,
   Send,
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import chatbotAnimation from "../animations/chatbot.json";
+import { emailjsConfig } from "../config/emailjs";
 
 interface Message {
   id: string;
@@ -97,6 +101,14 @@ const AIChatbot = () => {
   const [showRobotBubble, setShowRobotBubble] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [followUps, setFollowUps] = useState<string[]>([]);
+  const [suggestLead, setSuggestLead] = useState(false);
+  const [showLeadForm, setShowLeadForm] = useState(false);
+  const [leadName, setLeadName] = useState("");
+  const [leadEmail, setLeadEmail] = useState("");
+  const [leadSending, setLeadSending] = useState(false);
+  const [leadSent, setLeadSent] = useState(false);
+  const [hasBadge, setHasBadge] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasShownBubble = useRef(false);
 
@@ -113,6 +125,82 @@ const AIChatbot = () => {
     "Pouvez-vous refondre mon site existant ?",
     "Comment vous contacter directement ?",
   ];
+
+  // Relances contextuelles proposées après chaque réponse (règles par mots-clés)
+  const FOLLOWUP_RULES: { pattern: RegExp; questions: string[] }[] = [
+    {
+      pattern: /devis|tarif|prix|budget|coût/i,
+      questions: [
+        "Comment se passe un devis ?",
+        "Peut-on payer en plusieurs fois ?",
+      ],
+    },
+    {
+      pattern: /délai|semaine|planning|livraison/i,
+      questions: [
+        "Comment se déroule un projet de A à Z ?",
+        "Sous quel délai peut-on démarrer ?",
+      ],
+    },
+    {
+      pattern: /vitrine/i,
+      questions: [
+        "Que comprend un site vitrine ?",
+        "Faut-il fournir les textes et les photos ?",
+      ],
+    },
+    {
+      pattern: /refonte|existant/i,
+      questions: [
+        "Peut-on garder une partie de mon site actuel ?",
+        "Combien de temps dure une refonte ?",
+      ],
+    },
+    {
+      pattern: /chatbot|intelligence artificielle|\bia\b/i,
+      questions: [
+        "Un chatbot est-il utile pour mon activité ?",
+        "Le chatbot répond-il vraiment 24h/24 ?",
+      ],
+    },
+    {
+      pattern: /seo|référencement|google/i,
+      questions: [
+        "Comment être visible sur Google localement ?",
+        "C'est quoi le référencement pour les IA ?",
+      ],
+    },
+    {
+      pattern: /vidéo|drone/i,
+      questions: [
+        "Quels types de vidéos réalisez-vous ?",
+        "Le drone est-il autorisé partout ?",
+      ],
+    },
+    {
+      pattern: /smartplanning|saas|application/i,
+      questions: [
+        "Pouvez-vous créer un outil métier sur mesure ?",
+        "Qu'est-ce que SmartPlanning ?",
+      ],
+    },
+  ];
+  const GENERIC_FOLLOWUPS = [
+    "Quels sont vos délais ?",
+    "Comment se passe un devis ?",
+    "Travaillez-vous à distance ?",
+  ];
+
+  // Mots-clés déclenchant la proposition de transmettre la demande
+  const LEAD_INTENT =
+    /devis|prix|tarif|coût|projet|refonte|site|application|chatbot|vidéo|drone|besoin|créer|rdv|rendez-vous/i;
+
+  // Événements analytics (dataLayer GTM — inertes tant qu'aucun tag n'est configuré)
+  const track = (event: string) => {
+    (
+      window as unknown as { dataLayer?: Record<string, unknown>[] }
+    ).dataLayer?.push({ event });
+  };
 
   // Base de données médias enrichis
   const MEDIA_DATABASE: Record<string, MediaAttachment[]> = {
@@ -189,16 +277,69 @@ const AIChatbot = () => {
   // par son message d'erreur générique, c'est attendu.
   const CHAT_PROXY_URL = "/api/chat.php";
 
-  // Bulle de salut : apparition unique après 30 secondes
+  // Restauration de session : la conversation survit à la navigation
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem("chatbot_state_v1");
+      if (saved) {
+        const parsed = JSON.parse(saved) as {
+          messages?: (Omit<Message, "timestamp"> & { timestamp: string })[];
+          leadSent?: boolean;
+        };
+        if (Array.isArray(parsed.messages) && parsed.messages.length > 0) {
+          setMessages(
+            parsed.messages.map((m) => ({
+              ...m,
+              timestamp: new Date(m.timestamp),
+            }))
+          );
+          setShowSuggestions(false);
+        }
+        if (parsed.leadSent) setLeadSent(true);
+      }
+    } catch {
+      /* stockage indisponible : mode volatile */
+    }
+  }, []);
+
+  useEffect(() => {
+    if (messages.length === 0) return;
+    try {
+      sessionStorage.setItem(
+        "chatbot_state_v1",
+        JSON.stringify({
+          messages: messages
+            .slice(-40)
+            .map((m) => ({ ...m, isStreaming: false })),
+          leadSent,
+        })
+      );
+    } catch {
+      /* quota plein ou navigation privée : tant pis */
+    }
+  }, [messages, leadSent]);
+
+  // Fermeture au clavier (Échap)
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
+  // Bulle de salut : apparition unique après 12 secondes (+ badge sur le bouton)
   useEffect(() => {
     if (hasShownBubble.current) return;
     const timer = setTimeout(() => {
       if (!isOpen && !hasShownBubble.current) {
         setShowRobotBubble(true);
+        setHasBadge(true);
         hasShownBubble.current = true;
         setTimeout(() => setShowRobotBubble(false), 6000);
       }
-    }, 30000);
+    }, 12000);
     return () => clearTimeout(timer);
   }, [isOpen]);
 
@@ -209,6 +350,8 @@ const AIChatbot = () => {
   const handleOpen = () => {
     setIsOpen(true);
     setShowRobotBubble(false);
+    setHasBadge(false);
+    track("chatbot_open");
 
     if (messages.length === 0) {
       const welcomeMessage: Message = {
@@ -235,6 +378,119 @@ const AIChatbot = () => {
     allMessages
       .slice(-MAX_CONTEXT_MESSAGES)
       .map((m) => ({ role: m.role, content: m.content }));
+
+  // Relances contextuelles : règles mots-clés, sans re-proposer une question déjà posée
+  const computeFollowUps = (conversationText: string): string[] => {
+    const asked = new Set(
+      messages
+        .filter((m) => m.role === "user")
+        .map((m) => normalizeQuestion(m.content))
+    );
+    const picks: string[] = [];
+    for (const rule of FOLLOWUP_RULES) {
+      if (picks.length >= 3) break;
+      if (rule.pattern.test(conversationText)) {
+        for (const q of rule.questions) {
+          if (
+            picks.length < 3 &&
+            !asked.has(normalizeQuestion(q)) &&
+            !picks.includes(q)
+          ) {
+            picks.push(q);
+          }
+        }
+      }
+    }
+    for (const q of GENERIC_FOLLOWUPS) {
+      if (picks.length >= 2) break;
+      if (!asked.has(normalizeQuestion(q)) && !picks.includes(q)) picks.push(q);
+    }
+    return picks.slice(0, 3);
+  };
+
+  // Rendu léger des réponses : **gras** et listes à tirets (aucun HTML injecté)
+  const renderAssistantText = (text: string) => {
+    const renderInline = (line: string, keyPrefix: string) =>
+      line.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+        part.startsWith("**") && part.endsWith("**") ? (
+          <strong key={`${keyPrefix}-${i}`} className="font-semibold">
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          part
+        )
+      );
+    return text.split("\n").map((line, i) => {
+      if (/^\s*-\s+/.test(line)) {
+        return (
+          <span key={i} className="block pl-3">
+            <span aria-hidden="true">•&nbsp;</span>
+            {renderInline(line.replace(/^\s*-\s+/, ""), String(i))}
+          </span>
+        );
+      }
+      return (
+        <span key={i}>
+          {renderInline(line, String(i))}
+          {"\n"}
+        </span>
+      );
+    });
+  };
+
+  // Envoi du lead à Christophe via EmailJS (même template que le formulaire de contact)
+  const submitLead = async () => {
+    const email = leadEmail.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || leadSending) return;
+    setLeadSending(true);
+    try {
+      const transcript = messages
+        .slice(-20)
+        .map(
+          (m) => `${m.role === "user" ? "Visiteur" : "Assistant"} : ${m.content}`
+        )
+        .join("\n\n");
+      await emailjs.send(
+        emailjsConfig.serviceId,
+        emailjsConfig.templateId,
+        {
+          to_name: "Christophe Mostefaoui",
+          from_name: leadName.trim() || "Visiteur du chatbot",
+          email,
+          subject: `Lead chatbot — ${leadName.trim() || email}`,
+          message: `Demande transmise depuis le chatbot du site.\n\nContact : ${email}\n\n--- Conversation ---\n\n${transcript}`,
+        },
+        emailjsConfig.userId
+      );
+      setLeadSent(true);
+      setShowLeadForm(false);
+      setSuggestLead(false);
+      track("chatbot_lead_sent");
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          role: "assistant" as const,
+          content:
+            "C'est transmis ! Christophe reçoit votre conversation et vous répond personnellement sous 24h (jours ouvrés). Merci pour votre confiance.",
+          timestamp: new Date(),
+        },
+      ]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          role: "assistant" as const,
+          content:
+            "L'envoi n'a pas fonctionné. Vous pouvez écrire directement à christophe.mostefaoui.dev@gmail.com ou appeler le 06 79 08 88 45.",
+          timestamp: new Date(),
+        },
+      ]);
+    } finally {
+      setLeadSending(false);
+    }
+  };
 
   const enrichResponseWithMedia = (response: string): MediaAttachment[] => {
     const mediaAttachments: MediaAttachment[] = [];
@@ -306,6 +562,9 @@ const AIChatbot = () => {
       setMessages((prev) => [...prev, userMessage, assistantMessage]);
       setInput("");
       setShowSuggestions(false);
+      track("chatbot_question");
+      if (LEAD_INTENT.test(questionText)) setSuggestLead(true);
+      setFollowUps(computeFollowUps(questionText + " " + cachedResponse));
       return;
     }
 
@@ -321,6 +580,9 @@ const AIChatbot = () => {
     setIsLoading(true);
     setIsStreaming(true);
     setShowSuggestions(false);
+    setFollowUps([]);
+    track("chatbot_question");
+    if (LEAD_INTENT.test(questionText)) setSuggestLead(true);
 
     try {
       const limitedContext = getLimitedContext(messages);
@@ -404,6 +666,8 @@ const AIChatbot = () => {
             responseCache.current.delete(firstKey);
           }
         }
+
+        setFollowUps(computeFollowUps(questionText + " " + fullResponse));
       }
     } catch (error) {
       console.error("Erreur:", error);
@@ -472,6 +736,12 @@ const AIChatbot = () => {
                 loop={true}
                 className="w-16 h-16 sm:w-[72px] sm:h-[72px]"
               />
+              {hasBadge && (
+                <span
+                  className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-[#F4D35E] ring-2 ring-[#0B0805] animate-pulse"
+                  aria-hidden="true"
+                />
+              )}
             </div>
           </button>
         </div>
@@ -480,6 +750,8 @@ const AIChatbot = () => {
       {/* Fenêtre de chat — design éditorial */}
       {isOpen && (
         <div
+          role="dialog"
+          aria-label="Assistant IA de Christophe"
           className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[600px] max-h-[calc(100vh-3rem)] z-50 flex flex-col bg-[#F4EFE6] dark:bg-[#13110F] border border-[#1A1715]/15 dark:border-[#F4EFE6]/15 shadow-2xl overflow-hidden"
         >
           {/* Header sobre */}
@@ -535,7 +807,10 @@ const AIChatbot = () => {
           </div>
 
           {/* Zone messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-5 space-y-5">
+          <div
+            className="flex-1 overflow-y-auto px-4 py-5 space-y-5"
+            aria-live="polite"
+          >
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -558,7 +833,9 @@ const AIChatbot = () => {
                         : "text-[#1A1715] dark:text-[#F4EFE6]"
                     }`}
                   >
-                    {message.content}
+                    {message.role === "assistant"
+                      ? renderAssistantText(message.content)
+                      : message.content}
                     {message.isStreaming && message.role === "assistant" && (
                       <span className="inline-block w-2 h-4 ml-0.5 bg-[#F4D35E] align-middle animate-pulse" />
                     )}
@@ -643,6 +920,114 @@ const AIChatbot = () => {
               </div>
             )}
 
+            {/* Formulaire de transmission à Christophe (lead) */}
+            {showLeadForm && !leadSent && (
+              <div
+                className="border-l-2 border-[#F4D35E] pl-3 py-2.5 space-y-3 max-w-[92%]"
+                style={{ animation: "fade-in 0.4s ease-out" }}
+              >
+                <p className="hero-body text-[13px] leading-snug text-[#1A1715]/85 dark:text-[#F4EFE6]/85">
+                  Christophe reçoit votre conversation et vous répond
+                  personnellement <strong>sous 24h</strong> (jours ouvrés).
+                </p>
+                <input
+                  type="text"
+                  value={leadName}
+                  onChange={(e) => setLeadName(e.target.value)}
+                  placeholder="Votre nom (facultatif)"
+                  autoComplete="name"
+                  className="hero-body w-full bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[14px] py-1.5 focus:outline-none focus:border-[#F4D35E] transition-colors"
+                  aria-label="Votre nom"
+                />
+                <input
+                  type="email"
+                  value={leadEmail}
+                  onChange={(e) => setLeadEmail(e.target.value)}
+                  placeholder="Votre email *"
+                  autoComplete="email"
+                  required
+                  className="hero-body w-full bg-transparent border-b border-[#1A1715]/25 dark:border-[#F4EFE6]/25 text-[#1A1715] dark:text-[#F4EFE6] placeholder:text-[#1A1715]/40 dark:placeholder:text-[#F4EFE6]/40 text-[14px] py-1.5 focus:outline-none focus:border-[#F4D35E] transition-colors"
+                  aria-label="Votre email"
+                />
+                <div className="flex items-center gap-4 pt-1">
+                  <button
+                    type="button"
+                    onClick={submitLead}
+                    disabled={
+                      leadSending ||
+                      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail.trim())
+                    }
+                    className="hero-body inline-flex items-center gap-1.5 text-[13px] font-medium text-[#1A1715] dark:text-[#F4EFE6] border-b border-[#F4D35E] pb-0.5 hover:text-[#F4D35E] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  >
+                    <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                    {leadSending ? "Envoi en cours…" : "Envoyer à Christophe"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowLeadForm(false)}
+                    className="hero-body text-[12px] text-[#1A1715]/50 dark:text-[#F4EFE6]/50 hover:text-[#F4D35E] transition-colors"
+                  >
+                    annuler
+                  </button>
+                </div>
+                <p className="hero-body text-[10px] leading-snug text-[#1A1715]/45 dark:text-[#F4EFE6]/45">
+                  Votre email et cette conversation sont transmis à Christophe
+                  uniquement pour vous recontacter.
+                </p>
+              </div>
+            )}
+
+            {/* Relances contextuelles + proposition de transmission */}
+            {!isLoading &&
+              !isStreaming &&
+              !showLeadForm &&
+              messages.length > 1 && (
+                <div
+                  className="pt-1 space-y-2"
+                  style={{ animation: "fade-in 0.5s ease-out" }}
+                >
+                  {suggestLead && !leadSent && (
+                    <button
+                      type="button"
+                      onClick={() => setShowLeadForm(true)}
+                      className="group w-full text-left flex items-center gap-2 py-2 px-3 border border-[#F4D35E]/50 hover:border-[#F4D35E] bg-[#F4D35E]/10 transition-colors"
+                    >
+                      <Mail
+                        className="h-4 w-4 flex-shrink-0 text-[#F4D35E]"
+                        aria-hidden="true"
+                        strokeWidth={1.5}
+                      />
+                      <span className="hero-body text-[13px] leading-snug text-[#1A1715] dark:text-[#F4EFE6]">
+                        Transmettre ma demande à Christophe —{" "}
+                        <strong>devis gratuit sous 24h</strong>
+                      </span>
+                    </button>
+                  )}
+                  {followUps.length > 0 && (
+                    <ul className="space-y-1.5">
+                      {followUps.map((q) => (
+                        <li key={q}>
+                          <button
+                            type="button"
+                            onClick={() => handleSuggestionClick(q)}
+                            className="group w-full text-left flex items-start gap-2 py-1 hover:text-[#F4D35E] transition-colors"
+                          >
+                            <ArrowUpRight
+                              className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-[#1A1715]/40 dark:text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors"
+                              aria-hidden="true"
+                              strokeWidth={1.5}
+                            />
+                            <span className="hero-body text-[13px] leading-snug text-[#1A1715]/75 dark:text-[#F4EFE6]/75 group-hover:text-[#F4D35E] border-b border-transparent group-hover:border-[#F4D35E]/40 pb-0.5">
+                              {q}
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+
             <div ref={messagesEndRef} />
           </div>
 
@@ -675,6 +1060,31 @@ const AIChatbot = () => {
                   strokeWidth={1.5}
                 />
               </button>
+            </div>
+
+            {/* Transmission + transparence IA (RGPD) */}
+            <div className="mt-2.5 flex items-center justify-between gap-3">
+              {!leadSent && messages.length > 1 && !showLeadForm ? (
+                <button
+                  type="button"
+                  onClick={() => setShowLeadForm(true)}
+                  className="hero-body inline-flex items-center gap-1.5 text-[11px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60 hover:text-[#F4D35E] transition-colors"
+                >
+                  <Mail className="h-3 w-3" aria-hidden="true" />
+                  <span className="border-b border-current/30 pb-px">
+                    Transmettre ma demande
+                  </span>
+                </button>
+              ) : (
+                <span aria-hidden="true" />
+              )}
+              <Link
+                to="/politique-de-confidentialite"
+                onClick={handleClose}
+                className="hero-body text-[10px] text-[#1A1715]/45 dark:text-[#F4EFE6]/45 hover:text-[#F4D35E] transition-colors text-right"
+              >
+                Assistant IA · messages traités par Mistral AI (France)
+              </Link>
             </div>
           </div>
         </div>

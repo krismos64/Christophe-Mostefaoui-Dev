@@ -89,25 +89,62 @@ export default function PrivacyPolicy() {
     },
     {
       numeral: "V",
-      title: "Cookies",
+      title: "Assistant conversationnel (chatbot IA)",
       body: (
         <>
           <p>
-            Ce site utilise uniquement des cookies techniques essentiels au bon
-            fonctionnement du site (préférence de thème, état de session).
-          </p>
-          <p className="mt-3">
+            Le site propose un assistant conversationnel reposant sur une
+            intelligence artificielle. Les messages que vous lui envoyez sont
+            transmis, via le serveur du site, à{" "}
             <strong className="font-medium text-[#1A1715] dark:text-[#F4EFE6]">
-              Aucun cookie publicitaire ou de tracking marketing n'est utilisé.
+              Mistral AI
             </strong>{" "}
-            Google Tag Manager est présent à des fins de mesure d'audience
-            anonyme uniquement.
+            (société française, données traitées dans l'Union européenne),
+            uniquement pour générer les réponses.
           </p>
+          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-[#F4D35E]">
+            <li>
+              Aucun compte n'est requis et l'assistant ne dépose aucun cookie ;
+              la conversation n'est conservée que dans votre navigateur, le
+              temps de votre visite
+            </li>
+            <li>
+              Si vous choisissez de « transmettre votre demande », votre email
+              et la conversation me sont envoyés (service EmailJS) dans le seul
+              but de vous recontacter — mêmes durées de conservation que le
+              formulaire de contact
+            </li>
+            <li>
+              Les réponses sont générées automatiquement et peuvent comporter
+              des imprécisions ; ne communiquez pas de données sensibles à
+              l'assistant
+            </li>
+          </ul>
         </>
       ),
     },
     {
       numeral: "VI",
+      title: "Cookies",
+      body: (
+        <>
+          <p>
+            Ce site ne dépose aucun cookie publicitaire, de tracking ou de
+            mesure d'audience. Seuls des stockages techniques essentiels sont
+            utilisés dans votre navigateur (préférence de thème, conversation
+            de l'assistant pendant la session).
+          </p>
+          <p className="mt-3">
+            <strong className="font-medium text-[#1A1715] dark:text-[#F4EFE6]">
+              C'est pourquoi ce site n'affiche pas de bannière de consentement :
+              il n'y a rien à consentir.
+            </strong>
+          </p>
+        </>
+      ),
+    },
+    {
+      numeral: "VII",
       title: "Contact",
       body: (
         <>
