@@ -133,6 +133,10 @@ export default function LegalNotice() {
           name="description"
           content="Mentions légales du site christophe-dev-freelance.fr. Identité de l'éditeur, hébergeur, propriété intellectuelle, responsabilité, juridiction française."
         />
+        <link
+          rel="canonical"
+          href="https://christophe-dev-freelance.fr/mentions-legales"
+        />
       </Helmet>
 
       <main

@@ -151,6 +151,10 @@ export default function PrivacyPolicy() {
           name="description"
           content="Politique de confidentialité du site christophe-dev-freelance.fr. Collecte, utilisation et conservation des données personnelles conformément au RGPD."
         />
+        <link
+          rel="canonical"
+          href="https://christophe-dev-freelance.fr/politique-de-confidentialite"
+        />
       </Helmet>
 
       <main

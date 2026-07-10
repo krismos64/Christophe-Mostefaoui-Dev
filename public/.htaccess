@@ -72,6 +72,17 @@
     </FilesMatch>
 </IfModule>
 
+# Pages pré-rendues : servir le .html statique si présent
+# (ex: /blog -> blog.html, /blog/slug -> blog/slug.html)
+# Fichiers .html plutôt que dossiers/index.html : évite la 301
+# « trailing slash » d'Apache (mod_dir) sur les URLs du sitemap
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} !^/api/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
 # Fallback pour React Router (SPA)
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_FILENAME} !-f

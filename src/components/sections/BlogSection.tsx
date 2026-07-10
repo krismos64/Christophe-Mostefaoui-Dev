@@ -60,12 +60,12 @@ const BlogSection = () => {
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             Mon Blog Tech
             <span className="block text-2xl md:text-3xl text-blue-600 dark:text-blue-400 font-normal mt-2">
               Veille technologique & IA accessible pour PME
             </span>
-          </h2>
+          </h1>
 
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Je partage ici mes découvertes, mes expériences terrain et mes analyses sur les technologies

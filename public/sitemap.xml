@@ -48,10 +48,7 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <url>
-    <loc>https://christophe-dev-freelance.fr/politique-de-confidentialite</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+  <!-- /politique-de-confidentialite volontairement absente : page en noindex
+       (cohérence sitemap/robots) ; elle reste pré-rendue via EXTRA_ROUTES
+       dans scripts/prerender.mjs -->
 </urlset>

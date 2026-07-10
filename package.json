@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npm run prerender",
+    "build:spa": "tsc && vite build",
+    "prerender": "node scripts/prerender.mjs",
     "preview": "vite preview",
     "predeploy": "npm run build"
   },
@@ -28,6 +30,7 @@
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.1.1",
     "postcss": "^8.4.49",
+    "puppeteer-core": "^25.3.0",
     "tailwindcss": "^3.4.15",
     "terser": "^5.44.0",
     "typescript": "^5.5.3",
