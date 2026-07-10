@@ -203,7 +203,6 @@ export default function Footer() {
                 <a
                   href="mailto:christophe.mostefaoui.dev@gmail.com"
                   className="hero-body group inline-flex items-baseline gap-1.5 text-[14px] text-[#F4EFE6]/85 hover:text-[#F4D35E] transition-colors break-all"
-                  aria-label="Envoyer un email à Christophe Mostefaoui"
                 >
                   <span className="border-b border-current/30 pb-0.5 group-hover:border-[#F4D35E]">
                     christophe.mostefaoui.dev@gmail.com

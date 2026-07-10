@@ -191,7 +191,6 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             className="hero-body group mt-5 inline-flex items-center gap-2 text-[15px] text-[#F4EFE6]/80 transition-colors hover:text-[#F4D35E]"
-            aria-label="Fondateur de SmartPlanning — visiter SmartPlanning.fr (nouvel onglet)"
             data-testid="hero_smartplanning_badge"
           >
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#F4D35E]" />
@@ -231,7 +230,6 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#F4EFE6]/90 transition-colors hover:text-[#F4D35E]"
-              aria-label="krismos.fr, mon laboratoire technique — portfolio (nouvel onglet)"
               data-testid="hero_cta_portfolio"
             >
               <span className="border-b border-[#F4EFE6]/40 pb-0.5 transition-colors group-hover:border-[#F4D35E]">
