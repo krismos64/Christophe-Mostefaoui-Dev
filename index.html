@@ -237,42 +237,9 @@
 
     <title>Christophe Mostefaoui - Développeur Web Freelance Expert à Pau | React.js, Node.js, TypeScript</title>
 
-    <!-- Google Tag Manager - chargé après l'interactivité pour ne pas bloquer le LCP -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      (function () {
-        var loaded = false;
-        function loadGTM() {
-          if (loaded) return;
-          loaded = true;
-          window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-          var f = document.getElementsByTagName("script")[0];
-          var j = document.createElement("script");
-          j.async = true;
-          j.src = "https://www.googletagmanager.com/gtm.js?id=GTM-KLGC32HC";
-          f.parentNode.insertBefore(j, f);
-        }
-        // Charge GTM après la 1ère interaction OU après 3s (selon ce qui arrive en premier)
-        var events = ["scroll", "mousemove", "touchstart", "keydown", "click"];
-        function onInteract() {
-          events.forEach(function (e) {
-            window.removeEventListener(e, onInteract, { passive: true });
-          });
-          loadGTM();
-        }
-        events.forEach(function (e) {
-          window.addEventListener(e, onInteract, { passive: true });
-        });
-        if (document.readyState === "complete") {
-          setTimeout(loadGTM, 3000);
-        } else {
-          window.addEventListener("load", function () {
-            setTimeout(loadGTM, 3000);
-          });
-        }
-      })();
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- Analytics : volontairement AUCUN script tiers ni cookie (décision 10/07/2026).
+         Mesure du trafic de recherche : Google Search Console.
+         Le chatbot pousse des événements dans window.dataLayer (no-op sans GTM). -->
 
     <!-- Préchargement image LCP hero (responsive : mobile portrait vs desktop landscape) -->
     <link
@@ -292,42 +259,27 @@
       fetchpriority="high"
     />
 
-    <!-- Fonts: Fraunces (display italic) + Caveat (manuscrit) + Inter Tight (body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Préchargement non-bloquant pour LCP -->
+    <!-- Fonts auto-hébergées (RGPD : aucune requête vers Google Fonts).
+         @font-face dans src/index.css, fichiers dans /fonts/.
+         Préchargement des 2 polices critiques du hero : -->
     <link
       rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&family=Caveat:wght@500&family=Inter+Tight:wght@400;500;600&display=swap"
+      as="font"
+      type="font/woff2"
+      href="/fonts/fraunces-latin-opsz-italic.woff2"
+      crossorigin
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&family=Caveat:wght@500&family=Inter+Tight:wght@400;500;600&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/inter-tight-latin-wght-normal.woff2"
+      crossorigin
     />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&family=Caveat:wght@500&family=Inter+Tight:wght@400;500;600&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
 
     <script type="module" src="/src/main.tsx" defer></script>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KLGC32HC"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <div id="root"></div>
   </body>
 </html>

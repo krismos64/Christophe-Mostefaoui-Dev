@@ -28,9 +28,6 @@ export default function LLMOptimizedHead() {
       <meta name="geo.placename" content="Pau" />
       <meta name="geo.position" content="43.2951;-0.3707" />
       <meta name="ICBM" content="43.2951, -0.3707" />
-
-      {/* Préconnexions performances : preconnect fonts déjà dans index.html (évite les doublons) */}
-      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     </Helmet>
   );
 }

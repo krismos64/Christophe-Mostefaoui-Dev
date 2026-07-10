@@ -45,7 +45,7 @@ export default function VideoEmbed({
       <div className="relative w-full aspect-video overflow-hidden group bg-[#0B0805]">
         {isPlaying ? (
           <iframe
-            src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
             title={title}
             className="absolute inset-0 w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
