@@ -23,6 +23,7 @@ const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const LocalLanding = lazy(() => import("./pages/LocalLanding"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const Home = () => {
@@ -81,6 +82,23 @@ function App() {
                     <Route
                       path="/politique-de-confidentialite"
                       element={<PrivacyPolicy />}
+                    />
+                    {/* Pages locales SEO (contenu : src/data/localPages.ts) */}
+                    <Route
+                      path="/creation-site-internet-pau"
+                      element={<LocalLanding />}
+                    />
+                    <Route
+                      path="/creation-site-internet-bayonne"
+                      element={<LocalLanding />}
+                    />
+                    <Route
+                      path="/creation-site-internet-biarritz"
+                      element={<LocalLanding />}
+                    />
+                    <Route
+                      path="/creation-site-internet-orthez-bearn"
+                      element={<LocalLanding />}
                     />
                     <Route path="*" element={<NotFound />} />
                   </Routes>

@@ -219,6 +219,34 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Pages locales — maillage SEO */}
+        <p className="hero-body text-[13px] text-[#F4EFE6]/50 mt-12 sm:mt-14">
+          Création de site internet :{" "}
+          {[
+            { label: "Pau", to: "/creation-site-internet-pau" },
+            { label: "Bayonne", to: "/creation-site-internet-bayonne" },
+            { label: "Biarritz", to: "/creation-site-internet-biarritz" },
+            {
+              label: "Orthez & Béarn",
+              to: "/creation-site-internet-orthez-bearn",
+            },
+          ].map((z, i, arr) => (
+            <span key={z.to}>
+              <Link
+                to={z.to}
+                className="hover:text-[#F4D35E] transition-colors border-b border-[#F4EFE6]/20 hover:border-[#F4D35E] pb-px"
+              >
+                {z.label}
+              </Link>
+              {i < arr.length - 1 && (
+                <span className="mx-2 text-[#F4EFE6]/30" aria-hidden="true">
+                  ·
+                </span>
+              )}
+            </span>
+          ))}
+        </p>
+
         {/* Trait pleine largeur */}
         <div
           className="h-px w-full bg-[#F4EFE6]/15 my-10 sm:my-12"
