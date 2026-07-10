@@ -480,6 +480,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                     value={formData.projectType}
                     onChange={handleChange}
                     required
+                    aria-label="Type de projet"
                   >
                     <option value="">Type de projet…</option>
                     <option value="Site Vitrine Moderne">
@@ -517,7 +518,6 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       type="submit"
                       disabled={isSubmitting}
                       className="hero-cta-primary group disabled:opacity-60 disabled:cursor-not-allowed"
-                      aria-label="Envoyer la demande"
                       data-testid="contact_submit"
                     >
                       {isSubmitting ? (

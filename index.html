@@ -35,10 +35,10 @@
       property="og:description"
       content="Développeur web freelance expert à Pau (64). Sites vitrines, applications sur mesure, intégration IA, production vidéo et drone. Déplacement gratuit dans le 64."
     />
-    <meta property="og:image" content="https://christophe-dev-freelance.fr/assets/images/og-image.png" />
+    <meta property="og:image" content="https://christophe-dev-freelance.fr/assets/images/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content="Christophe Mostefaoui - Développeur Web Full-Stack & Expert IA à Pau" />
 
     <!-- Twitter -->
@@ -55,11 +55,165 @@
       property="twitter:description"
       content="Développeur web freelance expert à Pau (64). Sites vitrines, applications sur mesure, intégration IA, production vidéo et drone. Déplacement gratuit dans le 64."
     />
-    <meta property="twitter:image" content="https://christophe-dev-freelance.fr/assets/images/og-image.png" />
+    <meta property="twitter:image" content="https://christophe-dev-freelance.fr/assets/images/og-image.jpg" />
     <meta name="twitter:image:alt" content="Christophe Mostefaoui - Développeur Web & Expert IA" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://christophe-dev-freelance.fr/" />
+
+    <!-- JSON-LD statique : schémas d'identité (Organization, Person, ProfessionalService).
+         Inlinés ici pour être lus par les crawlers SANS JavaScript (GPTBot, ClaudeBot,
+         PerplexityBot…). Les schémas de page (FAQ, vidéos, WebPage) restent générés
+         par React (src/utils/structured-data-final.tsx) — ne pas dupliquer ici. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://christophe-dev-freelance.fr/#organization",
+            "name": "Christophe Mostefaoui - Développeur Web & Expert IA",
+            "url": "https://christophe-dev-freelance.fr",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg",
+              "width": 650,
+              "height": 650
+            },
+            "image": [
+              {
+                "@type": "ImageObject",
+                "url": "https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg",
+                "width": 1024,
+                "height": 1024,
+                "caption": "Christophe Mostefaoui - Développeur Web & Expert IA"
+              }
+            ],
+            "description": "Expert en développement web et intégration IA. Spécialiste React.js, Node.js, TypeScript. Chatbots intelligents, solutions sur mesure.",
+            "founder": { "@type": "Person", "name": "Christophe Mostefaoui" },
+            "sameAs": [
+              "https://www.linkedin.com/in/christophemostefaoui/",
+              "https://github.com/krismos64",
+              "https://krismos.fr/"
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://christophe-dev-freelance.fr/#person",
+            "name": "Christophe Mostefaoui",
+            "jobTitle": "Développeur Web Full-Stack, Expert IA & Fondateur de SmartPlanning",
+            "description": "Développeur web freelance et fondateur de SmartPlanning.fr (SaaS freemium lancé en 2026). Plus de 10 ans dans l'informatique (douze ans dans le conseil client puis le freelance). Concepteur de produits web complets, de l'architecture au support utilisateur.",
+            "url": "https://christophe-dev-freelance.fr",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg",
+              "width": 650,
+              "height": 650,
+              "caption": "Christophe Mostefaoui - Développeur Full-Stack Expert"
+            },
+            "email": "christophe.mostefaoui.dev@gmail.com",
+            "telephone": "+33679088845",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Pau",
+              "addressRegion": "Pyrénées-Atlantiques",
+              "addressCountry": "FR"
+            },
+            "worksFor": { "@id": "https://christophe-dev-freelance.fr/#organization" },
+            "knowsAbout": [
+              "Intelligence Artificielle",
+              "React.js",
+              "Node.js",
+              "TypeScript",
+              "Chatbots GPT/Claude",
+              "Applications SaaS",
+              "Fondation et pilotage de SaaS",
+              "Entrepreneuriat tech",
+              "Conception produit",
+              "Production Vidéo",
+              "Drone"
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/in/christophemostefaoui/",
+              "https://github.com/krismos64",
+              "https://krismos.fr/"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://christophe-dev-freelance.fr/#business",
+            "name": "Christophe Mostefaoui - Développeur Web Freelance Expert",
+            "alternateName": "Expert React Node.js TypeScript - Concepteur Applications Modernes",
+            "image": [
+              {
+                "@type": "ImageObject",
+                "url": "https://christophe-dev-freelance.fr/assets/images/Chris-profil.jpg",
+                "width": 1024,
+                "height": 1024,
+                "caption": "Christophe Mostefaoui - Expert Développement Web"
+              }
+            ],
+            "priceRange": "€€",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Pau",
+              "addressRegion": "Pyrénées-Atlantiques",
+              "postalCode": "64000",
+              "addressCountry": "FR"
+            },
+            "areaServed": [
+              { "@type": "Country", "name": "France" },
+              { "@type": "AdministrativeArea", "name": "Pyrénées-Atlantiques" },
+              { "@type": "City", "name": "Pau" },
+              { "@type": "City", "name": "Bayonne" },
+              { "@type": "City", "name": "Biarritz" }
+            ],
+            "geo": { "@type": "GeoCoordinates", "latitude": 43.32, "longitude": -0.36 },
+            "url": "https://christophe-dev-freelance.fr",
+            "telephone": "+33679088845",
+            "email": "christophe.mostefaoui.dev@gmail.com",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+              }
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Services de développement web",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Site vitrine",
+                    "description": "Site vitrine moderne pour artisans, indépendants et PME — devis sur mesure"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Application web sur mesure",
+                    "description": "Applications SaaS, e-commerce et plateformes métiers — devis sur mesure"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Intégration IA & chatbot",
+                    "description": "Chatbots intelligents (GPT, Claude, Mistral) et intégrations IA — devis sur mesure"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    </script>
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#3b82f6" />

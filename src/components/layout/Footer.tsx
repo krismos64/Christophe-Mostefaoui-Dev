@@ -12,6 +12,7 @@ export default function Footer() {
     { name: "À propos", to: isHomePage ? "#about" : "/#about" },
     { name: "Services", to: isHomePage ? "#services" : "/#services" },
     { name: "Portfolio", to: isHomePage ? "#portfolio" : "/#portfolio" },
+    { name: "Blog", to: "/blog" },
     { name: "Tarifs", to: isHomePage ? "#tarifs" : "/#tarifs" },
     { name: "FAQ", to: isHomePage ? "#faq" : "/#faq" },
     { name: "Contact", to: isHomePage ? "#contact" : "/#contact" },

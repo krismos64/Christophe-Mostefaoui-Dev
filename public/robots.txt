@@ -93,10 +93,10 @@ Disallow: /
 
 # === BASE DE CONNAISSANCES IA ===
 # Fichiers spéciaux pour LLM (ChatGPT, Claude, Perplexity, etc.)
-AI-Knowledge-Base: /chatbot-knowledge.txt
-LLMs-Info: /llms.txt
-LLMs-Full: /llms-full.txt
-AI-Plugin: /.well-known/ai-plugin.json
+# AI-Knowledge-Base: /chatbot-knowledge.txt
+# LLMs-Info: /llms.txt
+# LLMs-Full: /llms-full.txt
+# AI-Plugin: /.well-known/ai-plugin.json
 
 # === SITEMAP & DIRECTIVES ===
 Sitemap: https://christophe-dev-freelance.fr/sitemap.xml

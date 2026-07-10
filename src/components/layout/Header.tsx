@@ -11,6 +11,7 @@ import {
   Mail,
   Menu,
   Moon,
+  Newspaper,
   Sun,
   User,
   X,
@@ -116,6 +117,11 @@ export default function Header() {
       name: "Portfolio",
       to: isHomePage ? "#portfolio" : "/#portfolio",
       icon: <FolderOpen className="h-5 w-5" />,
+    },
+    {
+      name: "Blog",
+      to: "/blog",
+      icon: <Newspaper className="h-5 w-5" />,
     },
     {
       name: "Contact",
