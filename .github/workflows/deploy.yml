@@ -43,5 +43,5 @@ jobs:
           protocol: ftps
           port: 21
           local-dir: dist/
-          # Racine du compte FTP principal Hostinger = dossier du domaine (contient public_html)
-          server-dir: public_html/
+          # La racine du compte FTP principal Hostinger EST public_html (vérifié le 10/07/2026)
+          server-dir: ./
