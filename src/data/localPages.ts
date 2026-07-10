@@ -38,13 +38,13 @@ export const localPages: LocalPage[] = [
     accroche: "↳ votre développeur web à Pau",
     h1: "Création de site internet à Pau",
     intro:
-      "Je suis Christophe Mostefaoui, développeur web freelance installé entre Pau et Artix. Je conçois des sites vitrines, des refontes et des applications sur mesure pour les commerces, artisans, professions libérales et PME de l'agglomération paloise — avec une vraie rencontre autour d'un café plutôt qu'un ticket de support.",
+      "Je suis Christophe, développeur web freelance installé entre Pau et Artix. Je conçois des sites vitrines, des refontes et des applications sur mesure pour les commerces, artisans, professions libérales et PME de l'agglomération paloise,avec une vraie rencontre autour d'un café plutôt qu'un ticket de support.",
     sections: [
       {
         titre: "Un site pensé pour votre clientèle paloise",
         paragraphes: [
           "Un institut à Trespoey, un cabinet près du Palais de Justice, une boutique rue Serviez ou un artisan à Lescar n'ont pas les mêmes clients ni les mêmes besoins. Je commence toujours par comprendre votre activité et la façon dont vos clients vous cherchent, avant d'écrire la moindre ligne de code.",
-          "Votre site est ensuite construit sur mesure : rapide, adapté au mobile, visible sur Google — et désormais aussi dans les réponses des assistants IA (ChatGPT, Perplexity…), un canal que la plupart des sites palois ignorent encore.",
+          "Votre site est ensuite construit sur mesure : rapide, adapté au mobile, visible sur Google, et désormais aussi dans les réponses des assistants IA (ChatGPT, Claude, Perplexity…), un canal que la plupart des sites palois ignorent encore.",
         ],
       },
       {
@@ -57,7 +57,7 @@ export const localPages: LocalPage[] = [
       {
         titre: "La proximité, vraiment",
         paragraphes: [
-          "Basé à quelques minutes de Pau, je me déplace gratuitement dans toute l'agglomération pour l'échange de cadrage : on définit ensemble vos objectifs, votre périmètre et votre planning, puis vous recevez un devis clair sous 24h. Pendant le projet, vous avez un interlocuteur unique — celui qui développe réellement votre site.",
+          "Basé à quelques minutes de Pau, je me déplace gratuitement dans toute l'agglomération pour l'échange de cadrage : on définit ensemble vos objectifs, votre périmètre et votre planning, puis vous recevez un devis clair sous 24h. Pendant le projet, vous avez un interlocuteur unique, celui qui développe réellement votre site.",
         ],
       },
     ],
@@ -103,17 +103,18 @@ export const localPages: LocalPage[] = [
       "Développeur web freelance basé dans le Béarn voisin, j'accompagne les commerces, artisans et PME de Bayonne et de l'agglomération BAB dans la création ou la refonte de leur site internet. Le déplacement est gratuit dans tout le 64 : Bayonne n'est jamais qu'à une heure de route de mon bureau.",
     sections: [
       {
-        titre: "Bayonne : un tissu commerçant qui mérite mieux que des modèles tout faits",
+        titre:
+          "Bayonne : un tissu commerçant qui mérite mieux que des modèles tout faits",
         paragraphes: [
           "Entre les commerces du Petit et du Grand Bayonne, les artisans des halles, les entreprises des zones d'Ametzondo ou de Saint-Étienne et les professions libérales du centre, la concurrence locale sur Google est réelle. Un site générique construit sur un modèle ne vous en sortira pas.",
-          "Je conçois des sites sur mesure, écrits pour vos clients et structurés pour le référencement local : votre activité, votre quartier, vos spécialités — pas un texte interchangeable.",
+          "Je conçois des sites sur mesure, écrits pour vos clients et structurés pour le référencement local : votre activité, votre quartier, vos spécialités, pas un texte interchangeable.",
         ],
       },
       {
         titre: "Du site vitrine à la vente en ligne",
         paragraphes: [
           "Site vitrine pour être trouvé et contacté, site multi-pages avec blog pour asseoir votre expertise, boutique en ligne pour vendre vos produits (j'ai notamment développé la plateforme e-commerce LivresStaka.fr avec paiement sécurisé Stripe), ou outil métier sur mesure : je construis ce qui sert réellement votre activité, et je vous forme à le faire vivre.",
-          "Chaque site est rapide, adapté au mobile, et optimisé pour Google comme pour les assistants IA — les deux endroits où vos futurs clients vous cherchent.",
+          "Chaque site est rapide, adapté au mobile, et optimisé pour Google comme pour les assistants IA, les deux endroits où vos futurs clients vous cherchent.",
         ],
       },
       {
@@ -140,7 +141,7 @@ export const localPages: LocalPage[] = [
       {
         question: "Travaillez-vous avec les commerces du centre-ville ?",
         reponse:
-          "C'est le cœur de mon activité : commerces, artisans, restaurateurs et professions libérales. L'objectif est toujours concret — être trouvé sur Google et sur les assistants IA, donner confiance, et déclencher la visite ou la demande de devis.",
+          "C'est le cœur de mon activité : commerces, artisans, restaurateurs et professions libérales. L'objectif est toujours concret, être trouvé sur Google et sur les assistants IA, donner confiance, et déclencher la visite ou la demande de devis.",
       },
       {
         question: "Mon site actuel est vieillissant, faut-il tout refaire ?",
@@ -160,13 +161,13 @@ export const localPages: LocalPage[] = [
     accroche: "↳ votre développeur web sur la côte basque",
     h1: "Création de site internet à Biarritz",
     intro:
-      "À Biarritz, votre site est souvent le premier contact d'un client qui ne vous verra jamais avant de réserver. Hôtels, restaurants, locations saisonnières, écoles de surf, commerces et thérapeutes : je crée des sites à la hauteur de votre image — et de celle de la ville.",
+      "À Biarritz, votre site est souvent le premier contact d'un client qui ne vous verra jamais avant de réserver. Hôtels, restaurants, locations saisonnières, écoles de surf, commerces et thérapeutes : je crée des sites à la hauteur de votre image, et de celle de la ville.",
     sections: [
       {
         titre: "Une clientèle exigeante, locale et internationale",
         paragraphes: [
           "La clientèle biarrote réserve depuis Paris, Londres ou Madrid, sur mobile, et se décide en quelques secondes. Votre site doit être irréprochable : rapide, élégant, multilingue si besoin, et parfaitement visible sur Google comme dans les réponses des assistants IA qui recommandent désormais hôtels et restaurants.",
-          "Je conçois chaque page comme une vitrine de votre établissement : vos photos, votre ambiance, vos points forts — pas un thème générique qu'on retrouve chez trois concurrents de la même rue.",
+          "Je conçois chaque page comme une vitrine de votre établissement : vos photos, votre ambiance, vos points forts, pas un thème générique qu'on retrouve chez trois concurrents de la même rue.",
         ],
       },
       {
@@ -220,19 +221,19 @@ export const localPages: LocalPage[] = [
     accroche: "↳ le développeur web d'à côté",
     h1: "Création de site internet à Orthez et dans le Béarn intérieur",
     intro:
-      "J'habite et je travaille à Artix, au cœur du bassin de Lacq. Orthez, Mourenx, Monein, Oloron-Sainte-Marie : c'est mon territoire au quotidien — et les entreprises d'ici méritent les mêmes sites que celles des métropoles, sans passer par une agence bordelaise qui ne mettra jamais les pieds dans votre atelier.",
+      "J'habite et je travaille à Artix, au cœur du bassin de Lacq. Orthez, Mourenx, Monein, Oloron-Sainte-Marie : c'est mon territoire au quotidien, et les entreprises d'ici méritent les mêmes sites que celles des métropoles, sans passer par une agence bordelaise qui ne mettra jamais les pieds dans votre atelier.",
     sections: [
       {
         titre: "Artisans, industriels, commerçants : des besoins concrets",
         paragraphes: [
-          "Un artisan de Mourenx veut des demandes de devis, un sous-traitant du bassin de Lacq veut rassurer ses donneurs d'ordres, un commerce d'Orthez veut qu'on le trouve avant le concurrent de la zone. Je construis des sites qui répondent à ces objectifs-là : clairs, rapides, trouvables sur Google — sans jargon ni superflu.",
+          "Un artisan de Mourenx veut des demandes de devis, un sous-traitant du bassin de Lacq veut rassurer ses donneurs d'ordres, un commerce d'Orthez veut qu'on le trouve avant le concurrent de la zone. Je construis des sites qui répondent à ces objectifs-là : clairs, rapides, trouvables sur Google, sans jargon ni superflu.",
           "Et parce que le premier contact se fait de plus en plus via ChatGPT ou les résultats enrichis de Google, vos informations sont structurées pour être comprises et citées par ces outils.",
         ],
       },
       {
         titre: "Le vrai local : je suis d'Artix",
         paragraphes: [
-          "Pas un prestataire « qui couvre la région » depuis une grande ville : votre développeur habite ici. Rendez-vous chez vous, dans votre atelier ou votre boutique, souvent le jour même. Vous montrez votre métier, j'en fais un site qui vous ressemble — c'est ma spécialité, et c'est écrit sur ma page d'accueil.",
+          "Pas un prestataire « qui couvre la région » depuis une grande ville : votre développeur habite ici. Rendez-vous chez vous, dans votre atelier ou votre boutique, souvent le jour même. Vous montrez votre métier, j'en fais un site qui vous ressemble, c'est ma spécialité, et c'est écrit sur ma page d'accueil.",
         ],
       },
       {
@@ -256,18 +257,18 @@ export const localPages: LocalPage[] = [
       {
         question: "Intervenez-vous à Mourenx, Lacq, Monein ou Oloron ?",
         reponse:
-          "Oui, c'est mon secteur immédiat : j'habite à Artix. Orthez, Mourenx, Lacq, Monein, Oloron-Sainte-Marie et toutes les communes alentour — le déplacement est gratuit et souvent possible le jour même.",
+          "Oui, c'est mon secteur immédiat : j'habite à Artix. Orthez, Mourenx, Lacq, Monein, Oloron-Sainte-Marie et toutes les communes alentour, le déplacement est gratuit et souvent possible le jour même.",
       },
       {
         question:
           "Une petite entreprise a-t-elle vraiment besoin d'un site internet ?",
         reponse:
-          "Si vos clients vous cherchent sur Google ou demandent conseil à un assistant IA — et c'est déjà le cas —, mieux vaut que ce soit vous qu'ils trouvent. Un site vitrine simple, bien référencé localement, suffit souvent à faire la différence face à un concurrent invisible.",
+          "Si vos clients vous cherchent sur Google ou demandent conseil à un assistant IA, et c'est déjà le cas, mieux vaut que ce soit vous qu'ils trouvent. Un site vitrine simple, bien référencé localement, suffit souvent à faire la différence face à un concurrent invisible.",
       },
       {
         question: "Comment se passe un projet avec vous ?",
         reponse:
-          "Un premier rendez-vous gratuit (chez vous ou en visio) pour comprendre votre activité, un devis clair sous 24h avec périmètre et planning, puis le développement avec des points réguliers. À la livraison : formation et accompagnement — vous n'êtes jamais seul face à votre site.",
+          "Un premier rendez-vous gratuit (chez vous ou en visio) pour comprendre votre activité, un devis clair sous 24h avec périmètre et planning, puis le développement avec des points réguliers. À la livraison : formation et accompagnement, vous n'êtes jamais seul face à votre site.",
       },
     ],
   },
