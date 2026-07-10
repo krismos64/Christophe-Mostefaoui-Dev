@@ -1,0 +1,47 @@
+name: Deploy Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # déclenchement manuel possible depuis l'onglet Actions
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # Garde-fou : le .htaccess doit être dans dist/ (fichiers cachés inclus dans le sync)
+      - name: Vérifier le build
+        run: |
+          test -f dist/.htaccess || { echo "::error::dist/.htaccess manquant"; exit 1; }
+          test -f dist/.well-known/ai-plugin.json || { echo "::error::dist/.well-known manquant"; exit 1; }
+          test -f dist/index.html || { echo "::error::dist/index.html manquant"; exit 1; }
+
+      - name: Deploy FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: dist/
+          # Racine du compte FTP principal Hostinger = dossier du domaine (contient public_html)
+          server-dir: public_html/
