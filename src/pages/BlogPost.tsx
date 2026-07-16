@@ -1,10 +1,30 @@
 import { Helmet } from "react-helmet-async";
-import { useParams, Link, Navigate } from "react-router-dom";
-import { CalendarDaysIcon, ClockIcon, UserIcon, ArrowLeftIcon, TagIcon } from "@heroicons/react/24/outline";
-import { getBlogPostBySlug, BlogPost as BlogPostType } from "../data/blogPosts";
+import { useParams, Navigate } from "react-router-dom";
+import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
+import { motion } from "framer-motion";
+import { getBlogPostBySlug } from "../data/blogPosts";
+import { useNavigation } from "../hooks/useNavigation";
+
+const categories = {
+  "veille-tech": "Veille technologique",
+  "ia-pratique": "IA accessible",
+  "conseils-business": "Conseils business",
+};
+
+// Rendu léger du **gras** inline sans injecter de HTML brut
+const renderInlineBold = (text: string) => {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    return part;
+  });
+};
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
+  const { handleNavigation } = useNavigation();
 
   if (!slug) {
     return <Navigate to="/blog" replace />;
@@ -16,31 +36,15 @@ const BlogPost = () => {
     return <Navigate to="/blog" replace />;
   }
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+  const formatDate = (dateString: string) =>
+    new Date(dateString).toLocaleDateString("fr-FR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
-  };
 
-  const getCategoryColor = (category: string) => {
-    const colors = {
-      "veille-tech": "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-      "ia-pratique": "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-      "conseils-business": "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-    };
-    return colors[category as keyof typeof colors] || colors["veille-tech"];
-  };
-
-  const getCategoryName = (category: string) => {
-    const categories = {
-      "veille-tech": "Veille Technologique",
-      "ia-pratique": "IA Accessible",
-      "conseils-business": "Conseils Business"
-    };
-    return categories[category as keyof typeof categories] || "Blog";
-  };
+  const getCategoryName = (category: string) =>
+    categories[category as keyof typeof categories] || "Blog";
 
   // Schema.org pour l'article
   const articleSchema = {
@@ -85,7 +89,7 @@ const BlogPost = () => {
         <meta property="og:url" content={`https://christophe-dev-freelance.fr/blog/${post.slug}`} />
         <meta property="og:image" content={`https://christophe-dev-freelance.fr${post.imageUrl}`} />
         <meta property="article:author" content={post.author} />
-                <meta property="article:section" content={getCategoryName(post.category)} />
+        <meta property="article:section" content={getCategoryName(post.category)} />
         {post.tags.map((tag, index) => (
           <meta key={index} property="article:tag" content={tag} />
         ))}
@@ -102,72 +106,72 @@ const BlogPost = () => {
         </script>
       </Helmet>
 
-      <main className="min-h-screen bg-white dark:bg-gray-900 pt-20">
-        <article className="max-w-4xl mx-auto px-4 py-12">
+      <main className="relative w-full overflow-hidden bg-[#F4EFE6] dark:bg-[#13110F] pt-32 sm:pt-36 pb-20 sm:pb-28">
+        {/* Texture grain papier */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply dark:mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
+          }}
+          aria-hidden="true"
+        />
+
+        <article className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-3xl">
           {/* Navigation retour */}
-          <div className="mb-8">
-            <Link
-              to="/blog"
-              className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-10"
+          >
+            <button
+              type="button"
+              onClick={() => handleNavigation("/blog")}
+              className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60 hover:text-[#F4D35E] transition-colors"
             >
-              <ArrowLeftIcon className="w-4 h-4" />
+              <ArrowLeft
+                className="h-4 w-4 transition-transform group-hover:-translate-x-1"
+                aria-hidden="true"
+              />
               Retour au blog
-            </Link>
-          </div>
+            </button>
+          </motion.div>
 
           {/* Header de l'article */}
-          <header className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <span className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(post.category)}`}>
-                {getCategoryName(post.category)}
-              </span>
-              {post.featured && (
-                <span className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 px-3 py-1 rounded-full text-sm font-medium">
-                  ⭐ Article phare
-                </span>
-              )}
-            </div>
+          <motion.header
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-12"
+          >
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#F4D35E] mb-3">
+              {getCategoryName(post.category)} —
+            </p>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+            <h1 className="hero-display text-[#1A1715] dark:text-[#F4EFE6] mb-6">
               {post.title}
             </h1>
 
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="hero-body text-[17px] sm:text-[18px] leading-[1.7] text-[#1A1715]/75 dark:text-[#F4EFE6]/75 mb-8">
               {post.excerpt}
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 text-gray-500 dark:text-gray-400 mb-8">
-              <div className="flex items-center gap-2">
-                <UserIcon className="h-5 w-5" />
-                <span>{post.author}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CalendarDaysIcon className="h-5 w-5" />
-                <span>{formatDate(post.publishedAt)}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <ClockIcon className="h-5 w-5" />
-                <span>{post.readTime} min de lecture</span>
-              </div>
+            <div className="flex flex-wrap items-center gap-5 text-[13px] text-[#1A1715]/50 dark:text-[#F4EFE6]/50 pb-8 border-b border-[#1A1715]/15 dark:border-[#F4EFE6]/15">
+              <span className="hero-body">{post.author}</span>
+              <span className="font-mono tabular-nums">
+                {formatDate(post.publishedAt)}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+                {post.readTime} min de lecture
+              </span>
             </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm flex items-center gap-1"
-                >
-                  <TagIcon className="w-3 h-3" />
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </header>
+          </motion.header>
 
           {/* Image principale */}
-          <div className="mb-12">
-            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
+          <div className="mb-12 rounded-sm overflow-hidden">
+            <div className="aspect-video">
               {(() => {
                 const lastSlash = post.imageUrl.lastIndexOf("/");
                 const dir = post.imageUrl.slice(0, lastSlash);
@@ -201,87 +205,127 @@ const BlogPost = () => {
                   </picture>
                 );
               })()}
-              <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-gray-700 dark:to-gray-600 rounded-xl hidden items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 bg-blue-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
-                    <span className="text-3xl text-white">📄</span>
-                  </div>
-                  <div className="text-gray-600 dark:text-gray-400">
-                    <strong>Image suggérée :</strong><br />
-                    {post.imageAlt}
-                  </div>
+              <div className="aspect-video bg-[#1A1715]/5 dark:bg-[#F4EFE6]/5 hidden items-center justify-center">
+                <div className="text-center p-8 hero-body text-[#1A1715]/50 dark:text-[#F4EFE6]/50">
+                  {post.imageAlt}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contenu de l'article */}
-          <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
-            <div className="whitespace-pre-line leading-relaxed text-gray-700 dark:text-gray-300">
-              {post.content.split('\n').map((paragraph, index) => {
-                if (paragraph.startsWith('# ')) {
-                  return (
-                    <h1 key={index} className="text-3xl font-bold text-gray-900 dark:text-white mt-8 mb-4">
-                      {paragraph.replace('# ', '')}
-                    </h1>
-                  );
-                }
-                if (paragraph.startsWith('## ')) {
-                  return (
-                    <h2 key={index} className="text-2xl font-bold text-gray-900 dark:text-white mt-6 mb-3">
-                      {paragraph.replace('## ', '')}
-                    </h2>
-                  );
-                }
-                if (paragraph.startsWith('### ')) {
-                  return (
-                    <h3 key={index} className="text-xl font-bold text-gray-900 dark:text-white mt-4 mb-2">
-                      {paragraph.replace('### ', '')}
-                    </h3>
-                  );
-                }
-                if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-                  return (
-                    <p key={index} className="font-bold text-gray-900 dark:text-white mb-3">
-                      {paragraph.replace(/\*\*/g, '')}
-                    </p>
-                  );
-                }
-                if (paragraph.trim() === '') {
-                  return <br key={index} />;
-                }
+          <div className="hero-body max-w-none mb-12">
+            {post.content.split('\n').map((paragraph, index) => {
+              if (paragraph.startsWith('### ')) {
                 return (
-                  <p key={index} className="mb-3">
-                    {paragraph}
+                  <h3
+                    key={index}
+                    style={{
+                      fontFamily: '"Fraunces", "Times New Roman", serif',
+                      fontStyle: "italic",
+                      fontWeight: 500,
+                    }}
+                    className="text-[19px] sm:text-[21px] leading-tight text-[#1A1715] dark:text-[#F4EFE6] mt-8 mb-3"
+                  >
+                    {paragraph.replace('### ', '')}
+                  </h3>
+                );
+              }
+              if (paragraph.startsWith('## ')) {
+                return (
+                  <h2
+                    key={index}
+                    style={{
+                      fontFamily: '"Fraunces", "Times New Roman", serif',
+                      fontStyle: "italic",
+                      fontWeight: 500,
+                    }}
+                    className="text-[24px] sm:text-[28px] leading-tight text-[#1A1715] dark:text-[#F4EFE6] mt-10 mb-4 pt-8 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15"
+                  >
+                    {paragraph.replace('## ', '')}
+                  </h2>
+                );
+              }
+              if (paragraph.startsWith('# ')) {
+                return (
+                  <h2
+                    key={index}
+                    style={{
+                      fontFamily: '"Fraunces", "Times New Roman", serif',
+                      fontStyle: "italic",
+                      fontWeight: 500,
+                    }}
+                    className="text-[24px] sm:text-[28px] leading-tight text-[#1A1715] dark:text-[#F4EFE6] mt-10 mb-4 pt-8 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15"
+                  >
+                    {paragraph.replace('# ', '')}
+                  </h2>
+                );
+              }
+              if (paragraph.startsWith('- ')) {
+                return (
+                  <p
+                    key={index}
+                    className="text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 mb-2 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-[#F4D35E]"
+                  >
+                    {renderInlineBold(paragraph.replace(/^-\s*/, ''))}
                   </p>
                 );
-              })}
-            </div>
+              }
+              if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+                return (
+                  <p
+                    key={index}
+                    className="text-[15px] sm:text-[16px] leading-[1.7] font-semibold text-[#1A1715] dark:text-[#F4EFE6] mb-3"
+                  >
+                    {paragraph.replace(/\*\*/g, '')}
+                  </p>
+                );
+              }
+              if (paragraph.trim() === '') {
+                return null;
+              }
+              return (
+                <p
+                  key={index}
+                  className="text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 mb-4"
+                >
+                  {renderInlineBold(paragraph)}
+                </p>
+              );
+            })}
           </div>
 
           {/* CTA de fin d'article */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Cet article vous a intéressé ?
-              </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                Parlons de votre projet ! Je suis à votre disposition pour un échange personnalisé.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="mailto:christophe.mostefaoui.dev@gmail.com?subject=Contact%20suite%20%C3%A0%20l'article%20sur%20React%2019&body=Bonjour%20Christophe%2C%0A%0AJ'ai%20lu%20votre%20article%20et%20j'aimerais%20discuter%20avec%20vous.%0A%0AMon%20projet%20%3A%20%0A%0AMerci%20%21"
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center justify-center gap-2"
-                >
-                  📧 Me contacter
-                </a>
-                <Link
-                  to="/blog"
-                  className="border-2 border-blue-600 text-blue-600 dark:text-blue-400 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
-                >
-                  📚 Autres articles
-                </Link>
-              </div>
+          <div className="pt-10 sm:pt-12 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15">
+            <p className="hero-handwritten text-[19px] sm:text-[22px] text-[#F4D35E] mb-5">
+              cet article vous a intéressé —
+            </p>
+            <p className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/75 dark:text-[#F4EFE6]/75 mb-6 max-w-xl">
+              Parlons de votre projet : premier échange gratuit, sans
+              engagement.
+            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
+              <button
+                type="button"
+                onClick={() => handleNavigation("/#contact")}
+                className="hero-cta-primary group inline-flex"
+              >
+                <span>Demander un devis</span>
+                <span className="hero-cta-sub">gratuit · sous 24h</span>
+                <ArrowRight
+                  className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavigation("/blog")}
+                className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+              >
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                  Autres articles
+                </span>
+              </button>
             </div>
           </div>
         </article>

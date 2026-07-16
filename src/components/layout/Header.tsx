@@ -140,16 +140,20 @@ export default function Header() {
     handleNavigation(to);
   };
 
-  // Classes adaptatives selon état (transparent sur Hero / opaque après scroll)
-  const headerBg = isScrolled
+  // Classes adaptatives selon état (transparent sur Hero de la home / opaque
+  // après scroll, ou opaque d'emblée sur les autres pages qui n'ont pas de
+  // hero sombre sous le header)
+  const isOpaque = isScrolled || !isHomePage;
+
+  const headerBg = isOpaque
     ? "bg-[#F4EFE6]/95 dark:bg-[#13110F]/95 backdrop-blur-md border-b border-[#1A1715]/10 dark:border-[#F4EFE6]/10"
     : "bg-transparent border-b border-transparent";
 
-  const textColor = isScrolled
+  const textColor = isOpaque
     ? "text-[#1A1715] dark:text-[#F4EFE6]"
     : "text-[#F4EFE6]";
 
-  const textColorMuted = isScrolled
+  const textColorMuted = isOpaque
     ? "text-[#1A1715]/70 dark:text-[#F4EFE6]/75"
     : "text-[#F4EFE6]/85";
 
