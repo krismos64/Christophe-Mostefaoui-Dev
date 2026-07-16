@@ -25,6 +25,100 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "8",
+    title:
+      "Être trouvé sur Google ET sur ChatGPT en 2026 : le référencement a changé",
+    slug: "referencement-google-chatgpt-2026",
+    excerpt:
+      "Vos clients ne tapent plus seulement leur recherche dans Google, ils la posent aussi à ChatGPT ou à d'autres assistants IA. Un site pensé uniquement pour Google devient invisible pour cette nouvelle façon de chercher. Voici ce que ça change concrètement, et comment je prépare mes sites pour les deux.",
+    content: `Tapez une question sur un artisan, un commerce ou un service près de chez vous, et il y a de fortes chances que vous ne l'ayez pas tapée dans Google. De plus en plus de gens demandent directement à ChatGPT, à Claude ou à Perplexity de leur trouver une solution, de comparer des options ou de leur expliquer un sujet, et ces assistants répondent avec des sources qu'ils choisissent eux-mêmes. Si votre site n'est pas fait pour être compris par ces outils, il devient invisible pour une partie croissante de vos clients potentiels, même s'il est parfaitement placé sur Google.
+
+## Deux façons de chercher, deux façons d'être trouvé
+
+Le référencement que tout le monde connaît consiste à apparaître dans la liste de résultats Google quand quelqu'un tape une recherche. Vous cliquez, vous arrivez sur un site, vous comparez plusieurs pages vous-même. C'est un jeu de positionnement : être dans les trois premiers résultats change tout.
+
+La recherche via une IA générative fonctionne différemment. Vous posez une question complète, en langage naturel, et l'assistant vous donne directement une réponse construite, parfois en citant une ou deux sources qu'il juge fiables et claires. Il n'y a plus de liste de dix liens à comparer : il y a une réponse, et votre site y figure ou n'y figure pas. C'est plus radical que le référencement classique, et c'est exactement pour ça que peu de prestataires s'en occupent encore sérieusement.
+
+## Pourquoi un site optimisé pour Google ne suffit plus
+
+Un site pensé uniquement pour Google mise beaucoup sur des mots-clés, des liens et des signaux techniques que le visiteur ne voit jamais. Une IA générative, elle, lit le contenu à peu près comme le ferait un lecteur humain pressé : elle cherche une réponse claire, complète et honnête à une question précise. Un site truffé de superlatifs marketing sans réponse concrète a peu de chances d'être cité, même s'il est bien positionné sur Google.
+
+Il y a aussi un problème technique plus discret : beaucoup de sites modernes affichent leur contenu uniquement une fois que le navigateur a exécuté du code. C'est invisible pour le visiteur, mais pour un robot qui vient lire rapidement une page sans forcément exécuter ce code, la page peut apparaître vide ou incomplète. Le contenu existe, mais l'outil qui devrait le lire ne le voit pas.
+
+## Ce que je mets en place concrètement sur mes sites
+
+Sur ce site, chaque page importante existe sous une forme lisible directement, sans dépendre de l'exécution du code par le visiteur : le contenu est déjà présent dans la page telle qu'un robot la reçoit, articles de blog compris. C'est un travail technique que je fais systématiquement, pas une option.
+
+J'ajoute aussi des fichiers spécifiquement destinés aux intelligences artificielles, qui résument clairement qui vous êtes, ce que vous proposez et où vous intervenez, dans un format que ces outils savent lire facilement. C'est un peu l'équivalent d'une carte de visite écrite spécialement pour eux, en plus de la version destinée aux visiteurs humains.
+
+J'utilise également des données structurées, un langage technique standardisé que les moteurs de recherche et les IA comprennent nativement, pour décrire précisément votre activité, vos horaires, vos avis ou votre zone d'intervention. C'est invisible sur la page, mais ça aide énormément ces outils à comprendre de quoi parle réellement votre site.
+
+## Répondre à une vraie question reste la meilleure stratégie
+
+Au-delà des aspects techniques, il y a un principe simple qui compte autant, sinon plus : une IA générative cite volontiers une page qui répond clairement à une question précise, sans détour ni contenu creux. C'est exactement l'esprit de l'article que j'ai publié récemment sur le coût d'un site internet : une vraie question, une réponse honnête et complète, sans grille tarifaire artificielle ni promesse vague.
+
+Une page de questions fréquentes bien écrite, avec des réponses complètes et autonomes plutôt que des phrases coupées, est un excellent format pour ce type de citation. C'est ce que je mets en place sur les pages de service et les pages locales que je développe : des vraies réponses à des vraies questions que se posent vos clients, pas du remplissage.
+
+## Les questions que vos clients posent déjà à une IA
+
+Ce ne sont pas des questions futuristes, elles sont déjà posées aujourd'hui, tous les jours, par des gens qui pourraient être vos clients :
+
+- « Trouve-moi un artisan qui rénove une salle de bain dans le Béarn »
+- « Compare les options pour créer un site pour mon restaurant à Bayonne »
+- « Explique-moi ce que je dois vérifier avant de choisir un développeur web »
+- « Quels sont les documents à demander à un prestataire avant de signer »
+
+Chacune de ces questions débouche sur une réponse construite par l'IA, avec parfois un site cité en source, parfois aucun site du tout si l'outil ne trouve rien d'assez clair pour appuyer sa réponse. Un artisan ou une PME qui n'a jamais entendu parler de ce sujet perd cette opportunité sans même savoir qu'elle existait.
+
+## Ce que ça change concrètement pour votre activité
+
+Un client qui demande à une IA « qui peut créer mon site à Pau » ou « comment choisir un développeur web dans le Béarn » reçoit une réponse construite à partir de sites que l'outil juge fiables et clairs. Si le vôtre n'est pas préparé pour ça, vous perdez une visibilité qui grandit chaque mois, sans même vous en rendre compte puisque rien ne vous alerte de cette invisibilité-là.
+
+À l'inverse, un site bien préparé peut se retrouver cité dans une réponse générée par une IA, avec un lien vers votre page, alors même qu'il n'est pas forcément en première position sur Google. C'est un canal encore peu occupé par la concurrence locale, ce qui en fait un vrai avantage pour les entreprises qui s'y intéressent maintenant plutôt que dans deux ans.
+
+## Un premier réflexe simple, même sans refaire votre site tout de suite
+
+Si une refonte complète n'est pas encore d'actualité pour vous, il y a un premier réflexe accessible à tous : tapez vous-même quelques questions que poserait un client dans ChatGPT ou un autre assistant, et regardez ce qui ressort. Votre activité apparaît-elle ? Les informations citées sont-elles justes ? C'est un test simple, gratuit, qui vous donne une idée concrète de votre visibilité actuelle sur ce nouveau canal, bien avant d'investir quoi que ce soit.
+
+Vous découvrirez peut-être que des informations obsolètes ou approximatives circulent déjà à votre sujet, reprises par l'IA depuis une ancienne fiche ou un site mal tenu. C'est aussi une bonne raison de s'y intéresser maintenant plutôt que de laisser d'autres sources moins fiables raconter votre activité à votre place.
+
+## Ce que je ne promets pas
+
+Je ne peux pas vous garantir qu'une IA en particulier citera votre site pour telle ou telle question : personne ne le peut, ces outils évoluent constamment et gardent leurs critères de sélection largement secrets. Ce que je peux garantir, c'est que je mets en place tout ce qui est techniquement en mon pouvoir pour que votre site soit lisible, clair et crédible aux yeux de ces outils, exactement comme je le fais pour Google depuis toujours.
+
+## Parlons de votre projet
+
+Vous avez un site qui mériterait d'être aussi visible pour les IA que pour Google, ou un projet de site à construire directement avec ces deux exigences en tête ? Décrivez-moi votre activité via le formulaire de contact ou au 06 79 08 88 45, où que vous soyez à Pau, dans le Béarn, sur la côte basque ou ailleurs : premier échange gratuit et sans engagement, devis clair sous 24h.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-07-16",
+    readTime: 8,
+    category: "veille-tech",
+    tags: [
+      "Référencement",
+      "SEO",
+      "Intelligence artificielle",
+      "ChatGPT",
+      "GEO",
+      "PME",
+      "Pau",
+    ],
+    imageUrl: "/assets/images/referencement-google-chatgpt-2026.png",
+    imageAlt:
+      "Illustration sur le référencement d'un site internet pour Google et les intelligences artificielles",
+    featured: false,
+    metaDescription:
+      "Vos clients cherchent aussi sur ChatGPT, pas seulement sur Google. Ce que le référencement pour les IA change concrètement pour votre site, par un développeur freelance du 64.",
+    keywords: [
+      "référencement ChatGPT",
+      "SEO IA 2026",
+      "GEO référencement",
+      "être visible sur ChatGPT",
+      "référencement intelligence artificielle",
+      "développeur web freelance Pau",
+      "visibilité IA générative",
+    ],
+  },
+  {
     id: "7",
     title:
       "Un chatbot IA pour votre commerce : gadget ou vrai retour sur investissement ?",
