@@ -42,7 +42,7 @@ Le site assume un **design éditorial sobre et humain**, à contre-courant de l'
 
 ## Structure du site
 
-Le site est une **single page** avec ancres + 3 pages secondaires.
+Le site est une **single page** avec ancres + un ensemble de pages secondaires (légales, blog, pages locales SEO).
 
 ### Sections de la home (9 sections, ordre narratif)
 
@@ -62,7 +62,8 @@ Le site est une **single page** avec ancres + 3 pages secondaires.
 
 - `/mentions-legales` — `pages/LegalNotice.tsx`
 - `/politique-de-confidentialite` — `pages/PrivacyPolicy.tsx`
-- `/blog` + `/blog/:slug` — pages satellites SEO (non liées depuis la home)
+- `/blog` + `/blog/:slug` — blog éditorial SEO/GEO, lié depuis Header et Footer
+- `/creation-site-internet-{pau,bayonne,biarritz,orthez-bearn}` — pages locales SEO (`pages/LocalLanding.tsx` + `data/localPages.ts`)
 - `/faq` — redirige vers `/#faq` (ancre home)
 - `*` — page 404 éditoriale (`pages/NotFound.tsx`)
 
@@ -87,8 +88,7 @@ Le site est une **single page** avec ancres + 3 pages secondaires.
 
 - **Framer Motion 12.17** — animations sobres (fade + translation, courbe ease-out)
 - **Lottie React 2.4** — animations chatbot, drone, montage vidéo, thinking (footer)
-- **Lucide React** — icônes vectorielles cohérentes (strokeWidth 1.5)
-- **Heroicons** — utilisé uniquement sur la page Blog (intouchée)
+- **Lucide React** — icônes vectorielles cohérentes (strokeWidth 1.5), utilisées partout y compris le blog depuis sa refonte éditoriale
 
 ### Formulaires & Communication
 
@@ -103,10 +103,12 @@ Le site est une **single page** avec ancres + 3 pages secondaires.
 
 ### Chatbot IA
 
-- API **Mistral AI** (`open-mistral-7b`) en streaming
-- Clé API en variable d'environnement (`VITE_MISTRAL_API_KEY`)
-- Cache local des réponses (50 entrées max)
-- Système prompt à jour (services I-VI, vraie expérience, vrai numéro)
+- API **Mistral AI** (`mistral-small-latest`) en streaming, appelée via un **proxy PHP serveur** (`public/api/chat.php`), jamais directement depuis le client
+- Clé API **hors webroot** sur Hostinger (fichier `mistral-key.php` au-dessus de `public_html`), aucun secret dans le bundle (aucune variable `VITE_*`)
+- Rate limiting côté serveur (10 req/min/IP, 500/jour global), origine vérifiée
+- Capture de leads par email (EmailJS) avec transcript de conversation, relances contextuelles
+- Persistance de la conversation en `sessionStorage`
+- En dev local, le PHP n'est pas exécuté : le chatbot affiche un message d'erreur générique (comportement attendu, voir `npm run dev` ci-dessous)
 
 ---
 
@@ -142,7 +144,8 @@ npm install
 
 # Copier le template de variables d'environnement
 cp .env.example .env
-# Puis remplir .env avec les clés EmailJS et Mistral
+# Puis remplir .env avec les clés EmailJS (le chatbot Mistral n'a pas de
+# variable côté client, voir section Chatbot IA ci-dessous)
 
 # Lancer le serveur de développement
 npm run dev
@@ -159,10 +162,11 @@ VITE_EMAILJS_TEMPLATE_ID=...
 VITE_EMAILJS_USER_ID=...
 
 # Mistral AI — chatbot
-# ⚠️ Cette clé est exposée dans le bundle client.
-# Configurez des rate limits + budget caps sur console.mistral.ai
-VITE_MISTRAL_API_KEY=...
+# AUCUNE variable ici : la clé vit côté serveur uniquement, hors webroot,
+# hors repo, hors CI. Voir docs/mistral-ai-setup.md.
 ```
+
+> **Sécurité — règle absolue** : jamais de secret dans une variable `VITE_*`, tout finit en clair dans le bundle client livré au navigateur.
 
 ---
 
@@ -194,6 +198,7 @@ src/
 ├── pages/                          # Pages routées (lazy-loaded)
 │   ├── Blog.tsx
 │   ├── BlogPost.tsx
+│   ├── LocalLanding.tsx            # 4 pages SEO locales (Pau, Bayonne, Biarritz, Orthez)
 │   ├── LegalNotice.tsx
 │   ├── PrivacyPolicy.tsx
 │   └── NotFound.tsx                # Catch-all éditorial
@@ -201,12 +206,13 @@ src/
 │   ├── structured-data-final.tsx   # Schemas JSON-LD agrégés
 │   ├── seo-advanced.tsx            # Meta LLM optimisés
 │   ├── featured-snippets-content.tsx  # FAQ 1ère personne
-│   └── analytics.ts                # Helpers GTM (initGoogleAnalytics, trackEvent…)
+│   └── analytics.ts                # Helpers dataLayer (no-op : GTM retiré en 07/2026, site 100% cookieless)
 ├── hooks/
 │   ├── useStructuredData.ts
 │   └── useNavigation.ts
 ├── data/
-│   └── blogPosts.ts                # Pages satellites SEO (5 articles)
+│   ├── blogPosts.ts                # Articles du blog (contenu éditorial PME/artisans)
+│   └── localPages.ts               # Contenu des 4 pages locales SEO
 ├── context/
 │   └── ThemeContext.tsx            # Mode clair/sombre + localStorage
 ├── config/
@@ -225,16 +231,20 @@ src/
 
 ```
 public/
-├── sitemap.xml                 # 9 URLs (home + 2 légales + 6 blog)
+├── sitemap.xml                 # home + blog + articles + pages locales + légales
 ├── robots.txt                  # GPTBot, Claude-Web, ChatGPT-User, CCBot autorisés
 ├── llms.txt                    # Fiche synthétique pour LLM
 ├── llms-full.txt               # Base de connaissances complète
 ├── chatbot-knowledge.txt       # Base de connaissances du chatbot
 ├── humans.txt                  # Crédits humains
 ├── manifest.json               # PWA manifest
+├── api/
+│   └── chat.php                # Proxy Mistral (streaming, rate limit, clé hors webroot)
 └── .well-known/
     └── ai-plugin.json          # Plugin IA standard
 ```
+
+> Le contenu de chaque page importante (home, blog, articles, pages locales) est **pré-rendu en HTML statique** au build (`scripts/prerender.mjs`), lisible sans exécution de JavaScript — essentiel pour les robots d'indexation IA (GPTBot, ClaudeBot…) qui n'exécutent pas toujours le JS.
 
 ---
 
@@ -258,23 +268,22 @@ public/
 ### Build de production
 
 ```bash
-npm run build      # tsc + vite build (Terser, cssnano, code splitting)
+npm run build      # tsc + vite build + pré-rendu Puppeteer (dist/*.html statiques)
+npm run build:spa  # Build sans pré-rendu (debug)
 npm run preview    # Aperçu local du build
 ```
 
-### Déploiement Hostinger
+### Déploiement automatique (Hostinger via GitHub Actions)
 
-Le build génère automatiquement :
+Chaque push sur `main` déclenche `.github/workflows/deploy.yml` :
 
-- `dist/.htaccess` — config Apache (HTTPS, GZIP, cache 1 an, fallback SPA)
-- Chunks JS optimisés (vendor, animations, ui, helmet, pages lazy)
-- CSS minifié + assets versionnés
+1. Build complet (`tsc` + `vite build` + pré-rendu)
+2. Vérification que `dist/.htaccess` et `dist/.well-known/` sont bien présents (le workflow échoue sinon)
+3. Synchronisation FTPS de `dist/` vers la racine du compte FTP Hostinger (`server-dir: ./`, qui EST `public_html`)
 
-Upload :
+`public/.htaccess` est l'unique source de la config Apache (HTTPS, redirection www→non-www, fallback SPA, pages pré-rendues servies en priorité, cache, en-têtes de sécurité).
 
-1. `npm run build`
-2. Uploader le contenu de `dist/` via FTP/SFTP sur Hostinger
-3. Le `.htaccess` configure Apache automatiquement
+Aucun upload manuel : il suffit de merger sur `main`.
 
 ---
 
@@ -331,8 +340,9 @@ Upload :
 ## Scripts disponibles
 
 ```bash
-npm run dev          # Serveur de développement (Vite HMR)
-npm run build        # Build de production (tsc + vite build)
+npm run dev          # Serveur de développement (Vite HMR) — le chatbot est HS en dev, le proxy PHP n'est pas exécuté
+npm run build        # Build de production (tsc + vite build + pré-rendu Puppeteer)
+npm run build:spa    # Build sans pré-rendu (debug)
 npm run preview      # Preview du build
 ```
 
