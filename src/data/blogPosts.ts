@@ -25,6 +25,96 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "7",
+    title:
+      "Un chatbot IA pour votre commerce : gadget ou vrai retour sur investissement ?",
+    slug: "chatbot-ia-commerce-pme",
+    excerpt:
+      "Un assistant qui répond à vos clients 24h/24, ça fait rêver ou ça fait peur, selon qui vous demandez. Je vous explique honnêtement comment fonctionne un chatbot IA, ce qu'il coûte vraiment et dans quels commerces il a un intérêt réel, en m'appuyant sur celui installé sur ce site.",
+    content: `Vous avez sans doute déjà croisé un chatbot sur un site et pensé qu'il ne servait à rien, un menu déroulant déguisé qui répond à côté de la question. Vous en avez peut-être croisé un autre, plus convaincant, qui a répondu juste et vous a fait gagner du temps. La différence entre les deux n'est pas magique : elle tient à la technologie utilisée et à la façon dont elle est configurée. Si vous vous demandez si un chatbot IA a du sens pour votre commerce, votre cabinet ou votre atelier, voici une réponse honnête, en m'appuyant sur celui que vous pouvez tester en bas à droite de cette page.
+
+## Ce qu'un chatbot IA fait vraiment, concrètement
+
+Un chatbot IA n'est pas un arbre de décision avec des boutons préprogrammés. Il comprend une question posée avec ses propres mots, même mal formulée ou incomplète, et répond en s'appuyant sur les informations que vous lui avez fournies sur votre activité : vos services, vos horaires, votre zone d'intervention, votre façon de travailler. Il ne remplace pas un vendeur ou un artisan, il filtre et prépare le terrain avant que vous n'interveniez vous-même.
+
+Sur ce site, le mien répond aux questions sur mes services, mon parcours ou mes tarifs, propose de transmettre une demande de devis quand la conversation s'y prête, et relance poliment si un visiteur semble hésiter sans jamais insister lourdement. C'est ce niveau d'usage, modeste mais utile, qui a du sens pour la plupart des commerces et PME, bien plus qu'un robot qui prétend tout faire.
+
+## Ce qu'il peut faire pour un commerce, un artisan ou une PME
+
+Les cas d'usage qui reviennent le plus souvent chez mes clients :
+
+- **Répondre aux questions répétitives** : horaires, tarifs de base, zone d'intervention, délais. Ce sont souvent les mêmes questions, à toute heure, y compris en dehors de vos horaires d'ouverture.
+- **Qualifier une demande avant un appel** : le visiteur décrit son besoin, le chatbot pose les bonnes questions et vous transmet une demande déjà structurée plutôt qu'un simple « bonjour, j'ai une question ».
+- **Capturer un contact qui, sinon, repartirait** : un visiteur qui hésite à 23h ne va pas attendre votre ouverture pour vous appeler. S'il peut laisser sa question et son email en deux phrases, vous avez une chance de le recontacter le lendemain matin.
+- **Rassurer sur des points précis** : garanties, matériaux utilisés, processus de travail, tout ce qui lève un doute avant que le visiteur ne quitte simplement la page.
+
+Ce qu'il ne fait pas, et qu'aucun chatbot sérieux ne devrait prétendre faire : vendre à votre place un produit ou service complexe, remplacer un vrai conseil personnalisé, ou improviser des informations que vous ne lui avez pas fournies. Un bon chatbot dit « je ne sais pas, laissez-moi vous mettre en contact » plutôt que d'inventer une réponse.
+
+## Comment ça fonctionne techniquement, sans jargon
+
+Le chatbot de ce site s'appuie sur un modèle d'intelligence artificielle (Mistral AI, une entreprise française) auquel je transmets, à chaque question, des consignes précises : le ton à adopter, les informations à connaître sur mon activité, ce qu'il a le droit de dire ou non. Tout cela passe par un serveur que j'ai configuré moi-même, pas par un widget générique branché en cinq minutes.
+
+Cette différence compte pour vous, si vous envisagez d'en installer un : un chatbot mal configuré peut donner des informations fausses sur vos prix ou vos délais, ce qui abîme la confiance plus vite que l'absence de chatbot. La configuration, le prompt qui définit son comportement et les garde-fous qui l'empêchent de sortir de son rôle, est le vrai travail. L'outil en lui-même n'est que la partie visible.
+
+## Chatbot générique ou chatbot sur mesure : la vraie différence
+
+Beaucoup d'outils en ligne promettent d'ajouter un chatbot IA à votre site en quelques clics, sans développeur. Ils fonctionnent, dans une certaine mesure, mais avec des limites que je constate régulièrement chez des clients qui en avaient testé un avant de venir me voir.
+
+Un chatbot générique connaît ce que vous lui écrivez dans une petite fenêtre de configuration, rarement plus. Il ne sait pas nuancer, il répète une formule dès qu'une question sort du script prévu, et il ressemble à celui de vos concurrents qui utilisent le même outil. Il s'affiche aussi souvent avec le logo de la plateforme qui l'héberge, ce qui rappelle en permanence au visiteur qu'il ne parle pas vraiment à votre entreprise.
+
+Un chatbot configuré sur mesure connaît votre activité en détail, parle avec le ton de votre marque, s'intègre visuellement à votre site plutôt que de flotter dessus comme un corps étranger, et surtout respecte des règles précises que vous avez définies : ce qu'il peut promettre, ce qu'il doit refuser de dire, quand il doit vous transmettre la main plutôt que d'improviser. C'est cette rigueur de configuration qui fait la différence entre un gadget et un outil qui rapporte réellement des contacts.
+
+## Combien ça coûte réellement
+
+C'est la question que tout le monde pose, et la réponse surprend souvent : le fonctionnement au quotidien coûte très peu. Les modèles d'IA facturent à l'usage, au volume de texte traité, et pour un commerce qui reçoit quelques dizaines de conversations par mois, la facture mensuelle d'API se compte en quelques euros, pas en centaines.
+
+Ce qui a un coût réel, c'est la mise en place : configurer le comportement du chatbot pour qu'il connaisse précisément votre activité, sécuriser les échanges pour que personne ne puisse détourner l'outil ou faire exploser votre facture, brancher la capture de contact vers votre email ou votre outil de gestion, et surtout intégrer tout ça proprement dans le design de votre site plutôt que de coller un widget qui jure avec le reste. C'est un développement sur mesure, chiffré comme tel dans un devis, pas un abonnement mensuel à un outil tout fait.
+
+## Dans quels cas ça vaut le coup, et dans quels cas non
+
+Un chatbot IA a du sens si vous recevez régulièrement les mêmes questions par téléphone ou email, si votre activité génère des demandes en dehors de vos horaires, ou si votre site a suffisamment de visites pour que la capture de quelques contacts supplémentaires par mois représente un vrai gain.
+
+Il a moins de sens si votre activité repose avant tout sur la relation humaine directe dès le premier contact (certains artisans, certains professionnels du soin), si votre site reçoit très peu de visites, ou si vous n'avez pas la capacité de traiter rapidement les contacts qu'il capture. Un chatbot qui génère des demandes que personne ne rappelle est pire qu'inutile : il déçoit un client qui pensait avoir été pris en charge.
+
+Je le dis aussi clairement à mes clients qu'ici : un formulaire de contact bien conçu suffit largement à beaucoup de sites. Le chatbot est un plus, pas un passage obligé, et je ne le propose pas systématiquement dans un devis si le besoin ne le justifie pas.
+
+## Testez celui-ci avant de vous décider
+
+La meilleure façon de juger si un chatbot IA a sa place sur votre site n'est pas de lire un article de plus à ce sujet, c'est d'en tester un vrai. Posez-lui une question sur mes services, sur SmartPlanning, ou sur mes tarifs, vous verrez de vous-même ce qu'une conversation bien pensée peut apporter, ou pas, à votre propre activité.
+
+## Parlons de votre projet
+
+Vous vous demandez si un chatbot IA aurait sa place sur votre site, ou vous avez simplement un projet de site à Pau, dans le Béarn, sur la côte basque ou ailleurs ? Décrivez-moi votre activité via le formulaire de contact ou au 06 79 08 88 45 : premier échange gratuit et sans engagement, devis clair sous 24h. Si un chatbot n'est pas la bonne réponse pour vous, je vous le dirai aussi.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-07-16",
+    readTime: 8,
+    category: "ia-pratique",
+    tags: [
+      "Chatbot IA",
+      "Intelligence artificielle",
+      "PME",
+      "Commerce",
+      "Artisans",
+      "Pau",
+      "Conseils",
+    ],
+    imageUrl: "/assets/images/chatbot-ia-commerce-pme.png",
+    imageAlt:
+      "Illustration d'un chatbot IA intégré à un site internet pour un commerce",
+    featured: false,
+    metaDescription:
+      "Un chatbot IA pour votre commerce : gadget ou vrai retour sur investissement ? Fonctionnement, coût réel et cas où ça a du sens, par un développeur freelance du 64.",
+    keywords: [
+      "chatbot IA commerce",
+      "chatbot intelligent PME",
+      "assistant conversationnel site internet",
+      "coût chatbot IA",
+      "chatbot Mistral AI",
+      "intelligence artificielle PME Pau",
+      "développeur web freelance 64",
+    ],
+  },
+  {
     id: "6",
     title:
       "Combien coûte un site internet en 2026 ? Ce qui fait vraiment varier un devis",
