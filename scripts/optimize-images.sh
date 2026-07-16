@@ -32,6 +32,7 @@ declare -a JOBS=(
   "public/assets/images/typescript-blog.webp|400,800|78|30"
   "public/assets/images/iapython-blog.webp|400,800|78|30"
   "public/assets/images/react-blog.webp|400,800|78|30"
+  "public/assets/images/combien-coute-site-internet-2026.png|400,800|78|30"
   # Profil — schema.org + chatbot (256-512px)
   "public/assets/images/Chris-profil.jpg|256,512|80|32"
   # Image Knowledge Panel Google (512px)

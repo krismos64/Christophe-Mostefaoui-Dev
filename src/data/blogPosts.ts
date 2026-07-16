@@ -31,7 +31,7 @@ export const blogPosts: BlogPost[] = [
     slug: "combien-coute-site-internet-2026",
     excerpt:
       "Le prix d'un site internet peut aller du simple au décuple, et ce n'est ni du hasard ni de l'arnaque. Périmètre, contenu, fonctionnalités, référencement : je vous explique honnêtement ce qui fait varier un devis, et les pièges des offres « pas chères ».",
-    content: `Vous avez demandé deux devis pour votre site et reçu deux montants sans rapport l'un avec l'autre ? C'est l'expérience de la plupart des artisans, commerçants et dirigeants de PME que je rencontre entre Pau, le Béarn et la côte basque. Cette page ne vous donnera pas un tarif magique — méfiez-vous de ceux qui en affichent un sans vous avoir parlé. Elle vous explique ce que vous payez réellement dans un site internet, et comment comparer des devis qui semblent incomparables.
+    content: `Vous avez demandé deux devis pour votre site et reçu deux montants sans rapport l'un avec l'autre ? C'est l'expérience de la plupart des artisans, commerçants et dirigeants de PME que je rencontre entre Pau, le Béarn et la côte basque. Cette page ne vous donnera pas un tarif magique, méfiez-vous de ceux qui en affichent un sans vous avoir parlé. Elle vous explique ce que vous payez réellement dans un site internet, et comment comparer des devis qui semblent incomparables.
 
 ## La seule vraie réponse : ça dépend de ce que votre site doit faire
 
@@ -49,7 +49,7 @@ Une page unique bien construite, un site vitrine de cinq pages, un site complet 
 
 ### 2. Le contenu : textes, photos, vidéos
 
-C'est le poste le plus sous-estimé. Qui écrit les textes ? Qui fournit les photos ? Un site magnifique avec des textes bâclés ne convaincra ni vos clients ni Google. Selon les projets, je pars de votre matière brute et je la retravaille, ou je produis le contenu avec vous — y compris photos et vidéos professionnelles, jusqu'aux prises de vue par drone pour montrer vos locaux ou vos réalisations (je suis télépilote certifié).
+C'est le poste le plus sous-estimé. Qui écrit les textes ? Qui fournit les photos ? Un site magnifique avec des textes bâclés ne convaincra ni vos clients ni Google. Selon les projets, je pars de votre matière brute et je la retravaille, ou je produis le contenu avec vous, y compris photos et vidéos professionnelles, jusqu'aux prises de vue par drone pour montrer vos locaux ou vos réalisations (je suis télépilote certifié).
 
 ### 3. Les fonctionnalités : du formulaire au chatbot
 
@@ -57,11 +57,11 @@ Formulaire de contact, prise de rendez-vous, galerie, avis, espace client, paiem
 
 ### 4. Le référencement : être trouvé, sur Google et ailleurs
 
-Un site que personne ne trouve est une plaquette rangée dans un tiroir. Le référencement local — apparaître quand on cherche votre métier à Pau, Bayonne, Orthez ou Biarritz — se construit dans la structure même du site : textes, vitesse, données techniques lisibles par les moteurs. Et en 2026, vos clients posent aussi leurs questions à ChatGPT ou à d'autres assistants : préparer votre site à être compris et cité par ces outils est un travail spécifique, que très peu de prestataires font.
+Un site que personne ne trouve est une plaquette rangée dans un tiroir. Le référencement local, apparaître quand on cherche votre métier à Pau, Bayonne, Orthez ou Biarritz, se construit dans la structure même du site : textes, vitesse, données techniques lisibles par les moteurs. Et en 2026, vos clients posent aussi leurs questions à ChatGPT ou à d'autres assistants : préparer votre site à être compris et cité par ces outils est un travail spécifique, que très peu de prestataires font.
 
 ### 5. Votre autonomie : qui fera vivre le site ?
 
-Voulez-vous modifier vous-même vos horaires, vos menus, vos actualités ? Cela suppose une interface d'administration et une formation à la livraison. Préférez-vous déléguer ? Cela suppose un accompagnement dans la durée. Les deux se chiffrent différemment — l'important est que ce soit décidé dès le départ, pas découvert après.
+Voulez-vous modifier vous-même vos horaires, vos menus, vos actualités ? Cela suppose une interface d'administration et une formation à la livraison. Préférez-vous déléguer ? Cela suppose un accompagnement dans la durée. Les deux se chiffrent différemment : l'important est que ce soit décidé dès le départ, pas découvert après.
 
 ### 6. La suite : hébergement, maintenance, évolutions
 
@@ -69,27 +69,27 @@ Un site vit : mises à jour de sécurité, sauvegardes, petites évolutions. Cer
 
 ## Pourquoi les offres « pas chères » coûtent souvent le plus cher
 
-Les plateformes de création en ligne et les offres à petit prix mensuel séduisent — et je comprends pourquoi. Mais regardez ce qu'elles impliquent vraiment :
+Les plateformes de création en ligne et les offres à petit prix mensuel séduisent, et je comprends pourquoi. Mais regardez ce qu'elles impliquent vraiment :
 
 - **Un abonnement sans fin** : sur plusieurs années, le « petit prix mensuel » dépasse souvent largement un site sur mesure… que vous ne posséderez jamais.
 - **Un modèle identique à vos concurrents** : mêmes gabarits, mêmes pages interchangeables. Difficile de se démarquer quand tout le monde a le même site.
 - **Un référencement au rabais** : ces sites se ressemblent aussi pour Google, et les premiers résultats locaux restent occupés par ceux qui ont investi correctement.
-- **Votre site ne vous appartient pas** : vous arrêtez de payer, tout disparaît. Textes, images, historique — repartis de zéro.
+- **Votre site ne vous appartient pas** : vous arrêtez de payer, tout disparaît. Textes, images, historique : repartis de zéro.
 
 Il y a des cas où une solution simple suffit, et je le dis quand c'est le cas : un devis honnête commence par là.
 
 ## Freelance local, agence, plateforme : comment choisir
 
-Une agence facture une équipe, des locaux et de la coordination — pertinent pour de très gros projets. Une plateforme en ligne vous laisse tout faire vous-même. Entre les deux, le freelance local vous donne un interlocuteur unique qui conçoit, développe et livre lui-même votre site, se déplace chez vous (gratuitement dans tout le 64 en ce qui me concerne), comprend votre marché local et reste joignable après la mise en ligne.
+Une agence facture une équipe, des locaux et de la coordination, pertinent pour de très gros projets. Une plateforme en ligne vous laisse tout faire vous-même. Entre les deux, le freelance local vous donne un interlocuteur unique qui conçoit, développe et livre lui-même votre site, se déplace chez vous (gratuitement dans tout le 64 en ce qui me concerne), comprend votre marché local et reste joignable après la mise en ligne.
 
-Mon parcours ajoute une garantie qui compte : je suis le fondateur de SmartPlanning.fr, un logiciel de gestion de plannings que j'ai conçu, développé et que j'exploite seul. Concevoir un produit complet et le faire tourner au quotidien, c'est un autre niveau d'exigence que « livrer un site et disparaître » — et vos projets en bénéficient directement.
+Mon parcours ajoute une garantie qui compte : je suis le fondateur de SmartPlanning.fr, un logiciel de gestion de plannings que j'ai conçu, développé et que j'exploite seul. Concevoir un produit complet et le faire tourner au quotidien, c'est un autre niveau d'exigence que « livrer un site et disparaître », et vos projets en bénéficient directement.
 
 ## Comment se passe un devis avec moi
 
-Pas de grille tarifaire à faire peur ou à enjoliver : chaque projet est chiffré sur mesure, et c'est une bonne nouvelle pour vous — vous ne payez que ce dont vous avez besoin.
+Pas de grille tarifaire à faire peur ou à enjoliver : chaque projet est chiffré sur mesure, et c'est une bonne nouvelle pour vous : vous ne payez que ce dont vous avez besoin.
 
 1. **Un premier échange gratuit**, chez vous, dans votre commerce ou en visio : vos objectifs, vos clients, votre concurrence, votre budget réaliste.
-2. **Un devis détaillé sous 24h** : périmètre précis, fonctionnalités incluses, planning, et ce qui n'est *pas* inclus — écrit noir sur blanc.
+2. **Un devis détaillé sous 24h** : périmètre précis, fonctionnalités incluses, planning, et ce qui n'est *pas* inclus, écrit noir sur blanc.
 3. **Un paiement en 3 fois sans frais possible**, et un démarrage généralement sous une semaine.
 
 Vous savez exactement ce que vous achetez avant d'engager un euro.
@@ -106,7 +106,7 @@ Un prestataire sérieux répond à ces cinq questions sans détour. C'est même 
 
 ## Parlons de votre projet
 
-Vous avez un projet de site — création, refonte, boutique en ligne — à Pau, dans le Béarn, sur la côte basque ou ailleurs ? Décrivez-le-moi via le formulaire de contact ou au 06 79 08 88 45 : premier échange gratuit et sans engagement, devis clair sous 24h. Et si une solution simple suffit à votre besoin, je vous le dirai aussi.`,
+Vous avez un projet de site (création, refonte, boutique en ligne) à Pau, dans le Béarn, sur la côte basque ou ailleurs ? Décrivez-le-moi via le formulaire de contact ou au 06 79 08 88 45 : premier échange gratuit et sans engagement, devis clair sous 24h. Et si une solution simple suffit à votre besoin, je vous le dirai aussi.`,
     author: "Christophe Mostefaoui",
     publishedAt: "2026-07-10",
     readTime: 7,
@@ -120,9 +120,9 @@ Vous avez un projet de site — création, refonte, boutique en ligne — à Pau
       "Béarn",
       "Conseils",
     ],
-    imageUrl: "/assets/images/optimized/chris-web-1024.webp",
+    imageUrl: "/assets/images/combien-coute-site-internet-2026.png",
     imageAlt:
-      "Espace de travail de Christophe Mostefaoui, développeur web freelance à Pau",
+      "Illustration sur le coût et le devis d'un site internet pour une PME",
     featured: true,
     metaDescription:
       "Combien coûte un site internet en 2026 ? Les 6 facteurs qui font varier un devis, les pièges des offres pas chères, et comment comparer. Par un développeur freelance du 64.",

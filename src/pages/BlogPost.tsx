@@ -36,6 +36,9 @@ const BlogPost = () => {
     return <Navigate to="/blog" replace />;
   }
 
+  // Image dédiée au partage social (1200x630), à côté de l'image éditoriale
+  const ogImageUrl = post.imageUrl.replace(/\.[^.]+$/, "-og.jpg");
+
   const formatDate = (dateString: string) =>
     new Date(dateString).toLocaleDateString("fr-FR", {
       year: "numeric",
@@ -52,7 +55,7 @@ const BlogPost = () => {
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.metaDescription,
-    "image": `https://christophe-dev-freelance.fr${post.imageUrl}`,
+    "image": `https://christophe-dev-freelance.fr${ogImageUrl}`,
     "author": {
       "@type": "Person",
       "name": post.author,
@@ -87,7 +90,10 @@ const BlogPost = () => {
         <meta property="og:description" content={post.metaDescription} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://christophe-dev-freelance.fr/blog/${post.slug}`} />
-        <meta property="og:image" content={`https://christophe-dev-freelance.fr${post.imageUrl}`} />
+        <meta property="og:image" content={`https://christophe-dev-freelance.fr${ogImageUrl}`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="article:author" content={post.author} />
         <meta property="article:section" content={getCategoryName(post.category)} />
         {post.tags.map((tag, index) => (
@@ -98,7 +104,7 @@ const BlogPost = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.metaDescription} />
-        <meta name="twitter:image" content={`https://christophe-dev-freelance.fr${post.imageUrl}`} />
+        <meta name="twitter:image" content={`https://christophe-dev-freelance.fr${ogImageUrl}`} />
 
         {/* Schema.org */}
         <script type="application/ld+json">
