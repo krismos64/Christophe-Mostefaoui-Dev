@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { getBlogPostBySlug } from "../data/blogPosts";
@@ -11,12 +11,39 @@ const categories = {
   "conseils-business": "Conseils business",
 };
 
-// Rendu léger du **gras** inline sans injecter de HTML brut
-const renderInlineBold = (text: string) => {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+// Rendu léger du **gras** et des liens [texte](url) inline, sans injecter de HTML brut.
+// Les liens internes (commençant par /) utilisent React Router pour rester des liens
+// crawlables dans le HTML pré-rendu (maillage interne SEO), pas de simples onClick JS.
+const renderInline = (text: string) => {
+  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      const label = linkMatch[1];
+      const href = linkMatch[2] ?? '';
+      const isInternal = href.startsWith('/');
+      return isInternal ? (
+        <Link
+          key={i}
+          to={href}
+          className="underline decoration-[#F4D35E]/60 hover:decoration-[#F4D35E] underline-offset-2"
+        >
+          {label}
+        </Link>
+      ) : (
+        <a
+          key={i}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-[#F4D35E]/60 hover:decoration-[#F4D35E] underline-offset-2"
+        >
+          {label}
+        </a>
+      );
     }
     return part;
   });
@@ -273,7 +300,7 @@ const BlogPost = () => {
                     key={index}
                     className="text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 mb-2 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-[#F4D35E]"
                   >
-                    {renderInlineBold(paragraph.replace(/^-\s*/, ''))}
+                    {renderInline(paragraph.replace(/^-\s*/, ''))}
                   </p>
                 );
               }
@@ -295,7 +322,7 @@ const BlogPost = () => {
                   key={index}
                   className="text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 mb-4"
                 >
-                  {renderInlineBold(paragraph)}
+                  {renderInline(paragraph)}
                 </p>
               );
             })}
