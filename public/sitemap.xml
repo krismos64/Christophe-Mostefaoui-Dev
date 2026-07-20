@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog</loc>
-    <lastmod>2026-07-16</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://christophe-dev-freelance.fr/blog/visibilite-locale-pau-bearn-cote-basque</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog/combien-coute-site-internet-2026</loc>

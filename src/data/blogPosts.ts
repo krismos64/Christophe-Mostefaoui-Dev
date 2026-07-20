@@ -25,6 +25,86 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "9",
+    title:
+      "Avoir un site ne suffit pas : être visible localement à Pau, Bayonne ou dans le Béarn",
+    slug: "visibilite-locale-pau-bearn-cote-basque",
+    excerpt:
+      "Un site en ligne n'est pas automatiquement un site trouvé. Voici ce qui fait vraiment la différence quand quelqu'un cherche un artisan, un commerce ou un service près de chez lui, à Pau, à Bayonne, à Biarritz ou dans le Béarn intérieur.",
+    content: `Vous avez un site, ou vous êtes en train d'en faire faire un, et vous vous demandez pourquoi il n'apparaît pas quand vous tapez votre propre métier suivi du nom de votre ville. C'est une des questions que j'entends le plus souvent, et la réponse tient en une phrase : avoir un site en ligne et être trouvé localement sont deux choses différentes. La seconde se construit, elle ne vient pas toute seule avec la première.
+
+## Pourquoi un site « fini » peut rester invisible
+
+Un site peut être esthétique, rapide, parfaitement fonctionnel, et malgré tout ne jamais apparaître quand un client potentiel cherche votre activité près de chez lui. La raison est presque toujours la même : rien dans le site ne dit clairement, ni à Google ni aux assistants IA, où vous exercez et pour qui. Un texte du type « bienvenue sur notre site, spécialiste de qualité depuis plusieurs années » ne contient aucun signal local exploitable, même si le message est sincère.
+
+Ce qui fait la différence, c'est un contenu qui nomme réellement votre zone d'intervention, vos quartiers, vos villes voisines, votre métier tel que vos clients le formulent eux-mêmes. Un plombier qui écrit « intervention rapide à Pau, Lescar et Billère » sera compris et retenu bien plus facilement qu'un plombier qui écrit seulement « intervention rapide dans toute la région ».
+
+## Ce que cherchent réellement vos clients
+
+Quand quelqu'un a un problème à résoudre près de chez lui, il tape rarement une recherche vague. Il tape quelque chose de précis : le métier, parfois le quartier ou la ville, parfois une urgence. « Électricien Pau », « restaurant Bayonne centre », « institut de beauté Biarritz », « artisan couvreur Orthez ». De plus en plus, la même personne pose la question presque mot pour mot à ChatGPT ou à un autre assistant IA, et attend une réponse directe plutôt qu'une liste de liens à explorer.
+
+Dans les deux cas, le principe est identique : votre site doit contenir, en toutes lettres, les réponses à ces questions précises. Pas de façon forcée ou répétitive, ce qui desservirait autant votre lecteur que votre référencement, mais de façon naturelle, dans des phrases qui décrivent réellement votre activité et votre secteur.
+
+## Les trois leviers qui font une vraie différence locale
+
+**Un contenu qui nomme votre territoire précisément.** Votre ville, mais aussi les communes voisines où vous intervenez réellement. Un artisan de l'agglomération paloise a intérêt à mentionner Lescar, Lons ou Jurançon s'il y travaille effectivement, pas à se limiter à « Pau » par prudence. La précision rassure autant qu'elle référence.
+
+**Des pages qui répondent à une intention claire**, plutôt qu'une page unique qui essaie de tout dire à tout le monde. C'est exactement pour ça que j'ai construit, sur ce site, des pages dédiées à chaque grand bassin où j'interviens : une page pour l'agglomération paloise, une pour le Pays basque autour de Bayonne, une pour Biarritz et la côte, une pour Orthez et le Béarn intérieur. Chacune parle du territoire concerné avec ses propres réalités, pas un copier-coller avec le nom de la ville changé.
+
+**Des informations à jour et cohérentes partout.** Vos horaires, votre zone d'intervention, votre façon de travailler doivent dire la même chose sur votre site, sur votre fiche d'établissement si vous en avez une, et dans tout ce qu'un visiteur ou une IA générative pourrait lire à votre sujet. Des informations qui se contredisent d'un endroit à l'autre sèment le doute, autant chez un client que dans la façon dont un moteur de recherche évalue votre fiabilité.
+
+## Le piège du site qui parle à tout le monde, donc à personne
+
+Beaucoup de sites d'artisans ou de petites entreprises restent volontairement génériques, par souci de ne braquer personne : « nous intervenons dans toute la région », « des solutions pour tous vos besoins ». L'intention est compréhensible, le résultat est souvent contre-productif. Un texte trop large ne convainc ni un lecteur humain, qui n'y trouve rien de concret, ni un moteur de recherche, qui n'y trouve rien de précis à associer à une recherche locale.
+
+Être précis ne veut pas dire s'enfermer. Un artisan qui écrit clairement qu'il intervient à Pau, Lescar et Billère peut tout à fait préciser plus loin qu'il se déplace aussi ailleurs sur demande. La précision d'abord, l'ouverture ensuite : c'est cet ordre qui fonctionne, pas l'inverse.
+
+## Ce que je mets en place sur les sites que je construis
+
+Sur les sites que je développe pour des clients du 64, chaque page importante est écrite pour un territoire précis, avec ses communes, ses réalités et son vocabulaire, jamais un modèle générique dupliqué. C'est le même principe que j'applique sur ce site : une page pour l'agglomération paloise, une pour Bayonne et le BAB, une pour Biarritz et la côte basque, une pour Orthez et le Béarn intérieur, chacune écrite différemment parce que ces territoires n'ont ni les mêmes clients ni les mêmes attentes.
+
+S'y ajoute le travail sur le référencement pour les IA génératives, dont je parle plus en détail dans un autre article : un contenu clair et honnête, lisible sans détour, a bien plus de chances d'être repris par un assistant IA qu'un texte marketing vague, quel que soit le territoire concerné.
+
+## Par où commencer si votre site est déjà en ligne
+
+Il n'est pas toujours nécessaire de tout refaire. Souvent, il suffit de reprendre les pages existantes pour y intégrer clairement votre zone d'intervention réelle, avec les noms de communes que vos clients connaissent et utilisent. Dans d'autres cas, une page dédiée par secteur d'activité ou par zone géographique a plus de sens, en particulier si vous intervenez sur plusieurs bassins bien distincts, comme Pau et la côte basque.
+
+Dans tous les cas, la meilleure façon de savoir ce qui manque à votre site est d'en parler avec quelqu'un qui connaît à la fois le référencement et votre territoire.
+
+## Parlons de votre visibilité locale
+
+Vous avez un site qui ne remonte pas quand on cherche votre activité à Pau, Bayonne, Biarritz ou ailleurs dans le 64, ou vous préparez un projet de site et voulez le construire directement avec ce travail en tête ? Décrivez-moi votre activité et votre zone d'intervention via le formulaire de contact ou au 06 79 08 88 45 : premier échange gratuit et sans engagement, devis clair sous 24h.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-07-20",
+    readTime: 7,
+    category: "conseils-business",
+    tags: [
+      "Référencement local",
+      "SEO local",
+      "Pau",
+      "Bayonne",
+      "Biarritz",
+      "Béarn",
+      "PME",
+      "Artisans",
+    ],
+    imageUrl: "/assets/images/visibilite-locale-pau-bearn-cote-basque.png",
+    imageAlt:
+      "Illustration sur la visibilité locale en ligne pour les commerces et artisans du Béarn et du Pays basque",
+    featured: false,
+    metaDescription:
+      "Avoir un site ne suffit pas à être trouvé localement. Ce qui fait vraiment la différence pour apparaître dans les recherches à Pau, Bayonne, Biarritz ou dans le Béarn, par un développeur freelance du 64.",
+    keywords: [
+      "référencement local Pau",
+      "visibilité locale Béarn",
+      "SEO local Pyrénées-Atlantiques",
+      "être trouvé sur Google Bayonne",
+      "site internet artisan Pau",
+      "développeur web freelance 64",
+      "référencement Béarn Pays basque",
+    ],
+  },
+  {
     id: "8",
     title:
       "Être trouvé sur Google ET sur ChatGPT en 2026 : le référencement a changé",
