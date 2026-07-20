@@ -25,6 +25,83 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "10",
+    title:
+      "Ce que les gens demandent vraiment à ChatGPT sur les artisans et commerces du coin",
+    slug: "questions-chatgpt-artisans-commerces-locaux",
+    excerpt:
+      "« Quel est le meilleur plombier à Pau », « un restaurant sympa à Bayonne pour un repas d'affaires » : voici, très concrètement, le type de questions que les gens posent déjà à ChatGPT sur des activités locales, et ce qu'il faut écrire sur son site pour avoir une chance d'être la réponse.",
+    content: `Vous doutez encore que quelqu'un puisse chercher un artisan ou un commerce en discutant avec une intelligence artificielle plutôt qu'en tapant une recherche Google classique ? Essayez, là, maintenant : ouvrez ChatGPT et demandez-lui de vous recommander un plombier à Pau ou un bon restaurant à Bayonne pour un dîner d'affaires. Vous allez obtenir une réponse construite, avec des noms, parfois des explications sur pourquoi tel choix plutôt qu'un autre. La question n'est plus de savoir si ça arrive, elle arrive déjà. La vraie question est : votre activité a-t-elle une chance d'apparaître dans cette réponse ?
+
+## Les questions que les gens posent réellement
+
+Ce ne sont pas des requêtes de trois mots comme sur Google. Ce sont des phrases complètes, parfois avec du contexte, formulées comme on parlerait à quelqu'un qui connaît le coin :
+
+- « Quel est le meilleur plombier à Pau pour une urgence le week-end ? »
+- « Un restaurant sympa à Bayonne pour un repas d'affaires, pas trop bruyant »
+- « Comment trouver un développeur web fiable dans le 64 pour refaire le site de mon entreprise ? »
+- « Un institut de beauté à Biarritz qui prend en dernière minute »
+- « Une entreprise sérieuse pour une extension de maison du côté d'Orthez »
+
+Ce qui frappe dans ces formulations, c'est la présence d'un critère de choix en plus du simple métier et de la ville : l'urgence, l'ambiance, la fiabilité, la disponibilité. Un assistant IA ne se contente pas de retrouver un annuaire, il essaie de répondre à ce critère précis. Un site qui ne parle que de lui-même, sans jamais répondre aux questions concrètes que ses clients se posent, a peu de chances d'être repris dans ce genre de réponse.
+
+## Comment une IA générative construit sa réponse
+
+Contrairement à un moteur de recherche classique, qui affiche une liste de liens et laisse la personne comparer, un assistant IA lit plusieurs sources, en retient certaines, et rédige une réponse directe. Pour choisir quoi citer, il cherche du contenu qui répond clairement à la question posée : des informations précises, honnêtes, faciles à vérifier. Un texte qui tourne autour du pot, qui multiplie les formules toutes faites sans jamais dire concrètement ce que fait l'entreprise, pour qui et où, est beaucoup plus difficile à exploiter pour lui.
+
+Il y a aussi une question technique importante, dont je parle plus en détail dans un autre article sur le référencement pour les IA : si le contenu d'un site n'apparaît qu'après exécution de code dans le navigateur, une IA qui lit rapidement la page peut ne rien y trouver, même si le contenu existe bel et bien pour un visiteur humain. Ce point technique, invisible pour vous, change tout pour ces outils.
+
+## Écrire pour répondre à une question, pas pour se présenter
+
+La plupart des sites de commerces et d'artisans sont écrits à la première personne, pour se présenter : « nous sommes une entreprise familiale », « nous mettons un point d'honneur à la qualité ». C'est légitime, mais ça ne répond à aucune question précise qu'un client pourrait poser.
+
+Une approche complémentaire, qui change beaucoup pour ce type de visibilité, consiste à écrire aussi en anticipant les questions réelles : sous quel délai intervenez-vous, dans quelles communes, pour quels types de besoins, ce que vous faites et ce que vous ne faites pas. Un plombier qui écrit clairement qu'il intervient en urgence le week-end à Pau et dans les communes voisines, avec un exemple concret du type d'intervention qu'il traite, donne à une IA générative une réponse toute prête à la question « quel plombier appeler un dimanche à Pau ».
+
+C'est le même principe que j'applique aux pages locales de ce site : plutôt qu'une présentation générale de mes services, chaque page répond aux questions propres à son territoire, avec les communes, les réalités et le vocabulaire de ce bassin précis. J'en parle plus en détail dans [un article sur la visibilité locale](/blog/visibilite-locale-pau-bearn-cote-basque), qui explique pourquoi un contenu générique ne suffit pas, même quand le site est par ailleurs très bien fait.
+
+## Le rôle discret d'une FAQ bien pensée
+
+Une page de questions fréquentes, écrite avec les vraies formulations de vos clients plutôt qu'un jargon d'entreprise, est un des formats les plus efficaces pour ce type de visibilité. Chaque question-réponse est déjà construite dans le format qu'une IA générative cherche à reproduire : une question précise, une réponse claire et complète.
+
+Ce n'est pas un hasard si les pages locales de ce site comportent chacune une FAQ courte, propre à son territoire. Ce n'est pas seulement pour rassurer un visiteur humain qui hésite encore, c'est aussi une structure que les assistants IA savent particulièrement bien lire et reprendre.
+
+## Ce que ça ne change pas
+
+Répondre à des questions précises ne veut pas dire inventer des réponses toutes faites pour plaire à un algorithme. Une IA générative, comme un client, se méfie très vite d'un contenu qui sonne faux, qui promet tout sans jamais rien préciser, ou qui répète des formules marketing vidées de sens. La meilleure stratégie reste, très simplement, d'écrire honnêtement ce que vous faites, pour qui, où, et dans quelles conditions, exactement comme vous l'expliqueriez à un client au téléphone.
+
+## Parlons de votre visibilité sur ces nouveaux canaux
+
+Vous vous demandez si votre site actuel a une chance d'être repris par ChatGPT ou un autre assistant IA quand quelqu'un cherche votre activité à Pau, Bayonne, Biarritz ou ailleurs dans le 64 ? Décrivez-moi votre activité via le formulaire de contact ou au 06 79 08 88 45 : premier échange gratuit et sans engagement, devis clair sous 24h.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-07-20",
+    readTime: 6,
+    category: "veille-tech",
+    tags: [
+      "GEO",
+      "ChatGPT",
+      "Référencement IA",
+      "PME",
+      "Artisans",
+      "Pau",
+      "Béarn",
+    ],
+    imageUrl: "/assets/images/questions-chatgpt-artisans-commerces-locaux.png",
+    imageAlt:
+      "Illustration d'une personne posant une question à une intelligence artificielle sur un commerce local",
+    featured: false,
+    metaDescription:
+      "Ce que les gens demandent vraiment à ChatGPT sur les artisans et commerces locaux, et comment écrire son site pour avoir une chance d'être la réponse. Par un développeur freelance du 64.",
+    keywords: [
+      "questions ChatGPT commerce local",
+      "GEO référencement IA générative",
+      "être cité par ChatGPT",
+      "référencement local Pau",
+      "visibilité IA artisan",
+      "développeur web freelance 64",
+      "SEO GEO Pyrénées-Atlantiques",
+    ],
+  },
+  {
     id: "9",
     title:
       "Avoir un site ne suffit pas : être visible localement à Pau, Bayonne ou dans le Béarn",
