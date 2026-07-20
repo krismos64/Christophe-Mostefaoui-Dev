@@ -10,38 +10,6 @@ export default function Hero() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const titleStagger = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.06,
-        delayChildren: 0,
-      },
-    },
-  };
-
-  const lineUp = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 16 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: [0.16, 1, 0.3, 1] as const },
-    },
-  };
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 8 },
-    visible: (delay: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: prefersReducedMotion ? 0 : 0.5,
-        delay: prefersReducedMotion ? 0 : delay * 0.5,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    }),
-  };
-
   return (
     <section
       id="home"
@@ -129,17 +97,9 @@ export default function Hero() {
 
       {/* Contenu principal */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col justify-start px-5 pt-24 pb-44 sm:px-8 md:justify-center md:px-12 md:pt-32 md:pb-40 lg:px-16">
-        <motion.div
-          className="max-w-2xl"
-          initial="hidden"
-          animate="visible"
-          variants={titleStagger}
-        >
+        <div className="max-w-2xl">
           {/* Méta-info en haut : localisation manuscrite */}
-          <motion.div
-            variants={lineUp}
-            className="mb-8 flex items-center gap-3"
-          >
+          <div className="mb-8 flex items-center gap-3">
             <span
               className="hero-handwritten flex items-center gap-2 text-[19px] sm:text-[22px] text-[#F4D35E]"
               aria-label="Localisation"
@@ -147,10 +107,10 @@ export default function Hero() {
               <MapPin className="h-4 w-4" aria-hidden="true" />
               depuis Pau, Pyrénées-Atlantiques (64)
             </span>
-          </motion.div>
+          </div>
 
           {/* Titre principal manifeste en serif italique */}
-          <motion.h1 variants={lineUp} className="hero-display text-[#F4EFE6]">
+          <h1 className="hero-display text-[#F4EFE6]">
             <span className="block">Je code</span>
             <span className="block">
               des sites <em className="not-italic font-medium">qui</em>
@@ -159,34 +119,23 @@ export default function Hero() {
               ressemblent <em className="not-italic font-medium">à</em>
             </span>
             <span className="block">leurs propriétaires.</span>
-          </motion.h1>
+          </h1>
 
           {/* Trait fin façon règle de magazine */}
-          <motion.div
-            variants={lineUp}
+          <div
             className="my-8 h-px w-24 bg-[#F4EFE6]/40"
             aria-hidden="true"
           />
 
           {/* Bio courte */}
-          <motion.p
-            custom={0.9}
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            className="hero-body max-w-xl text-[17px] leading-[1.65] text-[#F4EFE6]/85 sm:text-[18px]"
-          >
+          <p className="hero-body max-w-xl text-[17px] leading-[1.65] text-[#F4EFE6]/85 sm:text-[18px]">
             Christophe Mostefaoui, développeur freelance basé à Pau et Artix
             (64). Je conçois des sites et applications web sur mesure, de
             l'analyse des besoins à la mise en ligne.
-          </motion.p>
+          </p>
 
           {/* Badge fondateur SmartPlanning */}
-          <motion.a
-            custom={1.05}
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
+          <a
             href="https://smartplanning.fr/"
             target="_blank"
             rel="noopener noreferrer"
@@ -202,16 +151,10 @@ export default function Hero() {
               className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               aria-hidden="true"
             />
-          </motion.a>
+          </a>
 
           {/* CTAs */}
-          <motion.div
-            custom={1.2}
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7"
-          >
+          <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
             <button
               onClick={scrollToContact}
               className="hero-cta-primary group"
@@ -241,8 +184,8 @@ export default function Hero() {
                 aria-hidden="true"
               />
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Légende manuscrite signée — centrée en bas sur mobile, à droite en desktop */}
         <motion.figcaption

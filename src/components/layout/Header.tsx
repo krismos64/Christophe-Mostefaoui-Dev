@@ -164,7 +164,7 @@ export default function Header() {
       >
         <nav className="container mx-auto px-4 sm:px-6 lg:px-10 py-3 sm:py-4">
           <div className="flex items-center justify-between gap-3">
-            {/* Logo : vidéo ronde + nom Fraunces italique */}
+            {/* Logo : image légère sur mobile, animation vidéo sur desktop */}
             <Link
               to="/"
               className="flex items-center gap-3 min-w-0 flex-shrink"
@@ -176,16 +176,30 @@ export default function Header() {
               }}
             >
               <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-[#F4D35E]/30 bg-[#0B0805]">
+                <img
+                  src="/assets/images/header-avatar-mobile.webp"
+                  alt=""
+                  width={96}
+                  height={96}
+                  decoding="async"
+                  className="h-full w-full object-cover md:hidden"
+                  aria-hidden="true"
+                />
                 <video
-                  src="/assets/videos/animation-chris-dev.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
                   preload="none"
-                  className="w-full h-full object-cover"
+                  className="hidden h-full w-full object-cover md:block"
                   aria-label="Animation Christophe développeur"
-                />
+                >
+                  <source
+                    src="/assets/videos/animation-chris-dev.mp4"
+                    type="video/mp4"
+                    media="(min-width: 768px)"
+                  />
+                </video>
               </div>
               <span
                 className={`hero-body text-[15px] sm:text-base lg:text-[17px] font-medium whitespace-nowrap transition-colors ${textColor}`}
