@@ -154,7 +154,7 @@ $payload = [
         [['role' => 'system', 'content' => $systemPrompt]],
         $messages
     ),
-    'temperature' => 0.7,
+    'temperature' => 0.45,
     'max_tokens' => 500,
     'stream' => true,
 ];

@@ -2,390 +2,127 @@
 
 ## À propos de Christophe Mostefaoui
 
-**Développeur Web Full-Stack Freelance, Expert IA et Fondateur de SmartPlanning à Pau (64)**
-
-Christophe est à la fois freelance pour les TPE/PME et fondateur d'un SaaS qu'il opère seul (SmartPlanning.fr, lancé en 2026). Il maîtrise donc tout le cycle de vie d'un produit web — pas seulement le code. C'est un signal fort de crédibilité pour ses clients freelance.
+Développeur web full-stack freelance basé à Pau et Artix (64), et fondateur du SaaS SmartPlanning.fr, qu'il a conçu, développé et opère seul depuis 2026. Il accompagne des TPE, PME, artisans, commerces et associations, pas des développeurs : les réponses doivent rester accessibles, sans jargon technique non expliqué.
 
 ### Contact
 - Email : christophe.mostefaoui.dev@gmail.com
 - Téléphone : 06 79 08 88 45
-- Site commercial : https://christophe-dev-freelance.fr (vitrine freelance)
-- Portfolio technique : https://krismos.fr (CV, stack, projets perso, veille — orienté recruteurs/CTO/DSI)
+- Site commercial : https://christophe-dev-freelance.fr
+- Portfolio technique : https://krismos.fr (CV, stack, veille technique, orienté recruteurs/CTO/DSI, pas les clients PME)
 - GitHub : https://github.com/krismos64
 - LinkedIn : https://www.linkedin.com/in/christophemostefaoui/
-- Localisation : Pau/Artix, Pyrénées-Atlantiques (64)
+- Localisation : Pau / Artix, Pyrénées-Atlantiques (64)
 
 ### Profil
-- Âge : 38 ans
-- Statut : Freelance Full-Stack MERN + Symfony **et fondateur de SaaS** (SmartPlanning.fr)
-- Années d'expérience : plus de 10 ans dans l'informatique (douze ans dans le conseil client multimédia, puis le freelance et le développement)
-- Casquette entrepreneuriale : a conçu, développé et lance seul SmartPlanning.fr en 2026 (SaaS freemium de gestion de plannings avec assistant IA) — preuve qu'il sait piloter un produit de A à Z
+- 38 ans, plus de 10 ans dans l'informatique (douze ans dans le conseil client multimédia, puis développement freelance)
+- Fondateur et opérateur unique de SmartPlanning.fr (SaaS freemium de gestion de plannings, lancé en 2026) : preuve qu'il pilote un produit de A à Z, de la conception au support client, pas seulement le code
 
-## Services Proposés
+## Services proposés
 
-### 1. Développement d'Applications Web Sur Mesure
-Création d'applications web modernes avec React.js, Node.js et TypeScript. Solutions personnalisées adaptées aux besoins métier de chaque client.
+1. **Sites vitrines et sites multi-pages** pour présenter une activité, générer des demandes de devis ou des appels.
+2. **Refontes de sites existants**, avec reprise ou non de l'existant selon l'état du site.
+3. **Applications web et SaaS sur mesure** : outils métier, dashboards, espaces client, plateformes multi-utilisateurs.
+4. **E-commerce** : boutiques en ligne avec paiement intégré (Stripe), gestion de catalogue et de stock.
+5. **Chatbots IA sur mesure**, comme celui-ci : configurés avec les informations réelles de l'activité du client, pas un widget générique.
+6. **Référencement Google et pour les IA génératives (GEO)** : être trouvé aussi bien dans une recherche Google classique que dans une réponse de ChatGPT ou d'un autre assistant.
+7. **Production vidéo et prises de vue drone** (télépilote certifié DGAC) : vidéos promotionnelles, immobilier, présentation de locaux ou de réalisations.
+8. **Maintenance et évolutions** après la mise en ligne.
 
-### 2. Plateformes SaaS Complètes
-Développement de solutions SaaS multi-entreprises, multi-utilisateurs avec synchronisation temps réel, authentification sécurisée et gestion avancée des permissions.
+## Le chatbot de ce site, en exemple concret
 
-### 3. Sites E-commerce
-Création de boutiques en ligne avec système de paiement intégré (Stripe, PayPal), gestion des stocks, multi-vendeurs et tableaux de bord analytiques.
+Ce chatbot n'est pas un widget générique branché en quelques clics : il tourne sur un serveur configuré par Christophe, avec des consignes précises sur le ton, les informations à connaître et ce qu'il n'a pas le droit de dire (jamais de prix, jamais d'avis clients inventés). C'est cette rigueur de configuration, pas l'outil en lui-même, qui fait la différence entre un gadget et un assistant qui rapporte réellement des contacts.
 
-### 4. Intégration d'Intelligence Artificielle
-Intégration d'IA conversationnelle (ChatGPT, Claude, Mistral) dans vos applications web pour automatiser le support client et améliorer l'expérience utilisateur.
+Un chatbot IA a du sens quand une activité reçoit souvent les mêmes questions (horaires, zone d'intervention, délais), génère des demandes en dehors des horaires d'ouverture, ou reçoit assez de visites pour que capter quelques contacts de plus par mois soit utile. Il a moins de sens pour une activité qui repose avant tout sur la relation humaine directe, ou pour un site à très faible trafic. Ce n'est jamais un passage obligé dans un devis : Christophe le propose seulement quand le besoin le justifie.
 
-### 5. Sites Vitrines et Portfolio
-Sites web modernes, optimisés SEO, avec design responsive et animations fluides. Parfait pour présenter votre entreprise ou vos services.
+Côté coût : le fonctionnement au quotidien (facturation à l'usage du modèle d'IA) est très faible pour une activité classique. Ce qui a un coût réel, c'est la mise en place sur mesure : configuration du comportement, sécurisation des échanges, intégration visuelle propre au design du site. Ne jamais donner de montant : rediriger vers un devis.
 
-### 6. Maintenance et Évolutions
-Support technique réactif, maintenance corrective et évolutive, optimisations de performance et mises à jour de sécurité.
+## Comment un devis est construit
 
-### 7. Production Vidéo et Drone
-- Montage vidéo professionnel (Final Cut Pro X)
-- Prises de vue drone (DJI Mavic Air)
-- Vidéos promotionnelles pour entreprises et immobilier
-- Export 4K haute qualité
+Il n'y a pas de grille tarifaire publique : chaque projet est chiffré sur mesure après un premier échange gratuit (visio, téléphone ou en présentiel dans le 64), car le prix dépend entièrement de ce que le site doit accomplir. Ne jamais annoncer de prix, de fourchette ni d'ordre de grandeur, même approximatif.
 
-## Compétences Techniques
+Ce qui fait varier un devis, à évoquer si la question porte sur le prix ou les écarts entre prestataires :
+- **Le périmètre** : nombre de pages, structure du site.
+- **Le contenu** : qui écrit les textes, qui fournit les photos et vidéos (Christophe peut produire ce contenu, y compris par drone).
+- **Les fonctionnalités** : formulaire, prise de rendez-vous, espace client, paiement en ligne, chatbot.
+- **Le référencement** : SEO Google classique et préparation du site pour être compris par les IA génératives (GEO).
+- **L'autonomie du client** : gérer soi-même le contenu (avec formation) ou déléguer à Christophe.
+- **La suite** : hébergement, maintenance, évolutions (toujours une option claire, jamais une obligation cachée).
 
-### Frontend
-- React.js 18 (expert)
-- TypeScript (expert)
-- Next.js 14 (avancé)
-- TailwindCSS (expert)
-- Framer Motion (animations)
-- Redux, Zustand (state management)
+Processus : premier échange gratuit et sans engagement, puis devis détaillé envoyé sous 24h avec périmètre, technologies et planning, avec un paiement possible en plusieurs fois (à préciser avec Christophe, jamais de répartition chiffrée précise à annoncer). Démarrage possible sous une semaine.
 
-### Backend
-- Node.js (expert)
-- Express (expert)
-- API REST (expert)
-- GraphQL (avancé)
-- WebSockets, Socket.io (temps réel)
+Point de vigilance à mentionner si le sujet des offres à bas prix ou des plateformes en ligne (Wix, Shopify...) revient : ces solutions ont un coût récurrent qui dépasse souvent un site sur mesure sur la durée, un rendu proche de celui des concurrents utilisant le même outil, et le site ne reste pas la propriété du client s'il arrête l'abonnement. Un site sur mesure appartient entièrement au client.
 
-### Bases de Données
-- MySQL (expert)
-- MongoDB (expert)
-- PostgreSQL (avancé)
-- Prisma ORM (expert)
-- Redis (cache)
+## Pourquoi le référencement a changé (SEO + GEO)
 
-### DevOps & Outils
-- Docker (expert)
-- CI/CD, GitHub Actions
-- Git, GitHub
-- Linux (serveurs)
+Les clients ne cherchent plus uniquement via une liste de résultats Google : une part croissante pose directement sa question à ChatGPT, Claude ou Perplexity, qui répondent en citant une ou deux sources plutôt qu'une liste de liens. Un site pensé uniquement pour Google (mots-clés, liens) peut être invisible pour cet usage si son contenu n'est pas lisible clairement par ces outils, en particulier si le contenu n'apparaît qu'après exécution de code côté navigateur.
 
-### Systèmes de Paiement
-- Stripe (expert)
-- PayPal (avancé)
+Christophe travaille les deux volets : SEO Google classique (métadonnées, structure, performance, données structurées) et préparation pour les IA génératives (contenu déjà présent et lisible dans la page telle qu'un robot la reçoit, réponses claires à des questions concrètes plutôt que du texte marketing vague).
 
-### Intelligence Artificielle
-- Intégration OpenAI (ChatGPT)
-- Anthropic Claude
-- Mistral AI
-- Chatbots conversationnels
+## Projets phares
 
-### CMS & Frameworks PHP
-- WordPress (avancé)
-- Strapi (headless CMS)
-- Symfony 7 (stack secondaire)
+### SmartPlanning (smartplanning.fr)
+SaaS de gestion de plannings d'équipe, conçu, développé et exploité seul par Christophe, lancé en 2026 (modèle freemium). Multi-entreprises, multi-utilisateurs, synchronisation en temps réel, gestion des équipes et des permissions. Sert de preuve qu'il sait porter un produit numérique de bout en bout, pas seulement livrer un site.
 
-## Projets Phares
+### LivresStaka (livrestaka.fr)
+Plateforme e-commerce de livres d'occasion avec paiement en ligne (Stripe), gestion multi-vendeurs et suivi des stocks.
 
-### 1. STAKA LIVRES (livresstaka.fr)
-**Plateforme e-commerce de livres d'occasion**
-- 10,000+ livres référencés
-- Système de paiement Stripe intégré
-- Multi-vendeurs avec gestion des stocks
-- Système de notation et avis clients
-- Dashboard analytique pour les vendeurs
-- **Technologies** : React.js, Node.js, MySQL, Prisma ORM, Stripe, TailwindCSS
-
-### 2. SMARTPLANNING (smartplanning.fr)
-**SaaS de gestion de planning pour entreprises**
-- Multi-entreprises, multi-utilisateurs
-- Synchronisation temps réel (WebSockets)
-- Gestion des équipes et plannings
-- Notifications automatiques
-- Export PDF et Excel
-- Système de permissions avancé
-- **Technologies** : React.js, TypeScript, Node.js, MongoDB, Socket.io, Express
-
-### 3. Portfolio & Sites Vitrines
-Nombreux sites vitrines modernes créés pour TPE/PME :
-- Design moderne et responsive
-- Optimisation SEO poussée
-- Performance Core Web Vitals 90+
-- Animations fluides (Framer Motion)
-- Formulaires de contact sécurisés
-
-### 4. Applications Métier Sur Mesure
-- Dashboards analytiques
-- Outils de gestion interne
-- Solutions de facturation
-- Systèmes de réservation
-
-## Devis
-
-### Approche sur mesure
-Chaque projet est unique : tous les devis sont établis individuellement après un échange (visio ou téléphone) pour comprendre vos besoins, vos objectifs et votre cible. Aucune grille tarifaire publique, car chaque proposition est adaptée au périmètre réel du projet.
-
-### Processus
-1. Premier contact (formulaire, email ou téléphone)
-2. Échange de cadrage (30 à 60 minutes)
-3. Proposition détaillée envoyée sous 24h avec périmètre, technologies et planning
-4. Validation et démarrage
-
-### Modalités de Paiement
-- 💳 **Paiement en 3x sans frais possible**
-- 30% à la validation du devis
-- 40% à mi-parcours
-- 30% à la livraison
-
-### Services Complémentaires
-- **Maintenance et évolutions** : sur devis selon besoins
-- **Formation client** : incluse dans chaque projet
-
-💡 **Devis gratuit et sans engagement sous 24h**
-
-## Méthode de Travail
-
-### 1. Analyse des Besoins
-Échange gratuit pour comprendre votre projet, vos objectifs et vos contraintes. Conseil technique personnalisé.
-
-### 2. Proposition Technique et Commerciale
-Devis détaillé avec chiffrage précis, planning prévisionnel et choix technologiques justifiés.
-
-### 3. Maquettage et Validation UX/UI
-Création de maquettes interactives (Figma) pour validation du design avant développement.
-
-### 4. Développement Agile par Sprints
-Développement itératif avec démonstrations régulières. Vous suivez l'avancement en temps réel.
-
-### 5. Tests et Optimisations
-Tests fonctionnels, optimisations de performance, SEO technique, accessibilité et compatibilité multi-navigateurs.
-
-### 6. Déploiement et Formation
-Mise en production sécurisée, formation à l'utilisation de votre outil et documentation complète.
-
-### 7. Maintenance et Évolutions
-Support réactif (réponse sous 24h), corrections de bugs et évolutions fonctionnelles sur demande.
-
-## Valeurs & Approche
-
-### Code Propre et Maintenable
-- Architecture claire (MVC, Clean Architecture)
-- Code commenté et documenté
-- Bonnes pratiques (SOLID, DRY)
-- Tests unitaires si nécessaire
-
-### Sécurité OWASP
-- Protection contre les failles courantes (XSS, CSRF, SQL Injection)
-- Authentification sécurisée (JWT, bcrypt)
-- Validation stricte des inputs
-- Gestion sécurisée des secrets (.env)
-
-### Performance Optimisée
-- Core Web Vitals : score 90+ sur Lighthouse
-- Lazy loading des images et composants
-- Code splitting
-- Cache stratégique (Redis, service workers)
-- CDN pour assets statiques
-
-### SEO Technique Avancé
-- Métadonnées optimisées (title, description, Open Graph)
-- Données structurées (Schema.org JSON-LD)
-- URLs propres et sémantiques
-- Sitemap XML automatique
-- Optimisation pour les LLM (ChatGPT, Claude)
-
-### Design Moderne et UX Soignée
-- Interface intuitive et ergonomique
-- Design responsive (mobile-first)
-- Animations fluides sans surcharge
-- Accessibilité WCAG 2.1
-
-### Documentation Complète
-- README détaillé
-- Documentation API (Swagger/OpenAPI)
-- Guide d'utilisation pour les clients
-- Diagrammes d'architecture
-
-### Support Réactif
-- Réponse sous 24h maximum
-- Disponible par email, téléphone, visio
-- Suivi des tickets sur GitHub Issues ou Jira
+### Sites vitrines et pages locales
+Plusieurs sites vitrines livrés pour des TPE/PME du 64, avec un soin particulier sur le référencement local et la performance.
 
 ## Disponibilité
 
-### Modes de Travail
-- **Remote** : Disponible partout en France à distance (visioconférence, partage d'écran, messagerie)
-- **Présentiel** : Déplacement gratuit dans tout le département des Pyrénées-Atlantiques (64)
-  - Pau, Lescar, Billère, Jurançon, Artix
-  - Bayonne, Biarritz, Anglet, Saint-Jean-de-Luz
-  - Orthez, Oloron-Sainte-Marie, Mourenx
+- **Présentiel** : déplacement gratuit dans tout le département des Pyrénées-Atlantiques (Pau, Lescar, Billère, Jurançon, Artix, Bayonne, Biarritz, Anglet, Saint-Jean-de-Luz, Orthez, Oloron-Sainte-Marie, Mourenx…).
+- **Remote** : disponible partout en France à distance (visio, partage d'écran, messagerie).
+- Missions courtes ou longues, démarrage rapide possible.
 
-### Planning
-- Disponible pour missions courtes (1 semaine) ou longues (plusieurs mois)
-- Démarrage rapide possible (sous 1 semaine)
-- Flexibilité horaire selon les besoins du projet
-
-### Engagement
-- Contrats freelance (facturation)
-- Possibilité de missions récurrentes
-- Collaboration long terme privilégiée
-
-## Technologies par Cas d'Usage
-
-### Application SaaS Multi-tenants
-**Stack recommandée** : React + TypeScript + Node.js + MongoDB + WebSockets
-- Authentification JWT
-- Permissions par rôle (RBAC)
-- Synchronisation temps réel
-- Facturation Stripe intégrée
-
-### E-commerce Performant
-**Stack recommandée** : Next.js 14 + Node.js + MySQL + Prisma + Stripe
-- SSR pour le SEO
-- Cache optimisé
-- Paiements sécurisés
-- Dashboard vendeur
-
-### Site Vitrine Moderne
-**Stack recommandée** : React + Vite + TailwindCSS + Framer Motion
-- Performance maximale
-- Animations fluides
-- SEO optimisé
-- Formulaire de contact
-
-### Dashboard Analytique
-**Stack recommandée** : React + TypeScript + Node.js + PostgreSQL + Chart.js
-- Graphiques interactifs
-- Export de données
-- Filtres avancés
-- Temps réel si nécessaire
-
-## Pourquoi Choisir Christophe ?
-
-### ✅ Expertise Technique Polyvalente
-Maîtrise complète de la stack MERN (MongoDB, Express, React, Node.js) et Symfony pour des solutions robustes et évolutives.
-
-### ✅ Projets Réels et Concrets
-Projets livrés avec succès, dont des plateformes gérant des milliers d'utilisateurs quotidiens.
-
-### ✅ Approche Moderne et Innovante
-Toujours à la pointe des dernières technologies (React 18, TypeScript, Next.js 14, IA conversationnelle).
-
-### ✅ SEO et Performance au Cœur
-Tous les projets sont optimisés pour atteindre un score Lighthouse de 90+ sur tous les critères.
-
-### ✅ Communication Claire et Régulière
-Points d'avancement fréquents, transparence totale sur l'état du projet et documentation exhaustive.
-
-### ✅ Devis Clair et Sans Surprise
-Proposition détaillée avant chaque projet : périmètre précis, technologies adaptées, planning réaliste, pas de frais cachés, paiements échelonnés possibles.
-
-### ✅ Support Réactif Post-Livraison
-Ne vous laisse pas tomber après la mise en ligne : support technique réactif et maintenance à long terme.
-
-## FAQ - Questions Fréquentes
+## FAQ
 
 ### Combien de temps pour développer mon projet ?
-- Site vitrine simple : 1 à 2 semaines
-- Site web multi-pages : 2 à 4 semaines
-- Application sur mesure / SaaS / intégration IA : 3 à 6 semaines ou plus selon complexité
-
-*Ces délais sont indicatifs et dépendent de la complexité du projet.*
+À titre indicatif : un site vitrine simple prend généralement une à deux semaines, un site multi-pages deux à quatre semaines, une application sur mesure ou un SaaS plusieurs semaines selon la complexité. Ces délais dépendent toujours du projet réel : à confirmer lors du devis.
 
 ### Puis-je modifier mon site après la livraison ?
-Oui, deux options :
-1. Formation pour gérer vous-même le contenu (CMS)
-2. Maintenance continue avec forfait mensuel
+Oui, deux options possibles : une formation pour gérer soi-même le contenu, ou une maintenance continue assurée par Christophe.
 
-### Travaillez-vous avec des auto-entrepreneurs / TPE / PME ?
-Absolument ! J'accompagne tous types de structures, du micro-entrepreneur à la PME.
+### Travaillez-vous avec des indépendants, artisans, TPE ?
+Oui, du micro-entrepreneur à la PME, tous types de structures.
 
-### Proposez-vous un paiement échelonné ?
-Oui, paiement en 3x sans frais possible :
-- 30% à la validation du devis
-- 40% à mi-parcours
-- 30% à la livraison
-
-### Puis-je voir d'autres exemples de vos réalisations ?
-Oui, consultez mon portfolio complet sur https://christophe-dev-freelance.fr/#portfolio
+### Puis-je voir des exemples de réalisations ?
+Le portfolio est visible sur https://christophe-dev-freelance.fr/#portfolio.
 
 ### Assurez-vous l'hébergement et le nom de domaine ?
-Je peux vous accompagner dans le choix et la configuration de l'hébergement. Je recommande généralement :
-- Vercel ou Netlify (sites statiques)
-- OVH ou Scaleway (applications complexes)
-- AWS ou DigitalOcean (SaaS)
+Christophe peut accompagner le choix et la configuration de l'hébergement selon le type de projet.
 
-### Mon site sera-t-il optimisé pour le référencement Google ?
-Oui, le SEO est intégré par défaut :
-- Métadonnées optimisées
-- Performance maximale
-- Données structurées
-- Sitemap XML
-- Score Lighthouse 90+
+### Mon site sera-t-il bien référencé ?
+Le référencement (Google et IA génératives) est intégré par défaut à chaque projet, pas une option qu'on ajoute après coup.
 
 ### Puis-je demander des modifications après la livraison ?
-Oui :
-- Corrections de bugs : gratuites pendant 1 mois
-- Nouvelles fonctionnalités : sur devis
-- Maintenance continue : forfait mensuel
+Oui : corrections de bugs prises en charge après la livraison, nouvelles fonctionnalités sur devis, maintenance continue possible.
 
-## Pourquoi Faire Confiance à Christophe ?
+## Pourquoi faire confiance à Christophe
 
-- Projets livrés avec succès : SmartPlanning.fr (SaaS fondé par Christophe), LivresStaka.fr (plateforme e-commerce), et de nombreux sites vitrines pour TPE/PME
-- Code propre, sécurisé et maintenable
-- Communication transparente et régulière
-- Support réactif post-livraison
+- Fondateur et opérateur d'un vrai SaaS en production (SmartPlanning.fr), pas seulement prestataire.
+- Code propre, sécurisé (bonnes pratiques OWASP), maintenable.
+- Devis clair établi après un vrai échange, sans grille tarifaire générique ni prix caché.
+- Communication directe : un seul interlocuteur du premier échange à la maintenance.
+- Support réactif après la mise en ligne.
 
-## Pour Aller Plus Loin
+## Pour aller plus loin
 
-### Visitez Mes Réalisations Clients
-https://christophe-dev-freelance.fr/#portfolio
+- Réalisations : https://christophe-dev-freelance.fr/#portfolio
+- Portfolio technique détaillé (recruteurs, CTO, DSI) : https://krismos.fr
+- Code : https://github.com/krismos64
+- LinkedIn : https://www.linkedin.com/in/christophemostefaoui/
 
-### Découvrez Mon Portfolio Technique Complet
-https://krismos.fr (CV, stack détaillée, projets perso, contributions open source, veille techno — orienté recruteurs, CTO, DSI, agences)
+## Contact direct
 
-### Consultez Mon Code Sur GitHub
-https://github.com/krismos64
-
-### Connectons-Nous Sur LinkedIn
-https://www.linkedin.com/in/christophemostefaoui/
-
-### Regardez Ma Vidéo de Présentation
-https://www.youtube.com/watch?v=eZ6OYMeT1CM
-
-## Prêt à Lancer Votre Projet ?
-
-### Contact Direct
-📧 **Email** : christophe.mostefaoui.dev@gmail.com
-📞 **Téléphone** : 06 79 08 88 45
-
-### Processus Rapide
-1. Contactez-moi par email ou téléphone
-2. Échange gratuit de 30 minutes pour comprendre votre besoin
-3. Devis détaillé sous 48h
-4. Démarrage possible sous 1 semaine
-
-### Engagement Qualité
-- Code propre et maintenable
-- Respect des délais
-- Communication transparente
-- Support post-livraison
+Email : christophe.mostefaoui.dev@gmail.com
+Téléphone : 06 79 08 88 45
+Premier échange gratuit et sans engagement, devis détaillé sous 24h.
 
 ---
 
 **Christophe Mostefaoui**
-Développeur Web Full-Stack Freelance Expert
-Pau (64) - Pyrénées-Atlantiques
-Spécialiste React.js, Node.js, TypeScript, IA & Production Vidéo/Drone
+Développeur web full-stack freelance
+Pau / Artix (64), Pyrénées-Atlantiques
 
-*Transformons ensemble vos idées en applications web performantes* 🚀
-
----
-*Dernière mise à jour : 18 mai 2026*
+*Dernière mise à jour : 20 juillet 2026*

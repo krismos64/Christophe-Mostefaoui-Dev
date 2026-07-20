@@ -115,6 +115,56 @@ const AIChatbot = () => {
   // Cache local pour les réponses
   const responseCache = useRef<Map<string, string>>(new Map());
 
+  // Machine à écrire : le texte reçu (souvent par paquets) est mis en file
+  // et réaffiché caractère par caractère à cadence régulière, indépendamment
+  // du débit réseau/API.
+  const typewriterQueue = useRef<string>("");
+  const typewriterDisplayed = useRef<string>("");
+  const typewriterTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const typewriterMessageId = useRef<string>("");
+
+  const stopTypewriter = () => {
+    if (typewriterTimer.current) {
+      clearInterval(typewriterTimer.current);
+      typewriterTimer.current = null;
+    }
+  };
+
+  const flushTypewriter = (messageId: string) => {
+    stopTypewriter();
+    typewriterDisplayed.current = typewriterQueue.current;
+    setMessages((prev) =>
+      prev.map((msg) =>
+        msg.id === messageId
+          ? { ...msg, content: typewriterDisplayed.current }
+          : msg
+      )
+    );
+  };
+
+  const startTypewriter = (messageId: string) => {
+    if (typewriterTimer.current) return;
+    typewriterMessageId.current = messageId;
+    typewriterTimer.current = setInterval(() => {
+      const remaining =
+        typewriterQueue.current.length - typewriterDisplayed.current.length;
+      if (remaining <= 0) return;
+      // Rattrape plusieurs caractères à la fois si la file s'accumule,
+      // pour ne jamais prendre un retard visible sur un long flux.
+      const step = remaining > 60 ? 4 : remaining > 20 ? 2 : 1;
+      typewriterDisplayed.current = typewriterQueue.current.slice(
+        0,
+        typewriterDisplayed.current.length + step
+      );
+      const snapshot = typewriterDisplayed.current;
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === messageId ? { ...msg, content: snapshot } : msg
+        )
+      );
+    }, 22);
+  };
+
   // Limite de contexte (10 derniers messages)
   const MAX_CONTEXT_MESSAGES = 10;
 
@@ -328,6 +378,9 @@ const AIChatbot = () => {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen]);
+
+  // Nettoyage de la machine à écrire au démontage du composant
+  useEffect(() => stopTypewriter, []);
 
   // Bulle de salut : apparition unique après 12 secondes (+ badge sur le bouton)
   useEffect(() => {
@@ -617,6 +670,11 @@ const AIChatbot = () => {
       setMessages((prev) => [...prev, assistantMessage]);
       setIsLoading(false);
 
+      // Réinitialise la machine à écrire pour ce nouveau message
+      typewriterQueue.current = "";
+      typewriterDisplayed.current = "";
+      startTypewriter(assistantMessageId);
+
       if (reader) {
         while (true) {
           const { done, value } = await reader.read();
@@ -633,13 +691,7 @@ const AIChatbot = () => {
                 const token = data.choices?.[0]?.delta?.content;
                 if (token) {
                   fullResponse += token;
-                  setMessages((prev) =>
-                    prev.map((msg) =>
-                      msg.id === assistantMessageId
-                        ? { ...msg, content: fullResponse }
-                        : msg
-                    )
-                  );
+                  typewriterQueue.current = fullResponse;
                 }
               } catch {
                 /* ignore JSON parsing errors */
@@ -648,6 +700,20 @@ const AIChatbot = () => {
           }
         }
       }
+
+      // Le flux réseau est terminé : on laisse la machine à écrire finir
+      // d'afficher la file à son rythme, sans tronquer le texte.
+      await new Promise<void>((resolve) => {
+        const check = setInterval(() => {
+          if (
+            typewriterDisplayed.current.length >= typewriterQueue.current.length
+          ) {
+            clearInterval(check);
+            resolve();
+          }
+        }, 30);
+      });
+      flushTypewriter(assistantMessageId);
 
       if (fullResponse.trim()) {
         responseCache.current.set(normalizedInput, fullResponse);
@@ -680,6 +746,7 @@ const AIChatbot = () => {
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
+      stopTypewriter();
       setIsLoading(false);
       setIsStreaming(false);
     }
