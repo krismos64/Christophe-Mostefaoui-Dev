@@ -94,7 +94,7 @@ export default function Portfolio() {
       image: "/assets/images/garage.jpg",
       alt: "Garage Parrot — Site gestion garage automobile",
       tags: ["Site complet", "Réservation en ligne", "Espace admin"],
-      link: "https://garageparrot.space/",
+      link: "https://garage-parrot.online/",
     },
   ];
 

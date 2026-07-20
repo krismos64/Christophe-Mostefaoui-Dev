@@ -182,7 +182,7 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 
 ### Garage Parrot
 - Type: Site complet avec administration
-- URL: https://garageparrot.space
+- URL: https://garage-parrot.online
 - Résultats: système de RDV en ligne, catalogue véhicules d'occasion
 - Technologies: gestion multi-utilisateurs, espace admin dédié
 
