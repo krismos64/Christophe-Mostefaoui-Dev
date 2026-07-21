@@ -25,6 +25,81 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "11",
+    title:
+      "Je fais tourner seul un logiciel utilisé par de vraies entreprises : ce que ça change pour vos projets",
+    slug: "smartplanning-saas-solo-ce-que-ca-change-pour-vous",
+    excerpt:
+      "Derrière ce site vitrine, il y a aussi SmartPlanning, un logiciel de gestion de planning que j'ai conçu, développé et que j'exploite seul depuis 2026. Voici, sans jargon technique, ce que cette expérience change concrètement pour un client qui me confie son projet.",
+    content: `On me demande parfois pourquoi je parle de SmartPlanning sur un site censé vendre des sites vitrines et des applications sur mesure. La réponse est simple : c'est la meilleure preuve que je peux vous donner de ce que je sais faire, bien plus qu'une liste de compétences ou une promesse commerciale.
+
+## Un vrai problème d'entreprise, pas un exercice de style
+
+SmartPlanning n'est pas une démo ou un projet de portfolio. C'est un logiciel qui répond à un problème très concret que rencontrent beaucoup d'entreprises : organiser les plannings d'une équipe, gérer les remplacements, éviter les oublis et les doublons, sans y passer des heures chaque semaine. Je l'ai conçu de bout en bout, du premier schéma sur papier jusqu'à la mise en ligne, et je le fais évoluer et je le maintiens seul, au quotidien, depuis son lancement en 2026.
+
+Ce n'est pas un détail. Beaucoup de prestataires savent construire un site ou une application quand tout se passe bien. Peu savent ce que ça implique de la garder en état de marche des mois durant, avec de vrais utilisateurs qui s'en servent chaque jour.
+
+## Ce qu'implique de faire tourner seul un logiciel en production
+
+Faire fonctionner un logiciel « pour de vrai », ce n'est pas seulement l'avoir codé une fois. C'est une responsabilité continue, qui recouvre plusieurs choses :
+
+- **La sécurité des données.** Les entreprises qui utilisent SmartPlanning y enregistrent des informations sur leurs équipes, leurs plannings, leurs organisations internes. Ces données doivent rester protégées, cloisonnées entre chaque entreprise cliente, et conformes à la réglementation sur la protection des données personnelles.
+- **La disponibilité.** Un planning consulté un lundi matin doit être accessible un lundi matin, pas de temps en temps. Ça demande une infrastructure pensée pour rester stable, et une vigilance de tous les instants.
+- **Les mises à jour sans casse.** Ajouter une fonctionnalité ou corriger un point sans faire tomber le reste, c'est un exercice permanent. Ça suppose une méthode de travail rigoureuse, avec des vérifications systématiques avant chaque mise en ligne.
+- **L'écoute des retours réels.** Un logiciel utilisé au quotidien révèle des besoins qu'aucun cahier des charges initial ne prévoit. Il faut savoir les entendre et les intégrer sans dénaturer l'ensemble.
+
+C'est exactement le même sérieux que j'applique à un site vitrine ou à une application sur mesure livrée à un client, simplement à une échelle différente.
+
+## Ce que ça change concrètement pour votre projet
+
+Vous n'avez pas besoin d'un SaaS pour bénéficier de cette expérience. Elle se traduit très directement dans la façon dont je mène un projet plus modeste, comme le vôtre :
+
+**Je sais transformer une idée floue en projet concret.** Avant d'écrire la moindre ligne, SmartPlanning a demandé de clarifier qui allait s'en servir, pour quoi faire, et dans quel ordre construire les choses. C'est la même méthode que j'applique quand un artisan ou un commerçant vient me voir avec une idée encore imprécise de ce qu'il veut : on la structure ensemble avant de développer.
+
+**Votre site ne casse pas à la première mise à jour.** Gérer un logiciel en production m'a appris à tester systématiquement avant de mettre en ligne, plutôt que de corriger dans l'urgence après coup. Sur votre projet, ça veut dire un site qui reste stable dans la durée, même quand on y ajoute une page ou une fonctionnalité un an plus tard.
+
+**Vos données et celles de vos clients sont prises au sérieux.** Si vous encaissez des paiements en ligne ou collectez des informations sur vos clients (réservations, formulaires, comptes utilisateurs), ce n'est pas un point secondaire qu'on traite à la va-vite en fin de projet. C'est une exigence que j'applique par habitude, pas parce qu'on me l'a demandé.
+
+**Vous avez un interlocuteur qui comprend la durée.** Un site ou une application n'est jamais vraiment « fini » : il vit, évolue, doit s'adapter. Exploiter SmartPlanning au quotidien m'oblige à penser chaque projet avec cette même logique de long terme, pas seulement jusqu'à la mise en ligne.
+
+## Voir SmartPlanning en action
+
+Le logiciel est accessible directement sur [smartplanning.fr](https://smartplanning.fr), en version gratuite. C'est la meilleure façon de vous faire une idée concrète de ce que je construis. Si le détail technique vous intéresse (architecture, choix de développement, méthode de travail), j'en parle plus en profondeur sur mon [portfolio technique, krismos.fr](https://krismos.fr/blog/), pensé pour un public de développeurs plutôt que de clients.
+
+## Parlons de votre projet
+
+Que vous ayez besoin d'un site vitrine, d'une refonte ou d'une application plus ambitieuse, vous travaillez avec la même personne qui conçoit et fait vivre SmartPlanning au quotidien, pas avec un prestataire qui livre puis disparaît. Décrivez-moi votre projet via le formulaire de contact ou au 06 79 08 88 45 : premier échange gratuit et sans engagement, devis clair sous 24h.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-07-21",
+    readTime: 6,
+    category: "conseils-business",
+    tags: [
+      "SmartPlanning",
+      "SaaS",
+      "Fiabilité",
+      "PME",
+      "Sécurité des données",
+      "Pau",
+      "Béarn",
+    ],
+    imageUrl:
+      "/assets/images/smartplanning-saas-solo-ce-que-ca-change-pour-vous.png",
+    imageAlt:
+      "Logo de SmartPlanning, le logiciel de gestion de planning conçu et exploité par Christophe Mostefaoui",
+    featured: false,
+    metaDescription:
+      "Je conçois et fais tourner seul SmartPlanning, un logiciel utilisé par de vraies entreprises. Ce que cette expérience change concrètement pour votre projet de site ou d'application.",
+    keywords: [
+      "SmartPlanning",
+      "développeur SaaS Pau",
+      "fiabilité développeur freelance",
+      "sécurité données PME",
+      "application sur mesure 64",
+      "développeur web freelance Pau",
+      "SaaS Pyrénées-Atlantiques",
+    ],
+  },
+  {
     id: "10",
     title:
       "Ce que les gens demandent vraiment à ChatGPT sur les artisans et commerces du coin",

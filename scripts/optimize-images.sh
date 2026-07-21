@@ -37,6 +37,8 @@ declare -a JOBS=(
   "public/assets/images/referencement-google-chatgpt-2026.png|400,800|78|30"
   "public/assets/images/visibilite-locale-pau-bearn-cote-basque.png|400,800|78|30"
   "public/assets/images/questions-chatgpt-artisans-commerces-locaux.png|400,800|78|30"
+  # Article blog SmartPlanning solo (vignette 400-800px, source = logo SmartPlanning)
+  "public/assets/images/smartplanning-saas-solo-ce-que-ca-change-pour-vous.png|400,800|78|30"
   # Profil — schema.org + chatbot (256-512px)
   "public/assets/images/Chris-profil.jpg|256,512|80|32"
   # Image Knowledge Panel Google (512px)

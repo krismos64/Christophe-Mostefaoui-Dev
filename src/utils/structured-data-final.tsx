@@ -106,7 +106,7 @@ export const generateFinalStructuredData = () => {
         "name": "Quelles sont les technologies maîtrisées ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "React.js 18, Next.js, Node.js, Express, TypeScript, MongoDB, MySQL, Prisma ORM, Stripe, Docker, Git, API REST, Tailwind CSS, Framer Motion, GPT, Claude, Mistral AI. Production vidéo avec Final Cut Pro X et drone DJI Mavic Air."
+          "text": "React.js 18, Node.js, Express, TypeScript, Vite, MongoDB, MySQL, Prisma ORM, Stripe, Docker, Git, API REST, Tailwind CSS, Framer Motion, GPT, Claude, Mistral AI. Production vidéo avec Final Cut Pro X et drone DJI Mavic Air."
         }
       },
       {

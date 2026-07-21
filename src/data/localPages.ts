@@ -43,7 +43,7 @@ export const localPages: LocalPage[] = [
       {
         titre: "Un site pensé pour votre clientèle paloise",
         paragraphes: [
-          "Un institut à Trespoey, un cabinet près du Palais de Justice, une boutique rue Serviez ou un artisan à Lescar n'ont pas les mêmes clients ni les mêmes besoins. Je commence toujours par comprendre votre activité et la façon dont vos clients vous cherchent, avant d'écrire la moindre ligne de code.",
+          "Un institut à Trespoey, un cabinet près du Palais de Justice, une boutique rue Serviez, un artisan à Lescar ou un commerce du quartier du Pont-Long à Billère n'ont pas les mêmes clients ni les mêmes besoins. Je commence toujours par comprendre votre activité et la façon dont vos clients vous cherchent, avant d'écrire la moindre ligne de code.",
           "Votre site est ensuite construit sur mesure : rapide, adapté au mobile, visible sur Google, et désormais aussi dans les réponses des assistants IA (ChatGPT, Claude, Perplexity…), un canal que la plupart des sites palois ignorent encore.",
         ],
       },
