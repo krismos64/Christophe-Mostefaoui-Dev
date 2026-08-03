@@ -9,14 +9,16 @@
 export const generateFinalStructuredData = () => {
   const baseUrl = "https://christophe-dev-freelance.fr";
 
-  // VideoObject 1 — "Présentation Expert" (intégrée dans la section Contact)
+  // VideoObject 1 — "Présentation" (intégrée dans la section Contact)
+  // Note : le @id reste #video-presentation-expert (identifiant technique stable,
+  // référencé par les schémas existants) même si le nom affiché a changé
   const videoObject = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "@id": `${baseUrl}/#video-presentation-expert`,
-    "name": "Présentation Expert — Christophe Mostefaoui, développeur web freelance",
+    "name": "Présentation — Christophe Mostefaoui, développeur web freelance",
     "description":
-      "Présentation détaillée de mon expertise : React, Node.js, TypeScript et solutions sur mesure pour PME et indépendants.",
+      "Présentation détaillée de mon travail : React, Node.js, TypeScript et solutions sur mesure pour PME et indépendants.",
     "thumbnailUrl": `${baseUrl}/assets/images/miniature-2.png`,
     "uploadDate": "2024-12-01T10:00:00+01:00",
     "duration": "PT1M40S",
@@ -57,8 +59,8 @@ export const generateFinalStructuredData = () => {
     "@type": "WebPage",
     "@id": `${baseUrl}/#webpage`,
     "url": baseUrl,
-    "name": "Christophe Mostefaoui - Développeur Web Freelance Expert à Pau",
-    "description": "Développeur web freelance expert à Pau (64). Spécialiste React.js, Node.js, TypeScript. Sites vitrines, applications sur mesure, intégration IA.",
+    "name": "Christophe Mostefaoui - Développeur Web Freelance à Pau",
+    "description": "Développeur web freelance à Pau (64). Spécialiste React.js, Node.js, TypeScript. Sites vitrines, applications sur mesure, intégration IA.",
     "mainEntity": {
       "@id": `${baseUrl}/#person`
     },

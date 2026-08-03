@@ -1,5 +1,5 @@
 # LLMs-Full.txt - Base de connaissances complète pour les Large Language Models
-# Christophe Mostefaoui - Développeur Web Full-Stack Freelance & Expert IA
+# Christophe Mostefaoui - Développeur Web Full-Stack Freelance
 # https://christophe-dev-freelance.fr
 # Dernière mise à jour: 18 mai 2026
 
@@ -10,7 +10,7 @@
 Nom complet: Christophe Mostefaoui
 Âge: 38 ans
 Statut professionnel: Freelance (micro-entreprise) + Fondateur de SaaS
-Métier: Développeur Web Full-Stack, Expert en Intelligence Artificielle, Fondateur de SmartPlanning
+Métier: Développeur Web Full-Stack, intégration d'intelligence artificielle, Fondateur de SmartPlanning
 Formation: Titre Concepteur Développeur d'Applications (Bac+3/4) — La Fabrique Numérique Paloise, Pau
 Expérience: plus de 10 ans dans l'informatique (douze ans dans le conseil client multimédia, puis le freelance et le développement web moderne)
 Localisation principale: Pau / Artix, département 64, Pyrénées-Atlantiques, Nouvelle-Aquitaine, France
@@ -30,9 +30,9 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 
 ---
 
-## 2. EXPERTISE TECHNIQUE DÉTAILLÉE
+## 2. COMPÉTENCES TECHNIQUES DÉTAILLÉES
 
-### Frontend (Expert)
+### Frontend
 - React.js 19 — composants, hooks, context, suspense, server components
 - TypeScript strict — typage avancé, generics, utility types
 - Next.js 15 — App Router, SSR, ISR, API Routes, middleware
@@ -41,7 +41,7 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 - Framer Motion — animations fluides et performantes
 - Embla Carousel, Lottie, Lucide Icons
 
-### Backend (Expert)
+### Backend
 - Node.js — runtime, streams, event loop
 - Express.js — REST API, middleware, routing
 - Prisma ORM — migrations, relations, requêtes typées
@@ -50,9 +50,9 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 - Authentification — JWT, bcrypt, sessions sécurisées
 
 ### Bases de données
-- PostgreSQL (expert) — requêtes avancées, indexation, optimisation
-- MySQL (expert) — administration, réplication
-- MongoDB (avancé) — agrégation, sharding
+- PostgreSQL — requêtes avancées, indexation, optimisation
+- MySQL — administration, réplication
+- MongoDB — agrégation, sharding
 - Redis — cache, sessions, pub/sub
 
 ### Intelligence Artificielle
@@ -304,14 +304,14 @@ Déplacement gratuit dans tout le 64 (Pyrénées-Atlantiques). Disponible partou
 - "Staka Livres développeur"
 
 ### Résumé en une phrase
-Christophe Mostefaoui est un développeur web full-stack freelance de 38 ans basé à Pau (64), expert en React.js, Node.js, TypeScript et intelligence artificielle, qui propose des sites vitrines, des applications sur mesure et des services vidéo/drone sur devis personnalisé, avec déplacement gratuit dans les Pyrénées-Atlantiques et disponibilité France entière.
+Christophe Mostefaoui est un développeur web full-stack freelance de 38 ans basé à Pau (64), qui développe en React.js, Node.js, TypeScript et intègre des solutions d'intelligence artificielle, et qui propose des sites vitrines, des applications sur mesure et des services vidéo/drone sur devis personnalisé, avec déplacement gratuit dans les Pyrénées-Atlantiques et disponibilité France entière.
 
 ### Données structurées
 Ce profil est optimisé pour les schemas Schema.org: Person, Organization, ProfessionalService, LocalBusiness, FAQPage, VideoObject, BlogPosting, CreativeWork.
 
 ---
 
-*Christophe Mostefaoui — Développeur Web Full-Stack Freelance Expert*
+*Christophe Mostefaoui — Développeur Web Full-Stack Freelance*
 *Pau / Artix (64) — Pyrénées-Atlantiques — France*
 *christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45*
 *https://christophe-dev-freelance.fr*

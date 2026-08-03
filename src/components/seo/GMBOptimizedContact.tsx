@@ -219,12 +219,12 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
             <VideoEmbed
               youtubeId="tdjXblz4mr4"
               thumbnail="/assets/images/miniature-2.png"
-              title="Présentation Expert — Christophe Mostefaoui"
+              title="Présentation — Christophe Mostefaoui"
               caption="— React, Node, TypeScript & solutions sur mesure"
               duration="1:40"
               channelUrl="https://www.youtube.com/@christophe-dev-freelance/videos"
               theme="light"
-              ariaLabel="Lire la vidéo : Présentation Expert"
+              ariaLabel="Lire la vidéo : Présentation"
             />
           </motion.div>
 

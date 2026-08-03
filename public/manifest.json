@@ -1,7 +1,7 @@
 {
-  "name": "Christophe, Concepteur/Développeur d'applications web modernes & Expert IA",
+  "name": "Christophe, Concepteur/Développeur d'applications web modernes",
   "short_name": "Christophe Dev IA",
-  "description": "Expert en intégration IA et développement web full-stack. Chatbots GPT/Claude, machine learning, React.js, Node.js, Python. Basé à Pau, France.",
+  "description": "Intégration IA et développement web full-stack. Chatbots GPT/Claude, React.js, Node.js, TypeScript. Basé à Pau, France.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",

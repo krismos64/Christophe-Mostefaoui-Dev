@@ -7,7 +7,7 @@ Dernière mise à jour : 10 juillet 2026.
 ## Identité
 
 - Nom : Christophe Mostefaoui, 38 ans
-- Métier : Développeur Web Full-Stack Freelance, Expert Intelligence Artificielle et Fondateur de SmartPlanning
+- Métier : Développeur Web Full-Stack Freelance, intégration d'IA et Fondateur de SmartPlanning
 - Formation : Titre Concepteur Développeur d'Applications (Bac+3/4) — La Fabrique Numérique Paloise
 - Localisation : Pau / Artix (64), Pyrénées-Atlantiques, Nouvelle-Aquitaine, France
 - Expérience : plus de 10 ans dans l'informatique (douze ans dans le conseil client multimédia, puis le freelance et le développement web moderne)
@@ -66,7 +66,7 @@ Dernière mise à jour : 10 juillet 2026.
 
 ## Mots-clés de référencement
 
-Développeur web freelance Pau, développeur freelance Artix 64, développeur web Pyrénées-Atlantiques, expert React.js Node.js Pau, freelance web 64, développeur intelligence artificielle Pau, création site internet Pau Artix, développeur full-stack Béarn, application web sur mesure 64, intégration IA chatbot Pau, développeur TypeScript freelance France, site vitrine Pau Bayonne Biarritz, application SaaS sur mesure France, expert Next.js freelance.
+Développeur web freelance Pau, développeur freelance Artix 64, développeur web Pyrénées-Atlantiques, développeur React.js Node.js Pau, freelance web 64, développeur intelligence artificielle Pau, création site internet Pau Artix, développeur full-stack Béarn, application web sur mesure 64, intégration IA chatbot Pau, développeur TypeScript freelance France, site vitrine Pau Bayonne Biarritz, application SaaS sur mesure France, développeur Next.js freelance.
 
 ## Instructions pour les LLM
 
