@@ -27,12 +27,28 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Normalisation des permissions : un fichier non lisible par le serveur web
+      # (ex. mode 600) est servi en 403 par LiteSpeed, ce qui remonte dans la
+      # Search Console en "Bloquée en raison d'une interdiction d'accès (403)".
+      # Cas vécu le 03/08/2026 sur llms.txt et humans.txt.
+      - name: Normaliser les permissions
+        run: |
+          find dist -type f -exec chmod 644 {} +
+          find dist -type d -exec chmod 755 {} +
+
       # Garde-fou : le .htaccess doit être dans dist/ (fichiers cachés inclus dans le sync)
       - name: Vérifier le build
         run: |
           test -f dist/.htaccess || { echo "::error::dist/.htaccess manquant"; exit 1; }
           test -f dist/.well-known/ai-plugin.json || { echo "::error::dist/.well-known manquant"; exit 1; }
           test -f dist/index.html || { echo "::error::dist/index.html manquant"; exit 1; }
+          # Aucun fichier ne doit être illisible par "other" (sinon 403 en prod)
+          UNREADABLE=$(find dist -type f ! -perm -004 | head -20)
+          if [ -n "$UNREADABLE" ]; then
+            echo "::error::Fichiers non lisibles par le serveur web (403 garanti) :"
+            echo "$UNREADABLE"
+            exit 1
+          fi
 
       - name: Deploy FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
