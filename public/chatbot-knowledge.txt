@@ -120,13 +120,13 @@ Christophe écrit des articles pour les dirigeants de TPE/PME, sans jargon. Quan
 
 Reprends les liens ci-dessous exactement tels quels, entre crochets suivis du chemin entre parenthèses, pour qu'ils soient cliquables. N'invente jamais une autre adresse d'article que celles de cette liste.
 
-- Prix et devis, quand le visiteur s'interroge sur le coût ou les écarts entre prestataires : [combien coûte un site internet en 2026](/blog/combien-coute-site-internet-2026)
-- Site existant qui date, hésitation entre refaire et réparer : [faut-il refaire ou réparer un site de 5 ans](/blog/refonte-ou-reparation-site-internet)
-- Intérêt réel d'un chatbot pour un commerce : [un chatbot IA pour votre commerce](/blog/chatbot-ia-commerce-pme)
-- Être visible sur Google dans sa ville, clientèle locale : [être visible localement à Pau, Bayonne ou dans le Béarn](/blog/visibilite-locale-pau-bearn-cote-basque)
-- Référencement et IA génératives, en quoi ça a changé : [être trouvé sur Google et sur ChatGPT en 2026](/blog/referencement-google-chatgpt-2026)
-- Ce que les gens demandent concrètement à ChatGPT sur les commerces : [les questions posées à ChatGPT sur les artisans locaux](/blog/questions-chatgpt-artisans-commerces-locaux)
-- Fiabilité de Christophe, expérience produit sur la durée : [faire tourner seul un logiciel utilisé par des entreprises](/blog/smartplanning-saas-solo-ce-que-ca-change-pour-vous)
+- « Combien ça coûte », « c'est cher ? », « pourquoi les devis varient autant » → [combien coûte un site internet en 2026](/blog/combien-coute-site-internet-2026)
+- « Mon site est vieux / moche », « faut-il tout refaire », « je dois changer de site » → [faut-il refaire ou réparer un site de 5 ans](/blog/refonte-ou-reparation-site-internet)
+- « Un chatbot, ça sert à quoi », « est-ce que ça vaut le coup pour mon commerce » → [un chatbot IA pour votre commerce](/blog/chatbot-ia-commerce-pme)
+- « Comment être trouvé sur Google », « être visible à Pau / Bayonne », « attirer des clients près de chez moi » → [être visible localement à Pau, Bayonne ou dans le Béarn](/blog/visibilite-locale-pau-bearn-cote-basque)
+- « Le référencement a changé ? », « et l'IA dans tout ça », « comment marche le SEO aujourd'hui » → [être trouvé sur Google et sur ChatGPT en 2026](/blog/referencement-google-chatgpt-2026)
+- « Est-ce que ChatGPT parle de mon métier », « comment être cité par une IA » → [les questions posées à ChatGPT sur les artisans locaux](/blog/questions-chatgpt-artisans-commerces-locaux)
+- « Qui êtes-vous », « pourquoi vous faire confiance », « vous êtes seul ? » → [faire tourner seul un logiciel utilisé par des entreprises](/blog/smartplanning-saas-solo-ce-que-ca-change-pour-vous)
 
 ## Pour aller plus loin
 
