@@ -463,16 +463,47 @@ const AIChatbot = () => {
 
   // Rendu léger des réponses : **gras** et listes à tirets (aucun HTML injecté)
   const renderAssistantText = (text: string) => {
+    // Rend **gras** et les liens [texte](url). Pendant l'effet machine à écrire
+    // le texte arrive caractère par caractère : un lien incomplet ne matche pas
+    // encore la regex et s'affiche donc en texte brut, puis devient cliquable
+    // dès que la parenthèse fermante est arrivée.
     const renderInline = (line: string, keyPrefix: string) =>
-      line.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
-        part.startsWith("**") && part.endsWith("**") ? (
-          <strong key={`${keyPrefix}-${i}`} className="font-semibold">
-            {part.slice(2, -2)}
-          </strong>
-        ) : (
-          part
-        )
-      );
+      line
+        .split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g)
+        .map((part, i) => {
+          const key = `${keyPrefix}-${i}`;
+          if (part.startsWith("**") && part.endsWith("**")) {
+            return (
+              <strong key={key} className="font-semibold">
+                {part.slice(2, -2)}
+              </strong>
+            );
+          }
+          const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+          if (linkMatch) {
+            const label = linkMatch[1];
+            const href = linkMatch[2] ?? "";
+            const linkClass =
+              "underline decoration-[#F4D35E]/70 hover:decoration-[#F4D35E] underline-offset-2 font-medium";
+            // Lien interne : navigation React Router, le chat reste ouvert
+            return href.startsWith("/") ? (
+              <Link key={key} to={href} className={linkClass}>
+                {label}
+              </Link>
+            ) : (
+              <a
+                key={key}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                {label}
+              </a>
+            );
+          }
+          return part;
+        });
     return text.split("\n").map((line, i) => {
       if (/^\s*-\s+/.test(line)) {
         return (
