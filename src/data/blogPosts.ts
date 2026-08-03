@@ -25,6 +25,111 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "12",
+    title:
+      "Votre site a 5 ans : faut-il le refaire entièrement ou juste le réparer ?",
+    slug: "refonte-ou-reparation-site-internet",
+    excerpt:
+      "Un site qui date n'est pas forcément bon à jeter. Avant d'engager une refonte complète, voici comment distinguer ce qui se répare en quelques jours de ce qui justifie vraiment de tout reprendre.",
+    content: `« Mon site commence à dater, il faudrait tout refaire. » C'est une phrase que j'entends souvent, et la réponse est rarement celle qu'on attend. Un site de cinq ans peut être parfaitement récupérable, comme il peut être arrivé au bout de ce qu'on peut en tirer. La différence ne se voit pas à l'œil nu, et surtout pas à son look.
+
+Avant d'engager le budget d'une refonte complète, il vaut la peine de poser le bon diagnostic. Voici comment je procède quand un commerçant ou un artisan me pose la question.
+
+## Le vrai problème n'est presque jamais le design
+
+C'est le réflexe le plus courant : on trouve son site « moche » ou « vieillot », donc on veut tout refaire. Pourtant, dans la majorité des cas que je rencontre, l'apparence est le symptôme, pas la maladie.
+
+Un site peut avoir un design daté et fonctionner très bien : il se charge vite, il est lisible sur téléphone, Google le trouve, les clients vous appellent. À l'inverse, un site refait il y a deux ans avec une belle mise en page peut être invisible sur Google et injoignable depuis un mobile.
+
+La bonne question n'est donc pas « est-ce que mon site est beau ? », mais **« est-ce que mon site fait son travail ? »**. Et ce travail se résume à deux choses : être trouvé par des gens qui vous cherchent, et leur donner envie de vous contacter.
+
+## Les quatre signes qui se réparent
+
+Voici les problèmes que je vois le plus souvent et qui ne demandent pas une refonte, seulement une intervention ciblée.
+
+**Le site est lent.** Des images trop lourdes, chargées à leur taille d'origine sortie de l'appareil photo, suffisent à faire ramer une page. C'est le défaut le plus fréquent et l'un des plus rapides à corriger. Un visiteur qui attend trop longtemps repart avant même d'avoir vu votre page, et Google en tient compte dans son classement.
+
+**Le site s'affiche mal sur téléphone.** Si le texte est minuscule, s'il faut zoomer pour cliquer sur un bouton, ou si un menu déborde de l'écran, c'est un problème sérieux : la majorité de vos visiteurs arrivent depuis un smartphone. Selon la façon dont le site a été construit, ça se corrige parfois en quelques jours.
+
+**Le cadenas de sécurité manque dans la barre d'adresse.** Un site en « http » sans « s » affiche un avertissement dissuasif dans les navigateurs récents. C'est une correction technique simple et sans risque, qui n'a rien à voir avec une refonte.
+
+**Le contenu ne correspond plus à votre activité.** Vous avez ajouté un service, changé de zone d'intervention, arrêté une prestation, mais le site raconte encore votre activité d'il y a cinq ans. C'est un travail de contenu, pas de développement, et c'est souvent celui qui rapporte le plus vite.
+
+Dans ces quatre cas, refaire tout le site reviendrait à changer de voiture parce que les pneus sont usés.
+
+## Le cas particulier des sites faits sur une plateforme
+
+Beaucoup de commerçants ont créé leur site eux-mêmes sur un outil en ligne, il y a quelques années, souvent avec un abonnement mensuel. La question se pose alors différemment.
+
+Si l'outil vous convient, que vous savez modifier vos pages et que le site remplit son rôle, il n'y a aucune raison d'en partir. Ces plateformes font correctement le travail pour une activité simple, et changer pour changer n'a pas de sens.
+
+Deux situations méritent en revanche d'être regardées de près. D'abord, l'abonnement : additionnez ce que vous payez chaque mois depuis le début. Sur cinq ou six ans, le total dépasse parfois largement ce qu'aurait coûté un site sur mesure, sans que vous en soyez propriétaire pour autant. Ensuite, les limites : le jour où vous voulez une fonctionnalité que la plateforme ne propose pas, vous êtes bloqué, sans possibilité de contourner.
+
+Le point à vérifier en priorité, c'est de savoir ce que vous récupérez si vous partez. Vos textes, vos photos, et surtout votre nom de domaine doivent vous appartenir, pas appartenir à l'outil.
+
+## Les trois signes qui justifient une refonte
+
+Il y a en revanche des situations où réparer coûte plus cher que reconstruire, et où l'argent investi dans des correctifs est perdu.
+
+**Vous ne pouvez plus modifier votre site vous-même.** Vous n'avez plus les accès, la personne qui l'a fait n'est plus joignable, ou l'outil utilisé à l'époque n'existe plus. Un site qu'on ne peut plus mettre à jour est un site qui va lentement se périmer, quoi qu'on fasse. C'est le motif de refonte le plus légitime que je rencontre.
+
+**Le socle technique n'est plus maintenu.** Certains sites reposent sur des technologies qui ne reçoivent plus de mises à jour de sécurité. Le site fonctionne encore, jusqu'au jour où il ne fonctionne plus, ou pire, où il se fait pirater. Là, chaque correction s'apparente à du rafistolage sur une base qui va lâcher.
+
+**Le site ne peut pas accueillir ce dont vous avez besoin maintenant.** Vous voulez ajouter une prise de rendez-vous en ligne, vendre quelques produits, ou créer un espace pour vos clients, et la structure existante ne le permet pas. Quand chaque ajout devient un chantier, c'est que la fondation n'est plus adaptée à ce que vous faites aujourd'hui.
+
+## Comment savoir de quel côté vous êtes
+
+Vous pouvez déjà faire trois vérifications vous-même, sans compétence technique.
+
+Ouvrez votre site sur votre téléphone, en 4G plutôt qu'en wifi. Comptez les secondes avant que la page s'affiche, et essayez de trouver votre numéro de téléphone en moins de dix secondes. Si vous n'y arrivez pas, un client non plus.
+
+Tapez ensuite dans Google le nom de votre activité suivi de votre ville, par exemple « plombier Pau » ou « fleuriste Bayonne ». Regardez si votre site apparaît, et à quelle position. C'est un test brutal mais honnête, et si vous voulez creuser ce sujet, j'en parle en détail dans [être visible localement à Pau, Bayonne ou dans le Béarn](/blog/visibilite-locale-pau-bearn-cote-basque).
+
+Essayez enfin de modifier une ligne de texte sur votre site, n'importe laquelle. Si vous ne savez pas comment vous y prendre ou si vous n'avez plus les accès, vous tenez déjà une bonne partie de la réponse.
+
+## Ce que je fais quand on me pose la question
+
+Quand quelqu'un me contacte pour une refonte, je commence par regarder le site existant avant de proposer quoi que ce soit. Il m'arrive régulièrement de conclure qu'une refonte complète n'est pas nécessaire, et de proposer une intervention plus légère.
+
+Ce n'est pas du désintéressement. Un client à qui je vends un chantier surdimensionné ne revient pas, et ne me recommande pas. Un client à qui j'ai fait économiser un budget en réparant l'essentiel me rappelle deux ans plus tard, quand la refonte devient réellement justifiée.
+
+Si vous vous demandez ce que vaut votre site actuel, le coût d'une refonte dépend directement de ce diagnostic. J'ai détaillé les facteurs qui font varier un devis dans [combien coûte un site internet en 2026](/blog/combien-coute-site-internet-2026).
+
+## Faisons le point sur votre site
+
+Envoyez-moi l'adresse de votre site actuel via le formulaire de contact, ou appelez-moi au 06 79 08 88 45. Je le regarde et je vous dis franchement ce qui mérite d'être repris et ce qui peut rester en l'état. Premier échange gratuit et sans engagement, devis clair sous 24h si une intervention se justifie.
+
+J'interviens à Pau, Artix et dans tout le Béarn, ainsi qu'à [Bayonne et sur la côte basque](/creation-site-internet-bayonne), avec déplacement gratuit dans les Pyrénées-Atlantiques.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-08-03",
+    readTime: 7,
+    category: "conseils-business",
+    tags: [
+      "Refonte de site",
+      "Maintenance",
+      "PME",
+      "Site vitrine",
+      "Pau",
+      "Béarn",
+      "Bayonne",
+    ],
+    imageUrl: "/assets/images/refonte-ou-reparation-site-internet.png",
+    imageAlt:
+      "Ordinateur portable affichant un site internet en cours de modernisation, sur un bureau en bois",
+    featured: false,
+    metaDescription:
+      "Votre site date de plusieurs années ? Comment distinguer ce qui se répare en quelques jours de ce qui justifie une vraie refonte, avant d'engager un budget.",
+    keywords: [
+      "refonte site internet Pau",
+      "refaire son site internet",
+      "site internet trop vieux",
+      "moderniser site vitrine 64",
+      "refonte site web PME Béarn",
+      "site pas adapté mobile",
+      "développeur web freelance Pau",
+    ],
+  },
+  {
     id: "11",
     title:
       "Je fais tourner seul un logiciel utilisé par de vraies entreprises : ce que ça change pour vos projets",
