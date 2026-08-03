@@ -107,7 +107,11 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 - Clé API **hors webroot** sur Hostinger (fichier `mistral-key.php` au-dessus de `public_html`), aucun secret dans le bundle (aucune variable `VITE_*`)
 - Rate limiting côté serveur (10 req/min/IP, 500/jour global), origine vérifiée
 - Capture de leads par email (EmailJS) avec transcript de conversation, relances contextuelles
-- Persistance de la conversation en `sessionStorage`
+- Persistance de la conversation en `sessionStorage`, effaçable via un bouton dédié (confirmation en deux temps)
+- Affichage plein écran optionnel (masqué sous 640px), colonne de texte limitée pour garder des lignes lisibles
+- Effet machine à écrire côté client : le texte reçu par paquets réseau irréguliers est réaffiché à cadence régulière
+- Rendu des réponses : `**gras**`, listes à tirets et liens `[texte](url)` cliquables (internes via React Router, le chat reste ouvert)
+- Base de connaissances `public/chatbot-knowledge.txt` injectée côté serveur, incluant la liste des articles de blog que l'assistant peut proposer
 - En dev local, le PHP n'est pas exécuté : le chatbot affiche un message d'erreur générique (comportement attendu, voir `npm run dev` ci-dessous)
 
 ---
@@ -263,6 +267,26 @@ public/
 
 ---
 
+## Blog
+
+Articles éditoriaux visant les dirigeants de TPE/PME locales, pas les
+développeurs (le contenu technique vit sur krismos.fr). Contenu dans
+`src/data/blogPosts.ts`, publication assistée par le skill `blog-article`.
+
+Le rendu (`src/pages/BlogPost.tsx`) accepte un Markdown volontairement limité :
+`## H2`, `**gras**`, listes à tirets et liens `[texte](url)`. Les liens internes
+passent par React Router et restent crawlables dans le HTML pré-rendu, ce qui
+permet le maillage vers les autres articles et les pages locales.
+
+Chaque article a deux images : celle affichée dans la page, déclinée en AVIF et
+WebP (400 et 800px) par `scripts/optimize-images.sh`, et une image de partage
+social en 1200×630 suivant la convention `<slug>-og.jpg`.
+
+Règles rédactionnelles : jamais de tarifs, jamais de témoignages, jamais de
+statistiques invérifiables, et pas de tirets cadratins (marqueur d'écriture IA).
+
+---
+
 ## Déploiement
 
 ### Build de production
@@ -278,12 +302,22 @@ npm run preview    # Aperçu local du build
 Chaque push sur `main` déclenche `.github/workflows/deploy.yml` :
 
 1. Build complet (`tsc` + `vite build` + pré-rendu)
-2. Vérification que `dist/.htaccess` et `dist/.well-known/` sont bien présents (le workflow échoue sinon)
-3. Synchronisation FTPS de `dist/` vers la racine du compte FTP Hostinger (`server-dir: ./`, qui EST `public_html`)
+2. Normalisation des permissions (644 sur les fichiers, 755 sur les dossiers de `dist/`)
+3. Vérification que `dist/.htaccess` et `dist/.well-known/` sont bien présents, et qu'aucun fichier n'est illisible par le serveur web (le workflow échoue sinon)
+4. Synchronisation FTPS de `dist/` vers la racine du compte FTP Hostinger (`server-dir: ./`, qui EST `public_html`)
 
 `public/.htaccess` est l'unique source de la config Apache (HTTPS, redirection www→non-www, fallback SPA, pages pré-rendues servies en priorité, cache, en-têtes de sécurité).
 
 Aucun upload manuel : il suffit de merger sur `main`.
+
+> **Note** : l'étape Deploy FTPS échoue parfois sur `Timeout (control socket)`
+> alors que le build est vert. C'est une panne réseau ponctuelle côté Hostinger,
+> pas un problème de code : relancer avec `gh run rerun <RUN_ID> --failed`.
+
+> **Permissions** : un fichier commité en mode 600 est servi en **403** par
+> LiteSpeed et signalé par la Search Console. Git ne versionne pas le bit de
+> lecture, d'où la normalisation faite dans le workflow. Diagnostic local :
+> `find dist -type f ! -perm -004`.
 
 ---
 
