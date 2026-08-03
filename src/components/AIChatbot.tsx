@@ -6,6 +6,9 @@ import {
   Github,
   Linkedin,
   Mail,
+  Maximize2,
+  Minimize2,
+  RotateCcw,
   Send,
   X,
 } from "lucide-react";
@@ -109,6 +112,8 @@ const AIChatbot = () => {
   const [leadSending, setLeadSending] = useState(false);
   const [leadSent, setLeadSent] = useState(false);
   const [hasBadge, setHasBadge] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [confirmReset, setConfirmReset] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const hasShownBubble = useRef(false);
 
@@ -369,15 +374,32 @@ const AIChatbot = () => {
     }
   }, [messages, leadSent]);
 
-  // Fermeture au clavier (Échap)
+  // La demande de confirmation d'effacement retombe seule après 4 s
+  useEffect(() => {
+    if (!confirmReset) return;
+    const t = setTimeout(() => setConfirmReset(false), 4000);
+    return () => clearTimeout(t);
+  }, [confirmReset]);
+
+  // Fermeture au clavier (Échap) : quitte d'abord la confirmation, puis le
+  // plein écran, puis ferme le chat
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsOpen(false);
+      if (e.key !== "Escape") return;
+      if (confirmReset) {
+        setConfirmReset(false);
+        return;
+      }
+      if (isExpanded) {
+        setIsExpanded(false);
+        return;
+      }
+      setIsOpen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isOpen]);
+  }, [isOpen, isExpanded, confirmReset]);
 
   // Nettoyage de la machine à écrire au démontage du composant
   useEffect(() => stopTypewriter, []);
@@ -419,6 +441,37 @@ const AIChatbot = () => {
   };
 
   const handleClose = () => setIsOpen(false);
+
+  // Remet la conversation à zéro : états, machine à écrire, cache et session.
+  // Un premier clic demande confirmation (évite d'effacer par mégarde).
+  const handleReset = () => {
+    if (!confirmReset) {
+      setConfirmReset(true);
+      return;
+    }
+    stopTypewriter();
+    typewriterQueue.current = "";
+    typewriterDisplayed.current = "";
+    typewriterMessageId.current = "";
+    responseCache.current.clear();
+    setMessages([]);
+    setInput("");
+    setIsLoading(false);
+    setIsStreaming(false);
+    setShowSuggestions(true);
+    setFollowUps([]);
+    setSuggestLead(false);
+    setShowLeadForm(false);
+    setLeadName("");
+    setLeadEmail("");
+    setLeadSent(false);
+    setConfirmReset(false);
+    try {
+      sessionStorage.removeItem("chatbot_state_v1");
+    } catch {
+      /* stockage indisponible : rien à purger */
+    }
+  };
 
   const normalizeQuestion = (question: string): string =>
     question
@@ -845,12 +898,26 @@ const AIChatbot = () => {
         </div>
       )}
 
+      {/* Voile derrière la fenêtre agrandie : concentre l'attention et permet
+          de revenir à la taille normale en cliquant à côté */}
+      {isOpen && isExpanded && (
+        <div
+          onClick={() => setIsExpanded(false)}
+          className="fixed inset-0 z-40 bg-[#0B0805]/50 backdrop-blur-[2px] transition-opacity duration-300"
+          aria-hidden="true"
+        />
+      )}
+
       {/* Fenêtre de chat — design éditorial */}
       {isOpen && (
         <div
           role="dialog"
           aria-label="Assistant IA de Christophe"
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[600px] max-h-[calc(100vh-3rem)] z-50 flex flex-col bg-[#F4EFE6] dark:bg-[#13110F] border border-[#1A1715]/15 dark:border-[#F4EFE6]/15 shadow-2xl overflow-hidden"
+          className={`fixed z-50 flex flex-col bg-[#F4EFE6] dark:bg-[#13110F] border border-[#1A1715]/15 dark:border-[#F4EFE6]/15 shadow-2xl overflow-hidden transition-all duration-300 ease-out ${
+            isExpanded
+              ? "inset-2 sm:inset-6 lg:inset-y-10 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:w-[min(1000px,calc(100vw-4rem))] h-auto max-h-none"
+              : "bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[600px] max-h-[calc(100vh-3rem)]"
+          }`}
         >
           {/* Header sobre */}
           <div className="relative flex items-center justify-between gap-3 px-4 py-3.5 border-b border-[#1A1715]/15 dark:border-[#F4EFE6]/15 bg-[#0B0805] text-[#F4EFE6]">
@@ -894,19 +961,95 @@ const AIChatbot = () => {
                 </p>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={handleClose}
-              className="p-1.5 text-[#F4EFE6]/70 hover:text-[#F4D35E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded"
-              aria-label="Fermer le chat"
-            >
-              <X className="w-5 h-5" strokeWidth={1.5} />
-            </button>
+            <div className="flex items-center gap-0.5 flex-shrink-0">
+              {/* Effacer : le premier clic demande confirmation */}
+              {messages.length > 1 && (
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className={`p-1.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded ${
+                    confirmReset
+                      ? "text-[#F4D35E]"
+                      : "text-[#F4EFE6]/70 hover:text-[#F4D35E]"
+                  }`}
+                  aria-label={
+                    confirmReset
+                      ? "Confirmer l'effacement de la conversation"
+                      : "Effacer la conversation"
+                  }
+                  title={
+                    confirmReset
+                      ? "Cliquez à nouveau pour confirmer"
+                      : "Effacer la conversation"
+                  }
+                >
+                  <RotateCcw className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                </button>
+              )}
+              {/* Plein écran : masqué sur très petits écrans, peu utile */}
+              <button
+                type="button"
+                onClick={() => setIsExpanded((v) => !v)}
+                className="hidden sm:block p-1.5 text-[#F4EFE6]/70 hover:text-[#F4D35E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded"
+                aria-label={
+                  isExpanded
+                    ? "Réduire la fenêtre du chat"
+                    : "Agrandir la fenêtre du chat"
+                }
+                aria-pressed={isExpanded}
+                title={isExpanded ? "Réduire" : "Agrandir"}
+              >
+                {isExpanded ? (
+                  <Minimize2 className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                ) : (
+                  <Maximize2 className="w-[18px] h-[18px]" strokeWidth={1.5} />
+                )}
+              </button>
+              <button
+                type="button"
+                onClick={handleClose}
+                className="p-1.5 text-[#F4EFE6]/70 hover:text-[#F4D35E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded"
+                aria-label="Fermer le chat"
+              >
+                <X className="w-5 h-5" strokeWidth={1.5} />
+              </button>
+            </div>
           </div>
 
-          {/* Zone messages */}
+          {/* Confirmation d'effacement */}
+          {confirmReset && (
+            <div
+              role="status"
+              className="flex items-center justify-between gap-3 px-4 py-2.5 bg-[#F4D35E]/15 border-b border-[#1A1715]/10 dark:border-[#F4EFE6]/10"
+            >
+              <p className="hero-body text-[12px] text-[#1A1715] dark:text-[#F4EFE6]">
+                Effacer cette conversation ?
+              </p>
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="hero-body text-[12px] font-medium underline decoration-[#F4D35E] underline-offset-2 text-[#1A1715] dark:text-[#F4EFE6] hover:opacity-70 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded px-1"
+                >
+                  Effacer
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfirmReset(false)}
+                  className="hero-body text-[12px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60 hover:opacity-70 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded px-1"
+                >
+                  Annuler
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Zone messages — en plein écran, la colonne de texte reste
+              limitée en largeur pour garder des lignes lisibles */}
           <div
-            className="flex-1 overflow-y-auto px-4 py-5 space-y-5"
+            className={`flex-1 overflow-y-auto px-4 py-5 space-y-5 w-full ${
+              isExpanded ? "max-w-[760px] mx-auto sm:px-6" : ""
+            }`}
             aria-live="polite"
           >
             {messages.map((message) => (
@@ -1129,8 +1272,13 @@ const AIChatbot = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input zone */}
+          {/* Input zone — alignée sur la colonne des messages en plein écran */}
           <div className="px-4 py-3 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15">
+            <div
+              className={
+                isExpanded ? "w-full max-w-[760px] mx-auto sm:px-2" : undefined
+              }
+            >
             <div className="flex items-end gap-2">
               <input
                 type="text"
@@ -1181,8 +1329,10 @@ const AIChatbot = () => {
                 onClick={handleClose}
                 className="hero-body text-[10px] text-[#1A1715]/45 dark:text-[#F4EFE6]/45 hover:text-[#F4D35E] transition-colors text-right"
               >
-                Assistant IA · messages traités par Mistral AI (France)
+                Réponses générées par IA à partir d'informations rédigées et
+                validées par Christophe.
               </Link>
+            </div>
             </div>
           </div>
         </div>
