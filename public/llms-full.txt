@@ -150,40 +150,40 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 ### Projet phare: LivresStaka.fr (Staka Livres)
 - Type: Plateforme e-commerce
 - URL: https://livresstaka.fr
-- Résultats: 10 000+ livres référencés, système multi-vendeurs actif
-- Fonctionnalités: catalogue produits, paiement Stripe intégré, espace client sécurisé, messagerie intégrée, gestion des stocks, dashboard analytique vendeurs
+- Réalisé: plateforme d'accompagnement des auteurs pour la correction et l'édition de manuscrits, avec espace client et suivi des échanges
+- Fonctionnalités: catalogue produits, paiement Stripe intégré, espace client sécurisé, messagerie intégrée, gestion des stocks, dashboard analytique
 - Technologies: React.js, Node.js, MySQL, Prisma ORM, Stripe, TailwindCSS
-- Points forts: interface fluide, système de notation et avis clients
+- Points forts: interface fluide, parcours de commande complet
 
 ### Cabinet Infirmier Graslin (Nantes)
 - Type: Site vitrine professionnel
 - URL: https://cabinet-infirmier-graslin.fr
-- Résultats: top 3 Google sur "infirmier Graslin Nantes", +200% de demandes de RDV
+- Réalisé: présentation des services du cabinet, informations pratiques pour les patients du quartier Graslin, parcours de prise de contact simplifié
 - Technologies: React, TailwindCSS, SEO local optimisé
 
 ### Poulp Fiction (Saint-Cyprien)
 - Type: Site web immersif
 - URL: https://poulpfiction.netlify.app
-- Résultats: animations fluides, présentation attractive des formations plongée
+- Réalisé: animations fluides, présentation attractive des formations plongée
 - Technologies: React, animations Framer Motion, design responsive
 
 ### Methodea
 - Type: Refonte site vitrine
 - URL: https://methodea.netlify.app
-- Résultats: design modernisé, formulaire de contact connecté
+- Réalisé: design modernisé, formulaire de contact connecté
 - Technologies: React, design moderne responsive
 
 ### CoachTFE
 - Type: Site vitrine professionnel pour une équipe de soignants et enseignants spécialisés en méthodologie de recherche infirmière
 - URL: https://coachtfe.fr
 - Public: étudiants infirmiers en cours de Travail de Fin d'Études (TFE) cherchant un accompagnement méthodologique
-- Résultats: présentation claire de l'accompagnement proposé, parcours de contact dédié
+- Réalisé: présentation claire de l'accompagnement proposé, parcours de contact dédié
 - Technologies: React, design moderne, optimisation conversion
 
 ### Garage Parrot
 - Type: Site complet avec administration
 - URL: https://garage-parrot.online
-- Résultats: système de RDV en ligne, catalogue véhicules d'occasion
+- Réalisé: système de RDV en ligne, catalogue véhicules d'occasion
 - Technologies: gestion multi-utilisateurs, espace admin dédié
 
 ---
