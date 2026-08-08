@@ -99,7 +99,7 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 
 - **React Helmet Async 2.0** — meta tags dynamiques
 - Hook personnalisé `useStructuredData` — agrège 5 sources de schemas JSON-LD
-- Schemas : `Organization`, `Person`, `ProfessionalService`, `LocalBusiness`, `FAQPage`, `VideoObject`, `CreativeWork`, `WebSite`, `BreadcrumbList`, `ContactPage`
+- Schemas : `Organization`, `Person`, `ProfessionalService` (identité, inlinés dans `index.html`), `FAQPage`, `VideoObject`, `CreativeWork`, `WebPage`, `SoftwareApplication` (page)
 
 ### Chatbot IA
 
@@ -236,7 +236,8 @@ src/
 ```
 public/
 ├── sitemap.xml                 # home + blog + articles + pages locales + légales
-├── robots.txt                  # GPTBot, Claude-Web, ChatGPT-User, CCBot autorisés
+├── robots.txt                  # GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot,
+│                               # Google-Extended, Applebot, MistralAI-User… autorisés
 ├── llms.txt                    # Fiche synthétique pour LLM
 ├── llms-full.txt               # Base de connaissances complète
 ├── chatbot-knowledge.txt       # Base de connaissances du chatbot
@@ -330,16 +331,31 @@ Aucun upload manuel : il suffit de merger sur `main`.
 - Open Graph (image 1200×630 absolue) + Twitter Card `summary_large_image`
 - Canonical URLs dynamiques
 - Sitemap XML synchronisé avec robots.txt
-- Page 404 éditoriale avec `noindex` (évite le crawl des URLs cassées)
+- Page 404 éditoriale avec `noindex`, pré-rendue (`/404` dans `EXTRA_ROUTES`) et
+  servie via `ErrorDocument` : un slug de blog inexistant renvoie un vrai **404**
+  et les articles supprimés un **410**, au lieu de la home en 200 (qui créait du
+  contenu dupliqué, d'où « Explorée, actuellement non indexée » en Search Console)
 
 ### Schemas JSON-LD
 
-- **Organization** + **Person** — entité principale
-- **ProfessionalService** + **LocalBusiness** — SEO local (Pau + zone 64 + France)
-- **FAQPage** — 9 questions/réponses pour featured snippets
+Schemas d'**identité**, inlinés statiquement dans `index.html` (lisibles sans JS),
+présents sur toutes les pages et reliés par `@id` :
+
+- **Organization** `#organization` + **Person** `#person`
+- **ProfessionalService** `#business` : SEO local (Pau + zone 64 + France).
+  **Seule** entité décrivant l'activité : ne jamais redéclarer de `LocalBusiness`
+  dans un composant, cela crée une entité concurrente que Google doit départager
+
+Schemas de **page**, générés par `structured-data-final.tsx` :
+
+- **FAQPage** : questions/réponses pour featured snippets
 - **VideoObject** — 2 vidéos YouTube
 - **CreativeWork** — 7 projets portfolio (1 fondateur + 6 clients)
-- **BreadcrumbList**, **WebSite**, **ContactPage**
+- **WebPage**, **SoftwareApplication** (SmartPlanning)
+
+> Les horaires déclarés dans le JSON-LD doivent correspondre à ceux affichés à
+> l'écran (8h30-18h00) : Google compare le contenu visible aux données
+> structurées et sanctionne les écarts.
 
 ### Optimisation LLM (ChatGPT, Claude, Perplexity, Gemini)
 
