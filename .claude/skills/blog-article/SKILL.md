@@ -90,9 +90,9 @@ article est `/blog/<slug>`, pas `/<slug>`.
    dernière ligne qui fait le travail en GEO : un LLM rapproche la question de
    l'utilisateur de ces formulations plutôt que du titre. Mettre à jour la date
    « Dernière mise à jour » en tête des deux fichiers
-9. Proposer à Christophe de demander l'indexation dans Search Console
-   (Inspection d'URL → Demander une indexation) — pertinent pour une URL neuve,
-   inutile pour une simple modification de contenu existant
+9. **Ne pas** proposer de demander l'indexation dans Search Console :
+   Christophe la gère lui-même et a demandé qu'on ne le lui rappelle plus
+   (12/08/2026). La publication s'arrête au smoke test de l'étape 6
 
 ## Ne pas oublier
 
