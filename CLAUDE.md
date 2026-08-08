@@ -42,6 +42,11 @@ npm run preview    # Preview build
   ne génère que les schémas de PAGE (VideoObject, WebPage, FAQPage,
   SmartPlanning). Ne pas dupliquer entre les deux. Horaires du JSON-LD alignés
   sur l'écran : 8h30-18h00. Détail dans le skill `seo-geo-portfolio`
+- `src/components/common/LazyLottie.tsx` — TOUTES les animations Lottie passent
+  par ce composant (moteur + JSON chargés à l'approche du viewport). Ne jamais
+  réimporter `lottie-react` directement, ni nommer ce paquet dans le
+  `manualChunks` de `vite.config.ts` : les deux annulent le gain (TBT 250→20 ms).
+  Le nettoyage des `modulepreload` qu'il implique vit dans `prerender.mjs`
 - `src/hooks/useStructuredData.ts` — hook d'injection des schémas de page
 - `src/components/seo/LLMOptimizedHead.tsx` — injecte les meta tags LLM
 - `src/data/blogPosts.ts` — articles du blog (publication : skill `blog-article`)

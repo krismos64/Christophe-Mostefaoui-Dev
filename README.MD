@@ -87,7 +87,7 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 ### UI & Animations
 
 - **Framer Motion 12.17** — animations sobres (fade + translation, courbe ease-out)
-- **Lottie React 2.4** — animations chatbot, drone, montage vidéo, thinking (footer)
+- **Lottie React 2.4** — animations chatbot, drone, montage vidéo, thinking (footer), toutes chargées à la demande via `LazyLottie` (voir Performances)
 - **Lucide React** — icônes vectorielles cohérentes (strokeWidth 1.5), utilisées partout y compris le blog depuis sa refonte éditoriale
 
 ### Formulaires & Communication
@@ -132,7 +132,7 @@ Le site est pensé d'abord pour mobile (375px et plus). Détails techniques :
 - **Pas de hover-only** : tous les états interactifs ont une version focus/active visible
 - **Lock du scroll body** quand le menu mobile est ouvert (jusqu'à 1023px)
 - **Footer** : grille 2 colonnes sur mobile (Navigation + Ailleurs côte à côte) pour éviter le scroll excessif
-- **Lottie** dimensionnés en fonction du breakpoint (taille minimum garantie sur mobile)
+- **Lottie** dimensionnés en fonction du breakpoint (taille minimum garantie sur mobile), avec conteneur à hauteur fixe pour éviter tout décalage au chargement différé
 
 ---
 
@@ -319,6 +319,49 @@ Aucun upload manuel : il suffit de merger sur `main`.
 > LiteSpeed et signalé par la Search Console. Git ne versionne pas le bit de
 > lecture, d'où la normalisation faite dans le workflow. Diagnostic local :
 > `find dist -type f ! -perm -004`.
+
+---
+
+## Performances
+
+Lighthouse mobile sur la home, mesuré en production le 12/08/2026 :
+
+| Métrique | Valeur |
+| -------- | ------ |
+| Performance | ~83 (médiane de 3 runs) |
+| SEO / Accessibilité / Best Practices | 100 / 100 / 100 |
+| LCP | 3,9 s |
+| TBT | 20 ms |
+| CLS | 0 |
+
+### Chargement différé des animations
+
+Les quatre animations Lottie étaient importées statiquement : 462 Ko de JSON
+inlinés dans le bundle et parsés au démarrage, plus le moteur `lottie-web`, soit
+732 ms de CPU avant le premier rendu. Or aucune n'est visible au chargement
+(footer, section tarifs, menu mobile fermé, bouton flottant du chatbot).
+
+`src/components/common/LazyLottie.tsx` ne récupère le moteur et le JSON qu'à
+l'approche du viewport (`IntersectionObserver`, marge de 200 px), ou pendant un
+moment d'inactivité (`requestIdleCallback`) pour les éléments visibles d'emblée.
+Résultat : chunk `animations` de 454 à 117 Ko, TBT de 250 à 20 ms.
+
+> **Deux pièges à connaître avant de toucher au découpage du bundle :**
+>
+> 1. Ne jamais nommer `lottie-react` dans le `manualChunks` de `vite.config.ts`,
+>    cela le force dans un chunk chargé au démarrage et annule le mécanisme.
+> 2. Le pré-rendu capture le DOM **après** exécution de React, donc il fige les
+>    `<link rel="modulepreload">` que Vite injecte au moment de l'`import()`.
+>    Sans nettoyage, le moteur (314 Ko) est retéléchargé avant le premier rendu.
+>    Ce nettoyage vit dans `scripts/prerender.mjs`, pas seulement dans la config
+>    Vite.
+
+### Ce qui limite encore le LCP
+
+Le TTFB oscille entre 620 et 650 ms, plancher du mutualisé Hostinger, soit un
+sixième du LCP. Le reste tient à l'hydratation React de la home. Les polices ne
+sont pas en cause : les `unicode-range` limitent le téléchargement à 4 fichiers
+sur 8, et `font-display: swap` affiche le texte sans les attendre.
 
 ---
 
