@@ -29,7 +29,7 @@ export default function Portfolio() {
     description:
       "Mon projet entrepreneurial : un SaaS de gestion des plannings d'équipe, conçu, développé et lancé seul en 2026 (modèle freemium). De l'architecture au déploiement en passant par le support utilisateurs, je maîtrise tout le cycle de vie d'un produit.",
     image: "/assets/images/logosp.png",
-    alt: "SmartPlanning — SaaS de gestion des plannings fondé par Christophe Mostefaoui",
+    alt: "SmartPlanning, SaaS de gestion des plannings fondé par Christophe Mostefaoui",
     tags: ["SaaS Freemium", "Solo founder", "2026"],
     link: "https://smartplanning.fr/",
     isFounder: true,
@@ -42,7 +42,7 @@ export default function Portfolio() {
       description:
         "Plateforme complète pour accompagner les auteurs dans la correction et l'édition de leurs manuscrits. Espace client sécurisé, paiement en ligne et messagerie intégrée pour échanger facilement avec l'équipe éditoriale.",
       image: "/assets/images/livrestaka.jpg",
-      alt: "LivresStaka — Plateforme d'édition et correction de manuscrits",
+      alt: "LivresStaka, plateforme d'édition et correction de manuscrits",
       tags: ["Plateforme sur mesure", "Paiement en ligne", "Espace client"],
       link: "https://livrestaka.fr/",
     },
@@ -52,7 +52,7 @@ export default function Portfolio() {
       description:
         "Site vitrine élégant pour un cabinet infirmier à Nantes. Présentation des services, prise de rendez-vous facilitée et informations pratiques pour les patients du quartier Graslin.",
       image: "/assets/images/graslin.jpg",
-      alt: "Cabinet Infirmier Graslin Nantes — Site vitrine professionnel",
+      alt: "Cabinet Infirmier Graslin Nantes, site vitrine professionnel",
       tags: ["Site vitrine", "Santé", "Référencement local"],
       link: "https://cabinet-infirmier-graslin.fr/",
     },
@@ -62,7 +62,7 @@ export default function Portfolio() {
       description:
         "Site web dynamique et immersif pour un centre de plongée à Saint-Cyprien. Animations fluides, présentation des formations et réservation simplifiée pour attirer de nouveaux plongeurs.",
       image: "/assets/images/poulpfiction.jpg",
-      alt: "Poulp Fiction — Site web centre de plongée Saint-Cyprien",
+      alt: "Poulp Fiction, site web centre de plongée Saint-Cyprien",
       tags: ["Site vitrine", "Animations", "Tourisme"],
       link: "https://poulpfiction.netlify.app/",
     },
@@ -72,7 +72,7 @@ export default function Portfolio() {
       description:
         "Refonte complète d'un site vitrine pour une meilleure visibilité en ligne. Design moderne, responsive et formulaire de contact connecté pour ne manquer aucune opportunité commerciale.",
       image: "/assets/images/methodea.png",
-      alt: "Methodea — Refonte site vitrine professionnel",
+      alt: "Methodea, refonte site vitrine professionnel",
       tags: ["Refonte", "Design moderne", "Formulaire contact"],
       link: "https://methodea.netlify.app/",
     },
@@ -82,7 +82,7 @@ export default function Portfolio() {
       description:
         "Site professionnel pour une équipe de soignants et d'enseignants spécialisés en méthodologie de recherche infirmière. Présentation claire de l'accompagnement proposé aux étudiants pour leur Travail de Fin d'Études (TFE), avec parcours de contact dédié.",
       image: "/assets/images/coachtfe.png",
-      alt: "CoachTFE — Accompagnement méthodologie de recherche infirmière (TFE)",
+      alt: "CoachTFE, accompagnement méthodologie de recherche infirmière (TFE)",
       tags: ["Site vitrine", "Santé & Éducation", "Méthodologie TFE"],
       link: "https://coachtfe.fr/",
     },
@@ -92,7 +92,7 @@ export default function Portfolio() {
       description:
         "Site complet pour un garage automobile avec système de rendez-vous en ligne et catalogue de véhicules d'occasion. Gestion simplifiée pour le gérant et ses employés via un espace administration dédié.",
       image: "/assets/images/garage.jpg",
-      alt: "Garage Parrot — Site gestion garage automobile",
+      alt: "Garage Parrot, site de gestion garage automobile",
       tags: ["Site complet", "Réservation en ligne", "Espace admin"],
       link: "https://garage-parrot.online/",
     },

@@ -136,7 +136,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
     {
       icon: Clock,
       label: "Horaires",
-      value: "Lun → Ven, 8h30 — 18h00",
+      value: "Lun → Ven, 8h30 à 18h00",
       sub: "Réponse sous 24h en jours ouvrés",
       mono: false,
     },
@@ -198,7 +198,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
             <VideoEmbed
               youtubeId="tdjXblz4mr4"
               thumbnail="/assets/images/miniature-2.png"
-              title="Présentation — Christophe Mostefaoui"
+              title="Présentation : Christophe Mostefaoui"
               caption="— React, Node, TypeScript & solutions sur mesure"
               duration="1:40"
               channelUrl="https://www.youtube.com/@christophe-dev-freelance/videos"

@@ -286,7 +286,7 @@ export default function About() {
           <VideoEmbed
             youtubeId="eZ6OYMeT1CM"
             thumbnail="/assets/images/miniature.png"
-            title="Mon Univers Digital — Christophe Mostefaoui"
+            title="Mon Univers Digital : Christophe Mostefaoui"
             caption="— mon approche du développement web"
             duration="1:31"
             channelUrl="https://www.youtube.com/@christophe-dev-freelance/videos"

@@ -149,7 +149,7 @@ export default function LocalLanding() {
                 <span className="font-medium text-[#1A1715]/85 dark:text-[#F4EFE6]/85">
                   J'interviens notamment à :
                 </span>{" "}
-                {page.communes.join(", ")} — et partout dans les
+                {page.communes.join(", ")}, et partout dans les
                 Pyrénées-Atlantiques (déplacement gratuit), ainsi qu'à distance
                 dans toute la France.
               </span>
@@ -159,7 +159,7 @@ export default function LocalLanding() {
           {/* FAQ locale */}
           <section
             className="py-8 sm:py-10 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15"
-            aria-label={`Questions fréquentes — ${page.ville}`}
+            aria-label={`Questions fréquentes : ${page.ville}`}
           >
             <h2
               style={{

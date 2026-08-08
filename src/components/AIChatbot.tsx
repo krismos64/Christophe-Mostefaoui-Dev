@@ -291,7 +291,7 @@ const AIChatbot = () => {
     github: [
       {
         type: "link",
-        title: "GitHub — krismos64",
+        title: "GitHub : krismos64",
         description: "Code source et projets open-source.",
         url: "https://github.com/krismos64",
         tags: ["Code", "Open Source"],
@@ -300,7 +300,7 @@ const AIChatbot = () => {
     linkedin: [
       {
         type: "link",
-        title: "LinkedIn — Christophe Mostefaoui",
+        title: "LinkedIn : Christophe Mostefaoui",
         description: "Profil professionnel et parcours.",
         url: "https://www.linkedin.com/in/christophemostefaoui/",
         tags: ["Profil", "Réseau"],
@@ -594,7 +594,7 @@ const AIChatbot = () => {
           to_name: "Christophe Mostefaoui",
           from_name: leadName.trim() || "Visiteur du chatbot",
           email,
-          subject: `Lead chatbot — ${leadName.trim() || email}`,
+          subject: `Lead chatbot : ${leadName.trim() || email}`,
           message: `Demande transmise depuis le chatbot du site.\n\nContact : ${email}\n\n--- Conversation ---\n\n${transcript}`,
         },
         emailjsConfig.userId
@@ -1239,7 +1239,7 @@ const AIChatbot = () => {
                         strokeWidth={1.5}
                       />
                       <span className="hero-body text-[13px] leading-snug text-[#1A1715] dark:text-[#F4EFE6]">
-                        Transmettre ma demande à Christophe —{" "}
+                        Transmettre ma demande à Christophe :{" "}
                         <strong>devis gratuit sous 24h</strong>
                       </span>
                     </button>

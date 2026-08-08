@@ -16,7 +16,7 @@ export const generateFinalStructuredData = () => {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "@id": `${baseUrl}/#video-presentation-expert`,
-    "name": "Présentation — Christophe Mostefaoui, développeur web freelance",
+    "name": "Présentation : Christophe Mostefaoui, développeur web freelance",
     "description":
       "Présentation détaillée de mon travail : React, Node.js, TypeScript et solutions sur mesure pour PME et indépendants.",
     "thumbnailUrl": `${baseUrl}/assets/images/miniature-2.png`,
@@ -37,7 +37,7 @@ export const generateFinalStructuredData = () => {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "@id": `${baseUrl}/#video-univers-digital`,
-    "name": "Mon Univers Digital — Christophe Mostefaoui",
+    "name": "Mon Univers Digital : Christophe Mostefaoui",
     "description":
       "Découvrez mon approche du développement web : créer des sites qui ressemblent à leurs propriétaires.",
     "thumbnailUrl": `${baseUrl}/assets/images/miniature.png`,

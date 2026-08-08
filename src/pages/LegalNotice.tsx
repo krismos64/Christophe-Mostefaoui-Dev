@@ -128,7 +128,7 @@ export default function LegalNotice() {
   return (
     <>
       <Helmet>
-        <title>Mentions légales — Christophe Mostefaoui, développeur web freelance à Pau</title>
+        <title>Mentions légales : Christophe Mostefaoui, développeur web freelance à Pau</title>
         <meta
           name="description"
           content="Mentions légales du site christophe-dev-freelance.fr. Identité de l'éditeur, hébergeur, propriété intellectuelle, responsabilité, juridiction française."

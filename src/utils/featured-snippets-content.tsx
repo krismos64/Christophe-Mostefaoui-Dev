@@ -102,7 +102,7 @@ export const featuredSnippetsContent = {
     {
       query: "Pourquoi vous plutôt qu'une agence web ?",
       answer:
-        "C'est une question légitime — les deux ont leurs avantages. Voici ce qui me distingue d'une agence :\n\n• Vous parlez directement à la personne qui code votre site, pas à un chef de projet intermédiaire\n• Les frais de structure sont nuls, donc les tarifs reflètent le vrai travail, pas la marge d'un cabinet\n• Décisions prises en quelques heures, pas en plusieurs réunions\n• Plus de dix ans dans l'informatique, dont du conseil client : je sais traduire votre besoin métier en solution technique\n\nEt aussi : je suis fondateur de SmartPlanning, un SaaS en production. Quand vous me confiez votre projet, vous bénéficiez de cette expérience entrepreneuriale, pas seulement de compétences techniques sur papier.",
+        "C'est une question légitime : les deux ont leurs avantages. Voici ce qui me distingue d'une agence :\n\n• Vous parlez directement à la personne qui code votre site, pas à un chef de projet intermédiaire\n• Les frais de structure sont nuls, donc les tarifs reflètent le vrai travail, pas la marge d'un cabinet\n• Décisions prises en quelques heures, pas en plusieurs réunions\n• Plus de dix ans dans l'informatique, dont du conseil client : je sais traduire votre besoin métier en solution technique\n\nEt aussi : je suis fondateur de SmartPlanning, un SaaS en production. Quand vous me confiez votre projet, vous bénéficiez de cette expérience entrepreneuriale, pas seulement de compétences techniques sur papier.",
       keywords: [
         "freelance vs agence web",
         "pourquoi développeur freelance",

@@ -111,7 +111,7 @@ export default function PrivacyPolicy() {
             <li>
               Si vous choisissez de « transmettre votre demande », votre email
               et la conversation me sont envoyés (service EmailJS) dans le seul
-              but de vous recontacter — mêmes durées de conservation que le
+              but de vous recontacter, avec les mêmes durées de conservation que le
               formulaire de contact
             </li>
             <li>
@@ -182,7 +182,7 @@ export default function PrivacyPolicy() {
       <Helmet>
         <meta name="robots" content="noindex, nofollow" />
         <title>
-          Politique de confidentialité — Christophe Mostefaoui, développeur web freelance à Pau
+          Politique de confidentialité : Christophe Mostefaoui, développeur web freelance à Pau
         </title>
         <meta
           name="description"

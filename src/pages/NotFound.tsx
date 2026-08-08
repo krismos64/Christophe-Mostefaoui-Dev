@@ -15,7 +15,7 @@ export default function NotFound() {
   return (
     <>
       <Helmet>
-        <title>Page introuvable — Christophe Mostefaoui, développeur web freelance</title>
+        <title>Page introuvable : Christophe Mostefaoui, développeur web freelance</title>
         <meta name="robots" content="noindex, nofollow" />
         <meta
           name="description"
