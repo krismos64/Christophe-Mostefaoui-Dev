@@ -9,15 +9,21 @@ Site vitrine Vite + React 18, hébergé sur Hostinger mutualisé (Apache/LiteSpe
 Le SEO est la priorité maximale du projet. L'état actuel est **conforme** :
 ne pas régresser est plus important qu'optimiser.
 
-**Ligne de base à préserver** (mesurée le 08/08/2026, Lighthouse mobile) :
+**Ligne de base à préserver** (mesurée le 12/08/2026, Lighthouse mobile) :
 
 | Catégorie | Valeur | Statut |
 |---|---|---|
 | SEO | 100 | seuil, ne pas régresser |
 | Accessibilité | 100 | seuil, ne pas régresser |
 | Best Practices | 100 | seuil, ne pas régresser |
-| Performance | 67 | sous le seuil, chantier connu (LCP 5,5 s) |
-| CLS | 0,003 | excellent, ne pas casser |
+| Performance | ~81-83 | médiane de 3 runs, était à 72 avant le 12/08 |
+| LCP | 3,9 s | au-dessus des 2,5 s visés, reste limité par le TTFB |
+| TBT | 20 ms | était à 250 ms, ne pas régresser |
+| CLS | 0 | excellent, ne pas casser |
+
+**Variance** : les runs sur cette prod oscillent de 79 à 91 pour un même code.
+Faire 3 runs et prendre la médiane. Mesurer en local (`serve -s dist`) ne sert
+à rien pour comparer : le TTFB y est de 4 ms contre ~645 ms en prod.
 
 ## Audit express (un seul bloc)
 
@@ -118,15 +124,30 @@ lire `pieges.md` quand quelque chose ne se comporte pas comme attendu en prod.
 
 ## Chantier ouvert
 
-**Performance mobile à 67**, LCP 5,5 s (seuil « bon » de Google : 2,5 s).
-Causes chiffrées le 08/08/2026 : `assets/animations-*.js` à 111 Ko (Framer
-Motion + Lottie) et 263 Ko de polices variables sur 4 fichiers (fraunces italic
-80 Ko, caveat 73 Ko, fraunces normal 66 Ko, inter-tight 44 Ko). Poids total
-758 Ko sur 20 requêtes, FCP 2,7 s, TBT 350 ms.
+**LCP à 3,9 s**, au-dessus des 2,5 s visés par Google. Le gros du travail a été
+fait le 12/08/2026 (Lottie différé, perf 72 → ~83, TBT 250 → 20 ms, détail dans
+la mémoire `perf-mobile-lottie`). Ce qui reste ne se règle pas par du découpage
+de bundle :
 
-Contraintes à respecter en attaquant ce chantier : les polices sont
-auto-hébergées pour garantir zéro requête tierce (décision RGPD du 10/07/2026),
-donc pas de retour à Google Fonts ; et le CLS à 0,003 ne doit pas se dégrader.
+- **TTFB de 620 à 650 ms**, plancher du mutualisé Hostinger, soit un sixième du
+  LCP. Le réduire suppose de changer d'hébergement ou d'ajouter un CDN : c'est
+  une décision de Christophe, ne pas l'engager sans lui.
+- Le reste tient à l'hydratation React de la home. La piste serait de ne pas
+  hydrater les sections sous la ligne de flottaison, chantier lourd et risqué.
+
+**Les polices ne sont pas le sujet**, contrairement à ce qui était supposé avant
+mesure : les `unicode-range` sont en place, seules 4 des 8 se téléchargent sur
+un site français, et `font-display: swap` affiche le texte sans les attendre.
+Ne pas y revenir sans nouvelle mesure. Elles restent auto-hébergées pour
+garantir zéro requête tierce (décision RGPD du 10/07/2026) : pas de retour à
+Google Fonts.
+
+**Deux pièges à ne pas rouvrir** :
+1. Ne jamais nommer `lottie-react` dans le `manualChunks` de `vite.config.ts` :
+   cela le force dans un chunk chargé au démarrage et annule le lazy loading.
+2. Le pré-rendu capture le DOM après exécution de React, donc il fige les
+   `modulepreload` que Vite injecte au moment de l'`import()`. Le nettoyage vit
+   dans `scripts/prerender.mjs`, pas seulement dans `vite.config.ts`.
 
 ## Skills voisins
 
