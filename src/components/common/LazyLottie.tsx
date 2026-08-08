@@ -34,9 +34,10 @@ interface LazyLottieProps {
    */
   rootMargin?: string;
   /**
-   * Charge dès le montage, sans attendre le scroll. Réservé aux éléments déjà
-   * visibles au chargement (le bouton flottant du chatbot). Le chargement reste
-   * différé par l'import dynamique, donc hors du chemin critique.
+   * Pour les éléments déjà visibles au chargement (bouton flottant du chatbot,
+   * menu mobile) : on n'attend pas le scroll, mais on attend quand même que le
+   * navigateur soit inactif. Sans cela, le moteur Lottie repartait dans le
+   * chemin critique et retardait l'affichage du hero.
    */
   eager?: boolean;
 }
@@ -61,10 +62,19 @@ export default function LazyLottie({
       });
     };
 
+    // `eager` ne veut pas dire « tout de suite » : on laisse le navigateur
+    // finir le rendu initial, puis on charge pendant un moment d'inactivité.
+    // L'animation apparaît une fraction de seconde après le reste, ce qui est
+    // invisible à l'usage et sort le moteur du chemin critique.
     if (eager) {
-      fetchAnimation();
+      const idle =
+        typeof requestIdleCallback === "function"
+          ? requestIdleCallback(fetchAnimation, { timeout: 3000 })
+          : (setTimeout(fetchAnimation, 1200) as unknown as number);
       return () => {
         cancelled = true;
+        if (typeof cancelIdleCallback === "function") cancelIdleCallback(idle);
+        else clearTimeout(idle);
       };
     }
 
