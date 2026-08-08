@@ -1,6 +1,6 @@
 # Robots.txt optimisé pour Christophe Mostefaoui - Développeur Web Full-Stack
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 18 mai 2026
+# Dernière mise à jour: 8 août 2026
 
 # === BOTS DE RECHERCHE PRINCIPAUX ===
 User-agent: *
@@ -28,7 +28,13 @@ User-agent: Googlebot-Video
 Allow: /assets/videos/
 
 # === BOTS IA/LLM - Accès optimisé pour indexation ===
+# OpenAI : GPTBot entraîne et alimente l'index, OAI-SearchBot sert la recherche
+# ChatGPT, ChatGPT-User visite une page à la demande d'un utilisateur
 User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: OAI-SearchBot
 Allow: /
 Crawl-delay: 1
 
@@ -36,9 +42,16 @@ User-agent: ChatGPT-User
 Allow: /
 Crawl-delay: 1
 
-User-agent: CCBot
+# Anthropic : ClaudeBot est le crawler actuel, ClaudeBot-User visite à la
+# demande d'un utilisateur. Claude-Web et anthropic-ai sont conservés bien
+# que dépréciés, au cas où un ancien agent les utilise encore
+User-agent: ClaudeBot
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 1
+
+User-agent: ClaudeBot-User
+Allow: /
+Crawl-delay: 1
 
 User-agent: Claude-Web
 Allow: /
@@ -47,9 +60,46 @@ Crawl-delay: 1
 User-agent: anthropic-ai
 Allow: /
 
+# Perplexity : PerplexityBot indexe, Perplexity-User visite à la demande
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Perplexity-User
+Allow: /
+Crawl-delay: 1
+
+# Google : Google-Extended pilote l'usage par Gemini et les AI Overviews,
+# indépendamment de l'indexation classique par Googlebot
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence et Siri
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft Copilot
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 0
+
+# Mistral AI (Le Chat)
+User-agent: MistralAI-User
+Allow: /
+Crawl-delay: 1
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+Crawl-delay: 1
+
+# Common Crawl, corpus utilisé par de nombreux modèles
+User-agent: CCBot
+Allow: /
+Crawl-delay: 2
 
 # === BOTS RÉSEAUX SOCIAUX ===
 User-agent: facebookexternalhit
@@ -107,6 +157,7 @@ Sitemap: https://christophe-dev-freelance.fr/sitemap.xml
 # Services: Sites vitrines, Applications sur mesure, Chatbots GPT/Claude, Production vidéo, Drone
 # Devis: tous les projets font l'objet d'un devis sur mesure, envoyé gratuitement sous 24h
 # Zone d'intervention: Déplacement gratuit dans le 64 (Pyrénées-Atlantiques), France entière à distance
-# Expertise: plus de 10 ans dans l'informatique (conseil client puis développement)
+# Blog: /blog, conseils concrets pour TPE, PME, artisans et commerces (prix d'un site,
+# visibilité locale, référencement Google et IA, chatbot, refonte)
 # Contact: christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45
-# Dernière mise à jour: 18 mai 2026
+# Dernière mise à jour: 8 août 2026
