@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import Lottie from "lottie-react";
+import LazyLottie from "../common/LazyLottie";
 import {
   ArrowUpRight,
   CreditCard,
@@ -11,8 +11,6 @@ import {
   Target,
 } from "lucide-react";
 import { useRef } from "react";
-import cutVideoAnimation from "../../animations/Cut Video.json";
-import droneCameraAnimation from "../../animations/Drone Camera.json";
 
 export default function Pricing() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -212,12 +210,14 @@ export default function Pricing() {
             </div>
             {/* 2 Lottie côte à côte : Cut Video + Drone Camera */}
             <div className="flex items-center justify-center md:justify-end gap-3 sm:gap-3">
-              <div className="w-[140px] h-[140px] sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px]">
-                <Lottie animationData={cutVideoAnimation} loop={true} />
-              </div>
-              <div className="w-[140px] h-[140px] sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px]">
-                <Lottie animationData={droneCameraAnimation} loop={true} />
-              </div>
+              <LazyLottie
+                load={() => import("../../animations/Cut Video.json")}
+                className="w-[140px] h-[140px] sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px]"
+              />
+              <LazyLottie
+                load={() => import("../../animations/Drone Camera.json")}
+                className="w-[140px] h-[140px] sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px]"
+              />
             </div>
           </div>
         </motion.aside>

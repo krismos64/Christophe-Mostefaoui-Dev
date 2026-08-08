@@ -1,7 +1,6 @@
-import Lottie from "lottie-react";
+import LazyLottie from "../common/LazyLottie";
 import { ArrowUpRight, Github, Linkedin, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
-import thinkingAnimation from "../../animations/thinking.json";
 import { useNavigation } from "../../hooks/useNavigation";
 
 export default function Footer() {
@@ -85,10 +84,11 @@ export default function Footer() {
               conseil et le code, au service des PME et indépendants.
             </p>
 
-            {/* Lottie thinking — touche personnelle */}
-            <div className="w-20 sm:w-24 opacity-80">
-              <Lottie animationData={thinkingAnimation} loop={true} />
-            </div>
+            {/* Lottie thinking — touche personnelle, chargée à l'approche */}
+            <LazyLottie
+              load={() => import("../../animations/thinking.json")}
+              className="w-20 h-20 sm:w-24 sm:h-24 opacity-80"
+            />
           </div>
 
           {/* Bloc Navigation */}

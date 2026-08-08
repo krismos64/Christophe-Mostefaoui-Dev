@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import Lottie from "lottie-react";
+import LazyLottie from "../common/LazyLottie";
 import {
   ArrowUpRight,
   Briefcase,
@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import chatbotAnimation from "../../animations/chatbot.json";
 import { useTheme } from "../../context/ThemeContext";
 import { useNavigation } from "../../hooks/useNavigation";
 import { MenuItem } from "../../types/common";
@@ -358,12 +357,16 @@ export default function Header() {
 
             {/* Animation Lottie chatbot — conservée en haut à gauche */}
             <motion.div
-              className="absolute top-5 left-5 sm:top-6 sm:left-6 w-16 sm:w-20 z-10"
+              className="absolute top-5 left-5 sm:top-6 sm:left-6 z-10"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <Lottie animationData={chatbotAnimation} loop={true} />
+              <LazyLottie
+                load={() => import("../../animations/chatbot.json")}
+                className="w-16 h-16 sm:w-20 sm:h-20"
+                eager
+              />
             </motion.div>
 
             {/* Bouton fermer */}

@@ -1,5 +1,5 @@
 import emailjs from "@emailjs/browser";
-import Lottie from "lottie-react";
+import LazyLottie from "./common/LazyLottie";
 import {
   ArrowUpRight,
   ExternalLink,
@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import chatbotAnimation from "../animations/chatbot.json";
 import { emailjsConfig } from "../config/emailjs";
 
 interface Message {
@@ -882,10 +881,10 @@ const AIChatbot = () => {
             aria-label="Ouvrir le chatbot"
           >
             <div className="relative">
-              <Lottie
-                animationData={chatbotAnimation}
-                loop={true}
+              <LazyLottie
+                load={() => import("../animations/chatbot.json")}
                 className="w-16 h-16 sm:w-[72px] sm:h-[72px]"
+                eager
               />
               {hasBadge && (
                 <span
