@@ -12,6 +12,11 @@ import path from "path";
  * Ce plugin retire ces préchargements du HTML. Les chunks restent parfaitement
  * atteignables, ils sont simplement récupérés au moment où LazyLottie les
  * demande.
+ *
+ * Il ne suffit pas à lui seul : le pré-rendu capture le DOM après exécution de
+ * React, et Vite réinjecte alors le lien au moment de l'import(). Le même
+ * nettoyage est donc refait dans scripts/prerender.mjs. Celui-ci couvre le
+ * HTML de base (build:spa, routes non pré-rendues).
  */
 const dropLottiePreload = () => ({
   name: "drop-lottie-modulepreload",

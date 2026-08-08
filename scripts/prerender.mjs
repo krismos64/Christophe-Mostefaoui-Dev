@@ -135,6 +135,19 @@ async function prerenderRoute(browser, route) {
         el.style.transform = "none";
       }
     });
+
+    // Le moteur Lottie et ses animations sont volontairement chargés à la
+    // demande (voir components/common/LazyLottie.tsx). Or Vite injecte un
+    // <link rel="modulepreload"> dans le DOM au moment de l'import() : comme on
+    // capture le DOM APRÈS exécution, ces liens se retrouvent figés dans le
+    // HTML pré-rendu et le navigateur retélécharge ~314 Ko avant le premier
+    // rendu, ce qui annule le bénéfice du lazy loading. On les retire ici.
+    document
+      .querySelectorAll('link[rel="modulepreload"], link[rel="preload"]')
+      .forEach((link) => {
+        if (/index\.es|lottie|thinking|chatbot|Cut%20Video|Drone%20Camera/.test(link.getAttribute("href") || ""))
+          link.remove();
+      });
   });
 
   const html = "<!DOCTYPE html>\n" + (await page.evaluate(
