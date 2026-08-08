@@ -119,11 +119,14 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Claude AI assistant files
-.claude/
-claude/
+# Claude Code : la configuration du projet est versionnée (CLAUDE.md, skills,
+# settings.json partagés), seul le local reste privé
+# - settings.local.json : préférences jetables, contient des chemins personnels
+# - .claude.json : fichier GLOBAL de la machine (liste tous les projets, dont
+#   ceux des clients) ; il vit dans ~/, ne jamais le versionner ici
+.claude/settings.local.json
 .claude.json
-CLAUDE.md
+claude/
 
 # AI assistant related files
 .cursor/
