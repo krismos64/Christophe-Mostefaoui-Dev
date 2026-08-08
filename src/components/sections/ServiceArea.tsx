@@ -1,7 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { Fragment, useRef } from "react";
-import { Helmet } from "react-helmet-async";
 
 export default function ServiceArea() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,56 +42,6 @@ export default function ServiceArea() {
     "Montpellier",
   ];
 
-  // Schema.org pour SEO local (vrai numéro de téléphone)
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Christophe Mostefaoui — Développeur Web Freelance",
-    description:
-      "Développeur web freelance spécialisé en création de sites internet, applications web et intégration IA. Déplacement gratuit dans les Pyrénées-Atlantiques (64), disponible partout en France en distanciel.",
-    url: "https://christophe-dev-freelance.fr",
-    telephone: "+33679088845",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Pau",
-      addressRegion: "Pyrénées-Atlantiques",
-      postalCode: "64000",
-      addressCountry: "FR",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 43.2951,
-      longitude: -0.3708,
-    },
-    areaServed: [
-      {
-        "@type": "AdministrativeArea",
-        name: "Pyrénées-Atlantiques",
-        sameAs: "https://fr.wikipedia.org/wiki/Pyr%C3%A9n%C3%A9es-Atlantiques",
-      },
-      {
-        "@type": "Country",
-        name: "France",
-      },
-    ],
-    serviceArea: {
-      "@type": "GeoCircle",
-      geoMidpoint: {
-        "@type": "GeoCoordinates",
-        latitude: 46.603354,
-        longitude: 1.888334,
-      },
-      geoRadius: "1000 km",
-    },
-    priceRange: "€€",
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-  };
-
   const renderCities = (cities: string[]) =>
     cities.map((city, i) => (
       <Fragment key={city}>
@@ -107,12 +56,6 @@ export default function ServiceArea() {
 
   return (
     <>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(localBusinessSchema)}
-        </script>
-      </Helmet>
-
       <section
         ref={containerRef}
         id="zone-intervention"

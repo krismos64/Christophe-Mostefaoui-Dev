@@ -15,7 +15,6 @@ import {
   Youtube,
 } from "lucide-react";
 import { useRef, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { emailjsConfig, validateEmailjsConfig } from "../../config/emailjs";
 import VideoEmbed from "../common/VideoEmbed";
 
@@ -143,33 +142,13 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
     },
   ];
 
-  // Schema LocalBusiness conforme : vrai numéro, sans aggregateRating inventé
-  const contactSchema = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    mainEntity: {
-      "@type": "LocalBusiness",
-      name: "Christophe Mostefaoui — Développeur Web Freelance",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Pau",
-        addressRegion: "Pyrénées-Atlantiques",
-        addressCountry: "FR",
-      },
-      telephone: "+33679088845",
-      email: "christophe.mostefaoui.dev@gmail.com",
-      openingHours: "Mo-Fr 08:30-18:00",
-    },
-  };
+  // Pas de JSON-LD ici : l'identité de l'activité est déclarée une seule fois
+  // dans index.html (ProfessionalService #business), inlinée statiquement donc
+  // lisible sans JS. Redéclarer un LocalBusiness ici créait une entité
+  // concurrente sans @id, que Google devait départager
 
   return (
     <>
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(contactSchema)}
-        </script>
-      </Helmet>
-
       <section
         ref={containerRef}
         id="contact"
