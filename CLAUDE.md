@@ -40,12 +40,8 @@ npm run preview    # Preview build
 - JSON-LD : schémas d'IDENTITÉ (Organization, Person, ProfessionalService)
   inlinés statiquement dans `index.html` ; `src/utils/structured-data-final.tsx`
   ne génère que les schémas de PAGE (VideoObject, WebPage, FAQPage,
-  SmartPlanning) — ne pas dupliquer entre les deux.
-  `ProfessionalService #business` est la SEULE entité décrivant l'activité :
-  ne jamais redéclarer un `LocalBusiness` ou un `ContactPage` dans un composant
-  (deux doublons sans `@id` retirés de `ServiceArea.tsx` et
-  `GMBOptimizedContact.tsx` le 08/08/2026). Les horaires du JSON-LD doivent
-  correspondre à ceux affichés à l'écran : 8h30-18h00
+  SmartPlanning). Ne pas dupliquer entre les deux. Horaires du JSON-LD alignés
+  sur l'écran : 8h30-18h00. Détail dans le skill `seo-geo-portfolio`
 - `src/hooks/useStructuredData.ts` — hook d'injection des schémas de page
 - `src/components/seo/LLMOptimizedHead.tsx` — injecte les meta tags LLM
 - `src/data/blogPosts.ts` — articles du blog (publication : skill `blog-article`)
@@ -58,49 +54,27 @@ npm run preview    # Preview build
   côté serveur par `chat.php`. Contient la liste des articles de blog avec leurs
   liens : la tenir à jour à chaque publication
 
-## SEO — Règles absolues
+## SEO / GEO — voir le skill `seo-geo-portfolio`
+Le détail (audit express, règles de non-régression, format des fichiers LLM,
+crawlers IA, codes HTTP, pièges vécus) vit dans `.claude/skills/seo-geo-portfolio/`.
+**L'invoquer avant toute modification de `index.html`, `public/.htaccess`,
+`public/sitemap.xml`, `public/robots.txt`, `public/llms*.txt` ou des schémas
+structurés**, et avant tout déploiement touchant une page publique.
+
+Règles absolues, à connaître sans ouvrir le skill :
 - **Priorité maximale** sur le SEO (Google + LLM)
-- Le `<title>` dans `index.html` doit toujours inclure nom + localisation + technologies (c'est ce que les bots voient avant le JS)
-- Image OG : toujours 1200x630, URL absolue
-- **Jamais de contenu caché** (`display:none`, `className="hidden"`) pour du texte SEO — Google pénalise
-- **Jamais de stats inventées** (vues, likes) dans les schemas — Google pénalise
-- **Jamais de numéros fictifs** (+33-6-XX-XX-XX-XX) — vrai numéro : +33679088845
-- Sitemap et robots.txt doivent rester cohérents (pas de Disallow ni de noindex sur une URL présente dans le sitemap — `/politique-de-confidentialite` est noindex donc volontairement HORS sitemap, mais pré-rendue via EXTRA_ROUTES)
-- Google Search Console vérifié via meta tag dans index.html
-- Seuils Lighthouse (mobile) : SEO 100, A11y 100, Best Practices 100 — atteints le 10/07/2026, ne pas régresser
-- **Permissions des fichiers servis** : un fichier en mode 600 est renvoyé en 403
-  par LiteSpeed et remonte en « Bloquée en raison d'une interdiction d'accès »
-  dans la Search Console (vécu le 03/08/2026 sur `llms.txt` et `humans.txt`).
-  Git ne versionne pas le bit de lecture : le workflow applique 644/755 sur
-  `dist/` avant le sync et échoue si un fichier reste illisible. Diagnostic :
-  `find dist -type f ! -perm -004`
+- Seuils Lighthouse mobile : SEO 100, A11y 100, Best Practices 100. Ne pas régresser
+- **Jamais de contenu caché** (`display:none`, `hidden`) pour du texte SEO
+- **Jamais de stats inventées** (vues, likes, « +40% de conversions »)
+- **Jamais de numéro fictif** : le vrai est +33679088845
+- **Une seule entité d'activité** : `ProfessionalService #business` dans
+  `index.html`. Ne jamais redéclarer un `LocalBusiness` ou un `ContactPage`
+  dans un composant
+- **`llms.txt`, `llms-full.txt` et `chatbot-knowledge.txt` sont à mettre à jour
+  à chaque publication d'article** (le skill `blog-article` détaille le format)
+- Après toute modification du `.htaccess`, **tester `/blog` en priorité**
+  (attendu 200, pas 301)
 - Piège JSX/a11y : les nœuds texte multi-lignes sont concaténés SANS espace dans le DOM → ne pas mettre d'aria-label « contenant » un texte visible multi-nœuds (règle axe label-content-name-mismatch) ; laisser le nom se calculer depuis le contenu
-
-## Fichiers LLM (dans public/)
-- `llms.txt` — fiche synthétique pour LLM (section « Blog » : les 7 articles)
-- `llms-full.txt` — base de connaissances complète (section 9 : chaque article
-  avec ses « questions auxquelles il répond », le format qui compte en GEO)
-- `chatbot-knowledge.txt` — base de connaissances chatbot
-- `.well-known/ai-plugin.json` — plugin IA standard (api.type = "none")
-- **À TENIR À JOUR à chaque publication d'article** : les trois premiers fichiers
-  (le skill `blog-article` détaille le format attendu)
-- Les trois fichiers portent une liste « à ne pas attribuer à Christophe » (pas
-  de tarifs chiffrés, pas d'avis clients, pas de sous-traitants, pas de logo,
-  pas de stats de résultat) : garde-fou anti-hallucination pour les LLM externes
-- `robots.txt` déclare les crawlers IA actuels : GPTBot, OAI-SearchBot,
-  ClaudeBot (pas `Claude-Web`, déprécié), PerplexityBot, Google-Extended,
-  Applebot, MistralAI-User, meta-externalagent
-
-## Codes HTTP et .htaccess
-- Un slug de blog inexistant renvoie **404**, les deux articles supprimés en
-  juillet 2025 renvoient **410**, via `public/.htaccess`. La page `/404` est
-  pré-rendue (`EXTRA_ROUTES` de `scripts/prerender.mjs`) et servie par
-  `ErrorDocument`. Avant : le fallback SPA renvoyait la home en 200, ce qui
-  créait du contenu dupliqué (« Explorée, actuellement non indexée » en GSC)
-- **PIÈGE** : toute règle insérée AVANT le fallback SPA casse `/blog` en 301.
-  `dist/blog/` est un dossier réel, `mod_dir` ajoute le trailing slash avant que
-  `blog.html` soit servi. `DirectorySlash Off` corrige. Après toute modification
-  du `.htaccess`, tester `/blog` en priorité (attendu 200), puis tout le sitemap
 
 ## Rédaction — Règles absolues (tout contenu visible : articles, pages, meta, chatbot)
 - **Jamais de tiret cadratin (—) ni demi-cadratin (–)** : marqueur d'écriture IA.
