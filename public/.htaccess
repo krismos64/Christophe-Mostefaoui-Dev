@@ -76,11 +76,42 @@
 # (ex: /blog -> blog.html, /blog/slug -> blog/slug.html)
 # Fichiers .html plutôt que dossiers/index.html : évite la 301
 # « trailing slash » d'Apache (mod_dir) sur les URLs du sitemap
+#
+# DirectorySlash Off est indispensable : dist/blog/ existe en tant que
+# DOSSIER (il contient les articles) et mod_dir redirigerait /blog vers
+# /blog/ en 301 avant que blog.html soit servi
+<IfModule mod_dir.c>
+    DirectorySlash Off
+</IfModule>
+
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_URI} !^/api/
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# Page d'erreur : la page 404 pré-rendue (dist/404.html) plutôt que celle
+# d'Apache. Le code HTTP reste 404 (ou 410), seul le corps de réponse change
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
+# Articles de blog supprimés : 410 Gone
+# Google les explorait encore via le fallback SPA, qui renvoyait la home en
+# 200 sous leur URL (contenu dupliqué, d'où « Explorée, actuellement non
+# indexée » dans la Search Console). Le 410 demande un retrait définitif
+<IfModule mod_rewrite.c>
+    RewriteRule ^blog/chatbot-ia-boutique-locale-resultats-conversions/?$ - [G,L]
+    RewriteRule ^blog/ia-interne-python-ml-vs-ia-externe-economies-2025/?$ - [G,L]
+</IfModule>
+
+# Slug de blog inexistant : 404 plutôt que la home en 200
+# Chaque article publié a son .html pré-rendu (règle ci-dessus) ; si aucun
+# fichier ne correspond, l'URL n'existe pas et ne doit pas être indexable
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^blog/.+ - [R=404,L]
 </IfModule>
 
 # Fallback pour React Router (SPA)

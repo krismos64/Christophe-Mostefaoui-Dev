@@ -47,7 +47,9 @@ function findChrome() {
 }
 
 // Routes pré-rendues mais volontairement absentes du sitemap (ex: noindex)
-const EXTRA_ROUTES = ["/politique-de-confidentialite"];
+// /404 alimente l'ErrorDocument du .htaccess : une URL inconnue reçoit un
+// vrai 404 avec la page React, au lieu de la home en 200 (contenu dupliqué)
+const EXTRA_ROUTES = ["/politique-de-confidentialite", "/404"];
 
 function routesFromSitemap() {
   const xml = readFileSync("public/sitemap.xml", "utf-8");
