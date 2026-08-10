@@ -84,7 +84,12 @@ Règles absolues, à connaître sans ouvrir le skill :
 ## Rédaction — Règles absolues (tout contenu visible : articles, pages, meta, chatbot)
 - **Jamais de tiret cadratin (—) ni demi-cadratin (–)** : marqueur d'écriture IA.
   Virgule, deux-points ou parenthèses. Règle prospective : ne pas corriger
-  rétroactivement l'existant sauf demande
+  rétroactivement l'existant sauf demande.
+  **Exception validée le 10/08/2026** : les cadratins du GABARIT sont un parti
+  pris typographique et restent en place (numérotation romaine « II. — Qui
+  suis-je », signatures « — C.M. », légendes manuscrites, accroches du blog
+  « IA accessible — »). La règle vise la prose rédigée, pas les séparateurs de
+  design. Ne plus les signaler ni proposer de les remplacer
 - **Jamais qualifier Christophe d'« expert »** (nettoyage fait le 03/08/2026,
   40 occurrences) : décrire ce qu'il fait ou citer un fait vérifiable. Exceptions
   conservées : le champ meta `ai-expertise`, le `@id` `#video-presentation-expert`,

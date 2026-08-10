@@ -6,6 +6,10 @@
       "Bash(curl -sI https://christophe-dev-freelance.fr*)",
       "Bash(curl -s -o /dev/null *)",
       "Bash(gh run watch *)",
+      "Bash(gh run list *)",
+      "Bash(npm run build)",
+      "Bash(bash scripts/optimize-images.sh)",
+      "Bash(sips *)",
       "mcp__chrome-devtools__lighthouse_audit",
       "mcp__chrome-devtools__new_page"
     ]

@@ -18,7 +18,14 @@ coûts, délais, résultats. Objectif de chaque article : amener une demande de 
 - **Jamais de tiret cadratin (—) ni demi-cadratin (–) dans le texte** de
   l'article : marqueur d'écriture IA. Virgule, deux-points ou parenthèses selon
   le contexte. Vérifier avant commit, y compris dans `excerpt` et
-  `metaDescription`
+  `metaDescription`.
+  **Exception (décidée le 10/08/2026)** : les cadratins du GABARIT sont du
+  design assumé et restent en place. Sur une page d'article pré-rendue, trois
+  occurrences sont normales et ne viennent pas du contenu : l'accroche
+  manuscrite du hero, celle du bloc de fin (« cet article vous a intéressé — »)
+  et la signature « — 2026 » du footer. Un `grep` de cadratins sur le HTML de
+  `dist/` compte donc 3 (plus 1 dans un commentaire HTML) même quand l'article
+  est propre : vérifier la source dans `blogPosts.ts`, pas le HTML
 - **Ne jamais qualifier Christophe d'« expert »** : décrire ce qu'il fait, ou
   citer un fait vérifiable (fondateur de SmartPlanning, 10 ans d'informatique)
 - Mots-clés locaux à travailler naturellement : Pau, Artix, Béarn, Bayonne,

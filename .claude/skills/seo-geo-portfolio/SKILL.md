@@ -130,10 +130,13 @@ la mémoire `perf-mobile-lottie`). Ce qui reste ne se règle pas par du découpa
 de bundle :
 
 - **TTFB de 620 à 650 ms**, plancher du mutualisé Hostinger, soit un sixième du
-  LCP. Le réduire suppose de changer d'hébergement ou d'ajouter un CDN : c'est
-  une décision de Christophe, ne pas l'engager sans lui.
+  LCP. **Sujet clos (10/08/2026)** : Christophe ne changera pas d'hébergement et
+  considère ce chiffre sans importance. Ne plus le proposer comme piste, ni dans
+  un bilan, ni dans un audit. Le citer uniquement pour expliquer pourquoi le LCP
+  plafonne ou pourquoi une mesure locale n'est pas comparable à la prod.
 - Le reste tient à l'hydratation React de la home. La piste serait de ne pas
   hydrater les sections sous la ligne de flottaison, chantier lourd et risqué.
+  C'est la seule voie restante côté code.
 
 **Les polices ne sont pas le sujet**, contrairement à ce qui était supposé avant
 mesure : les `unicode-range` sont en place, seules 4 des 8 se téléchargent sur
