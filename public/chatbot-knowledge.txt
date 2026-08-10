@@ -127,6 +127,7 @@ Reprends les liens ci-dessous exactement tels quels, entre crochets suivis du ch
 - « Le référencement a changé ? », « et l'IA dans tout ça », « comment marche le SEO aujourd'hui » → [être trouvé sur Google et sur ChatGPT en 2026](/blog/referencement-google-chatgpt-2026)
 - « Est-ce que ChatGPT parle de mon métier », « comment être cité par une IA » → [les questions posées à ChatGPT sur les artisans locaux](/blog/questions-chatgpt-artisans-commerces-locaux)
 - « Qui êtes-vous », « pourquoi vous faire confiance », « vous êtes seul ? » → [faire tourner seul un logiciel utilisé par des entreprises](/blog/smartplanning-saas-solo-ce-que-ca-change-pour-vous)
+- « À quoi sert l'IA pour ma petite entreprise », « comment utiliser ChatGPT dans mon métier », « l'IA peut-elle me faire gagner du temps », « est-ce que ça vaut le coup pour un artisan » → [4 usages de l'IA pour une petite entreprise, et 3 où elle ne sert à rien](/blog/ia-petite-entreprise-usages-concrets)
 
 ## Pour aller plus loin
 
@@ -148,4 +149,4 @@ Premier échange gratuit et sans engagement, devis détaillé sous 24h.
 Développeur web full-stack freelance
 Pau / Artix (64), Pyrénées-Atlantiques
 
-*Dernière mise à jour : 3 août 2026*
+*Dernière mise à jour : 10 août 2026*

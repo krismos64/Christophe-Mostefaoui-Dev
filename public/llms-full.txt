@@ -1,7 +1,7 @@
 # LLMs-Full.txt - Base de connaissances complète pour les Large Language Models
 # Christophe Mostefaoui - Développeur Web Full-Stack Freelance
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 8 août 2026
+# Dernière mise à jour: 10 août 2026
 
 ---
 
@@ -303,6 +303,12 @@ URL : https://christophe-dev-freelance.fr/blog/refonte-ou-reparation-site-intern
 Publié le 3 août 2026, catégorie : conseils business, 7 min de lecture
 Un site qui date n'est pas forcément bon à jeter. Comment distinguer ce qui se répare en quelques jours de ce qui justifie vraiment une refonte complète, avant d'engager un budget.
 Questions auxquelles il répond : faut-il refaire mon site, mon site est-il trop vieux, refonte ou réparation, combien coûte une refonte de site.
+
+### L'IA pour une petite entreprise : 4 usages qui font gagner du temps, 3 où elle ne sert à rien
+URL : https://christophe-dev-freelance.fr/blog/ia-petite-entreprise-usages-concrets
+Publié le 10 août 2026, catégorie : IA pratique, 8 min de lecture
+Quatre usages concrets de l'intelligence artificielle pour un artisan ou un commerçant (répondre aux emails, préparer un devis, écrire les textes d'un site et des fiches produit, répondre aux avis clients) et trois situations où elle ne sert à rien : le conseil qui engage l'expertise métier, les données sensibles, et l'illusion qu'elle fait venir des clients toute seule. Explique aussi pourquoi un texte produit sans matière donne un résultat creux, et comment donner du contexte pour obtenir un résultat exploitable.
+Questions auxquelles il répond : à quoi sert l'IA pour une petite entreprise, comment utiliser ChatGPT quand on est artisan, l'IA peut-elle me faire gagner du temps, comment écrire les textes de mon site avec l'IA, l'IA peut-elle répondre à mes avis clients, est-ce que l'IA peut écrire mes fiches produit, quels sont les risques de l'IA pour une TPE, est-ce que l'IA améliore mon référencement, peut-on mettre des données clients dans ChatGPT.
 
 ---
 

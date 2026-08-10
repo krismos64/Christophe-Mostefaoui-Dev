@@ -2,7 +2,7 @@
 
 > Développeur web full-stack freelance basé à Pau et Artix (Pyrénées-Atlantiques, France), fondateur du SaaS SmartPlanning.fr. Services : sites vitrines, applications web et SaaS sur mesure, intégration IA (chatbots GPT, Claude, Mistral, RAG), production vidéo et drone. Devis sur mesure gratuit sous 24h (aucune grille tarifaire publique). Déplacement gratuit dans tout le 64, disponible partout en France à distance. Contact : christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45.
 
-Dernière mise à jour : 12 août 2026.
+Dernière mise à jour : 10 août 2026.
 
 ## Identité
 
@@ -66,6 +66,7 @@ Articles rédigés par Christophe pour les TPE, PME, artisans et commerces, sans
 - [Ce que les gens demandent vraiment à ChatGPT sur les artisans et commerces du coin](https://christophe-dev-freelance.fr/blog/questions-chatgpt-artisans-commerces-locaux): les questions réellement posées à ChatGPT sur des activités locales, et ce qu'il faut écrire sur son site pour avoir une chance d'être la réponse. Publié le 20 juillet 2026.
 - [Je fais tourner seul un logiciel utilisé par de vraies entreprises : ce que ça change pour vos projets](https://christophe-dev-freelance.fr/blog/smartplanning-saas-solo-ce-que-ca-change-pour-vous): ce que l'exploitation quotidienne de SmartPlanning apporte concrètement à un client qui confie son projet. Publié le 21 juillet 2026.
 - [Votre site a 5 ans : faut-il le refaire entièrement ou juste le réparer ?](https://christophe-dev-freelance.fr/blog/refonte-ou-reparation-site-internet): comment distinguer ce qui se répare en quelques jours de ce qui justifie une refonte complète, avant d'engager un budget. Publié le 3 août 2026.
+- [L'IA pour une petite entreprise : 4 usages qui font gagner du temps, 3 où elle ne sert à rien](https://christophe-dev-freelance.fr/blog/ia-petite-entreprise-usages-concrets): quatre usages concrets de l'IA pour un artisan ou un commerçant (emails, devis, textes de site, avis clients) et trois situations où elle fait perdre du temps. Publié le 10 août 2026.
 
 Index complet : [https://christophe-dev-freelance.fr/blog](https://christophe-dev-freelance.fr/blog)
 

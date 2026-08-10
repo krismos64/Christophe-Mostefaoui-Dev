@@ -25,6 +25,115 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "13",
+    title:
+      "L'IA pour une petite entreprise : 4 usages qui font gagner du temps, 3 où elle ne sert à rien",
+    slug: "ia-petite-entreprise-usages-concrets",
+    excerpt:
+      "On entend parler d'intelligence artificielle partout, mais rarement de ce qu'elle change vraiment dans le quotidien d'un artisan ou d'un commerçant. Voici quatre usages simples qui font gagner du temps dès cette semaine, et trois situations où elle vous en fera perdre.",
+    content: `Depuis deux ans, on vous répète que l'intelligence artificielle va tout changer pour votre entreprise. Dans les faits, quand je discute avec des artisans et des commerçants du Béarn, j'entends surtout deux choses : « je ne vois pas ce que ça pourrait m'apporter », ou « j'ai essayé, ça m'a fait perdre du temps ».
+
+Les deux réactions sont légitimes. L'IA n'est pas un outil magique, c'est un assistant qui écrit vite et qui lit vite. Elle est utile là où vous passez du temps sur du texte, et inutile ailleurs. Voici, sans jargon, où se trouve la frontière.
+
+## D'abord, de quoi on parle exactement
+
+Quand je dis « IA » dans cet article, je parle des assistants du type ChatGPT, Claude ou Mistral, ceux où vous écrivez une question et où vous obtenez une réponse rédigée. Vous pouvez y accéder gratuitement depuis un navigateur ou une application sur votre téléphone, sans rien installer et sans compétence technique.
+
+Le principe tient en une phrase : vous décrivez ce que vous voulez, l'assistant produit un texte. Plus votre demande est précise, meilleur est le résultat. C'est tout, et c'est déjà beaucoup.
+
+Un point important avant de commencer : cet assistant se trompe parfois, avec beaucoup d'aplomb. Il peut inventer une date, un chiffre ou une règle qui n'existe pas. Tout ce qui sort doit être relu par vous. Considérez-le comme un stagiaire rapide et bien élevé, jamais comme une source de vérité.
+
+## Usage 1 : répondre à vos emails et à vos messages plus vite
+
+C'est l'usage le plus immédiat, et celui que les gens sous-estiment le plus.
+
+Vous recevez une demande de renseignement, une réclamation, une relance de client. Vous savez quoi répondre, mais tourner le message poliment vous prend dix minutes, et vous repoussez souvent à plus tard. Collez le message reçu dans l'assistant, expliquez en une phrase ce que vous voulez dire, et demandez une réponse professionnelle et courtoise.
+
+Un exemple concret : « Voici le message d'un client mécontent d'un retard de livraison. Rédige une réponse qui s'excuse, explique que la pièce était en rupture chez le fournisseur, et propose une nouvelle date la semaine prochaine. Ton professionnel, pas trop formel, dix lignes maximum. »
+
+Vous obtenez un brouillon en quelques secondes. Vous le relisez, vous corrigez les détails qu'il ne pouvait pas connaître, vous envoyez. Le temps gagné sur une semaine chargée est réel, surtout sur les messages désagréables qu'on a tendance à laisser traîner.
+
+## Usage 2 : préparer un devis ou un document commercial
+
+Attention, l'IA ne calcule pas vos prix : vos tarifs vous appartiennent et ne sortent pas d'une machine. En revanche, elle rédige très bien tout ce qui entoure le chiffre.
+
+Elle est utile pour transformer vos notes en un descriptif de prestation clair, structurer les conditions et le déroulé d'un chantier, ou reformuler un devis technique en termes compréhensibles par un particulier. Un client qui comprend ce qu'il achète signe plus facilement, et ça n'a rien à voir avec le montant.
+
+Le même principe vaut pour les documents que vous réécrivez régulièrement : conditions d'intervention, courrier de relance d'impayé, description de vos prestations. Vous préparez le fond une fois, vous demandez la mise en forme, vous réutilisez ensuite.
+
+## Usage 3 : écrire les textes de votre site et de vos fiches produit
+
+C'est le blocage numéro un quand je livre un site à un client : les textes. La structure est prête, le design est validé, et le projet s'arrête net parce qu'il faut écrire trois paragraphes de présentation.
+
+L'IA débloque très bien cette situation, à une condition : ne lui demandez pas d'écrire à partir de rien. Un texte fabriqué sans matière donne un résultat creux, plein de formules toutes faites, qui ressemble à celui de n'importe quel concurrent. Le mauvais réflexe consiste à taper « écris-moi la page d'accueil d'un plombier à Pau » et à copier le résultat.
+
+La bonne méthode est de lui donner votre matière brute. Dictez-lui à l'oral, dans votre téléphone, ce que vous faites, depuis combien de temps, ce que vos clients apprécient, ce qui vous distingue du voisin. Même en désordre, même avec des répétitions. Puis demandez-lui de structurer ça en un texte de présentation clair. Là, le résultat vous ressemble, parce que la matière vient de vous.
+
+Pour les fiches produit d'une boutique en ligne, le gain est encore plus net : décrire cinquante articles à la main est un travail de plusieurs jours, alors qu'un descriptif par article à partir de vos caractéristiques prend une matinée.
+
+## Usage 4 : répondre aux avis clients
+
+Répondre aux avis, y compris aux mauvais, améliore votre image auprès des futurs clients qui les lisent. La plupart des commerçants ne le font pas, faute de temps ou parce qu'un avis injuste met en colère.
+
+C'est précisément là que l'assistant aide : il écrit sans émotion. Donnez-lui l'avis négatif, expliquez votre version des faits, demandez une réponse courtoise qui ne s'excuse pas de tout et qui propose de reprendre contact en direct. Vous évitez la réponse à chaud qu'on regrette, celle qui reste en ligne des années.
+
+Une seule règle : ne publiez jamais la réponse sans la relire et la personnaliser un peu. Un lecteur repère très vite dix réponses identiques signées de la même main.
+
+## Maintenant, les trois cas où l'IA ne sert à rien
+
+Cette partie est celle que la plupart des articles sur le sujet évitent, et c'est pourtant la plus utile.
+
+**Elle ne remplace pas votre expertise métier, ni un conseil personnalisé.** Un client qui vous demande si sa charpente peut supporter une isolation, quelle coupe convient à son visage, ou si son terrain permet telle construction attend votre jugement, formé par des années de pratique et par ce que vous voyez sur place. L'assistant produira une réponse plausible et générale, parfois fausse, et c'est vous qui en porterez la responsabilité. Ne l'utilisez jamais pour ce qui engage votre métier.
+
+**Elle ne gère pas vos données sensibles.** Tout ce que vous écrivez dans un assistant grand public part sur des serveurs qui ne vous appartiennent pas. Ne collez jamais un fichier client complet, un bulletin de paie, un dossier médical, un contrat confidentiel ou des coordonnées bancaires. Pour ce type de besoin, il existe des solutions installées dans un cadre maîtrisé, mais ce n'est plus le même sujet, ni le même budget.
+
+**Elle ne fait pas venir de clients toute seule.** C'est le malentendu le plus coûteux. Publier trente textes produits par une IA sur votre site ne vous fera pas monter dans Google, et peut même vous desservir : les moteurs de recherche repèrent les contenus vides et sans point de vue, et vos visiteurs aussi. Ce qui vous rend visible, c'est un site bien construit, des pages qui répondent aux vraies questions de vos clients et une présence locale cohérente. J'ai détaillé ce mécanisme dans [être trouvé sur Google et sur ChatGPT en 2026](/blog/referencement-google-chatgpt-2026). L'IA vous aide à écrire plus vite, elle ne décide pas de quoi il faut parler.
+
+Un quatrième cas mérite d'être signalé, plus subtil : si vous passez plus de temps à corriger le texte produit qu'il ne vous en aurait fallu pour l'écrire, arrêtez. Ça arrive sur les sujets très spécifiques à votre métier, où vous êtes plus rapide et plus juste que la machine.
+
+## Par où commencer cette semaine
+
+Inutile de vous équiper ou de suivre une formation. Choisissez le prochain email qui vous embête, celui que vous repoussez depuis deux jours, et faites-en rédiger un brouillon. Vous saurez en dix minutes si l'outil a une place dans votre organisation.
+
+Retenez la règle qui fait toute la différence entre un résultat utile et un texte creux : donnez du contexte. Qui vous êtes, à qui vous vous adressez, quel ton vous voulez, quelle longueur. Une demande d'une ligne donne une réponse générique, une demande de cinq lignes donne un texte exploitable.
+
+Et si vous vous demandez comment une IA peut répondre à vos clients sur votre propre site, sans inventer ni promettre n'importe quoi, c'est un sujet à part entière que j'ai traité dans [un chatbot IA pour votre commerce](/blog/chatbot-ia-commerce-pme).
+
+## Un projet où l'IA aurait sa place ?
+
+Si vous vous demandez ce que l'intelligence artificielle peut apporter à votre activité, ou si vous avez simplement un projet de site ou d'outil sur mesure, décrivez-moi votre situation via le formulaire de contact ou appelez-moi au 06 79 08 88 45. Premier échange gratuit et sans engagement, devis clair sous 24h. Et si l'IA n'apporte rien à votre cas, je vous le dirai franchement plutôt que de vous vendre une fonctionnalité inutile.
+
+J'interviens à [Pau, Artix et dans tout le Béarn](/creation-site-internet-pau), ainsi que sur la côte basque, avec déplacement gratuit dans les Pyrénées-Atlantiques.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-08-10",
+    readTime: 8,
+    category: "ia-pratique",
+    tags: [
+      "Intelligence artificielle",
+      "IA pratique",
+      "PME",
+      "Artisans",
+      "Gain de temps",
+      "Pau",
+      "Béarn",
+    ],
+    imageUrl: "/assets/images/ia-petite-entreprise-usages-concrets.png",
+    imageAlt:
+      "Artisan consultant un assistant IA sur son téléphone dans son atelier, lumière de fin de journée",
+    featured: false,
+    metaDescription:
+      "L'IA pour une TPE : 4 usages qui font gagner du temps (emails, devis, textes, avis) et 3 cas où elle ne sert à rien. Sans jargon, par un développeur du 64.",
+    keywords: [
+      "IA petite entreprise",
+      "intelligence artificielle artisan",
+      "ChatGPT pour commerçant",
+      "gagner du temps avec l'IA",
+      "IA TPE PME Pau",
+      "usages concrets intelligence artificielle",
+      "développeur web freelance Béarn",
+    ],
+  },
+  {
     id: "12",
     title:
       "Votre site a 5 ans : faut-il le refaire entièrement ou juste le réparer ?",
