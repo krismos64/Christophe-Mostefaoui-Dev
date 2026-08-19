@@ -25,6 +25,116 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "14",
+    title:
+      "Site vitrine ou page Facebook : ai-je vraiment besoin des deux ?",
+    slug: "site-vitrine-ou-reseaux-sociaux",
+    excerpt:
+      "« Ma page Facebook me suffit. » C'est souvent vrai, jusqu'au jour où ça ne l'est plus. Ce que vos réseaux font très bien, ce qu'ils ne feront jamais, et les cas où un site ne se justifie pas encore.",
+    content: `« J'ai déjà une page Facebook, et mes clients me trouvent dessus. » C'est la phrase que j'entends le plus souvent quand je rencontre un artisan ou un commerçant du Béarn qui hésite à faire un site.
+
+Elle est souvent juste. Une page Facebook ou un compte Instagram bien tenu ramène de vrais clients, et je ne vais pas vous expliquer le contraire. La vraie question est ailleurs : qu'est-ce qui se passe le jour où cette page ne suffit plus, et qu'est-ce que vous ne voyez pas aujourd'hui parce que vous n'avez que ça.
+
+## Ce que vos réseaux sociaux font très bien
+
+Commençons par ce qui marche, parce qu'il n'y a aucune raison d'arrêter.
+
+Une page bien alimentée entretient le lien avec les gens qui vous connaissent déjà. Vos clients voient vos réalisations, votre actualité, vos horaires exceptionnels. Le bouche-à-oreille se prolonge en ligne : quelqu'un partage votre publication, son entourage la voit, vous récupérez un appel. C'est immédiat, gratuit, et ça demande peu de matériel : une photo depuis votre téléphone suffit.
+
+Pour un métier visuel, coiffeur, pâtissier, paysagiste, carreleur, c'est même redoutablement efficace. Une belle photo de chantier terminé vaut mieux qu'un paragraphe.
+
+Gardez tout ça. Le sujet n'est pas de remplacer vos réseaux, mais de comprendre ce qu'ils ne peuvent pas faire.
+
+## Le vrai problème : personne ne cherche un plombier sur Facebook
+
+Repensez à la dernière fois que vous avez eu besoin d'un artisan que vous ne connaissiez pas. Une fuite un dimanche soir, une serrure bloquée, un devis de ravalement. Qu'est-ce que vous avez fait ?
+
+Vous avez sorti votre téléphone et vous avez tapé « plombier Pau » ou « serrurier urgence Artix » dans Google. Vous n'êtes pas allé chercher dans un fil d'actualité.
+
+C'est toute la différence entre les deux outils. Les réseaux sociaux servent les gens qui vous connaissent déjà. Un moteur de recherche sert les gens qui ont un besoin maintenant et qui ne savent pas encore à qui s'adresser. Ce sont deux publics différents, et le second est celui qui fait grossir une activité.
+
+Un compte Instagram, même avec beaucoup d'abonnés, n'apparaît quasiment jamais dans les résultats de recherche sur une requête comme « électricien Bayonne ». Les pages qui sortent sont des sites, des annuaires et des fiches Google. Si vous n'avez ni site ni fiche, vous êtes absent de ce moment précis où quelqu'un cherche exactement ce que vous vendez.
+
+## Vous ne possédez pas votre page
+
+Le deuxième point est moins visible, et plus embêtant.
+
+Votre page appartient à la plateforme, pas à vous. Elle peut être suspendue par erreur, à la suite d'un signalement automatique ou d'un piratage de votre compte. Ça arrive, et le recours se limite souvent à un formulaire sans réponse. Vos publications, vos photos, vos messages avec vos clients : tout est stocké chez quelqu'un d'autre.
+
+Il y a aussi une réalité plus quotidienne : la portée de vos publications dépend d'un algorithme que vous ne contrôlez pas. Vous avez peut-être déjà remarqué que vos publications touchent moins de monde qu'avant, sans que vous ayez changé quoi que ce soit. Ce n'est pas votre faute, c'est un réglage décidé ailleurs, dont la logique est de vous pousser à payer pour être vu.
+
+Un site que vous possédez, avec votre nom de domaine, ne dépend de personne. Il est en ligne tant que vous le décidez.
+
+## Ce qu'un client cherche et qu'il ne trouve pas sur votre page
+
+Mettez-vous à la place de quelqu'un qui envisage de vous confier un chantier à plusieurs milliers d'euros. Il veut vérifier trois choses avant d'appeler : ce que vous faites exactement, si vous intervenez chez lui, et si vous avez l'air sérieux.
+
+Sur une page sociale, ces informations existent parfois, mais elles sont noyées dans un fil chronologique. Vos tarifs indicatifs, votre zone d'intervention, vos assurances, le détail de vos prestations : soit c'est dans une publication d'il y a huit mois que personne ne retrouvera, soit ça n'y est pas.
+
+Un site répond à ces questions en trente secondes, sur une page conçue pour ça. Et il permet des choses qu'une page sociale ne permet pas : un formulaire de devis qui arrive directement dans votre boîte mail avec les bonnes informations, une prise de rendez-vous en ligne, un catalogue consultable, une page par prestation.
+
+Il y a un dernier point que les gens sous-estiment : la crédibilité. À prestation égale et à prix égal, entre un artisan qui a un vrai site et un autre qui n'a qu'une page Facebook, le client choisit souvent le premier. Ce n'est pas rationnel, c'est un signal de sérieux et d'installation dans la durée.
+
+## Le nouveau venu : les assistants IA
+
+Un changement récent mérite votre attention, parce qu'il va dans le même sens.
+
+De plus en plus de gens posent leur question à ChatGPT plutôt qu'à Google : « qui peut refaire ma salle de bain à Pau ? ». L'assistant répond en s'appuyant sur ce qu'il trouve en ligne, et ce qu'il trouve, ce sont des sites et des pages web. Il ne va pas parcourir les publications Facebook des commerçants du coin.
+
+Autrement dit, la tendance renforce l'écart plutôt qu'elle ne le réduit. J'ai expliqué comment fonctionne ce mécanisme, et ce qui fait qu'une entreprise est citée ou ignorée, dans [être trouvé sur Google et sur ChatGPT en 2026](/blog/referencement-google-chatgpt-2026).
+
+## Les cas où votre page suffit vraiment
+
+Je ne vais pas vous dire que tout le monde a besoin d'un site, ce serait malhonnête.
+
+Si votre carnet de commandes est plein six mois à l'avance et que vous refusez déjà du travail, un site ne réglera rien : vous n'avez pas un problème de visibilité. Si vous partez à la retraite dans deux ans, l'investissement ne s'amortira pas. Et si vous vendez uniquement en direct sur les marchés, avec une clientèle d'habitués, votre page fait le travail.
+
+Il y a aussi un cas intermédiaire à connaître : si votre budget est très serré, commencez par soigner votre fiche Google. Elle est gratuite, elle vous fait apparaître sur la carte quand quelqu'un cherche près de chez vous, et c'est le meilleur rapport effort/résultat quand on part de zéro. Un site viendra ensuite, quand l'activité le justifiera. J'ai détaillé cette approche progressive dans [être visible localement à Pau, dans le Béarn et sur la côte basque](/blog/visibilite-locale-pau-bearn-cote-basque).
+
+## La bonne façon de voir les choses
+
+Opposer les deux est une erreur. Ils ne servent pas au même moment du parcours de votre client.
+
+Vos réseaux entretiennent la relation avec ceux qui vous suivent, montrent votre travail au quotidien et font vivre le bouche-à-oreille. Votre site capte ceux qui cherchent activement, répond à leurs questions et transforme une visite en demande de devis.
+
+Le montage qui fonctionne est simple : vous publiez sur vos réseaux comme aujourd'hui, et chaque publication renvoie vers votre site pour les détails. Votre fiche Google pointe vers le site, votre site affiche vos derniers travaux. Chaque canal alimente l'autre au lieu de le concurrencer.
+
+Un site vitrine de quelques pages suffit pour commencer, et il n'a pas besoin d'être refait tous les ans. Si vous en avez déjà un mais qu'il date, la question n'est pas la même, je l'ai traitée dans [refaire ou réparer son site internet](/blog/refonte-ou-reparation-site-internet).
+
+## Parlons de votre situation
+
+Si vous vous demandez si un site se justifie dans votre cas, décrivez-moi votre activité via le formulaire de contact ou appelez-moi au 06 79 08 88 45. Premier échange gratuit et sans engagement, devis clair sous 24h. Et si vos réseaux suffisent pour l'instant, je vous le dirai plutôt que de vous vendre un site dont vous n'avez pas besoin.
+
+J'interviens à [Pau et dans tout le Béarn](/creation-site-internet-pau), à [Orthez](/creation-site-internet-orthez-bearn), ainsi qu'à [Bayonne](/creation-site-internet-bayonne) et [Biarritz](/creation-site-internet-biarritz) sur la côte basque, avec déplacement gratuit dans les Pyrénées-Atlantiques.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-08-19",
+    readTime: 7,
+    category: "conseils-business",
+    tags: [
+      "Site vitrine",
+      "Réseaux sociaux",
+      "Visibilité locale",
+      "Artisans",
+      "TPE",
+      "Pau",
+      "Béarn",
+    ],
+    imageUrl: "/assets/images/site-vitrine-ou-reseaux-sociaux.png",
+    imageAlt:
+      "Commerçante consultant son téléphone derrière le comptoir de sa boutique, lumière de fin de journée",
+    featured: false,
+    metaDescription:
+      "Page Facebook ou site internet pour un artisan du 64 ? Ce que les réseaux font bien, ce qu'ils ne feront jamais, et quand un site se justifie vraiment.",
+    keywords: [
+      "site vitrine ou réseaux sociaux",
+      "page Facebook suffit entreprise",
+      "site internet artisan Pau",
+      "Facebook ou site internet commerce",
+      "visibilité locale Béarn",
+      "créer un site TPE 64",
+    ],
+  },
+  {
     id: "13",
     title:
       "L'IA pour une petite entreprise : 4 usages qui font gagner du temps, 3 où elle ne sert à rien",

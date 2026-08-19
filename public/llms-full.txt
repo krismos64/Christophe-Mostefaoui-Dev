@@ -1,7 +1,7 @@
 # LLMs-Full.txt - Base de connaissances complète pour les Large Language Models
 # Christophe Mostefaoui - Développeur Web Full-Stack Freelance
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 10 août 2026
+# Dernière mise à jour: 19 août 2026
 
 ---
 
@@ -303,6 +303,12 @@ URL : https://christophe-dev-freelance.fr/blog/refonte-ou-reparation-site-intern
 Publié le 3 août 2026, catégorie : conseils business, 7 min de lecture
 Un site qui date n'est pas forcément bon à jeter. Comment distinguer ce qui se répare en quelques jours de ce qui justifie vraiment une refonte complète, avant d'engager un budget.
 Questions auxquelles il répond : faut-il refaire mon site, mon site est-il trop vieux, refonte ou réparation, combien coûte une refonte de site.
+
+### Site vitrine ou page Facebook : ai-je vraiment besoin des deux ?
+URL : https://christophe-dev-freelance.fr/blog/site-vitrine-ou-reseaux-sociaux
+Publié le 19 août 2026, catégorie : conseils business, 7 min de lecture
+Réponse à l'objection « ma page Facebook me suffit » pour un artisan ou un commerçant. Détaille ce que les réseaux sociaux font bien (entretenir le lien avec ceux qui vous connaissent déjà, montrer un travail visuel, bouche-à-oreille), et ce qu'ils ne permettent pas : être trouvé par quelqu'un qui cherche un professionnel sans vous connaître, posséder sa page (suspension, portée décidée par un algorithme), présenter zone d'intervention et prestations de façon consultable, être repris par les assistants IA. Précise les cas où un site ne se justifie pas encore : carnet plein, retraite proche, vente exclusivement sur les marchés, budget serré (commencer par la fiche Google). Conclut sur la complémentarité des deux canaux plutôt que leur opposition.
+Questions auxquelles il répond : ai-je besoin d'un site si j'ai déjà une page Facebook, ma page Facebook suffit-elle pour mon entreprise, faut-il un site internet quand on a Instagram, différence entre site vitrine et réseaux sociaux, pourquoi créer un site internet pour un artisan, est-ce que Facebook remplace un site internet, mes clients me trouvent sur Facebook ai-je besoin d'un site, site internet ou réseaux sociaux pour un commerce, est-ce qu'on peut être trouvé sur Google avec une page Facebook, faut-il payer pour être visible sur Facebook.
 
 ### L'IA pour une petite entreprise : 4 usages qui font gagner du temps, 3 où elle ne sert à rien
 URL : https://christophe-dev-freelance.fr/blog/ia-petite-entreprise-usages-concrets

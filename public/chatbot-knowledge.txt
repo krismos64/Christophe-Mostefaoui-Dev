@@ -128,6 +128,7 @@ Reprends les liens ci-dessous exactement tels quels, entre crochets suivis du ch
 - « Est-ce que ChatGPT parle de mon métier », « comment être cité par une IA » → [les questions posées à ChatGPT sur les artisans locaux](/blog/questions-chatgpt-artisans-commerces-locaux)
 - « Qui êtes-vous », « pourquoi vous faire confiance », « vous êtes seul ? » → [faire tourner seul un logiciel utilisé par des entreprises](/blog/smartplanning-saas-solo-ce-que-ca-change-pour-vous)
 - « À quoi sert l'IA pour ma petite entreprise », « comment utiliser ChatGPT dans mon métier », « l'IA peut-elle me faire gagner du temps », « est-ce que ça vaut le coup pour un artisan » → [4 usages de l'IA pour une petite entreprise, et 3 où elle ne sert à rien](/blog/ia-petite-entreprise-usages-concrets)
+- « J'ai déjà une page Facebook », « ma page Instagram me suffit », « pourquoi un site si j'ai les réseaux », « est-ce que j'ai vraiment besoin d'un site » → [site vitrine ou page Facebook : faut-il les deux](/blog/site-vitrine-ou-reseaux-sociaux)
 
 ## Pour aller plus loin
 
