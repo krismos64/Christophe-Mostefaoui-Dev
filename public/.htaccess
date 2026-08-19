@@ -105,6 +105,24 @@ ErrorDocument 410 /404.html
     RewriteRule ^blog/ia-interne-python-ml-vs-ia-externe-economies-2025/?$ - [G,L]
 </IfModule>
 
+# Ancienne page témoignages : 410 Gone
+# Le site n'affiche plus d'avis clients. Sans cette règle le fallback SPA
+# renvoyait la home en 200 sous /avis (soft-404 : contenu dupliqué avec un
+# canonical vers /), signalé par la Search Console le 22/06/2026
+<IfModule mod_rewrite.c>
+    RewriteRule ^avis/?$ - [G,L]
+</IfModule>
+
+# /faq : la FAQ vit dans une section de la home, pas dans une page dédiée
+# React fait déjà ce Navigate côté client (src/App.tsx), mais un crawler qui
+# lit le HTML pré-rendu ne l'exécute pas et voyait la home dupliquée en 200.
+# La 301 côté Apache rend la redirection visible aux robots
+<IfModule mod_rewrite.c>
+    # NE (noescape) est indispensable : sans lui Apache encode le # en %23
+    # et la redirection pointe vers /%23faq au lieu de l'ancre
+    RewriteRule ^faq/?$ /#faq [R=301,NE,L]
+</IfModule>
+
 # Slug de blog inexistant : 404 plutôt que la home en 200
 # Chaque article publié a son .html pré-rendu (règle ci-dessus) ; si aucun
 # fichier ne correspond, l'URL n'existe pas et ne doit pas être indexable

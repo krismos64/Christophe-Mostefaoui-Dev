@@ -141,3 +141,32 @@ avec ceux d'une URL témoin volontairement inventée. Si c'est identique, la pag
 réelle n'existe pas.
 
 Astuce trouvée le 10/07/2026 en vérifiant la suppression d'un dossier imbriqué.
+
+---
+
+## Pré-rendu : « capture suspecte » ou pages de 14 Ko
+
+**Symptôme** : `npm run build` échoue sur `Échec du pré-rendu : / : capture
+suspecte (14771 octets)`. En neutralisant le garde-fou, TOUTES les routes font
+14 Ko au lieu de ~198 Ko, le `#root` est vide, et `dist/index.html` peut même
+contenir le contenu d'un autre site.
+
+**Cause** : le port 4173 est déjà occupé par le `vite preview` d'un AUTRE
+projet. Le `vite preview` lancé par `prerender.mjs` ne peut pas s'y binder,
+échoue sans faire échouer le script, et Puppeteer capture le site du voisin.
+
+Vécu le 19/08/2026 : un `vite preview` d'`artix-racer` tournait depuis la
+veille, le pré-rendu du portfolio a capturé ses pages.
+
+**Diagnostic** :
+```bash
+lsof -nP -iTCP:4173 -sTCP:LISTEN
+```
+
+**Correctif** : arrêter le processus qui squatte le port, supprimer le `dist/`
+pollué (`rm -rf dist`), relancer le build. Le garde-fou des 20 000 octets dans
+`prerender.mjs` est ce qui empêche de déployer un site vide : ne pas le baisser.
+
+**Effet de bord à connaître** : un run de pré-rendu raté écrase déjà
+`dist/index.html`. Un `vite preview` relancé ensuite sert cette capture vide,
+ce qui fausse tout nouveau diagnostic. Toujours repartir d'un `rm -rf dist`.
