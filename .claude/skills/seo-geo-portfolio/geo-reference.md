@@ -47,7 +47,7 @@ externe. Ne jamais la retirer, et la répliquer si un nouveau fichier de
 connaissance apparaît :
 
 - pas de tarifs chiffrés (devis sur mesure uniquement)
-- pas d'avis ni de témoignages clients (il n'y en a aucun)
+- pas d'avis ni de témoignages inventés (seuls les avis Google authentiques de la fiche GBP sont autorisés, depuis le 24/08/2026)
 - pas d'équipe, d'agence ni de sous-traitants (Christophe travaille seul)
 - pas de création de logo ni d'identité visuelle
 - pas de statistiques de résultat (« +40% de conversions », « top 3 Google »)

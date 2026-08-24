@@ -14,7 +14,10 @@ coûts, délais, résultats. Objectif de chaque article : amener une demande de 
 - Vocabulaire accessible, exemples concrets de commerce/artisan/PME locale
 - **Jamais de stats inventées** (vues, taux, nombre de clients invérifiable)
 - **Jamais de grille tarifaire** — toujours « devis sur mesure gratuit sous 24h »
-- **Jamais de témoignages ni d'avis clients**, même anonymisés : il n'y en a pas
+- **Avis Google vérifiés autorisés depuis le 24/08/2026** (fiche GBP validée,
+  premiers vrais avis reçus) : uniquement des avis authentiques de la fiche
+  Google, jamais inventés ni sollicités de façon déguisée. Pas de témoignages
+  hors Google sans vérification équivalente
 - **Jamais de tiret cadratin (—) ni demi-cadratin (–) dans le texte** de
   l'article : marqueur d'écriture IA. Virgule, deux-points ou parenthèses selon
   le contexte. Vérifier avant commit, y compris dans `excerpt` et

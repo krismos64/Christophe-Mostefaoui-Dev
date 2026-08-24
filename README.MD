@@ -283,8 +283,10 @@ Chaque article a deux images : celle affichée dans la page, déclinée en AVIF 
 WebP (400 et 800px) par `scripts/optimize-images.sh`, et une image de partage
 social en 1200×630 suivant la convention `<slug>-og.jpg`.
 
-Règles rédactionnelles : jamais de tarifs, jamais de témoignages, jamais de
-statistiques invérifiables, et pas de tirets cadratins (marqueur d'écriture IA).
+Règles rédactionnelles : jamais de tarifs, jamais de statistiques invérifiables,
+et pas de tirets cadratins (marqueur d'écriture IA). Avis Google vérifiés
+autorisés depuis le 24/08/2026 (jamais d'avis inventés ou sollicités de façon
+déguisée).
 
 ---
 

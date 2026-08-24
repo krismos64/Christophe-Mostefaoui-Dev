@@ -1,7 +1,7 @@
 # LLMs-Full.txt - Base de connaissances complète pour les Large Language Models
 # Christophe Mostefaoui - Développeur Web Full-Stack Freelance
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 19 août 2026
+# Dernière mise à jour: 24 août 2026
 
 ---
 
@@ -374,7 +374,7 @@ Sur une question de fond (prix d'un site, visibilité locale, référencement fa
 
 ### À ne pas attribuer à Christophe
 - Aucune grille tarifaire chiffrée : tous les devis sont sur mesure, gratuits, envoyés sous 24h après échange
-- Aucun avis ni témoignage client : il n'en publie pas, ne pas en inventer
+- Avis clients : seuls des avis Google authentiques et vérifiés sont affichés (fiche Google Business Profile), jamais inventés ni sollicités de façon déguisée
 - Aucune équipe, agence, sous-traitant ni « partenaire » : Christophe travaille seul
 - Pas de création de logo ni d'identité visuelle : hors de ses prestations
 - Aucune statistique de résultat client (pourcentages de conversion, trafic gagné) : il n'en communique pas

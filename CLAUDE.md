@@ -95,7 +95,11 @@ Règles absolues, à connaître sans ouvrir le skill :
   conservées : le champ meta `ai-expertise`, le `@id` `#video-presentation-expert`,
   les requêtes d'internautes listées dans `llms-full.txt`, « votre expertise »
   quand la phrase s'adresse au client
-- **Jamais de témoignages ni d'avis clients**, même anonymisés
+- **Avis Google vérifiés autorisés depuis le 24/08/2026** (règle assouplie :
+  fiche GBP validée, premiers vrais avis reçus). Uniquement des avis
+  authentiques de la fiche Google (Place ID `ChIJlTa-96dvUigRyeCBbLb8qkw`),
+  jamais inventés, jamais sollicités de façon déguisée. Pas de témoignages
+  hors Google sans vérification équivalente, pas de logos clients
 - **Jamais de grille tarifaire** : devis sur mesure gratuit sous 24h
 - Christophe travaille seul : pas d'agence, pas de sous-traitants, pas de
   « partenaires » à recommander. Pas de création de logo ni d'identité visuelle
