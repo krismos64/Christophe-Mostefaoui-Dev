@@ -220,5 +220,18 @@ if (!$streamStarted) {
         $curlError,
         substr($errorBody, 0, 500)
     ));
+    // DIAGNOSTIC TEMPORAIRE (07/09/2026) — à RETIRER une fois la panne résolue.
+    // Renvoie le motif exact du refus amont, uniquement si le bon jeton est
+    // fourni. Ne divulgue jamais la clé API.
+    if (isset($_GET['diag']) && hash_equals('25b84dd68fc2526022bc189f80cb9c69', (string) $_GET['diag'])) {
+        http_response_code(502);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode([
+            'status_mistral' => $status,
+            'curl_error' => $curlError,
+            'body' => substr($errorBody, 0, 500),
+        ], JSON_UNESCAPED_UNICODE);
+        exit;
+    }
     fail(502, 'Assistant temporairement indisponible');
 }
