@@ -84,13 +84,30 @@ lisible dans les logs PHP d'Hostinger via hPanel.
 
 Dans l'ordre :
 
-1. **Le modèle existe-t-il encore ?** Cause vérifiée le 07/09/2026. Comparer la
-   valeur de `$payload['model']` avec la page Limites de admin.mistral.ai, qui
-   liste les modèles réellement accessibles au compte.
-2. La clé est-elle valide ? console.mistral.ai → Clés API. La colonne « Dernière
+1. **L'API Pay-As-You-Go est-elle active ?** CAUSE RÉELLE du 07/09/2026.
+   admin.mistral.ai → Abonnement : sans elle, Mistral refuse les appels par clé
+   en **429 `rate_limited` code 1300**, en permanence, même sur une requête
+   isolée. Le forfait « 0 $US / 10 $US » affiché juste au-dessus ne dit rien de
+   l'accès API, et un coût à 0 EUR sur la page Usage signifie seulement
+   qu'aucune requête n'aboutit. Le plafond de dépenses associé a un plancher
+   imposé à 10 EUR.
+2. **Le modèle existe-t-il encore ?** Comparer la valeur de `$payload['model']`
+   avec la page Limites de admin.mistral.ai, qui liste les modèles réellement
+   accessibles au compte.
+3. La clé est-elle valide ? console.mistral.ai → Clés API. La colonne « Dernière
    utilisation » dit si les appels arrivent : une date du jour signifie que la
    clé fonctionne et que le problème est ailleurs.
-3. Le fichier `mistral-key.php` est-il toujours en place sur Hostinger ?
+4. Le fichier `mistral-key.php` est-il toujours en place sur Hostinger ?
 
 Un coût à 0 EUR sur la page Usage ne prouve rien à lui seul : il signifie
 seulement qu'aucune requête n'a abouti, sans en donner la raison.
+
+**Obtenir le motif exact plutôt que de supposer.** Le 07/09/2026, trois
+hypothèses plausibles se sont révélées fausses avant la bonne. Ce qui a tranché :
+ajouter temporairement dans le bloc `if (!$streamStarted)` un retour JSON du
+statut et du corps de la réponse amont, protégé par un jeton aléatoire en query
+string, déployer, interroger, puis **retirer le diagnostic** et redéployer.
+
+Le compte est passé en Pay-As-You-Go le 07/09/2026, avec un plafond mensuel de
+dépenses supplémentaires à 10 EUR (minimum autorisé). L'usage réel se surveille
+sur admin.mistral.ai → Usage.
