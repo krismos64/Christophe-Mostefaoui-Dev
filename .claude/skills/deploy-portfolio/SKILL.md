@@ -54,6 +54,14 @@ for f in llms.txt llms-full.txt chatbot-knowledge.txt robots.txt sitemap.xml \
     "https://christophe-dev-freelance.fr/$f"
 done   # attendu : 200 partout
 
+# 5bis. Avis Google présent dans le HTML pré-rendu (donc lisible sans JS)
+curl -s -A 'Googlebot' https://christophe-dev-freelance.fr/ | \
+  grep -o 'ChIJlTa-96dvUigRyeCBbLb8qkw' | wc -l
+# attendu : 5 = 2 sameAs (Organization, Person) + hasMap + 2 liens visibles
+# (bloc avis section IX, footer)
+# 0 ici = le bloc avis n'est pas dans le pré-rendu : vérifier que GoogleReviews
+# est bien monté dans GMBOptimizedContact et relancer npm run build
+
 # 6. URLs de blog inexistantes : 404, et articles supprimés : 410
 #    (si /blog renvoie 301 ici, c'est le piège DirectorySlash — voir plus bas)
 curl -s -o /dev/null -w 'slug inconnu -> %{http_code}\n' https://christophe-dev-freelance.fr/blog/slug-invente-test   # attendu : 404

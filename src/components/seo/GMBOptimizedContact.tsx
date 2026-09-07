@@ -17,6 +17,7 @@ import {
 import { useRef, useState } from "react";
 import { emailjsConfig, validateEmailjsConfig } from "../../config/emailjs";
 import VideoEmbed from "../common/VideoEmbed";
+import GoogleReviews from "../sections/GoogleReviews";
 
 const GMBOptimizedContact = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -206,6 +207,15 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
               ariaLabel="Lire la vidéo : Présentation"
             />
           </motion.div>
+
+          {/* Trait de séparation */}
+          <div
+            className="h-px w-full bg-[#1A1715]/15 dark:bg-[#F4EFE6]/15 mb-12 sm:mb-16"
+            aria-hidden="true"
+          />
+
+          {/* Avis Google + lien vers la fiche */}
+          <GoogleReviews isInView={isInView} />
 
           {/* Trait de séparation */}
           <div

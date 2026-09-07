@@ -30,7 +30,9 @@ conservée en local (hors dépôt).
 - `blog-article` — rédaction et publication d'un article orienté client PME :
   règles éditoriales, formatage Markdown supporté, pipeline image complet
   (variantes AVIF/WebP + image OG 1200×630), maillage interne, mise à jour de la
-  base de connaissances du chatbot et des deux fichiers LLM
+  base de connaissances du chatbot et des deux fichiers LLM, et depuis le
+  07/09/2026 la rédaction du post Google Business (étape 9, modèles et gabarit
+  de prompt image dans `docs/posts-google-blog.md`)
 
 `deploy-portfolio` et `blog-article` ont été enrichis le 03/08/2026,
 `seo-geo-portfolio` créé le 12/08/2026 pour alléger le CLAUDE.md.

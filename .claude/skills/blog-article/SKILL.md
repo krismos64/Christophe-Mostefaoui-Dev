@@ -106,7 +106,25 @@ article est `/blog/<slug>`, pas `/<slug>`.
    dernière ligne qui fait le travail en GEO : un LLM rapproche la question de
    l'utilisateur de ces formulations plutôt que du titre. Mettre à jour la date
    « Dernière mise à jour » en tête des deux fichiers
-9. **Ne pas** proposer de demander l'indexation dans Search Console :
+9. **Post Google** (depuis le 07/09/2026) : proposer à Christophe un texte prêt
+   à coller sur la fiche Google Business, qu'il publie lui-même (bouton
+   « Posts » dans le panneau de gestion). Le rédiger, ne pas juste le
+   mentionner. Format : 300 à 500 caractères, **les 80 premiers sont les seuls
+   visibles** avant le « en savoir plus », donc y mettre l'accroche ; bouton
+   « En savoir plus » + URL complète de l'article. Un post reste mis en avant
+   ~7 jours. Ton identique à celui de l'article : on parle au client, pas au
+   développeur. Modèles, gabarit de prompt image et consignes de publication
+   dans `docs/posts-google-blog.md`.
+   **Image** : Christophe la génère via ChatGPT à partir du gabarit de prompt de
+   ce fichier (bureau bois, lumière dorée, Pyrénées floues, « sans texte lisible »
+   impératif). Format 4:3 1200x900 : les images d'articles étant en 16:9, les
+   recadrer en rognant les CÔTÉS, jamais en étirant (sinon bandes noires) :
+   commande `sips` dans le même fichier.
+   Intérêt réel et limites, à ne pas survendre : une fiche active est mieux
+   classée dans le pack local qu'une fiche figée, et le bouton ramène du trafic.
+   En revanche un post n'est pas indexé comme une page et ne se classe sur aucun
+   mot-clé : inutile d'y bourrer « développeur web Pau »
+10. **Ne pas** proposer de demander l'indexation dans Search Console :
    Christophe la gère lui-même et a demandé qu'on ne le lui rappelle plus
    (12/08/2026). La publication s'arrête au smoke test de l'étape 6
 
@@ -119,3 +137,5 @@ article est `/blog/<slug>`, pas `/<slug>`.
 - Vérifier les permissions des fichiers ajoutés : un fichier en mode 600 est
   servi en 403 par LiteSpeed (le workflow CI applique 644, mais autant ne pas
   committer un fichier mal fichu)
+- Le post Google (étape 9) se rédige, il ne se publie pas à la place de
+  Christophe : c'est du contenu public sur sa fiche d'établissement

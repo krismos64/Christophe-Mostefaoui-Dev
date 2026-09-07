@@ -77,6 +77,12 @@ Règles absolues, à connaître sans ouvrir le skill :
   dans un composant
 - **`llms.txt`, `llms-full.txt` et `chatbot-knowledge.txt` sont à mettre à jour
   à chaque publication d'article** (le skill `blog-article` détaille le format)
+- **Le texte d'un avis Google est identique partout** : JSON-LD d'`index.html`,
+  `src/components/sections/GoogleReviews.tsx` et les trois fichiers LLM. Un
+  écart avec la fiche publique est une donnée structurée trompeuse. La fiche
+  (Place ID `ChIJlTa-96dvUigRyeCBbLb8qkw`) est liée au site dans les deux sens :
+  `sameAs`/`hasMap` côté JSON-LD, bloc avis de la section Contact et footer côté
+  visible. Posts Google à partir des articles : `docs/posts-google-blog.md`
 - Après toute modification du `.htaccess`, **tester `/blog` en priorité**
   (attendu 200, pas 301)
 - Piège JSX/a11y : les nœuds texte multi-lignes sont concaténés SANS espace dans le DOM → ne pas mettre d'aria-label « contenant » un texte visible multi-nœuds (règle axe label-content-name-mismatch) ; laisser le nom se calculer depuis le contenu

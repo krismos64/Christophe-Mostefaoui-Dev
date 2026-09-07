@@ -1,5 +1,5 @@
 import LazyLottie from "../common/LazyLottie";
-import { ArrowUpRight, Github, Linkedin, Youtube } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, MapPin, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useNavigation } from "../../hooks/useNavigation";
 
@@ -45,6 +45,11 @@ export default function Footer() {
       name: "YouTube",
       href: "https://www.youtube.com/@christophe-dev-freelance/videos",
       icon: Youtube,
+    },
+    {
+      name: "Fiche Google",
+      href: "https://www.google.com/maps/place/?q=place_id:ChIJlTa-96dvUigRyeCBbLb8qkw",
+      icon: MapPin,
     },
   ];
 

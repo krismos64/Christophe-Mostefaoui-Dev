@@ -56,7 +56,7 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 | VI   | FAQ                 | `FeaturedSnippetsFAQ.tsx`     | crème                       | 9 questions à la 1ère personne          |
 | VII  | Portfolio           | `Portfolio.tsx`               | sombre                      | Projet fondateur + mosaïque 6 projets   |
 | VIII | Zone d'intervention | `ServiceArea.tsx`             | crème                       | SEO local (25 villes)                   |
-| IX   | Contact             | `seo/GMBOptimizedContact.tsx` | crème                       | Formulaire + vidéo 2 + infos            |
+| IX   | Contact             | `seo/GMBOptimizedContact.tsx` | crème                       | Vidéo 2 + avis Google + formulaire      |
 
 ### Pages secondaires
 
@@ -195,6 +195,7 @@ src/
 │   │   ├── FeaturedSnippetsFAQ.tsx
 │   │   ├── Portfolio.tsx
 │   │   ├── ServiceArea.tsx
+│   │   ├── GoogleReviews.tsx       # Avis Google + lien fiche, rendu dans la section IX
 │   │   └── BlogSection.tsx         # Utilisé uniquement par /blog
 │   ├── seo/
 │   │   ├── GMBOptimizedContact.tsx # Section Contact effective de la home (IX)
@@ -400,8 +401,12 @@ Schemas de **page**, générés par `structured-data-final.tsx` :
 
 - **FAQPage** : questions/réponses pour featured snippets
 - **VideoObject** — 2 vidéos YouTube
-- **CreativeWork** — 7 projets portfolio (1 fondateur + 6 clients)
-- **WebPage**, **SoftwareApplication** (SmartPlanning)
+- **WebSite**, **WebPage**, **SoftwareApplication** (SmartPlanning)
+
+Schemas de page portés par leur propre composant :
+
+- **CreativeWork** — 7 projets portfolio (1 fondateur + 6 clients), dans `Portfolio.tsx`
+- **BlogPosting** — un par article, dans `BlogPost.tsx`
 
 > Les horaires déclarés dans le JSON-LD doivent correspondre à ceux affichés à
 > l'écran (8h30-18h00) : Google compare le contenu visible aux données
@@ -421,6 +426,23 @@ Schemas de **page**, générés par `structured-data-final.tsx` :
   la fiche Google, jamais de témoignage hors Google ni de chiffre de résultat
 - Aucun numéro de téléphone fictif
 - Cohérence du nom, des services et de l'expérience sur tous les schemas
+- Le texte d'un avis doit être **identique** partout où il apparaît : JSON-LD
+  d'`index.html`, composant `GoogleReviews.tsx`, et les trois fichiers LLM. Un
+  écart entre le balisage et la fiche publique est une donnée structurée
+  trompeuse
+
+### Fiche Google Business Profile
+
+Place ID `ChIJlTa-96dvUigRyeCBbLb8qkw`. Établissement vérifié, réglé en « aucun
+établissement physique » avec zones desservies (bon réglage pour un freelance).
+
+Le site et la fiche sont reliés dans les deux sens : la fiche pointe vers
+`https://christophe-dev-freelance.fr/`, le site déclare la fiche en `sameAs` et
+`hasMap` dans le JSON-LD, et deux liens visibles y renvoient (bloc avis de la
+section IX, et footer).
+
+Publication de posts à partir des articles de blog : `docs/posts-google-blog.md`
+(textes prêts, gabarit de prompt image, format 4:3 1200x900).
 
 ---
 
