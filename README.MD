@@ -103,7 +103,8 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 
 ### Chatbot IA
 
-- API **Mistral AI** (`mistral-small-latest`) en streaming, appelée via un **proxy PHP serveur** (`public/api/chat.php`), jamais directement depuis le client
+- API **Mistral AI** (`mistral-small-2603`, version figée volontairement : l'alias `-latest` pointait vers un modèle retiré par Mistral) en streaming, appelée via un **proxy PHP serveur** (`public/api/chat.php`), jamais directement depuis le client
+- Compte Mistral en **Pay-As-You-Go actif** : sans lui, l'API refuse les appels par clé en 429, quel que soit le volume (voir `docs/mistral-ai-setup.md`)
 - Clé API **hors webroot** sur Hostinger (fichier `mistral-key.php` au-dessus de `public_html`), aucun secret dans le bundle (aucune variable `VITE_*`)
 - Rate limiting côté serveur (10 req/min/IP, 500/jour global), origine vérifiée
 - Capture de leads par email (EmailJS) avec transcript de conversation, relances contextuelles

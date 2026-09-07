@@ -41,6 +41,10 @@ curl -s -o /dev/null -w '%{http_code} -> %{redirect_url}\n' https://www.christop
 curl -s -o /dev/null -w '%{http_code}\n' -X POST https://christophe-dev-freelance.fr/api/chat.php \
   -H 'Content-Type: application/json' -H 'Origin: https://christophe-dev-freelance.fr' \
   -d '{"messages":[{"role":"user","content":"ping"}]}'   # attendu : 200
+# Un 502 ici ne vient PAS du déploiement : l'appel amont à Mistral a échoué.
+# Vérifier d'abord que l'API Pay-As-You-Go est active sur admin.mistral.ai
+# (sans elle : 429 permanent, panne vécue le 07/09/2026), puis que le modèle de
+# chat.php existe toujours. Procédure complète : docs/mistral-ai-setup.md
 
 # 5. Fichiers LLM et robots lisibles (aucun 403 : cf. piège des permissions)
 for f in llms.txt llms-full.txt chatbot-knowledge.txt robots.txt sitemap.xml \
