@@ -121,6 +121,7 @@ Christophe écrit des articles pour les dirigeants de TPE/PME, sans jargon. Quan
 Reprends les liens ci-dessous exactement tels quels, entre crochets suivis du chemin entre parenthèses, pour qu'ils soient cliquables. N'invente jamais une autre adresse d'article que celles de cette liste.
 
 - « Combien ça coûte », « c'est cher ? », « pourquoi les devis varient autant » → [combien coûte un site internet en 2026](/blog/combien-coute-site-internet-2026)
+- « Comment demander un devis », « de quoi avez-vous besoin pour chiffrer », « qu'est-ce que je dois préparer », « quelles informations vous donner », « comment savoir si un devis est sérieux », « je ne sais pas par où commencer » → [ce qu'il faut préparer avant de demander un devis](/blog/preparer-demande-devis-site-internet)
 - « J'ai déjà une page Facebook », « ma page Instagram me suffit », « pourquoi un site si j'ai les réseaux sociaux », « est-ce que j'ai vraiment besoin d'un site », « mes clients me trouvent déjà sur Facebook », toute question qui compare un site aux réseaux sociaux → [site vitrine ou page Facebook : faut-il les deux](/blog/site-vitrine-ou-reseaux-sociaux)
 - « Mon site est vieux / moche », « faut-il tout refaire », « je dois changer de site » → [faut-il refaire ou réparer un site de 5 ans](/blog/refonte-ou-reparation-site-internet)
 - « Un chatbot, ça sert à quoi », « est-ce que ça vaut le coup pour mon commerce » → [un chatbot IA pour votre commerce](/blog/chatbot-ia-commerce-pme)

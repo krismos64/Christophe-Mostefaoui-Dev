@@ -25,6 +25,127 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "15",
+    title:
+      "Demander un devis pour un site internet : ce qu'il faut préparer avant d'appeler",
+    slug: "preparer-demande-devis-site-internet",
+    excerpt:
+      "« Je voudrais un site, vous me faites un prix ? » À cette question, aucun prestataire honnête ne peut répondre. Voici les six informations à réunir avant de demander un devis, et pourquoi elles changent tout au résultat final.",
+    content: `« Bonjour, je voudrais un site pour mon entreprise, vous pouvez me faire un prix ? »
+
+Je reçois cette demande presque chaque semaine, et je comprends parfaitement la démarche : vous voulez savoir si c'est dans vos moyens avant d'aller plus loin. Le problème, c'est qu'aucun prestataire sérieux ne peut y répondre en l'état. Ce serait comme demander à un maçon le prix d'une extension sans lui dire ni la surface, ni l'usage, ni le terrain.
+
+Résultat : soit on vous donne une fourchette tellement large qu'elle ne vous sert à rien, soit on vous annonce un prix bas qui explosera en cours de route, soit on vous rappelle pour vous poser vingt questions. Vous perdez du temps, le prestataire aussi.
+
+La bonne nouvelle, c'est que vous n'avez besoin ni de vocabulaire technique ni de cahier des charges de trente pages. Six informations suffisent, et vous les avez déjà en tête. Voici lesquelles, et surtout pourquoi elles changent le résultat.
+
+## 1. À quoi doit servir ce site, concrètement
+
+C'est de loin la question la plus importante, et celle à laquelle on me répond le plus souvent « ben, à avoir un site ».
+
+Un site n'est pas un objectif, c'est un outil. Avant de le construire, il faut savoir quel travail il doit faire pour vous. Recevoir des demandes de devis ? Faire sonner le téléphone ? Vendre des produits en ligne ? Éviter que vous répondiez dix fois par jour aux mêmes questions sur vos horaires et vos tarifs ? Rassurer un client qui a eu votre nom en bouche-à-oreille et qui vérifie que vous existez vraiment ?
+
+Chacune de ces réponses donne un site différent. Un site fait pour générer des appels met le numéro et un formulaire court en évidence partout. Un site fait pour rassurer met en avant vos réalisations, votre parcours et vos avis. Un site fait pour vendre demande un tout autre travail.
+
+Vous n'avez pas besoin de trancher définitivement. Dites simplement ce que vous aimeriez qu'il se passe six mois après la mise en ligne. C'est suffisant pour dimensionner le projet.
+
+## 2. Qui sont vos clients, et ce qu'ils cherchent
+
+Un artisan qui travaille pour des particuliers en urgence n'a pas les mêmes besoins qu'un bureau d'études qui répond à des appels d'offres, même si les deux veulent « un site vitrine ».
+
+Dites qui vous appelle aujourd'hui : des particuliers, des entreprises, des collectivités ? Sur quelle zone : le centre de Pau, tout le Béarn, jusqu'à la côte basque ? Comment vous trouvent-ils actuellement : bouche-à-oreille, Pages Jaunes, réseaux sociaux, une camionnette floquée ?
+
+Ces éléments déterminent le référencement local, le ton des textes, et parfois la structure entière du site. Un plombier qui intervient en urgence sur l'agglomération paloise a besoin de sortir sur des recherches précises et d'être joignable en deux clics. C'est un travail que j'ai détaillé dans l'article sur [la visibilité locale à Pau, en Béarn et sur la côte basque](/blog/visibilite-locale-pau-bearn-cote-basque).
+
+## 3. Ce que vous avez déjà : textes, photos, logo
+
+C'est le poste que tout le monde oublie, et celui qui fait le plus varier un devis.
+
+Faites l'inventaire honnête de ce que vous possédez :
+
+- Des photos de vos réalisations, de votre atelier, de votre équipe ? Prises au téléphone ou par un photographe ?
+- Un logo, et sous quelle forme (un fichier vectoriel, ou juste une image récupérée sur une ancienne plaquette) ?
+- Des textes déjà écrits quelque part : plaquette, ancien site, publications sur vos réseaux ?
+- Vos mentions légales, numéro SIRET, assurance décennale si votre métier l'exige ?
+
+Si vous avez de la matière, le projet avance plus vite et coûte moins cher. Si vous n'avez rien, ce n'est pas bloquant, mais il faut le dire dès le départ : produire les textes et les photos représente un vrai travail, et un devis qui l'ignore vous rattrapera plus tard. Sur certains projets je réalise les prises de vue moi-même, y compris par drone quand il s'agit de montrer des locaux ou un chantier.
+
+## 4. Ce que vous voulez pouvoir faire vous-même
+
+Question simple, conséquence importante : après la mise en ligne, souhaitez-vous modifier vos textes, ajouter des photos ou publier des actualités sans passer par moi ?
+
+Si oui, il faut prévoir une interface d'administration et une formation. Si non, un site plus simple à maintenir et plus rapide suffit, et vous m'appelez quand il y a une modification.
+
+Il n'y a pas de bonne réponse dans l'absolu. Certains commerçants publient chaque semaine et veulent la main. D'autres n'ont pas touché à leur site en trois ans et préfèrent ne pas s'en occuper. Dites franchement dans quelle catégorie vous vous situez : payer une interface de gestion qu'on n'ouvre jamais est de l'argent perdu.
+
+## 5. Votre échéance, et ce qui la commande
+
+« Dès que possible » n'est pas une date. Et surtout, ça ne dit pas ce qui presse.
+
+Une échéance liée à quelque chose de réel change la façon de travailler : l'ouverture de votre local, le début de la saison, un salon professionnel, la fin d'un contrat avec votre prestataire actuel, une campagne de recrutement. Quand la date est contrainte, on livre parfois en deux temps, une première version qui remplit l'essentiel puis les compléments ensuite.
+
+Précisez aussi votre disponibilité à vous. Un site avance au rythme des allers-retours : validation des maquettes, relecture des textes, envoi des photos. Un artisan en pleine saison qui répond une fois par semaine, c'est normal, mais ça se planifie.
+
+## 6. L'ordre de grandeur que vous avez en tête
+
+Beaucoup hésitent à annoncer un budget, de peur qu'on le consomme entièrement. Je comprends la crainte, elle est parfois fondée. Elle vous dessert quand même.
+
+Donner un ordre de grandeur ne fait pas monter le prix, ça évite qu'on vous propose autre chose que ce que vous pouvez financer. Si votre enveloppe correspond à un site vitrine solide, autant construire le meilleur site vitrine possible plutôt que de vous présenter une boutique en ligne qui vous fera fuir. Et si ce que vous voulez ne rentre pas dans le budget, mieux vaut le savoir au premier échange : on réduit le périmètre, on fait en deux étapes, ou on vous dit franchement que ce n'est pas le moment.
+
+Vous n'avez pas de repère ? C'est justement l'objet de l'article [combien coûte un site internet en 2026](/blog/combien-coute-site-internet-2026), qui détaille ce qui fait varier un devis sans afficher de grille toute faite.
+
+## Ce que vous devez recevoir en retour
+
+Vous avez préparé votre côté. Le devis qu'on vous remet doit être à la hauteur.
+
+Un devis exploitable indique clairement le périmètre (combien de pages, lesquelles, quelles fonctionnalités), qui fournit les textes et les photos, ce qui se passe après la livraison, l'hébergement et le nom de domaine, et à qui appartient le site une fois payé. Ce dernier point mérite une vraie attention : sur certaines offres à abonnement, vous louez votre site sans jamais le posséder, et vous perdez tout en partant.
+
+Un devis d'une ligne intitulé « création site internet » avec un montant en face n'est pas un devis, c'est un pari. Vous avez le droit de demander le détail, et le refus de le fournir est en soi une réponse.
+
+Méfiez-vous aussi du prestataire qui vous chiffre en dix minutes sans rien vous demander. Soit il a un modèle unique qu'il applique à tout le monde, soit il ajustera plus tard. Dans les deux cas, ce n'est pas votre projet qu'il chiffre.
+
+## Comment ça se passe de mon côté
+
+Vous m'appelez ou vous m'écrivez, on prend un moment pour discuter, en visio ou autour d'un café si vous êtes dans le secteur. Je pose les questions ci-dessus, et souvent quelques autres selon votre métier.
+
+Je vous envoie ensuite un devis détaillé sous 24h, ligne par ligne, avec ce qui est inclus et ce qui ne l'est pas. Il est gratuit et sans engagement. S'il ne vous convient pas, vous le rangez, et il ne vous aura rien coûté.
+
+Il m'arrive aussi de conseiller de ne rien faire tout de suite. Une activité qui démarre a parfois plus urgent qu'un site, et une fiche Google bien remplie couvre déjà une partie du besoin. Je préfère le dire que vendre un site qui restera lettre morte.
+
+## Parlons de votre projet
+
+Vous avez les six réponses en tête ? Une seule suffit pour démarrer la conversation, le reste se précise en discutant. Écrivez-moi via le formulaire de contact ou appelez le 06 79 08 88 45. Échange gratuit, devis clair sous 24h, aucune obligation derrière.
+
+Je travaille seul, en direct, depuis [Pau et le Béarn](/creation-site-internet-pau), à [Orthez et dans le bassin de Lacq](/creation-site-internet-orthez-bearn), ainsi qu'à [Bayonne](/creation-site-internet-bayonne) et [Biarritz](/creation-site-internet-biarritz). Déplacement gratuit dans les Pyrénées-Atlantiques : c'est souvent en voyant votre local et votre façon de travailler que je comprends le mieux ce dont vous avez besoin.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-09-07",
+    readTime: 8,
+    category: "conseils-business",
+    tags: [
+      "Devis",
+      "Site internet",
+      "Cahier des charges",
+      "TPE",
+      "Artisans",
+      "Pau",
+      "Pyrénées-Atlantiques",
+    ],
+    imageUrl: "/assets/images/preparer-demande-devis-site-internet.png",
+    imageAlt:
+      "Artisan préparant ses notes et ses photos sur un carnet posé sur un établi, lumière de fin de journée",
+    featured: false,
+    metaDescription:
+      "Les 6 informations à réunir avant de demander un devis de site internet, et comment reconnaître un devis sérieux. Guide pour TPE et artisans du 64.",
+    keywords: [
+      "demande de devis site internet",
+      "préparer un projet de site web",
+      "cahier des charges site vitrine TPE",
+      "devis création site internet Pau",
+      "que demander à un développeur web",
+      "budget site internet artisan 64",
+    ],
+  },
+  {
     id: "14",
     title:
       "Site vitrine ou page Facebook : ai-je vraiment besoin des deux ?",
