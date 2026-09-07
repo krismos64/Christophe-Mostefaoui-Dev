@@ -85,6 +85,12 @@ Chacune vient d'un incident réel. Détails et symptômes dans `pieges.md`.
 6. **Jamais de stats inventées** dans les schémas ni dans les fichiers LLM
    (vues, likes, « +200% de RDV », « top 3 Google »).
 7. **Jamais de numéro fictif** : le vrai est `+33679088845`.
+7bis. **`aggregateRating` et `review` doivent refléter la fiche Google**
+   (Place ID `ChIJlTa-96dvUigRyeCBbLb8qkw`), portés par `#business` dans
+   `index.html` depuis le 24/08/2026. Note, nombre d'avis et texte des avis
+   sont recopiés de la fiche, jamais arrondis ni complétés : un écart entre le
+   balisage et la source publique est une donnée structurée trompeuse, motif de
+   pénalité manuelle. À revérifier quand un nouvel avis arrive.
 8. **Sitemap et robots cohérents** : rien qui soit à la fois dans le sitemap et
    en `Disallow` ou `noindex`. `/politique-de-confidentialite` est `noindex`,
    donc volontairement hors sitemap, mais pré-rendue via `EXTRA_ROUTES`.

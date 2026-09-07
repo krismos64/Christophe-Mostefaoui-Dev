@@ -390,6 +390,10 @@ présents sur toutes les pages et reliés par `@id` :
 - **ProfessionalService** `#business` : SEO local (Pau + zone 64 + France).
   **Seule** entité décrivant l'activité : ne jamais redéclarer de `LocalBusiness`
   dans un composant, cela crée une entité concurrente que Google doit départager
+- **AggregateRating** + **Review**, portés par `#business` depuis le 24/08/2026 :
+  uniquement des avis authentiques repris de la fiche Google Business Profile
+  (Place ID `ChIJlTa-96dvUigRyeCBbLb8qkw`). Note et nombre d'avis doivent rester
+  strictement alignés sur la fiche : un écart est une donnée structurée trompeuse
 
 Schemas de **page**, générés par `structured-data-final.tsx` :
 
@@ -412,7 +416,8 @@ Schemas de **page**, générés par `structured-data-final.tsx` :
 
 ### Conformité E-E-A-T
 
-- Aucune stat inventée (notes, nombre d'avis, témoignages factices)
+- Aucune stat inventée : les seules notes publiées sont les avis vérifiés de
+  la fiche Google, jamais de témoignage hors Google ni de chiffre de résultat
 - Aucun numéro de téléphone fictif
 - Cohérence du nom, des services et de l'expérience sur tous les schemas
 

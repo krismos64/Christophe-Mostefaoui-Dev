@@ -13,7 +13,7 @@ Navigateur (AIChatbot.tsx)
 Proxy PHP sur Hostinger (public/api/chat.php)
    │  + clé API (lue hors webroot)
    │  + prompt système (imposé côté serveur)
-   │  + modèle open-mistral-7b, max_tokens 500
+   │  + modèle mistral-small-latest, max_tokens 500
    ▼
 https://api.mistral.ai/v1/chat/completions  (streaming SSE relayé)
 ```
@@ -57,6 +57,13 @@ prompt (devis sur mesure uniquement).
 
 ## Coûts
 
-Modèle `open-mistral-7b` (~0,25 €/million de tokens) plafonné à 500 tokens par
-réponse et 500 requêtes/jour par le proxy → coût mensuel négligeable, borné par
-construction. Surveiller la consommation sur console.mistral.ai.
+Modèle `mistral-small-latest`, plafonné à 500 tokens par réponse, 10 requêtes
+par minute et par IP et 500 requêtes/jour au global : le coût est borné par
+construction. Le modèle a été relevé d'`open-mistral-7b` à `mistral-small-latest`
+le 10/07/2026 (phase 7.1), les réponses de l'entrée de gamme étant trop
+mécaniques pour une vitrine. Tarif à jour et consommation réelle sur
+console.mistral.ai.
+
+En cas de 502 « Assistant temporairement indisponible » en production, l'appel
+amont a échoué : vérifier d'abord le crédit et la validité de la clé sur
+console.mistral.ai, puis `mistral-key.php` sur Hostinger.

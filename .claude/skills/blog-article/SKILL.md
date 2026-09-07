@@ -72,11 +72,17 @@ article est `/blog/<slug>`, pas `/<slug>`.
       `"public/assets/images/<slug>.png|400,800|78|30"`, puis lancer le script
       (génère les AVIF/WebP dans `optimized/`)
    d. Générer l'image OG **1200×630** nommée `<slug>-og.jpg` (convention lue par
-      `BlogPost.tsx` pour og:image/twitter:image/schema.org) :
+      `BlogPost.tsx` pour og:image/twitter:image/schema.org). La largeur source
+      varie d'une génération à l'autre (1671 ou 1672 px selon les cas), donc la
+      lire plutôt que la coder en dur, sinon `sips -c` élargit l'image au lieu
+      de la rogner :
       ```bash
-      sips -c 878 1672 <slug>.png --out /tmp/c.png
+      W=$(sips -g pixelWidth <slug>.png | awk '/pixelWidth/{print $2}')
+      H=$(python3 -c "print(round($W * 630 / 1200))")   # hauteur du cadre 1200x630
+      sips -c $H $W <slug>.png --out /tmp/c.png
       sips -z 630 1200 /tmp/c.png --out /tmp/r.png
       sips -s format jpeg -s formatOptions 82 /tmp/r.png --out <slug>-og.jpg
+      sips -g pixelWidth -g pixelHeight <slug>-og.jpg   # doit afficher 1200x630
       ```
 3. **Ajouter l'URL au sitemap** `public/sitemap.xml` : `<loc>` complet,
    `<lastmod>` = date du jour, `changefreq` monthly, `priority` 0.5

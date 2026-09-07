@@ -39,8 +39,15 @@ conservée en local (hors dépôt).
 
 Un hook `PostToolUse` sur Edit/Write rappelle la marche à suivre dès qu'un
 fichier SEO sensible est touché (`index.html`, `.htaccess`, `sitemap.xml`,
-`robots.txt`, `llms*.txt`, `chatbot-knowledge.txt`, schémas structurés). Il
-affiche un rappel contextuel, il ne bloque jamais l'édition.
+`robots.txt`, `llms*.txt`, `chatbot-knowledge.txt`, `blogPosts.ts`). Il affiche
+un rappel contextuel, il ne bloque jamais l'édition.
+
+**Angle mort connu** (constaté le 07/09/2026) : le hook n'écoute que les outils
+`Edit` et `Write`. Un fichier modifié par un script lancé en Bash (`sed`,
+`python3`, heredoc) ne le déclenche pas, ce qui arrive systématiquement en mode
+bypass permissions, où l'édition via Bash est la voie recommandée. Les
+vérifications restent donc à faire de tête : la checklist de référence est celle
+du skill `blog-article` pour un article, `seo-geo-portfolio` pour le reste.
 
 ## Versionnement
 
