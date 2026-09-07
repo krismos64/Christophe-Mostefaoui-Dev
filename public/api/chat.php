@@ -150,7 +150,12 @@ if (is_file($knowledgeFile)) {
 
 /* ---- Appel Mistral en streaming (SSE relayé tel quel) ---- */
 $payload = [
-    'model' => 'mistral-small-latest',
+    // Version FIGÉE volontairement, pas l'alias `-latest` : celui-ci pointait
+    // vers Mistral Small 3.2, retiré par Mistral le 31/07/2026, ce qui a mis le
+    // chatbot en 502 sans qu'aucune ligne de code ne bouge (constaté le 07/09).
+    // Une version datée casse à une date annoncée dans la table de dépréciation
+    // (docs.mistral.ai/models) au lieu de disparaître du jour au lendemain.
+    'model' => 'mistral-small-2603',
     'messages' => array_merge(
         [['role' => 'system', 'content' => $systemPrompt]],
         $messages

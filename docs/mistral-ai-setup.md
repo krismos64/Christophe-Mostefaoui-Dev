@@ -13,7 +13,7 @@ Navigateur (AIChatbot.tsx)
 Proxy PHP sur Hostinger (public/api/chat.php)
    │  + clé API (lue hors webroot)
    │  + prompt système (imposé côté serveur)
-   │  + modèle mistral-small-latest, max_tokens 500
+   │  + modèle mistral-small-2603, max_tokens 500
    ▼
 https://api.mistral.ai/v1/chat/completions  (streaming SSE relayé)
 ```
@@ -57,13 +57,40 @@ prompt (devis sur mesure uniquement).
 
 ## Coûts
 
-Modèle `mistral-small-latest`, plafonné à 500 tokens par réponse, 10 requêtes
-par minute et par IP et 500 requêtes/jour au global : le coût est borné par
-construction. Le modèle a été relevé d'`open-mistral-7b` à `mistral-small-latest`
-le 10/07/2026 (phase 7.1), les réponses de l'entrée de gamme étant trop
-mécaniques pour une vitrine. Tarif à jour et consommation réelle sur
-console.mistral.ai.
+Modèle `mistral-small-2603` (Mistral Small 4), plafonné à 500 tokens par réponse,
+10 requêtes par minute et par IP et 500 requêtes/jour au global : le coût est
+borné par construction. Le compte est sur l'offre **Gratuit**, qui couvre cet
+usage. Ne pas activer le Pay-As-You-Go : le niveau gratuit est disponible par
+défaut, l'activer n'ouvre rien de plus et expose à la facturation.
 
-En cas de 502 « Assistant temporairement indisponible » en production, l'appel
-amont a échoué : vérifier d'abord le crédit et la validité de la clé sur
-console.mistral.ai, puis `mistral-key.php` sur Hostinger.
+Historique : `open-mistral-7b` jusqu'au 10/07/2026 (phase 7.1, réponses trop
+mécaniques), puis `mistral-small-latest`, et enfin la version datée depuis le
+07/09/2026.
+
+## Jamais d'alias `-latest` pour le modèle
+
+**Toujours figer une version datée.** Le 07/09/2026 le chatbot renvoyait un 502
+sur toutes les requêtes alors qu'aucune ligne n'avait bougé : l'alias
+`mistral-small-latest` pointait vers Mistral Small 3.2, retiré par Mistral le
+31/07/2026 (l'alias a survécu quelques semaines, la panne est apparue plus tard).
+Une version datée casse à une date annoncée à l'avance dans la table de
+dépréciation, consultable sur docs.mistral.ai/models.
+
+## Diagnostiquer un 502 « Assistant temporairement indisponible »
+
+Le proxy renvoie ce message générique dès que l'appel amont échoue, et journalise
+le vrai motif via `error_log` (statut HTTP et corps de la réponse Mistral),
+lisible dans les logs PHP d'Hostinger via hPanel.
+
+Dans l'ordre :
+
+1. **Le modèle existe-t-il encore ?** Cause vérifiée le 07/09/2026. Comparer la
+   valeur de `$payload['model']` avec la page Limites de admin.mistral.ai, qui
+   liste les modèles réellement accessibles au compte.
+2. La clé est-elle valide ? console.mistral.ai → Clés API. La colonne « Dernière
+   utilisation » dit si les appels arrivent : une date du jour signifie que la
+   clé fonctionne et que le problème est ailleurs.
+3. Le fichier `mistral-key.php` est-il toujours en place sur Hostinger ?
+
+Un coût à 0 EUR sur la page Usage ne prouve rien à lui seul : il signifie
+seulement qu'aucune requête n'a abouti, sans en donner la raison.
