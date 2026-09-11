@@ -4,6 +4,35 @@ Un post par article de blog. À publier **un par semaine**, pas tous d'un coup :
 une fiche qui reçoit 10 posts le même jour puis plus rien pendant trois mois
 envoie le signal inverse de celui recherché.
 
+## ▶️ État au 11/09/2026 : tout est programmé jusqu'au 10 novembre
+
+Les onze posts sont saisis dans la fiche, chacun avec son image et son bouton.
+Rien à faire d'ici là. Vérifié dans le panneau « Posts » le 11/09/2026.
+
+| Date | Post |
+|---|---|
+| publié le 08/09 | 1. Combien coûte un site internet |
+| publié le 11/09 | 2. Préparer une demande de devis |
+| 17 sept. | 11. Accessibilité (ajouté le 11/09, texte en fin de fichier) |
+| 23 sept. | 3. Site vitrine ou page Facebook |
+| 1er oct. | 4. Refonte ou réparation |
+| 6 oct. | 5. Visibilité locale |
+| 12 oct. | 6. Référencement Google et ChatGPT |
+| 21 oct. | 7. Questions posées à ChatGPT |
+| 27 oct. | 8. L'IA pour une petite entreprise |
+| 2 nov. | 9. Chatbot pour un commerce |
+| 10 nov. | 10. SmartPlanning |
+
+Les intervalles vont de 5 à 9 jours plutôt que 7 pile : sans importance, Google
+regarde la régularité de publication et non le calendrier au jour près.
+
+**Après le 10 novembre le stock est vide.** Le réapprovisionnement se fait
+article par article : le skill `blog-article` rédige le post en même temps que
+l'article (étape 9).
+
+**Programmer un post** : dans le formulaire « Ajouter un post », activer
+« Programmer ce post » et choisir la date avant de valider.
+
 ## Comment publier
 
 1. Recherche « Christophe Mostefaoui » sur Google en étant connecté, ou va sur
@@ -258,11 +287,32 @@ sips -g pixelWidth -g pixelHeight post-<slug>.jpg   # doit afficher 1200 900
 
 ---
 
+## 11. Accessibilité (article du 11/09/2026)
+
+**Bouton** : En savoir plus
+**Lien** : https://christophe-dev-freelance.fr/blog/site-accessible-petite-entreprise
+
+> Votre site est-il lisible par un client de 70 ans ? Beaucoup ne le sont pas.
+>
+> L'accessibilité, ce n'est pas qu'une affaire de handicap : un écran consulté
+> en plein soleil, une connexion faible dans une vallée, une navigation à une
+> main dans le bus. Autant de clients qui renoncent sans jamais vous le dire.
+>
+> Bonne nouvelle côté loi : si vous avez moins de 10 salariés, l'obligation de
+> 2025 ne vous concerne pas. L'article explique pourquoi vous devriez quand même
+> vous y intéresser, avec cinq tests à faire vous-même en vingt minutes.
+
+SUJET de l'image : Une paire de lunettes de lecture posée sur un carnet ouvert,
+à côté d'une tablette dont l'écran est allumé mais dont le contenu reste flou et
+illisible. Une tasse à proximité.
+
+---
+
 ## Après avoir tout publié
 
-Le stock est épuisé au bout de dix semaines. Ensuite, un post par nouvel
-article : le skill `blog-article` propose le texte en même temps que la
-publication (étape 9).
+Le stock part en publication programmée jusqu'au 10 novembre 2026 (calendrier
+en tête de fichier). Ensuite, un post par nouvel article : le skill
+`blog-article` propose le texte en même temps que la publication (étape 9).
 
 Si un article ancien reste utile, rien n'interdit de le repasser en post
 quelques mois plus tard avec une autre accroche.
