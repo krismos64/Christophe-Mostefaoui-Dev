@@ -182,6 +182,8 @@ src/
 ├── components/
 │   ├── common/
 │   │   ├── ErrorBoundary.tsx       # Error boundary global
+│   │   ├── LazyLottie.tsx          # Lottie différé + respect de prefers-reduced-motion
+│   │   ├── OptimizedPicture.tsx    # <picture> AVIF/WebP multi-tailles
 │   │   └── VideoEmbed.tsx          # Embed YouTube inline réutilisable
 │   ├── layout/
 │   │   ├── Header.tsx              # Navbar éditoriale + menu mobile chiffres romains
@@ -368,6 +370,28 @@ sont pas en cause : les `unicode-range` limitent le téléchargement à 4 fichie
 sur 8, et `font-display: swap` affiche le texte sans les attendre.
 
 ---
+
+## Accessibilité
+
+Le site vise 100/100 sur l'audit Accessibilité de Lighthouse, mais trois
+mécanismes en place **ne sont détectés par aucun outil automatique** :
+
+| Mécanisme | Où | Pourquoi |
+|---|---|---|
+| Lien d'évitement | `src/App.tsx` + `.skip-link` dans `src/index.css` | Permet de sauter la navigation au clavier. Premier élément focusable, visible seulement au focus, cible `id="contenu"` sur le `<main>` |
+| `MotionConfig reducedMotion="user"` | `src/App.tsx`, autour du `<Router>` | Neutralise les animations Framer Motion selon le réglage système, sur tout le site d'un coup |
+| `prefers-reduced-motion` | media query dans `src/index.css` + `matchMedia` dans `LazyLottie.tsx` | Le CSS ne peut rien sur Lottie, qui anime en JavaScript : `loop` et `autoplay` sont coupés |
+
+Ces trois éléments sont invisibles en usage normal : les supprimer ne casse rien
+à l'écran et ne fait pas baisser le score Lighthouse. Un hook `PostToolUse`
+rappelle leur existence dès qu'on touche à `App.tsx` ou `index.css`, et les
+règles de non-régression sont dans `CLAUDE.md`.
+
+Autres points traités : contrastes vérifiés au calcul (le lien d'évitement est à
+12,85:1), cibles tactiles de 44×44 px minimum, pas d'interaction au survol seul,
+`lang="fr"` sur la racine, et le piège JSX où un `aria-label` ne peut pas
+« contenir » un texte visible multi-nœuds (règle axe
+`label-content-name-mismatch`).
 
 ## Optimisations SEO
 

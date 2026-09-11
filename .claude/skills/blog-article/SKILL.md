@@ -64,7 +64,9 @@ article est `/blog/<slug>`, pas `/<slug>`.
 ## Processus de publication (dans cet ordre)
 
 1. **Écrire l'article** dans `src/data/blogPosts.ts` : nouvel objet en tête du
-   tableau, `id` incrémenté, en respectant strictement l'interface existante
+   tableau, `id` = celui du premier article du tableau + 1 (les ids ne
+   correspondent PAS au rang : 11 articles portent les ids 6 à 16, héritage de
+   la purge de 2026), en respectant strictement l'interface existante
    (slug kebab-case, `metaDescription`, `imageUrl`). `featured: false` sauf
    décision contraire (l'article prix est le `featured: true` actuel)
 2. **Image** — pipeline établi, à suivre tel quel :

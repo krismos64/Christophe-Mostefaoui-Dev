@@ -33,7 +33,7 @@ Faire 3 runs et prendre la médiane. Mesurer en local (`serve -s dist`) ne sert
 ```bash
 S=https://christophe-dev-freelance.fr
 
-# 1. Toutes les URLs du sitemap en 200, vues par Googlebot (14 URLs)
+# 1. Toutes les URLs du sitemap en 200, vues par Googlebot (le nombre suit les publications, ne pas le coder en dur)
 curl -s $S/sitemap.xml | grep -o '<loc>[^<]*' | sed 's/<loc>//' |
 while read u; do echo "$(curl -s -o /dev/null -w '%{http_code}' -A Googlebot "$u") $u"; done
 
@@ -104,7 +104,7 @@ Chacune vient d'un incident réel. Détails et symptômes dans `pieges.md`.
 
 | Fichier modifié | À faire ensuite |
 |---|---|
-| `public/.htaccess` | Tester `/blog` EN PRIORITÉ (attendu 200, pas 301), puis les 14 URLs du sitemap. Test local possible : voir `pieges.md` |
+| `public/.htaccess` | Tester `/blog` EN PRIORITÉ (attendu 200, pas 301), puis toutes les URLs du sitemap. Test local possible : voir `pieges.md` |
 | `index.html` (JSON-LD) | Vérifier qu'il n'existe qu'un `#business`, que les horaires collent à l'UI, relancer Lighthouse |
 | `public/sitemap.xml` | Mettre à jour le `<lastmod>` de la page touchée ET du parent (`/blog` quand un article change), rebuild (le pré-rendu lit le sitemap) |
 | Une page publique (contenu) | Mettre à jour son `<lastmod>` dans le sitemap : signal de fraîcheur, actuellement figé au 18/05/2026 sur `/` et `/mentions-legales` |

@@ -30,7 +30,9 @@ npm run preview    # Preview build
   `public/api/chat.php` (proxy avec rate limiting — voir docs/mistral-ai-setup.md)
 
 ## Architecture clé
-- `src/App.tsx` — routing principal, Home + pages lazy-loaded
+- `src/App.tsx` — routing principal, Home + pages lazy-loaded. Porte aussi deux
+  éléments d'accessibilité à NE PAS retirer : le lien d'évitement et
+  `MotionConfig` (voir la section Accessibilité plus bas)
 - `scripts/prerender.mjs` — pré-rendu statique au build : chaque route du
   sitemap (+ EXTRA_ROUTES) devient un .html complet dans dist/, lisible par les
   crawlers sans JS (GPTBot, ClaudeBot…). Les fichiers sont PLATS (blog.html,
@@ -46,7 +48,9 @@ npm run preview    # Preview build
   par ce composant (moteur + JSON chargés à l'approche du viewport). Ne jamais
   réimporter `lottie-react` directement, ni nommer ce paquet dans le
   `manualChunks` de `vite.config.ts` : les deux annulent le gain (TBT 250→20 ms).
-  Le nettoyage des `modulepreload` qu'il implique vit dans `prerender.mjs`
+  Le nettoyage des `modulepreload` qu'il implique vit dans `prerender.mjs`. Il lit
+  aussi `prefers-reduced-motion` pour couper `loop` et `autoplay` : le CSS ne
+  peut rien sur lottie-web, qui anime en JavaScript
 - `src/hooks/useStructuredData.ts` — hook d'injection des schémas de page
 - `src/components/seo/LLMOptimizedHead.tsx` — injecte les meta tags LLM
 - `src/data/blogPosts.ts` — articles du blog (publication : skill `blog-article`)
@@ -58,6 +62,32 @@ npm run preview    # Preview build
 - `public/chatbot-knowledge.txt` — base de connaissances du chatbot, injectée
   côté serveur par `chat.php`. Contient la liste des articles de blog avec leurs
   liens : la tenir à jour à chaque publication
+
+## Accessibilité — Règles de non-régression (ajoutées le 11/09/2026)
+
+Trois mécanismes sont en place et **aucun n'est détecté par Lighthouse** : un
+score de 100 ne prouve pas qu'ils sont toujours là. Les retirer ne casse rien de
+visible, ce qui les rend faciles à supprimer par erreur.
+
+- **Lien d'évitement** : `<a href="#contenu" class="skip-link">` en tête de
+  `src/App.tsx`, premier élément focusable, ciblant `id="contenu"` porté par le
+  `<main>`. Styles dans `src/index.css` (`position: fixed`, `top: -100px`,
+  ramené à `top: 0` au `:focus`). **Ne pas** supprimer `.skip-link` en le prenant
+  pour du CSS mort (il est invisible hors focus), ne pas renommer `id="contenu"`,
+  ne pas mettre d'`overflow: hidden` sur un parent. Le positionnement doit rester
+  en `top`, pas en `transform` : une version en `translate()` n'était pas
+  révélée au focus
+- **`MotionConfig reducedMotion="user"`** enveloppe le `<Router>` dans
+  `src/App.tsx` : il neutralise les animations Framer Motion des 18 composants
+  selon le réglage système, sans avoir à les modifier un par un. Ne pas le
+  déplacer ni en imbriquer un second en local
+- **`prefers-reduced-motion`** : media query globale en fin de `src/index.css`
+  (les animations CSS ajoutées plus tard sont donc neutralisées en mode réduit,
+  c'est voulu) et lecture via `matchMedia` dans `LazyLottie.tsx`
+
+**Vérifier après toute refonte de `App.tsx` ou d'`index.css`** : première
+tabulation sur la home, le lien doit apparaître en haut. Le tester au clavier,
+pas avec `element.focus()` en JavaScript, qui n'active pas l'état `:focus` rendu.
 
 ## SEO / GEO — voir le skill `seo-geo-portfolio`
 Le détail (audit express, règles de non-régression, format des fichiers LLM,

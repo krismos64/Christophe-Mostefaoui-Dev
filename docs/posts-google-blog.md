@@ -85,7 +85,10 @@ par la fenêtre, objets réels au premier plan.
 **Toujours garder « sans texte lisible »** : les générateurs inventent du faux
 texte, et un post Google couvert de charabia fait amateur.
 
-### Les dix sujets
+### Les sujets d'image
+
+Le post 11 (accessibilité) a son SUJET indiqué directement dans sa section, en
+fin de fichier.
 
 | Post | SUJET à coller |
 |---|---|

@@ -22,7 +22,7 @@ avant la règle qui sert les pages pré-rendues (`public/.htaccess`, commit
 `3bebcc1`).
 
 **Règle** : après toute modification du `.htaccess`, tester `/blog` en
-priorité, puis les 14 URLs du sitemap.
+priorité, puis toutes les URLs du sitemap.
 
 Vécu le 08/08/2026 en ajoutant les règles 404/410 sur le blog.
 

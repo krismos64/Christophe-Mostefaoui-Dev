@@ -59,9 +59,19 @@ prompt (devis sur mesure uniquement).
 
 Modèle `mistral-small-2603` (Mistral Small 4), plafonné à 500 tokens par réponse,
 10 requêtes par minute et par IP et 500 requêtes/jour au global : le coût est
-borné par construction. Le compte est sur l'offre **Gratuit**, qui couvre cet
-usage. Ne pas activer le Pay-As-You-Go : le niveau gratuit est disponible par
-défaut, l'activer n'ouvre rien de plus et expose à la facturation.
+borné par construction.
+
+**Le Pay-As-You-Go doit rester ACTIVÉ** (fait le 07/09/2026). Sans lui, Mistral
+refuse tout appel par clé API en 429 `rate_limited` code 1300, en permanence :
+c'est la cause du 502 du 07/09, détaillée dans la section de diagnostic plus
+bas. Le plafond de dépenses associé a un plancher imposé à 10 EUR. La
+consommation reste dans le forfait inclus, à surveiller sur la page Usage de
+admin.mistral.ai.
+
+*Correction du 11/09/2026 : cette section conseillait l'inverse (« ne pas
+activer le Pay-As-You-Go »), consigne écrite avant la panne du 07/09 et jamais
+reprise quand le reste du fichier l'a été. La suivre remettait le chatbot hors
+service.*
 
 Historique : `open-mistral-7b` jusqu'au 10/07/2026 (phase 7.1, réponses trop
 mécaniques), puis `mistral-small-latest`, et enfin la version datée depuis le
