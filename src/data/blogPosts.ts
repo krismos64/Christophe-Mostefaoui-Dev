@@ -25,6 +25,120 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "16",
+    title:
+      "Votre site est-il utilisable par tout le monde ? Ce que l'accessibilité change pour une petite entreprise",
+    slug: "site-accessible-petite-entreprise",
+    excerpt:
+      "Un client qui n'arrive pas à utiliser votre site ne vous le dira jamais : il va ailleurs. Ce que recouvre vraiment l'accessibilité, pourquoi ça dépasse largement le handicap, et cinq vérifications à faire vous-même cette semaine.",
+    content: `Un client entre dans votre boutique, ne trouve pas ce qu'il cherche, ressort sans rien dire. Vous ne saurez jamais qu'il est venu.
+
+C'est exactement ce qui se passe sur un site mal conçu, à une différence près : en ligne, ça arrive beaucoup plus souvent que vous ne l'imaginez, et vos statistiques de visites ne vous le diront pas. Elles comptent les gens qui arrivent, pas ceux qui renoncent.
+
+L'accessibilité, c'est le fait qu'un site reste utilisable quelles que soient les conditions dans lesquelles on le consulte. On pense immédiatement au handicap, et c'est une partie du sujet. Mais si vous vous arrêtez là, vous passez à côté de l'essentiel pour votre activité.
+
+## Le vrai périmètre : bien plus large que le handicap
+
+Prenez votre téléphone et sortez en plein soleil. Essayez de lire un texte gris clair sur fond blanc. Vous venez de vivre la même difficulté qu'une personne malvoyante devant le même écran.
+
+Les situations qui rendent un site difficile à utiliser sont ordinaires :
+
+- Un écran de téléphone consulté dehors, en plein jour
+- Une connexion faible dans une zone mal couverte, fréquent dans les vallées béarnaises
+- Un client de plus de 60 ans dont la vue a baissé, qui représente une part importante de la clientèle de beaucoup de commerces
+- Quelqu'un qui consulte votre site d'une main, dans le bus, sans pouvoir viser précisément
+- Une personne qui cherche votre numéro de téléphone dans l'urgence, sur un écran fissuré
+
+Aucune de ces personnes ne se considère comme handicapée. Toutes rencontrent un site qui leur résiste, et toutes iront voir ailleurs. Un site accessible, c'est d'abord un site qui fonctionne dans les conditions réelles où les gens le consultent, pas dans les conditions idéales du bureau où il a été conçu.
+
+## Ce que ça vous coûte, concrètement
+
+Le coût est invisible, et c'est ce qui le rend dangereux. Personne ne vous appelle pour vous dire qu'il n'a pas réussi à trouver vos horaires.
+
+Trois pertes concrètes pour une TPE :
+
+- **Les appels qui n'arrivent pas.** Un numéro de téléphone en petit, pas cliquable sur mobile, et le client compose à la main ou abandonne.
+- **Les demandes de devis perdues.** Un formulaire dont les champs ne sont pas clairement étiquetés fait fuir, surtout sur téléphone.
+- **Le référencement.** Google mesure l'expérience réelle des visiteurs. Un site où les gens repartent immédiatement descend dans les résultats, et la plupart des critères techniques d'accessibilité recoupent ceux du référencement : structure des titres, textes alternatifs des images, contrastes, rapidité.
+
+Ce dernier point mérite d'être souligné : travailler l'accessibilité améliore mécaniquement votre visibilité. Les deux sujets partagent une grande partie de leurs exigences, et c'est pour ça qu'il serait dommage de les traiter séparément.
+
+## Et la loi dans tout ça ?
+
+Depuis le 28 juin 2025, une directive européenne, l'European Accessibility Act, impose l'accessibilité numérique à certaines entreprises. Autant être direct : **si vous avez moins de 10 salariés et moins de 2 millions d'euros de chiffre d'affaires, vous n'êtes pas concerné par cette obligation.** C'est le cas de la grande majorité des artisans, commerçants et indépendants à qui je m'adresse.
+
+L'obligation vise les entreprises qui dépassent ces deux seuils et qui proposent certains services au grand public : commerce en ligne, banque, transport, télécommunications, livre numérique, médias audiovisuels. Les sanctions prévues peuvent atteindre plusieurs dizaines de milliers d'euros, et les contenus publiés avant cette date bénéficient d'un délai jusqu'au 28 juin 2030.
+
+Deux nuances qui comptent quand même pour vous. D'abord, le seuil attrape plus de monde qu'on ne croit : une PME de douze salariés qui vend en ligne est concernée aujourd'hui, souvent sans le savoir. Ensuite, si vous travaillez avec des collectivités ou de grandes entreprises, elles commencent à interroger leurs prestataires sur le sujet.
+
+Mais je ne vais pas vous vendre l'accessibilité par la peur du gendarme. Pour une TPE, le bon argument n'est pas l'amende, c'est le client qui reste sur votre site au lieu d'aller chez le concurrent.
+
+## Cinq vérifications à faire sur votre site cette semaine
+
+Aucune ne demande de compétence technique. Comptez vingt minutes.
+
+**1. Le test du téléphone au soleil.** Sortez, ouvrez votre site sur votre téléphone. Si vous plissez les yeux pour lire, vos clients aussi.
+
+**2. Le test du zoom.** Sur votre ordinateur, agrandissez la page à 200 pour cent. Le texte doit rester lisible et rien ne doit se chevaucher ou disparaître.
+
+**3. Le test du clavier.** Appuyez plusieurs fois sur la touche Tabulation. Vous devez voir clairement où vous êtes à chaque étape, et pouvoir atteindre le menu puis le formulaire de contact. Si vous perdez la trace du curseur, une personne qui navigue sans souris est bloquée.
+
+**4. Le test des images.** Vos photos ont-elles une description alternative ? C'est ce texte que lisent les logiciels des personnes aveugles, et c'est aussi ce que lit Google pour comprendre vos images.
+
+**5. Le test du grand-parent.** Demandez à quelqu'un de plus de 65 ans de trouver vos horaires d'ouverture sur votre site, sans l'aider. Observez sans intervenir. C'est le test le plus révélateur, et le plus humble.
+
+## Ce que j'applique sur mes propres sites
+
+Je ne vais pas vous expliquer quoi faire sans le faire moi-même.
+
+Sur ce site, la première touche Tabulation fait apparaître un lien « Aller au contenu principal » qui permet de sauter la navigation : c'est un standard pour les personnes qui naviguent au clavier, et il est absent de la grande majorité des sites. Les animations respectent le réglage système « réduire les animations », que certaines personnes activent parce que le mouvement leur donne la nausée ou déclenche des migraines. Les contrastes sont vérifiés au calcul, pas à l'oeil. Les tests automatisés d'accessibilité de Google affichent 100 sur 100.
+
+Ces mesures ne coûtent presque rien quand elles sont prévues dès la conception. Elles deviennent bien plus pénibles à rattraper sur un site existant, ce qui explique pourquoi tant de sites ne les ont pas.
+
+Si vous vous demandez si votre site actuel mérite d'être repris ou refait, j'ai détaillé la question dans [refonte ou réparation](/blog/refonte-ou-reparation-site-internet). Et si vous partez de zéro, les points à préparer sont dans [ce qu'il faut réunir avant de demander un devis](/blog/preparer-demande-devis-site-internet).
+
+## L'accessibilité n'est pas une option qu'on ajoute
+
+C'est la question que je me pose le plus souvent quand on me demande un devis : est-ce qu'un site accessible coûte plus cher ?
+
+Conçu dès le départ avec ces règles, non. Les bonnes pratiques d'accessibilité sont des bonnes pratiques de développement : structure propre, contrastes suffisants, formulaires bien étiquetés, pas de dépendance à la souris. Un développeur qui travaille correctement les applique par défaut, sans ligne supplémentaire sur le devis.
+
+Rajoutée après coup sur un site mal construit, oui, ça coûte, parfois autant qu'une refonte. C'est la même logique que l'accès d'un local commercial : prévu sur le plan, c'est une largeur de porte. Rattrapé après les travaux, c'est un chantier.
+
+## Parlons de votre site
+
+Vous voulez savoir où en est le vôtre ? Faites les cinq tests ci-dessus, et écrivez-moi ce que vous avez constaté. Je vous dirai franchement si ça vaut une intervention ou si votre site tient la route.
+
+Je conçois des sites accessibles par défaut, à [Pau et dans le Béarn](/creation-site-internet-pau), à [Orthez et dans le bassin de Lacq](/creation-site-internet-orthez-bearn), ainsi qu'à [Bayonne](/creation-site-internet-bayonne) et [Biarritz](/creation-site-internet-biarritz). Écrivez-moi via le formulaire de contact ou appelez le 06 79 08 88 45. Échange gratuit, devis clair sous 24h, aucune obligation.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-09-11",
+    readTime: 8,
+    category: "conseils-business",
+    tags: [
+      "Accessibilité",
+      "Expérience utilisateur",
+      "Site internet",
+      "TPE",
+      "Référencement",
+      "Pau",
+      "Pyrénées-Atlantiques",
+    ],
+    imageUrl: "/assets/images/site-accessible-petite-entreprise.png",
+    imageAlt:
+      "Personne âgée consultant un site internet sur une tablette près d'une fenêtre, lumière chaude de fin de journée",
+    featured: false,
+    metaDescription:
+      "Accessibilité d'un site internet : ce que ça change pour une TPE, qui est vraiment concerné par la loi de 2025, et 5 tests simples à faire vous-même.",
+    keywords: [
+      "site internet accessible TPE",
+      "accessibilité numérique petite entreprise",
+      "European Accessibility Act 2025 qui est concerné",
+      "rendre son site accessible",
+      "site lisible sur mobile senior",
+      "création site accessible Pau",
+    ],
+  },
+  {
     id: "15",
     title:
       "Demander un devis pour un site internet : ce qu'il faut préparer avant d'appeler",

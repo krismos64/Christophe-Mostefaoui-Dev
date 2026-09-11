@@ -28,7 +28,11 @@ coûts, délais, résultats. Objectif de chaque article : amener une demande de 
   manuscrite du hero, celle du bloc de fin (« cet article vous a intéressé — »)
   et la signature « — 2026 » du footer. Un `grep` de cadratins sur le HTML de
   `dist/` compte donc 3 (plus 1 dans un commentaire HTML) même quand l'article
-  est propre : vérifier la source dans `blogPosts.ts`, pas le HTML
+  est propre : vérifier la source dans `blogPosts.ts`, pas le HTML.
+  **S'ajoute un cadratin par item de liste** : les puces sont dessinées en CSS
+  par `before:content-['—']` dans `BlogPost.tsx`. Un article avec 9 puces compte
+  donc 12 cadratins dans le HTML sans qu'aucun vienne du texte. Le seul contrôle
+  qui fait foi : `grep` sur l'objet de l'article dans `blogPosts.ts`
 - **Ne jamais qualifier Christophe d'« expert »** : décrire ce qu'il fait, ou
   citer un fait vérifiable (fondateur de SmartPlanning, 10 ans d'informatique)
 - Mots-clés locaux à travailler naturellement : Pau, Artix, Béarn, Bayonne,

@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://christophe-dev-freelance.fr/blog/site-accessible-petite-entreprise</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://christophe-dev-freelance.fr/blog/preparer-demande-devis-site-internet</loc>
