@@ -105,11 +105,23 @@ export default function LazyLottie({
     };
   }, [animationData, eager, load, rootMargin]);
 
+  // Réglage système « Réduire les animations » : l'animation s'affiche sur sa
+  // première image au lieu de tourner en boucle. Le CSS ne peut rien ici,
+  // lottie-web anime en JavaScript.
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   return (
     <div ref={containerRef} className={className} aria-hidden="true">
       {animationData && (
         <Suspense fallback={null}>
-          <LottiePlayer animationData={animationData} loop />
+          <LottiePlayer
+            animationData={animationData}
+            loop={!prefersReducedMotion}
+            autoplay={!prefersReducedMotion}
+          />
         </Suspense>
       )}
     </div>

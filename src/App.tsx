@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { MotionConfig } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/layout/Footer";
@@ -60,10 +61,21 @@ function App() {
     <ErrorBoundary>
       <HelmetProvider>
         <ThemeProvider>
-          <Router basename="/">
+          {/* reducedMotion="user" : respecte le réglage système « Réduire
+              les animations » sur toutes les animations Framer Motion du site,
+              sans avoir à le gérer composant par composant. */}
+          <MotionConfig reducedMotion="user">
+            <Router basename="/">
             <div className="App min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden max-w-[100vw]">
+              <a href="#contenu" className="skip-link">
+                Aller au contenu principal
+              </a>
               <Header />
-              <main role="main" className="overflow-x-hidden max-w-[100vw]">
+              <main
+                id="contenu"
+                role="main"
+                className="overflow-x-hidden max-w-[100vw]"
+              >
                 <Suspense
                   fallback={
                     <div className="flex items-center justify-center min-h-screen">
@@ -107,7 +119,8 @@ function App() {
               <Footer />
               <AIChatbot />
             </div>
-          </Router>
+            </Router>
+          </MotionConfig>
         </ThemeProvider>
       </HelmetProvider>
     </ErrorBoundary>
