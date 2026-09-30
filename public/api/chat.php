@@ -49,6 +49,14 @@ if (!is_dir($rlDir)) {
 }
 $now = time();
 
+// Un seul verrou pour toute la séquence lecture, contrôle, écriture : sans lui,
+// deux requêtes simultanées lisent le même compteur et passent toutes les deux.
+// Le verrou est libéré à la fin du bloc, ou à la sortie du script (fail).
+$lock = fopen($rlDir . '/.lock', 'c');
+if ($lock === false || !flock($lock, LOCK_EX)) {
+    fail(503, 'Assistant temporairement indisponible');
+}
+
 $ipFile = $rlDir . '/ip-' . hash('sha256', $ip);
 $stamps = [];
 if (is_file($ipFile)) {
@@ -70,6 +78,8 @@ if ($dayCount >= RATE_PER_DAY_GLOBAL) {
     fail(429, 'Quota journalier atteint');
 }
 @file_put_contents($dayFile, (string) ($dayCount + 1), LOCK_EX);
+flock($lock, LOCK_UN);
+fclose($lock);
 
 /* ---- Clé API (hors webroot ; jamais dans le repo ni le bundle) ---- */
 $key = getenv('MISTRAL_API_KEY') ?: null;
