@@ -14,7 +14,7 @@ au build) et des fichiers de connaissance servis en texte brut.
 |---|---|---|
 | `public/llms.txt` | Fiche synthétique, format spec llmstxt.org (H1 + blockquote + sections `##`) | LLM externes |
 | `public/llms-full.txt` | Base de connaissances complète, sections numérotées 1 à 11 | LLM externes |
-| `public/chatbot-knowledge.txt` | Base injectée côté serveur dans le prompt par `public/api/chat.php` | Chatbot du site |
+| `public/chatbot-knowledge.txt` | Base injectée côté serveur dans le prompt par `public/api/chat.php`, et lue par le scénario Make des brouillons du formulaire | Chatbot du site, brouillons de réponse |
 | `public/.well-known/ai-plugin.json` | Plugin IA standard, `api.type = "none"` | Agents |
 
 Les trois premiers sont **à tenir à jour à chaque publication d'article**

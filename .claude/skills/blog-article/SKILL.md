@@ -126,7 +126,15 @@ que deux ou trois, triés et argumentés.
    --failed` suffit (arrivé 3 fois entre juillet et août 2026)
 7. **Base de connaissances du chatbot** : ajouter l'article à la liste de
    `public/chatbot-knowledge.txt` (section « Articles du blog »), avec des
-   exemples de questions déclencheuses et le lien `[texte](/blog/<slug>)`
+   exemples de questions déclencheuses et le lien `[texte](/blog/<slug>)`.
+   **Et une section de faits dans la FAQ** du même fichier (depuis le
+   30/09/2026) : « Réponds avec ces faits exacts, ne les extrapole jamais »,
+   puis les points clés de l'article et les interdits propres au sujet. Sans
+   elle, le chatbot a inventé « plusieurs heures par semaine » de gain sur
+   l'article automatisation. Méfiance aussi envers les formules qui passent
+   d'une section à l'autre (« sans surcoût » venait de l'accessibilité).
+   Tester ensuite par de vrais appels à `/api/chat.php`, deux déploiements
+   maximum. Ce fichier nourrit aussi les brouillons Make du formulaire
 8. **Fichiers LLM** (depuis le 08/08/2026, ne pas oublier) : ajouter l'article
    dans `public/llms.txt` (section « Blog » : titre, URL, résumé d'une phrase,
    date) ET dans `public/llms-full.txt` (section 9 : titre, URL, date,

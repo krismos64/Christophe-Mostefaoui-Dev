@@ -38,7 +38,7 @@ case "$FILE" in
     ;;
 
   */public/llms.txt|*/public/llms-full.txt|*/public/chatbot-knowledge.txt)
-    MSG="Fichier LLM modifié : les trois (llms.txt, llms-full.txt, chatbot-knowledge.txt) doivent rester cohérents entre eux. Conserver les garde-fous anti-hallucination (pas de tarifs, pas d'avis clients, pas de sous-traitants, pas de stats de résultat) et mettre à jour la date « Dernière mise à jour ». Format : .claude/skills/seo-geo-portfolio/geo-reference.md"
+    MSG="Fichier LLM modifié : les trois (llms.txt, llms-full.txt, chatbot-knowledge.txt) doivent rester cohérents entre eux. Conserver les garde-fous anti-hallucination (pas de tarifs, pas d'avis clients, pas de sous-traitants, pas de stats de résultat) et mettre à jour la date « Dernière mise à jour ». chatbot-knowledge.txt nourrit AUSSI les brouillons Make du formulaire, et chaque nouvel article y demande une section de faits en FAQ, pas seulement une ligne de lien. Format : .claude/skills/seo-geo-portfolio/geo-reference.md"
     ;;
   *)
     exit 0

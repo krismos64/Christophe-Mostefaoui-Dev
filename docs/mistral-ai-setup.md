@@ -20,8 +20,16 @@ https://api.mistral.ai/v1/chat/completions  (streaming SSE relayé)
 
 Protections intégrées au proxy : POST uniquement, vérification d'origine
 (christophe-dev-freelance.fr), rate limiting 10 req/min par IP et 500 req/jour au
-global, taille et rôles des messages validés, prompt système non modifiable par
-le client.
+global (lecture, contrôle et écriture des compteurs sous un même verrou `flock`
+depuis le 30/09/2026), taille et rôles des messages validés, prompt système non
+modifiable par le client.
+
+**Une seconde clé Mistral existe depuis le 30/09/2026**, nommée
+`make-formulaire` sur console.mistral.ai : elle sert au scénario Make qui rédige
+les brouillons de réponse du formulaire (modèle `mistral-large-2512`). Elle est
+saisie dans la connexion Mistral de Make, pas sur Hostinger. La révoquer coupe
+les brouillons sans toucher au chatbot, et inversement. Voir
+`docs/automatisation-formulaire-make.md`.
 
 ## Configurer la clé (une seule fois, ou après rotation)
 

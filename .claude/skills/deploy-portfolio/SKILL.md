@@ -61,6 +61,13 @@ curl -s -o /dev/null -w '%{http_code}\n' -X POST https://christophe-dev-freelanc
 # (sans elle : 429 permanent, panne vécue le 07/09/2026), puis que le modèle de
 # chat.php existe toujours. Procédure complète : docs/mistral-ai-setup.md
 
+# 4bis. Relais du formulaire vers Make (NE PAS envoyer de POST valide : ça
+# crée un vrai brouillon dans Gmail et consomme des crédits Make)
+curl -s -o /dev/null -w '%{http_code}\n' https://christophe-dev-freelance.fr/api/contact-hook.php   # attendu : 405
+# Test complet uniquement à la demande, avec une adresse de test de Christophe :
+# un POST valide doit renvoyer 202. Un 503 = make-webhook.php absent ou mal
+# formé sur Hostinger ; un 502 = Make a refusé (clé changée d'un seul côté ?)
+
 # 5. Fichiers LLM et robots lisibles (aucun 403 : cf. piège des permissions)
 for f in llms.txt llms-full.txt chatbot-knowledge.txt robots.txt sitemap.xml \
          humans.txt .well-known/ai-plugin.json; do
@@ -121,7 +128,8 @@ done   # attendu : 200 sur toutes les lignes
 - **La racine du compte FTP EST `public_html`** : `server-dir: ./` dans le
   workflow. `public_html/` en server-dir crée un dossier imbriqué public.
 - La clé Mistral vit dans `mistral-key.php` au-dessus de `public_html` (hors
-  webroot, hors repo, hors CI). Jamais de secret dans une variable `VITE_*`.
+  webroot, hors repo, hors CI), l'URL et la clé du webhook Make dans
+  `make-webhook.php` au même endroit. Jamais de secret dans une variable `VITE_*`.
 - Le pré-rendu exige Chrome (préinstallé sur ubuntu-latest et sur le Mac).
   Build sans pré-rendu si besoin : `npm run build:spa`.
 

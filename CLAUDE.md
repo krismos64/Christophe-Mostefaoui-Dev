@@ -7,7 +7,7 @@ Hébergement : Hostinger mutualisé (Apache + hPanel)
 
 ## Commandes
 ```bash
-npm run dev        # Dev local (le chatbot est HS en dev : le proxy PHP n'est pas exécuté)
+npm run dev        # Dev local (chatbot et brouillons Make HS en dev : les proxys PHP ne tournent pas)
 npm run build      # Build prod (tsc + vite build + pré-rendu Puppeteer)
 npm run build:spa  # Build sans pré-rendu (debug)
 npm run preview    # Preview build
@@ -28,6 +28,10 @@ npm run preview    # Preview build
 - Clé Mistral : côté serveur uniquement, fichier `mistral-key.php` au-dessus de
   `public_html` sur Hostinger (hors webroot, hors repo, hors CI), lu par
   `public/api/chat.php` (proxy avec rate limiting — voir docs/mistral-ai-setup.md)
+- URL et clé API du webhook Make : fichier `make-webhook.php` au même endroit
+  (`<?php return ['url' => ..., 'key' => ...];`), lu par
+  `public/api/contact-hook.php`. Changer la clé = la changer dans Make ET dans
+  ce fichier (voir docs/automatisation-formulaire-make.md)
 
 ## Architecture clé
 - `src/App.tsx` — routing principal, Home + pages lazy-loaded. Porte aussi deux
@@ -39,6 +43,12 @@ npm run preview    # Preview build
   pas blog/index.html) pour éviter la 301 trailing-slash d'Apache
 - `public/api/chat.php` — proxy Mistral du chatbot (prompt système + modèle
   imposés côté serveur)
+- `public/api/contact-hook.php` — relais du formulaire de contact vers un
+  scénario Make qui dépose un brouillon de réponse dans Gmail, relu par
+  Christophe avant envoi (depuis le 30/09/2026). Appelé par
+  `GMBOptimizedContact.tsx` après l'envoi EmailJS, son échec ne bloque jamais
+  le formulaire. Prompt du brouillon et fonctionnement :
+  `docs/automatisation-formulaire-make.md`
 - JSON-LD : schémas d'IDENTITÉ (Organization, Person, ProfessionalService)
   inlinés statiquement dans `index.html` ; `src/utils/structured-data-final.tsx`
   ne génère que les schémas de PAGE (VideoObject, WebPage, FAQPage,
@@ -60,8 +70,11 @@ npm run preview    # Preview build
   la convention `<imageUrl-sans-extension>-og.jpg`, distincte de l'image
   éditoriale affichée dans l'article
 - `public/chatbot-knowledge.txt` — base de connaissances du chatbot, injectée
-  côté serveur par `chat.php`. Contient la liste des articles de blog avec leurs
-  liens : la tenir à jour à chaque publication
+  côté serveur par `chat.php`, et lue aussi par le scénario Make qui rédige les
+  brouillons du formulaire. Contient la liste des articles de blog avec leurs
+  liens : la tenir à jour à chaque publication. Une ligne de lien ne suffit
+  pas : sans section de faits sur le sujet de l'article, le modèle improvise
+  (chiffres inventés, constaté le 30/09/2026)
 
 ## Accessibilité — Règles de non-régression (ajoutées le 11/09/2026)
 
