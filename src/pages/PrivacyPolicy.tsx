@@ -43,6 +43,23 @@ export default function PrivacyPolicy() {
             </strong>{" "}
             à des tiers.
           </p>
+          <p className="mt-4">
+            Pour préparer ma réponse, le contenu du formulaire de contact (nom,
+            email, téléphone, ville, type de projet et message) est transmis,
+            via le serveur du site, à{" "}
+            <strong className="font-medium text-[#1A1715] dark:text-[#F4EFE6]">
+              Make
+            </strong>{" "}
+            (plateforme d'automatisation, hébergement dans l'Union européenne)
+            puis à{" "}
+            <strong className="font-medium text-[#1A1715] dark:text-[#F4EFE6]">
+              Mistral AI
+            </strong>{" "}
+            (société française, données traitées dans l'Union européenne), qui
+            rédigent un brouillon de réponse dans ma messagerie Gmail. Je relis
+            et corrige chaque brouillon avant de l'envoyer moi-même : aucune
+            réponse ne part automatiquement.
+          </p>
         </>
       ),
     },

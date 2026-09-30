@@ -94,6 +94,16 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
         userId
       );
 
+      // Brouillon de réponse préparé par Make (public/api/contact-hook.php).
+      // Complément sans effet sur le formulaire : le mail EmailJS est déjà
+      // parti, un échec ici est ignoré (et normal en dev, où le PHP ne tourne pas).
+      fetch("/api/contact-hook.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+        keepalive: true,
+      }).catch(() => {});
+
       setIsSubmitted(true);
       setStatus("Message envoyé avec succès !");
       setFormData({
