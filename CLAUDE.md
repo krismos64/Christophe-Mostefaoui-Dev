@@ -43,7 +43,7 @@ npm run preview    # Preview build
   pas blog/index.html) pour éviter la 301 trailing-slash d'Apache
 - `public/api/chat.php` — proxy Mistral du chatbot (prompt système + modèle
   imposés côté serveur)
-- `public/api/contact-hook.php` — relais du formulaire de contact vers un
+- `public/api/contact-hook.php` : relais du formulaire de contact vers un
   scénario Make qui dépose un brouillon de réponse dans Gmail, relu par
   Christophe avant envoi (depuis le 30/09/2026). Appelé par
   `GMBOptimizedContact.tsx` après l'envoi EmailJS, son échec ne bloque jamais
