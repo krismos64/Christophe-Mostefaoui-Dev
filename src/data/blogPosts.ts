@@ -25,6 +25,123 @@ export interface BlogPost {
 // hors cible et contraires à ces règles (chiffres et clients inventés).
 export const blogPosts: BlogPost[] = [
   {
+    id: "17",
+    title:
+      "Automatiser les tâches répétitives de votre entreprise : ce que j'ai mis en place sur mon propre site",
+    slug: "automatiser-taches-repetitives-petite-entreprise",
+    excerpt:
+      "Les demandes reçues sur mon site arrivent maintenant avec un brouillon de réponse déjà rédigé, que je relis avant de l'envoyer. Comment ça marche, ce qu'on peut automatiser dans une petite entreprise, et les cas où ça ne vaut pas le coup.",
+    content: `Fin septembre, j'ai branché un petit mécanisme sur le formulaire de contact de ce site. Quand quelqu'un me décrit son projet, je reçois toujours son message comme avant. Mais quelques secondes plus tard, un brouillon de réponse m'attend dans ma messagerie, déjà adressé à la personne, qui reprend sa demande et répond à sa question.
+
+Je ne l'envoie jamais tel quel. Je le relis, je corrige une tournure, j'ajoute mes disponibilités, et j'envoie. La différence tient dans l'ordre des choses : je ne pars plus d'une page blanche, je relis un texte qui existe déjà. Sur une journée où j'enchaîne les rendez-vous et le développement, ce changement me fait gagner beaucoup de temps.
+
+La même logique s'applique à beaucoup de tâches dans une petite entreprise, avec des limites qu'il vaut mieux connaître avant de se lancer.
+
+## Ce que veut dire « automatiser » pour une petite entreprise
+
+Automatiser, c'est confier à un outil une suite d'actions que vous faites à la main, toujours dans le même ordre. « Quand un client remplit le formulaire, je note ses coordonnées, je lis sa demande, je rédige une réponse. » Chaque étape est simple. C'est leur répétition, dix fois, vingt fois, qui finit par grignoter vos soirées.
+
+Trois outils dominent ce marché, et vous en avez peut-être entendu parler :
+
+- **Zapier**, le plus connu, très simple à prendre en main
+- **Make**, plus visuel : on dessine son automatisation comme un schéma, étape par étape, et on peut choisir un hébergement en Europe
+- **n8n**, qu'on peut installer sur son propre serveur pour garder la main sur ses données
+
+Ils fonctionnent tous sur le même principe : un événement déclenche une chaîne d'actions. Un e-mail arrive, un formulaire est envoyé, une facture est payée, et l'outil enchaîne ce que vous lui avez demandé de faire. Le choix entre les trois dépend de vos logiciels, de votre volume et de l'endroit où vous voulez que vos données transitent. Il se fait en dernier : on part toujours de la tâche qui vous pèse.
+
+## Mon cas : un brouillon prêt pour les demandes de devis
+
+Quand vous remplissez mon formulaire de contact :
+
+- Votre message part vers ma boîte mail, comme sur n'importe quel site
+- En parallèle, le serveur du site transmet votre demande à Make
+- Make relit les informations sur mes services (les mêmes que celles de l'assistant de ce site) et demande à une intelligence artificielle, Mistral, de rédiger une réponse qui s'appuie uniquement sur ces informations
+- Le brouillon est déposé dans ma messagerie, adressé à vous
+- Je le relis, je l'ajuste, je l'envoie moi-même
+
+Tout repose sur cette dernière étape. L'intelligence artificielle ne connaît pas mon agenda. Elle ne sait pas si je peux démarrer votre projet la semaine prochaine. Je lui demande de laisser une mention visible, du type « à compléter », quand une information lui manque, et de ne jamais donner de prix, parce que je n'en donne pas sans avoir échangé avec vous. Ce sont des consignes, pas des garanties : une IA peut se tromper, donc je vérifie aussi ce qu'elle affirme avant d'envoyer.
+
+J'ai gagné un premier jet correct, qui reprend votre ville, votre type de projet et votre question, et qui m'évite de retaper les mêmes explications sur le fonctionnement d'un devis ou les délais habituels. Mon temps passe sur ce qui compte : vérifier que la réponse colle à votre situation.
+
+Si vous vous demandez ce que l'IA peut faire d'autre dans une petite structure, j'ai détaillé les usages utiles au quotidien dans [un article sur l'IA en TPE](/blog/ia-petite-entreprise-usages-concrets).
+
+## D'autres tâches qu'on automatise facilement
+
+Mon exemple concerne les réponses aux prospects, mais la même mécanique s'applique à des tâches très différentes. Quelques idées qui reviennent souvent chez les artisans, commerçants et indépendants :
+
+- **Relancer un devis resté sans réponse.** Quelques jours après l'envoi, un rappel apparaît dans votre agenda, ou un brouillon de relance vous attend. Vous décidez de l'envoyer ou non
+- **Ranger les demandes dans un tableau.** Chaque demande reçue s'ajoute à une ligne d'un tableur partagé : nom, date, type de projet, statut. Vous voyez d'un coup d'œil qui attend une réponse
+- **Demander un avis après une prestation.** Quand vous marquez un chantier comme terminé, le client reçoit un message simple avec le lien vers votre fiche Google. Vous ne l'oubliez plus
+- **Envoyer les factures à votre comptable.** Les factures reçues par e-mail sont copiées automatiquement dans un dossier partagé avec votre cabinet
+- **Confirmer et rappeler les rendez-vous.** Un client réserve, il reçoit une confirmation, puis un rappel la veille. Moins de rendez-vous oubliés, moins d'appels pour vérifier l'heure
+
+Une bonne candidate est répétitive, suit toujours le même chemin, et une erreur s'y rattrape facilement. Même dans ce cas, prenez le temps de vérifier les destinataires et les exceptions : un rappel envoyé à un client qui a annulé, ou une facture partie vers la mauvaise adresse, font plus de dégâts que le temps gagné. Dès qu'un envoi engage l'entreprise, gardez une validation de votre part.
+
+## Quand l'automatisation ne vaut pas le coup
+
+Je préfère vous le dire avant que vous ne vous lanciez : automatiser n'est pas toujours une bonne idée.
+
+**La tâche est rare et rapide.** Si vous la faites une fois par mois en quelques minutes, le temps passé à mettre en place et à surveiller l'automatisation dépassera celui que vous gagnez. Le bon calcul met en face le temps économisé sur l'année, le coût de mise en place, l'abonnement et la surveillance.
+
+**La tâche change à chaque fois.** Un devis de rénovation complète ne ressemble jamais au précédent. On peut automatiser la prise d'informations, pas le métier.
+
+**Votre organisation n'est pas claire.** Automatiser un processus désordonné, c'est produire du désordre plus vite. Si vous ne savez pas décrire la tâche en quelques étapes, commencez par là, sur une feuille.
+
+**Une erreur coûte cher.** Tout ce qui engage votre responsabilité (un prix, un délai contractuel, un conseil technique) doit passer par vos yeux. C'est pour ça que mon système prépare un brouillon au lieu d'envoyer une réponse.
+
+## Les réglages à prévoir dès le départ
+
+Une automatisation qui marche le premier jour peut s'arrêter sans bruit trois mois plus tard. Quelques points à connaître :
+
+- **Les connexions expirent.** Pour des raisons de sécurité, certains services, dont Google, demandent de renouveler régulièrement l'autorisation donnée à l'outil. Si personne ne le fait, la chaîne s'arrête, et vous ne vous en rendez compte qu'en constatant qu'il ne se passe plus rien
+- **Vos données voyagent.** Chaque outil de la chaîne voit passer les informations de vos clients. Le RGPD vous impose d'en informer vos clients dans votre politique de confidentialité, de savoir où ces données sont hébergées et d'encadrer les prestataires qui les traitent
+- **Les accès sont sensibles.** Un outil connecté à votre messagerie peut la lire. Le compte qui le pilote doit être protégé par une double authentification
+- **Les abonnements s'accumulent.** Ces outils ont des offres gratuites généreuses, puis facturent selon le volume. Une automatisation mal réglée, qui vérifie votre boîte mail en permanence par exemple, peut consommer votre quota sans rien faire d'utile
+
+Aucun de ces points n'empêche de se lancer. Ils se règlent dès la mise en place, bien plus facilement que le jour où la chaîne s'arrête.
+
+## Automatisation et site internet : les deux se complètent
+
+Beaucoup d'automatisations partent de votre site : un formulaire, une prise de rendez-vous, un paiement en ligne. Un site bien construit transmet des informations propres et structurées, ce qui rend la suite beaucoup plus fiable. À l'inverse, un formulaire qui mélange tout dans un seul champ de texte complique chaque étape derrière.
+
+C'est aussi pour ça que je ne vends pas l'automatisation comme un produit à part. Quand je conçois un site ou que j'en reprends un existant, la question se pose naturellement : qu'est-ce qui se passe une fois que le client a cliqué sur « envoyer » ? Parfois la réponse est « rien de plus, un e-mail suffit ». Parfois un petit mécanisme bien pensé vous libère du temps chaque semaine.
+
+Si votre site reçoit beaucoup de questions répétitives avant même le contact, un assistant comme celui de ce site peut aussi prendre le relais ; j'explique dans quels cas ça vaut le coup dans [cet article sur le chatbot pour un commerce](/blog/chatbot-ia-commerce-pme).
+
+## Parlons de vos tâches répétitives
+
+Vous avez une tâche qui revient chaque semaine et qui vous agace ? Décrivez-la-moi en quelques lignes : ce qui la déclenche, ce que vous faites, dans quels logiciels. Je vous dirai franchement si elle vaut une automatisation, et laquelle, ou si elle se règle autrement.
+
+Je travaille avec des entreprises à [Pau et dans le Béarn](/creation-site-internet-pau), à [Orthez et dans le bassin de Lacq](/creation-site-internet-orthez-bearn), ainsi qu'à [Bayonne](/creation-site-internet-bayonne) et [Biarritz](/creation-site-internet-biarritz). Écrivez-moi via le formulaire de contact ou appelez le 06 79 08 88 45. Échange gratuit, devis clair sous 24h, aucune obligation.`,
+    author: "Christophe Mostefaoui",
+    publishedAt: "2026-09-30",
+    readTime: 7,
+    category: "ia-pratique",
+    tags: [
+      "Automatisation",
+      "Make",
+      "Zapier",
+      "n8n",
+      "IA",
+      "TPE",
+      "Pau",
+    ],
+    imageUrl: "/assets/images/automatiser-taches-repetitives-petite-entreprise.png",
+    imageAlt:
+      "Ordinateur portable sur un bureau en bois près d'une fenêtre, avec un carnet et une tasse, lumière dorée de fin de journée",
+    featured: false,
+    metaDescription:
+      "Automatiser les tâches répétitives d'une TPE avec Make, Zapier ou n8n : un exemple réel, des idées concrètes et les pièges à éviter avant de se lancer.",
+    keywords: [
+      "automatiser tâches répétitives entreprise",
+      "automatisation TPE Make Zapier n8n",
+      "automatiser réponse formulaire contact",
+      "brouillon réponse devis IA",
+      "gagner du temps petite entreprise",
+      "automatisation Pau Pyrénées-Atlantiques",
+    ],
+  },
+  {
     id: "16",
     title:
       "Votre site est-il utilisable par tout le monde ? Ce que l'accessibilité change pour une petite entreprise",

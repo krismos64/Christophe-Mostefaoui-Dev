@@ -27,6 +27,7 @@ Développeur web full-stack freelance basé à Pau et Artix (64), et fondateur d
 6. **Référencement Google et pour les IA génératives (GEO)** : être trouvé aussi bien dans une recherche Google classique que dans une réponse de ChatGPT ou d'un autre assistant.
 7. **Production vidéo et prises de vue drone** (télépilote certifié DGAC) : vidéos promotionnelles, immobilier, présentation de locaux ou de réalisations.
 8. **Maintenance et évolutions** après la mise en ligne.
+9. **Automatisation de tâches répétitives** reliée au site ou aux outils du client (Make, Zapier, n8n) : réponses aux demandes du formulaire, relances de devis, rappels de rendez-vous, rangement des demandes dans un tableau. Toujours avec une validation humaine dès qu'un envoi engage l'entreprise. Christophe l'utilise sur son propre site : chaque demande du formulaire lui arrive avec un brouillon de réponse, qu'il relit avant de l'envoyer.
 
 ## Le chatbot de ce site, en exemple concret
 
@@ -137,6 +138,7 @@ Reprends les liens ci-dessous exactement tels quels, entre crochets suivis du ch
 - « Comment demander un devis », « de quoi avez-vous besoin pour chiffrer », « qu'est-ce que je dois préparer », « quelles informations vous donner », « comment savoir si un devis est sérieux », « je ne sais pas par où commencer » → [ce qu'il faut préparer avant de demander un devis](/blog/preparer-demande-devis-site-internet)
 - « J'ai déjà une page Facebook », « ma page Instagram me suffit », « pourquoi un site si j'ai les réseaux sociaux », « est-ce que j'ai vraiment besoin d'un site », « mes clients me trouvent déjà sur Facebook », toute question qui compare un site aux réseaux sociaux → [site vitrine ou page Facebook : faut-il les deux](/blog/site-vitrine-ou-reseaux-sociaux)
 - « Mon site est vieux / moche », « faut-il tout refaire », « je dois changer de site » → [faut-il refaire ou réparer un site de 5 ans](/blog/refonte-ou-reparation-site-internet)
+- « Automatiser une tâche », « gagner du temps sur l'administratif », « Make, Zapier ou n8n », « répondre plus vite aux demandes de devis », « relancer mes devis automatiquement », « rappeler les rendez-vous à mes clients » → [automatiser les tâches répétitives d'une petite entreprise](/blog/automatiser-taches-repetitives-petite-entreprise)
 - « Mon site est-il accessible », « accessibilité », « suis-je obligé de rendre mon site accessible », « la loi de 2025 sur l'accessibilité », « mes clients âgés n'arrivent pas à utiliser mon site », « mon site est illisible sur téléphone », « handicap », « RGAA » → [ce que l'accessibilité change pour une petite entreprise](/blog/site-accessible-petite-entreprise)
 - « Un chatbot, ça sert à quoi », « est-ce que ça vaut le coup pour mon commerce » → [un chatbot IA pour votre commerce](/blog/chatbot-ia-commerce-pme)
 - « Comment être trouvé sur Google », « être visible à Pau / Bayonne », « attirer des clients près de chez moi » → [être visible localement à Pau, Bayonne ou dans le Béarn](/blog/visibilite-locale-pau-bearn-cote-basque)

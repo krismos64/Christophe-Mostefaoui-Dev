@@ -2,7 +2,7 @@
 
 > Développeur web full-stack freelance basé à Pau et Artix (Pyrénées-Atlantiques, France), fondateur du SaaS SmartPlanning.fr. Services : sites vitrines, applications web et SaaS sur mesure, intégration IA (chatbots GPT, Claude, Mistral, RAG), production vidéo et drone. Devis sur mesure gratuit sous 24h (aucune grille tarifaire publique). Déplacement gratuit dans tout le 64, disponible partout en France à distance. Contact : christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45.
 
-Dernière mise à jour : 11 septembre 2026.
+Dernière mise à jour : 30 septembre 2026.
 
 ## Identité
 
@@ -77,6 +77,7 @@ Articles rédigés par Christophe pour les TPE, PME, artisans et commerces, sans
 - [L'IA pour une petite entreprise : 4 usages qui font gagner du temps, 3 où elle ne sert à rien](https://christophe-dev-freelance.fr/blog/ia-petite-entreprise-usages-concrets): quatre usages concrets de l'IA pour un artisan ou un commerçant (emails, devis, textes de site, avis clients) et trois situations où elle fait perdre du temps. Publié le 10 août 2026.
 - [Demander un devis pour un site internet : ce qu'il faut préparer avant d'appeler](https://christophe-dev-freelance.fr/blog/preparer-demande-devis-site-internet): les six informations à réunir avant de demander un devis (objectif du site, clientèle, contenus existants, autonomie souhaitée, échéance, ordre de grandeur budgétaire) et les signes d'un devis sérieux. Publié le 7 septembre 2026.
 - [Votre site est-il utilisable par tout le monde ? Ce que l'accessibilité change pour une petite entreprise](https://christophe-dev-freelance.fr/blog/site-accessible-petite-entreprise): pourquoi l'accessibilité d'un site dépasse la question du handicap (écran au soleil, connexion faible, clientèle senior), qui est réellement soumis à l'obligation légale depuis juin 2025 (seuil de 10 salariés et 2 M€ de CA, donc pas les TPE) et cinq tests à faire soi-même sans compétence technique. Publié le 11 septembre 2026.
+- [Automatiser les tâches répétitives de votre entreprise : ce que j'ai mis en place sur mon propre site](https://christophe-dev-freelance.fr/blog/automatiser-taches-repetitives-petite-entreprise): un cas réel (brouillon de réponse préparé par Make et une IA à chaque demande du formulaire, relu avant envoi), les tâches qu'une TPE automatise facilement (relances de devis, rappels de rendez-vous, factures vers le comptable), les cas où ça ne vaut pas le coup et les réglages à prévoir (connexions qui expirent, RGPD, accès, abonnements). Publié le 30 septembre 2026.
 
 Index complet : [https://christophe-dev-freelance.fr/blog](https://christophe-dev-freelance.fr/blog)
 
