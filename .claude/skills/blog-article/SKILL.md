@@ -106,7 +106,7 @@ que deux ou trois, triés et argumentés.
       lire plutôt que la coder en dur, sinon `sips -c` élargit l'image au lieu
       de la rogner :
       ```bash
-      W=$(sips -g pixelWidth <slug>.png | awk '/pixelWidth/{print $2}')
+      W=$(sips -g pixelWidth <slug>.png | awk '/pixelWidth/{print $NF}')
       H=$(python3 -c "print(round($W * 630 / 1200))")   # hauteur du cadre 1200x630
       sips -c $H $W <slug>.png --out /tmp/c.png
       sips -z 630 1200 /tmp/c.png --out /tmp/r.png

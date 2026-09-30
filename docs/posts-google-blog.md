@@ -312,6 +312,27 @@ illisible. Une tasse à proximité.
 
 ---
 
+## 12. Automatisation (article du 30/09/2026)
+
+**Lien** : https://christophe-dev-freelance.fr/blog/automatiser-taches-repetitives-petite-entreprise
+
+> Vos demandes de devis pourraient arriver avec une réponse déjà rédigée.
+>
+> Je l'ai mis en place sur mon propre site : quand un client remplit le
+> formulaire, un brouillon de réponse m'attend dans ma messagerie. Je le relis,
+> je l'ajuste, je l'envoie. Rien ne part sans moi.
+>
+> L'article montre les tâches qu'une petite entreprise automatise facilement
+> (relances de devis, rappels de rendez-vous, factures vers le comptable) et
+> les cas où ça ne vaut pas le coup.
+
+Image : déjà générée par Codex, sur le Bureau
+(`post-automatiser-taches-repetitives-petite-entreprise.png`, 1200x900).
+Hors stock programmé : à publier ou programmer après le 10/11/2026 pour garder
+le rythme d'un post par semaine, ou en remplacement d'un post plus ancien.
+
+---
+
 ## Après avoir tout publié
 
 Le stock part en publication programmée jusqu'au 10 novembre 2026 (calendrier
