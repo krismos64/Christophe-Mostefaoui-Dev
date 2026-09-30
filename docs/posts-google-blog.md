@@ -4,7 +4,7 @@ Un post par article de blog. À publier **un par semaine**, pas tous d'un coup :
 une fiche qui reçoit 10 posts le même jour puis plus rien pendant trois mois
 envoie le signal inverse de celui recherché.
 
-## ▶️ État au 11/09/2026 : tout est programmé jusqu'au 10 novembre
+## ▶️ État au 30/09/2026 : tout est programmé jusqu'au 16 novembre
 
 Les onze posts sont saisis dans la fiche, chacun avec son image et son bouton.
 Rien à faire d'ici là. Vérifié dans le panneau « Posts » le 11/09/2026.
@@ -22,11 +22,12 @@ Rien à faire d'ici là. Vérifié dans le panneau « Posts » le 11/09/2026.
 | 27 oct. | 8. L'IA pour une petite entreprise |
 | 2 nov. | 9. Chatbot pour un commerce |
 | 10 nov. | 10. SmartPlanning |
+| 16 nov. | 12. Automatisation (ajouté le 30/09) |
 
 Les intervalles vont de 5 à 9 jours plutôt que 7 pile : sans importance, Google
 regarde la régularité de publication et non le calendrier au jour près.
 
-**Après le 10 novembre le stock est vide.** Le réapprovisionnement se fait
+**Après le 16 novembre le stock est vide.** Le réapprovisionnement se fait
 article par article : le skill `blog-article` rédige le post en même temps que
 l'article (étape 9).
 
@@ -328,8 +329,7 @@ illisible. Une tasse à proximité.
 
 Image : déjà générée par Codex, sur le Bureau
 (`post-automatiser-taches-repetitives-petite-entreprise.png`, 1200x900).
-Hors stock programmé : à publier ou programmer après le 10/11/2026 pour garder
-le rythme d'un post par semaine, ou en remplacement d'un post plus ancien.
+Programmé par Christophe pour le 16/11/2026.
 
 ---
 
