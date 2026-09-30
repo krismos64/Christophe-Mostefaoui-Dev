@@ -50,14 +50,15 @@ l'article (étape 9).
   caractères, c'est le format qui se lit le mieux sur mobile.
 - Un post reste mis en avant environ **7 jours**, puis bascule dans l'onglet
   « Posts » de la fiche où il reste consultable.
-- **Image** : générée via ChatGPT avec le gabarit ci-dessous, ou à défaut celle
+- **Image** : générée via Codex (skill global `codex`, mode `image --taille 1200x900`,
+  depuis le 30/09/2026) ou ChatGPT avec le gabarit ci-dessous, ou à défaut celle
   de l'article (`imageUrl` dans `src/data/blogPosts.ts`). Format paysage 4:3,
   1200x900. Ne jamais publier sans image, un post nu passe presque inaperçu.
   Poids max 5 Mo côté Google, largement suffisant.
 - **Pas de numéro de téléphone dans le texte** : Google le refuse parfois, et il
   est déjà sur la fiche.
 
-## Gabarit de prompt pour générer l'image (ChatGPT)
+## Gabarit de prompt pour générer l'image (Codex ou ChatGPT)
 
 Coller tel quel, en remplaçant uniquement la ligne **SUJET** par celle du post
 concerné (liste plus bas). Le gabarit reprend les codes visuels des images

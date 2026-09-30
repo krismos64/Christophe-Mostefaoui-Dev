@@ -9,6 +9,21 @@ Hébergement : Hostinger mutualisé (Apache + hPanel). Déploiement : **automati
 à chaque push sur `main`** via `.github/workflows/deploy.yml` (build + pré-rendu
 + sync FTPS de `dist/` vers la racine du compte FTP = `public_html`).
 
+## Avant de pousser : relecture croisée par Codex
+
+Depuis le 30/09/2026, tout diff qui touche du **code** (`src/`, `scripts/`,
+`public/api/`, `public/.htaccess`, workflow CI) passe par une relecture Codex
+avant le push, puisque chaque push sur `main` part en prod :
+
+```bash
+~/.claude/skills/codex/codex.sh review --base origin/main   # commits pas encore poussés
+~/.claude/skills/codex/codex.sh review --uncommitted        # si rien n'est encore commité
+```
+
+Vérifier chaque remarque dans le code avant de la retenir, et dire à Christophe
+ce qui a été retenu. Inutile pour un diff purement éditorial (article,
+fichiers LLM, docs) : le mode `critique` du skill `codex` y est plus adapté.
+
 ## Déployer
 
 ```bash

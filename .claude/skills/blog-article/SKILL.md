@@ -63,17 +63,40 @@ article est `/blog/<slug>`, pas `/<slug>`.
 
 ## Processus de publication (dans cet ordre)
 
+**Choix du sujet** : si la réserve est vide, demander des angles à Codex
+(skill `codex`, mode `idees`, avec la mémoire `etat-blog` en `--contexte`
+pour qu'il écarte les sujets déjà traités), puis n'en proposer à Christophe
+que deux ou trois, triés et argumentés.
+
 1. **Écrire l'article** dans `src/data/blogPosts.ts` : nouvel objet en tête du
    tableau, `id` = celui du premier article du tableau + 1 (les ids ne
    correspondent PAS au rang : 11 articles portent les ids 6 à 16, héritage de
    la purge de 2026), en respectant strictement l'interface existante
    (slug kebab-case, `metaDescription`, `imageUrl`). `featured: false` sauf
    décision contraire (l'article prix est le `featured: true` actuel)
+   **Relecture croisée (depuis le 30/09/2026)** : soumettre le brouillon à Codex
+   avant d'aller plus loin (skill global `codex`, mode `critique`), avec le
+   `CLAUDE.md` du projet et ce skill en contexte :
+   ```bash
+   ~/.claude/skills/codex/codex.sh critique --contexte CLAUDE.md \
+     --contexte .claude/skills/blog-article/SKILL.md < /tmp/brouillon.md
+   ```
+   (`/tmp/brouillon.md` = titre, excerpt, metaDescription et content de
+   l'article). Trier les remarques, appliquer les fondées, puis dire à
+   Christophe lesquelles ont été retenues ou écartées. Une seule passe
 2. **Image** — pipeline établi, à suivre tel quel :
-   a. Demander l'image à Christophe (il la génère via ChatGPT) en lui
-      fournissant un prompt : ~1672×941, photo réaliste, lumière dorée, sans
-      texte ni logo
-   b. La renommer `<slug>.png` dans `public/assets/images/`
+   a. **Générer l'image via Codex** (depuis le 30/09/2026, plus besoin de
+      passer par Christophe) avec le gabarit de prompt de
+      `docs/posts-google-blog.md`, SUJET adapté à l'article :
+      ```bash
+      ~/.claude/skills/codex/codex.sh image --taille 1536x864 \
+        --sortie public/assets/images/<slug>.png "<prompt>"
+      ```
+      La regarder (outil Read) avant de continuer : pas de texte parasite, pas
+      de visage, pas de logo. Si Codex est indisponible, repli : Christophe la
+      génère via ChatGPT à partir du même prompt (~1672×941)
+   b. Le fichier doit s'appeler `<slug>.png` dans `public/assets/images/`
+      (déjà le cas si généré par Codex)
    c. Ajouter une ligne dans la liste `JOBS` de `scripts/optimize-images.sh` :
       `"public/assets/images/<slug>.png|400,800|78|30"`, puis lancer le script
       (génère les AVIF/WebP dans `optimized/`)
@@ -121,11 +144,14 @@ article est `/blog/<slug>`, pas `/<slug>`.
    ~7 jours. Ton identique à celui de l'article : on parle au client, pas au
    développeur. Modèles, gabarit de prompt image et consignes de publication
    dans `docs/posts-google-blog.md`.
-   **Image** : Christophe la génère via ChatGPT à partir du gabarit de prompt de
-   ce fichier (bureau bois, lumière dorée, Pyrénées floues, « sans texte lisible »
-   impératif). Format 4:3 1200x900 : les images d'articles étant en 16:9, les
-   recadrer en rognant les CÔTÉS, jamais en étirant (sinon bandes noires) :
-   commande `sips` dans le même fichier.
+   **Image** : générée via Codex (depuis le 30/09/2026) à partir du gabarit de
+   prompt de ce fichier (bureau bois, lumière dorée, Pyrénées floues, « sans
+   texte lisible » impératif), directement au format 4:3 :
+   `~/.claude/skills/codex/codex.sh image --taille 1200x900 --sortie ~/Desktop/post-<slug>.png "<prompt>"`.
+   Le script rogne, il n'étire jamais. La déposer sur le Bureau : Christophe
+   l'ajoute lui-même au post (l'upload traverse une iframe que je ne peux pas
+   piloter). Repli si Codex est indisponible : ChatGPT, puis recadrage `sips`
+   décrit dans le même fichier.
    Intérêt réel et limites, à ne pas survendre : une fiche active est mieux
    classée dans le pack local qu'une fiche figée, et le bouton ramène du trafic.
    En revanche un post n'est pas indexé comme une page et ne se classe sur aucun

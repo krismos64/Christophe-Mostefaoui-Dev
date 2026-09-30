@@ -34,6 +34,12 @@ conservée en local (hors dépôt).
   07/09/2026 la rédaction du post Google Business (étape 9, modèles et gabarit
   de prompt image dans `docs/posts-google-blog.md`)
 
+Depuis le 30/09/2026, `blog-article` et `deploy-portfolio` s'appuient sur le
+skill **global** `codex` (`~/.claude/skills/codex/`, hors dépôt) : relecture
+croisée des brouillons, recherche d'angles, génération des images d'article et
+de post Google, `codex review` du diff avant chaque push de code. Codex n'est
+pas branché sur un hook : trop lent (15 à 90 s) et consommateur de quota.
+
 `deploy-portfolio` et `blog-article` ont été enrichis le 03/08/2026,
 `seo-geo-portfolio` créé le 12/08/2026 pour alléger le CLAUDE.md.
 
