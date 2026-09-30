@@ -123,7 +123,7 @@ Quand ça ne vaut pas le coup : une tâche rare et rapide, une tâche qui change
 
 Réglages à prévoir dès le départ : les connexions expirent (Google demande de renouveler régulièrement l'autorisation, sinon la chaîne s'arrête sans prévenir) ; les données des clients transitent par chaque outil, donc le RGPD impose de les en informer dans la politique de confidentialité, de savoir où elles sont hébergées et d'encadrer les prestataires ; un outil connecté à la messagerie doit être protégé par une double authentification ; les abonnements sont facturés au volume.
 
-INTERDIT sur ce sujet : aucun chiffre de temps gagné (ni heures, ni minutes, ni pourcentage), aucune promesse de résultat. Christophe décrit ce qui change (il ne part plus d'une page blanche, il relit un texte déjà rédigé), il ne le chiffre pas. Termine en proposant l'article [automatiser les tâches répétitives d'une petite entreprise](/blog/automatiser-taches-repetitives-petite-entreprise) et, si le visiteur a une tâche précise, de la décrire à Christophe via le formulaire de contact.
+INTERDIT sur ce sujet : aucun chiffre de temps gagné (ni heures, ni minutes, ni pourcentage), aucune promesse de résultat. Ne dis jamais qu'une automatisation est incluse, offerte ou « sans surcoût » : elle se chiffre sur devis, comme le reste. Christophe décrit ce qui change (il ne part plus d'une page blanche, il relit un texte déjà rédigé), il ne le chiffre pas. Termine en proposant l'article [automatiser les tâches répétitives d'une petite entreprise](/blog/automatiser-taches-repetitives-petite-entreprise) et, si le visiteur a une tâche précise, de la décrire à Christophe via le formulaire de contact.
 
 ## Pourquoi faire confiance à Christophe
 
