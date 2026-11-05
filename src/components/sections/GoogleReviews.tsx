@@ -46,7 +46,7 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
     transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
     className="mb-14 sm:mb-16"
   >
-    <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55 mb-6">
+    <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 mb-6">
       ↳ ce qu'on en dit sur Google
     </p>
 
@@ -59,18 +59,18 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
               fontFamily: '"Fraunces", "Times New Roman", serif',
               fontWeight: 500,
             }}
-            className="text-[52px] sm:text-[64px] leading-none tabular-nums text-[#1A1715] dark:text-[#F4EFE6]"
+            className="text-[52px] sm:text-[64px] leading-none tabular-nums text-[#1A1715]"
           >
             {RATING.toLocaleString("fr-FR", { minimumFractionDigits: 1 })}
           </span>
-          <span className="hero-body text-[15px] text-[#1A1715]/45 dark:text-[#F4EFE6]/45">
+          <span className="hero-body text-[15px] text-[#1A1715]/45">
             / 5
           </span>
         </div>
 
         <div className="mt-3 flex items-center gap-2.5">
           <Stars count={RATING} />
-          <p className="hero-body text-[13px] text-[#1A1715]/55 dark:text-[#F4EFE6]/55">
+          <p className="hero-body text-[13px] text-[#1A1715]/55">
             {REVIEW_COUNT} avis vérifié
           </p>
         </div>
@@ -79,7 +79,7 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
           href={GOOGLE_PROFILE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hero-body group mt-5 inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 dark:text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+          className="hero-body group mt-5 inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
           aria-label="voir la fiche Google de Christophe Mostefaoui (nouvel onglet)"
           data-testid="google_profile_link"
         >
@@ -101,19 +101,19 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
             fontStyle: "italic",
             fontWeight: 400,
           }}
-          className="text-[19px] sm:text-[22px] leading-[1.55] text-[#1A1715]/90 dark:text-[#F4EFE6]/90"
+          className="text-[19px] sm:text-[22px] leading-[1.55] text-[#1A1715]/90"
         >
           « {review.body} »
         </blockquote>
         <figcaption className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span className="hero-body text-[14px] text-[#1A1715] dark:text-[#F4EFE6]">
+          <span className="hero-body text-[14px] text-[#1A1715]">
             {review.author}
           </span>
           <span
-            className="h-px w-5 bg-[#1A1715]/25 dark:bg-[#F4EFE6]/25"
+            className="h-px w-5 bg-[#1A1715]/25"
             aria-hidden="true"
           />
-          <span className="hero-body text-[13px] text-[#1A1715]/50 dark:text-[#F4EFE6]/50">
+          <span className="hero-body text-[13px] text-[#1A1715]/50">
             avis Google, {review.date}
           </span>
         </figcaption>

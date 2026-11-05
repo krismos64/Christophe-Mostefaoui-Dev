@@ -242,7 +242,7 @@
     </script>
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#3b82f6" />
+    <meta name="theme-color" content="#12312B" />
 
     <!-- Schema.org pour Google Rich Snippets -->
     <meta name="google-site-verification" content="u9Pdcf3oPB87-aiNcZ1Lvsyl5ajLhD_805DJnqoF6zQ" />
@@ -267,39 +267,15 @@
          Mesure du trafic de recherche : Google Search Console.
          Le chatbot pousse des événements dans window.dataLayer (no-op sans GTM). -->
 
-    <!-- Préchargement image LCP hero (responsive : mobile portrait vs desktop landscape) -->
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/hero/chris-pau-mobile-768.avif"
-      type="image/avif"
-      media="(max-width: 767px)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/images/hero/chris-pau-1024.avif"
-      type="image/avif"
-      media="(min-width: 768px)"
-      fetchpriority="high"
-    />
-
     <!-- Fonts auto-hébergées (RGPD : aucune requête vers Google Fonts).
          @font-face dans src/index.css, fichiers dans /fonts/.
-         Préchargement des 2 polices critiques du hero : -->
+         Le hero n'a plus d'image (montagnes en SVG) : son élément LCP est
+         le titre, d'où le préchargement de sa seule police. -->
     <link
       rel="preload"
       as="font"
       type="font/woff2"
-      href="/fonts/fraunces-latin-opsz-italic.woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="/fonts/inter-tight-latin-wght-normal.woff2"
+      href="/fonts/bricolage-grotesque-latin-opsz-normal.woff2"
       crossorigin
     />
 

@@ -84,12 +84,12 @@ export default function Services() {
     <section
       ref={containerRef}
       id="services"
-      className="relative w-full overflow-hidden bg-[#F4EFE6] dark:bg-[#13110F] py-20 sm:py-28 md:py-32"
+      className="relative w-full overflow-hidden bg-[#F4EFE6] py-20 sm:py-28 md:py-32"
       aria-label="Mes services de développement web"
     >
       {/* Texture grain papier */}
       <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply dark:mix-blend-overlay"
+        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
@@ -105,16 +105,16 @@ export default function Services() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
         >
-          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60 mb-2">
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 mb-2">
             IV. — Services
           </p>
-          <h2 className="hero-display text-[#1A1715] dark:text-[#F4EFE6]">
+          <h2 className="hero-display text-[#1A1715]">
             Six manières de donner vie à votre projet.
           </h2>
-          <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80 dark:text-[#F4EFE6]/80">
+          <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80">
             Des sites web optimisés pour Google et les assistants IA. Clients
             partout en France,{" "}
-            <strong className="font-medium text-[#1A1715] dark:text-[#F4EFE6]">
+            <strong className="font-medium text-[#1A1715]">
               déplacement offert dans le 64
             </strong>
             .
@@ -134,11 +134,11 @@ export default function Services() {
               <motion.li
                 key={s.numeral}
                 variants={item}
-                className="group relative pt-7 pb-9 sm:pt-8 sm:pb-10 border-t border-[#1A1715]/15 dark:border-[#F4EFE6]/15 transition-colors duration-300 hover:border-[#F4D35E]/70"
+                className="group relative pt-7 pb-9 sm:pt-8 sm:pb-10 border-t border-[#1A1715]/15 transition-colors duration-300 hover:border-[#F4D35E]/70"
               >
                 <div className="flex items-start gap-4 sm:gap-5">
                   <span
-                    className="text-[12px] font-mono tabular-nums tracking-wider text-[#1A1715]/40 dark:text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors w-8 flex-shrink-0 pt-1.5"
+                    className="text-[12px] font-mono tabular-nums tracking-wider text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors w-8 flex-shrink-0 pt-1.5"
                     aria-hidden="true"
                   >
                     {s.numeral}.
@@ -151,17 +151,17 @@ export default function Services() {
                           fontStyle: "italic",
                           fontWeight: 500,
                         }}
-                        className="text-[22px] sm:text-[26px] leading-tight text-[#1A1715] dark:text-[#F4EFE6]"
+                        className="text-[22px] sm:text-[26px] leading-tight text-[#1A1715]"
                       >
                         {s.title}
                       </h3>
                       <Icon
-                        className="h-5 w-5 mt-1.5 flex-shrink-0 text-[#1A1715]/40 dark:text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors"
+                        className="h-5 w-5 mt-1.5 flex-shrink-0 text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors"
                         aria-hidden="true"
                         strokeWidth={1.5}
                       />
                     </div>
-                    <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#1A1715]/70 dark:text-[#F4EFE6]/70">
+                    <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#1A1715]/70">
                       {s.description}
                     </p>
                   </div>
@@ -173,7 +173,7 @@ export default function Services() {
 
         {/* Trait fin de section */}
         <div
-          className="h-px w-full bg-[#1A1715]/15 dark:bg-[#F4EFE6]/15 mt-2"
+          className="h-px w-full bg-[#1A1715]/15 mt-2"
           aria-hidden="true"
         />
 
@@ -184,7 +184,7 @@ export default function Services() {
           transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-12 sm:mt-16 flex flex-col items-start gap-5"
         >
-          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 dark:text-[#F4EFE6]/60">
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60">
             un projet en tête ?
           </p>
           <button
@@ -209,10 +209,10 @@ export default function Services() {
           transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 sm:mt-20 max-w-xl"
         >
-          <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90 dark:text-[#F4D35E]">
+          <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90">
             « Six services, une seule promesse : un site qui vous ressemble. »
           </p>
-          <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50 dark:text-[#F4EFE6]/50">
+          <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50">
             — C.M.
           </p>
         </motion.figcaption>

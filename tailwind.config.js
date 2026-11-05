@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
   future: {
     hoverOnlyWhenSupported: true,
   },
@@ -11,7 +10,22 @@ export default {
         center: true,
         padding: "1rem",
       },
+      // Charte « Pied des Pyrénées » (refonte du 05/11/2026).
+      // Contrastes vérifiés : texte creme sur foret 12:1, texte foret sur soleil 6,9:1.
       colors: {
+        foret: {
+          DEFAULT: "#12312B",
+          profond: "#0B2420",
+          moyen: "#24594C",
+          clair: "#3E7A68",
+          brume: "#C5D3CC",
+        },
+        soleil: {
+          DEFAULT: "#F2A25C",
+          clair: "#F7C08E",
+        },
+        creme: "#F5F1E8",
+        neige: "#E8EFEC",
         blue: {
           50: "#f0f9ff",
           100: "#e0f2fe",
@@ -24,37 +38,10 @@ export default {
           800: "#075985",
           900: "#0c4a6e",
         },
-        scrollbar: {
-          track: "#f1f1f1",
-          thumb: "#0ea5e9",
-          "thumb-hover": "#0284c7",
-        },
       },
-      animation: {
-        "menu-open-anim": "menu-open-anim 0.5s ease-out forwards",
-        "menu-item-anim": "menu-item-anim 0.5s ease-out forwards",
-      },
-      keyframes: {
-        "menu-open-anim": {
-          "0%": {
-            transform: "scale(0)",
-            "border-radius": "100%",
-          },
-          "100%": {
-            transform: "scale(1)",
-            "border-radius": "0",
-          },
-        },
-        "menu-item-anim": {
-          "0%": {
-            opacity: "0",
-            transform: "translateX(30px) skewX(-15deg)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateX(0) skewX(0)",
-          },
-        },
+      fontFamily: {
+        display: ['"Bricolage Grotesque"', "system-ui", "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
     },
   },

@@ -13,7 +13,6 @@ import Pricing from "./components/sections/Pricing";
 import ServiceArea from "./components/sections/ServiceArea";
 import SmartPlanningShowcase from "./components/sections/SmartPlanningShowcase";
 import AIChatbot from "./components/AIChatbot";
-import { ThemeProvider } from "./context/ThemeContext";
 import { useStructuredData } from "./hooks/useStructuredData";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
 import GMBOptimizedContact from "./components/seo/GMBOptimizedContact";
@@ -59,14 +58,12 @@ const Home = () => {
 function App() {
   return (
     <ErrorBoundary>
-      <HelmetProvider>
-        <ThemeProvider>
-          {/* reducedMotion="user" : respecte le réglage système « Réduire
+      <HelmetProvider>          {/* reducedMotion="user" : respecte le réglage système « Réduire
               les animations » sur toutes les animations Framer Motion du site,
               sans avoir à le gérer composant par composant. */}
           <MotionConfig reducedMotion="user">
             <Router basename="/">
-            <div className="App min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 overflow-x-hidden max-w-[100vw]">
+            <div className="App min-h-screen bg-creme overflow-x-hidden max-w-[100vw]">
               <a href="#contenu" className="skip-link">
                 Aller au contenu principal
               </a>
@@ -79,7 +76,7 @@ function App() {
                 <Suspense
                   fallback={
                     <div className="flex items-center justify-center min-h-screen">
-                      <div className="text-xl text-gray-600 dark:text-gray-300">
+                      <div className="text-xl text-gray-600">
                         Chargement...
                       </div>
                     </div>
@@ -121,7 +118,6 @@ function App() {
             </div>
             </Router>
           </MotionConfig>
-        </ThemeProvider>
       </HelmetProvider>
     </ErrorBoundary>
   );

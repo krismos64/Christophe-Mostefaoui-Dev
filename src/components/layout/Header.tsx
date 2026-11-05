@@ -1,524 +1,242 @@
 import { AnimatePresence, motion } from "framer-motion";
-import LazyLottie from "../common/LazyLottie";
-import {
-  ArrowUpRight,
-  Briefcase,
-  ExternalLink,
-  FolderOpen,
-  Github,
-  HelpCircle,
-  Linkedin,
-  Mail,
-  Menu,
-  Moon,
-  Newspaper,
-  Sun,
-  User,
-  X,
-} from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "../../context/ThemeContext";
 import { useNavigation } from "../../hooks/useNavigation";
-import { MenuItem } from "../../types/common";
 
-const triggerHapticFeedback = () => {
-  if (window.navigator && window.navigator.vibrate) {
-    window.navigator.vibrate(5);
-  }
-};
+type Lien = { nom: string; ancre?: string; page?: string };
 
-const overlayVariants = {
-  hidden: {
-    opacity: 0,
-    transition: { duration: 0.3, ease: "easeInOut" as const },
-  },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.4, ease: "easeOut" as const },
-  },
-};
+// Ordre de lecture d'un prospect : qui, quoi, preuves, puis contact
+const liens: Lien[] = [
+  { nom: "Services", ancre: "services" },
+  { nom: "Réalisations", ancre: "portfolio" },
+  { nom: "À propos", ancre: "about" },
+  { nom: "Blog", page: "/blog" },
+  { nom: "Questions fréquentes", ancre: "faq" },
+];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.15 + i * 0.06,
-      duration: 0.5,
-      ease: [0.16, 1, 0.3, 1] as const,
-    },
-  }),
-  exit: { opacity: 0, y: -8, transition: { duration: 0.2 } },
-};
-
-// Chiffres romains pour numérotation édito
-const toRoman = (n: number) => {
-  const map: [number, string][] = [
-    [10, "X"],
-    [9, "IX"],
-    [5, "V"],
-    [4, "IV"],
-    [1, "I"],
-  ];
-  let result = "";
-  for (const [value, numeral] of map) {
-    while (n >= value) {
-      result += numeral;
-      n -= value;
-    }
-  }
-  return result;
-};
+const focus =
+  "focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-soleil";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const [menuOuvert, setMenuOuvert] = useState(false);
+  const [defile, setDefile] = useState(false);
   const { handleNavigation, isActive, isHomePage } = useNavigation();
 
-  // Détection scroll pour passer en mode opaque
+  // Fond opaque dès qu'on quitte le haut de la home
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 40);
+    const onScroll = () => setDefile(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Empêcher le défilement lorsque le menu mobile est ouvert
+  // Menu mobile : bloque le défilement de la page, Échap pour fermer
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-      document.body.classList.add("menu-open");
-    } else {
-      document.body.style.overflow = "auto";
-      document.body.classList.remove("menu-open");
-    }
+    if (!menuOuvert) return;
+    document.body.classList.add("menu-open");
+    const echap = (e: KeyboardEvent) => e.key === "Escape" && setMenuOuvert(false);
+    window.addEventListener("keydown", echap);
     return () => {
-      document.body.style.overflow = "auto";
       document.body.classList.remove("menu-open");
+      window.removeEventListener("keydown", echap);
     };
-  }, [isMenuOpen]);
+  }, [menuOuvert]);
 
-  const menuItems: MenuItem[] = [
-    {
-      name: "À propos",
-      to: isHomePage ? "#about" : "/#about",
-      icon: <User className="h-5 w-5" />,
-    },
-    {
-      name: "Services",
-      to: isHomePage ? "#services" : "/#services",
-      icon: <Briefcase className="h-5 w-5" />,
-    },
-    {
-      name: "Portfolio",
-      to: isHomePage ? "#portfolio" : "/#portfolio",
-      icon: <FolderOpen className="h-5 w-5" />,
-    },
-    {
-      name: "Blog",
-      to: "/blog",
-      icon: <Newspaper className="h-5 w-5" />,
-    },
-    {
-      name: "Contact",
-      to: isHomePage ? "#contact" : "/#contact",
-      icon: <Mail className="h-5 w-5" />,
-    },
-    {
-      name: "FAQ",
-      to: isHomePage ? "#faq" : "/#faq",
-      icon: <HelpCircle className="h-5 w-5" />,
-    },
-  ];
+  const href = (l: Lien) =>
+    l.page ?? (isHomePage ? `#${l.ancre}` : `/#${l.ancre}`);
 
-  const handleMenuNavigation = (to: string) => {
-    setIsMenuOpen(false);
-    handleNavigation(to);
+  const aller = (cible: string) => {
+    setMenuOuvert(false);
+    handleNavigation(cible);
   };
 
-  // Classes adaptatives selon état (transparent sur Hero de la home / opaque
-  // après scroll, ou opaque d'emblée sur les autres pages qui n'ont pas de
-  // hero sombre sous le header)
-  const isOpaque = isScrolled || !isHomePage;
-
-  const headerBg = isOpaque
-    ? "bg-[#F4EFE6]/95 dark:bg-[#13110F]/95 backdrop-blur-md border-b border-[#1A1715]/10 dark:border-[#F4EFE6]/10"
-    : "bg-transparent border-b border-transparent";
-
-  const textColor = isOpaque
-    ? "text-[#1A1715] dark:text-[#F4EFE6]"
-    : "text-[#F4EFE6]";
-
-  const textColorMuted = isOpaque
-    ? "text-[#1A1715]/70 dark:text-[#F4EFE6]/75"
-    : "text-[#F4EFE6]/85";
+  const opaque = defile || !isHomePage;
+  const contact = isHomePage ? "#contact" : "/#contact";
 
   return (
     <>
       <header
-        className={`fixed w-full z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${headerBg}`}
+        className={`fixed z-50 w-full font-display text-creme transition-[background-color,border-color] duration-500 ${
+          opaque
+            ? "border-b border-creme/10 bg-foret/95 backdrop-blur-md"
+            : "border-b border-transparent bg-transparent"
+        }`}
       >
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-10 py-3 sm:py-4">
-          <div className="flex items-center justify-between gap-3">
-            {/* Logo : image légère sur mobile, animation vidéo sur desktop */}
-            <Link
-              to="/"
-              className="flex items-center gap-3 min-w-0 flex-shrink"
-              onClick={(e) => {
-                if (isHomePage) {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-              }}
-            >
-              <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-[#F4D35E]/30 bg-[#0B0805]">
-                <img
-                  src="/assets/images/header-avatar-mobile.webp"
-                  alt=""
-                  width={96}
-                  height={96}
-                  decoding="async"
-                  className="h-full w-full object-cover md:hidden"
-                  aria-hidden="true"
-                />
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="none"
-                  className="hidden h-full w-full object-cover md:block"
-                  aria-label="Animation Christophe développeur"
-                >
-                  <source
-                    src="/assets/videos/animation-chris-dev.mp4"
-                    type="video/mp4"
-                    media="(min-width: 768px)"
-                  />
-                </video>
-              </div>
-              <span
-                className={`hero-body text-[15px] sm:text-base lg:text-[17px] font-medium whitespace-nowrap transition-colors ${textColor}`}
-              >
-                Christophe,{" "}
-                <span
-                  className="hero-display-inline italic"
-                  style={{
-                    fontFamily: '"Fraunces", "Times New Roman", serif',
-                    fontStyle: "italic",
-                    fontWeight: 500,
-                  }}
-                >
-                  développeur web
-                </span>
+        <nav
+          aria-label="Navigation principale"
+          className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 sm:px-8 sm:py-4"
+        >
+          <Link
+            to="/"
+            className={`flex min-w-0 items-center gap-3 rounded-full ${focus}`}
+            onClick={(e) => {
+              if (isHomePage) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
+            <img
+              src="/assets/images/header-avatar-mobile.webp"
+              alt=""
+              width={96}
+              height={96}
+              decoding="async"
+              className="h-10 w-10 flex-shrink-0 rounded-full object-cover ring-1 ring-soleil/40 sm:h-11 sm:w-11"
+            />
+            <span className="flex min-w-0 flex-col leading-tight">
+              <span className="truncate text-[16px] font-extrabold tracking-[-0.01em] sm:text-[17px]">
+                Christophe Mostefaoui
               </span>
-            </Link>
+              <span className="hidden text-[13px] text-foret-brume sm:block">
+                Développeur web à Pau
+              </span>
+            </span>
+          </Link>
 
-            {/* Menu desktop (lg+) */}
-            <div className="hidden lg:flex items-center gap-6 xl:gap-7">
-              <ul className="flex items-center gap-5 xl:gap-6">
-                {menuItems.map((item) => (
-                  <li key={item.name}>
-                    <Link
-                      to={item.to}
-                      className={`nav-link hero-body text-[14px] tracking-[-0.01em] whitespace-nowrap ${
-                        isActive(item.to)
-                          ? `${textColor} nav-link-active`
-                          : `${textColorMuted} hover:text-[#F4D35E]`
-                      }`}
+          <div className="hidden items-center gap-7 lg:flex">
+            <ul className="flex items-center gap-6">
+              {liens.map((l) => (
+                <li key={l.nom}>
+                  <a
+                    href={href(l)}
+                    aria-current={isActive(href(l)) ? "page" : undefined}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      aller(href(l));
+                    }}
+                    className={`whitespace-nowrap text-[15px] underline-offset-[6px] hover:text-soleil hover:underline ${focus} ${
+                      isActive(href(l)) ? "text-soleil" : "text-creme/90"
+                    }`}
+                  >
+                    {l.nom}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={contact}
+              onClick={(e) => {
+                e.preventDefault();
+                aller(contact);
+              }}
+              className={`group inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-soleil px-5 text-[15px] font-extrabold text-foret hover:bg-soleil-clair ${focus}`}
+            >
+              Devis gratuit
+              <ArrowUpRight
+                className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMenuOuvert(true)}
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-full hover:text-soleil lg:hidden ${focus}`}
+            aria-label="Ouvrir le menu"
+            aria-expanded={menuOuvert}
+            aria-controls="menu-mobile"
+          >
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </nav>
+      </header>
+
+      <AnimatePresence>
+        {menuOuvert && (
+          <motion.div
+            id="menu-mobile"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+            className="fixed inset-0 z-[100] flex flex-col overflow-y-auto bg-foret px-6 pb-10 pt-6 font-display text-creme sm:px-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <div className="flex justify-end">
+              <button
+                type="button"
+                autoFocus
+                onClick={() => setMenuOuvert(false)}
+                className={`inline-flex h-11 w-11 items-center justify-center rounded-full hover:text-soleil ${focus}`}
+                aria-label="Fermer le menu"
+              >
+                <X className="h-7 w-7" aria-hidden="true" />
+              </button>
+            </div>
+
+            <nav aria-label="Menu mobile" className="flex flex-1 flex-col justify-center">
+              <ul className="flex flex-col gap-1">
+                {liens.map((l, i) => (
+                  <motion.li
+                    key={l.nom}
+                    initial={{ y: 16, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.05 + i * 0.05, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <a
+                      href={href(l)}
                       onClick={(e) => {
                         e.preventDefault();
-                        handleMenuNavigation(item.to);
+                        aller(href(l));
                       }}
+                      className={`block py-2 text-[34px] font-extrabold leading-tight tracking-[-0.02em] hover:text-soleil sm:text-[42px] ${focus} ${
+                        isActive(href(l)) ? "text-soleil" : ""
+                      }`}
                     >
-                      {item.name}
-                    </Link>
-                  </li>
+                      {l.nom}
+                    </a>
+                  </motion.li>
                 ))}
               </ul>
 
-              {/* Lien externe krismos.fr */}
+              <a
+                href={contact}
+                onClick={(e) => {
+                  e.preventDefault();
+                  aller(contact);
+                }}
+                className={`mt-8 inline-flex min-h-[54px] w-max items-center gap-2 rounded-full bg-soleil px-7 text-base font-extrabold text-foret ${focus}`}
+              >
+                Demander un devis gratuit
+                <ArrowUpRight className="h-[18px] w-[18px]" aria-hidden="true" />
+              </a>
+            </nav>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-creme/15 pt-6 text-[15px] text-creme/80">
+              <a href="tel:+33679088845" className={`hover:text-soleil ${focus}`}>
+                06 79 08 88 45
+              </a>
+              <a
+                href="https://www.linkedin.com/in/christophemostefaoui/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-1.5 hover:text-soleil ${focus}`}
+              >
+                <Linkedin className="h-4 w-4" aria-hidden="true" />
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/krismos64"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-1.5 hover:text-soleil ${focus}`}
+              >
+                <Github className="h-4 w-4" aria-hidden="true" />
+                GitHub
+              </a>
               <a
                 href="https://krismos.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`hero-body group inline-flex items-center gap-1 text-[13px] ${textColorMuted} hover:text-[#F4D35E] transition-colors whitespace-nowrap`}
-                aria-label="Mon portfolio technique sur krismos.fr (nouvel onglet)"
+                className={`hover:text-soleil ${focus}`}
               >
-                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
-                  krismos.fr
-                </span>
-                <ArrowUpRight
-                  className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  aria-hidden="true"
-                />
+                krismos.fr (portfolio technique)
               </a>
-
-              {/* Toggle theme */}
-              <button
-                onClick={toggleTheme}
-                className={`p-1.5 transition-colors hover:text-[#F4D35E] ${textColor}`}
-                aria-label={
-                  theme === "light"
-                    ? "Activer le mode sombre"
-                    : "Activer le mode clair"
-                }
-              >
-                {theme === "light" ? (
-                  <Moon className="h-[18px] w-[18px]" />
-                ) : (
-                  <Sun className="h-[18px] w-[18px]" />
-                )}
-              </button>
-
-              {/* CTA Devis */}
-              <button
-                onClick={() =>
-                  handleMenuNavigation(isHomePage ? "#contact" : "/#contact")
-                }
-                className="hero-cta-nav group inline-flex items-center gap-1.5"
-                aria-label="Demander un devis"
-              >
-                <span
-                  style={{
-                    fontFamily: '"Fraunces", serif',
-                    fontStyle: "italic",
-                    fontWeight: 500,
-                  }}
-                  className="text-[15px]"
-                >
-                  Devis
-                </span>
-                <ArrowUpRight
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-
-            {/* Mobile/tablette : toggle + burger */}
-            <div className="lg:hidden flex items-center gap-2 sm:gap-3 flex-shrink-0">
-              <button
-                onClick={toggleTheme}
-                className={`p-1.5 transition-colors hover:text-[#F4D35E] ${textColor}`}
-                aria-label={
-                  theme === "light"
-                    ? "Activer le mode sombre"
-                    : "Activer le mode clair"
-                }
-              >
-                {theme === "light" ? (
-                  <Moon className="h-[18px] w-[18px]" />
-                ) : (
-                  <Sun className="h-[18px] w-[18px]" />
-                )}
-              </button>
-
-              <motion.button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`p-1.5 transition-colors hover:text-[#F4D35E] ${textColor}`}
-                whileTap={{ scale: 0.94 }}
-                aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-                aria-expanded={isMenuOpen}
-              >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </motion.button>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      {/* Menu mobile éditorial */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            className="fixed inset-0 w-full h-full z-[100] overflow-hidden bg-[#0B0805]"
-            variants={overlayVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-          >
-            {/* Texture grain papier subtile (SVG noise) */}
-            <div
-              className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
-              style={{
-                backgroundImage:
-                  "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-              }}
-              aria-hidden="true"
-            />
-
-            {/* Animation Lottie chatbot — conservée en haut à gauche */}
-            <motion.div
-              className="absolute top-5 left-5 sm:top-6 sm:left-6 z-10"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <LazyLottie
-                load={() => import("../../animations/chatbot.json")}
-                className="w-16 h-16 sm:w-20 sm:h-20"
-                eager
-              />
-            </motion.div>
-
-            {/* Bouton fermer */}
-            <motion.button
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute top-6 right-5 sm:top-7 sm:right-7 z-20 p-2 text-[#F4EFE6] hover:text-[#F4D35E] transition-colors"
-              aria-label="Fermer le menu"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ delay: 0.15, duration: 0.3 }}
-              whileTap={{ scale: 0.92 }}
-            >
-              <X className="h-7 w-7" strokeWidth={1.5} />
-            </motion.button>
-
-            {/* Contenu */}
-            <div className="relative h-full w-full flex flex-col z-10 px-7 sm:px-10 pt-28 sm:pt-32 pb-10 overflow-y-auto">
-              <motion.nav
-                className="flex-1 flex flex-col justify-center w-full max-w-xl"
-                drag="y"
-                dragConstraints={{ top: -40, bottom: 40 }}
-                dragTransition={{ bounceStiffness: 400, bounceDamping: 22 }}
-                dragElastic={0.1}
-                onDragStart={triggerHapticFeedback}
-              >
-                <ul className="flex flex-col gap-1">
-                  {menuItems.map((item, index) => (
-                    <motion.li
-                      key={item.name}
-                      custom={index}
-                      variants={itemVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      <a
-                        href={item.to}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handleMenuNavigation(item.to);
-                        }}
-                        className={`group flex items-baseline gap-4 sm:gap-5 py-2 sm:py-2.5 ${
-                          isActive(item.to)
-                            ? "text-[#F4D35E]"
-                            : "text-[#F4EFE6] hover:text-[#F4D35E]"
-                        } transition-colors`}
-                      >
-                        <span
-                          className="text-[12px] sm:text-[13px] font-mono tabular-nums opacity-50 group-hover:opacity-100 transition-opacity w-10 flex-shrink-0 tracking-wider"
-                          aria-hidden="true"
-                        >
-                          {toRoman(index + 1)}.
-                        </span>
-                        <span
-                          style={{
-                            fontFamily: '"Fraunces", "Times New Roman", serif',
-                            fontStyle: "italic",
-                            fontWeight: 400,
-                            fontVariationSettings: '"opsz" 144',
-                          }}
-                          className="text-[32px] sm:text-[40px] md:text-[44px] leading-[1.05] tracking-[-0.01em] transition-transform group-hover:translate-x-1"
-                        >
-                          {item.name}
-                        </span>
-                      </a>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* Séparateur */}
-                <motion.div
-                  custom={menuItems.length}
-                  variants={itemVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="my-6 sm:my-8 h-px w-20 bg-[#F4EFE6]/30"
-                  aria-hidden="true"
-                />
-
-                {/* Lien externe krismos.fr */}
-                <motion.a
-                  custom={menuItems.length + 1}
-                  variants={itemVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  href="https://krismos.fr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="group inline-flex flex-col gap-0.5 text-[#F4EFE6] hover:text-[#F4D35E] transition-colors"
-                  aria-label="Mon portfolio technique sur krismos.fr (nouvel onglet)"
-                >
-                  <span className="inline-flex items-center gap-1.5">
-                    <span
-                      style={{
-                        fontFamily: '"Fraunces", serif',
-                        fontStyle: "italic",
-                        fontWeight: 500,
-                      }}
-                      className="text-[22px] sm:text-[26px] border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]"
-                    >
-                      krismos.fr
-                    </span>
-                    <ExternalLink
-                      className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="hero-handwritten text-[16px] sm:text-[18px] text-[#F4EFE6]/60 group-hover:text-[#F4D35E]/80">
-                    mon laboratoire technique
-                  </span>
-                </motion.a>
-              </motion.nav>
-
-              {/* Liens sociaux + signature en bas */}
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.5 }}
-                className="mt-10 flex flex-col items-start gap-4"
-              >
-                <div className="h-px w-32 bg-[#F4EFE6]/20" aria-hidden="true" />
-                <div className="flex items-center gap-5 text-[#F4EFE6]/70">
-                  <a
-                    href="https://www.linkedin.com/in/christophemostefaoui/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Profil LinkedIn"
-                    className="inline-flex items-center gap-1.5 hover:text-[#F4D35E] transition-colors"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                    <span className="hero-body text-[13px]">LinkedIn</span>
-                  </a>
-                  <span className="text-[#F4EFE6]/30">·</span>
-                  <a
-                    href="https://github.com/krismos64"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Profil GitHub"
-                    className="inline-flex items-center gap-1.5 hover:text-[#F4D35E] transition-colors"
-                  >
-                    <Github className="h-4 w-4" />
-                    <span className="hero-body text-[13px]">GitHub</span>
-                  </a>
-                </div>
-                <span className="hero-handwritten text-[14px] text-[#F4EFE6]/40">
-                  C.M. — Pau, 2026
-                </span>
-              </motion.div>
             </div>
           </motion.div>
         )}
