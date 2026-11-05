@@ -13,6 +13,7 @@ import { useStructuredData } from "./hooks/useStructuredData";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
 import GMBOptimizedContact from "./components/seo/GMBOptimizedContact";
 import ErrorBoundary from "./components/common/ErrorBoundary";
+import RemiseEnHaut from "./components/common/RemiseEnHaut";
 
 // Lazy loading des pages pour optimiser le code-splitting
 const LegalNotice = lazy(() => import("./pages/LegalNotice"));
@@ -81,6 +82,7 @@ function App() {
                     </div>
                   }
                 >
+                  <RemiseEnHaut />
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/faq" element={<Navigate to="/#faq" replace />} />

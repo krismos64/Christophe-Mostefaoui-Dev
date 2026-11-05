@@ -41,12 +41,15 @@ export default function ServiceArea() {
   const renderCities = (cities: string[]) =>
     cities.map((city, i) => (
       <Fragment key={city}>
-        <span className="text-foret">{city}</span>
-        {i < cities.length - 1 && (
-          <span className="text-soleil/60 mx-2" aria-hidden="true">
-            ·
-          </span>
-        )}
+        <span className="whitespace-nowrap">
+          <span className="text-foret">{city}</span>
+          {i < cities.length - 1 && (
+            <>
+              {" "}
+              <span className="text-soleil" aria-hidden="true">·</span>
+            </>
+          )}
+        </span>{" "}
       </Fragment>
     ));
 
@@ -116,9 +119,11 @@ export default function ServiceArea() {
             </p>
             <p className="hero-body text-[16px] sm:text-[18px] leading-[1.85] text-foret/80">
               {renderCities(nationalCities)}
-              <span className="text-soleil/60 mx-2" aria-hidden="true">
+
+              <span className="text-soleil mx-1" aria-hidden="true">
                 ·
               </span>
+
               <span className="italic text-foret/75">
                 et toutes les autres villes
               </span>

@@ -76,6 +76,11 @@ body {
   max-width: 100vw;
 }
 
+/* Ancres (#faq, #contact…) : le titre ne doit pas finir sous le header fixe */
+section[id] {
+  scroll-margin-top: 88px;
+}
+
 /* Smooth transitions par défaut sur liens et boutons */
 a,
 button {
@@ -157,6 +162,17 @@ h1, h2, h3, h4 {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
 }
 
+/* Citations signées (« … » — C.M.) : même classe que les surtitres dans
+   l'ancienne charte, mais une phrase longue en capitales se lit mal */
+figcaption .hero-handwritten,
+blockquote .hero-handwritten {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 1.15rem !important;
+  line-height: 1.45;
+}
+
 /* ============================================
    Bouton d'action principal : pastille soleil
    ============================================ */
@@ -196,6 +212,24 @@ h1, h2, h3, h4 {
   border-left: 1px solid rgba(18, 49, 43, 0.3);
   padding-left: 0.65rem;
   margin-left: 0.15rem;
+}
+
+/* Petit téléphone : le sous-titre passe sous le texte du bouton
+   plutôt que d'écraser les deux sur une ligne (jamais masqué) */
+@media (max-width: 479px) {
+  .hero-cta-primary {
+    flex-wrap: wrap;
+    row-gap: 0.15rem;
+    padding-block: 0.7rem;
+    border-radius: 1.5rem;
+  }
+  .hero-cta-sub {
+    order: 3;
+    flex-basis: 100%;
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+  }
 }
 
 /* ============================================
