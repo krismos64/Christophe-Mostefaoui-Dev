@@ -429,7 +429,7 @@ Schemas de **page**, générés par `structured-data-final.tsx` :
 
 Schemas de page portés par leur propre composant :
 
-- **CreativeWork** — 7 projets portfolio (1 fondateur + 6 clients), dans `Portfolio.tsx`
+- **CreativeWork** — 11 projets portfolio (1 fondateur + 10 clients), dans `Portfolio.tsx`
 - **BlogPosting** — un par article, dans `BlogPost.tsx`
 
 > Les horaires déclarés dans le JSON-LD doivent correspondre à ceux affichés à

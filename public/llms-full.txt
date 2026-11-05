@@ -1,7 +1,7 @@
 # LLMs-Full.txt - Base de connaissances complète pour les Large Language Models
 # Christophe Mostefaoui - Développeur Web Full-Stack Freelance
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 30 septembre 2026
+# Dernière mise à jour: 5 novembre 2026
 
 ---
 
@@ -97,7 +97,7 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 - Inclus: design responsive, SEO de base, formulaire de contact, hébergement guidé
 - Délai: 1 à 2 semaines
 - Technologies: React + Vite + TailwindCSS + Framer Motion
-- Exemples: Cabinet Infirmier Graslin, CoachTFE, Methodea
+- Exemples: Cabinet Infirmier Graslin, CoachTFE, Methodea, CoachDEC, Doctorat.me, MasterMentor
 
 ### Service 2: Sites Multi-pages
 - Devis: sur mesure après échange
@@ -113,7 +113,7 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 - Inclus: architecture complète, authentification, paiements, dashboard, API
 - Délai: 3 à 6 semaines ou plus
 - Technologies: Next.js 15 + TypeScript + Prisma + PostgreSQL + Docker
-- Exemples: SmartPlanning.fr, LivresStaka.fr
+- Exemples: SmartPlanning.fr, Lune-Soleil.fr (boutique e-commerce), LivresStaka.fr
 
 ### Service 4: Intégration Intelligence Artificielle
 - Devis: sur mesure (autonome ou en complément d'un projet)
@@ -147,6 +147,14 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 - Technologies: React.js, TypeScript, Node.js, MongoDB, Socket.io, Express
 - Points forts: synchronisation temps réel via WebSockets, interface intuitive, modèle freemium accessible
 
+### Lune-Soleil.fr (Artix, Béarn)
+- Type: Boutique e-commerce sur mesure
+- URL: https://lune-soleil.fr
+- Statut: en production depuis 2026, première commande expédiée fin octobre 2026
+- Client: une créatrice de bijoux faits main (principalement des boucles d'oreilles) qui vend en ligne et sur les marchés locaux
+- Réalisé: catalogue de pièces uniques, paiement par carte via Stripe, stock partagé entre le site et les marchés, factures et avoirs en PDF, livraison Mondial Relay (Point Relais, Locker ou domicile), espace client, back-office utilisable depuis un smartphone
+- Technologies: Next.js, React, TypeScript, PostgreSQL, Prisma, Stripe, Docker
+
 ### Projet phare: LivresStaka.fr (Staka Livres)
 - Type: Plateforme e-commerce
 - URL: https://livresstaka.fr
@@ -179,6 +187,27 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 - Public: étudiants infirmiers en cours de Travail de Fin d'Études (TFE) cherchant un accompagnement méthodologique
 - Réalisé: présentation claire de l'accompagnement proposé, parcours de contact dédié
 - Technologies: React, design moderne, optimisation conversion
+
+### CoachDEC
+- Type: Site vitrine pour un service d'accompagnement méthodologique au mémoire du DEC (diplôme d'expertise comptable)
+- URL: https://coachdec.fr
+- Public: experts-comptables stagiaires qui préparent leur mémoire de DEC
+- Réalisé: quiz d'orientation, présentation des formules, page charte d'intégrité, formulaire de contact en PHP protégé contre le spam, données structurées et balises qui présentent l'offre comme un accompagnement méthodologique (le candidat rédige lui-même son mémoire)
+- Technologies: PHP, HTML, CSS, données structurées schema.org
+
+### Doctorat.me
+- Type: Landing page pour un service d'accompagnement doctoral éthique
+- URL: https://doctorat.me
+- Public: doctorants (PhD, DBA) de toutes disciplines
+- Réalisé: présentation de la méthode et des formules, formulaire de demande de rappel, contact WhatsApp, menu mobile, charte d'intégrité et mentions légales, contenus et données structurées reformulés pour présenter un accompagnement méthodologique (le doctorant reste l'auteur de sa thèse)
+- Technologies: HTML, CSS, JavaScript, données structurées schema.org
+
+### MasterMentor
+- Type: Site vitrine pour un service d'accompagnement méthodologique au mémoire de Master 2
+- URL: https://mastermentor.fr
+- Public: étudiants en Master 2 qui préparent leur mémoire
+- Réalisé: présentation des disciplines, de l'équipe et de la méthode, quiz, page tarifs, formulaire de diagnostic gratuit sécurisé, charte d'intégrité académique, mentions légales et CGU, adresses sans extension (/tarifs, /cgu)
+- Technologies: PHP, HTML, CSS, JavaScript
 
 ### Garage Parrot
 - Type: Site complet avec administration

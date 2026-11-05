@@ -22,7 +22,7 @@ Développeur web full-stack freelance basé à Pau et Artix (64), et fondateur d
 1. **Sites vitrines et sites multi-pages** pour présenter une activité, générer des demandes de devis ou des appels.
 2. **Refontes de sites existants**, avec reprise ou non de l'existant selon l'état du site.
 3. **Applications web et SaaS sur mesure** : outils métier, dashboards, espaces client, plateformes multi-utilisateurs.
-4. **E-commerce** : boutiques en ligne avec paiement intégré (Stripe), gestion de catalogue et de stock.
+4. **E-commerce** : boutiques en ligne avec paiement intégré (Stripe), gestion de catalogue et de stock. Exemple en production : Lune-Soleil (lune-soleil.fr), détaillé plus bas.
 5. **Chatbots IA sur mesure**, comme celui-ci : configurés avec les informations réelles de l'activité du client, pas un widget générique.
 6. **Référencement Google et pour les IA génératives (GEO)** : être trouvé aussi bien dans une recherche Google classique que dans une réponse de ChatGPT ou d'un autre assistant.
 7. **Production vidéo et prises de vue drone** (télépilote certifié DGAC) : vidéos promotionnelles, immobilier, présentation de locaux ou de réalisations.
@@ -72,11 +72,14 @@ Christophe travaille les deux volets : SEO Google classique (métadonnées, stru
 ### SmartPlanning (smartplanning.fr)
 SaaS de gestion de plannings d'équipe, conçu, développé et exploité seul par Christophe, lancé en 2026 (modèle freemium). Multi-entreprises, multi-utilisateurs, synchronisation en temps réel, gestion des équipes et des permissions. Sert de preuve qu'il sait porter un produit numérique de bout en bout, pas seulement livrer un site.
 
+### Lune-Soleil (lune-soleil.fr)
+Boutique en ligne sur mesure pour une créatrice de bijoux faits main à Artix, en production depuis 2026. Paiement par carte, stock partagé entre le site et les marchés où elle vend aussi, factures, livraison Mondial Relay, espace client, et un back-office qu'elle utilise depuis son téléphone, y compris sur un stand de marché. C'est l'exemple à citer quand un artisan ou un commerçant demande une boutique en ligne ou veut vendre à la fois en ligne et en direct.
+
 ### LivresStaka (livrestaka.fr)
 Plateforme e-commerce de livres d'occasion avec paiement en ligne (Stripe), gestion multi-vendeurs et suivi des stocks.
 
-### Sites vitrines et pages locales
-Plusieurs sites vitrines livrés pour des TPE/PME du 64, avec un soin particulier sur le référencement local et la performance.
+### Sites vitrines
+Plusieurs sites vitrines livrés, avec un soin particulier sur le référencement et la performance. Ceux visibles sur le portfolio : Cabinet Infirmier Graslin (cabinet infirmier à Nantes), Poulp Fiction (centre de plongée à Saint-Cyprien), Methodea (refonte d'un site vitrine), CoachTFE (accompagnement méthodologique des étudiants infirmiers pour leur TFE), CoachDEC (accompagnement méthodologique au mémoire du diplôme d'expertise comptable), Doctorat.me (accompagnement doctoral par des docteurs), MasterMentor (accompagnement méthodologique au mémoire de Master 2) et Garage Parrot (garage automobile avec rendez-vous en ligne et catalogue de véhicules d'occasion). Pour CoachDEC, Doctorat.me et MasterMentor, parler toujours d'accompagnement méthodologique : ces services ne rédigent pas à la place de l'étudiant.
 
 ## Disponibilité
 
@@ -182,4 +185,4 @@ Premier échange gratuit et sans engagement, devis détaillé sous 24h.
 Développeur web full-stack freelance
 Pau / Artix (64), Pyrénées-Atlantiques
 
-*Dernière mise à jour : 11 septembre 2026*
+*Dernière mise à jour : 5 novembre 2026*

@@ -282,7 +282,7 @@ const AIChatbot = () => {
       {
         type: "link",
         title: "Voir mes réalisations",
-        description: "7 projets clients sur le portfolio.",
+        description: "11 projets sur le portfolio.",
         url: "#portfolio",
         tags: ["Portfolio"],
       },

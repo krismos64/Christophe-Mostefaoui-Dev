@@ -17,11 +17,15 @@ declare -a JOBS=(
   # Smartplanning showcase + Portfolio carte fondateur — logo affiché ~600px max
   "public/assets/images/logosp.png|320,640,960|80|32"
   # Vignettes Portfolio (768x432 max affichage en card)
+  "public/assets/images/lune-soleil.png|400,800|78|30"
   "public/assets/images/livrestaka.jpg|400,800|78|30"
   "public/assets/images/graslin.jpg|400,800|78|30"
   "public/assets/images/poulpfiction.jpg|400,800|78|30"
   "public/assets/images/methodea.png|400,800|78|30"
   "public/assets/images/coachtfe.png|400,800|78|30"
+  "public/assets/images/coachdec.png|400,800|78|30"
+  "public/assets/images/doctorat.png|400,800|78|30"
+  "public/assets/images/mastermentor.png|400,800|78|30"
   "public/assets/images/garage.jpg|400,800|78|30"
   # Miniatures vidéo YouTube embed (max 800x450)
   "public/assets/images/miniature.png|400,800|78|30"

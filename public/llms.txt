@@ -2,7 +2,7 @@
 
 > Développeur web full-stack freelance basé à Pau et Artix (Pyrénées-Atlantiques, France), fondateur du SaaS SmartPlanning.fr. Services : sites vitrines, applications web et SaaS sur mesure, intégration IA (chatbots GPT, Claude, Mistral, RAG), production vidéo et drone. Devis sur mesure gratuit sous 24h (aucune grille tarifaire publique). Déplacement gratuit dans tout le 64, disponible partout en France à distance. Contact : christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45.
 
-Dernière mise à jour : 30 septembre 2026.
+Dernière mise à jour : 5 novembre 2026.
 
 ## Identité
 
@@ -49,11 +49,16 @@ Dernière mise à jour : 30 septembre 2026.
 ## Projets et réalisations
 
 - [SmartPlanning](https://smartplanning.fr): SaaS freemium de gestion de plannings d'équipe avec IA, fondé et développé seul par Christophe (lancé en 2026) — projet phare
+- [Lune-Soleil](https://lune-soleil.fr): boutique en ligne sur mesure pour une créatrice de bijoux faits main à Artix (Béarn), en production depuis 2026 : paiement par carte, stock partagé entre le site et les marchés, factures, livraison Mondial Relay, back-office mobile
 - [LivresStaka](https://livrestaka.fr): plateforme d'édition et correction de manuscrits, espace client, paiement Stripe
 - Cabinet Infirmier Graslin : site vitrine avec SEO local optimisé
 - Poulp Fiction : site immersif pour centre de plongée
 - Methodea : refonte de site vitrine professionnel
 - CoachTFE : site vitrine pour une équipe de soignants et enseignants spécialisés en méthodologie de recherche infirmière (accompagnement TFE)
+- [CoachDEC](https://coachdec.fr): site vitrine pour un service d'accompagnement méthodologique au mémoire du DEC (diplôme d'expertise comptable), avec quiz d'orientation et formulaire de contact protégé contre le spam
+- [Doctorat.me](https://doctorat.me): landing page pour un service d'accompagnement doctoral éthique assuré par des docteurs (méthodologie, relecture avec recommandations, aide au traitement des données), avec formulaire de rappel et charte d'intégrité
+- [MasterMentor](https://mastermentor.fr): site vitrine pour un service d'accompagnement méthodologique au mémoire de Master 2 par des enseignants-chercheurs, avec quiz, page tarifs et formulaire de diagnostic sécurisé
+- Garage Parrot : site complet pour un garage automobile, rendez-vous en ligne, catalogue de véhicules d'occasion et espace d'administration
 
 ## Avis clients
 
