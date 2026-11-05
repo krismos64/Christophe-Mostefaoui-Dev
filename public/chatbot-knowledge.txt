@@ -73,13 +73,15 @@ Christophe travaille les deux volets : SEO Google classique (métadonnées, stru
 SaaS de gestion de plannings d'équipe, conçu, développé et exploité seul par Christophe, lancé en 2026 (modèle freemium). Multi-entreprises, multi-utilisateurs, synchronisation en temps réel, gestion des équipes et des permissions. Sert de preuve qu'il sait porter un produit numérique de bout en bout, pas seulement livrer un site.
 
 ### Lune-Soleil (lune-soleil.fr)
-Boutique en ligne sur mesure pour une créatrice de bijoux faits main à Artix, en production depuis 2026. Paiement par carte, stock partagé entre le site et les marchés où elle vend aussi, factures, livraison Mondial Relay, espace client, et un back-office qu'elle utilise depuis son téléphone, y compris sur un stand de marché. C'est l'exemple à citer quand un artisan ou un commerçant demande une boutique en ligne ou veut vendre à la fois en ligne et en direct.
+Boutique en ligne sur mesure pour une créatrice de bijoux faits main à Artix, en production depuis 2026. Paiement par carte, stock partagé entre le site et les marchés où elle vend aussi, factures, livraison Mondial Relay, espace client, et un back-office qu'elle utilise depuis son téléphone, y compris sur un stand de marché. C'est l'exemple à citer quand un artisan ou un commerçant demande une boutique en ligne ou veut vendre à la fois en ligne et en direct : toujours le nommer « Lune-Soleil » et donner son adresse https://lune-soleil.fr pour que le visiteur aille voir. Le back-office sur téléphone sert à la créatrice pour gérer sa boutique ; ses acheteurs ont, eux, un espace client (commandes, factures, adresses).
 
 ### LivresStaka (livrestaka.fr)
 Plateforme e-commerce de livres d'occasion avec paiement en ligne (Stripe), gestion multi-vendeurs et suivi des stocks.
 
 ### Sites vitrines
 Plusieurs sites vitrines livrés, avec un soin particulier sur le référencement et la performance. Ceux visibles sur le portfolio : Cabinet Infirmier Graslin (cabinet infirmier à Nantes), Poulp Fiction (centre de plongée à Saint-Cyprien), Methodea (refonte d'un site vitrine), CoachTFE (accompagnement méthodologique des étudiants infirmiers pour leur TFE), CoachDEC (accompagnement méthodologique au mémoire du diplôme d'expertise comptable), Doctorat.me (accompagnement doctoral par des docteurs), MasterMentor (accompagnement méthodologique au mémoire de Master 2) et Garage Parrot (garage automobile avec rendez-vous en ligne et catalogue de véhicules d'occasion). Pour CoachDEC, Doctorat.me et MasterMentor, parler toujours d'accompagnement méthodologique : ces services ne rédigent pas à la place de l'étudiant.
+
+Quand un visiteur demande un de ces sites : donner son nom et son adresse (cabinet-infirmier-graslin.fr, poulpfiction.netlify.app, methodea.netlify.app, coachtfe.fr, coachdec.fr, doctorat.me, mastermentor.fr, garage-parrot.online), répéter uniquement la description ci-dessus et l'inviter à visiter le site. Ne rien ajouter sur le fonctionnement de ces services, que Christophe n'assure pas lui-même. Aucun article du blog ne parle de ces sites : ne jamais renvoyer vers un article à leur sujet.
 
 ## Disponibilité
 
