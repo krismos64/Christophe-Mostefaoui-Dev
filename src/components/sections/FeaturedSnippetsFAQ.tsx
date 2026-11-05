@@ -1,8 +1,8 @@
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import LienContact from "../common/LienContact";
 import { ArrowUpRight, Mail, Minus, Plus } from "lucide-react";
-import { Fragment, useRef, useState } from "react";
-import { featuredSnippetsContent } from "../../utils/featured-snippets-content";
+import { Fragment, useRef } from "react";
+import { faq } from "../../data/faq";
 
 /**
  * Découpe la réponse en ajoutant des sauts de ligne avant les puces (•)
@@ -28,19 +28,8 @@ const renderAnswer = (answer: string) => {
 };
 
 const FeaturedSnippetsFAQ = () => {
-  const [openItems, setOpenItems] = useState<number[]>([0]);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
-
-  const toggleItem = (index: number) => {
-    setOpenItems((prev) =>
-      prev.includes(index)
-        ? prev.filter((item) => item !== index)
-        : [...prev, index]
-    );
-  };
-
-  const { questions } = featuredSnippetsContent;
 
   const stagger = {
     hidden: {},
@@ -91,83 +80,41 @@ const FeaturedSnippetsFAQ = () => {
           animate={isInView ? "visible" : "hidden"}
           className="border-b border-foret/15"
         >
-          {questions.map((q, index) => {
-            const isOpen = openItems.includes(index);
+          {faq.map((q, index) => {
             const number = String(index + 1).padStart(2, "0");
             return (
               <motion.li
-                key={index}
+                key={q.question}
                 variants={item}
                 className="group border-t border-foret/15 transition-colors duration-300 hover:border-soleil/70"
-                itemScope
-                itemProp="mainEntity"
-                itemType="https://schema.org/Question"
               >
-                <button
-                  type="button"
-                  onClick={() => toggleItem(index)}
-                  aria-expanded={isOpen}
-                  aria-controls={`faq-answer-${index}`}
-                  className="w-full py-5 sm:py-6 flex items-start gap-4 sm:gap-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil focus-visible:ring-offset-2"
-                >
-                  <span
-                    className="font-mono tabular-nums text-[13px] sm:text-[14px] tracking-wider text-foret/70 group-hover:text-foret-moyen transition-colors w-10 flex-shrink-0 pt-1.5"
-                    aria-hidden="true"
-                  >
-                    {number}
-                  </span>
-                  <h3
-                    className="flex-1 text-[19px] sm:text-[22px] md:text-[24px] leading-tight text-foret pr-2"
-                    itemProp="name"
-                  >
-                    {q.query}
-                  </h3>
-                  <span
-                    className="flex-shrink-0 mt-1.5 text-foret/70 group-hover:text-foret-moyen transition-colors"
-                    aria-hidden="true"
-                  >
-                    {isOpen ? (
-                      <Minus className="h-5 w-5" strokeWidth={1.75} />
-                    ) : (
-                      <Plus className="h-5 w-5" strokeWidth={1.75} />
-                    )}
-                  </span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      id={`faq-answer-${index}`}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{
-                        duration: 0.35,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                      className="overflow-hidden"
-                      itemScope
-                      itemProp="acceptedAnswer"
-                      itemType="https://schema.org/Answer"
-                    >
-                      <div className="pb-6 sm:pb-7 pl-[3.5rem] sm:pl-[4rem] pr-2">
-                        <div
-                          className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-foret/80 max-w-3xl"
-                          itemProp="text"
-                        >
-                          {renderAnswer(q.answer)}
-                        </div>
-
-                        {/* Mots-clés SEO masqués visuellement, conservés pour Google */}
-                        <ul className="sr-only" aria-hidden="true">
-                          {q.keywords.map((kw, ki) => (
-                            <li key={ki}>{kw}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* <details> natif : les réponses fermées restent dans le HTML,
+                    donc lisibles par Google et les IA sans JavaScript */}
+                <details className="faq-item group/faq" open={index === 0}>
+                  <summary className="cursor-pointer list-none py-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil focus-visible:ring-offset-2 sm:py-6 [&::-webkit-details-marker]:hidden">
+                    <h3 className="flex items-start gap-4 text-left text-[19px] leading-tight text-foret sm:gap-6 sm:text-[22px] md:text-[24px]">
+                      <span
+                        className="w-10 flex-shrink-0 pt-1.5 font-mono text-[13px] tabular-nums tracking-wider text-foret/70 transition-colors group-hover:text-foret-moyen sm:text-[14px]"
+                        aria-hidden="true"
+                      >
+                        {number}
+                      </span>
+                      <span className="flex-1 pr-2">{q.question}</span>
+                      <span
+                        className="mt-1.5 flex-shrink-0 text-foret/70 transition-colors group-hover:text-foret-moyen"
+                        aria-hidden="true"
+                      >
+                        <Plus className="h-5 w-5 group-open/faq:hidden" strokeWidth={1.75} />
+                        <Minus className="hidden h-5 w-5 group-open/faq:block" strokeWidth={1.75} />
+                      </span>
+                    </h3>
+                  </summary>
+                  <div className="faq-reponse pb-6 pl-[3.5rem] pr-2 sm:pb-7 sm:pl-[4rem]">
+                    <div className="hero-body max-w-3xl text-[15px] leading-[1.7] text-foret/80 sm:text-[16px]">
+                      {renderAnswer(q.reponse)}
+                    </div>
+                  </div>
+                </details>
               </motion.li>
             );
           })}

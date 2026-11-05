@@ -176,15 +176,11 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
             className="mb-12 sm:mb-16 max-w-4xl"
           >
             <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
-              Contact
+              Faisons connaissance
             </p>
             <h2 className="hero-display text-foret">
-              Parlons de votre projet.
+              Voyez qui vous répondra, puis écrivez-moi.
             </h2>
-            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
-              Premier échange gratuit, sans engagement. Je réponds personnellement
-              à chaque message, sous 24h en jours ouvrés.
-            </p>
           </motion.div>
 
           {/* Vidéo de présentation */}
@@ -364,10 +360,15 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7"
+              className="relative isolate overflow-hidden rounded-[28px] bg-foret p-6 text-creme shadow-[0_40px_80px_-40px_rgba(18,49,43,0.55)] sm:p-10 lg:col-span-7"
             >
-              <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-6">
-                ↳ par message
+              <DecorCarte />
+              <h3 className="pr-14 sm:pr-20 text-[26px] font-extrabold leading-tight tracking-[-0.02em] text-creme sm:text-[30px]">
+                Votre demande de devis
+              </h3>
+              <p className="mt-2 mb-8 pr-10 sm:pr-20 text-[15px] text-foret-brume">
+                Gratuit, sans engagement. Je vous réponds sous 24h en jours ouvrés.
+                <span className="mt-1 block text-[13px]">Les champs marqués <span className="text-soleil">*</span> sont obligatoires.</span>
               </p>
 
               {isSubmitted ? (
@@ -375,18 +376,16 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="border-l-2 border-soleil pl-6 py-6"
+                  className="border-l-2 border-soleil py-6 pl-6"
                 >
                   <CheckCircle2
                     className="h-8 w-8 text-soleil mb-4"
                     strokeWidth={1.5}
                   />
-                  <h3
-                    className="text-[26px] sm:text-[30px] leading-tight text-foret mb-3"
-                  >
+                  <p className="mb-3 text-[24px] font-extrabold leading-tight text-creme sm:text-[28px]">
                     Message envoyé.
-                  </h3>
-                  <p className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-foret/75 mb-6 max-w-md">
+                  </p>
+                  <p className="hero-body mb-6 max-w-md text-[15px] leading-[1.7] text-creme/85 sm:text-[16px]">
                     Merci pour votre message. Je vous réponds personnellement
                     sous 24h en jours ouvrés.
                   </p>
@@ -396,7 +395,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       setIsSubmitted(false);
                       setStatus("");
                     }}
-                    className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/80 hover:text-soleil transition-colors"
+                    className="hero-body group inline-flex items-center gap-2 text-[14px] text-creme/85 hover:text-soleil transition-colors"
                   >
                     <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                       envoyer un autre message
@@ -411,22 +410,24 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <FieldInput
+                      label="Nom"
                       name="name"
                       type="text"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Votre nom"
+                      placeholder="Marie Dupont"
                       icon={User}
                       autoComplete="name"
                       autoCapitalize="words"
                       required
                     />
                     <FieldInput
+                      label="E-mail"
                       name="email"
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Votre email"
+                      placeholder="marie@exemple.fr"
                       icon={Mail}
                       autoComplete="email"
                       autoCapitalize="off"
@@ -438,21 +439,23 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <FieldInput
+                      label="Téléphone"
                       name="phone"
                       type="tel"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="Téléphone (optionnel)"
+                      placeholder="Facultatif"
                       icon={Phone}
                       autoComplete="tel"
                       inputMode="tel"
                     />
                     <FieldInput
+                      label="Ville"
                       name="city"
                       type="text"
                       value={formData.city}
                       onChange={handleChange}
-                      placeholder="Votre ville"
+                      placeholder="Pau, Orthez, Bayonne…"
                       icon={MapPin}
                       autoComplete="address-level2"
                       autoCapitalize="words"
@@ -460,13 +463,13 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                   </div>
 
                   <FieldSelect
+                    label="Type de projet"
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleChange}
                     required
-                    aria-label="Type de projet"
                   >
-                    <option value="">Type de projet…</option>
+                    <option value="">Choisissez…</option>
                     <option value="Site Vitrine Moderne">
                       I. Site vitrine moderne
                     </option>
@@ -489,10 +492,11 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                   </FieldSelect>
 
                   <FieldTextarea
+                    label="Votre projet"
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
-                    placeholder="Décrivez votre projet : besoins, objectifs, contexte, délais, budget approximatif…"
+                    placeholder="Votre activité, ce que vous attendez du site, vos délais…"
                     icon={MessageSquare}
                     rows={5}
                   />
@@ -527,8 +531,8 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       animate={{ opacity: 1, y: 0 }}
                       className={`hero-body text-[14px] py-2.5 px-4 border-l-2 ${
                         status.includes("succès")
-                          ? "border-soleil text-foret"
-                          : "border-[#C9342D] text-[#C9342D]"
+                          ? "border-soleil text-creme"
+                          : "border-[#FFB4A8] text-[#FFB4A8]"
                       }`}
                       role="status"
                       aria-live="polite"
@@ -565,62 +569,95 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
 /* Sous-composants champs                                                      */
 /* -------------------------------------------------------------------------- */
 
-interface FieldInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-}
+type IconeChamp = React.ComponentType<{ className?: string; strokeWidth?: number }>;
 
-const FieldInput = ({ icon: Icon, ...props }: FieldInputProps) => (
-  <div className="relative">
-    <Icon
-      className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-4 text-foret/70 pointer-events-none"
-      strokeWidth={1.5}
-    />
-    <input
-      {...props}
-      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-foret/25 text-foret placeholder:text-foret/70 text-[16px] focus:outline-none focus:border-soleil transition-colors"
-    />
-  </div>
+const champ =
+  "hero-body w-full rounded-xl border border-transparent bg-creme py-3 text-[16px] text-foret placeholder:text-foret/55 shadow-[inset_0_1px_2px_rgba(18,49,43,0.12)] transition focus:border-soleil focus:outline-none focus:ring-2 focus:ring-soleil";
+
+const Libelle = ({ htmlFor, children, requis }: { htmlFor: string; children: string; requis?: boolean }) => (
+  <label htmlFor={htmlFor} className="mb-1.5 block text-[14px] font-semibold text-creme">
+    {children}
+    {requis && <span className="text-soleil" aria-hidden="true"> *</span>}
+  </label>
 );
 
-interface FieldSelectProps
-  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+interface FieldInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  icon: IconeChamp;
+  label: string;
+}
+
+const FieldInput = ({ icon: Icon, label, ...props }: FieldInputProps) => {
+  const id = `contact-${props.name}`;
+  return (
+    <div>
+      <Libelle htmlFor={id} requis={props.required}>{label}</Libelle>
+      <div className="relative">
+        <Icon
+          className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foret-moyen"
+          strokeWidth={1.75}
+        />
+        <input {...props} id={id} className={`${champ} pl-11 pr-4`} />
+      </div>
+    </div>
+  );
+};
+
+interface FieldSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   children: React.ReactNode;
+  label: string;
 }
 
-const FieldSelect = ({ children, ...props }: FieldSelectProps) => (
-  <div className="relative">
-    <select
-      {...props}
-      className="hero-body w-full pl-0 pr-2 py-2.5 bg-transparent border-b border-foret/25 text-foret text-[16px] focus:outline-none focus:border-soleil transition-colors appearance-none cursor-pointer"
-    >
-      {children}
-    </select>
-    <span
-      className="absolute right-2 top-1/2 -translate-y-1/2 text-foret/70 pointer-events-none"
-      aria-hidden="true"
-    >
-      ▾
-    </span>
-  </div>
-);
+const FieldSelect = ({ children, label, ...props }: FieldSelectProps) => {
+  const id = `contact-${props.name}`;
+  return (
+    <div>
+      <Libelle htmlFor={id} requis={props.required}>{label}</Libelle>
+      <div className="relative">
+        <select {...props} id={id} className={`${champ} cursor-pointer appearance-none pl-4 pr-10`}>
+          {children}
+        </select>
+        <span
+          className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-foret-moyen"
+          aria-hidden="true"
+        >
+          ▾
+        </span>
+      </div>
+    </div>
+  );
+};
 
-interface FieldTextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+interface FieldTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  icon: IconeChamp;
+  label: string;
 }
 
-const FieldTextarea = ({ icon: Icon, ...props }: FieldTextareaProps) => (
-  <div className="relative">
-    <Icon
-      className="absolute left-0 top-3 h-4 w-4 text-foret/70 pointer-events-none"
-      strokeWidth={1.5}
-    />
-    <textarea
-      {...props}
-      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-foret/25 text-foret placeholder:text-foret/70 text-[16px] focus:outline-none focus:border-soleil transition-colors resize-none leading-[1.6]"
-    />
-  </div>
+const FieldTextarea = ({ icon: Icon, label, ...props }: FieldTextareaProps) => {
+  const id = `contact-${props.name}`;
+  return (
+    <div>
+      <Libelle htmlFor={id} requis={props.required}>{label}</Libelle>
+      <div className="relative">
+        <Icon
+          className="pointer-events-none absolute left-4 top-4 h-4 w-4 text-foret-moyen"
+          strokeWidth={1.75}
+        />
+        <textarea {...props} id={id} className={`${champ} resize-none pl-11 pr-4 leading-[1.6]`} />
+      </div>
+    </div>
+  );
+};
+
+/** Décor de la carte : soleil et crête, dans l'esprit du hero. */
+const DecorCarte = () => (
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 200 200"
+    className="pointer-events-none absolute right-0 top-0 -z-10 h-40 w-40 sm:h-56 sm:w-56"
+  >
+    <circle cx="200" cy="0" r="150" fill="#24594C" opacity="0.55" />
+    <circle cx="200" cy="0" r="58" fill="#F2A25C" opacity="0.9" />
+  </svg>
 );
 
 export default GMBOptimizedContact;

@@ -37,7 +37,7 @@ npm run preview    # Preview build
 - `src/App.tsx` — routing principal, Home + pages lazy-loaded. Porte aussi deux
   éléments d'accessibilité à NE PAS retirer : le lien d'évitement et
   `MotionConfig` (voir la section Accessibilité plus bas)
-- Pages intérieures (refonte du 05/11/2026) : `/services`, `/realisations`, `/a-propos`, `/contact` dans `src/pages/`, chacune avec `PageSeo` (titre, canonical, WebPage + BreadcrumbList) et `PageHero` (bandeau vert, h1 unique). La home ne garde que des aperçus qui y renvoient ; les ancres `#services`, `#portfolio`, `#about`, `#faq`, `#contact` restent sur la home. Les boutons de devis passent par `LienContact` (vrai lien `/contact`, défilement si le formulaire est sur la page)
+- Pages intérieures (refonte du 05/11/2026) : `/services`, `/realisations`, `/a-propos`, `/contact` dans `src/pages/`, chacune avec `PageSeo` (titre, canonical, WebPage + BreadcrumbList) et `PageHero` (bandeau vert, h1 unique). La home ne garde que des aperçus qui y renvoient ; les ancres `#services`, `#portfolio`, `#about`, `#faq` restent sur la home. Le formulaire de contact vit seulement sur `/contact` depuis le 05/11/2026 (lien dans la navbar), avec le schéma VideoObject de la vidéo de présentation ; un ancien lien `/#contact` est renvoyé vers `/contact` par la home. Les boutons de devis passent par `LienContact` (vrai lien `/contact`, défilement si le formulaire est sur la page)
 - `scripts/prerender.mjs` — pré-rendu statique au build : chaque route du
   sitemap (+ EXTRA_ROUTES) devient un .html complet dans dist/, lisible par les
   crawlers sans JS (GPTBot, ClaudeBot…). Les fichiers sont PLATS (blog.html,

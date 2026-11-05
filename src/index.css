@@ -340,7 +340,10 @@ blockquote .hero-handwritten {
 .hero-bloc { position: relative; border-radius: 8px; }
 .hero-trace,
 .hero-rempli,
-.hero-balise { animation-duration: 9s; animation-iteration-count: infinite; animation-fill-mode: both; animation-timing-function: ease; }
+.hero-balise,
+.hero-pose,
+.hero-aiguille,
+.hero-onde { animation-duration: 9s; animation-iteration-count: infinite; animation-fill-mode: both; animation-timing-function: ease; animation-delay: var(--delai, 0s); }
 .hero-trace {
   position: absolute; inset: 0; border-radius: inherit;
   border: 1.5px dashed #7fa596;
@@ -357,6 +360,14 @@ blockquote .hero-handwritten {
 @keyframes hero-rempli { 0%, 30% { opacity: 0; transform: scale(0.97); } 40% { opacity: 1; transform: none; } 88% { opacity: 1; } 96%, 100% { opacity: 0; } }
 @keyframes hero-balise { 0% { opacity: 0; } 6% { opacity: 1; } 35% { opacity: 1; } 42%, 100% { opacity: 0; } }
 
+/* Illustrations des blocs : elles bougent juste après le remplissage (40 %) */
+.hero-pose { animation-name: hero-pose; }
+.hero-aiguille { animation-name: hero-aiguille; transform-box: view-box; transform-origin: 16px 16px; }
+.hero-onde { animation-name: hero-onde; }
+@keyframes hero-pose { 0%, 38% { transform: translateY(-9px); } 50%, 100% { transform: none; } }
+@keyframes hero-aiguille { 0%, 38% { transform: rotate(-200deg); } 58%, 100% { transform: none; } }
+@keyframes hero-onde { 0%, 46% { opacity: 0; } 54%, 100% { opacity: 1; } }
+
 /* Animations réduites : site fini affiché, sans pointillés ni balises.
    Placé ici parce que la règle globale de fin de fichier ramènerait la
    boucle à son état final (blocs vides). */
@@ -364,7 +375,44 @@ blockquote .hero-handwritten {
   .hero-trace,
   .hero-balise { animation: none !important; opacity: 0; }
   .hero-rempli { animation: none !important; opacity: 1; }
+  .hero-pose,
+  .hero-aiguille { animation: none !important; transform: none; }
+  .hero-onde { animation: none !important; opacity: 1; }
   .hero-parallaxe { transform: none !important; }
+}
+
+/* FAQ en <details> : la réponse glisse à l'ouverture */
+.faq-item[open] .faq-reponse { animation: faq-ouvre 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes faq-ouvre { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* Bureau animé (aperçu À propos de la home) */
+.bureau [class*="bureau-"] { transform-box: fill-box; }
+.bureau[data-pause] [class*="bureau-"] { animation-play-state: paused; }
+.bureau-soleil { animation: bureau-flotte 8s ease-in-out infinite alternate; }
+.bureau-nuage { animation: bureau-derive 18s ease-in-out infinite alternate; }
+.bureau-nuage-2 { animation-duration: 24s; animation-direction: alternate-reverse; }
+.bureau-oiseaux { animation: bureau-vol 16s linear infinite; }
+.bureau-lueur { animation: bureau-lueur 5s ease-in-out infinite; }
+.bureau-fumee { transform-origin: center; animation: bureau-fumee 4.5s ease-out infinite; animation-delay: calc(var(--i) * 1.5s); }
+.bureau-panneau { transform-origin: 50% 0; animation: bureau-balance 6s ease-in-out infinite alternate; }
+.bureau-plante { transform-origin: 50% 100%; animation: bureau-balance 7s ease-in-out infinite alternate; }
+.bureau-ligne { transform-origin: 0 50%; animation: bureau-tape 8s ease-out infinite both; animation-delay: calc(var(--i) * 0.6s); }
+.bureau-curseur { animation: bureau-clignote 1s steps(1) infinite; }
+.bureau-vapeur { transform-origin: 50% 100%; animation: bureau-vapeur 3.5s ease-out infinite; animation-delay: calc(var(--i) * 1.2s); }
+@keyframes bureau-flotte { to { transform: translateY(-10px); } }
+@keyframes bureau-derive { from { transform: translateX(-24px); } to { transform: translateX(30px); } }
+@keyframes bureau-vol { from { transform: translate(-200px, 20px); } 50% { transform: translate(60px, -6px); } to { transform: translate(340px, 10px); } }
+@keyframes bureau-lueur { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+@keyframes bureau-fumee { 0% { transform: translateY(0) scale(0.6); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translate(10px, -46px) scale(1.8); opacity: 0; } }
+@keyframes bureau-balance { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
+@keyframes bureau-tape { 0% { transform: scaleX(0); } 10%, 100% { transform: none; } 0%, 88% { opacity: 1; } 96%, 100% { opacity: 0; } }
+@keyframes bureau-clignote { 50% { opacity: 0; } }
+@keyframes bureau-vapeur { 0% { transform: translateY(6px); opacity: 0; } 30% { opacity: 0.9; } 100% { transform: translateY(-14px); opacity: 0; } }
+
+/* Animations réduites : scène fixe, tout visible (placé avant la règle
+   globale, qui sinon figerait les boucles sur leur dernière image) */
+@media (prefers-reduced-motion: reduce) {
+  .bureau [class*="bureau-"] { animation: none !important; }
 }
 
 /* ============================================

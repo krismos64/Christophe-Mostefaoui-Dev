@@ -214,12 +214,12 @@ src/
 ├── utils/
 │   ├── structured-data-final.tsx   # Schemas JSON-LD agrégés
 │   ├── seo-advanced.tsx            # Meta LLM optimisés
-│   ├── featured-snippets-content.tsx  # FAQ 1ère personne
 │   └── analytics.ts                # Helpers dataLayer (no-op : GTM retiré en 07/2026, site 100% cookieless)
 ├── hooks/
 │   ├── useStructuredData.ts
 │   └── useNavigation.ts
 ├── data/
+│   ├── faq.ts                      # FAQ de la home (affichage + schéma FAQPage)
 │   ├── blogPosts.ts                # Articles du blog (contenu éditorial PME/artisans)
 │   └── localPages.ts               # Contenu des 4 pages locales SEO
 ├── context/

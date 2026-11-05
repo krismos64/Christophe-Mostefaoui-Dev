@@ -104,15 +104,8 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-              <a
-                href="/#contact"
-                onClick={(e) => {
-                  const cible = document.getElementById("contact");
-                  if (cible) {
-                    e.preventDefault();
-                    cible.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+              <Link
+                to="/contact"
                 className="group inline-flex min-h-[54px] items-center gap-2.5 rounded-full bg-soleil px-7 text-base font-extrabold text-foret hover:-translate-y-0.5 hover:bg-soleil-clair focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-soleil"
                 data-testid="hero_cta_primary"
               >
@@ -121,7 +114,7 @@ export default function Hero() {
                   className="h-[18px] w-[18px] transition-transform group-hover:translate-x-1"
                   aria-hidden="true"
                 />
-              </a>
+              </Link>
               <Link
                 to="/realisations"
                 className="inline-flex min-h-[44px] items-center text-base font-medium text-creme underline decoration-creme/40 underline-offset-[6px] hover:text-soleil hover:decoration-soleil focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-soleil"
@@ -200,18 +193,57 @@ type BlocProps = {
 };
 
 function Bloc({ retard, balise, className = "", children, rempliClassName = "" }: BlocProps) {
-  const delai = { animationDelay: `${1.2 + retard * 0.35}s` };
+  // --delai est lu par toutes les animations du bloc (index.css), illustrations comprises
+  const delai = { "--delai": `${1.2 + retard * 0.35}s` } as CSSProperties;
   return (
-    <div className={`hero-bloc ${className}`}>
-      <span className="hero-trace" style={delai} />
-      {balise && (
-        <span className="hero-balise" style={delai}>
-          {balise}
-        </span>
-      )}
-      <div className={`hero-rempli ${rempliClassName}`} style={delai}>
+    <div className={`hero-bloc ${className}`} style={delai}>
+      <span className="hero-trace" />
+      {balise && <span className="hero-balise">{balise}</span>}
+      <div className={`hero-rempli ${rempliClassName}`}>{children}</div>
+    </div>
+  );
+}
+
+/** Petite devanture au pied des montagnes : le store descend quand le bloc se remplit. */
+function Devanture() {
+  const rayures = [0, 1, 2, 3, 4, 5];
+  return (
+    <svg viewBox="0 0 130 140" preserveAspectRatio="xMidYMax slice" className="h-full w-full">
+      <rect width="130" height="140" fill="#F7C08E" />
+      <circle cx="104" cy="28" r="11" fill="#F5F1E8" />
+      <path d="M0 84 L28 56 L48 72 L76 40 L102 64 L130 50 L130 140 L0 140 Z" fill="#3E7A68" />
+      <path d="M68 49 L76 40 L85 51 L79 48 L75 52 Z" fill="#E8EFEC" />
+      <rect x="16" y="66" width="98" height="74" fill="#F5F1E8" />
+      <rect x="16" y="66" width="98" height="11" fill="#12312B" />
+      <rect x="30" y="70" width="40" height="3" rx="1.5" fill="#F2A25C" />
+      <g className="hero-pose">
+        <rect x="12" y="77" width="106" height="10" fill="#F2A25C" />
+        {rayures.map((i) => (
+          <rect key={i} x={20.8 + i * 17.6} y="77" width="8.8" height="10" fill="#F5F1E8" />
+        ))}
+        {Array.from({ length: 12 }, (_, i) => (
+          <circle key={i} cx={16.4 + i * 8.8} cy="87" r="4.4" fill={i % 2 ? "#F5F1E8" : "#F2A25C"} />
+        ))}
+      </g>
+      <rect x="24" y="98" width="46" height="30" rx="2" fill="#C5D3CC" />
+      <rect x="31" y="113" width="9" height="15" rx="2" fill="#24594C" />
+      <circle cx="35.5" cy="110" r="5" fill="#3E7A68" />
+      <rect x="47" y="116" width="15" height="12" rx="2" fill="#F2A25C" />
+      <rect x="80" y="96" width="26" height="44" rx="1" fill="#24594C" />
+      <circle cx="100" cy="119" r="2" fill="#F2A25C" />
+      <rect x="0" y="136" width="130" height="4" fill="#0B2420" />
+    </svg>
+  );
+}
+
+/** Carte du faux site : un pictogramme animé et un libellé que tout client cherche. */
+function Carte({ titre, children }: { titre: string; children: ReactNode }) {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-1.5">
+      <svg viewBox="0 0 32 32" className="h-8 w-8" fill="none" strokeLinecap="round" strokeLinejoin="round">
         {children}
-      </div>
+      </svg>
+      <span className="text-[12px] font-bold text-foret">{titre}</span>
     </div>
   );
 }
@@ -257,19 +289,35 @@ function FenetreChantier() {
             retard={2}
             balise="<img>"
             className="h-[140px] flex-[0_0_36%]"
-            rempliClassName="bg-[linear-gradient(170deg,#F2A25C_0%,#F2A25C_35%,#3E7A68_36%,#24594C_70%,#12312B_100%)]"
-          />
+            rempliClassName="overflow-hidden"
+          >
+            <Devanture />
+          </Bloc>
         </div>
         <div className="flex gap-3.5">
-          {[3, 4, 5].map((r) => (
-            <Bloc
-              key={r}
-              retard={r}
-              balise={r === 3 ? "<article>" : undefined}
-              className="h-[88px] flex-1"
-              rempliClassName="bg-white shadow-[0_1px_3px_rgba(18,49,43,0.15)]"
-            />
-          ))}
+          <Bloc retard={3} balise="<article>" className="h-[88px] flex-1" rempliClassName="bg-white shadow-[0_1px_3px_rgba(18,49,43,0.15)]">
+            <Carte titre="Vos horaires">
+              <circle cx="16" cy="16" r="11" stroke="#24594C" strokeWidth="2.5" />
+              <path d="M16 16 V10" stroke="#12312B" strokeWidth="2.5" />
+              <path className="hero-aiguille" d="M16 16 H21" stroke="#F2A25C" strokeWidth="2.5" />
+            </Carte>
+          </Bloc>
+          <Bloc retard={4} className="h-[88px] flex-1" rempliClassName="bg-white shadow-[0_1px_3px_rgba(18,49,43,0.15)]">
+            <Carte titre="Nous trouver">
+              <path d="M4 27 L12 23 L20 27 L28 23" stroke="#C5D3CC" strokeWidth="2" />
+              <g className="hero-pose">
+                <path d="M16 23 C11 17 9 14 9 11 A7 7 0 0 1 23 11 C23 14 21 17 16 23 Z" fill="#F2A25C" />
+                <circle cx="16" cy="11" r="2.6" fill="#F5F1E8" />
+              </g>
+            </Carte>
+          </Bloc>
+          <Bloc retard={5} className="h-[88px] flex-1" rempliClassName="bg-white shadow-[0_1px_3px_rgba(18,49,43,0.15)]">
+            <Carte titre="Nous appeler">
+              <path d="M8 6 L12 6 L14 11 L11.5 13 A12 12 0 0 0 19 20.5 L21 18 L26 20 L26 24 A2 2 0 0 1 24 26 A18 18 0 0 1 6 8 A2 2 0 0 1 8 6 Z" fill="#24594C" />
+              <path className="hero-onde" d="M19 5 A8 8 0 0 1 27 13" stroke="#F2A25C" strokeWidth="2.2" />
+              <path className="hero-onde" d="M19 9.5 A3.5 3.5 0 0 1 22.5 13" stroke="#F2A25C" strokeWidth="2.2" />
+            </Carte>
+          </Bloc>
         </div>
       </div>
     </div>

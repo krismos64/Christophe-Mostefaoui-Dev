@@ -2,6 +2,7 @@ import { ArrowRight, Bot, Globe, Layers, RefreshCw, Search, Video } from "lucide
 import { Link } from "react-router-dom";
 import { projects } from "../../data/realisations";
 import OptimizedPicture from "../common/OptimizedPicture";
+import BureauAnime from "./BureauAnime";
 
 /*
  * Aperçus de la home : chaque bloc résume une page intérieure et y renvoie
@@ -129,16 +130,7 @@ export function ApercuAPropos() {
   return (
     <section id="about" aria-labelledby="apercu-apropos" className="bg-creme py-20 font-display text-foret sm:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-        <OptimizedPicture
-          src="/assets/images/montagne.png"
-          alt="Christophe Mostefaoui codant face aux Pyrénées, avec un refuge en pierre et la vallée en contrebas"
-          widths={[480, 768, 1200]}
-          sizes="(max-width: 768px) 100vw, 40vw"
-          width={1200}
-          height={1500}
-          loading="lazy"
-          className="aspect-[4/5] w-full rounded-2xl object-cover object-[60%_center] md:max-w-md"
-        />
+        <BureauAnime className="aspect-[4/5] w-full rounded-2xl md:max-w-md" />
         <div>
           <p className="mb-3 text-[13px] font-semibold uppercase tracking-[0.12em] text-foret-moyen">À propos</p>
           <h2 id="apercu-apropos" className="hero-display">

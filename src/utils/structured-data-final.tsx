@@ -1,3 +1,5 @@
+import { faq } from "../data/faq";
+
 // Schema structuré FINAL et OPTIMISÉ - Sans doublons, tous les champs requis
 // Dernière mise à jour : 10 juillet 2026
 //
@@ -8,29 +10,6 @@
 // schémas de PAGE : vidéos, WebPage, FAQ, SmartPlanning.
 export const generateFinalStructuredData = () => {
   const baseUrl = "https://christophe-dev-freelance.fr";
-
-  // VideoObject 1 — "Présentation" (intégrée dans la section Contact)
-  // Note : le @id reste #video-presentation-expert (identifiant technique stable,
-  // référencé par les schémas existants) même si le nom affiché a changé
-  const videoObject = {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "@id": `${baseUrl}/#video-presentation-expert`,
-    "name": "Présentation : Christophe Mostefaoui, développeur web freelance",
-    "description":
-      "Présentation détaillée de mon travail : React, Node.js, TypeScript et solutions sur mesure pour PME et indépendants.",
-    "thumbnailUrl": `${baseUrl}/assets/images/miniature-2.png`,
-    "uploadDate": "2024-12-01T10:00:00+01:00",
-    "duration": "PT1M40S",
-    "embedUrl": "https://www.youtube.com/embed/tdjXblz4mr4",
-    "contentUrl": "https://www.youtube.com/watch?v=tdjXblz4mr4",
-    "width": "1920",
-    "height": "1080",
-    "creator": {
-      "@type": "Person",
-      "name": "Christophe Mostefaoui",
-    },
-  };
 
   // WebPage avec mainEntity Person (pas VideoObject pour éviter la date vidéo dans les SERP)
   const webPage = {
@@ -57,59 +36,15 @@ export const generateFinalStructuredData = () => {
     "@type": "FAQPage",
     "@id": `${baseUrl}/#faq`,
     "url": baseUrl,
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Qui est Christophe Mostefaoui ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Christophe Mostefaoui est un développeur web freelance basé à Pau et Artix (64). Avec plus de 10 ans dans l'informatique (douze ans dans le conseil client puis le freelance), il maîtrise les technologies modernes : React.js, Node.js, TypeScript. Spécialiste en chatbots IA et fondateur du SaaS SmartPlanning.fr."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Comment obtenir un devis ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Chaque projet étant unique, les devis sont établis sur mesure après un échange (visio ou téléphone) pour comprendre vos besoins, vos objectifs et votre cible. Proposition détaillée envoyée sous 24h avec périmètre, technologies et planning. Paiement en 3x sans frais possible."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Dans quelles zones Christophe Mostefaoui intervient-il ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Déplacement gratuit dans tout le département des Pyrénées-Atlantiques (64) : Pau, Lescar, Billère, Jurançon, Artix, Bayonne, Biarritz, Anglet, Saint-Jean-de-Luz, Orthez, Oloron-Sainte-Marie, Mourenx. Disponible partout en France à distance."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quelles sont les technologies maîtrisées ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "React.js 18, Node.js, Express, TypeScript, Vite, MongoDB, MySQL, Prisma ORM, Stripe, Docker, Git, API REST, Tailwind CSS, Framer Motion, GPT, Claude, Mistral AI. Production vidéo avec Final Cut Pro X et drone DJI Mavic Air."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Comment contacter Christophe Mostefaoui ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Email : christophe.mostefaoui.dev@gmail.com | Téléphone : 06 79 08 88 45 | Site commercial : christophe-dev-freelance.fr | Portfolio technique (CV, stack, projets perso, veille) : krismos.fr | LinkedIn : linkedin.com/in/christophemostefaoui | GitHub : github.com/krismos64. Devis gratuit sous 24h."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quels types de projets Christophe Mostefaoui réalise-t-il ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sites vitrines modernes, applications web sur mesure, solutions intégrant l'intelligence artificielle (chatbots interactifs), production vidéo professionnelle et prises de vue drone pour entreprises et immobilier."
-        }
-      }
-    ]
+    // Généré depuis src/data/faq.ts : mêmes questions et réponses que l'écran
+    "mainEntity": faq.map((q) => ({
+      "@type": "Question",
+      "name": q.question,
+      "acceptedAnswer": { "@type": "Answer", "text": q.reponse },
+    })),
   };
 
-  return [videoObject, webPage, faqSchema];
+  return [webPage, faqSchema];
 };
 
 // Schéma affiché sur une page intérieure (via PageSeo, dans son @graph)
@@ -184,4 +119,32 @@ export const schemaSmartPlanning = () => {
   };
 
   return smartPlanning;
+};
+
+export const schemaVideoPresentation = () => {
+  const baseUrl = "https://christophe-dev-freelance.fr";
+
+  // VideoObject « Présentation » : la vidéo est dans le formulaire de contact,
+  // affiché sur /contact seulement depuis le 05/11/2026
+  // Note : le @id reste #video-presentation-expert (identifiant technique stable,
+  // référencé par les schémas existants) même si le nom affiché a changé
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${baseUrl}/#video-presentation-expert`,
+    "name": "Présentation : Christophe Mostefaoui, développeur web freelance",
+    "description":
+      "Présentation détaillée de mon travail : React, Node.js, TypeScript et solutions sur mesure pour PME et indépendants.",
+    "thumbnailUrl": `${baseUrl}/assets/images/miniature-2.png`,
+    "uploadDate": "2024-12-01T10:00:00+01:00",
+    "duration": "PT1M40S",
+    "embedUrl": "https://www.youtube.com/embed/tdjXblz4mr4",
+    "contentUrl": "https://www.youtube.com/watch?v=tdjXblz4mr4",
+    "width": "1920",
+    "height": "1080",
+    "creator": {
+      "@type": "Person",
+      "name": "Christophe Mostefaoui",
+    },
+  };
 };

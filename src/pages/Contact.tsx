@@ -3,6 +3,7 @@ import PageHero from "../components/layout/PageHero";
 import ServiceArea from "../components/sections/ServiceArea";
 import GMBOptimizedContact from "../components/seo/GMBOptimizedContact";
 import PageSeo from "../components/seo/PageSeo";
+import { schemaVideoPresentation } from "../utils/structured-data-final";
 
 const bouton =
   "inline-flex min-h-[52px] items-center gap-2.5 rounded-full px-6 text-[16px] font-bold focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-soleil";
@@ -14,6 +15,7 @@ export default function Contact() {
         chemin="/contact"
         nomCourt="Contact"
         titre="Contact : devis gratuit sous 24h | Christophe Mostefaoui, Pau"
+        schemas={[schemaVideoPresentation()]}
         description="Parlez-moi de votre projet de site internet : réponse sous 24h, déplacement gratuit dans les Pyrénées-Atlantiques. Téléphone : 06 79 08 88 45."
       />
       <PageHero

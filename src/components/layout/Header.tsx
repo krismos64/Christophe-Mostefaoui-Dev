@@ -13,6 +13,7 @@ const liens: Lien[] = [
   { nom: "À propos", page: "/a-propos" },
   { nom: "Blog", page: "/blog" },
   { nom: "Questions fréquentes", ancre: "faq" },
+  { nom: "Contact", page: "/contact" },
 ];
 
 const focus =
@@ -52,7 +53,7 @@ export default function Header() {
   };
 
   const opaque = defile || !isHomePage;
-  const contact = isHomePage ? "#contact" : "/contact";
+  const contact = "/contact";
 
   return (
     <>
@@ -77,14 +78,21 @@ export default function Header() {
               }
             }}
           >
-            <img
-              src="/assets/images/header-avatar-mobile.webp"
-              alt=""
-              width={96}
-              height={96}
-              decoding="async"
-              className="h-10 w-10 flex-shrink-0 rounded-full object-cover ring-1 ring-soleil/40 sm:h-11 sm:w-11"
-            />
+            <picture className="flex-shrink-0">
+              <source
+                type="image/avif"
+                srcSet="/assets/images/optimized/christophe-avatar-96.avif 1x, /assets/images/optimized/christophe-avatar-192.avif 2x"
+              />
+              <img
+                src="/assets/images/optimized/christophe-avatar-96.webp"
+                srcSet="/assets/images/optimized/christophe-avatar-96.webp 1x, /assets/images/optimized/christophe-avatar-192.webp 2x"
+                alt=""
+                width={96}
+                height={96}
+                decoding="async"
+                className="h-10 w-10 rounded-full object-cover ring-1 ring-soleil/40 sm:h-11 sm:w-11"
+              />
+            </picture>
             <span className="flex min-w-0 flex-col leading-tight">
               <span className="truncate text-[16px] font-extrabold tracking-[-0.01em] sm:text-[17px]">
                 Christophe Mostefaoui
@@ -95,7 +103,7 @@ export default function Header() {
             </span>
           </Link>
 
-          <div className="hidden items-center gap-7 lg:flex">
+          <div className="hidden items-center gap-7 xl:flex">
             <ul className="flex items-center gap-6">
               {liens.map((l) => (
                 <li key={l.nom}>
@@ -121,7 +129,7 @@ export default function Header() {
                 e.preventDefault();
                 aller(contact);
               }}
-              className={`group inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-soleil px-5 text-[15px] font-extrabold text-foret hover:bg-soleil-clair ${focus}`}
+              className={`group inline-flex min-h-[44px] items-center gap-1.5 whitespace-nowrap rounded-full bg-soleil px-5 text-[15px] font-extrabold text-foret hover:bg-soleil-clair ${focus}`}
             >
               Devis gratuit
               <ArrowUpRight
@@ -134,7 +142,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setMenuOuvert(true)}
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full hover:text-soleil lg:hidden ${focus}`}
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-full hover:text-soleil xl:hidden ${focus}`}
             aria-label="Ouvrir le menu"
             aria-expanded={menuOuvert}
             aria-controls="menu-mobile"

@@ -1,7 +1,14 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { MotionConfig } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
-import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
@@ -11,7 +18,6 @@ import ServiceArea from "./components/sections/ServiceArea";
 import AIChatbot from "./components/AIChatbot";
 import { useStructuredData } from "./hooks/useStructuredData";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
-import GMBOptimizedContact from "./components/seo/GMBOptimizedContact";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 import RemiseEnHaut from "./components/common/RemiseEnHaut";
 
@@ -29,6 +35,14 @@ const Contact = lazy(() => import("./pages/Contact"));
 
 const Home = () => {
   const structuredData = useStructuredData();
+  const navigate = useNavigate();
+  const { hash } = useLocation();
+
+  // Le formulaire a quitté la home (05/11/2026) : les anciens liens
+  // /#contact (favoris, posts, messages) ouvrent désormais la page contact
+  useEffect(() => {
+    if (hash === "#contact") navigate("/contact", { replace: true });
+  }, [hash, navigate]);
 
   return (
     <>
@@ -50,7 +64,6 @@ const Home = () => {
       <ApercuAPropos />
       <FeaturedSnippetsFAQ />
       <ServiceArea />
-      <GMBOptimizedContact />
     </>
   );
 };

@@ -9,7 +9,7 @@ export default function NotFound() {
     { label: "À propos", to: "/#about" },
     { label: "Services", to: "/#services" },
     { label: "Portfolio", to: "/#portfolio" },
-    { label: "Contact", to: "/#contact" },
+    { label: "Contact", to: "/contact" },
   ];
 
   return (

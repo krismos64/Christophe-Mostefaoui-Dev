@@ -316,7 +316,7 @@ const BlogPost = () => {
             <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
               <button
                 type="button"
-                onClick={() => handleNavigation("/#contact")}
+                onClick={() => handleNavigation("/contact")}
                 className="hero-cta-primary group inline-flex"
               >
                 <span>Demander un devis</span>

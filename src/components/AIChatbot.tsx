@@ -305,7 +305,7 @@ const AIChatbot = () => {
         type: "link",
         title: "Demander un devis",
         description: "Réponse personnelle sous 24h en jours ouvrés.",
-        url: "#contact",
+        url: "/contact",
         tags: ["Contact", "Devis gratuit"],
       },
     ],
