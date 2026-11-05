@@ -188,3 +188,5 @@ cahier-des-charges.*
 *.rar
 *.7z
 *.tar.gz
+# Journaux d anciens outils locaux (serveur MCP git retiré en 07/2026)
+logs/
