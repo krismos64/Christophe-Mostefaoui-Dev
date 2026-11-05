@@ -63,6 +63,19 @@ npm run preview    # Preview build
   aussi `prefers-reduced-motion` pour couper `loop` et `autoplay` : le CSS ne
   peut rien sur lottie-web, qui anime en JavaScript
 - `src/hooks/useStructuredData.ts` — hook d'injection des schémas de page
+- `src/data/faq.ts` : les 9 questions de la FAQ de la home, source UNIQUE de
+  l'affichage (`FeaturedSnippetsFAQ.tsx`, en `<details>` natif pour que les
+  réponses fermées restent dans le HTML pré-rendu) et du schéma FAQPage. Ne
+  jamais réécrire les questions en dur dans le schéma, ni remettre de liste de
+  mots-clés masquée (`sr-only`) sous les réponses : contenu caché
+- Motion design (refonte du 05/11/2026) : hero en CSS (`index.css`, section
+  Hero), scènes SVG `home/BureauAnime.tsx` et `sections/TrajetAnime.tsx`.
+  Animer en `transform`/`opacity` seulement, et jamais d'`opacity: 0` de départ
+  dans le hero : `main.tsx` fait `createRoot`, le HTML pré-rendu est remplacé au
+  chargement du JS et un texte en fondu devient un LCP tardif (3,9 s constaté).
+  Chaque scène passe par `hooks/usePauseHorsEcran.ts` (pause hors écran, arrêt
+  des `<animateMotion>` en mode réduit, que le CSS ne peut pas couper) et a un
+  bloc `prefers-reduced-motion` AVANT la règle globale de fin d'`index.css`
 - `src/components/seo/LLMOptimizedHead.tsx` — injecte les meta tags LLM
 - `src/data/blogPosts.ts` — articles du blog (publication : skill `blog-article`)
 - `src/pages/BlogPost.tsx` — rendu Markdown limité : `## H2`, `**gras**`, listes

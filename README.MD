@@ -12,66 +12,77 @@ Site vitrine professionnel de **Christophe Mostefaoui**, développeur web full-s
 
 ---
 
-## Parti pris éditorial
+## Parti pris visuel (refonte du 05/11/2026)
 
-Le site assume un **design éditorial sobre et humain**, à contre-courant de l'esthétique « SaaS futuriste » générée par IA (gradients bleu/violet, glassmorphism, orbes flous, particules, emojis pills). L'objectif : que personne ne puisse dire « ce site a été vibe-codé en 10 minutes ».
+Charte « Pied des Pyrénées » : un site qui parle simplement aux TPE et PME
+locales non techniques, ancré dans le paysage du Béarn et du Pays basque.
+Le mode sombre a été retiré à la refonte.
 
-**Palette unique** :
+**Couleurs** (déclarées dans `tailwind.config.js`) :
 
-- `#0B0805` — encre profonde (Hero, Footer)
-- `#13110F` — encre (sections sombres alternées)
-- `#F4EFE6` — papier crème (sections claires)
-- `#F4D35E` — jaune surligneur (seul accent couleur)
-- `#1A1715` — encre texte sur fond clair
+- `foret` `#12312B` (fonds verts, texte principal), avec `foret-profond` `#0B2420`, `foret-moyen` `#24594C`, `foret-clair` `#3E7A68`, `foret-brume` `#C5D3CC`
+- `soleil` `#F2A25C` (accent, boutons ; texte des boutons en `foret`), `soleil-clair` `#F7C08E`
+- `creme` `#F5F1E8` (fond des pages), `neige` `#E8EFEC`
 
-**Typographie** :
+Sur fond crème, l'orange n'est jamais utilisé pour du texte (contraste 1,84:1) :
+les accents texte y passent en `foret-moyen`.
 
-- **Fraunces** (italique) — titres et accents éditoriaux
-- **Inter Tight** — corps de texte
-- **Caveat** — légendes manuscrites et signatures
+**Typographie** (auto-hébergée, aucune requête vers Google Fonts) :
 
-**Vocabulaire visuel récurrent** :
+- **Bricolage Grotesque** : titres et texte
+- **JetBrains Mono** : étiquettes et petits détails techniques
 
-- Numérotation en chiffres romains (`I. II. III.` …) — sommaire de magazine
-- Hairlines (traits 1px) entre les blocs au lieu de cartes arrondies
-- Citations manuscrites signées en bas de chaque section
-- Aucun gradient, aucun glassmorphism, aucun emoji décoratif
-- Animations Framer Motion **discrètes** (fade + translation, jamais de scale agressif)
+**Motion design** : tout est dessiné en SVG dans la page, rien à télécharger.
+
+- Hero : montagnes en 3 plans avec parallaxe à la souris, titre qui monte mot à mot, fenêtre « votre-entreprise.fr » qui se construit en boucle (devanture, cartes horaires / nous trouver / nous appeler)
+- Home : scène « le bureau de Christophe » (`home/BureauAnime.tsx`)
+- Zone d'intervention : voiture de Bayonne à Pau puis signal vers la visio (`sections/TrajetAnime.tsx`)
+- Règles : animations en `transform`/`opacity` seulement, jamais d'`opacity: 0` de départ dans le hero (le pré-rendu est remplacé au chargement du JS, voir Performances), pause hors écran (`hooks/usePauseHorsEcran.ts`), état fixe et complet en mode « réduire les animations »
 
 ---
 
 ## Structure du site
 
-Le site est une **single page** avec ancres + un ensemble de pages secondaires (légales, blog, pages locales SEO).
+Site multi-pages depuis le 05/11/2026. La home résume et renvoie vers les pages
+intérieures ; les ancres `#services`, `#portfolio`, `#about` et `#faq` restent
+sur la home pour ne casser aucun lien existant.
 
-### Sections de la home (9 sections, ordre narratif)
+### Home (`src/App.tsx`)
 
-| #    | Section             | Composant                     | Fond                        | Rôle                                    |
-| ---- | ------------------- | ----------------------------- | --------------------------- | --------------------------------------- |
-| I    | Hero                | `Hero.tsx`                    | image Pau coucher de soleil | Promesse                                |
-| II   | À propos            | `About.tsx`                   | crème                       | Identité + portrait montagne + vidéo 1  |
-| III  | SmartPlanning       | `SmartPlanningShowcase.tsx`   | sombre                      | Projet entrepreneurial + liens sociaux  |
-| IV   | Services            | `Services.tsx`                | crème                       | 6 services en grille 2 colonnes         |
-| V    | Tarifs              | `Pricing.tsx`                 | sombre                      | Méthode + encart Vidéo & Drone (Lottie) |
-| VI   | FAQ                 | `FeaturedSnippetsFAQ.tsx`     | crème                       | 9 questions à la 1ère personne          |
-| VII  | Portfolio           | `Portfolio.tsx`               | sombre                      | Projet fondateur + mosaïque 10 projets  |
-| VIII | Zone d'intervention | `ServiceArea.tsx`             | crème                       | SEO local (25 villes)                   |
-| IX   | Contact             | `seo/GMBOptimizedContact.tsx` | crème                       | Vidéo 2 + avis Google + formulaire      |
+| Section | Composant | Rôle |
+| --- | --- | --- |
+| Hero | `sections/Hero.tsx` | Promesse, devis, liens vers les 4 pages locales |
+| Services (aperçu) | `home/Apercus.tsx` | 6 services, lien vers `/services` |
+| Réalisations (aperçu) | `home/Apercus.tsx` | 3 projets, lien vers `/realisations` |
+| À propos (aperçu) | `home/Apercus.tsx` + `home/BureauAnime.tsx` | Présentation courte, lien vers `/a-propos` |
+| FAQ | `sections/FeaturedSnippetsFAQ.tsx` | 9 questions en `<details>` (réponses dans le HTML pré-rendu) |
+| Zone d'intervention | `sections/ServiceArea.tsx` + `sections/TrajetAnime.tsx` | SEO local, villes du 64 et de France |
 
-### Pages secondaires
+Le formulaire de contact n'est plus sur la home : un ancien lien `/#contact`
+ouvre `/contact`.
 
-- `/mentions-legales` — `pages/LegalNotice.tsx`
-- `/politique-de-confidentialite` — `pages/PrivacyPolicy.tsx`
-- `/blog` + `/blog/:slug` — blog éditorial SEO/GEO, lié depuis Header et Footer
-- `/creation-site-internet-{pau,bayonne,biarritz,orthez-bearn}` — pages locales SEO (`pages/LocalLanding.tsx` + `data/localPages.ts`)
-- `/faq` — redirige vers `/#faq` (ancre home)
-- `*` — page 404 éditoriale (`pages/NotFound.tsx`)
+### Pages intérieures
+
+Chacune a `seo/PageSeo.tsx` (titre, canonical, WebPage + BreadcrumbList) et
+`layout/PageHero.tsx` (bandeau vert, fil d'Ariane, h1 unique).
+
+- `/services` : `pages/ServicesPage.tsx` (Services + Pricing)
+- `/realisations` : `pages/Realisations.tsx` (Portfolio + SmartPlanning, données dans `data/realisations.ts`)
+- `/a-propos` : `pages/APropos.tsx` (About, vidéo « Mon univers digital »)
+- `/contact` : `pages/Contact.tsx` (vidéo de présentation, avis Google, formulaire, zone d'intervention)
+- `/blog` + `/blog/:slug` : blog éditorial SEO/GEO
+- `/creation-site-internet-{pau,bayonne,biarritz,orthez-bearn}` : pages locales (`pages/LocalLanding.tsx` + `data/localPages.ts`)
+- `/mentions-legales`, `/politique-de-confidentialite` (noindex)
+- `/faq` : redirige vers `/#faq` (règle du `.htaccess`)
+- `*` : page 404 (`pages/NotFound.tsx`)
 
 ### Layout
 
-- `layout/Header.tsx` — Navbar transparente sur Hero, opaque crème au scroll
-- `layout/Footer.tsx` — Footer encre 4 colonnes avec colophon manuscrit
-- `AIChatbot.tsx` — Widget assistant Mistral en bas à droite
+- `layout/Header.tsx` : navbar transparente sur le hero, verte au défilement, lien Contact et bouton « Devis gratuit » ; menu burger sous 1280 px
+- `layout/Footer.tsx` : navigation, coordonnées, lien vers la fiche Google
+- `common/RemiseEnHaut.tsx` : remet la page en haut à chaque changement de page (placé DANS le `<Suspense>`)
+- `common/LienContact.tsx` : vrai lien `/contact`, défile vers le formulaire s'il est sur la page
+- `AIChatbot.tsx` : assistant Mistral en bas à droite
 
 ---
 
@@ -86,7 +97,7 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 
 ### UI & Animations
 
-- **Framer Motion 12.17** — animations sobres (fade + translation, courbe ease-out)
+- **Framer Motion 12.17** : apparitions au défilement (fondu + translation) ; le motion design du hero et des scènes est en CSS et SVG
 - **Lottie React 2.4** — animations chatbot, drone, montage vidéo, thinking (footer), toutes chargées à la demande via `LazyLottie` (voir Performances)
 - **Lucide React** — icônes vectorielles cohérentes (strokeWidth 1.5), utilisées partout y compris le blog depuis sa refonte éditoriale
 
@@ -99,7 +110,7 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 ### SEO
 
 - **React Helmet Async 2.0** — meta tags dynamiques
-- Hook personnalisé `useStructuredData` — agrège 5 sources de schemas JSON-LD
+- Hook `useStructuredData` (schémas de la home) et composant `PageSeo` (schémas des pages intérieures)
 - Schemas : `Organization`, `Person`, `ProfessionalService` (identité, inlinés dans `index.html`), `FAQPage`, `VideoObject`, `CreativeWork`, `WebPage`, `SoftwareApplication` (page)
 
 ### Chatbot IA
@@ -132,7 +143,7 @@ Le site est pensé d'abord pour mobile (375px et plus). Détails techniques :
   - `spellCheck={false}` sur l'email
 - **Target sizes** : CTA principaux dimensionnés ≥ 44×44px
 - **Pas de hover-only** : tous les états interactifs ont une version focus/active visible
-- **Lock du scroll body** quand le menu mobile est ouvert (jusqu'à 1023px)
+- **Lock du scroll body** quand le menu mobile est ouvert (jusqu'à 1279px, tant que le burger est affiché)
 - **Footer** : grille 2 colonnes sur mobile (Navigation + Ailleurs côte à côte) pour éviter le scroll excessif
 - **Lottie** dimensionnés en fonction du breakpoint (taille minimum garantie sur mobile), avec conteneur à hauteur fixe pour éviter tout décalage au chargement différé
 
@@ -184,55 +195,65 @@ src/
 │   ├── common/
 │   │   ├── ErrorBoundary.tsx       # Error boundary global
 │   │   ├── LazyLottie.tsx          # Lottie différé + respect de prefers-reduced-motion
+│   │   ├── LienContact.tsx         # Lien /contact, défile si le formulaire est sur la page
 │   │   ├── OptimizedPicture.tsx    # <picture> AVIF/WebP multi-tailles
+│   │   ├── RemiseEnHaut.tsx        # Retour en haut à chaque changement de page
 │   │   └── VideoEmbed.tsx          # Embed YouTube inline réutilisable
+│   ├── home/
+│   │   ├── Apercus.tsx             # Aperçus Services, Réalisations, À propos de la home
+│   │   └── BureauAnime.tsx         # Scène SVG animée « le bureau de Christophe »
 │   ├── layout/
-│   │   ├── Header.tsx              # Navbar éditoriale + menu mobile chiffres romains
-│   │   └── Footer.tsx              # Footer 4 cols + colophon manuscrit
-│   ├── sections/                   # Sections de la home (ordre narratif I→VIII)
-│   │   ├── Hero.tsx
-│   │   ├── About.tsx
-│   │   ├── SmartPlanningShowcase.tsx
-│   │   ├── Services.tsx
-│   │   ├── Pricing.tsx
-│   │   ├── FeaturedSnippetsFAQ.tsx
-│   │   ├── Portfolio.tsx
-│   │   ├── ServiceArea.tsx
-│   │   ├── GoogleReviews.tsx       # Avis Google + lien fiche, rendu dans la section IX
-│   │   └── BlogSection.tsx         # Utilisé uniquement par /blog
+│   │   ├── Header.tsx              # Navbar + menu burger (sous 1280 px)
+│   │   ├── Footer.tsx
+│   │   └── PageHero.tsx            # Bandeau vert + fil d'Ariane + h1 des pages intérieures
+│   ├── sections/
+│   │   ├── Hero.tsx                # Hero Pyrénées + fenêtre « votre-entreprise.fr »
+│   │   ├── About.tsx               # /a-propos
+│   │   ├── SmartPlanningShowcase.tsx # /realisations
+│   │   ├── Services.tsx            # /services
+│   │   ├── Pricing.tsx             # /services (méthode, devis, vidéo et drone)
+│   │   ├── Portfolio.tsx           # /realisations (11 projets, CreativeWork)
+│   │   ├── FeaturedSnippetsFAQ.tsx # FAQ de la home
+│   │   ├── ServiceArea.tsx         # Zone d'intervention (home, /contact)
+│   │   ├── TrajetAnime.tsx         # Scène SVG animée Bayonne → Pau → visio
+│   │   ├── GoogleReviews.tsx       # Avis Google + lien vers la fiche
+│   │   └── BlogSection.tsx         # Liste du blog (/blog)
 │   ├── seo/
-│   │   ├── GMBOptimizedContact.tsx # Section Contact effective de la home (IX)
+│   │   ├── GMBOptimizedContact.tsx # Formulaire de contact (/contact)
+│   │   ├── PageSeo.tsx             # Meta + WebPage + BreadcrumbList des pages intérieures
 │   │   └── LLMOptimizedHead.tsx    # Meta tags optimisés LLM
-│   └── AIChatbot.tsx               # Widget Mistral éditorial
+│   └── AIChatbot.tsx               # Widget Mistral
 ├── pages/                          # Pages routées (lazy-loaded)
+│   ├── ServicesPage.tsx
+│   ├── Realisations.tsx
+│   ├── APropos.tsx
+│   ├── Contact.tsx
 │   ├── Blog.tsx
 │   ├── BlogPost.tsx
 │   ├── LocalLanding.tsx            # 4 pages SEO locales (Pau, Bayonne, Biarritz, Orthez)
 │   ├── LegalNotice.tsx
 │   ├── PrivacyPolicy.tsx
-│   └── NotFound.tsx                # Catch-all éditorial
+│   └── NotFound.tsx
 ├── utils/
-│   ├── structured-data-final.tsx   # Schemas JSON-LD agrégés
+│   ├── structured-data-final.tsx   # Schémas JSON-LD de page (home, vidéos, SmartPlanning)
 │   ├── seo-advanced.tsx            # Meta LLM optimisés
 │   └── analytics.ts                # Helpers dataLayer (no-op : GTM retiré en 07/2026, site 100% cookieless)
 ├── hooks/
 │   ├── useStructuredData.ts
-│   └── useNavigation.ts
+│   ├── useNavigation.ts
+│   └── usePauseHorsEcran.ts        # Pause des scènes SVG hors écran / en mode réduit
 ├── data/
 │   ├── faq.ts                      # FAQ de la home (affichage + schéma FAQPage)
+│   ├── realisations.ts             # Projet fondateur + 10 réalisations clients
 │   ├── blogPosts.ts                # Articles du blog (contenu éditorial PME/artisans)
 │   └── localPages.ts               # Contenu des 4 pages locales SEO
-├── context/
-│   └── ThemeContext.tsx            # Mode clair/sombre + localStorage
 ├── config/
 │   └── emailjs.ts
 ├── animations/                     # Lottie (4 fichiers)
-│   ├── chatbot.json                # Bouton flottant + menu mobile
+│   ├── chatbot.json                # Bouton flottant du chatbot
 │   ├── thinking.json               # Footer
 │   ├── Drone Camera.json           # Section Pricing
 │   └── Cut Video.json              # Section Pricing
-├── types/
-│   └── common.ts                   # MenuItem, Theme, ThemeContextType
 └── App.tsx
 ```
 
@@ -332,7 +353,9 @@ Aucun upload manuel : il suffit de merger sur `main`.
 
 ## Performances
 
-Lighthouse mobile sur la home, mesuré en production le 12/08/2026 :
+Lighthouse mobile sur la home, mesuré en production le 12/08/2026 (avant la
+refonte ; en local le 05/11/2026, la nouvelle home est à LCP 1,72 s contre
+1,9 s pour l'ancienne, CLS 0, A11y/SEO/BP 100) :
 
 | Métrique | Valeur |
 | -------- | ------ |
@@ -367,7 +390,11 @@ Résultat : chunk `animations` de 454 à 117 Ko, TBT de 250 à 20 ms.
 ### Ce qui limite encore le LCP
 
 Le TTFB oscille entre 620 et 650 ms, plancher du mutualisé Hostinger, soit un
-sixième du LCP. Le reste tient à l'hydratation React de la home. Les polices ne
+sixième du LCP. Le reste tient au rendu React : `main.tsx` fait `createRoot`,
+pas `hydrateRoot`, donc le HTML pré-rendu est remplacé au chargement du JS et
+les animations CSS repartent de zéro. Un texte qui part d'`opacity: 0` devient
+alors un LCP tardif (constaté : 3,9 s) : dans le hero, animer en `transform`
+seulement. Passer à `hydrateRoot` reste à évaluer (risque de mismatch). Les polices ne
 sont pas en cause : les `unicode-range` limitent le téléchargement à 4 fichiers
 sur 8, et `font-display: swap` affiche le texte sans les attendre.
 
@@ -425,13 +452,14 @@ présents sur toutes les pages et reliés par `@id` :
 
 Schemas de **page**, générés par `structured-data-final.tsx` :
 
-- **FAQPage** : questions/réponses pour featured snippets
-- **VideoObject** — 2 vidéos YouTube
-- **WebSite**, **WebPage**, **SoftwareApplication** (SmartPlanning)
+- **FAQPage** (home) : généré depuis `src/data/faq.ts`, donc identique au texte affiché
+- **VideoObject** : vidéo de présentation sur `/contact`, « Mon univers digital » sur `/a-propos`
+- **WebSite**, **WebPage** (home), **SoftwareApplication** (SmartPlanning, sur `/realisations`)
+- **WebPage** + **BreadcrumbList** sur chaque page intérieure, via `PageSeo`
 
 Schemas de page portés par leur propre composant :
 
-- **CreativeWork** — 11 projets portfolio (1 fondateur + 10 clients), dans `Portfolio.tsx`
+- **CreativeWork** : 11 projets (1 fondateur + 10 clients), dans `Portfolio.tsx` sur `/realisations`
 - **BlogPosting** — un par article, dans `BlogPost.tsx`
 
 > Les horaires déclarés dans le JSON-LD doivent correspondre à ceux affichés à
@@ -465,7 +493,7 @@ Place ID `ChIJlTa-96dvUigRyeCBbLb8qkw`. Établissement vérifié, réglé en « 
 Le site et la fiche sont reliés dans les deux sens : la fiche pointe vers
 `https://christophe-dev-freelance.fr/`, le site déclare la fiche en `sameAs` et
 `hasMap` dans le JSON-LD, et deux liens visibles y renvoient (bloc avis de la
-section IX, et footer).
+page `/contact`, et footer).
 
 Publication de posts à partir des articles de blog : `docs/posts-google-blog.md`
 (textes prêts, gabarit de prompt image, format 4:3 1200x900).

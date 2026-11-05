@@ -105,8 +105,8 @@ button {
   background-color: rgba(242, 162, 92, 1);
 }
 
-/* Lock du scroll body quand le menu mobile est ouvert (<= 1023px) */
-@media (max-width: 1023px) {
+/* Lock du scroll body quand le menu mobile est ouvert (burger affiché sous xl, <= 1279px) */
+@media (max-width: 1279px) {
   body.menu-open {
     overflow: hidden;
     position: fixed;

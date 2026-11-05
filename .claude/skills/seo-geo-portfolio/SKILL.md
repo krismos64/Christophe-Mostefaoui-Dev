@@ -42,7 +42,7 @@ while read u; do echo "$(curl -s -o /dev/null -w '%{http_code}' -A Googlebot "$u
 curl -s -o /dev/null -w '/blog -> %{http_code} redirect=[%{redirect_url}]\n' $S/blog
 
 # 3. Contenu lisible sans JS (pré-rendu) : un H1 sur chaque route clé
-for u in / /blog /creation-site-internet-pau; do
+for u in / /blog /services /contact /creation-site-internet-pau; do
   echo -n "$u h1="; curl -s "$S$u" | grep -c '<h1'
 done   # attendu : 1 partout, jamais 0 ni 2
 
@@ -111,6 +111,7 @@ Chacune vient d'un incident réel. Détails et symptômes dans `pieges.md`.
 | Une page publique (contenu) | Mettre à jour son `<lastmod>` dans le sitemap : signal de fraîcheur, actuellement figé au 18/05/2026 sur `/` et `/mentions-legales` |
 | Un article de blog | Suivre le skill `blog-article` : il inclut la mise à jour de `llms.txt`, `llms-full.txt` et `chatbot-knowledge.txt` |
 | `public/robots.txt` | Vérifier qu'aucune URL du sitemap n'est bloquée. Liste des crawlers IA dans `geo-reference.md` |
+| `src/data/faq.ts` (FAQ de la home) | Rien d'autre à toucher pour le schéma : le FAQPage est généré depuis ce fichier. Garder le texte simple, sans tarif ni chiffre invérifiable ; si une réponse change un fait (délais, zone), le reporter dans les 3 fichiers LLM |
 | Ajout d'une route | L'ajouter au sitemap (sinon pas de pré-rendu) ou à `EXTRA_ROUTES` de `scripts/prerender.mjs` si elle est `noindex` |
 
 ## GEO (visibilité dans les LLM)

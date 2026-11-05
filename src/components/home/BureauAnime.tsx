@@ -1,4 +1,5 @@
-import { useEffect, useRef, type CSSProperties } from "react";
+import { useRef, type CSSProperties } from "react";
+import { usePauseHorsEcran } from "../../hooks/usePauseHorsEcran";
 
 /**
  * « Le bureau de Christophe » en motion design (remplace la photo montagne
@@ -25,16 +26,7 @@ export default function BureauAnime({
 }) {
   const ref = useRef<SVGSVGElement>(null);
 
-  // Pause des boucles quand la scène n'est pas à l'écran (batterie, CPU)
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !("IntersectionObserver" in window)) return;
-    const obs = new IntersectionObserver(([e]) => {
-      el.toggleAttribute("data-pause", !e.isIntersecting);
-    });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+  usePauseHorsEcran(ref);
 
   return (
     <div className={`overflow-hidden ${className}`}>

@@ -37,7 +37,7 @@ coûts, délais, résultats. Objectif de chaque article : amener une demande de 
   citer un fait vérifiable (fondateur de SmartPlanning, 10 ans d'informatique)
 - Mots-clés locaux à travailler naturellement : Pau, Artix, Béarn, Bayonne,
   Biarritz, Pyrénées-Atlantiques, 64
-- CTA final : formulaire de contact (#contact) + 06 79 08 88 45
+- CTA final : lien vers la page `/contact` (le formulaire n'est plus sur la home depuis le 05/11/2026) + 06 79 08 88 45
 - Un seul H1 (le titre), hiérarchie H2/H3 propre, meta description 150-160 chars
   (contrôler la longueur, 165 caractères passe inaperçu à l'écriture)
 - 1200-2000 mots ; sujets orientés décision d'achat (« Combien coûte… »,

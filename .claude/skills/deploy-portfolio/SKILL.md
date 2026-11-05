@@ -40,7 +40,7 @@ Le build complet = `tsc && vite build && node scripts/prerender.mjs`
 
 ```bash
 # 1. Routes pré-rendues : 200 direct, PAS de redirection, contenu présent
-for u in / /blog /mentions-legales; do
+for u in / /blog /services /realisations /a-propos /contact /mentions-legales; do
   curl -s -o /dev/null -w "$u -> %{http_code} redirect=[%{redirect_url}]\n" "https://christophe-dev-freelance.fr$u"
 done
 curl -s https://christophe-dev-freelance.fr/blog | grep -c '<h1'   # >= 1
@@ -79,10 +79,13 @@ done   # attendu : 200 partout
 # 5bis. Avis Google présent dans le HTML pré-rendu (donc lisible sans JS)
 curl -s -A 'Googlebot' https://christophe-dev-freelance.fr/ | \
   grep -o 'ChIJlTa-96dvUigRyeCBbLb8qkw' | wc -l
-# attendu : 5 = 2 sameAs (Organization, Person) + hasMap + 2 liens visibles
-# (bloc avis section IX, footer)
-# 0 ici = le bloc avis n'est pas dans le pré-rendu : vérifier que GoogleReviews
-# est bien monté dans GMBOptimizedContact et relancer npm run build
+# attendu : 4 sur la home = 2 sameAs (Organization, Person) + hasMap + lien du footer
+curl -s -A 'Googlebot' https://christophe-dev-freelance.fr/contact | \
+  grep -o 'ChIJlTa-96dvUigRyeCBbLb8qkw' | wc -l
+# attendu : 5 sur /contact = les 4 + le bloc avis (le formulaire, et donc le
+# bloc avis, ne sont plus sur la home depuis le 05/11/2026)
+# 4 au lieu de 5 sur /contact = le bloc avis n'est pas dans le pré-rendu :
+# vérifier que GoogleReviews est bien monté dans GMBOptimizedContact et relancer npm run build
 
 # 6. URLs de blog inexistantes : 404, et articles supprimés : 410
 #    (si /blog renvoie 301 ici, c'est le piège DirectorySlash — voir plus bas)
