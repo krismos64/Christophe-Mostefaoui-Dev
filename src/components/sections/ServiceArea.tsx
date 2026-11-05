@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import LienContact from "../common/LienContact";
+import TrajetAnime from "./TrajetAnime";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { Fragment, useRef } from "react";
 
@@ -46,7 +47,9 @@ export default function ServiceArea() {
           {i < cities.length - 1 && (
             <>
               {" "}
-              <span className="text-soleil" aria-hidden="true">·</span>
+              <span className="text-soleil" aria-hidden="true">
+                ·
+              </span>
             </>
           )}
         </span>{" "}
@@ -61,28 +64,29 @@ export default function ServiceArea() {
         className="relative w-full overflow-hidden bg-creme py-20 sm:py-28 md:py-32"
         aria-label="Zone d'intervention géographique"
       >
-
         <div className="mx-auto px-5 sm:px-8 relative z-10 max-w-5xl">
-          {/* Header édito */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
-          >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
-              Zone d'intervention
-            </p>
-            <h2 className="hero-display text-foret">
-              Proche, ou à distance. Toujours présent.
-            </h2>
-            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
-              Je me déplace gratuitement pour un premier rendez-vous dans tout
-              le département des Pyrénées-Atlantiques. Partout ailleurs en
-              France, tout se passe en visio, un format que je maîtrise et qui
-              n'a aucun impact sur la qualité du suivi.
-            </p>
-          </motion.div>
+          {/* Header édito + scène animée */}
+          <div className="mb-12 grid items-center gap-10 sm:mb-16 md:mb-20 md:grid-cols-[minmax(0,1fr)_minmax(0,420px)] md:gap-12">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
+                Zone d'intervention
+              </p>
+              <h2 className="hero-display text-foret">
+                Proche, ou à distance. Toujours présent.
+              </h2>
+              <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
+                Je me déplace gratuitement pour un premier rendez-vous dans tout
+                le département des Pyrénées-Atlantiques. Partout ailleurs en
+                France, tout se passe en visio, un format que je maîtrise et qui
+                n'a aucun impact sur la qualité du suivi.
+              </p>
+            </motion.div>
+            <TrajetAnime className="aspect-[4/3] w-full" />
+          </div>
 
           {/* Bloc 1 : Déplacement gratuit dans le 64 */}
           <motion.div
@@ -131,10 +135,7 @@ export default function ServiceArea() {
           </motion.div>
 
           {/* Trait final */}
-          <div
-            className="h-px w-full bg-foret/15"
-            aria-hidden="true"
-          />
+          <div className="h-px w-full bg-foret/15" aria-hidden="true" />
 
           {/* CTA + téléphone direct */}
           <motion.div

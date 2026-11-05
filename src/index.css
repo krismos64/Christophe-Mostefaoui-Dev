@@ -385,6 +385,19 @@ blockquote .hero-handwritten {
 .faq-item[open] .faq-reponse { animation: faq-ouvre 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
 @keyframes faq-ouvre { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 
+/* Trajet animé (section Zone d'intervention) : pulsations en CSS,
+   trajets en <animateMotion> (pilotés par usePauseHorsEcran) */
+.trajet [class*="trajet-"] { transform-box: fill-box; transform-origin: center; }
+.trajet[data-pause] [class*="trajet-"] { animation-play-state: paused; }
+.trajet-onde { animation: trajet-onde 2.8s ease-out infinite; animation-delay: calc(var(--i) * 0.7s); }
+.trajet-vague { animation: trajet-vague 3.2s ease-in-out infinite alternate; animation-delay: calc(var(--i) * -1s); }
+.trajet-direct { animation: bureau-clignote 1.4s steps(1) infinite; }
+@keyframes trajet-onde { from { transform: scale(1); opacity: 0.9; } to { transform: scale(3); opacity: 0; } }
+@keyframes trajet-vague { from { transform: translateX(-4px); } to { transform: translateX(4px); } }
+@media (prefers-reduced-motion: reduce) {
+  .trajet [class*="trajet-"] { animation: none !important; }
+}
+
 /* Bureau animé (aperçu À propos de la home) */
 .bureau [class*="bureau-"] { transform-box: fill-box; }
 .bureau[data-pause] [class*="bureau-"] { animation-play-state: paused; }
