@@ -54,7 +54,7 @@ connaissance apparaît :
 
 Ces stats inventées ont été purgées de `llms-full.txt` le 08/08/2026 : elles
 étaient servies aux LLM comme des faits à répéter. Le libellé `- Résultats:`
-est devenu `- Réalisé:` sur les 6 projets du portfolio, précisément parce que
+est devenu `- Réalisé:` sur toutes les fiches projets (6 à l'époque, 10 au 05/11/2026), précisément parce que
 le mot invitait à y remettre un chiffre.
 
 ## Crawlers IA déclarés dans robots.txt

@@ -170,3 +170,19 @@ pollué (`rm -rf dist`), relancer le build. Le garde-fou des 20 000 octets dans
 **Effet de bord à connaître** : un run de pré-rendu raté écrase déjà
 `dist/index.html`. Un `vite preview` relancé ensuite sert cette capture vide,
 ce qui fausse tout nouveau diagnostic. Toujours repartir d'un `rm -rf dist`.
+
+## 403 et 429 en rafale avec un user-agent Googlebot ou GPTBot
+
+**Symptôme** : pendant les smoke tests, des URL qui répondaient 200 renvoient
+403 (UA Googlebot) ou 429 (UA GPTBot), de façon intermittente, la même URL
+passant d'un code à l'autre d'un appel à l'autre. Le site n'y est pour rien.
+
+**Cause** : le CDN de Hostinger (en-tête `server: hcdn`) freine une rafale de
+requêtes qui se disent Googlebot ou GPTBot sans venir de leurs adresses IP.
+Les vrais robots, qui viennent de leurs propres plages d'IP, ne sont pas
+concernés. Vécu le 05/11/2026 après une trentaine d'appels enchaînés.
+
+**Réflexe** : refaire les contrôles avec un user-agent navigateur
+(`-A "Mozilla/5.0 (Macintosh) Chrome/130"`). Si tout passe en 200, ce n'était
+que le CDN. Un 403 qui persiste en user-agent navigateur relève en revanche du
+piège des permissions (mode 600) décrit plus haut.

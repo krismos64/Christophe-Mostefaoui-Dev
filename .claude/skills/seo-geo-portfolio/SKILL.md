@@ -34,6 +34,7 @@ Faire 3 runs et prendre la médiane. Mesurer en local (`serve -s dist`) ne sert
 S=https://christophe-dev-freelance.fr
 
 # 1. Toutes les URLs du sitemap en 200, vues par Googlebot (le nombre suit les publications, ne pas le coder en dur)
+#    403/429 intermittents = CDN Hostinger qui freine les faux Googlebot, voir pieges.md
 curl -s $S/sitemap.xml | grep -o '<loc>[^<]*' | sed 's/<loc>//' |
 while read u; do echo "$(curl -s -o /dev/null -w '%{http_code}' -A Googlebot "$u") $u"; done
 

@@ -92,6 +92,9 @@ for u in blog/chatbot-ia-boutique-locale-resultats-conversions blog/ia-interne-p
 done   # attendu : 410
 
 # 7. Balayage complet du sitemap en User-Agent Googlebot
+#    403/429 intermittents ici et en 5/5bis = CDN Hostinger qui freine les faux
+#    robots, pas le site : refaire avec -A "Mozilla/5.0 (Macintosh) Chrome/130"
+#    (voir seo-geo-portfolio/pieges.md)
 curl -s https://christophe-dev-freelance.fr/sitemap.xml | grep -o '<loc>[^<]*' | sed 's/<loc>//' |
 while read u; do
   echo "$(curl -s -o /dev/null -w '%{http_code}' -A 'Googlebot' "$u") $u"

@@ -70,7 +70,7 @@ que deux ou trois, triés et argumentés.
 
 1. **Écrire l'article** dans `src/data/blogPosts.ts` : nouvel objet en tête du
    tableau, `id` = celui du premier article du tableau + 1 (les ids ne
-   correspondent PAS au rang : 11 articles portent les ids 6 à 16, héritage de
+   correspondent PAS au rang : 12 articles portent les ids 6 à 17 au 05/11/2026, héritage de
    la purge de 2026), en respectant strictement l'interface existante
    (slug kebab-case, `metaDescription`, `imageUrl`). `featured: false` sauf
    décision contraire (l'article prix est le `featured: true` actuel)

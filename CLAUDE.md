@@ -75,6 +75,16 @@ npm run preview    # Preview build
   liens : la tenir à jour à chaque publication. Une ligne de lien ne suffit
   pas : sans section de faits sur le sujet de l'article, le modèle improvise
   (chiffres inventés, constaté le 30/09/2026)
+- `src/components/sections/Portfolio.tsx` : 10 réalisations clients sous le
+  projet fondateur SmartPlanning (ordre validé le 05/11/2026). Ajouter un
+  projet impose de mettre à jour le titre (« Onze projets, onze histoires. »),
+  le compteur de `AIChatbot.tsx`, `llms.txt`, `llms-full.txt`, la section
+  « Sites vitrines » de `chatbot-knowledge.txt` et la vignette dans
+  `scripts/optimize-images.sh`. CoachDEC, Doctorat.me et MasterMentor sont des
+  sites du client Staka recadrés après des soupçons de promotion du plagiat :
+  toujours écrire « accompagnement méthodologique », jamais « rédaction » ni
+  « correction de thèse ». Lune-Soleil est une cliente, pas la boutique de
+  Christophe
 
 ## Accessibilité — Règles de non-régression (ajoutées le 11/09/2026)
 

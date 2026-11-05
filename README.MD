@@ -54,7 +54,7 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 | IV   | Services            | `Services.tsx`                | crème                       | 6 services en grille 2 colonnes         |
 | V    | Tarifs              | `Pricing.tsx`                 | sombre                      | Méthode + encart Vidéo & Drone (Lottie) |
 | VI   | FAQ                 | `FeaturedSnippetsFAQ.tsx`     | crème                       | 9 questions à la 1ère personne          |
-| VII  | Portfolio           | `Portfolio.tsx`               | sombre                      | Projet fondateur + mosaïque 6 projets   |
+| VII  | Portfolio           | `Portfolio.tsx`               | sombre                      | Projet fondateur + mosaïque 10 projets  |
 | VIII | Zone d'intervention | `ServiceArea.tsx`             | crème                       | SEO local (25 villes)                   |
 | IX   | Contact             | `seo/GMBOptimizedContact.tsx` | crème                       | Vidéo 2 + avis Google + formulaire      |
 
@@ -93,6 +93,7 @@ Le site est une **single page** avec ancres + un ensemble de pages secondaires (
 ### Formulaires & Communication
 
 - **EmailJS 4.4** — formulaire de contact sans backend
+- **Brouillons de réponse** (depuis le 30/09/2026) : après l'envoi EmailJS, le formulaire appelle `public/api/contact-hook.php`, qui relaie la demande à un scénario Make ; Mistral y rédige un brouillon déposé dans Gmail, relu par Christophe avant envoi. Un échec du relais ne bloque jamais le formulaire. Détail : `docs/automatisation-formulaire-make.md`
 - Inputs HTML5 optimisés mobile (`autoComplete`, `inputMode`, `autoCapitalize`)
 
 ### SEO
@@ -244,11 +245,12 @@ public/
 │                               # Google-Extended, Applebot, MistralAI-User… autorisés
 ├── llms.txt                    # Fiche synthétique pour LLM
 ├── llms-full.txt               # Base de connaissances complète
-├── chatbot-knowledge.txt       # Base de connaissances du chatbot
+├── chatbot-knowledge.txt       # Base de connaissances du chatbot (lue aussi par Make)
 ├── humans.txt                  # Crédits humains
 ├── manifest.json               # PWA manifest
 ├── api/
-│   └── chat.php                # Proxy Mistral (streaming, rate limit, clé hors webroot)
+│   ├── chat.php                # Proxy Mistral (streaming, rate limit, clé hors webroot)
+│   └── contact-hook.php        # Relais du formulaire vers Make (brouillons Gmail)
 └── .well-known/
     └── ai-plugin.json          # Plugin IA standard
 ```

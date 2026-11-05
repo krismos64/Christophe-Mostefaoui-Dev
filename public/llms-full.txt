@@ -156,12 +156,11 @@ Christophe n'est pas seulement développeur freelance : il est aussi le FONDATEU
 - Technologies: Next.js, React, TypeScript, PostgreSQL, Prisma, Stripe, Docker
 
 ### Projet phare: LivresStaka.fr (Staka Livres)
-- Type: Plateforme e-commerce
-- URL: https://livresstaka.fr
-- Réalisé: plateforme d'accompagnement des auteurs pour la correction et l'édition de manuscrits, avec espace client et suivi des échanges
-- Fonctionnalités: catalogue produits, paiement Stripe intégré, espace client sécurisé, messagerie intégrée, gestion des stocks, dashboard analytique
-- Technologies: React.js, Node.js, MySQL, Prisma ORM, Stripe, TailwindCSS
-- Points forts: interface fluide, parcours de commande complet
+- Type: Plateforme de services éditoriaux sur mesure
+- URL: https://livrestaka.fr
+- Réalisé: plateforme d'accompagnement des auteurs pour la correction et l'édition de leurs manuscrits, avec espace client et suivi des échanges avec l'équipe éditoriale
+- Fonctionnalités: espace client sécurisé, paiement en ligne Stripe, messagerie intégrée, tableau de bord d'administration
+- Technologies: React, TypeScript, Node.js, Express, MySQL, Stripe, Tailwind CSS
 
 ### Cabinet Infirmier Graslin (Nantes)
 - Type: Site vitrine professionnel

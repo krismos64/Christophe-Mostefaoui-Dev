@@ -26,7 +26,9 @@ conservée en local (hors dépôt).
   crawlers IA, garde-fous anti-hallucination) et `pieges.md` (incidents vécus)
 - `deploy-portfolio` — checklist de déploiement + smoke tests post-deploy
   (routes, headers, fichiers LLM, balayage sitemap en User-Agent Googlebot) et
-  pièges vécus : timeout FTP Hostinger, permissions 600 servies en 403
+  pièges vécus : timeout FTP Hostinger, permissions 600 servies en 403, et
+  depuis le 05/11/2026 les faux 403/429 du CDN Hostinger quand on se fait passer
+  pour Googlebot ou GPTBot en rafale
 - `blog-article` — rédaction et publication d'un article orienté client PME :
   règles éditoriales, formatage Markdown supporté, pipeline image complet
   (variantes AVIF/WebP + image OG 1200×630), maillage interne, mise à jour de la

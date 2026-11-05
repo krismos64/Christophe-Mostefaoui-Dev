@@ -113,7 +113,7 @@ export const localPages: LocalPage[] = [
       {
         titre: "Du site vitrine à la vente en ligne",
         paragraphes: [
-          "Site vitrine pour être trouvé et contacté, site multi-pages avec blog pour asseoir votre expertise, boutique en ligne pour vendre vos produits (j'ai notamment développé la plateforme e-commerce LivresStaka.fr avec paiement sécurisé Stripe), ou outil métier sur mesure : je construis ce qui sert réellement votre activité, et je vous forme à le faire vivre.",
+          "Site vitrine pour être trouvé et contacté, site multi-pages avec blog pour asseoir votre expertise, boutique en ligne pour vendre vos produits (j'ai notamment développé Lune-Soleil.fr, la boutique d'une créatrice de bijoux d'Artix, avec paiement sécurisé Stripe), ou outil métier sur mesure : je construis ce qui sert réellement votre activité, et je vous forme à le faire vivre.",
           "Chaque site est rapide, adapté au mobile, et optimisé pour Google comme pour les assistants IA, les deux endroits où vos futurs clients vous cherchent.",
         ],
       },
