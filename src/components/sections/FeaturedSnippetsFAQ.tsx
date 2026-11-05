@@ -90,7 +90,7 @@ const FeaturedSnippetsFAQ = () => {
               >
                 {/* <details> natif : les réponses fermées restent dans le HTML,
                     donc lisibles par Google et les IA sans JavaScript */}
-                <details className="faq-item group/faq" open={index === 0}>
+                <details className="faq-item group/faq">
                   <summary className="cursor-pointer list-none py-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil focus-visible:ring-offset-2 sm:py-6 [&::-webkit-details-marker]:hidden">
                     <h3 className="flex items-start gap-4 text-left text-[19px] leading-tight text-foret sm:gap-6 sm:text-[22px] md:text-[24px]">
                       <span
