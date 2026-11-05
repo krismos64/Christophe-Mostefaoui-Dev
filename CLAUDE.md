@@ -37,6 +37,7 @@ npm run preview    # Preview build
 - `src/App.tsx` — routing principal, Home + pages lazy-loaded. Porte aussi deux
   éléments d'accessibilité à NE PAS retirer : le lien d'évitement et
   `MotionConfig` (voir la section Accessibilité plus bas)
+- Pages intérieures (refonte du 05/11/2026) : `/services`, `/realisations`, `/a-propos`, `/contact` dans `src/pages/`, chacune avec `PageSeo` (titre, canonical, WebPage + BreadcrumbList) et `PageHero` (bandeau vert, h1 unique). La home ne garde que des aperçus qui y renvoient ; les ancres `#services`, `#portfolio`, `#about`, `#faq`, `#contact` restent sur la home. Les boutons de devis passent par `LienContact` (vrai lien `/contact`, défilement si le formulaire est sur la page)
 - `scripts/prerender.mjs` — pré-rendu statique au build : chaque route du
   sitemap (+ EXTRA_ROUTES) devient un .html complet dans dist/, lisible par les
   crawlers sans JS (GPTBot, ClaudeBot…). Les fichiers sont PLATS (blog.html,
@@ -75,7 +76,7 @@ npm run preview    # Preview build
   liens : la tenir à jour à chaque publication. Une ligne de lien ne suffit
   pas : sans section de faits sur le sujet de l'article, le modèle improvise
   (chiffres inventés, constaté le 30/09/2026)
-- `src/components/sections/Portfolio.tsx` : 10 réalisations clients sous le
+- `src/data/realisations.ts` (affiché par `Portfolio.tsx` sur `/realisations` et en aperçu de 3 projets sur la home, `src/components/home/Apercus.tsx`) : 10 réalisations clients sous le
   projet fondateur SmartPlanning (ordre validé le 05/11/2026). Ajouter un
   projet impose de mettre à jour le titre (« Onze projets, onze histoires. »),
   le compteur de `AIChatbot.tsx`, `llms.txt`, `llms-full.txt`, la section

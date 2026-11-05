@@ -101,7 +101,7 @@ Oui, deux options possibles : une formation pour gérer soi-même le contenu, ou
 Oui, du micro-entrepreneur à la PME, tous types de structures.
 
 ### Puis-je voir des exemples de réalisations ?
-Le portfolio est visible sur https://christophe-dev-freelance.fr/#portfolio.
+Le portfolio est visible sur https://christophe-dev-freelance.fr/realisations.
 
 ### Assurez-vous l'hébergement et le nom de domaine ?
 Christophe peut accompagner le choix et la configuration de l'hébergement selon le type de projet.
@@ -170,7 +170,10 @@ Reprends les liens ci-dessous exactement tels quels, entre crochets suivis du ch
 ## Pour aller plus loin
 
 - Blog : https://christophe-dev-freelance.fr/blog
-- Réalisations : https://christophe-dev-freelance.fr/#portfolio
+- Services et déroulement d'un projet : https://christophe-dev-freelance.fr/services
+- Réalisations : https://christophe-dev-freelance.fr/realisations
+- À propos de Christophe : https://christophe-dev-freelance.fr/a-propos
+- Contact et demande de devis : https://christophe-dev-freelance.fr/contact
 - Portfolio technique détaillé (recruteurs, CTO, DSI) : https://krismos.fr
 - Code : https://github.com/krismos64
 - LinkedIn : https://www.linkedin.com/in/christophemostefaoui/

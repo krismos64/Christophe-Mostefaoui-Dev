@@ -43,7 +43,7 @@ const MediaCard = ({ media }: { media: MediaAttachment }) => {
     return ExternalLink;
   };
   const Icon = getIcon();
-  const isInternal = media.url.startsWith("#");
+  const isInternal = media.url.startsWith("#") || media.url.startsWith("/");
 
   return (
     <a
@@ -54,7 +54,7 @@ const MediaCard = ({ media }: { media: MediaAttachment }) => {
     >
       <div className="flex items-start justify-between gap-2 mb-0.5">
         <span
-          className="text-[14px] leading-tight text-foret group-hover:text-soleil transition-colors"
+          className="text-[14px] leading-tight text-foret group-hover:text-foret-moyen transition-colors"
         >
           {media.title}
         </span>
@@ -278,7 +278,7 @@ const AIChatbot = () => {
         type: "link",
         title: "Voir mes réalisations",
         description: "11 projets sur le portfolio.",
-        url: "#portfolio",
+        url: "/realisations",
         tags: ["Portfolio"],
       },
     ],

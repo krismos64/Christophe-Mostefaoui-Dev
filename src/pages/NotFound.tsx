@@ -29,7 +29,7 @@ export default function NotFound() {
         aria-label="Page introuvable"
       >
 
-        <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-4xl py-32">
+        <div className="mx-auto px-5 sm:px-8 relative z-10 max-w-4xl py-32">
           {/* Code erreur en gros chiffres romains */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}

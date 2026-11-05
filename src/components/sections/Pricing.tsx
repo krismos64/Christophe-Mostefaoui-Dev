@@ -1,4 +1,5 @@
 import { motion, useInView } from "framer-motion";
+import LienContact from "../common/LienContact";
 import LazyLottie from "../common/LazyLottie";
 import {
   ArrowUpRight,
@@ -15,11 +16,6 @@ import { useRef } from "react";
 export default function Pricing() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   const valueProps = [
     {
@@ -76,7 +72,7 @@ export default function Pricing() {
       aria-label="Mon approche tarifaire et ma méthode"
     >
 
-      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
         {/* Header édito */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -235,10 +231,8 @@ export default function Pricing() {
           transition={{ delay: 0.7, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-start gap-5"
         >
-          <button
-            onClick={() => scrollTo("contact")}
+          <LienContact
             className="hero-cta-primary group"
-            aria-label="Demander mon devis gratuit"
             data-testid="pricing_cta"
           >
             <span>Demander mon devis</span>
@@ -247,7 +241,7 @@ export default function Pricing() {
               className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               aria-hidden="true"
             />
-          </button>
+          </LienContact>
         </motion.div>
 
         {/* Citation manuscrite signée */}

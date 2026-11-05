@@ -4,14 +4,10 @@ import { HelmetProvider } from "react-helmet-async";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
-import About from "./components/sections/About";
 import FeaturedSnippetsFAQ from "./components/sections/FeaturedSnippetsFAQ";
 import Hero from "./components/sections/Hero";
-import Portfolio from "./components/sections/Portfolio";
-import Services from "./components/sections/Services";
-import Pricing from "./components/sections/Pricing";
+import { ApercuAPropos, ApercuRealisations, ApercuServices } from "./components/home/Apercus";
 import ServiceArea from "./components/sections/ServiceArea";
-import SmartPlanningShowcase from "./components/sections/SmartPlanningShowcase";
 import AIChatbot from "./components/AIChatbot";
 import { useStructuredData } from "./hooks/useStructuredData";
 import LLMOptimizedHead from "./components/seo/LLMOptimizedHead";
@@ -25,6 +21,10 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const LocalLanding = lazy(() => import("./pages/LocalLanding"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const Realisations = lazy(() => import("./pages/Realisations"));
+const APropos = lazy(() => import("./pages/APropos"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 const Home = () => {
   const structuredData = useStructuredData();
@@ -42,13 +42,12 @@ const Home = () => {
         />
       ))}
 
+      {/* Home = aperçus qui renvoient vers les pages intérieures (refonte 11/2026) */}
       <Hero />
-      <Services />
-      <Portfolio />
-      <About />
-      <SmartPlanningShowcase />
+      <ApercuServices />
+      <ApercuRealisations />
+      <ApercuAPropos />
       <FeaturedSnippetsFAQ />
-      <Pricing />
       <ServiceArea />
       <GMBOptimizedContact />
     </>
@@ -85,6 +84,10 @@ function App() {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/faq" element={<Navigate to="/#faq" replace />} />
+                    <Route path="/services" element={<ServicesPage />} />
+                    <Route path="/realisations" element={<Realisations />} />
+                    <Route path="/a-propos" element={<APropos />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/mentions-legales" element={<LegalNotice />} />

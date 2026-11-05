@@ -1,4 +1,5 @@
 import { motion, useInView } from "framer-motion";
+import LienContact from "../common/LienContact";
 import {
   ArrowUpRight,
   Bot,
@@ -13,11 +14,6 @@ import { useRef } from "react";
 export default function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   const services = [
     {
@@ -88,7 +84,7 @@ export default function Services() {
       aria-label="Mes services de développement web"
     >
 
-      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
         {/* Header édito */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -173,10 +169,8 @@ export default function Services() {
           <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75">
             un projet en tête ?
           </p>
-          <button
-            onClick={() => scrollTo("contact")}
+          <LienContact
             className="hero-cta-primary group"
-            aria-label="Demander un devis gratuit"
             data-testid="services_cta"
           >
             <span>Demander un devis</span>
@@ -185,7 +179,7 @@ export default function Services() {
               className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               aria-hidden="true"
             />
-          </button>
+          </LienContact>
         </motion.div>
 
         {/* Citation manuscrite signée */}

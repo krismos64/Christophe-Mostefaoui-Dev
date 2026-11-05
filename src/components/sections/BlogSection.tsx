@@ -35,7 +35,7 @@ const BlogSection = () => {
   return (
     <section className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28">
 
-      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-4xl">
+      <div className="mx-auto px-5 sm:px-8 relative z-10 max-w-4xl">
         {/* Header édito */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}

@@ -142,7 +142,6 @@ export default function VideoEmbed({
               target="_blank"
               rel="noopener noreferrer"
               className={`hero-body group/yt inline-flex items-center gap-1.5 text-[13px] ${linkColor} transition-colors`}
-              aria-label="Voir toutes les vidéos sur YouTube (nouvel onglet)"
             >
               <span className={`border-b pb-0.5 ${linkBorder}`}>
                 voir mes autres vidéos
@@ -151,6 +150,7 @@ export default function VideoEmbed({
                 className="h-3.5 w-3.5 opacity-70 transition-transform group-hover/yt:translate-x-0.5 group-hover/yt:-translate-y-0.5"
                 aria-hidden="true"
               />
+<span className="sr-only"> (nouvel onglet)</span>
             </a>
           )}
           {!channelUrl && caption && duration && (

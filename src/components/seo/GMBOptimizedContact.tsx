@@ -167,7 +167,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
         aria-label="Contact"
       >
 
-        <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-6xl">
+        <div className="mx-auto px-5 sm:px-8 relative z-10 max-w-6xl">
           {/* Header édito */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -270,7 +270,6 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                         <a
                           href={info.href}
                           className="group block transition-colors hover:text-soleil"
-                          aria-label={`${info.label} : ${info.value}`}
                         >
                           {content}
                         </a>
@@ -296,7 +295,6 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                     href="https://www.linkedin.com/in/christophemostefaoui/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Profil LinkedIn (nouvel onglet)"
                     className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
                   >
                     <Linkedin
@@ -311,6 +309,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       aria-hidden="true"
                     />
+<span className="sr-only"> (nouvel onglet)</span>
                   </a>
                 </li>
                 <li>
@@ -318,7 +317,6 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                     href="https://github.com/krismos64"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Profil GitHub (nouvel onglet)"
                     className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
                   >
                     <Github
@@ -333,6 +331,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       aria-hidden="true"
                     />
+<span className="sr-only"> (nouvel onglet)</span>
                   </a>
                 </li>
                 <li>
@@ -340,7 +339,6 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                     href="https://www.youtube.com/@christophe-dev-freelance/videos"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Chaîne YouTube (nouvel onglet)"
                     className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
                   >
                     <Youtube
@@ -355,6 +353,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       aria-hidden="true"
                     />
+<span className="sr-only"> (nouvel onglet)</span>
                   </a>
                 </li>
               </ul>

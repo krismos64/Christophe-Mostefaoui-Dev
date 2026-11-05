@@ -32,27 +32,6 @@ export const generateFinalStructuredData = () => {
     },
   };
 
-  // VideoObject 2 — "Mon Univers Digital" (intégrée dans la section À propos)
-  const videoObjectUnivers = {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "@id": `${baseUrl}/#video-univers-digital`,
-    "name": "Mon Univers Digital : Christophe Mostefaoui",
-    "description":
-      "Découvrez mon approche du développement web : créer des sites qui ressemblent à leurs propriétaires.",
-    "thumbnailUrl": `${baseUrl}/assets/images/miniature.png`,
-    "uploadDate": "2024-09-15T10:00:00+02:00",
-    "duration": "PT1M31S",
-    "embedUrl": "https://www.youtube.com/embed/eZ6OYMeT1CM",
-    "contentUrl": "https://www.youtube.com/watch?v=eZ6OYMeT1CM",
-    "width": "1920",
-    "height": "1080",
-    "creator": {
-      "@type": "Person",
-      "name": "Christophe Mostefaoui",
-    },
-  };
-
   // WebPage avec mainEntity Person (pas VideoObject pour éviter la date vidéo dans les SERP)
   const webPage = {
     "@context": "https://schema.org",
@@ -130,9 +109,40 @@ export const generateFinalStructuredData = () => {
     ]
   };
 
+  return [videoObject, webPage, faqSchema];
+};
+
+// Schéma affiché sur une page intérieure (via PageSeo, dans son @graph)
+export const schemaVideoUnivers = () => {
+  const baseUrl = "https://christophe-dev-freelance.fr";
+  // VideoObject 2 — "Mon Univers Digital" (intégrée dans la section À propos)
+  const videoObjectUnivers = {
+    "@type": "VideoObject",
+    "@id": `${baseUrl}/#video-univers-digital`,
+    "name": "Mon Univers Digital : Christophe Mostefaoui",
+    "description":
+      "Découvrez mon approche du développement web : créer des sites qui ressemblent à leurs propriétaires.",
+    "thumbnailUrl": `${baseUrl}/assets/images/miniature.png`,
+    "uploadDate": "2024-09-15T10:00:00+02:00",
+    "duration": "PT1M31S",
+    "embedUrl": "https://www.youtube.com/embed/eZ6OYMeT1CM",
+    "contentUrl": "https://www.youtube.com/watch?v=eZ6OYMeT1CM",
+    "width": "1920",
+    "height": "1080",
+    "creator": {
+      "@type": "Person",
+      "name": "Christophe Mostefaoui",
+    },
+  };
+
+  return videoObjectUnivers;
+};
+
+// Schéma affiché sur une page intérieure (via PageSeo, dans son @graph)
+export const schemaSmartPlanning = () => {
+  const baseUrl = "https://christophe-dev-freelance.fr";
   // SmartPlanning - SaaS fondé par Christophe
   const smartPlanning = {
-    "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "@id": `${baseUrl}/#smartplanning`,
     "name": "SmartPlanning",
@@ -173,5 +183,5 @@ export const generateFinalStructuredData = () => {
     "keywords": "planning, gestion équipe, SaaS, assistant IA, planification, emploi du temps, ressources humaines"
   };
 
-  return [videoObject, videoObjectUnivers, webPage, faqSchema, smartPlanning];
+  return smartPlanning;
 };

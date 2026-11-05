@@ -69,7 +69,7 @@ export default function SmartPlanningShowcase() {
       aria-label="SmartPlanning, mon projet entrepreneurial"
     >
 
-      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
         {/* Header édito */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -214,7 +214,6 @@ export default function SmartPlanningShowcase() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hero-body group/link inline-flex items-baseline gap-3 text-[15px] text-creme/80 hover:text-soleil transition-colors"
-                    aria-label="Page LinkedIn de SmartPlanning (nouvel onglet)"
                   >
                     <Linkedin className="h-4 w-4 self-center flex-shrink-0" aria-hidden="true" />
                     <span className="border-b border-creme/30 pb-0.5 group-hover/link:border-soleil">
@@ -227,6 +226,7 @@ export default function SmartPlanningShowcase() {
                       className="h-3.5 w-3.5 opacity-60 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
                       aria-hidden="true"
                     />
+<span className="sr-only"> (nouvel onglet)</span>
                   </a>
                 </li>
                 <li>
@@ -235,7 +235,6 @@ export default function SmartPlanningShowcase() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hero-body group/link inline-flex items-baseline gap-3 text-[15px] text-creme/80 hover:text-soleil transition-colors"
-                    aria-label="Chaîne YouTube SmartPlanning (nouvel onglet)"
                   >
                     <Youtube className="h-4 w-4 self-center flex-shrink-0" aria-hidden="true" />
                     <span className="border-b border-creme/30 pb-0.5 group-hover/link:border-soleil">
@@ -248,6 +247,7 @@ export default function SmartPlanningShowcase() {
                       className="h-3.5 w-3.5 opacity-60 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
                       aria-hidden="true"
                     />
+<span className="sr-only"> (nouvel onglet)</span>
                   </a>
                 </li>
                 <li>
@@ -256,7 +256,6 @@ export default function SmartPlanningShowcase() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hero-body group/link inline-flex items-baseline gap-3 text-[15px] text-creme/80 hover:text-soleil transition-colors"
-                    aria-label="Articles de conception sur krismos.fr (nouvel onglet)"
                   >
                     <BookOpen className="h-4 w-4 self-center flex-shrink-0" aria-hidden="true" />
                     <span className="border-b border-creme/30 pb-0.5 group-hover/link:border-soleil">
@@ -269,6 +268,7 @@ export default function SmartPlanningShowcase() {
                       className="h-3.5 w-3.5 opacity-60 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
                       aria-hidden="true"
                     />
+<span className="sr-only"> (nouvel onglet)</span>
                   </a>
                 </li>
               </ul>

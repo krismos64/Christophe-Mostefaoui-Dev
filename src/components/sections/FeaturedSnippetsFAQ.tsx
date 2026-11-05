@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, useInView } from "framer-motion";
+import LienContact from "../common/LienContact";
 import { ArrowUpRight, Mail, Minus, Plus } from "lucide-react";
 import { Fragment, useRef, useState } from "react";
 import { featuredSnippetsContent } from "../../utils/featured-snippets-content";
@@ -39,11 +40,6 @@ const FeaturedSnippetsFAQ = () => {
     );
   };
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   const { questions } = featuredSnippetsContent;
 
   const stagger = {
@@ -68,7 +64,7 @@ const FeaturedSnippetsFAQ = () => {
       aria-label="Questions fréquentes"
     >
 
-      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-5xl">
+      <div className="mx-auto px-5 sm:px-8 relative z-10 max-w-5xl">
         {/* Header édito */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -188,10 +184,8 @@ const FeaturedSnippetsFAQ = () => {
             ↳ une question spécifique sur votre projet ?
           </p>
           <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
-            <button
-              onClick={() => scrollTo("contact")}
+            <LienContact
               className="hero-cta-primary group"
-              aria-label="Demander un devis gratuit"
               data-testid="faq_cta"
             >
               <span>Demander un devis</span>
@@ -200,12 +194,11 @@ const FeaturedSnippetsFAQ = () => {
                 className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
               />
-            </button>
+            </LienContact>
 
             <a
               href="mailto:christophe.mostefaoui.dev@gmail.com"
               className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/80 hover:text-foret-moyen transition-colors"
-              aria-label="Envoyer un email à Christophe Mostefaoui"
             >
               <Mail className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
               <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">

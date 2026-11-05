@@ -8,13 +8,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const navLinks = [
-    { name: "À propos", to: isHomePage ? "#about" : "/#about" },
-    { name: "Services", to: isHomePage ? "#services" : "/#services" },
-    { name: "Portfolio", to: isHomePage ? "#portfolio" : "/#portfolio" },
+    { name: "Services", to: "/services" },
+    { name: "Réalisations", to: "/realisations" },
+    { name: "À propos", to: "/a-propos" },
     { name: "Blog", to: "/blog" },
-    { name: "Tarifs", to: isHomePage ? "#tarifs" : "/#tarifs" },
-    { name: "FAQ", to: isHomePage ? "#faq" : "/#faq" },
-    { name: "Contact", to: isHomePage ? "#contact" : "/#contact" },
+    { name: "Questions fréquentes", to: isHomePage ? "#faq" : "/#faq" },
+    { name: "Contact", to: "/contact" },
   ];
 
   const externalLinks = [
@@ -59,7 +58,7 @@ export default function Footer() {
       aria-label="Pied de page"
     >
 
-      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-12 gap-x-6 gap-y-10 md:gap-12 lg:gap-16">
           {/* Bloc identité — pleine largeur sur mobile */}
           <div className="col-span-2 md:col-span-5 lg:col-span-4">
@@ -151,7 +150,6 @@ export default function Footer() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`${s.name} (nouvel onglet)`}
                       className="hero-body group inline-flex items-center gap-2 text-[14px] text-creme/75 hover:text-soleil transition-colors"
                     >
                       <Icon
@@ -166,6 +164,7 @@ export default function Footer() {
                         className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                         aria-hidden="true"
                       />
+<span className="sr-only"> (nouvel onglet)</span>
                     </a>
                   </li>
                 );
@@ -183,7 +182,6 @@ export default function Footer() {
                 <a
                   href="tel:+33679088845"
                   className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-creme/85 hover:text-soleil transition-colors"
-                  aria-label="Appeler Christophe au 06 79 08 88 45"
                 >
                   <span className="font-mono tabular-nums border-b border-current/30 pb-0.5 group-hover:border-soleil">
                     06 79 08 88 45

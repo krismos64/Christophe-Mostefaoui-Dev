@@ -76,7 +76,6 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
           target="_blank"
           rel="noopener noreferrer"
           className="hero-body group mt-5 inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
-          aria-label="voir la fiche Google de Christophe Mostefaoui (nouvel onglet)"
           data-testid="google_profile_link"
         >
           <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
@@ -86,6 +85,7 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
             className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             aria-hidden="true"
           />
+<span className="sr-only"> (nouvel onglet)</span>
         </a>
       </div>
 

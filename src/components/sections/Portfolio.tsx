@@ -1,144 +1,15 @@
 import { motion, useInView } from "framer-motion";
+import LienContact from "../common/LienContact";
 import { ArrowUpRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { Fragment, useRef } from "react";
 import OptimizedPicture from "../common/OptimizedPicture";
+import { allProjects, founderProject, projects } from "../../data/realisations";
 
-interface Project {
-  numeral?: string;
-  title: string;
-  description: string;
-  image: string;
-  alt: string;
-  tags: string[];
-  link: string;
-  isFounder?: boolean;
-}
 
 export default function Portfolio() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const founderProject: Project = {
-    title: "SmartPlanning.fr",
-    description:
-      "Mon projet entrepreneurial : un SaaS de gestion des plannings d'équipe, conçu, développé et lancé seul en 2026 (modèle freemium). De l'architecture au déploiement en passant par le support utilisateurs, je maîtrise tout le cycle de vie d'un produit.",
-    image: "/assets/images/logosp.png",
-    alt: "SmartPlanning, SaaS de gestion des plannings fondé par Christophe Mostefaoui",
-    tags: ["SaaS Freemium", "Solo founder", "2026"],
-    link: "https://smartplanning.fr/",
-    isFounder: true,
-  };
-
-  const projects: Project[] = [
-    {
-      numeral: "I",
-      title: "Lune-Soleil",
-      description:
-        "Boutique en ligne sur mesure pour une créatrice de bijoux faits main à Artix. Catalogue, paiement par carte, stock partagé entre le site et les marchés, factures, livraison Mondial Relay et un back-office utilisable depuis un smartphone, y compris sur un stand de marché.",
-      image: "/assets/images/lune-soleil.png",
-      alt: "Lune-Soleil, boutique en ligne de bijoux artisanaux faits main en Béarn",
-      tags: ["E-commerce sur mesure", "Paiement en ligne", "Artisanat local"],
-      link: "https://lune-soleil.fr/",
-    },
-    {
-      numeral: "II",
-      title: "LivresStaka.fr",
-      description:
-        "Plateforme complète pour accompagner les auteurs dans la correction et l'édition de leurs manuscrits. Espace client sécurisé, paiement en ligne et messagerie intégrée pour échanger facilement avec l'équipe éditoriale.",
-      image: "/assets/images/livrestaka.jpg",
-      alt: "LivresStaka, plateforme d'édition et correction de manuscrits",
-      tags: ["Plateforme sur mesure", "Paiement en ligne", "Espace client"],
-      link: "https://livrestaka.fr/",
-    },
-    {
-      numeral: "III",
-      title: "Cabinet Infirmier Graslin",
-      description:
-        "Site vitrine élégant pour un cabinet infirmier à Nantes. Présentation des services, prise de rendez-vous facilitée et informations pratiques pour les patients du quartier Graslin.",
-      image: "/assets/images/graslin.jpg",
-      alt: "Cabinet Infirmier Graslin Nantes, site vitrine professionnel",
-      tags: ["Site vitrine", "Santé", "Référencement local"],
-      link: "https://cabinet-infirmier-graslin.fr/",
-    },
-    {
-      numeral: "IV",
-      title: "methodea.fr",
-      description:
-        "Refonte complète d'un site vitrine pour une meilleure visibilité en ligne. Design moderne, responsive et formulaire de contact connecté pour ne manquer aucune opportunité commerciale.",
-      image: "/assets/images/methodea.png",
-      alt: "Methodea, refonte site vitrine professionnel",
-      tags: ["Refonte", "Design moderne", "Formulaire contact"],
-      link: "https://methodea.netlify.app/",
-    },
-    {
-      numeral: "V",
-      title: "coachtfe.fr",
-      description:
-        "Site professionnel pour une équipe de soignants et d'enseignants spécialisés en méthodologie de recherche infirmière. Présentation claire de l'accompagnement proposé aux étudiants pour leur Travail de Fin d'Études (TFE), avec parcours de contact dédié.",
-      image: "/assets/images/coachtfe.png",
-      alt: "CoachTFE, accompagnement méthodologie de recherche infirmière (TFE)",
-      tags: ["Site vitrine", "Santé & Éducation", "Méthodologie TFE"],
-      link: "https://coachtfe.fr/",
-    },
-    {
-      numeral: "VI",
-      title: "CoachDEC",
-      description:
-        "Site vitrine pour un service d'accompagnement méthodologique au mémoire du DEC (diplôme d'expertise comptable). Quiz d'orientation, présentation des formules, formulaire de contact protégé contre le spam et données structurées qui clarifient l'offre auprès de Google : le candidat rédige, l'équipe le guide.",
-      image: "/assets/images/coachdec.png",
-      alt: "CoachDEC, accompagnement méthodologique au mémoire d'expertise comptable",
-      tags: ["Site vitrine", "Formation", "Formulaire sécurisé"],
-      link: "https://coachdec.fr/",
-    },
-    {
-      numeral: "VII",
-      title: "Doctorat.me",
-      description:
-        "Landing page pour un service d'accompagnement doctoral assuré par des docteurs, toutes disciplines : méthodologie, relecture avec recommandations, aide au traitement des données (SPSS, Stata, R). Formulaire de rappel, contact WhatsApp, charte d'intégrité et contenus reformulés pour présenter clairement une démarche éthique : le doctorant reste l'auteur de sa thèse.",
-      image: "/assets/images/doctorat.png",
-      alt: "Doctorat.me, accompagnement doctoral éthique par des docteurs",
-      tags: ["Landing page", "Enseignement supérieur", "Données structurées"],
-      link: "https://doctorat.me/",
-    },
-    {
-      numeral: "VIII",
-      title: "MasterMentor",
-      description:
-        "Site vitrine pour un service d'accompagnement méthodologique au mémoire de Master 2, assuré par des enseignants-chercheurs. Présentation des disciplines et de l'équipe, quiz, page tarifs, formulaire de diagnostic gratuit sécurisé, charte d'intégrité académique et adresses lisibles sans extension pour le référencement.",
-      image: "/assets/images/mastermentor.png",
-      alt: "MasterMentor, accompagnement méthodologique au mémoire de Master 2",
-      tags: ["Site vitrine", "Enseignement supérieur", "Formulaire sécurisé"],
-      link: "https://mastermentor.fr/",
-    },
-    {
-      numeral: "IX",
-      title: "Garage Parrot",
-      description:
-        "Site complet pour un garage automobile avec système de rendez-vous en ligne et catalogue de véhicules d'occasion. Gestion simplifiée pour le gérant et ses employés via un espace administration dédié.",
-      image: "/assets/images/garage.jpg",
-      alt: "Garage Parrot, site de gestion garage automobile",
-      tags: ["Site complet", "Réservation en ligne", "Espace admin"],
-      link: "https://garage-parrot.online/",
-    },
-    {
-      numeral: "X",
-      title: "Poulp Fiction",
-      description:
-        "Site web dynamique et immersif pour un centre de plongée à Saint-Cyprien. Animations fluides, présentation des formations et réservation simplifiée pour attirer de nouveaux plongeurs.",
-      image: "/assets/images/poulpfiction.jpg",
-      alt: "Poulp Fiction, site web centre de plongée Saint-Cyprien",
-      tags: ["Site vitrine", "Animations", "Tourisme"],
-      link: "https://poulpfiction.netlify.app/",
-    },
-  ];
-
-  const allProjects = [founderProject, ...projects];
 
   const generatePortfolioStructuredData = () =>
     allProjects.map((project) => ({
@@ -188,7 +59,7 @@ export default function Portfolio() {
         aria-label="Portfolio des projets"
       >
 
-        <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
           {/* Header édito */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -272,7 +143,6 @@ export default function Portfolio() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hero-body group inline-flex items-center gap-2 text-[15px] text-creme/90 hover:text-soleil transition-colors"
-                  aria-label={`Visiter ${founderProject.title} (nouvel onglet)`}
                 >
                   <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                     smartplanning.fr
@@ -281,6 +151,7 @@ export default function Portfolio() {
                     className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     aria-hidden="true"
                   />
+<span className="sr-only"> (nouvel onglet)</span>
                 </a>
               </div>
             </div>
@@ -356,11 +227,11 @@ export default function Portfolio() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hero-body group/link inline-flex items-center gap-1.5 text-[13px] text-creme/70 hover:text-soleil transition-colors pl-12"
-                  aria-label={`Visiter ${p.title} (nouvel onglet)`}
                 >
                   <span className="border-b border-current/40 pb-0.5 group-hover/link:border-soleil">
                     {new URL(p.link).hostname.replace("www.", "")}
                   </span>
+                  <span className="sr-only"> : site de {p.title} (nouvel onglet)</span>
                   <ArrowUpRight
                     className="h-3.5 w-3.5 opacity-70 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
                     aria-hidden="true"
@@ -381,10 +252,8 @@ export default function Portfolio() {
               ↳ un projet en tête ?
             </p>
             <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
-              <button
-                onClick={() => scrollTo("contact")}
+              <LienContact
                 className="hero-cta-primary group"
-                aria-label="Demander un devis gratuit"
                 data-testid="portfolio_cta"
               >
                 <span>Demander un devis</span>
@@ -393,14 +262,13 @@ export default function Portfolio() {
                   className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden="true"
                 />
-              </button>
+              </LienContact>
 
               <a
                 href="https://krismos.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-body group inline-flex items-center gap-2 text-[14px] text-creme/80 hover:text-soleil transition-colors"
-                aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
                 data-testid="portfolio_cta_krismos"
               >
                 <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
@@ -411,6 +279,7 @@ export default function Portfolio() {
                   className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden="true"
                 />
+<span className="sr-only"> (nouvel onglet)</span>
               </a>
             </div>
           </motion.div>

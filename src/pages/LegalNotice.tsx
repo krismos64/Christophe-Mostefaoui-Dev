@@ -145,7 +145,7 @@ export default function LegalNotice() {
         aria-label="Mentions légales"
       >
 
-        <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-4xl">
+        <div className="mx-auto px-5 sm:px-8 relative z-10 max-w-4xl">
           {/* Header édito */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}

@@ -1,4 +1,5 @@
 import { motion, useInView } from "framer-motion";
+import LienContact from "../common/LienContact";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import VideoEmbed from "../common/VideoEmbed";
@@ -6,11 +7,6 @@ import VideoEmbed from "../common/VideoEmbed";
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   const differentiators = [
     {
@@ -60,7 +56,7 @@ export default function About() {
       aria-label="À propos de Christophe"
     >
 
-      <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 relative z-10">
         {/* Header édito : numéro de section + titre */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -203,10 +199,8 @@ export default function About() {
               variants={item}
               className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8"
             >
-              <button
-                onClick={() => scrollTo("contact")}
+              <LienContact
                 className="hero-cta-primary group"
-                aria-label="Discuter de votre projet"
               >
                 <span>Discutons de votre projet</span>
                 <span className="hero-cta-sub">premier échange gratuit</span>
@@ -214,23 +208,23 @@ export default function About() {
                   className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden="true"
                 />
-              </button>
+              </LienContact>
 
               <a
                 href="https://krismos.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/80 hover:text-foret-moyen transition-colors"
-                aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
               >
                 <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                   krismos.fr
                 </span>
-                <span className="opacity-70">ma version technique longue</span>
+                <span>ma version technique longue</span>
                 <ArrowUpRight
                   className="h-3.5 w-3.5 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden="true"
                 />
+<span className="sr-only"> (nouvel onglet)</span>
               </a>
             </motion.div>
 

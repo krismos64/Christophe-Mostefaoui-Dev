@@ -1,15 +1,11 @@
 import { motion, useInView } from "framer-motion";
+import LienContact from "../common/LienContact";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { Fragment, useRef } from "react";
 
 export default function ServiceArea() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
 
   const localCities = [
     "Pau",
@@ -63,7 +59,7 @@ export default function ServiceArea() {
         aria-label="Zone d'intervention géographique"
       >
 
-        <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-5xl">
+        <div className="mx-auto px-5 sm:px-8 relative z-10 max-w-5xl">
           {/* Header édito */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -146,10 +142,8 @@ export default function ServiceArea() {
               ↳ envie de démarrer ?
             </p>
             <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
-              <button
-                onClick={() => scrollTo("contact")}
+              <LienContact
                 className="hero-cta-primary group"
-                aria-label="Discuter de votre projet"
                 data-testid="service_area_cta"
               >
                 <span>Discutons de votre projet</span>
@@ -158,12 +152,11 @@ export default function ServiceArea() {
                   className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden="true"
                 />
-              </button>
+              </LienContact>
 
               <a
                 href="tel:+33679088845"
                 className="hero-body group inline-flex items-center gap-2 text-[15px] text-foret/85 hover:text-soleil transition-colors"
-                aria-label="Appeler Christophe au 06 79 08 88 45"
               >
                 <Phone
                   className="h-4 w-4"

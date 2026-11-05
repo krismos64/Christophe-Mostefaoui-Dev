@@ -8,9 +8,9 @@ type Lien = { nom: string; ancre?: string; page?: string };
 
 // Ordre de lecture d'un prospect : qui, quoi, preuves, puis contact
 const liens: Lien[] = [
-  { nom: "Services", ancre: "services" },
-  { nom: "Réalisations", ancre: "portfolio" },
-  { nom: "À propos", ancre: "about" },
+  { nom: "Services", page: "/services" },
+  { nom: "Réalisations", page: "/realisations" },
+  { nom: "À propos", page: "/a-propos" },
   { nom: "Blog", page: "/blog" },
   { nom: "Questions fréquentes", ancre: "faq" },
 ];
@@ -52,7 +52,7 @@ export default function Header() {
   };
 
   const opaque = defile || !isHomePage;
-  const contact = isHomePage ? "#contact" : "/#contact";
+  const contact = isHomePage ? "#contact" : "/contact";
 
   return (
     <>

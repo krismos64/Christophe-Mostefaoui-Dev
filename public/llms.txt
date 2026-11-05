@@ -89,6 +89,10 @@ Index complet : [https://christophe-dev-freelance.fr/blog](https://christophe-de
 ## Liens et contact
 
 - [Site commercial](https://christophe-dev-freelance.fr): vitrine des prestations freelance
+- [Services](https://christophe-dev-freelance.fr/services): détail des prestations et déroulement d'un devis
+- [Réalisations](https://christophe-dev-freelance.fr/realisations): les 11 projets en ligne, avec leur description
+- [À propos](https://christophe-dev-freelance.fr/a-propos): parcours de Christophe, sa façon de travailler seul
+- [Contact](https://christophe-dev-freelance.fr/contact): téléphone, e-mail et formulaire de demande de devis
 - [Portfolio technique](https://krismos.fr): CV, stack détaillée, projets perso, veille techno — pour recruteurs, CTO, DSI, agences
 - [LinkedIn](https://www.linkedin.com/in/christophemostefaoui/): profil professionnel
 - [GitHub](https://github.com/krismos64): code source et projets

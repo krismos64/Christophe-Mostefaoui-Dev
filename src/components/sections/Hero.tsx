@@ -122,20 +122,13 @@ export default function Hero() {
                   aria-hidden="true"
                 />
               </a>
-              <a
-                href="/#portfolio"
-                onClick={(e) => {
-                  const cible = document.getElementById("portfolio");
-                  if (cible) {
-                    e.preventDefault();
-                    cible.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+              <Link
+                to="/realisations"
                 className="inline-flex min-h-[44px] items-center text-base font-medium text-creme underline decoration-creme/40 underline-offset-[6px] hover:text-soleil hover:decoration-soleil focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-soleil"
                 data-testid="hero_cta_portfolio"
               >
                 Voir mes réalisations
-              </a>
+              </Link>
             </div>
             <p className="mt-4 text-[15px] text-foret-brume">
               Réponse sous 24h. Je me déplace gratuitement dans tout le 64.
