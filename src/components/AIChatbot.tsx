@@ -50,37 +50,32 @@ const MediaCard = ({ media }: { media: MediaAttachment }) => {
       href={media.url}
       target={isInternal ? undefined : "_blank"}
       rel={isInternal ? undefined : "noopener noreferrer"}
-      className="group block border-l-2 border-[#F4D35E]/60 pl-3 py-1.5 hover:border-[#F4D35E] transition-colors"
+      className="group block border-l-2 border-soleil/60 pl-3 py-1.5 hover:border-soleil transition-colors"
     >
       <div className="flex items-start justify-between gap-2 mb-0.5">
         <span
-          style={{
-            fontFamily: '"Fraunces", "Times New Roman", serif',
-            fontStyle: "italic",
-            fontWeight: 500,
-          }}
-          className="text-[14px] leading-tight text-[#1A1715] group-hover:text-[#F4D35E] transition-colors"
+          className="text-[14px] leading-tight text-foret group-hover:text-soleil transition-colors"
         >
           {media.title}
         </span>
         <Icon
-          className="h-3.5 w-3.5 mt-1 flex-shrink-0 text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors"
+          className="h-3.5 w-3.5 mt-1 flex-shrink-0 text-foret/70 group-hover:text-soleil transition-colors"
           aria-hidden="true"
           strokeWidth={1.5}
         />
       </div>
       {media.description && (
-        <p className="hero-body text-[12px] leading-snug text-[#1A1715]/65">
+        <p className="hero-body text-[12px] leading-snug text-foret/75">
           {media.description}
         </p>
       )}
       {media.tags && media.tags.length > 0 && (
-        <p className="hero-body text-[11px] mt-1 text-[#1A1715]/45 flex flex-wrap items-center gap-x-1.5">
+        <p className="hero-body text-[11px] mt-1 text-foret/70 flex flex-wrap items-center gap-x-1.5">
           {media.tags.slice(0, 4).map((tag, i) => (
             <span key={i}>
               {tag}
               {i < Math.min(media.tags!.length, 4) - 1 && (
-                <span className="text-[#F4D35E]/60 ml-1.5" aria-hidden="true">
+                <span className="text-soleil/60 ml-1.5" aria-hidden="true">
                   ·
                 </span>
               )}
@@ -536,7 +531,7 @@ const AIChatbot = () => {
             const label = linkMatch[1];
             const href = linkMatch[2] ?? "";
             const linkClass =
-              "underline decoration-[#F4D35E]/70 hover:decoration-[#F4D35E] underline-offset-2 font-medium";
+              "underline decoration-soleil/70 hover:decoration-soleil underline-offset-2 font-medium";
             // Lien interne : navigation React Router, le chat reste ouvert
             return href.startsWith("/") ? (
               <Link key={key} to={href} className={linkClass}>
@@ -855,19 +850,19 @@ const AIChatbot = () => {
         <button
           type="button"
           onClick={handleOpen}
-          className="fixed bottom-28 right-5 max-w-[260px] z-40 bg-[#F4EFE6] text-[#1A1715] border border-[#1A1715]/15 shadow-xl px-4 py-3 text-left transition-all duration-300 hover:border-[#F4D35E]"
+          className="fixed bottom-28 right-5 max-w-[260px] z-40 bg-creme text-foret border border-foret/15 shadow-xl px-4 py-3 text-left transition-all duration-300 hover:border-soleil"
           style={{ animation: "fade-in 0.5s ease-out" }}
           aria-label="Ouvrir le chat"
         >
-          <p className="hero-handwritten text-[16px] text-[#F4D35E] mb-0.5">
+          <p className="hero-handwritten text-[16px] text-soleil mb-0.5">
             ✏ besoin d'aide ?
           </p>
-          <p className="hero-body text-[13px] leading-snug text-[#1A1715]/75">
+          <p className="hero-body text-[13px] leading-snug text-foret/75">
             Posez-moi une question sur Christophe.
           </p>
           <span
             aria-hidden="true"
-            className="absolute -bottom-2 right-8 w-3 h-3 bg-[#F4EFE6] border-r border-b border-[#1A1715]/15 transform rotate-45"
+            className="absolute -bottom-2 right-8 w-3 h-3 bg-creme border-r border-b border-foret/15 transform rotate-45"
           />
         </button>
       )}
@@ -877,7 +872,7 @@ const AIChatbot = () => {
         <div className="fixed bottom-6 right-6 z-50">
           <button
             onClick={handleOpen}
-            className="relative bg-transparent transition-transform duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] focus-visible:ring-offset-2 group"
+            className="relative bg-transparent transition-transform duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil focus-visible:ring-offset-2 group"
             aria-label="Ouvrir le chatbot"
           >
             <div className="relative">
@@ -888,7 +883,7 @@ const AIChatbot = () => {
               />
               {hasBadge && (
                 <span
-                  className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-[#F4D35E] ring-2 ring-[#0B0805] animate-pulse"
+                  className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-soleil ring-2 ring-foret-profond animate-pulse"
                   aria-hidden="true"
                 />
               )}
@@ -902,7 +897,7 @@ const AIChatbot = () => {
       {isOpen && isExpanded && (
         <div
           onClick={() => setIsExpanded(false)}
-          className="fixed inset-0 z-40 bg-[#0B0805]/50 backdrop-blur-[2px] transition-opacity duration-300"
+          className="fixed inset-0 z-40 bg-foret-profond/50 backdrop-blur-[2px] transition-opacity duration-300"
           aria-hidden="true"
         />
       )}
@@ -912,16 +907,16 @@ const AIChatbot = () => {
         <div
           role="dialog"
           aria-label="Assistant IA de Christophe"
-          className={`fixed z-50 flex flex-col bg-[#F4EFE6] border border-[#1A1715]/15 shadow-2xl overflow-hidden transition-all duration-300 ease-out ${
+          className={`fixed z-50 flex flex-col bg-creme border border-foret/15 shadow-2xl overflow-hidden transition-all duration-300 ease-out ${
             isExpanded
               ? "inset-2 sm:inset-6 lg:inset-y-10 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:w-[min(1000px,calc(100vw-4rem))] h-auto max-h-none"
               : "bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] h-[600px] max-h-[calc(100vh-3rem)]"
           }`}
         >
           {/* Header sobre */}
-          <div className="relative flex items-center justify-between gap-3 px-4 py-3.5 border-b border-[#1A1715]/15 bg-[#0B0805] text-[#F4EFE6]">
+          <div className="relative flex items-center justify-between gap-3 px-4 py-3.5 border-b border-foret/15 bg-foret-profond text-creme">
             <div className="flex items-center gap-3 min-w-0 flex-1">
-              <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-[#F4D35E]/40">
+              <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-soleil/40">
                 <picture>
                   <source
                     type="image/avif"
@@ -944,16 +939,11 @@ const AIChatbot = () => {
               </div>
               <div className="min-w-0 flex-1">
                 <p
-                  style={{
-                    fontFamily: '"Fraunces", "Times New Roman", serif',
-                    fontStyle: "italic",
-                    fontWeight: 500,
-                  }}
-                  className="text-[15px] leading-tight text-[#F4EFE6]"
+                  className="text-[15px] leading-tight text-creme"
                 >
                   Assistant de Christophe
                 </p>
-                <p className="hero-body text-[11px] text-[#F4EFE6]/60 truncate">
+                <p className="hero-body text-[11px] text-creme/60 truncate">
                   {isStreaming
                     ? "écrit…"
                     : "développeur freelance · Pau (64)"}
@@ -966,10 +956,10 @@ const AIChatbot = () => {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className={`p-1.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded ${
+                  className={`p-1.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil rounded ${
                     confirmReset
-                      ? "text-[#F4D35E]"
-                      : "text-[#F4EFE6]/70 hover:text-[#F4D35E]"
+                      ? "text-soleil"
+                      : "text-creme/70 hover:text-soleil"
                   }`}
                   aria-label={
                     confirmReset
@@ -989,7 +979,7 @@ const AIChatbot = () => {
               <button
                 type="button"
                 onClick={() => setIsExpanded((v) => !v)}
-                className="hidden sm:block p-1.5 text-[#F4EFE6]/70 hover:text-[#F4D35E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded"
+                className="hidden sm:block p-1.5 text-creme/70 hover:text-soleil transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil rounded"
                 aria-label={
                   isExpanded
                     ? "Réduire la fenêtre du chat"
@@ -1007,7 +997,7 @@ const AIChatbot = () => {
               <button
                 type="button"
                 onClick={handleClose}
-                className="p-1.5 text-[#F4EFE6]/70 hover:text-[#F4D35E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded"
+                className="p-1.5 text-creme/70 hover:text-soleil transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil rounded"
                 aria-label="Fermer le chat"
               >
                 <X className="w-5 h-5" strokeWidth={1.5} />
@@ -1019,23 +1009,23 @@ const AIChatbot = () => {
           {confirmReset && (
             <div
               role="status"
-              className="flex items-center justify-between gap-3 px-4 py-2.5 bg-[#F4D35E]/15 border-b border-[#1A1715]/10"
+              className="flex items-center justify-between gap-3 px-4 py-2.5 bg-soleil/15 border-b border-foret/10"
             >
-              <p className="hero-body text-[12px] text-[#1A1715]">
+              <p className="hero-body text-[12px] text-foret">
                 Effacer cette conversation ?
               </p>
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="hero-body text-[12px] font-medium underline decoration-[#F4D35E] underline-offset-2 text-[#1A1715] hover:opacity-70 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded px-1"
+                  className="hero-body text-[12px] font-medium underline decoration-soleil underline-offset-2 text-foret hover:opacity-70 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil rounded px-1"
                 >
                   Effacer
                 </button>
                 <button
                   type="button"
                   onClick={() => setConfirmReset(false)}
-                  className="hero-body text-[12px] text-[#1A1715]/60 hover:opacity-70 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] rounded px-1"
+                  className="hero-body text-[12px] text-foret/75 hover:opacity-70 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil rounded px-1"
                 >
                   Annuler
                 </button>
@@ -1062,22 +1052,22 @@ const AIChatbot = () => {
                 <div
                   className={`max-w-[85%] ${
                     message.role === "user"
-                      ? "border-r-2 border-[#F4D35E] pr-3 py-2 bg-[#F4D35E]/10"
-                      : "border-l-2 border-[#1A1715]/30 pl-3 py-2"
+                      ? "border-r-2 border-soleil pr-3 py-2 bg-soleil/10"
+                      : "border-l-2 border-foret/30 pl-3 py-2"
                   }`}
                 >
                   <p
                     className={`hero-body text-[14px] leading-[1.6] whitespace-pre-wrap ${
                       message.role === "user"
-                        ? "text-[#1A1715]"
-                        : "text-[#1A1715]"
+                        ? "text-foret"
+                        : "text-foret"
                     }`}
                   >
                     {message.role === "assistant"
                       ? renderAssistantText(message.content)
                       : message.content}
                     {message.isStreaming && message.role === "assistant" && (
-                      <span className="inline-block w-2 h-4 ml-0.5 bg-[#F4D35E] align-middle animate-pulse" />
+                      <span className="inline-block w-2 h-4 ml-0.5 bg-soleil align-middle animate-pulse" />
                     )}
                   </p>
 
@@ -1095,8 +1085,8 @@ const AIChatbot = () => {
                   <p
                     className={`font-mono tabular-nums text-[10px] mt-1.5 ${
                       message.role === "user"
-                        ? "text-[#1A1715]/40"
-                        : "text-[#1A1715]/40"
+                        ? "text-foret/70"
+                        : "text-foret/70"
                     }`}
                   >
                     {message.timestamp.toLocaleTimeString("fr-FR", {
@@ -1110,8 +1100,8 @@ const AIChatbot = () => {
 
             {/* Indicateur "Christophe réfléchit…" */}
             {isLoading && !isStreaming && (
-              <div className="border-l-2 border-[#F4D35E]/40 pl-3 py-2 max-w-[85%]">
-                <p className="hero-handwritten text-[14px] text-[#1A1715]/55 flex items-center gap-2">
+              <div className="border-l-2 border-soleil/40 pl-3 py-2 max-w-[85%]">
+                <p className="hero-handwritten text-[14px] text-foret/70 flex items-center gap-2">
                   <span className="inline-flex gap-1">
                     <span className="w-1 h-1 rounded-full bg-current animate-bounce" />
                     <span
@@ -1134,7 +1124,7 @@ const AIChatbot = () => {
                 className="pt-2"
                 style={{ animation: "fade-in 0.5s ease-out" }}
               >
-                <p className="hero-handwritten text-[14px] text-[#1A1715]/55 mb-3">
+                <p className="hero-handwritten text-[14px] text-foret/70 mb-3">
                   ↳ vous pouvez aussi demander :
                 </p>
                 <ul className="space-y-2">
@@ -1143,14 +1133,14 @@ const AIChatbot = () => {
                       <button
                         type="button"
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className="group w-full text-left flex items-start gap-2 py-1.5 hover:text-[#F4D35E] transition-colors"
+                        className="group w-full text-left flex items-start gap-2 py-1.5 hover:text-soleil transition-colors"
                       >
                         <ArrowUpRight
-                          className="h-3.5 w-3.5 mt-1 flex-shrink-0 text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors"
+                          className="h-3.5 w-3.5 mt-1 flex-shrink-0 text-foret/70 group-hover:text-soleil transition-colors"
                           aria-hidden="true"
                           strokeWidth={1.5}
                         />
-                        <span className="hero-body text-[14px] leading-snug text-[#1A1715]/85 group-hover:text-[#F4D35E] border-b border-transparent group-hover:border-[#F4D35E]/40 pb-0.5">
+                        <span className="hero-body text-[14px] leading-snug text-foret/85 group-hover:text-soleil border-b border-transparent group-hover:border-soleil/40 pb-0.5">
                           {suggestion}
                         </span>
                       </button>
@@ -1163,10 +1153,10 @@ const AIChatbot = () => {
             {/* Formulaire de transmission à Christophe (lead) */}
             {showLeadForm && !leadSent && (
               <div
-                className="border-l-2 border-[#F4D35E] pl-3 py-2.5 space-y-3 max-w-[92%]"
+                className="border-l-2 border-soleil pl-3 py-2.5 space-y-3 max-w-[92%]"
                 style={{ animation: "fade-in 0.4s ease-out" }}
               >
-                <p className="hero-body text-[13px] leading-snug text-[#1A1715]/85">
+                <p className="hero-body text-[13px] leading-snug text-foret/85">
                   Christophe reçoit votre conversation et vous répond
                   personnellement <strong>sous 24h</strong> (jours ouvrés).
                 </p>
@@ -1176,7 +1166,7 @@ const AIChatbot = () => {
                   onChange={(e) => setLeadName(e.target.value)}
                   placeholder="Votre nom (facultatif)"
                   autoComplete="name"
-                  className="hero-body w-full bg-transparent border-b border-[#1A1715]/25 text-[#1A1715] placeholder:text-[#1A1715]/40 text-[14px] py-1.5 focus:outline-none focus:border-[#F4D35E] transition-colors"
+                  className="hero-body w-full bg-transparent border-b border-foret/25 text-foret placeholder:text-foret/70 text-[14px] py-1.5 focus:outline-none focus:border-soleil transition-colors"
                   aria-label="Votre nom"
                 />
                 <input
@@ -1186,7 +1176,7 @@ const AIChatbot = () => {
                   placeholder="Votre email *"
                   autoComplete="email"
                   required
-                  className="hero-body w-full bg-transparent border-b border-[#1A1715]/25 text-[#1A1715] placeholder:text-[#1A1715]/40 text-[14px] py-1.5 focus:outline-none focus:border-[#F4D35E] transition-colors"
+                  className="hero-body w-full bg-transparent border-b border-foret/25 text-foret placeholder:text-foret/70 text-[14px] py-1.5 focus:outline-none focus:border-soleil transition-colors"
                   aria-label="Votre email"
                 />
                 <div className="flex items-center gap-4 pt-1">
@@ -1197,7 +1187,7 @@ const AIChatbot = () => {
                       leadSending ||
                       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail.trim())
                     }
-                    className="hero-body inline-flex items-center gap-1.5 text-[13px] font-medium text-[#1A1715] border-b border-[#F4D35E] pb-0.5 hover:text-[#F4D35E] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    className="hero-body inline-flex items-center gap-1.5 text-[13px] font-medium text-foret border-b border-soleil pb-0.5 hover:text-soleil disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                   >
                     <Mail className="h-3.5 w-3.5" aria-hidden="true" />
                     {leadSending ? "Envoi en cours…" : "Envoyer à Christophe"}
@@ -1205,12 +1195,12 @@ const AIChatbot = () => {
                   <button
                     type="button"
                     onClick={() => setShowLeadForm(false)}
-                    className="hero-body text-[12px] text-[#1A1715]/50 hover:text-[#F4D35E] transition-colors"
+                    className="hero-body text-[12px] text-foret/70 hover:text-soleil transition-colors"
                   >
                     annuler
                   </button>
                 </div>
-                <p className="hero-body text-[10px] leading-snug text-[#1A1715]/45">
+                <p className="hero-body text-[10px] leading-snug text-foret/70">
                   Votre email et cette conversation sont transmis à Christophe
                   uniquement pour vous recontacter.
                 </p>
@@ -1230,14 +1220,14 @@ const AIChatbot = () => {
                     <button
                       type="button"
                       onClick={() => setShowLeadForm(true)}
-                      className="group w-full text-left flex items-center gap-2 py-2 px-3 border border-[#F4D35E]/50 hover:border-[#F4D35E] bg-[#F4D35E]/10 transition-colors"
+                      className="group w-full text-left flex items-center gap-2 py-2 px-3 border border-soleil/50 hover:border-soleil bg-soleil/10 transition-colors"
                     >
                       <Mail
-                        className="h-4 w-4 flex-shrink-0 text-[#F4D35E]"
+                        className="h-4 w-4 flex-shrink-0 text-soleil"
                         aria-hidden="true"
                         strokeWidth={1.5}
                       />
-                      <span className="hero-body text-[13px] leading-snug text-[#1A1715]">
+                      <span className="hero-body text-[13px] leading-snug text-foret">
                         Transmettre ma demande à Christophe :{" "}
                         <strong>devis gratuit sous 24h</strong>
                       </span>
@@ -1250,14 +1240,14 @@ const AIChatbot = () => {
                           <button
                             type="button"
                             onClick={() => handleSuggestionClick(q)}
-                            className="group w-full text-left flex items-start gap-2 py-1 hover:text-[#F4D35E] transition-colors"
+                            className="group w-full text-left flex items-start gap-2 py-1 hover:text-soleil transition-colors"
                           >
                             <ArrowUpRight
-                              className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors"
+                              className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-foret/70 group-hover:text-soleil transition-colors"
                               aria-hidden="true"
                               strokeWidth={1.5}
                             />
-                            <span className="hero-body text-[13px] leading-snug text-[#1A1715]/75 group-hover:text-[#F4D35E] border-b border-transparent group-hover:border-[#F4D35E]/40 pb-0.5">
+                            <span className="hero-body text-[13px] leading-snug text-foret/75 group-hover:text-soleil border-b border-transparent group-hover:border-soleil/40 pb-0.5">
                               {q}
                             </span>
                           </button>
@@ -1272,7 +1262,7 @@ const AIChatbot = () => {
           </div>
 
           {/* Input zone — alignée sur la colonne des messages en plein écran */}
-          <div className="px-4 py-3 border-t border-[#1A1715]/15">
+          <div className="px-4 py-3 border-t border-foret/15">
             <div
               className={
                 isExpanded ? "w-full max-w-[760px] mx-auto sm:px-2" : undefined
@@ -1287,7 +1277,7 @@ const AIChatbot = () => {
                 placeholder="Posez votre question…"
                 autoComplete="off"
                 autoCapitalize="sentences"
-                className="hero-body flex-1 bg-transparent border-b border-[#1A1715]/25 text-[#1A1715] placeholder:text-[#1A1715]/40 text-[16px] py-2 focus:outline-none focus:border-[#F4D35E] transition-colors"
+                className="hero-body flex-1 bg-transparent border-b border-foret/25 text-foret placeholder:text-foret/70 text-[16px] py-2 focus:outline-none focus:border-soleil transition-colors"
                 disabled={isLoading || isStreaming}
                 aria-label="Votre question"
               />
@@ -1295,7 +1285,7 @@ const AIChatbot = () => {
                 type="button"
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading || isStreaming}
-                className="flex-shrink-0 p-2 text-[#1A1715] hover:text-[#F4D35E] disabled:text-[#1A1715]/30 disabled:cursor-not-allowed transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E]"
+                className="flex-shrink-0 p-2 text-foret hover:text-soleil disabled:text-foret/70 disabled:cursor-not-allowed transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil"
                 aria-label="Envoyer la question"
               >
                 <Send
@@ -1313,7 +1303,7 @@ const AIChatbot = () => {
                 <button
                   type="button"
                   onClick={() => setShowLeadForm(true)}
-                  className="hero-body inline-flex items-center gap-1.5 text-[11px] text-[#1A1715]/60 hover:text-[#F4D35E] transition-colors"
+                  className="hero-body inline-flex items-center gap-1.5 text-[11px] text-foret/75 hover:text-soleil transition-colors"
                 >
                   <Mail className="h-3 w-3" aria-hidden="true" />
                   <span className="border-b border-current/30 pb-px">
@@ -1326,7 +1316,7 @@ const AIChatbot = () => {
               <Link
                 to="/politique-de-confidentialite"
                 onClick={handleClose}
-                className="hero-body text-[10px] text-[#1A1715]/45 hover:text-[#F4D35E] transition-colors text-right"
+                className="hero-body text-[10px] text-foret/70 hover:text-soleil transition-colors text-right"
               >
                 Réponses générées par IA à partir d'informations rédigées et
                 validées par Christophe.

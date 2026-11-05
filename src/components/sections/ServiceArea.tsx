@@ -45,9 +45,9 @@ export default function ServiceArea() {
   const renderCities = (cities: string[]) =>
     cities.map((city, i) => (
       <Fragment key={city}>
-        <span className="text-[#1A1715]">{city}</span>
+        <span className="text-foret">{city}</span>
         {i < cities.length - 1 && (
-          <span className="text-[#F4D35E]/60 mx-2" aria-hidden="true">
+          <span className="text-soleil/60 mx-2" aria-hidden="true">
             ·
           </span>
         )}
@@ -59,18 +59,9 @@ export default function ServiceArea() {
       <section
         ref={containerRef}
         id="zone-intervention"
-        className="relative w-full overflow-hidden bg-[#F4EFE6] py-20 sm:py-28 md:py-32"
+        className="relative w-full overflow-hidden bg-creme py-20 sm:py-28 md:py-32"
         aria-label="Zone d'intervention géographique"
       >
-        {/* Texture grain papier */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-          aria-hidden="true"
-        />
 
         <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-5xl">
           {/* Header édito */}
@@ -80,13 +71,13 @@ export default function ServiceArea() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 mb-2">
-              VIII. — Zone d'intervention
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
+              Zone d'intervention
             </p>
-            <h2 className="hero-display text-[#1A1715]">
+            <h2 className="hero-display text-foret">
               Proche, ou à distance. Toujours présent.
             </h2>
-            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80">
+            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
               Je me déplace gratuitement pour un premier rendez-vous dans tout
               le département des Pyrénées-Atlantiques. Partout ailleurs en
               France, tout se passe en visio, un format que je maîtrise et qui
@@ -103,12 +94,12 @@ export default function ServiceArea() {
               duration: 0.7,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="mb-12 sm:mb-14 pt-8 border-t border-[#1A1715]/15"
+            className="mb-12 sm:mb-14 pt-8 border-t border-foret/15"
           >
-            <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 mb-4">
+            <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-4">
               ↳ déplacement gratuit · Pyrénées-Atlantiques (64)
             </p>
-            <p className="hero-body text-[16px] sm:text-[18px] leading-[1.85] text-[#1A1715]/80">
+            <p className="hero-body text-[16px] sm:text-[18px] leading-[1.85] text-foret/80">
               {renderCities(localCities)}
             </p>
           </motion.div>
@@ -122,17 +113,17 @@ export default function ServiceArea() {
               duration: 0.7,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="mb-14 sm:mb-16 pt-8 border-t border-[#1A1715]/15"
+            className="mb-14 sm:mb-16 pt-8 border-t border-foret/15"
           >
-            <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 mb-4">
+            <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-4">
               ↳ en distanciel · France entière
             </p>
-            <p className="hero-body text-[16px] sm:text-[18px] leading-[1.85] text-[#1A1715]/80">
+            <p className="hero-body text-[16px] sm:text-[18px] leading-[1.85] text-foret/80">
               {renderCities(nationalCities)}
-              <span className="text-[#F4D35E]/60 mx-2" aria-hidden="true">
+              <span className="text-soleil/60 mx-2" aria-hidden="true">
                 ·
               </span>
-              <span className="italic text-[#1A1715]/60">
+              <span className="italic text-foret/75">
                 et toutes les autres villes
               </span>
             </p>
@@ -140,7 +131,7 @@ export default function ServiceArea() {
 
           {/* Trait final */}
           <div
-            className="h-px w-full bg-[#1A1715]/15"
+            className="h-px w-full bg-foret/15"
             aria-hidden="true"
           />
 
@@ -151,7 +142,7 @@ export default function ServiceArea() {
             transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mt-12 sm:mt-16 flex flex-col items-start gap-5"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60">
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75">
               ↳ envie de démarrer ?
             </p>
             <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
@@ -171,7 +162,7 @@ export default function ServiceArea() {
 
               <a
                 href="tel:+33679088845"
-                className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#1A1715]/85 hover:text-[#F4D35E] transition-colors"
+                className="hero-body group inline-flex items-center gap-2 text-[15px] text-foret/85 hover:text-soleil transition-colors"
                 aria-label="Appeler Christophe au 06 79 08 88 45"
               >
                 <Phone
@@ -179,7 +170,7 @@ export default function ServiceArea() {
                   aria-hidden="true"
                   strokeWidth={1.5}
                 />
-                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E] font-mono tabular-nums">
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil font-mono tabular-nums">
                   06 79 08 88 45
                 </span>
               </a>
@@ -193,11 +184,11 @@ export default function ServiceArea() {
             transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mt-16 sm:mt-20 max-w-xl"
           >
-            <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90">
+            <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-foret/90">
               « Une heure de route pour la première rencontre, ça vaut tous les
               mails du monde. »
             </p>
-            <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50">
+            <p className="hero-handwritten mt-1 text-[15px] text-foret/70">
               — C.M.
             </p>
           </motion.figcaption>

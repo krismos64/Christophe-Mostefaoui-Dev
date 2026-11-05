@@ -184,18 +184,9 @@ export default function Portfolio() {
       <section
         ref={containerRef}
         id="portfolio"
-        className="relative w-full overflow-hidden bg-[#13110F] py-20 sm:py-28 md:py-32"
+        className="relative w-full overflow-hidden bg-foret py-20 sm:py-28 md:py-32"
         aria-label="Portfolio des projets"
       >
-        {/* Texture grain papier */}
-        <div
-          className="absolute inset-0 opacity-[0.06] pointer-events-none mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-          aria-hidden="true"
-        />
 
         <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
           {/* Header édito */}
@@ -205,13 +196,13 @@ export default function Portfolio() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#F4EFE6]/60 mb-2">
-              VII. — Portfolio
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-creme/60 mb-2">
+              Portfolio
             </p>
-            <h2 className="hero-display text-[#F4EFE6]">
+            <h2 className="hero-display text-creme">
               Onze projets, onze histoires.
             </h2>
-            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#F4EFE6]/80">
+            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-creme/80">
               Des sites pour artisans locaux aux SaaS en production : voici
               les projets qui ont marqué mon parcours freelance.
             </p>
@@ -226,10 +217,10 @@ export default function Portfolio() {
               delay: 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="mb-20 sm:mb-24 md:mb-28 border-l-2 border-[#F4D35E] pl-6 sm:pl-8 md:pl-10 py-2 sm:py-4"
+            className="mb-20 sm:mb-24 md:mb-28 border-l-2 border-soleil pl-6 sm:pl-8 md:pl-10 py-2 sm:py-4"
           >
-            <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#F4D35E]/80 mb-2 uppercase tracking-[0.18em] text-[12px] sm:text-[13px] font-mono">
-              <span className="hero-handwritten text-[16px] sm:text-[18px] normal-case tracking-normal text-[#F4D35E]/90">
+            <p className="hero-handwritten text-[16px] sm:text-[18px] text-soleil/80 mb-2 uppercase tracking-[0.18em] text-[12px] sm:text-[13px] font-mono">
+              <span className="hero-handwritten text-[16px] sm:text-[18px] normal-case tracking-normal text-soleil/90">
                 ✏ projet fondateur
               </span>
             </p>
@@ -251,30 +242,25 @@ export default function Portfolio() {
                   style={{ aspectRatio: "1482 / 1384" }}
                 />
                 <div
-                  className="absolute inset-0 ring-1 ring-[#F4EFE6]/10 group-hover:ring-[#F4D35E]/40 transition-colors duration-300 pointer-events-none"
+                  className="absolute inset-0 ring-1 ring-creme/10 group-hover:ring-soleil/40 transition-colors duration-300 pointer-events-none"
                   aria-hidden="true"
                 />
               </a>
               <div className="md:col-span-7 lg:col-span-7">
                 <h3
-                  style={{
-                    fontFamily: '"Fraunces", "Times New Roman", serif',
-                    fontStyle: "italic",
-                    fontWeight: 500,
-                  }}
-                  className="text-[32px] sm:text-[40px] md:text-[48px] leading-[1.05] text-[#F4EFE6] mb-5"
+                  className="text-[32px] sm:text-[40px] md:text-[48px] leading-[1.05] text-creme mb-5"
                 >
                   {founderProject.title}
                 </h3>
-                <p className="hero-body text-[16px] sm:text-[17px] leading-[1.7] text-[#F4EFE6]/80 mb-6 max-w-xl">
+                <p className="hero-body text-[16px] sm:text-[17px] leading-[1.7] text-creme/80 mb-6 max-w-xl">
                   {founderProject.description}
                 </p>
-                <p className="hero-body text-[14px] text-[#F4EFE6]/55 mb-6 flex flex-wrap items-center gap-x-2 gap-y-1">
+                <p className="hero-body text-[14px] text-creme/70 mb-6 flex flex-wrap items-center gap-x-2 gap-y-1">
                   {founderProject.tags.map((tag, i) => (
                     <Fragment key={tag}>
                       <span>{tag}</span>
                       {i < founderProject.tags.length - 1 && (
-                        <span className="text-[#F4D35E]/60" aria-hidden="true">
+                        <span className="text-soleil/60" aria-hidden="true">
                           ·
                         </span>
                       )}
@@ -285,10 +271,10 @@ export default function Portfolio() {
                   href={founderProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#F4EFE6]/90 hover:text-[#F4D35E] transition-colors"
+                  className="hero-body group inline-flex items-center gap-2 text-[15px] text-creme/90 hover:text-soleil transition-colors"
                   aria-label={`Visiter ${founderProject.title} (nouvel onglet)`}
                 >
-                  <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                  <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                     smartplanning.fr
                   </span>
                   <ArrowUpRight
@@ -329,36 +315,31 @@ export default function Portfolio() {
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
                   <div
-                    className="absolute inset-0 ring-1 ring-[#F4EFE6]/15 group-hover:ring-[#F4D35E]/50 transition-colors duration-300 pointer-events-none"
+                    className="absolute inset-0 ring-1 ring-creme/15 group-hover:ring-soleil/50 transition-colors duration-300 pointer-events-none"
                     aria-hidden="true"
                   />
                 </a>
 
                 <div className="flex items-baseline mb-2.5">
                   <span
-                    className="text-[12px] font-mono tabular-nums tracking-wide text-[#F4EFE6]/40 group-hover:text-[#F4D35E] transition-colors w-12 flex-shrink-0"
+                    className="text-[12px] font-mono tabular-nums tracking-wide text-creme/70 group-hover:text-soleil transition-colors w-12 flex-shrink-0"
                     aria-hidden="true"
                   >
                     {p.numeral}.
                   </span>
                   <h3
-                    style={{
-                      fontFamily: '"Fraunces", "Times New Roman", serif',
-                      fontStyle: "italic",
-                      fontWeight: 500,
-                    }}
-                    className="flex-1 text-[24px] sm:text-[26px] leading-tight text-[#F4EFE6]"
+                    className="flex-1 text-[24px] sm:text-[26px] leading-tight text-creme"
                   >
                     {p.title}
                   </h3>
                 </div>
 
-                <p className="hero-body text-[14px] sm:text-[15px] leading-[1.65] text-[#F4EFE6]/55 mb-3 pl-12 flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                <p className="hero-body text-[14px] sm:text-[15px] leading-[1.65] text-creme/70 mb-3 pl-12 flex flex-wrap items-center gap-x-2 gap-y-0.5">
                   {p.tags.map((tag, i) => (
                     <Fragment key={tag}>
                       <span>{tag}</span>
                       {i < p.tags.length - 1 && (
-                        <span className="text-[#F4D35E]/60" aria-hidden="true">
+                        <span className="text-soleil/60" aria-hidden="true">
                           ·
                         </span>
                       )}
@@ -366,7 +347,7 @@ export default function Portfolio() {
                   ))}
                 </p>
 
-                <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#F4EFE6]/75 pl-12 mb-3">
+                <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-creme/75 pl-12 mb-3">
                   {p.description}
                 </p>
 
@@ -374,10 +355,10 @@ export default function Portfolio() {
                   href={p.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-body group/link inline-flex items-center gap-1.5 text-[13px] text-[#F4EFE6]/70 hover:text-[#F4D35E] transition-colors pl-12"
+                  className="hero-body group/link inline-flex items-center gap-1.5 text-[13px] text-creme/70 hover:text-soleil transition-colors pl-12"
                   aria-label={`Visiter ${p.title} (nouvel onglet)`}
                 >
-                  <span className="border-b border-current/40 pb-0.5 group-hover/link:border-[#F4D35E]">
+                  <span className="border-b border-current/40 pb-0.5 group-hover/link:border-soleil">
                     {new URL(p.link).hostname.replace("www.", "")}
                   </span>
                   <ArrowUpRight
@@ -396,7 +377,7 @@ export default function Portfolio() {
             transition={{ delay: 0.6, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mt-16 sm:mt-20 flex flex-col items-start gap-5"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#F4EFE6]/60">
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-creme/60">
               ↳ un projet en tête ?
             </p>
             <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
@@ -418,11 +399,11 @@ export default function Portfolio() {
                 href="https://krismos.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#F4EFE6]/80 hover:text-[#F4D35E] transition-colors"
+                className="hero-body group inline-flex items-center gap-2 text-[14px] text-creme/80 hover:text-soleil transition-colors"
                 aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
                 data-testid="portfolio_cta_krismos"
               >
-                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                   krismos.fr
                 </span>
                 <span className="opacity-70">ma version technique longue</span>
@@ -441,11 +422,11 @@ export default function Portfolio() {
             transition={{ delay: 0.9, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mt-16 sm:mt-20 max-w-2xl"
           >
-            <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#F4D35E]">
+            <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-soleil">
               « Chaque projet, c'est rencontrer quelqu'un et raconter son
               métier. »
             </p>
-            <p className="hero-handwritten mt-1 text-[15px] text-[#F4EFE6]/50">
+            <p className="hero-handwritten mt-1 text-[15px] text-creme/70">
               — C.M.
             </p>
           </motion.figcaption>

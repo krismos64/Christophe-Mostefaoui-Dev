@@ -43,12 +43,12 @@ const Home = () => {
       ))}
 
       <Hero />
+      <Services />
+      <Portfolio />
       <About />
       <SmartPlanningShowcase />
-      <Services />
-      <Pricing />
       <FeaturedSnippetsFAQ />
-      <Portfolio />
+      <Pricing />
       <ServiceArea />
       <GMBOptimizedContact />
     </>

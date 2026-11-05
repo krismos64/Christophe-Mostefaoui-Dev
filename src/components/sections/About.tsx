@@ -56,18 +56,9 @@ export default function About() {
     <section
       ref={containerRef}
       id="about"
-      className="relative w-full overflow-hidden bg-[#F4EFE6] py-20 sm:py-28 md:py-32"
+      className="relative w-full overflow-hidden bg-creme py-20 sm:py-28 md:py-32"
       aria-label="À propos de Christophe"
     >
-      {/* Texture grain papier subtile */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-        }}
-        aria-hidden="true"
-      />
 
       <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
         {/* Header édito : numéro de section + titre */}
@@ -77,10 +68,10 @@ export default function About() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 sm:mb-16 md:mb-20"
         >
-          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 mb-2">
-            II. — Qui suis-je
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
+            Qui suis-je
           </p>
-          <h2 className="hero-display max-w-3xl text-[#1A1715]">
+          <h2 className="hero-display max-w-3xl text-foret">
             Douze ans à conseiller des clients, puis le code.
           </h2>
         </motion.div>
@@ -118,11 +109,11 @@ export default function About() {
               </picture>
               {/* Cadre fin */}
               <div
-                className="absolute inset-0 ring-1 ring-[#1A1715]/15 pointer-events-none"
+                className="absolute inset-0 ring-1 ring-foret/15 pointer-events-none"
                 aria-hidden="true"
               />
             </div>
-            <figcaption className="hero-handwritten mt-4 text-[16px] sm:text-[18px] text-[#1A1715]/70 text-right">
+            <figcaption className="hero-handwritten mt-4 text-[16px] sm:text-[18px] text-foret/70 text-right">
               — bureau d'altitude, face aux Pyrénées
             </figcaption>
           </motion.figure>
@@ -136,7 +127,7 @@ export default function About() {
           >
             <motion.div
               variants={item}
-              className="hero-body space-y-5 text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/85 max-w-2xl"
+              className="hero-body space-y-5 text-[16px] sm:text-[17px] leading-[1.7] text-foret/85 max-w-2xl"
             >
               <p>
                 Après douze ans dans le conseil client en multimédia, j'ai
@@ -145,7 +136,7 @@ export default function About() {
                 un besoin de résultats concrets, et pas de temps à perdre en
                 aller-retours techniques.
               </p>
-              <p className="font-medium text-[#1A1715]">
+              <p className="font-medium text-foret">
                 Mon approche : vous écouter, vous conseiller, et créer un site
                 qui travaille pour vous, même quand vous dormez.
               </p>
@@ -154,15 +145,15 @@ export default function About() {
             {/* Encart SmartPlanning — sobre */}
             <motion.aside
               variants={item}
-              className="mt-8 border-l-2 border-[#F4D35E] pl-5 py-1"
+              className="mt-8 border-l-2 border-soleil pl-5 py-1"
             >
-              <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#1A1715]/80">
+              <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-foret/80">
                 En parallèle de mes missions freelance, j'ai conçu et lancé{" "}
                 <a
                   href="https://smartplanning.fr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-[#1A1715] underline underline-offset-4 decoration-[#F4D35E] decoration-2 hover:decoration-[3px] transition-all"
+                  className="font-medium text-foret underline underline-offset-4 decoration-soleil decoration-2 hover:decoration-[3px] transition-all"
                 >
                   SmartPlanning
                 </a>
@@ -176,7 +167,7 @@ export default function About() {
             {/* Trait séparateur */}
             <motion.div
               variants={item}
-              className="my-10 h-px w-24 bg-[#1A1715]/25"
+              className="my-10 h-px w-24 bg-foret/25"
               aria-hidden="true"
             />
 
@@ -189,23 +180,18 @@ export default function About() {
                 <motion.li key={d.numeral} variants={item} className="group">
                   <div className="flex items-baseline gap-3 mb-1.5">
                     <span
-                      className="text-[12px] font-mono tabular-nums tracking-wider text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors w-7 flex-shrink-0"
+                      className="text-[12px] font-mono tabular-nums tracking-wider text-foret/70 group-hover:text-foret-moyen transition-colors w-7 flex-shrink-0"
                       aria-hidden="true"
                     >
                       {d.numeral}.
                     </span>
                     <h3
-                      style={{
-                        fontFamily: '"Fraunces", "Times New Roman", serif',
-                        fontStyle: "italic",
-                        fontWeight: 500,
-                      }}
-                      className="text-[20px] sm:text-[22px] leading-tight text-[#1A1715]"
+                      className="text-[20px] sm:text-[22px] leading-tight text-foret"
                     >
                       {d.title}
                     </h3>
                   </div>
-                  <p className="hero-body text-[14px] sm:text-[15px] leading-[1.6] text-[#1A1715]/70 pl-10">
+                  <p className="hero-body text-[14px] sm:text-[15px] leading-[1.6] text-foret/70 pl-10">
                     {d.description}
                   </p>
                 </motion.li>
@@ -234,10 +220,10 @@ export default function About() {
                 href="https://krismos.fr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/80 hover:text-foret-moyen transition-colors"
                 aria-label="Voir mon portfolio technique sur krismos.fr (nouvel onglet)"
               >
-                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                   krismos.fr
                 </span>
                 <span className="opacity-70">ma version technique longue</span>
@@ -250,10 +236,10 @@ export default function About() {
 
             {/* Citation manuscrite signée */}
             <motion.figcaption variants={item} className="mt-12 max-w-md">
-              <p className="hero-handwritten text-[20px] sm:text-[22px] leading-snug text-[#1A1715]/90">
+              <p className="hero-handwritten text-[20px] sm:text-[22px] leading-snug text-foret/90">
                 « Douze ans à écouter, ça change la façon de coder. »
               </p>
-              <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50">
+              <p className="hero-handwritten mt-1 text-[15px] text-foret/70">
                 — C.M.
               </p>
             </motion.figcaption>
@@ -269,16 +255,11 @@ export default function About() {
           className="mt-20 sm:mt-24 md:mt-28 max-w-4xl mx-auto"
         >
           <div className="mb-6">
-            <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 mb-1.5">
+            <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-1.5">
               ✏ en deux minutes
             </p>
             <h3
-              style={{
-                fontFamily: '"Fraunces", "Times New Roman", serif',
-                fontStyle: "italic",
-                fontWeight: 500,
-              }}
-              className="text-[24px] sm:text-[28px] md:text-[32px] leading-tight text-[#1A1715]"
+              className="text-[24px] sm:text-[28px] md:text-[32px] leading-tight text-foret"
             >
               Mon univers digital, raconté.
             </h3>

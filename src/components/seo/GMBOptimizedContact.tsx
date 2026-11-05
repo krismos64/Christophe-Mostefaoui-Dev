@@ -163,18 +163,9 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
       <section
         ref={containerRef}
         id="contact"
-        className="relative w-full overflow-hidden bg-[#F4EFE6] py-20 sm:py-28 md:py-32"
+        className="relative w-full overflow-hidden bg-creme py-20 sm:py-28 md:py-32"
         aria-label="Contact"
       >
-        {/* Texture grain papier */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-          aria-hidden="true"
-        />
 
         <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-6xl">
           {/* Header édito */}
@@ -184,13 +175,13 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12 sm:mb-16 max-w-4xl"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 mb-2">
-              IX. — Contact
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
+              Contact
             </p>
-            <h2 className="hero-display text-[#1A1715]">
+            <h2 className="hero-display text-foret">
               Parlons de votre projet.
             </h2>
-            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80">
+            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
               Premier échange gratuit, sans engagement. Je réponds personnellement
               à chaque message, sous 24h en jours ouvrés.
             </p>
@@ -203,7 +194,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl mb-16 sm:mb-20"
           >
-            <p className="hero-handwritten text-[15px] sm:text-[17px] text-[#1A1715]/55 mb-3">
+            <p className="hero-handwritten text-[15px] sm:text-[17px] text-foret/70 mb-3">
               ✏ avant de m'écrire, rencontrez-moi
             </p>
             <VideoEmbed
@@ -220,7 +211,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
 
           {/* Trait de séparation */}
           <div
-            className="h-px w-full bg-[#1A1715]/15 mb-12 sm:mb-16"
+            className="h-px w-full bg-foret/15 mb-12 sm:mb-16"
             aria-hidden="true"
           />
 
@@ -229,7 +220,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
 
           {/* Trait de séparation */}
           <div
-            className="h-px w-full bg-[#1A1715]/15 mb-12 sm:mb-16"
+            className="h-px w-full bg-foret/15 mb-12 sm:mb-16"
             aria-hidden="true"
           />
 
@@ -241,7 +232,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5"
             >
-              <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 mb-6">
+              <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-6">
                 ↳ par téléphone ou email
               </p>
               <ul className="space-y-6">
@@ -250,23 +241,23 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                   const content = (
                     <div className="flex items-start gap-4">
                       <Icon
-                        className="h-5 w-5 mt-1 flex-shrink-0 text-[#F4D35E]"
+                        className="h-5 w-5 mt-1 flex-shrink-0 text-soleil"
                         aria-hidden="true"
                         strokeWidth={1.5}
                       />
                       <div className="min-w-0 flex-1">
-                        <p className="hero-body text-[12px] uppercase tracking-[0.18em] text-[#1A1715]/45 mb-1">
+                        <p className="hero-body text-[12px] uppercase tracking-[0.18em] text-foret/70 mb-1">
                           {info.label}
                         </p>
                         <p
-                          className={`text-[15px] sm:text-[16px] text-[#1A1715] ${
+                          className={`text-[15px] sm:text-[16px] text-foret ${
                             info.mono ? "font-mono tabular-nums" : "hero-body"
                           }`}
                         >
                           {info.value}
                         </p>
                         {info.sub && (
-                          <p className="hero-body text-[13px] mt-1 text-[#1A1715]/55">
+                          <p className="hero-body text-[13px] mt-1 text-foret/70">
                             {info.sub}
                           </p>
                         )}
@@ -278,7 +269,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       {info.href ? (
                         <a
                           href={info.href}
-                          className="group block transition-colors hover:text-[#F4D35E]"
+                          className="group block transition-colors hover:text-soleil"
                           aria-label={`${info.label} : ${info.value}`}
                         >
                           {content}
@@ -293,10 +284,10 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
 
               {/* Trait séparateur + liens sociaux */}
               <div
-                className="h-px w-12 bg-[#1A1715]/20 my-8"
+                className="h-px w-12 bg-foret/20 my-8"
                 aria-hidden="true"
               />
-              <p className="hero-handwritten text-[15px] sm:text-[17px] text-[#1A1715]/55 mb-4">
+              <p className="hero-handwritten text-[15px] sm:text-[17px] text-foret/70 mb-4">
                 ↳ faisons connaissance ailleurs
               </p>
               <ul className="flex flex-wrap items-center gap-x-5 gap-y-3">
@@ -306,14 +297,14 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Profil LinkedIn (nouvel onglet)"
-                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
                   >
                     <Linkedin
                       className="h-4 w-4 flex-shrink-0"
                       aria-hidden="true"
                       strokeWidth={1.5}
                     />
-                    <span className="border-b border-current/30 pb-0.5 group-hover:border-[#F4D35E]">
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
                       LinkedIn
                     </span>
                     <ArrowUpRight
@@ -328,14 +319,14 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Profil GitHub (nouvel onglet)"
-                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
                   >
                     <Github
                       className="h-4 w-4 flex-shrink-0"
                       aria-hidden="true"
                       strokeWidth={1.5}
                     />
-                    <span className="border-b border-current/30 pb-0.5 group-hover:border-[#F4D35E]">
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
                       GitHub
                     </span>
                     <ArrowUpRight
@@ -350,14 +341,14 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Chaîne YouTube (nouvel onglet)"
-                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
                   >
                     <Youtube
                       className="h-4 w-4 flex-shrink-0"
                       aria-hidden="true"
                       strokeWidth={1.5}
                     />
-                    <span className="border-b border-current/30 pb-0.5 group-hover:border-[#F4D35E]">
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
                       YouTube
                     </span>
                     <ArrowUpRight
@@ -376,7 +367,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
               transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7"
             >
-              <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 mb-6">
+              <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-6">
                 ↳ par message
               </p>
 
@@ -385,23 +376,18 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="border-l-2 border-[#F4D35E] pl-6 py-6"
+                  className="border-l-2 border-soleil pl-6 py-6"
                 >
                   <CheckCircle2
-                    className="h-8 w-8 text-[#F4D35E] mb-4"
+                    className="h-8 w-8 text-soleil mb-4"
                     strokeWidth={1.5}
                   />
                   <h3
-                    style={{
-                      fontFamily: '"Fraunces", "Times New Roman", serif',
-                      fontStyle: "italic",
-                      fontWeight: 500,
-                    }}
-                    className="text-[26px] sm:text-[30px] leading-tight text-[#1A1715] mb-3"
+                    className="text-[26px] sm:text-[30px] leading-tight text-foret mb-3"
                   >
                     Message envoyé.
                   </h3>
-                  <p className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/75 mb-6 max-w-md">
+                  <p className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-foret/75 mb-6 max-w-md">
                     Merci pour votre message. Je vous réponds personnellement
                     sous 24h en jours ouvrés.
                   </p>
@@ -411,9 +397,9 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       setIsSubmitted(false);
                       setStatus("");
                     }}
-                    className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                    className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/80 hover:text-soleil transition-colors"
                   >
-                    <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                    <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                       envoyer un autre message
                     </span>
                     <ArrowUpRight
@@ -542,7 +528,7 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                       animate={{ opacity: 1, y: 0 }}
                       className={`hero-body text-[14px] py-2.5 px-4 border-l-2 ${
                         status.includes("succès")
-                          ? "border-[#F4D35E] text-[#1A1715]"
+                          ? "border-soleil text-foret"
                           : "border-[#C9342D] text-[#C9342D]"
                       }`}
                       role="status"
@@ -563,10 +549,10 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
             transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mt-20 sm:mt-24 max-w-xl"
           >
-            <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90">
+            <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-foret/90">
               « Le devis arrive sous 24h. Le projet, c'est plus long. »
             </p>
-            <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50">
+            <p className="hero-handwritten mt-1 text-[15px] text-foret/70">
               — C.M.
             </p>
           </motion.figcaption>
@@ -588,12 +574,12 @@ interface FieldInputProps
 const FieldInput = ({ icon: Icon, ...props }: FieldInputProps) => (
   <div className="relative">
     <Icon
-      className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-4 text-[#1A1715]/40 pointer-events-none"
+      className="absolute left-0 top-1/2 -translate-y-1/2 h-4 w-4 text-foret/70 pointer-events-none"
       strokeWidth={1.5}
     />
     <input
       {...props}
-      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 text-[#1A1715] placeholder:text-[#1A1715]/40 text-[16px] focus:outline-none focus:border-[#F4D35E] transition-colors"
+      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-foret/25 text-foret placeholder:text-foret/70 text-[16px] focus:outline-none focus:border-soleil transition-colors"
     />
   </div>
 );
@@ -607,12 +593,12 @@ const FieldSelect = ({ children, ...props }: FieldSelectProps) => (
   <div className="relative">
     <select
       {...props}
-      className="hero-body w-full pl-0 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 text-[#1A1715] text-[16px] focus:outline-none focus:border-[#F4D35E] transition-colors appearance-none cursor-pointer"
+      className="hero-body w-full pl-0 pr-2 py-2.5 bg-transparent border-b border-foret/25 text-foret text-[16px] focus:outline-none focus:border-soleil transition-colors appearance-none cursor-pointer"
     >
       {children}
     </select>
     <span
-      className="absolute right-2 top-1/2 -translate-y-1/2 text-[#1A1715]/40 pointer-events-none"
+      className="absolute right-2 top-1/2 -translate-y-1/2 text-foret/70 pointer-events-none"
       aria-hidden="true"
     >
       ▾
@@ -628,12 +614,12 @@ interface FieldTextareaProps
 const FieldTextarea = ({ icon: Icon, ...props }: FieldTextareaProps) => (
   <div className="relative">
     <Icon
-      className="absolute left-0 top-3 h-4 w-4 text-[#1A1715]/40 pointer-events-none"
+      className="absolute left-0 top-3 h-4 w-4 text-foret/70 pointer-events-none"
       strokeWidth={1.5}
     />
     <textarea
       {...props}
-      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-[#1A1715]/25 text-[#1A1715] placeholder:text-[#1A1715]/40 text-[16px] focus:outline-none focus:border-[#F4D35E] transition-colors resize-none leading-[1.6]"
+      className="hero-body w-full pl-7 pr-2 py-2.5 bg-transparent border-b border-foret/25 text-foret placeholder:text-foret/70 text-[16px] focus:outline-none focus:border-soleil transition-colors resize-none leading-[1.6]"
     />
   </div>
 );

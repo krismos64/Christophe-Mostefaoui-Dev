@@ -23,44 +23,44 @@ export default function Services() {
     {
       numeral: "I",
       icon: Globe,
-      title: "Site Vitrine Moderne",
+      title: "Un site vitrine",
       description:
-        "Une présence en ligne professionnelle, visible sur Google et référencée par les assistants IA comme ChatGPT ou Claude.",
+        "Votre entreprise présentée en quelques pages claires : ce que vous faites, où vous trouver, comment vous joindre. Visible sur Google et dans ChatGPT.",
     },
     {
       numeral: "II",
       icon: Layers,
-      title: "Site Multi-pages",
+      title: "Un site plus complet",
       description:
-        "Un site complet avec blog, formulaire de contact et CMS pour gérer votre actualité en autonomie.",
+        "Plusieurs pages, un blog pour vos actualités et un formulaire de contact. Vous changez vos textes vous-même, sans appeler personne.",
     },
     {
       numeral: "III",
       icon: RefreshCw,
-      title: "Refonte de Site",
+      title: "La refonte de votre site",
       description:
-        "Modernisation d'un site existant pour une image professionnelle et de meilleures performances.",
+        "Votre site a vieilli ou rame sur téléphone ? Je le remets à neuf en gardant ce qui marche déjà sur Google.",
     },
     {
       numeral: "IV",
       icon: Bot,
-      title: "Chatbot intelligent",
+      title: "Un assistant pour vos clients",
       description:
-        "Un assistant IA intégré à votre site, capable de répondre à vos clients 24h/24, comme celui visible en bas à droite de ce site.",
+        "Un chatbot (assistant IA) répond jour et nuit aux questions courantes de vos clients. Celui en bas à droite de cette page en est un exemple.",
     },
     {
       numeral: "V",
       icon: Search,
-      title: "Référencement Google & IA",
+      title: "Être trouvé sur Google (référencement)",
       description:
-        "Soyez trouvé sur Google ET recommandé par les intelligences artificielles comme ChatGPT, Claude ou Perplexity.",
+        "Quand on cherche votre métier près de chez vous, votre entreprise doit apparaître. Sur Google, et aussi dans ChatGPT ou Perplexity.",
     },
     {
       numeral: "VI",
       icon: Video,
-      title: "Vidéo & Drone (DGAC)",
+      title: "Vidéo et drone",
       description:
-        "Vidéos professionnelles et prises de vue aériennes certifiées par la Direction Générale de l'Aviation Civile.",
+        "Des vidéos de votre activité et des vues aériennes de vos locaux ou chantiers, par un télépilote certifié DGAC (Aviation civile).",
     },
   ];
 
@@ -84,18 +84,9 @@ export default function Services() {
     <section
       ref={containerRef}
       id="services"
-      className="relative w-full overflow-hidden bg-[#F4EFE6] py-20 sm:py-28 md:py-32"
+      className="relative w-full overflow-hidden bg-creme py-20 sm:py-28 md:py-32"
       aria-label="Mes services de développement web"
     >
-      {/* Texture grain papier */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-        }}
-        aria-hidden="true"
-      />
 
       <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
         {/* Header édito */}
@@ -105,16 +96,16 @@ export default function Services() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
         >
-          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 mb-2">
-            IV. — Services
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
+            Services
           </p>
-          <h2 className="hero-display text-[#1A1715]">
-            Six manières de donner vie à votre projet.
+          <h2 className="hero-display text-foret">
+            Ce que je peux faire pour votre entreprise.
           </h2>
-          <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80">
-            Des sites web optimisés pour Google et les assistants IA. Clients
-            partout en France,{" "}
-            <strong className="font-medium text-[#1A1715]">
+          <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
+            Vous me dites ce dont vous avez besoin, je vous dis ce qui est utile
+            et ce qui ne l'est pas. Clients partout en France,{" "}
+            <strong className="font-medium text-foret">
               déplacement offert dans le 64
             </strong>
             .
@@ -134,11 +125,11 @@ export default function Services() {
               <motion.li
                 key={s.numeral}
                 variants={item}
-                className="group relative pt-7 pb-9 sm:pt-8 sm:pb-10 border-t border-[#1A1715]/15 transition-colors duration-300 hover:border-[#F4D35E]/70"
+                className="group relative pt-7 pb-9 sm:pt-8 sm:pb-10 border-t border-foret/15 transition-colors duration-300 hover:border-soleil/70"
               >
                 <div className="flex items-start gap-4 sm:gap-5">
                   <span
-                    className="text-[12px] font-mono tabular-nums tracking-wider text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors w-8 flex-shrink-0 pt-1.5"
+                    className="text-[12px] font-mono tabular-nums tracking-wider text-foret/70 group-hover:text-foret-moyen transition-colors w-8 flex-shrink-0 pt-1.5"
                     aria-hidden="true"
                   >
                     {s.numeral}.
@@ -146,22 +137,17 @@ export default function Services() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-3 mb-2.5">
                       <h3
-                        style={{
-                          fontFamily: '"Fraunces", "Times New Roman", serif',
-                          fontStyle: "italic",
-                          fontWeight: 500,
-                        }}
-                        className="text-[22px] sm:text-[26px] leading-tight text-[#1A1715]"
+                        className="text-[22px] sm:text-[26px] leading-tight text-foret"
                       >
                         {s.title}
                       </h3>
                       <Icon
-                        className="h-5 w-5 mt-1.5 flex-shrink-0 text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors"
+                        className="h-5 w-5 mt-1.5 flex-shrink-0 text-foret/70 group-hover:text-foret-moyen transition-colors"
                         aria-hidden="true"
                         strokeWidth={1.5}
                       />
                     </div>
-                    <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-[#1A1715]/70">
+                    <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-foret/70">
                       {s.description}
                     </p>
                   </div>
@@ -173,7 +159,7 @@ export default function Services() {
 
         {/* Trait fin de section */}
         <div
-          className="h-px w-full bg-[#1A1715]/15 mt-2"
+          className="h-px w-full bg-foret/15 mt-2"
           aria-hidden="true"
         />
 
@@ -184,7 +170,7 @@ export default function Services() {
           transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-12 sm:mt-16 flex flex-col items-start gap-5"
         >
-          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60">
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75">
             un projet en tête ?
           </p>
           <button
@@ -209,10 +195,10 @@ export default function Services() {
           transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 sm:mt-20 max-w-xl"
         >
-          <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90">
+          <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-foret/90">
             « Six services, une seule promesse : un site qui vous ressemble. »
           </p>
-          <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50">
+          <p className="hero-handwritten mt-1 text-[15px] text-foret/70">
             — C.M.
           </p>
         </motion.figcaption>

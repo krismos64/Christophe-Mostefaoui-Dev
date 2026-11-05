@@ -29,7 +29,7 @@ const renderInline = (text: string) => {
         <Link
           key={i}
           to={href}
-          className="underline decoration-[#F4D35E]/60 hover:decoration-[#F4D35E] underline-offset-2"
+          className="underline decoration-soleil/60 hover:decoration-soleil underline-offset-2"
         >
           {label}
         </Link>
@@ -39,7 +39,7 @@ const renderInline = (text: string) => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline decoration-[#F4D35E]/60 hover:decoration-[#F4D35E] underline-offset-2"
+          className="underline decoration-soleil/60 hover:decoration-soleil underline-offset-2"
         >
           {label}
         </a>
@@ -139,16 +139,7 @@ const BlogPost = () => {
         </script>
       </Helmet>
 
-      <main className="relative w-full overflow-hidden bg-[#F4EFE6] pt-32 sm:pt-36 pb-20 sm:pb-28">
-        {/* Texture grain papier */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-          aria-hidden="true"
-        />
+      <main className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28">
 
         <article className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-3xl">
           {/* Navigation retour */}
@@ -161,7 +152,7 @@ const BlogPost = () => {
             <button
               type="button"
               onClick={() => handleNavigation("/blog")}
-              className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/60 hover:text-[#F4D35E] transition-colors"
+              className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/75 hover:text-foret-moyen transition-colors"
             >
               <ArrowLeft
                 className="h-4 w-4 transition-transform group-hover:-translate-x-1"
@@ -178,19 +169,19 @@ const BlogPost = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#F4D35E] mb-3">
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret-moyen mb-3">
               {getCategoryName(post.category)} —
             </p>
 
-            <h1 className="hero-display text-[#1A1715] mb-6">
+            <h1 className="hero-display text-foret mb-6">
               {post.title}
             </h1>
 
-            <p className="hero-body text-[17px] sm:text-[18px] leading-[1.7] text-[#1A1715]/75 mb-8">
+            <p className="hero-body text-[17px] sm:text-[18px] leading-[1.7] text-foret/75 mb-8">
               {post.excerpt}
             </p>
 
-            <div className="flex flex-wrap items-center gap-5 text-[13px] text-[#1A1715]/50 pb-8 border-b border-[#1A1715]/15">
+            <div className="flex flex-wrap items-center gap-5 text-[13px] text-foret/70 pb-8 border-b border-foret/15">
               <span className="hero-body">{post.author}</span>
               <span className="font-mono tabular-nums">
                 {formatDate(post.publishedAt)}
@@ -238,8 +229,8 @@ const BlogPost = () => {
                   </picture>
                 );
               })()}
-              <div className="aspect-video bg-[#1A1715]/5 hidden items-center justify-center">
-                <div className="text-center p-8 hero-body text-[#1A1715]/50">
+              <div className="aspect-video bg-foret/5 hidden items-center justify-center">
+                <div className="text-center p-8 hero-body text-foret/70">
                   {post.imageAlt}
                 </div>
               </div>
@@ -253,12 +244,7 @@ const BlogPost = () => {
                 return (
                   <h3
                     key={index}
-                    style={{
-                      fontFamily: '"Fraunces", "Times New Roman", serif',
-                      fontStyle: "italic",
-                      fontWeight: 500,
-                    }}
-                    className="text-[19px] sm:text-[21px] leading-tight text-[#1A1715] mt-8 mb-3"
+                    className="text-[19px] sm:text-[21px] leading-tight text-foret mt-8 mb-3"
                   >
                     {paragraph.replace('### ', '')}
                   </h3>
@@ -268,12 +254,7 @@ const BlogPost = () => {
                 return (
                   <h2
                     key={index}
-                    style={{
-                      fontFamily: '"Fraunces", "Times New Roman", serif',
-                      fontStyle: "italic",
-                      fontWeight: 500,
-                    }}
-                    className="text-[24px] sm:text-[28px] leading-tight text-[#1A1715] mt-10 mb-4 pt-8 border-t border-[#1A1715]/15"
+                    className="text-[24px] sm:text-[28px] leading-tight text-foret mt-10 mb-4 pt-8 border-t border-foret/15"
                   >
                     {paragraph.replace('## ', '')}
                   </h2>
@@ -283,12 +264,7 @@ const BlogPost = () => {
                 return (
                   <h2
                     key={index}
-                    style={{
-                      fontFamily: '"Fraunces", "Times New Roman", serif',
-                      fontStyle: "italic",
-                      fontWeight: 500,
-                    }}
-                    className="text-[24px] sm:text-[28px] leading-tight text-[#1A1715] mt-10 mb-4 pt-8 border-t border-[#1A1715]/15"
+                    className="text-[24px] sm:text-[28px] leading-tight text-foret mt-10 mb-4 pt-8 border-t border-foret/15"
                   >
                     {paragraph.replace('# ', '')}
                   </h2>
@@ -298,7 +274,7 @@ const BlogPost = () => {
                 return (
                   <p
                     key={index}
-                    className="text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 mb-2 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-[#F4D35E]"
+                    className="text-[15px] sm:text-[16px] leading-[1.7] text-foret/80 mb-2 pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-foret-moyen"
                   >
                     {renderInline(paragraph.replace(/^-\s*/, ''))}
                   </p>
@@ -308,7 +284,7 @@ const BlogPost = () => {
                 return (
                   <p
                     key={index}
-                    className="text-[15px] sm:text-[16px] leading-[1.7] font-semibold text-[#1A1715] mb-3"
+                    className="text-[15px] sm:text-[16px] leading-[1.7] font-semibold text-foret mb-3"
                   >
                     {paragraph.replace(/\*\*/g, '')}
                   </p>
@@ -320,7 +296,7 @@ const BlogPost = () => {
               return (
                 <p
                   key={index}
-                  className="text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 mb-4"
+                  className="text-[15px] sm:text-[16px] leading-[1.7] text-foret/80 mb-4"
                 >
                   {renderInline(paragraph)}
                 </p>
@@ -329,11 +305,11 @@ const BlogPost = () => {
           </div>
 
           {/* CTA de fin d'article */}
-          <div className="pt-10 sm:pt-12 border-t border-[#1A1715]/15">
-            <p className="hero-handwritten text-[19px] sm:text-[22px] text-[#F4D35E] mb-5">
+          <div className="pt-10 sm:pt-12 border-t border-foret/15">
+            <p className="hero-handwritten text-[19px] sm:text-[22px] text-foret-moyen mb-5">
               cet article vous a intéressé —
             </p>
-            <p className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/75 mb-6 max-w-xl">
+            <p className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-foret/75 mb-6 max-w-xl">
               Parlons de votre projet : premier échange gratuit, sans
               engagement.
             </p>
@@ -353,9 +329,9 @@ const BlogPost = () => {
               <button
                 type="button"
                 onClick={() => handleNavigation("/blog")}
-                className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                className="hero-body group inline-flex items-center gap-2 text-[15px] text-foret/80 hover:text-foret-moyen transition-colors"
               >
-                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                   Autres articles
                 </span>
               </button>

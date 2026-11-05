@@ -32,7 +32,7 @@ const Stars = ({ count }: { count: number }) => (
     {Array.from({ length: count }, (_, i) => (
       <Star
         key={i}
-        className="h-3.5 w-3.5 fill-[#F4D35E] text-[#F4D35E]"
+        className="h-3.5 w-3.5 fill-soleil text-soleil"
         strokeWidth={1.5}
       />
     ))}
@@ -46,7 +46,7 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
     transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
     className="mb-14 sm:mb-16"
   >
-    <p className="hero-handwritten text-[16px] sm:text-[18px] text-[#1A1715]/55 mb-6">
+    <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-6">
       ↳ ce qu'on en dit sur Google
     </p>
 
@@ -55,22 +55,18 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
       <div className="lg:col-span-4">
         <div className="flex items-baseline gap-3">
           <span
-            style={{
-              fontFamily: '"Fraunces", "Times New Roman", serif',
-              fontWeight: 500,
-            }}
-            className="text-[52px] sm:text-[64px] leading-none tabular-nums text-[#1A1715]"
+            className="text-[52px] sm:text-[64px] leading-none tabular-nums text-foret"
           >
             {RATING.toLocaleString("fr-FR", { minimumFractionDigits: 1 })}
           </span>
-          <span className="hero-body text-[15px] text-[#1A1715]/45">
+          <span className="hero-body text-[15px] text-foret/70">
             / 5
           </span>
         </div>
 
         <div className="mt-3 flex items-center gap-2.5">
           <Stars count={RATING} />
-          <p className="hero-body text-[13px] text-[#1A1715]/55">
+          <p className="hero-body text-[13px] text-foret/70">
             {REVIEW_COUNT} avis vérifié
           </p>
         </div>
@@ -79,11 +75,11 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
           href={GOOGLE_PROFILE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hero-body group mt-5 inline-flex items-center gap-1.5 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+          className="hero-body group mt-5 inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
           aria-label="voir la fiche Google de Christophe Mostefaoui (nouvel onglet)"
           data-testid="google_profile_link"
         >
-          <span className="border-b border-current/30 pb-0.5 group-hover:border-[#F4D35E]">
+          <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
             voir la fiche Google
           </span>
           <ArrowUpRight
@@ -94,26 +90,21 @@ const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
       </div>
 
       {/* Avis */}
-      <figure className="lg:col-span-8 border-l-2 border-[#F4D35E] pl-6 sm:pl-8">
+      <figure className="lg:col-span-8 border-l-2 border-soleil pl-6 sm:pl-8">
         <blockquote
-          style={{
-            fontFamily: '"Fraunces", "Times New Roman", serif',
-            fontStyle: "italic",
-            fontWeight: 400,
-          }}
-          className="text-[19px] sm:text-[22px] leading-[1.55] text-[#1A1715]/90"
+          className="text-[19px] sm:text-[22px] leading-[1.55] text-foret/90"
         >
           « {review.body} »
         </blockquote>
         <figcaption className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span className="hero-body text-[14px] text-[#1A1715]">
+          <span className="hero-body text-[14px] text-foret">
             {review.author}
           </span>
           <span
-            className="h-px w-5 bg-[#1A1715]/25"
+            className="h-px w-5 bg-foret/25"
             aria-hidden="true"
           />
-          <span className="hero-body text-[13px] text-[#1A1715]/50">
+          <span className="hero-body text-[13px] text-foret/70">
             avis Google, {review.date}
           </span>
         </figcaption>

@@ -29,20 +29,20 @@ export default function VideoEmbed({
   const [isPlaying, setIsPlaying] = useState(false);
 
   const isDark = theme === "dark";
-  const ringColor = isDark ? "ring-[#F4EFE6]/15" : "ring-[#1A1715]/15";
-  const ringHover = "group-hover:ring-[#F4D35E]/50";
-  const captionColor = isDark ? "text-[#F4EFE6]/70" : "text-[#1A1715]/70";
-  const captionMuted = isDark ? "text-[#F4EFE6]/45" : "text-[#1A1715]/50";
+  const ringColor = isDark ? "ring-creme/15" : "ring-foret/15";
+  const ringHover = "group-hover:ring-soleil/50";
+  const captionColor = isDark ? "text-creme/70" : "text-foret/70";
+  const captionMuted = isDark ? "text-creme/70" : "text-foret/70";
   const linkColor = isDark
-    ? "text-[#F4EFE6]/80 hover:text-[#F4D35E]"
-    : "text-[#1A1715]/80 hover:text-[#F4D35E]";
+    ? "text-creme/80 hover:text-soleil"
+    : "text-foret/80 hover:text-soleil";
   const linkBorder = isDark
-    ? "border-[#F4EFE6]/30 group-hover/yt:border-[#F4D35E]"
-    : "border-[#1A1715]/30 group-hover/yt:border-[#F4D35E]";
+    ? "border-creme/30 group-hover/yt:border-soleil"
+    : "border-foret/30 group-hover/yt:border-soleil";
 
   return (
     <figure className="w-full">
-      <div className="relative w-full aspect-video overflow-hidden group bg-[#0B0805]">
+      <div className="relative w-full aspect-video overflow-hidden group bg-foret-profond">
         {isPlaying ? (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
@@ -85,7 +85,7 @@ export default function VideoEmbed({
             </picture>
             {/* Overlay sobre, sans gradient bleu/violet */}
             <div
-              className="absolute inset-0 bg-[#0B0805]/30 group-hover:bg-[#0B0805]/45 transition-colors duration-300 pointer-events-none"
+              className="absolute inset-0 bg-foret-profond/30 group-hover:bg-foret-profond/45 transition-colors duration-300 pointer-events-none"
               aria-hidden="true"
             />
 
@@ -93,13 +93,13 @@ export default function VideoEmbed({
             <button
               type="button"
               onClick={() => setIsPlaying(true)}
-              className="absolute inset-0 w-full h-full flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] focus-visible:ring-offset-2"
+              className="absolute inset-0 w-full h-full flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil focus-visible:ring-offset-2"
               aria-label={ariaLabel ?? `Lire la vidéo : ${title}`}
             >
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
-                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#F4EFE6]/95 text-[#1A1715] shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] ring-1 ring-[#1A1715]/10"
+                className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-creme/95 text-foret shadow-[0_8px_30px_-8px_rgba(0,0,0,0.5)] ring-1 ring-foret/10"
               >
                 <Play
                   className="h-6 w-6 sm:h-7 sm:w-7 ml-1"
@@ -113,7 +113,7 @@ export default function VideoEmbed({
             {/* Durée en mono, coin bas-droit */}
             {duration && (
               <span
-                className="absolute bottom-3 right-3 font-mono text-[12px] tabular-nums tracking-wider text-[#F4EFE6] bg-[#0B0805]/70 backdrop-blur-sm px-2 py-1 pointer-events-none"
+                className="absolute bottom-3 right-3 font-mono text-[12px] tabular-nums tracking-wider text-creme bg-foret-profond/70 backdrop-blur-sm px-2 py-1 pointer-events-none"
                 aria-hidden="true"
               >
                 {duration}

@@ -64,18 +64,9 @@ const FeaturedSnippetsFAQ = () => {
     <section
       ref={containerRef}
       id="faq"
-      className="relative w-full overflow-hidden bg-[#F4EFE6] py-20 sm:py-28 md:py-32"
+      className="relative w-full overflow-hidden bg-creme py-20 sm:py-28 md:py-32"
       aria-label="Questions fréquentes"
     >
-      {/* Texture grain papier */}
-      <div
-        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-        }}
-        aria-hidden="true"
-      />
 
       <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-5xl">
         {/* Header édito */}
@@ -85,13 +76,13 @@ const FeaturedSnippetsFAQ = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 sm:mb-16 md:mb-20 max-w-4xl"
         >
-          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 mb-2">
-            VI. — Questions fréquentes
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
+            Questions fréquentes
           </p>
-          <h2 className="hero-display text-[#1A1715]">
+          <h2 className="hero-display text-foret">
             Tout ce qu'on me demande souvent.
           </h2>
-          <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80">
+          <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
             Développement web freelance à Pau, tarifs, méthodes, technos : les
             réponses aux questions les plus posées.
           </p>
@@ -102,7 +93,7 @@ const FeaturedSnippetsFAQ = () => {
           variants={stagger}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="border-b border-[#1A1715]/15"
+          className="border-b border-foret/15"
         >
           {questions.map((q, index) => {
             const isOpen = openItems.includes(index);
@@ -111,7 +102,7 @@ const FeaturedSnippetsFAQ = () => {
               <motion.li
                 key={index}
                 variants={item}
-                className="group border-t border-[#1A1715]/15 transition-colors duration-300 hover:border-[#F4D35E]/70"
+                className="group border-t border-foret/15 transition-colors duration-300 hover:border-soleil/70"
                 itemScope
                 itemProp="mainEntity"
                 itemType="https://schema.org/Question"
@@ -121,27 +112,22 @@ const FeaturedSnippetsFAQ = () => {
                   onClick={() => toggleItem(index)}
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
-                  className="w-full py-5 sm:py-6 flex items-start gap-4 sm:gap-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F4D35E] focus-visible:ring-offset-2"
+                  className="w-full py-5 sm:py-6 flex items-start gap-4 sm:gap-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil focus-visible:ring-offset-2"
                 >
                   <span
-                    className="font-mono tabular-nums text-[13px] sm:text-[14px] tracking-wider text-[#1A1715]/40 group-hover:text-[#F4D35E] transition-colors w-10 flex-shrink-0 pt-1.5"
+                    className="font-mono tabular-nums text-[13px] sm:text-[14px] tracking-wider text-foret/70 group-hover:text-foret-moyen transition-colors w-10 flex-shrink-0 pt-1.5"
                     aria-hidden="true"
                   >
                     {number}
                   </span>
                   <h3
-                    style={{
-                      fontFamily: '"Fraunces", "Times New Roman", serif',
-                      fontStyle: "italic",
-                      fontWeight: 500,
-                    }}
-                    className="flex-1 text-[19px] sm:text-[22px] md:text-[24px] leading-tight text-[#1A1715] pr-2"
+                    className="flex-1 text-[19px] sm:text-[22px] md:text-[24px] leading-tight text-foret pr-2"
                     itemProp="name"
                   >
                     {q.query}
                   </h3>
                   <span
-                    className="flex-shrink-0 mt-1.5 text-[#1A1715]/50 group-hover:text-[#F4D35E] transition-colors"
+                    className="flex-shrink-0 mt-1.5 text-foret/70 group-hover:text-foret-moyen transition-colors"
                     aria-hidden="true"
                   >
                     {isOpen ? (
@@ -170,7 +156,7 @@ const FeaturedSnippetsFAQ = () => {
                     >
                       <div className="pb-6 sm:pb-7 pl-[3.5rem] sm:pl-[4rem] pr-2">
                         <div
-                          className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 max-w-3xl"
+                          className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-foret/80 max-w-3xl"
                           itemProp="text"
                         >
                           {renderAnswer(q.answer)}
@@ -198,7 +184,7 @@ const FeaturedSnippetsFAQ = () => {
           transition={{ delay: 0.4, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-14 sm:mt-16 flex flex-col items-start gap-5"
         >
-          <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60">
+          <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75">
             ↳ une question spécifique sur votre projet ?
           </p>
           <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
@@ -218,11 +204,11 @@ const FeaturedSnippetsFAQ = () => {
 
             <a
               href="mailto:christophe.mostefaoui.dev@gmail.com"
-              className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+              className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/80 hover:text-foret-moyen transition-colors"
               aria-label="Envoyer un email à Christophe Mostefaoui"
             >
               <Mail className="h-4 w-4" aria-hidden="true" strokeWidth={1.5} />
-              <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+              <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                 christophe.mostefaoui.dev@gmail.com
               </span>
             </a>
@@ -236,10 +222,10 @@ const FeaturedSnippetsFAQ = () => {
           transition={{ delay: 0.7, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 sm:mt-20 max-w-xl"
         >
-          <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-[#1A1715]/90">
+          <p className="hero-handwritten text-[20px] sm:text-[24px] leading-snug text-foret/90">
             « La meilleure FAQ, c'est celle qu'on n'a pas besoin de lire. »
           </p>
-          <p className="hero-handwritten mt-1 text-[15px] text-[#1A1715]/50">
+          <p className="hero-handwritten mt-1 text-[15px] text-foret/70">
             — C.M.
           </p>
         </motion.figcaption>

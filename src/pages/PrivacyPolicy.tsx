@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
             Je collecte uniquement les informations que vous me fournissez
             volontairement via le formulaire de contact :
           </p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-[#F4D35E]">
+          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen">
             <li>Nom et prénom</li>
             <li>Adresse email</li>
             <li>Numéro de téléphone (optionnel)</li>
@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
       body: (
         <>
           <p>Les données collectées sont utilisées uniquement pour :</p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-[#F4D35E]">
+          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen">
             <li>Répondre à vos demandes de contact ou de devis</li>
             <li>
               Vous transmettre une proposition adaptée à votre projet
@@ -38,7 +38,7 @@ export default function PrivacyPolicy() {
             <li>Améliorer le site et les services proposés</li>
           </ul>
           <p className="mt-4">
-            <strong className="font-medium text-[#1A1715]">
+            <strong className="font-medium text-foret">
               Vos données ne sont jamais cédées ni revendues
             </strong>{" "}
             à des tiers.
@@ -47,12 +47,12 @@ export default function PrivacyPolicy() {
             Pour préparer ma réponse, le contenu du formulaire de contact (nom,
             email, téléphone, ville, type de projet et message) est transmis,
             via le serveur du site, à{" "}
-            <strong className="font-medium text-[#1A1715]">
+            <strong className="font-medium text-foret">
               Make
             </strong>{" "}
             (plateforme d'automatisation, hébergement dans l'Union européenne)
             puis à{" "}
-            <strong className="font-medium text-[#1A1715]">
+            <strong className="font-medium text-foret">
               Mistral AI
             </strong>{" "}
             (société française, données traitées dans l'Union européenne), qui
@@ -69,7 +69,7 @@ export default function PrivacyPolicy() {
       body: (
         <p>
           Vos données sont conservées pendant une durée maximale de{" "}
-          <strong className="font-medium text-[#1A1715]">
+          <strong className="font-medium text-foret">
             3 ans
           </strong>{" "}
           à compter de notre dernier contact. Au-delà, elles sont supprimées
@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
       body: (
         <>
           <p>Conformément au RGPD, vous disposez à tout moment des droits suivants :</p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-[#F4D35E]">
+          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen">
             <li>Droit d'accès à vos données personnelles</li>
             <li>Droit de rectification</li>
             <li>Droit à l'effacement (« droit à l'oubli »)</li>
@@ -95,7 +95,7 @@ export default function PrivacyPolicy() {
             Pour exercer ces droits, contactez-moi à{" "}
             <a
               href="mailto:christophe.mostefaoui.dev@gmail.com"
-              className="border-b border-current/40 pb-0.5 hover:text-[#F4D35E] hover:border-[#F4D35E] transition-colors"
+              className="border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
             >
               christophe.mostefaoui.dev@gmail.com
             </a>
@@ -113,13 +113,13 @@ export default function PrivacyPolicy() {
             Le site propose un assistant conversationnel reposant sur une
             intelligence artificielle. Les messages que vous lui envoyez sont
             transmis, via le serveur du site, à{" "}
-            <strong className="font-medium text-[#1A1715]">
+            <strong className="font-medium text-foret">
               Mistral AI
             </strong>{" "}
             (société française, données traitées dans l'Union européenne),
             uniquement pour générer les réponses.
           </p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-[#F4D35E]">
+          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen">
             <li>
               Aucun compte n'est requis et l'assistant ne dépose aucun cookie ;
               la conversation n'est conservée que dans votre navigateur, le
@@ -152,7 +152,7 @@ export default function PrivacyPolicy() {
             de l'assistant pendant la session).
           </p>
           <p className="mt-3">
-            <strong className="font-medium text-[#1A1715]">
+            <strong className="font-medium text-foret">
               C'est pourquoi ce site n'affiche pas de bannière de consentement :
               il n'y a rien à consentir.
             </strong>
@@ -174,7 +174,7 @@ export default function PrivacyPolicy() {
               Email :{" "}
               <a
                 href="mailto:christophe.mostefaoui.dev@gmail.com"
-                className="border-b border-current/40 pb-0.5 hover:text-[#F4D35E] hover:border-[#F4D35E] transition-colors"
+                className="border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
               >
                 christophe.mostefaoui.dev@gmail.com
               </a>
@@ -183,7 +183,7 @@ export default function PrivacyPolicy() {
               Téléphone :{" "}
               <a
                 href="tel:+33679088845"
-                className="font-mono tabular-nums border-b border-current/40 pb-0.5 hover:text-[#F4D35E] hover:border-[#F4D35E] transition-colors"
+                className="font-mono tabular-nums border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
               >
                 06 79 08 88 45
               </a>
@@ -213,18 +213,9 @@ export default function PrivacyPolicy() {
 
       <main
         id="main"
-        className="relative w-full overflow-hidden bg-[#F4EFE6] pt-32 sm:pt-36 pb-20 sm:pb-28"
+        className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28"
         aria-label="Politique de confidentialité"
       >
-        {/* Texture grain papier */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-          aria-hidden="true"
-        />
 
         <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-4xl">
           {/* Header édito */}
@@ -234,13 +225,13 @@ export default function PrivacyPolicy() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12 sm:mb-16"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 mb-2">
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
               ↳ conforme RGPD
             </p>
-            <h1 className="hero-display text-[#1A1715]">
+            <h1 className="hero-display text-foret">
               Politique de confidentialité.
             </h1>
-            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80">
+            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
               Vos données personnelles m'intéressent uniquement pour vous
               répondre. Voici précisément comment je les collecte, je les
               utilise et combien de temps je les conserve.
@@ -248,7 +239,7 @@ export default function PrivacyPolicy() {
           </motion.div>
 
           {/* Sections */}
-          <ul className="border-b border-[#1A1715]/15">
+          <ul className="border-b border-foret/15">
             {sections.map((section, index) => (
               <motion.li
                 key={section.numeral}
@@ -259,27 +250,22 @@ export default function PrivacyPolicy() {
                   duration: 0.6,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group py-8 sm:py-10 border-t border-[#1A1715]/15"
+                className="group py-8 sm:py-10 border-t border-foret/15"
               >
                 <div className="flex items-start gap-4 sm:gap-6">
                   <span
-                    className="text-[12px] font-mono tabular-nums tracking-wider text-[#1A1715]/40 w-8 flex-shrink-0 pt-1.5"
+                    className="text-[12px] font-mono tabular-nums tracking-wider text-foret/70 w-8 flex-shrink-0 pt-1.5"
                     aria-hidden="true"
                   >
                     {section.numeral}.
                   </span>
                   <div className="flex-1 min-w-0">
                     <h2
-                      style={{
-                        fontFamily: '"Fraunces", "Times New Roman", serif',
-                        fontStyle: "italic",
-                        fontWeight: 500,
-                      }}
-                      className="text-[24px] sm:text-[28px] leading-tight text-[#1A1715] mb-4"
+                      className="text-[24px] sm:text-[28px] leading-tight text-foret mb-4"
                     >
                       {section.title}
                     </h2>
-                    <div className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 max-w-2xl">
+                    <div className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-foret/80 max-w-2xl">
                       {section.body}
                     </div>
                   </div>
@@ -295,15 +281,15 @@ export default function PrivacyPolicy() {
             transition={{ delay: 0.7, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mt-14 sm:mt-16 flex flex-col items-start gap-5"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60">
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75">
               ↳ besoin d'autre chose ?
             </p>
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-7">
               <Link
                 to="/"
-                className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/80 hover:text-foret-moyen transition-colors"
               >
-                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                   retour à l'accueil
                 </span>
                 <ArrowUpRight
@@ -313,9 +299,9 @@ export default function PrivacyPolicy() {
               </Link>
               <Link
                 to="/mentions-legales"
-                className="hero-body group inline-flex items-center gap-2 text-[14px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/80 hover:text-foret-moyen transition-colors"
               >
-                <span className="border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                   mentions légales
                 </span>
                 <ArrowUpRight

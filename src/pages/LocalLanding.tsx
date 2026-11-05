@@ -63,18 +63,9 @@ export default function LocalLanding() {
 
       <main
         id="main"
-        className="relative w-full overflow-hidden bg-[#F4EFE6] pt-32 sm:pt-36 pb-20 sm:pb-28"
+        className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28"
         aria-label={page.h1}
       >
-        {/* Texture grain papier */}
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-          aria-hidden="true"
-        />
 
         <div className="container mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 max-w-4xl">
           {/* Header édito */}
@@ -84,13 +75,13 @@ export default function LocalLanding() {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12 sm:mb-16"
           >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-[#1A1715]/60 mb-2">
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
               {page.accroche}
             </p>
-            <h1 className="hero-display text-[#1A1715]">
+            <h1 className="hero-display text-foret">
               {page.h1}.
             </h1>
-            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-[#1A1715]/80">
+            <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
               {page.intro}
             </p>
           </motion.div>
@@ -107,27 +98,22 @@ export default function LocalLanding() {
                   duration: 0.6,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="py-8 sm:py-10 border-t border-[#1A1715]/15"
+                className="py-8 sm:py-10 border-t border-foret/15"
               >
                 <div className="flex items-start gap-4 sm:gap-6">
                   <span
-                    className="text-[12px] font-mono tabular-nums tracking-wider text-[#1A1715]/40 w-8 flex-shrink-0 pt-1.5"
+                    className="text-[12px] font-mono tabular-nums tracking-wider text-foret/70 w-8 flex-shrink-0 pt-1.5"
                     aria-hidden="true"
                   >
                     {["I", "II", "III", "IV"][index]}.
                   </span>
                   <div className="flex-1 min-w-0">
                     <h2
-                      style={{
-                        fontFamily: '"Fraunces", "Times New Roman", serif',
-                        fontStyle: "italic",
-                        fontWeight: 500,
-                      }}
-                      className="text-[24px] sm:text-[28px] leading-tight text-[#1A1715] mb-4"
+                      className="text-[24px] sm:text-[28px] leading-tight text-foret mb-4"
                     >
                       {section.titre}
                     </h2>
-                    <div className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-[#1A1715]/80 max-w-2xl space-y-4">
+                    <div className="hero-body text-[15px] sm:text-[16px] leading-[1.7] text-foret/80 max-w-2xl space-y-4">
                       {section.paragraphes.map((p, i) => (
                         <p key={i}>{p}</p>
                       ))}
@@ -139,14 +125,14 @@ export default function LocalLanding() {
           </ul>
 
           {/* Communes couvertes */}
-          <div className="py-8 sm:py-10 border-t border-[#1A1715]/15">
-            <p className="hero-body text-[14px] leading-[1.8] text-[#1A1715]/65 max-w-2xl flex items-start gap-2.5">
+          <div className="py-8 sm:py-10 border-t border-foret/15">
+            <p className="hero-body text-[14px] leading-[1.8] text-foret/75 max-w-2xl flex items-start gap-2.5">
               <MapPin
-                className="h-4 w-4 mt-1 flex-shrink-0 text-[#F4D35E]"
+                className="h-4 w-4 mt-1 flex-shrink-0 text-foret-moyen"
                 aria-hidden="true"
               />
               <span>
-                <span className="font-medium text-[#1A1715]/85">
+                <span className="font-medium text-foret/85">
                   J'interviens notamment à :
                 </span>{" "}
                 {page.communes.join(", ")}, et partout dans les
@@ -158,26 +144,21 @@ export default function LocalLanding() {
 
           {/* FAQ locale */}
           <section
-            className="py-8 sm:py-10 border-t border-[#1A1715]/15"
+            className="py-8 sm:py-10 border-t border-foret/15"
             aria-label={`Questions fréquentes : ${page.ville}`}
           >
             <h2
-              style={{
-                fontFamily: '"Fraunces", "Times New Roman", serif',
-                fontStyle: "italic",
-                fontWeight: 500,
-              }}
-              className="text-[24px] sm:text-[28px] leading-tight text-[#1A1715] mb-8"
+              className="text-[24px] sm:text-[28px] leading-tight text-foret mb-8"
             >
               Vos questions, mes réponses
             </h2>
             <dl className="space-y-7 max-w-2xl">
               {page.faq.map((item) => (
                 <div key={item.question}>
-                  <dt className="hero-body font-medium text-[16px] text-[#1A1715] mb-2">
+                  <dt className="hero-body font-medium text-[16px] text-foret mb-2">
                     {item.question}
                   </dt>
-                  <dd className="hero-body text-[15px] leading-[1.7] text-[#1A1715]/75">
+                  <dd className="hero-body text-[15px] leading-[1.7] text-foret/75">
                     {item.reponse}
                   </dd>
                 </div>
@@ -186,8 +167,8 @@ export default function LocalLanding() {
           </section>
 
           {/* CTA final */}
-          <div className="pt-10 sm:pt-12 border-t border-[#1A1715]/15">
-            <p className="hero-handwritten text-[19px] sm:text-[22px] text-[#F4D35E] mb-5">
+          <div className="pt-10 sm:pt-12 border-t border-foret/15">
+            <p className="hero-handwritten text-[19px] sm:text-[22px] text-foret-moyen mb-5">
               parlons de votre projet —
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
@@ -205,9 +186,9 @@ export default function LocalLanding() {
               </button>
               <a
                 href="tel:+33679088845"
-                className="hero-body group inline-flex items-center gap-2 text-[15px] text-[#1A1715]/80 hover:text-[#F4D35E] transition-colors"
+                className="hero-body group inline-flex items-center gap-2 text-[15px] text-foret/80 hover:text-foret-moyen transition-colors"
               >
-                <span className="font-mono tabular-nums border-b border-current/40 pb-0.5 group-hover:border-[#F4D35E]">
+                <span className="font-mono tabular-nums border-b border-current/40 pb-0.5 group-hover:border-soleil">
                   06 79 08 88 45
                 </span>
               </a>
