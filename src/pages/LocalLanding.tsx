@@ -32,6 +32,15 @@ export default function LocalLanding() {
           name: "Christophe Mostefaoui - Développeur Web Freelance",
           url: BASE_URL,
         },
+        breadcrumb: { "@id": `${pageUrl}/#ariane` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}/#ariane`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: `${BASE_URL}/` },
+          { "@type": "ListItem", position: 2, name: page.h1, item: pageUrl },
+        ],
       },
       {
         "@type": "FAQPage",
@@ -61,8 +70,7 @@ export default function LocalLanding() {
         </script>
       </Helmet>
 
-      <main
-        id="main"
+      <section
         className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28"
         aria-label={page.h1}
       >
@@ -195,7 +203,7 @@ export default function LocalLanding() {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 }

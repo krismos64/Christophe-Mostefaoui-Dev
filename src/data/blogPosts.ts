@@ -14,6 +14,8 @@ export interface BlogPost {
   imageAlt: string;
   featured: boolean;
   metaDescription: string;
+  /** Titre court pour Google (60 caractères au plus), le titre long reste le h1 */
+  seoTitle?: string;
   keywords: string[];
 }
 
@@ -29,6 +31,7 @@ export const blogPosts: BlogPost[] = [
     title:
       "Automatiser les tâches répétitives de votre entreprise : ce que j'ai mis en place sur mon propre site",
     slug: "automatiser-taches-repetitives-petite-entreprise",
+    seoTitle: "Automatiser les tâches répétitives d'une petite entreprise",
     excerpt:
       "Les demandes reçues sur mon site arrivent maintenant avec un brouillon de réponse déjà rédigé, que je relis avant de l'envoyer. Comment ça marche, ce qu'on peut automatiser dans une petite entreprise, et les cas où ça ne vaut pas le coup.",
     content: `Fin septembre, j'ai branché un petit mécanisme sur le formulaire de contact de ce site. Quand quelqu'un me décrit son projet, je reçois toujours son message comme avant. Mais quelques secondes plus tard, un brouillon de réponse m'attend dans ma messagerie, déjà adressé à la personne, qui reprend sa demande et répond à sa question.
@@ -146,6 +149,7 @@ Je travaille avec des entreprises à [Pau et dans le Béarn](/creation-site-inte
     title:
       "Votre site est-il utilisable par tout le monde ? Ce que l'accessibilité change pour une petite entreprise",
     slug: "site-accessible-petite-entreprise",
+    seoTitle: "Site accessible : ce que ça change pour une petite structure",
     excerpt:
       "Un client qui n'arrive pas à utiliser votre site ne vous le dira jamais : il va ailleurs. Ce que recouvre vraiment l'accessibilité, pourquoi ça dépasse largement le handicap, et cinq vérifications à faire vous-même cette semaine.",
     content: `Un client entre dans votre boutique, ne trouve pas ce qu'il cherche, ressort sans rien dire. Vous ne saurez jamais qu'il est venu.
@@ -260,6 +264,7 @@ Je conçois des sites accessibles par défaut, à [Pau et dans le Béarn](/creat
     title:
       "Demander un devis pour un site internet : ce qu'il faut préparer avant d'appeler",
     slug: "preparer-demande-devis-site-internet",
+    seoTitle: "Demander un devis de site internet : ce qu'il faut préparer",
     excerpt:
       "« Je voudrais un site, vous me faites un prix ? » À cette question, aucun prestataire honnête ne peut répondre. Voici les six informations à réunir avant de demander un devis, et pourquoi elles changent tout au résultat final.",
     content: `« Bonjour, je voudrais un site pour mon entreprise, vous pouvez me faire un prix ? »
@@ -381,6 +386,7 @@ Je travaille seul, en direct, depuis [Pau et le Béarn](/creation-site-internet-
     title:
       "Site vitrine ou page Facebook : ai-je vraiment besoin des deux ?",
     slug: "site-vitrine-ou-reseaux-sociaux",
+    seoTitle: "Site vitrine ou page Facebook : faut-il vraiment les deux ?",
     excerpt:
       "« Ma page Facebook me suffit. » C'est souvent vrai, jusqu'au jour où ça ne l'est plus. Ce que vos réseaux font très bien, ce qu'ils ne feront jamais, et les cas où un site ne se justifie pas encore.",
     content: `« J'ai déjà une page Facebook, et mes clients me trouvent dessus. » C'est la phrase que j'entends le plus souvent quand je rencontre un artisan ou un commerçant du Béarn qui hésite à faire un site.
@@ -491,6 +497,7 @@ J'interviens à [Pau et dans tout le Béarn](/creation-site-internet-pau), à [O
     title:
       "L'IA pour une petite entreprise : 4 usages qui font gagner du temps, 3 où elle ne sert à rien",
     slug: "ia-petite-entreprise-usages-concrets",
+    seoTitle: "L'IA pour une petite entreprise : 4 usages concrets",
     excerpt:
       "On entend parler d'intelligence artificielle partout, mais rarement de ce qu'elle change vraiment dans le quotidien d'un artisan ou d'un commerçant. Voici quatre usages simples qui font gagner du temps dès cette semaine, et trois situations où elle vous en fera perdre.",
     content: `Depuis deux ans, on vous répète que l'intelligence artificielle va tout changer pour votre entreprise. Dans les faits, quand je discute avec des artisans et des commerçants du Béarn, j'entends surtout deux choses : « je ne vois pas ce que ça pourrait m'apporter », ou « j'ai essayé, ça m'a fait perdre du temps ».
@@ -600,6 +607,7 @@ J'interviens à [Pau, Artix et dans tout le Béarn](/creation-site-internet-pau)
     title:
       "Votre site a 5 ans : faut-il le refaire entièrement ou juste le réparer ?",
     slug: "refonte-ou-reparation-site-internet",
+    seoTitle: "Site de 5 ans : refaire entièrement ou juste réparer ?",
     excerpt:
       "Un site qui date n'est pas forcément bon à jeter. Avant d'engager une refonte complète, voici comment distinguer ce qui se répare en quelques jours de ce qui justifie vraiment de tout reprendre.",
     content: `« Mon site commence à dater, il faudrait tout refaire. » C'est une phrase que j'entends souvent, et la réponse est rarement celle qu'on attend. Un site de cinq ans peut être parfaitement récupérable, comme il peut être arrivé au bout de ce qu'on peut en tirer. La différence ne se voit pas à l'œil nu, et surtout pas à son look.
@@ -705,6 +713,7 @@ J'interviens à Pau, Artix et dans tout le Béarn, ainsi qu'à [Bayonne et sur l
     title:
       "Je fais tourner seul un logiciel utilisé par de vraies entreprises : ce que ça change pour vos projets",
     slug: "smartplanning-saas-solo-ce-que-ca-change-pour-vous",
+    seoTitle: "Un logiciel développé seul : ce que ça change pour vous",
     excerpt:
       "Derrière ce site vitrine, il y a aussi SmartPlanning, un logiciel de gestion de planning que j'ai conçu, développé et que j'exploite seul depuis 2026. Voici, sans jargon technique, ce que cette expérience change concrètement pour un client qui me confie son projet.",
     content: `On me demande parfois pourquoi je parle de SmartPlanning sur un site censé vendre des sites vitrines et des applications sur mesure. La réponse est simple : c'est la meilleure preuve que je peux vous donner de ce que je sais faire, bien plus qu'une liste de compétences ou une promesse commerciale.
@@ -764,7 +773,7 @@ Que vous ayez besoin d'un site vitrine, d'une refonte ou d'une application plus 
       "Logo de SmartPlanning, le logiciel de gestion de planning conçu et exploité par Christophe Mostefaoui",
     featured: false,
     metaDescription:
-      "Je conçois et fais tourner seul SmartPlanning, un logiciel utilisé par de vraies entreprises. Ce que cette expérience change concrètement pour votre projet de site ou d'application.",
+      "Je conçois et fais tourner seul SmartPlanning, un logiciel utilisé par de vraies entreprises. Ce que ça change concrètement pour votre projet.",
     keywords: [
       "SmartPlanning",
       "développeur SaaS Pau",
@@ -780,6 +789,7 @@ Que vous ayez besoin d'un site vitrine, d'une refonte ou d'une application plus 
     title:
       "Ce que les gens demandent vraiment à ChatGPT sur les artisans et commerces du coin",
     slug: "questions-chatgpt-artisans-commerces-locaux",
+    seoTitle: "Ce que les gens demandent à ChatGPT sur les commerces locaux",
     excerpt:
       "« Quel est le meilleur plombier à Pau », « un restaurant sympa à Bayonne pour un repas d'affaires » : voici, très concrètement, le type de questions que les gens posent déjà à ChatGPT sur des activités locales, et ce qu'il faut écrire sur son site pour avoir une chance d'être la réponse.",
     content: `Vous doutez encore que quelqu'un puisse chercher un artisan ou un commerce en discutant avec une intelligence artificielle plutôt qu'en tapant une recherche Google classique ? Essayez, là, maintenant : ouvrez ChatGPT et demandez-lui de vous recommander un plombier à Pau ou un bon restaurant à Bayonne pour un dîner d'affaires. Vous allez obtenir une réponse construite, avec des noms, parfois des explications sur pourquoi tel choix plutôt qu'un autre. La question n'est plus de savoir si ça arrive, elle arrive déjà. La vraie question est : votre activité a-t-elle une chance d'apparaître dans cette réponse ?
@@ -841,7 +851,7 @@ Vous vous demandez si votre site actuel a une chance d'être repris par ChatGPT 
       "Illustration d'une personne posant une question à une intelligence artificielle sur un commerce local",
     featured: false,
     metaDescription:
-      "Ce que les gens demandent vraiment à ChatGPT sur les artisans et commerces locaux, et comment écrire son site pour avoir une chance d'être la réponse. Par un développeur freelance du 64.",
+      "Ce que les gens demandent vraiment à ChatGPT sur les artisans et commerces locaux, et comment écrire son site pour avoir une chance d'être la réponse.",
     keywords: [
       "questions ChatGPT commerce local",
       "GEO référencement IA générative",
@@ -857,6 +867,7 @@ Vous vous demandez si votre site actuel a une chance d'être repris par ChatGPT 
     title:
       "Avoir un site ne suffit pas : être visible localement à Pau, Bayonne ou dans le Béarn",
     slug: "visibilite-locale-pau-bearn-cote-basque",
+    seoTitle: "Être visible localement à Pau, Bayonne et dans le Béarn",
     excerpt:
       "Un site en ligne n'est pas automatiquement un site trouvé. Voici ce qui fait vraiment la différence quand quelqu'un cherche un artisan, un commerce ou un service près de chez lui, à Pau, à Bayonne, à Biarritz ou dans le Béarn intérieur.",
     content: `Vous avez un site, ou vous êtes en train d'en faire faire un, et vous vous demandez pourquoi il n'apparaît pas quand vous tapez votre propre métier suivi du nom de votre ville. C'est une des questions que j'entends le plus souvent, et la réponse tient en une phrase : avoir un site en ligne et être trouvé localement sont deux choses différentes. La seconde se construit, elle ne vient pas toute seule avec la première.
@@ -921,7 +932,7 @@ Vous avez un site qui ne remonte pas quand on cherche votre activité à Pau, Ba
       "Illustration sur la visibilité locale en ligne pour les commerces et artisans du Béarn et du Pays basque",
     featured: false,
     metaDescription:
-      "Avoir un site ne suffit pas à être trouvé localement. Ce qui fait vraiment la différence pour apparaître dans les recherches à Pau, Bayonne, Biarritz ou dans le Béarn, par un développeur freelance du 64.",
+      "Avoir un site ne suffit pas à être trouvé localement. Ce qui fait la différence pour apparaître dans les recherches à Pau, Bayonne ou dans le Béarn.",
     keywords: [
       "référencement local Pau",
       "visibilité locale Béarn",
@@ -937,6 +948,7 @@ Vous avez un site qui ne remonte pas quand on cherche votre activité à Pau, Ba
     title:
       "Être trouvé sur Google ET sur ChatGPT en 2026 : le référencement a changé",
     slug: "referencement-google-chatgpt-2026",
+    seoTitle: "Être trouvé sur Google et ChatGPT en 2026",
     excerpt:
       "Vos clients ne tapent plus seulement leur recherche dans Google, ils la posent aussi à ChatGPT ou à d'autres assistants IA. Un site pensé uniquement pour Google devient invisible pour cette nouvelle façon de chercher. Voici ce que ça change concrètement, et comment je prépare mes sites pour les deux.",
     content: `Tapez une question sur un artisan, un commerce ou un service près de chez vous, et il y a de fortes chances que vous ne l'ayez pas tapée dans Google. De plus en plus de gens demandent directement à ChatGPT, à Claude ou à Perplexity de leur trouver une solution, de comparer des options ou de leur expliquer un sujet, et ces assistants répondent avec des sources qu'ils choisissent eux-mêmes. Si votre site n'est pas fait pour être compris par ces outils, il devient invisible pour une partie croissante de vos clients potentiels, même s'il est parfaitement placé sur Google.
@@ -1015,7 +1027,7 @@ Vous avez un site qui mériterait d'être aussi visible pour les IA que pour Goo
       "Illustration sur le référencement d'un site internet pour Google et les intelligences artificielles",
     featured: false,
     metaDescription:
-      "Vos clients cherchent aussi sur ChatGPT, pas seulement sur Google. Ce que le référencement pour les IA change concrètement pour votre site, par un développeur freelance du 64.",
+      "Vos clients cherchent aussi sur ChatGPT, pas seulement sur Google. Ce que le référencement pour les IA change concrètement pour votre site.",
     keywords: [
       "référencement ChatGPT",
       "SEO IA 2026",
@@ -1031,6 +1043,7 @@ Vous avez un site qui mériterait d'être aussi visible pour les IA que pour Goo
     title:
       "Un chatbot IA pour votre commerce : gadget ou vrai retour sur investissement ?",
     slug: "chatbot-ia-commerce-pme",
+    seoTitle: "Chatbot IA pour un commerce : gadget ou vrai retour ?",
     excerpt:
       "Un assistant qui répond à vos clients 24h/24, ça fait rêver ou ça fait peur, selon qui vous demandez. Je vous explique honnêtement comment fonctionne un chatbot IA, ce qu'il coûte vraiment et dans quels commerces il a un intérêt réel, en m'appuyant sur celui installé sur ce site.",
     content: `Vous avez sans doute déjà croisé un chatbot sur un site et pensé qu'il ne servait à rien, un menu déroulant déguisé qui répond à côté de la question. Vous en avez peut-être croisé un autre, plus convaincant, qui a répondu juste et vous a fait gagner du temps. La différence entre les deux n'est pas magique : elle tient à la technologie utilisée et à la façon dont elle est configurée. Si vous vous demandez si un chatbot IA a du sens pour votre commerce, votre cabinet ou votre atelier, voici une réponse honnête, en m'appuyant sur celui que vous pouvez tester en bas à droite de cette page.
@@ -1105,7 +1118,7 @@ Vous vous demandez si un chatbot IA aurait sa place sur votre site, ou vous avez
       "Illustration d'un chatbot IA intégré à un site internet pour un commerce",
     featured: false,
     metaDescription:
-      "Un chatbot IA pour votre commerce : gadget ou vrai retour sur investissement ? Fonctionnement, coût réel et cas où ça a du sens, par un développeur freelance du 64.",
+      "Un chatbot IA pour votre commerce : gadget ou vrai retour sur investissement ? Fonctionnement, coût réel et cas où il a vraiment du sens.",
     keywords: [
       "chatbot IA commerce",
       "chatbot intelligent PME",
@@ -1121,6 +1134,7 @@ Vous vous demandez si un chatbot IA aurait sa place sur votre site, ou vous avez
     title:
       "Combien coûte un site internet en 2026 ? Ce qui fait vraiment varier un devis",
     slug: "combien-coute-site-internet-2026",
+    seoTitle: "Combien coûte un site internet en 2026 ?",
     excerpt:
       "Le prix d'un site internet peut aller du simple au décuple, et ce n'est ni du hasard ni de l'arnaque. Périmètre, contenu, fonctionnalités, référencement : je vous explique honnêtement ce qui fait varier un devis, et les pièges des offres « pas chères ».",
     content: `Vous avez demandé deux devis pour votre site et reçu deux montants sans rapport l'un avec l'autre ? C'est l'expérience de la plupart des artisans, commerçants et dirigeants de PME que je rencontre entre Pau, le Béarn et la côte basque. Cette page ne vous donnera pas un tarif magique, méfiez-vous de ceux qui en affichent un sans vous avoir parlé. Elle vous explique ce que vous payez réellement dans un site internet, et comment comparer des devis qui semblent incomparables.
@@ -1217,7 +1231,7 @@ Vous avez un projet de site (création, refonte, boutique en ligne) à Pau, dans
       "Illustration sur le coût et le devis d'un site internet pour une PME",
     featured: true,
     metaDescription:
-      "Combien coûte un site internet en 2026 ? Les 6 facteurs qui font varier un devis, les pièges des offres pas chères, et comment comparer. Par un développeur freelance du 64.",
+      "Combien coûte un site internet en 2026 ? Les 6 facteurs qui font varier un devis, les pièges des offres pas chères, et comment comparer les devis.",
     keywords: [
       "combien coûte un site internet",
       "prix site internet 2026",

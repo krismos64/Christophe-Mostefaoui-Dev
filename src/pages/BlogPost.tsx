@@ -104,10 +104,21 @@ const BlogPost = () => {
     "inLanguage": "fr-FR"
   };
 
+  // Fil d'Ariane : déjà visible dans la page, transmis aussi à Google
+  const arianeSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://christophe-dev-freelance.fr/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://christophe-dev-freelance.fr/blog" },
+      { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://christophe-dev-freelance.fr/blog/${post.slug}` }
+    ]
+  };
+
   return (
     <>
       <Helmet>
-        <title>{post.title} | Blog Christophe Mostefaoui</title>
+        <title>{post.seoTitle ?? post.title}</title>
         <meta name="description" content={post.metaDescription} />
         <meta name="keywords" content={post.keywords.join(", ")} />
         <link rel="canonical" href={`https://christophe-dev-freelance.fr/blog/${post.slug}`} />
@@ -137,9 +148,12 @@ const BlogPost = () => {
         <script type="application/ld+json">
           {JSON.stringify(articleSchema)}
         </script>
+        <script type="application/ld+json">
+          {JSON.stringify(arianeSchema)}
+        </script>
       </Helmet>
 
-      <main className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28">
+      <section className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28">
 
         <article className="mx-auto px-5 sm:px-8 relative z-10 max-w-3xl">
           {/* Navigation retour */}
@@ -338,7 +352,7 @@ const BlogPost = () => {
             </div>
           </div>
         </article>
-      </main>
+      </section>
     </>
   );
 };

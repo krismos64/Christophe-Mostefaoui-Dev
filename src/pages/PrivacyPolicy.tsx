@@ -209,12 +209,10 @@ export default function PrivacyPolicy() {
     <>
       <Helmet>
         <meta name="robots" content="noindex, nofollow" />
-        <title>
-          Politique de confidentialité : Christophe Mostefaoui, développeur web freelance à Pau
-        </title>
+        <title>Politique de confidentialité | Christophe Mostefaoui</title>
         <meta
           name="description"
-          content="Politique de confidentialité du site christophe-dev-freelance.fr : données collectées, bases légales, prestataires, durées de conservation et droits des personnes."
+          content="Politique de confidentialité de christophe-dev-freelance.fr : données collectées, bases légales, prestataires, durées de conservation et droits."
         />
         <link
           rel="canonical"
@@ -222,8 +220,7 @@ export default function PrivacyPolicy() {
         />
       </Helmet>
 
-      <main
-        id="main"
+      <section
         className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28"
         aria-label="Politique de confidentialité"
       >
@@ -324,7 +321,7 @@ export default function PrivacyPolicy() {
             </div>
           </motion.div>
         </div>
-      </main>
+      </section>
     </>
   );
 }

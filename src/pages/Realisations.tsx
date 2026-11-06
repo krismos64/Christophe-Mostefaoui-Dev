@@ -10,8 +10,8 @@ export default function Realisations() {
       <PageSeo
         chemin="/realisations"
         nomCourt="Réalisations"
-        titre="Réalisations : sites et applications en ligne | Christophe Mostefaoui"
-        description="Boutique de bijoux à Artix, cabinet infirmier, plateforme d'édition, logiciel de plannings SmartPlanning : les projets d'un développeur web freelance à Pau, tous en ligne."
+        titre="Réalisations : sites et applications | Christophe Mostefaoui"
+        description="Boutique de bijoux à Artix, cabinet infirmier, plateforme d'édition, logiciel SmartPlanning : les sites d'un développeur web à Pau, tous en ligne."
         schemas={[schemaSmartPlanning()]}
       />
       <PageHero

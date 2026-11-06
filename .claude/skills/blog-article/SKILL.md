@@ -73,7 +73,11 @@ que deux ou trois, triés et argumentés.
    correspondent PAS au rang : 12 articles portent les ids 6 à 17 au 05/11/2026, héritage de
    la purge de 2026), en respectant strictement l'interface existante
    (slug kebab-case, `metaDescription`, `imageUrl`). `featured: false` sauf
-   décision contraire (l'article prix est le `featured: true` actuel)
+   décision contraire (l'article prix est le `featured: true` actuel).
+   **`seoTitle` obligatoire depuis le 06/11/2026** : 60 caractères au plus,
+   sans suffixe de marque, c'est la balise `<title>` (le `title` long reste
+   le h1 et le titre de partage). `metaDescription` : 160 caractères au plus,
+   sinon Google la coupe
    **Relecture croisée (depuis le 30/09/2026)** : soumettre le brouillon à Codex
    avant d'aller plus loin (skill global `codex`, mode `critique`), avec le
    `CLAUDE.md` du projet et ce skill en contexte :

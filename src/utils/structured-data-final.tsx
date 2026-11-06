@@ -17,7 +17,7 @@ export const generateFinalStructuredData = () => {
     "@type": "WebPage",
     "@id": `${baseUrl}/#webpage`,
     "url": baseUrl,
-    "name": "Christophe Mostefaoui - Développeur Web Freelance à Pau",
+    "name": "Création de site internet à Pau (64) | Christophe Mostefaoui",
     "description": "Développeur web freelance à Pau (64). Spécialiste React.js, Node.js, TypeScript. Sites vitrines, applications sur mesure, intégration IA.",
     "mainEntity": {
       "@id": `${baseUrl}/#person`

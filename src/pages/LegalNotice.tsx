@@ -149,19 +149,28 @@ export default function LegalNotice() {
   return (
     <>
       <Helmet>
-        <title>Mentions légales : Christophe Mostefaoui, développeur web freelance à Pau</title>
+        <title>Mentions légales | Christophe Mostefaoui, développeur web</title>
         <meta
           name="description"
-          content="Mentions légales du site christophe-dev-freelance.fr : identité de l'éditeur, directeur de la publication, hébergeur, clientèle professionnelle, propriété intellectuelle."
+          content="Mentions légales de christophe-dev-freelance.fr : identité de l'éditeur, directeur de la publication, hébergeur, propriété intellectuelle."
         />
         <link
           rel="canonical"
           href="https://christophe-dev-freelance.fr/mentions-legales"
         />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Accueil", item: "https://christophe-dev-freelance.fr/" },
+              { "@type": "ListItem", position: 2, name: "Mentions légales", item: "https://christophe-dev-freelance.fr/mentions-legales" },
+            ],
+          })}
+        </script>
       </Helmet>
 
-      <main
-        id="main"
+      <section
         className="relative w-full overflow-hidden bg-creme pt-32 sm:pt-36 pb-20 sm:pb-28"
         aria-label="Mentions légales"
       >
@@ -261,7 +270,7 @@ export default function LegalNotice() {
             </div>
           </motion.div>
         </div>
-      </main>
+      </section>
     </>
   );
 }

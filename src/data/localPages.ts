@@ -34,7 +34,7 @@ export const localPages: LocalPage[] = [
     metaTitle:
       "Site internet à Pau (64) : développeur web freelance local",
     metaDescription:
-      "Développeur web freelance à Pau : création de sites vitrines, refontes et applications sur mesure pour commerces, artisans et PME de l'agglomération paloise. Rencontre sur place, devis gratuit sous 24h.",
+      "Création de sites vitrines, refontes et applications pour les commerces, artisans et PME de l'agglomération paloise. Rencontre sur place, devis sous 24h.",
     accroche: "↳ votre développeur web à Pau",
     h1: "Création de site internet à Pau",
     intro:
@@ -96,7 +96,7 @@ export const localPages: LocalPage[] = [
     metaTitle:
       "Site internet à Bayonne (64) : développeur web freelance",
     metaDescription:
-      "Création de sites internet à Bayonne et sur le BAB : sites vitrines, refontes et boutiques en ligne pour commerces, artisans et PME du Pays basque. Développeur freelance du 64, déplacement gratuit, devis sous 24h.",
+      "Sites vitrines, refontes et boutiques en ligne pour les commerces, artisans et PME de Bayonne et du BAB. Déplacement gratuit, devis sous 24h.",
     accroche: "↳ votre développeur web au Pays basque",
     h1: "Création de site internet à Bayonne",
     intro:
@@ -157,7 +157,7 @@ export const localPages: LocalPage[] = [
     metaTitle:
       "Site internet à Biarritz (64) : développeur web freelance",
     metaDescription:
-      "Sites internet haut de gamme à Biarritz : hôtellerie, restaurants, locations saisonnières, commerces et activités touristiques. Développeur web freelance du 64, vidéo et drone certifié DGAC, devis gratuit sous 24h.",
+      "Sites internet à Biarritz pour l'hôtellerie, les restaurants, les locations et les commerces. Vidéo et drone certifié DGAC, devis gratuit sous 24h.",
     accroche: "↳ votre développeur web sur la côte basque",
     h1: "Création de site internet à Biarritz",
     intro:
@@ -217,7 +217,7 @@ export const localPages: LocalPage[] = [
     metaTitle:
       "Site internet Orthez, Mourenx, Oloron : développeur web (64)",
     metaDescription:
-      "Développeur web freelance installé à Artix : création de sites internet pour artisans, commerces, industries et associations d'Orthez, Mourenx, Lacq, Monein et Oloron-Sainte-Marie. Le développeur d'à côté, devis gratuit sous 24h.",
+      "Développeur web installé à Artix : sites internet pour les artisans, commerces et industries d'Orthez, Mourenx, Lacq, Monein et Oloron. Devis sous 24h.",
     accroche: "↳ le développeur web d'à côté",
     h1: "Création de site internet à Orthez et dans le Béarn intérieur",
     intro:

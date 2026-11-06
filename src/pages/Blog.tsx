@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import PageSeo from "../components/seo/PageSeo";
 import PageHero from "../components/layout/PageHero";
 import BlogSection from "../components/sections/BlogSection";
 import BlogScene from "../components/sections/BlogScene";
@@ -6,53 +6,24 @@ import BlogScene from "../components/sections/BlogScene";
 const Blog = () => {
   return (
     <>
-      <Helmet>
-        <title>Blog - Christophe Mostefaoui | Conseils site internet pour PME et artisans</title>
-        <meta
-          name="description"
-          content="Conseils concrets sur la création de site internet, le référencement et le chatbot IA pour artisans, commerçants et PME à Pau et en Pyrénées-Atlantiques. Sans jargon, sans grille tarifaire magique."
-        />
-        <meta
-          name="keywords"
-          content="blog création site internet PME, conseils site web artisan, référencement local Pau, chatbot IA commerce, développeur web freelance Pau, prix site internet"
-        />
-        <link rel="canonical" href="https://christophe-dev-freelance.fr/blog" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Blog - Conseils site internet pour PME et artisans | Christophe Mostefaoui" />
-        <meta property="og:description" content="Conseils concrets et sans jargon sur le web, le référencement et l'IA, pour les artisans, commerçants et dirigeants de PME." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://christophe-dev-freelance.fr/blog" />
-
-        {/* Schema.org pour Blog */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
+      <PageSeo
+        chemin="/blog"
+        nomCourt="Blog"
+        titre="Blog : conseils site internet pour TPE et artisans"
+        description="Conseils concrets et sans jargon sur le site internet, le référencement local et l'IA, pour les artisans, commerçants et PME du 64."
+        schemas={[
+          {
             "@type": "Blog",
-            "name": "Blog Christophe Mostefaoui",
-            "description": "Conseils sur la création de site internet, le référencement et le chatbot IA pour PME et artisans",
-            "url": "https://christophe-dev-freelance.fr/blog",
-            "author": {
-              "@type": "Person",
-              "name": "Christophe Mostefaoui",
-              "jobTitle": "Développeur Web Freelance",
-              "url": "https://christophe-dev-freelance.fr"
-            },
-            "publisher": {
-              "@type": "Person",
-              "name": "Christophe Mostefaoui"
-            },
-            "inLanguage": "fr-FR",
-            "about": [
-              "Création de site internet",
-              "Référencement local",
-              "Chatbot IA",
-              "Conseils PME",
-              "Artisans et commerçants"
-            ]
-          })}
-        </script>
-      </Helmet>
+            "@id": "https://christophe-dev-freelance.fr/blog#blog",
+            name: "Blog Christophe Mostefaoui",
+            description: "Conseils sur la création de site internet, le référencement et le chatbot IA pour PME et artisans",
+            url: "https://christophe-dev-freelance.fr/blog",
+            inLanguage: "fr-FR",
+            author: { "@type": "Person", name: "Christophe Mostefaoui", url: "https://christophe-dev-freelance.fr" },
+            about: ["Création de site internet", "Référencement local", "Chatbot IA", "Conseils PME", "Artisans et commerçants"],
+          },
+        ]}
+      />
 
       <PageHero
         nomCourt="Blog"

@@ -15,7 +15,7 @@ export default function NotFound() {
   return (
     <>
       <Helmet>
-        <title>Page introuvable : Christophe Mostefaoui, développeur web freelance</title>
+        <title>Page introuvable | Christophe Mostefaoui</title>
         <meta name="robots" content="noindex, nofollow" />
         <meta
           name="description"
@@ -23,8 +23,7 @@ export default function NotFound() {
         />
       </Helmet>
 
-      <main
-        id="main"
+      <section
         className="relative w-full overflow-hidden bg-creme min-h-screen flex items-center"
         aria-label="Page introuvable"
       >
@@ -145,7 +144,7 @@ export default function NotFound() {
             </p>
           </motion.figcaption>
         </div>
-      </main>
+      </section>
     </>
   );
 }
