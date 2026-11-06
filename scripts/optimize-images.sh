@@ -12,8 +12,8 @@ mkdir -p "$OUT"
 # Les tailles correspondent aux largeurs utiles selon le contexte d'affichage.
 
 declare -a JOBS=(
-  # Section About — image fond pleine largeur portrait
-  "public/assets/images/montagne.png|480,768,1200,1600|75|30"
+  # Portrait de la page À propos (cadre en arche, 06/11/2026)
+  "public/assets/images/christophe-portrait.jpg|480,768,1120|80|32"
   # Smartplanning showcase + Portfolio carte fondateur — logo affiché ~600px max
   "public/assets/images/logosp.png|320,640,960|80|32"
   # Vignettes Portfolio : site en ligne dans un portable et un téléphone,

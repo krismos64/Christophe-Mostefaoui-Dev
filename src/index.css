@@ -428,6 +428,18 @@ blockquote .hero-handwritten {
   .bureau [class*="bureau-"] { animation: none !important; }
 }
 
+/* Portrait de la page À propos (sections/About.tsx) */
+.apropos-soleil { animation: apropos-flotte 7s ease-in-out infinite alternate; }
+.apropos-anneau { transform-box: fill-box; transform-origin: center; animation: apropos-tourne 40s linear infinite; }
+.apropos-point::after { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: #F2A25C; animation: apropos-pulse 2.4s ease-out infinite; }
+@keyframes apropos-flotte { from { transform: translateY(0); } to { transform: translateY(-12px); } }
+@keyframes apropos-tourne { to { transform: rotate(360deg); } }
+@keyframes apropos-pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(2.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .apropos-soleil, .apropos-anneau { animation: none !important; }
+  .apropos-point::after { animation: none !important; opacity: 0; }
+}
+
 /* Scènes des cartes Services (home/ServicesScenes.tsx). L'état de base de
    chaque élément est l'image finale lisible : le mode réduit l'affiche tel
    quel. Les boucles partent d'un état caché vers cette image. */

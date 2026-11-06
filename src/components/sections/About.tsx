@@ -81,36 +81,73 @@ export default function About() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-span-5 lg:col-span-5"
           >
-            <div className="relative">
-              <picture>
-                <source
-                  type="image/avif"
-                  srcSet="/assets/images/optimized/montagne-480.avif 480w, /assets/images/optimized/montagne-768.avif 768w, /assets/images/optimized/montagne-1200.avif 1200w"
-                  sizes="(max-width: 768px) 100vw, 42vw"
-                />
-                <source
-                  type="image/webp"
-                  srcSet="/assets/images/optimized/montagne-480.webp 480w, /assets/images/optimized/montagne-768.webp 768w, /assets/images/optimized/montagne-1200.webp 1200w"
-                  sizes="(max-width: 768px) 100vw, 42vw"
-                />
-                <img
-                  src="/assets/images/optimized/montagne-768.webp"
-                  alt="Christophe Mostefaoui codant face aux Pyrénées au coucher du soleil, avec un refuge en pierre et la vallée en contrebas"
-                  width={1200}
-                  height={1500}
-                  className="w-full h-auto aspect-[4/5] object-cover object-[60%_center]"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
-              {/* Cadre fin */}
+            {/* Portrait dans une arche (06/11/2026) : aplat décalé, soleil et
+                anneau animés en CSS (index.css, section À propos), Pyrénées au pied */}
+            <div className="apropos-portrait relative mx-auto max-w-[420px] pb-6 pr-6 md:mx-0">
               <div
-                className="absolute inset-0 ring-1 ring-foret/15 pointer-events-none"
+                className="absolute inset-0 left-6 top-6 rounded-b-[28px] rounded-t-[999px] bg-foret-moyen"
                 aria-hidden="true"
               />
+              <svg
+                viewBox="0 0 120 120"
+                className="apropos-soleil absolute -right-4 -top-4 z-0 h-28 w-28 sm:-right-8 sm:h-32 sm:w-32"
+                aria-hidden="true"
+              >
+                <circle cx="60" cy="60" r="34" fill="#F2A25C" />
+                <circle
+                  className="apropos-anneau"
+                  cx="60"
+                  cy="60"
+                  r="52"
+                  fill="none"
+                  stroke="#F2A25C"
+                  strokeWidth="2"
+                  strokeDasharray="3 9"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <div className="relative z-10 overflow-hidden rounded-b-[28px] rounded-t-[999px] bg-[#e6e6e8] shadow-[0_30px_60px_-30px_rgba(18,49,43,0.55)] ring-1 ring-foret/10">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcSet="/assets/images/optimized/christophe-portrait-480.avif 480w, /assets/images/optimized/christophe-portrait-768.avif 768w, /assets/images/optimized/christophe-portrait-1120.avif 1120w"
+                    sizes="(max-width: 768px) 90vw, 400px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcSet="/assets/images/optimized/christophe-portrait-480.webp 480w, /assets/images/optimized/christophe-portrait-768.webp 768w, /assets/images/optimized/christophe-portrait-1120.webp 1120w"
+                    sizes="(max-width: 768px) 90vw, 400px"
+                  />
+                  <img
+                    src="/assets/images/optimized/christophe-portrait-768.webp"
+                    alt="Portrait de Christophe Mostefaoui, développeur web à Pau et Artix"
+                    width={1122}
+                    height={1402}
+                    className="aspect-[4/5] h-auto w-full object-cover object-top"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+                {/* Pyrénées au pied du portrait */}
+                <svg
+                  viewBox="0 0 400 80"
+                  preserveAspectRatio="none"
+                  className="absolute inset-x-0 bottom-0 h-[16%] w-full"
+                  aria-hidden="true"
+                >
+                  <path d="M0 80 L0 46 L60 20 L110 44 L170 8 L230 42 L290 16 L350 40 L400 26 L400 80 Z" fill="#24594C" opacity="0.92" />
+                  <path d="M160 14 L170 8 L181 16 L175 15 L170 18 Z" fill="#E8EFEC" />
+                  <path d="M281 21 L290 16 L299 23 L294 22 L290 24 Z" fill="#E8EFEC" />
+                  <path d="M0 80 L0 62 L90 52 L180 66 L270 50 L400 60 L400 80 Z" fill="#12312B" />
+                </svg>
+              </div>
+              <p className="absolute bottom-2 left-0 z-20 inline-flex items-center gap-2 rounded-full bg-creme px-4 py-2 text-[14px] font-bold text-foret shadow-[0_10px_24px_-12px_rgba(18,49,43,0.6)]">
+                <span className="apropos-point relative inline-flex h-2.5 w-2.5 rounded-full bg-soleil" aria-hidden="true" />
+                Pau · Artix
+              </p>
             </div>
-            <figcaption className="hero-handwritten mt-4 text-[16px] sm:text-[18px] text-foret/70 text-right">
-              — bureau d'altitude, face aux Pyrénées
+            <figcaption className="hero-handwritten mt-4 text-[16px] sm:text-[18px] text-foret/70 text-right md:pr-6">
+              — C.M., à Pau et Artix
             </figcaption>
           </motion.figure>
 
