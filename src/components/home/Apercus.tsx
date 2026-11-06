@@ -86,8 +86,8 @@ export function ApercuRealisations() {
           Des sites qui travaillent pour leurs propriétaires.
         </h2>
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-creme/80">
-          Une créatrice de bijoux à Artix, un cabinet infirmier, une maison d'édition : trois
-          exemples parmi onze projets en ligne.
+          Une créatrice de bijoux à Artix, un cabinet infirmier, une maison d'édition : quelques-uns
+          des sites que j'ai mis en ligne.
         </p>
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {choisis.map((p) => (
@@ -119,7 +119,7 @@ export function ApercuRealisations() {
           ))}
         </ul>
         <LienSuite to="/realisations" sombre>
-          Voir les 11 réalisations
+          Voir toutes les réalisations
         </LienSuite>
       </div>
     </section>

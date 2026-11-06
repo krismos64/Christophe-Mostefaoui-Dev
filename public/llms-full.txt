@@ -9,7 +9,7 @@
 
 - Accueil : https://christophe-dev-freelance.fr (résumé des services, trois réalisations, présentation, questions fréquentes, zone d'intervention)
 - Services : https://christophe-dev-freelance.fr/services (les six prestations et le déroulement d'un devis)
-- Réalisations : https://christophe-dev-freelance.fr/realisations (les 11 projets et SmartPlanning)
+- Réalisations : https://christophe-dev-freelance.fr/realisations (les sites clients et SmartPlanning)
 - À propos : https://christophe-dev-freelance.fr/a-propos (parcours, vidéo de présentation)
 - Contact : https://christophe-dev-freelance.fr/contact (téléphone, e-mail, formulaire, zone d'intervention)
 - Blog : https://christophe-dev-freelance.fr/blog

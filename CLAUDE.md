@@ -90,9 +90,11 @@ npm run preview    # Preview build
   pas : sans section de faits sur le sujet de l'article, le modèle improvise
   (chiffres inventés, constaté le 30/09/2026)
 - `src/data/realisations.ts` (affiché par `Portfolio.tsx` sur `/realisations` et en aperçu de 3 projets sur la home, `src/components/home/Apercus.tsx`) : 10 réalisations clients sous le
-  projet fondateur SmartPlanning (ordre validé le 05/11/2026). Ajouter un
-  projet impose de mettre à jour le titre (« Onze projets, onze histoires. »),
-  le compteur de `AIChatbot.tsx`, `llms.txt`, `llms-full.txt`, la section
+  projet fondateur SmartPlanning (ordre validé le 05/11/2026). **Ne jamais
+  chiffrer le nombre de projets** dans un texte (titres, meta, chatbot,
+  fichiers LLM) : décision du 06/11/2026, le compteur n'apporte rien et
+  vieillit à chaque ajout. Ajouter un projet impose de mettre à jour
+  `llms.txt`, `llms-full.txt`, la section
   « Sites vitrines » de `chatbot-knowledge.txt` et la vignette. Vignette (depuis
   le 06/11/2026) : le site en ligne dans un portable et un téléphone posés sur
   un bureau. Capturer l'accueil en 1440x900 (`captures/<nom>-ordi.png`) et en

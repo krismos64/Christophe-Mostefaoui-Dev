@@ -1,4 +1,4 @@
-// Les 11 réalisations : source unique pour la page /realisations et l'aperçu de la home.
+// Les réalisations : source unique pour la page /realisations et l'aperçu de la home.
 // Ajouter un projet impose aussi les mises à jour listées dans CLAUDE.md (titre, chatbot, fichiers LLM).
 
 export interface Project {

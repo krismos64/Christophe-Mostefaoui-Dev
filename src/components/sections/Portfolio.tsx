@@ -71,7 +71,7 @@ export default function Portfolio() {
               Portfolio
             </p>
             <h2 className="hero-display text-creme">
-              Onze projets, onze histoires.
+              Le détail de chaque projet.
             </h2>
             <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-creme/80">
               Des sites pour artisans locaux aux SaaS en production : voici
@@ -157,7 +157,7 @@ export default function Portfolio() {
             </div>
           </motion.article>
 
-          {/* Mosaïque 2 colonnes des 10 autres projets */}
+          {/* Mosaïque 2 colonnes des autres projets */}
           <motion.ul
             variants={stagger}
             initial="hidden"
