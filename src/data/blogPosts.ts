@@ -1235,12 +1235,3 @@ export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
   return blogPosts.find(post => post.slug === slug);
 };
 
-// Fonction utilitaire pour récupérer les articles par catégorie
-export const getBlogPostsByCategory = (category: string): BlogPost[] => {
-  return blogPosts.filter(post => post.category === category);
-};
-
-// Fonction utilitaire pour récupérer les articles featured
-export const getFeaturedBlogPosts = (): BlogPost[] => {
-  return blogPosts.filter(post => post.featured);
-};

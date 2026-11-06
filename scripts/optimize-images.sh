@@ -14,8 +14,6 @@ mkdir -p "$OUT"
 declare -a JOBS=(
   # Portrait de la page À propos (cadre en arche, 06/11/2026)
   "public/assets/images/christophe-portrait.jpg|480,768,1120|80|32"
-  # Smartplanning showcase + Portfolio carte fondateur — logo affiché ~600px max
-  "public/assets/images/logosp.png|320,640,960|80|32"
   # Vignettes Portfolio : site en ligne dans un portable et un téléphone,
   # produites par scripts/mockup/incruster.sh <nom> (06/11/2026)
   "public/assets/images/smartplanning-mockup.jpg|400,800,1200|78|30"
@@ -52,9 +50,7 @@ declare -a JOBS=(
   "public/assets/images/site-accessible-petite-entreprise.png|400,800|78|30"
   "public/assets/images/automatiser-taches-repetitives-petite-entreprise.png|400,800|78|30"
   # Profil — schema.org + chatbot (256-512px)
-  "public/assets/images/Chris-profil.jpg|256,512|80|32"
-  # Image Knowledge Panel Google (512px)
-  "public/assets/images/chris-web.png|512,1024|80|32"
+  "public/assets/images/Chris-profil.jpg|256|80|32"
 )
 
 total_before=0

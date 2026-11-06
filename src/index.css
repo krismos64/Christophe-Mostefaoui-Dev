@@ -146,10 +146,6 @@ h1, h2, h3, h4 {
   color: #24594c;
 }
 
-.hero-display-inline {
-  font-weight: 700;
-}
-
 /* Surtitre de section (ex-manuscrit) : petit, en capitales espacées */
 .hero-handwritten {
   font-weight: 600;

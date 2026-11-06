@@ -53,7 +53,7 @@ export default defineConfig({
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
           animations: ["framer-motion"],
-          ui: ["lucide-react", "@heroicons/react"],
+          ui: ["lucide-react"],
           helmet: ["react-helmet-async"],
         },
       },
