@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { motion, useInView } from "framer-motion";
@@ -581,12 +582,12 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
 /* Sous-composants champs                                                      */
 /* -------------------------------------------------------------------------- */
 
-type IconeChamp = React.ComponentType<{ className?: string; strokeWidth?: number }>;
+type IconeChamp = LucideIcon;
 
 const champ =
   "hero-body w-full rounded-xl border border-transparent bg-creme py-3 text-[16px] text-foret placeholder:text-foret/55 shadow-[inset_0_1px_2px_rgba(18,49,43,0.12)] transition focus:border-soleil focus:outline-none focus:ring-2 focus:ring-soleil";
 
-const Libelle = ({ htmlFor, children, requis }: { htmlFor: string; children: string; requis?: boolean }) => (
+const Libelle = ({ htmlFor, children, requis }: { htmlFor: string; children: string; requis?: boolean | undefined }) => (
   <label htmlFor={htmlFor} className="mb-1.5 block text-[14px] font-semibold text-creme">
     {children}
     {requis && <span className="text-soleil" aria-hidden="true"> *</span>}

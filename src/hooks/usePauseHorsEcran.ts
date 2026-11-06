@@ -19,6 +19,7 @@ export function usePauseHorsEcran(ref: RefObject<SVGSVGElement>) {
     }
     if (!("IntersectionObserver" in window)) return;
     const obs = new IntersectionObserver(([e]) => {
+      if (!e) return;
       el.toggleAttribute("data-pause", !e.isIntersecting);
       if (e.isIntersecting) el.unpauseAnimations?.();
       else el.pauseAnimations?.();

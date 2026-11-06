@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigation } from "../../hooks/useNavigation";
 
@@ -23,6 +23,8 @@ export default function Header() {
   const [menuOuvert, setMenuOuvert] = useState(false);
   const [defile, setDefile] = useState(false);
   const { handleNavigation, isActive, isHomePage } = useNavigation();
+  const panneau = useRef<HTMLDivElement>(null);
+  const boutonMenu = useRef<HTMLButtonElement>(null);
 
   // Fond opaque dès qu'on quitte le haut de la home
   useEffect(() => {
@@ -32,15 +34,37 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Menu mobile : bloque le défilement de la page, Échap pour fermer
+  // Menu mobile (dialogue modal) : bloque le défilement de la page, Échap
+  // pour fermer, Tab boucle dans le panneau (sinon le focus part sur la page
+  // cachée derrière), et le focus revient au bouton du menu à la fermeture
   useEffect(() => {
     if (!menuOuvert) return;
     document.body.classList.add("menu-open");
-    const echap = (e: KeyboardEvent) => e.key === "Escape" && setMenuOuvert(false);
-    window.addEventListener("keydown", echap);
+    const clavier = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOuvert(false);
+        return;
+      }
+      if (e.key !== "Tab" || !panneau.current) return;
+      const cibles = panneau.current.querySelectorAll<HTMLElement>("a[href], button:not([disabled])");
+      const premier = cibles[0];
+      const dernier = cibles[cibles.length - 1];
+      if (!premier || !dernier) return;
+      const actif = document.activeElement;
+      if (e.shiftKey && (actif === premier || !panneau.current.contains(actif))) {
+        e.preventDefault();
+        dernier.focus();
+      } else if (!e.shiftKey && (actif === dernier || !panneau.current.contains(actif))) {
+        e.preventDefault();
+        premier.focus();
+      }
+    };
+    window.addEventListener("keydown", clavier);
+    const bouton = boutonMenu.current;
     return () => {
       document.body.classList.remove("menu-open");
-      window.removeEventListener("keydown", echap);
+      window.removeEventListener("keydown", clavier);
+      bouton?.focus();
     };
   }, [menuOuvert]);
 
@@ -140,6 +164,7 @@ export default function Header() {
           </div>
 
           <button
+            ref={boutonMenu}
             type="button"
             onClick={() => setMenuOuvert(true)}
             className={`inline-flex h-11 w-11 items-center justify-center rounded-full hover:text-soleil xl:hidden ${focus}`}
@@ -155,6 +180,7 @@ export default function Header() {
       <AnimatePresence>
         {menuOuvert && (
           <motion.div
+            ref={panneau}
             id="menu-mobile"
             role="dialog"
             aria-modal="true"

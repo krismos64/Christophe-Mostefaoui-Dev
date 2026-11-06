@@ -8,7 +8,8 @@ Hébergement : Hostinger mutualisé (Apache + hPanel)
 ## Commandes
 ```bash
 npm run dev        # Dev local (chatbot et brouillons Make HS en dev : les proxys PHP ne tournent pas)
-npm run build      # Build prod (tsc + vite build + pré-rendu Puppeteer)
+npm run build      # Build prod (tsc -p tsconfig.app.json + vite build + pré-rendu Puppeteer)
+                   # Avant le 06/11/2026, `tsc` seul ne vérifiait RIEN (tsconfig racine sans fichiers)
 npm run build:spa  # Build sans pré-rendu (debug)
 npm run preview    # Preview build
 ```

@@ -38,7 +38,7 @@ export const useNavigation = () => {
         navigate("/");
         // On attend que la navigation soit terminée avant de scroller
         setTimeout(() => {
-          const anchorId = to.split("#")[1];
+          const anchorId = to.split("#")[1] ?? "";
           const element = document.getElementById(anchorId);
           if (element) {
             element.scrollIntoView({ behavior: "smooth" });
