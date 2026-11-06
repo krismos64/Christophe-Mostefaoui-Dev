@@ -428,6 +428,23 @@ blockquote .hero-handwritten {
   .bureau [class*="bureau-"] { animation: none !important; }
 }
 
+/* Blog (sections/BlogScene.tsx et BlogSection.tsx) : un seul cycle pour la
+   scène du bandeau, l'état de base est l'image finale (mode réduit) */
+.blog-scene [class*="blog-"] { transform-box: fill-box; animation-fill-mode: both; }
+.blog-feuille { animation: blog-pose .9s cubic-bezier(.16,1,.3,1) .1s; }
+.blog-ligne { transform-origin: 0 50%; animation: blog-ligne .5s ease-out; }
+.blog-signet { transform-origin: 50% 0; animation: blog-signet .7s cubic-bezier(.3,1.5,.5,1) 2.3s; }
+.blog-soleil { transform-origin: center; animation: blog-soleil 7s ease-in-out infinite alternate; }
+.blog-point::after { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: #F2A25C; animation: apropos-pulse 2.4s ease-out infinite; }
+@keyframes blog-pose { from { transform: translateY(18px) rotate(3deg); opacity: 0; } }
+@keyframes blog-ligne { from { transform: scaleX(0); } }
+@keyframes blog-signet { from { transform: translateY(-34px) scaleY(.6); opacity: 0; } }
+@keyframes blog-soleil { to { transform: translateY(-10px) scale(1.04); } }
+@media (prefers-reduced-motion: reduce) {
+  .blog-scene [class*="blog-"] { animation: none !important; }
+  .blog-point::after { animation: none !important; opacity: 0; }
+}
+
 /* Portrait de la page À propos (sections/About.tsx) */
 .apropos-soleil { animation: apropos-flotte 7s ease-in-out infinite alternate; }
 .apropos-anneau { transform-box: fill-box; transform-origin: center; animation: apropos-tourne 40s linear infinite; }

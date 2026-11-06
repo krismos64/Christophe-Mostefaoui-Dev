@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
+import PageHero from "../components/layout/PageHero";
 import BlogSection from "../components/sections/BlogSection";
+import BlogScene from "../components/sections/BlogScene";
 
 const Blog = () => {
   return (
@@ -52,9 +54,20 @@ const Blog = () => {
         </script>
       </Helmet>
 
-      <main id="main">
-        <BlogSection />
-      </main>
+      <PageHero
+        nomCourt="Blog"
+        surtitre="Blog"
+        titre="Des conseils concrets pour le site de votre entreprise."
+        intro={
+          <p>
+            Pour les artisans, commerçants et dirigeants de PME qui envisagent un site internet ou
+            veulent mieux comprendre le web. Sans jargon, sans grille tarifaire magique.
+          </p>
+        }
+      >
+        <BlogScene />
+      </PageHero>
+      <BlogSection />
     </>
   );
 };
