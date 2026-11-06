@@ -16,17 +16,18 @@ declare -a JOBS=(
   "public/assets/images/montagne.png|480,768,1200,1600|75|30"
   # Smartplanning showcase + Portfolio carte fondateur — logo affiché ~600px max
   "public/assets/images/logosp.png|320,640,960|80|32"
-  # Vignettes Portfolio (768x432 max affichage en card)
-  "public/assets/images/lune-soleil.png|400,800|78|30"
-  "public/assets/images/livrestaka.jpg|400,800|78|30"
-  "public/assets/images/graslin.jpg|400,800|78|30"
-  "public/assets/images/poulpfiction.jpg|400,800|78|30"
-  "public/assets/images/methodea.png|400,800|78|30"
-  "public/assets/images/coachtfe.png|400,800|78|30"
-  "public/assets/images/coachdec.png|400,800|78|30"
-  "public/assets/images/doctorat.png|400,800|78|30"
-  "public/assets/images/mastermentor.png|400,800|78|30"
-  "public/assets/images/garage.jpg|400,800|78|30"
+  # Vignettes Portfolio : site en ligne dans un portable et un téléphone,
+  # produites par scripts/mockup/incruster.sh <nom> (06/11/2026)
+  "public/assets/images/lune-soleil-mockup.jpg|400,800|78|30"
+  "public/assets/images/livrestaka-mockup.jpg|400,800|78|30"
+  "public/assets/images/graslin-mockup.jpg|400,800|78|30"
+  "public/assets/images/methodea-mockup.jpg|400,800|78|30"
+  "public/assets/images/coachtfe-mockup.jpg|400,800|78|30"
+  "public/assets/images/coachdec-mockup.jpg|400,800|78|30"
+  "public/assets/images/doctorat-mockup.jpg|400,800|78|30"
+  "public/assets/images/mastermentor-mockup.jpg|400,800|78|30"
+  "public/assets/images/garage-mockup.jpg|400,800|78|30"
+  "public/assets/images/poulpfiction-mockup.jpg|400,800|78|30"
   # Miniatures vidéo YouTube embed (max 800x450)
   "public/assets/images/miniature.png|400,800|78|30"
   "public/assets/images/miniature-2.png|400,800|78|30"

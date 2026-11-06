@@ -93,8 +93,14 @@ npm run preview    # Preview build
   projet fondateur SmartPlanning (ordre validé le 05/11/2026). Ajouter un
   projet impose de mettre à jour le titre (« Onze projets, onze histoires. »),
   le compteur de `AIChatbot.tsx`, `llms.txt`, `llms-full.txt`, la section
-  « Sites vitrines » de `chatbot-knowledge.txt` et la vignette dans
-  `scripts/optimize-images.sh`. CoachDEC, Doctorat.me et MasterMentor sont des
+  « Sites vitrines » de `chatbot-knowledge.txt` et la vignette. Vignette (depuis
+  le 06/11/2026) : le site en ligne dans un portable et un téléphone posés sur
+  un bureau. Capturer l'accueil en 1440x900 (`captures/<nom>-ordi.png`) et en
+  393x852 densité 3 (`captures/<nom>-mobile.png`) dans `scripts/mockup/`,
+  bandeau de cookies masqué, jamais accepté. Lancer
+  `scripts/mockup/incruster.sh <nom>`, puis ajouter `<nom>-mockup.jpg` à
+  `scripts/optimize-images.sh`. Le décor (`decor-portable.png`, écrans en
+  chroma) est commun aux 11 : ne pas le régénérer pour un seul projet. CoachDEC, Doctorat.me et MasterMentor sont des
   sites du client Staka recadrés après des soupçons de promotion du plagiat :
   toujours écrire « accompagnement méthodologique », jamais « rédaction » ni
   « correction de thèse ». Lune-Soleil est une cliente, pas la boutique de
