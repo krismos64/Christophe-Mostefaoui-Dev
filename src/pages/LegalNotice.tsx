@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 export default function LegalNotice() {
+  const lien =
+    "border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors";
+  const liste = "mt-3 space-y-1.5 hero-body text-[15px]";
+
   const sections = [
     {
       numeral: "I",
@@ -11,37 +15,35 @@ export default function LegalNotice() {
       body: (
         <>
           <p>
-            Le site web est édité par{" "}
-            <strong className="font-medium text-foret">
-              Mostefaoui Christophe
-            </strong>
-            , entrepreneur individuel.
+            Le site christophe-dev-freelance.fr est édité par{" "}
+            <strong className="font-medium text-foret">Christophe Mostefaoui</strong>,
+            entrepreneur individuel (EI), développeur web.
           </p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px]">
-            <li>Adresse : 64170 Artix, France</li>
+          <ul className={liste}>
+            <li>Adresse : 4 avenue Edmond Rostand, 64170 Artix, France</li>
             <li>
-              SIRET :{" "}
-              <span className="font-mono tabular-nums">937 719 177 00019</span>
+              SIRET : <span className="font-mono tabular-nums">937 719 177 00019</span>
+            </li>
+            <li>
+              TVA intracommunautaire :{" "}
+              <span className="font-mono tabular-nums">FR15 937 719 177</span>
             </li>
             <li>
               Email :{" "}
-              <a
-                href="mailto:christophe.mostefaoui.dev@gmail.com"
-                className="border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
-              >
+              <a href="mailto:christophe.mostefaoui.dev@gmail.com" className={lien}>
                 christophe.mostefaoui.dev@gmail.com
               </a>
             </li>
             <li>
               Téléphone :{" "}
-              <a
-                href="tel:+33679088845"
-                className="font-mono tabular-nums border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
-              >
+              <a href="tel:+33679088845" className={`font-mono tabular-nums ${lien}`}>
                 06 79 08 88 45
               </a>
             </li>
           </ul>
+          <p className="mt-4">
+            Directeur de la publication : Christophe Mostefaoui.
+          </p>
         </>
       ),
     },
@@ -52,24 +54,13 @@ export default function LegalNotice() {
         <>
           <p>
             Le site est hébergé par{" "}
-            <strong className="font-medium text-foret">
-              Hostinger International Ltd.
-            </strong>
+            <strong className="font-medium text-foret">Hostinger International Limited</strong>,
+            société de droit chypriote.
           </p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px]">
+          <ul className={liste}>
             <li>Adresse : 61 Lordou Vironos Street, 6023 Larnaca, Chypre</li>
             <li>
-              Téléphone :{" "}
-              <span className="font-mono tabular-nums">+370 645 03378</span>
-            </li>
-            <li>
-              Email :{" "}
-              <a
-                href="mailto:domains@hostinger.com"
-                className="border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
-              >
-                domains@hostinger.com
-              </a>
+              Téléphone : <span className="font-mono tabular-nums">+370 645 03378</span>
             </li>
             <li>
               Site :{" "}
@@ -77,7 +68,7 @@ export default function LegalNotice() {
                 href="https://www.hostinger.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1 border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
+                className={`group inline-flex items-center gap-1 ${lien}`}
               >
                 hostinger.com
                 <ArrowUpRight
@@ -87,39 +78,69 @@ export default function LegalNotice() {
               </a>
             </li>
           </ul>
+          <p className="mt-4">
+            Les serveurs qui font fonctionner le site sont situés en France, et
+            leurs sauvegardes en Lituanie.
+          </p>
         </>
       ),
     },
     {
       numeral: "III",
-      title: "Propriété intellectuelle",
+      title: "Clientèle professionnelle",
       body: (
         <p>
-          L'ensemble du contenu de ce site (textes, images, vidéos, code source,
-          etc.) est protégé par le droit d'auteur. Toute reproduction ou
-          représentation, totale ou partielle, est interdite sans autorisation
-          écrite préalable.
+          Les prestations présentées sur ce site (création de sites internet,
+          applications, intégration d'intelligence artificielle) sont proposées
+          exclusivement aux professionnels : entreprises, commerçants, artisans,
+          professions libérales. Elles ne s'adressent pas aux consommateurs ; le
+          dispositif de médiation de la consommation ne s'applique donc pas.
+          Chaque prestation fait l'objet d'un devis écrit.
         </p>
       ),
     },
     {
       numeral: "IV",
-      title: "Responsabilité",
+      title: "Propriété intellectuelle",
       body: (
-        <p>
-          Les informations fournies sur ce site le sont à titre indicatif.
-          L'éditeur ne saurait garantir l'exactitude, la complétude et
-          l'actualité des informations diffusées.
-        </p>
+        <>
+          <p>
+            Les textes, illustrations, animations et le code de ce site sont
+            protégés par le droit d'auteur. Leur reproduction, totale ou
+            partielle, demande une autorisation écrite préalable, sauf dans les
+            cas prévus par la loi (courte citation avec mention de la source,
+            par exemple).
+          </p>
+          <p className="mt-4">
+            Les captures des sites présentés dans les réalisations, ainsi que
+            les noms et logos qui y figurent, restent la propriété de leurs
+            éditeurs respectifs.
+          </p>
+        </>
       ),
     },
     {
       numeral: "V",
-      title: "Litiges",
+      title: "Responsabilité",
       body: (
         <p>
-          Les présentes mentions légales sont soumises au droit français. En cas
-          de litige, les tribunaux français seront seuls compétents.
+          Je veille à ce que les informations publiées soient exactes et à
+          jour, sans pouvoir garantir qu'elles le restent en permanence. Si
+          vous relevez une erreur, écrivez-moi : je la corrige rapidement. Les
+          liens vers d'autres sites sont fournis pour information ; je n'ai pas
+          la maîtrise de leur contenu.
+        </p>
+      ),
+    },
+    {
+      numeral: "VI",
+      title: "Droit applicable",
+      body: (
+        <p>
+          Les présentes mentions légales sont soumises au droit français. En
+          cas de différend, une solution amiable sera recherchée en priorité ;
+          à défaut, le tribunal compétent est désigné selon les règles de droit
+          applicables.
         </p>
       ),
     },
@@ -131,7 +152,7 @@ export default function LegalNotice() {
         <title>Mentions légales : Christophe Mostefaoui, développeur web freelance à Pau</title>
         <meta
           name="description"
-          content="Mentions légales du site christophe-dev-freelance.fr. Identité de l'éditeur, hébergeur, propriété intellectuelle, responsabilité, juridiction française."
+          content="Mentions légales du site christophe-dev-freelance.fr : identité de l'éditeur, directeur de la publication, hébergeur, clientèle professionnelle, propriété intellectuelle."
         />
         <link
           rel="canonical"
@@ -162,6 +183,7 @@ export default function LegalNotice() {
             <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
               Conformément à la loi pour la confiance dans l'économie numérique
               (LCEN), voici les informations légales relatives à ce site.
+              Dernière mise à jour : 6 novembre 2026.
             </p>
           </motion.div>
 

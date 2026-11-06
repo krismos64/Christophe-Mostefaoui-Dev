@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { motion, useInView } from "framer-motion";
 import {
@@ -523,6 +524,17 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                         </>
                       )}
                     </button>
+                    <p className="mt-4 max-w-xl text-[13px] leading-relaxed text-creme/75">
+                      Vos informations servent uniquement à répondre à votre demande et à
+                      préparer votre devis. Elles sont conservées 3 ans au plus sans suite
+                      de votre part.{" "}
+                      <Link
+                        to="/politique-de-confidentialite"
+                        className="underline underline-offset-2 hover:text-soleil"
+                      >
+                        Utilisation de vos données et vos droits
+                      </Link>
+                    </p>
                   </div>
 
                   {status && (

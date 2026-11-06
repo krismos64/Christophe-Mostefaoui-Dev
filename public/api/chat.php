@@ -78,6 +78,14 @@ if ($dayCount >= RATE_PER_DAY_GLOBAL) {
     fail(429, 'Quota journalier atteint');
 }
 @file_put_contents($dayFile, (string) ($dayCount + 1), LOCK_EX);
+
+// Purge des compteurs de plus de 24 h : l'empreinte d'IP reste une donnée
+// personnelle, la politique de confidentialité annonce cette durée
+foreach (array_merge(glob($rlDir . '/ip-*') ?: [], glob($rlDir . '/global-*') ?: []) as $f) {
+    if (@filemtime($f) < $now - 86400) {
+        @unlink($f);
+    }
+}
 flock($lock, LOCK_UN);
 fclose($lock);
 

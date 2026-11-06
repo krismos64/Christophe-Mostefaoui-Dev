@@ -4,191 +4,202 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 export default function PrivacyPolicy() {
+  const lien =
+    "border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors";
+  const puces = "mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen";
+  const fort = "font-medium text-foret";
+
   const sections = [
     {
       numeral: "I",
-      title: "Collecte des données",
+      title: "Qui traite vos données",
       body: (
-        <>
-          <p>
-            Je collecte uniquement les informations que vous me fournissez
-            volontairement via le formulaire de contact :
-          </p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen">
-            <li>Nom et prénom</li>
-            <li>Adresse email</li>
-            <li>Numéro de téléphone (optionnel)</li>
-            <li>Ville (optionnel)</li>
-            <li>Type de projet et description</li>
-          </ul>
-        </>
+        <p>
+          Le responsable du traitement est{" "}
+          <strong className={fort}>Christophe Mostefaoui</strong>, entrepreneur
+          individuel, 4 avenue Edmond Rostand, 64170 Artix,{" "}
+          <a href="mailto:christophe.mostefaoui.dev@gmail.com" className={lien}>
+            christophe.mostefaoui.dev@gmail.com
+          </a>
+          . Je travaille seul : personne d'autre que moi ne lit vos demandes.
+        </p>
       ),
     },
     {
       numeral: "II",
-      title: "Utilisation des données",
+      title: "Le formulaire de contact",
       body: (
         <>
-          <p>Les données collectées sont utilisées uniquement pour :</p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen">
-            <li>Répondre à vos demandes de contact ou de devis</li>
-            <li>
-              Vous transmettre une proposition adaptée à votre projet
-            </li>
-            <li>Améliorer le site et les services proposés</li>
-          </ul>
-          <p className="mt-4">
-            <strong className="font-medium text-foret">
-              Vos données ne sont jamais cédées ni revendues
-            </strong>{" "}
-            à des tiers.
+          <p>
+            <strong className={fort}>Données collectées :</strong> nom, email,
+            type de projet et description (obligatoires pour que je puisse vous
+            répondre), téléphone et ville (facultatifs).
           </p>
-          <p className="mt-4">
-            Pour préparer ma réponse, le contenu du formulaire de contact (nom,
-            email, téléphone, ville, type de projet et message) est transmis,
-            via le serveur du site, à{" "}
-            <strong className="font-medium text-foret">
-              Make
-            </strong>{" "}
-            (plateforme d'automatisation, hébergement dans l'Union européenne)
-            puis à{" "}
-            <strong className="font-medium text-foret">
-              Mistral AI
-            </strong>{" "}
-            (société française, données traitées dans l'Union européenne), qui
-            rédigent un brouillon de réponse dans ma messagerie Gmail. Je relis
-            et corrige chaque brouillon avant de l'envoyer moi-même : aucune
-            réponse ne part automatiquement.
+          <p className="mt-3">
+            <strong className={fort}>Pourquoi :</strong> répondre à votre
+            demande et vous envoyer un devis. Base légale : les mesures
+            précontractuelles prises à votre demande (article 6.1.b du RGPD).
+          </p>
+          <p className="mt-3">
+            <strong className={fort}>Comment :</strong> votre message est envoyé
+            par le service EmailJS dans ma messagerie Gmail. En parallèle, le
+            serveur du site le transmet à Make (plateforme d'automatisation,
+            région européenne) et à Mistral AI (société française), qui
+            préparent un brouillon de réponse dans ma messagerie. Je relis et
+            corrige chaque brouillon avant de l'envoyer moi-même : aucune
+            réponse ne part automatiquement, et aucune décision n'est prise par
+            une machine. Base légale de cette préparation : mon intérêt
+            légitime à vous répondre vite et avec soin.
           </p>
         </>
       ),
     },
     {
       numeral: "III",
-      title: "Conservation des données",
-      body: (
-        <p>
-          Vos données sont conservées pendant une durée maximale de{" "}
-          <strong className="font-medium text-foret">
-            3 ans
-          </strong>{" "}
-          à compter de notre dernier contact. Au-delà, elles sont supprimées
-          automatiquement.
-        </p>
-      ),
-    },
-    {
-      numeral: "IV",
-      title: "Vos droits",
+      title: "L'assistant conversationnel",
       body: (
         <>
-          <p>Conformément au RGPD, vous disposez à tout moment des droits suivants :</p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen">
-            <li>Droit d'accès à vos données personnelles</li>
-            <li>Droit de rectification</li>
-            <li>Droit à l'effacement (« droit à l'oubli »)</li>
-            <li>Droit à la limitation du traitement</li>
-            <li>Droit à la portabilité</li>
-            <li>Droit d'opposition</li>
-          </ul>
-          <p className="mt-4">
-            Pour exercer ces droits, contactez-moi à{" "}
-            <a
-              href="mailto:christophe.mostefaoui.dev@gmail.com"
-              className="border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
-            >
-              christophe.mostefaoui.dev@gmail.com
-            </a>
-            . Une réponse vous sera apportée sous 30 jours maximum.
+          <p>
+            Les messages que vous écrivez à l'assistant sont transmis, via le
+            serveur du site, à{" "}
+            <strong className={fort}>Mistral AI</strong> (société française),
+            uniquement pour générer les réponses. Base légale : mon intérêt
+            légitime à répondre aux questions des visiteurs.
           </p>
+          <ul className={puces}>
+            <li>
+              Aucun compte n'est demandé. Votre navigateur garde la
+              conversation le temps de votre visite et l'efface à la fermeture
+              de l'onglet. Mistral AI conserve les échanges selon ses propres
+              conditions, pour une durée limitée.
+            </li>
+            <li>
+              Si vous cliquez sur « Transmettre ma demande », votre email, votre
+              nom s'il est indiqué et la conversation me sont envoyés par
+              EmailJS, pour que je vous recontacte (mesures précontractuelles à
+              votre demande).
+            </li>
+            <li>
+              Les réponses sont générées automatiquement et peuvent comporter
+              des imprécisions. Ne confiez pas de données sensibles
+              (santé, coordonnées bancaires) à l'assistant.
+            </li>
+          </ul>
         </>
       ),
     },
     {
+      numeral: "IV",
+      title: "Sécurité du site",
+      body: (
+        <p>
+          Pour limiter les abus (envois en masse, robots), le serveur garde une
+          empreinte chiffrée de votre adresse IP quand vous utilisez le
+          formulaire ou l'assistant. Elle est effacée automatiquement au bout
+          de 24 heures environ. Comme tout hébergeur, Hostinger tient aussi des
+          journaux techniques de connexion, conservés selon ses propres règles.
+          Base légale : mon intérêt légitime à protéger le site.
+        </p>
+      ),
+    },
+    {
       numeral: "V",
-      title: "Assistant conversationnel (chatbot IA)",
+      title: "Qui reçoit vos données",
       body: (
         <>
           <p>
-            Le site propose un assistant conversationnel reposant sur une
-            intelligence artificielle. Les messages que vous lui envoyez sont
-            transmis, via le serveur du site, à{" "}
-            <strong className="font-medium text-foret">
-              Mistral AI
-            </strong>{" "}
-            (société française, données traitées dans l'Union européenne),
-            uniquement pour générer les réponses.
+            <strong className={fort}>Vos données ne sont jamais vendues ni cédées.</strong>{" "}
+            Seuls les prestataires techniques nécessaires au fonctionnement du
+            site les reçoivent, pour mon compte :
           </p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px] pl-5 list-disc marker:text-foret-moyen">
-            <li>
-              Aucun compte n'est requis et l'assistant ne dépose aucun cookie ;
-              la conversation n'est conservée que dans votre navigateur, le
-              temps de votre visite
-            </li>
-            <li>
-              Si vous choisissez de « transmettre votre demande », votre email
-              et la conversation me sont envoyés (service EmailJS) dans le seul
-              but de vous recontacter, avec les mêmes durées de conservation que le
-              formulaire de contact
-            </li>
-            <li>
-              Les réponses sont générées automatiquement et peuvent comporter
-              des imprécisions ; ne communiquez pas de données sensibles à
-              l'assistant
-            </li>
+          <ul className={puces}>
+            <li>Hostinger : hébergement du site (serveurs en France, sauvegardes en Lituanie)</li>
+            <li>EmailJS : acheminement des messages du formulaire et de l'assistant</li>
+            <li>Google (Gmail) : ma messagerie, où arrivent vos demandes</li>
+            <li>Make : préparation des brouillons de réponse (région européenne)</li>
+            <li>Mistral AI : rédaction des brouillons et réponses de l'assistant</li>
           </ul>
+          <p className="mt-4">
+            Google et EmailJS peuvent traiter des données en dehors de l'Union
+            européenne, notamment aux États-Unis. Ces transferts doivent être
+            encadrés par les garanties prévues par le RGPD (décision
+            d'adéquation de la Commission européenne ou clauses contractuelles
+            types) ; vous pouvez me demander le détail de celles qui
+            s'appliquent.
+          </p>
         </>
       ),
     },
     {
       numeral: "VI",
-      title: "Cookies",
+      title: "Combien de temps",
+      body: (
+        <ul className={puces}>
+          <li>
+            Demandes sans suite : 3 ans au plus après votre dernier message,
+            puis je les supprime.
+          </li>
+          <li>
+            Si vous devenez client : le temps de notre collaboration, puis les
+            durées imposées par la loi pour les documents comptables (10 ans
+            pour les factures).
+          </li>
+          <li>Conversation de l'assistant dans votre navigateur : jusqu'à la fermeture de l'onglet.</li>
+          <li>Empreinte de l'adresse IP : 24 heures environ.</li>
+        </ul>
+      ),
+    },
+    {
+      numeral: "VII",
+      title: "Vos droits",
       body: (
         <>
           <p>
-            Ce site ne dépose aucun cookie publicitaire, de tracking ou de
-            mesure d'audience. Seuls des stockages techniques essentiels sont
-            utilisés dans votre navigateur (préférence de thème, conversation
-            de l'assistant pendant la session).
+            Vous pouvez à tout moment accéder à vos données, les faire corriger
+            ou effacer, limiter leur utilisation ou vous y opposer, et, pour
+            celles que vous m'avez fournies, en recevoir une copie dans un
+            format courant. Vous pouvez aussi me laisser des instructions sur
+            le sort de vos données après votre décès.
           </p>
-          <p className="mt-3">
-            <strong className="font-medium text-foret">
-              C'est pourquoi ce site n'affiche pas de bannière de consentement :
-              il n'y a rien à consentir.
-            </strong>
+          <p className="mt-4">
+            Écrivez-moi à{" "}
+            <a href="mailto:christophe.mostefaoui.dev@gmail.com" className={lien}>
+              christophe.mostefaoui.dev@gmail.com
+            </a>{" "}
+            : je réponds sous un mois au plus. Si ma réponse ne vous convient
+            pas, vous pouvez adresser une réclamation à la{" "}
+            <a
+              href="https://www.cnil.fr/fr/plaintes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={lien}
+            >
+              CNIL
+            </a>
+            .
           </p>
         </>
       ),
     },
     {
-      numeral: "VII",
-      title: "Contact",
+      numeral: "VIII",
+      title: "Cookies et stockage",
       body: (
         <>
           <p>
-            Pour toute question relative à cette politique de confidentialité ou
-            au traitement de vos données personnelles, vous pouvez me joindre :
+            Ce site ne dépose aucun cookie et n'utilise aucun outil de mesure
+            d'audience ni de publicité. Le seul stockage dans votre navigateur
+            est la conversation de l'assistant, effacée à la fermeture de
+            l'onglet : il sert uniquement au fonctionnement du service que vous
+            utilisez, et n'appelle donc pas de consentement.
           </p>
-          <ul className="mt-3 space-y-1.5 hero-body text-[15px]">
-            <li>
-              Email :{" "}
-              <a
-                href="mailto:christophe.mostefaoui.dev@gmail.com"
-                className="border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
-              >
-                christophe.mostefaoui.dev@gmail.com
-              </a>
-            </li>
-            <li>
-              Téléphone :{" "}
-              <a
-                href="tel:+33679088845"
-                className="font-mono tabular-nums border-b border-current/40 pb-0.5 hover:text-foret-moyen hover:border-soleil transition-colors"
-              >
-                06 79 08 88 45
-              </a>
-            </li>
-          </ul>
+          <p className="mt-3">
+            Les vidéos ne sont pas chargées à l'ouverture de la page : aucune
+            connexion à YouTube n'a lieu tant que vous ne cliquez pas sur
+            lecture. En lançant une vidéo, vous chargez le lecteur de YouTube
+            (Google), qui applique alors ses propres règles de
+            confidentialité et peut utiliser ses traceurs.
+          </p>
         </>
       ),
     },
@@ -203,7 +214,7 @@ export default function PrivacyPolicy() {
         </title>
         <meta
           name="description"
-          content="Politique de confidentialité du site christophe-dev-freelance.fr. Collecte, utilisation et conservation des données personnelles conformément au RGPD."
+          content="Politique de confidentialité du site christophe-dev-freelance.fr : données collectées, bases légales, prestataires, durées de conservation et droits des personnes."
         />
         <link
           rel="canonical"
@@ -226,15 +237,16 @@ export default function PrivacyPolicy() {
             className="mb-12 sm:mb-16"
           >
             <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
-              ↳ conforme RGPD
+              ↳ protection de vos données
             </p>
             <h1 className="hero-display text-foret">
               Politique de confidentialité.
             </h1>
             <p className="hero-body mt-6 max-w-2xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
-              Vos données personnelles m'intéressent uniquement pour vous
-              répondre. Voici précisément comment je les collecte, je les
-              utilise et combien de temps je les conserve.
+              J'utilise vos données personnelles uniquement pour vous
+              répondre. Cette page détaille ce que je collecte, pourquoi, qui
+              le reçoit et combien de temps je le garde. Dernière mise à jour :
+              6 novembre 2026.
             </p>
           </motion.div>
 

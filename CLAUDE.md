@@ -189,6 +189,14 @@ Règles absolues, à connaître sans ouvrir le skill :
 - Christophe Mostefaoui, 38 ans
 - Formation : Titre CDA Bac+3/4, La Fabrique Numérique Paloise
 - Localisation : Pau / Artix (64), Pyrénées-Atlantiques
+- Adresse légale (mentions légales, 06/11/2026) : 4 avenue Edmond Rostand,
+  64170 Artix. Assujetti à la TVA (pas de franchise), numéro FR15937719177
+  calculé depuis le SIREN, à confirmer par Christophe. **Clientèle
+  exclusivement professionnelle** : pas de médiateur de la consommation, ne
+  jamais écrire d'offre destinée aux particuliers. Hébergeur contractant :
+  Hostinger International Limited (Chypre), serveur en France, sauvegardes
+  en Lituanie. Pages légales : `LegalNotice.tsx`, `PrivacyPolicy.tsx`, à
+  mettre à jour à chaque nouveau prestataire qui reçoit des données
 - Email : christophe.mostefaoui.dev@gmail.com | Tel : 06 79 08 88 45
 - Projets phares : SmartPlanning.fr (SaaS), LivresStaka.fr (e-commerce)
 - Tarifs : **devis sur mesure uniquement** — ne plus afficher de grille tarifaire publique (les prix faisaient fuir, positionnement valeur)

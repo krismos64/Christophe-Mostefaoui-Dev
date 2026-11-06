@@ -1318,8 +1318,7 @@ const AIChatbot = () => {
                 onClick={handleClose}
                 className="hero-body text-[10px] text-foret/70 hover:text-soleil transition-colors text-right"
               >
-                Réponses générées par IA à partir d'informations rédigées et
-                validées par Christophe.
+                Réponses générées par IA (Mistral). Vos données et vos droits
               </Link>
             </div>
             </div>

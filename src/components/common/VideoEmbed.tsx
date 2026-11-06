@@ -110,6 +110,13 @@ export default function VideoEmbed({
               </motion.span>
             </button>
 
+            {/* Information avant le chargement du lecteur tiers (politique de confidentialité, VIII) */}
+            <span
+              className="absolute bottom-3 left-3 bg-foret-profond/70 px-2 py-1 text-[11px] text-creme backdrop-blur-sm pointer-events-none"
+            >
+              Lecture via YouTube (Google)
+            </span>
+
             {/* Durée en mono, coin bas-droit */}
             {duration && (
               <span
