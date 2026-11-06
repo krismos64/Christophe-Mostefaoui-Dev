@@ -191,7 +191,7 @@ Règles absolues, à connaître sans ouvrir le skill :
 - Localisation : Pau / Artix (64), Pyrénées-Atlantiques
 - Adresse légale (mentions légales, 06/11/2026) : 4 avenue Edmond Rostand,
   64170 Artix. Assujetti à la TVA (pas de franchise), numéro FR15937719177
-  calculé depuis le SIREN, à confirmer par Christophe. **Clientèle
+  confirmé par Christophe le 06/11/2026. **Clientèle
   exclusivement professionnelle** : pas de médiateur de la consommation, ne
   jamais écrire d'offre destinée aux particuliers. Hébergeur contractant :
   Hostinger International Limited (Chypre), serveur en France, sauvegardes
