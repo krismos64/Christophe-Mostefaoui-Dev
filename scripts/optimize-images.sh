@@ -18,6 +18,7 @@ declare -a JOBS=(
   "public/assets/images/logosp.png|320,640,960|80|32"
   # Vignettes Portfolio : site en ligne dans un portable et un téléphone,
   # produites par scripts/mockup/incruster.sh <nom> (06/11/2026)
+  "public/assets/images/smartplanning-mockup.jpg|400,800,1200|78|30"
   "public/assets/images/lune-soleil-mockup.jpg|400,800|78|30"
   "public/assets/images/livrestaka-mockup.jpg|400,800|78|30"
   "public/assets/images/graslin-mockup.jpg|400,800|78|30"

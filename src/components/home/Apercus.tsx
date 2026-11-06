@@ -1,8 +1,16 @@
-import { ArrowRight, Bot, Globe, Layers, RefreshCw, Search, Video } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { projects } from "../../data/realisations";
+import { allProjects } from "../../data/realisations";
 import OptimizedPicture from "../common/OptimizedPicture";
 import BureauAnime from "./BureauAnime";
+import {
+  SceneAssistant,
+  SceneComplet,
+  SceneDrone,
+  SceneGoogle,
+  SceneRefonte,
+  SceneVitrine,
+} from "./ServicesScenes";
 
 /*
  * Aperçus de la home : chaque bloc résume une page intérieure et y renvoie
@@ -30,12 +38,12 @@ function LienSuite({ to, children, sombre = false }: { to: string; children: str
 }
 
 const services = [
-  { icon: Globe, titre: "Un site vitrine", texte: "Vos services, vos horaires et votre téléphone, en quelques pages claires." },
-  { icon: Layers, titre: "Un site plus complet", texte: "Un blog, un formulaire, des pages que vous modifiez vous-même." },
-  { icon: RefreshCw, titre: "La refonte de votre site", texte: "Un site daté remis à neuf, en gardant ce qui marche déjà sur Google." },
-  { icon: Bot, titre: "Un assistant pour vos clients", texte: "Un chatbot qui répond aux questions courantes, jour et nuit." },
-  { icon: Search, titre: "Être trouvé sur Google", texte: "Apparaître quand on cherche votre métier près de chez vous." },
-  { icon: Video, titre: "Vidéo et drone", texte: "Vidéos et vues aériennes, par un télépilote certifié DGAC." },
+  { scene: SceneVitrine, titre: "Un site vitrine", texte: "Vos services, vos horaires et votre téléphone, en quelques pages claires." },
+  { scene: SceneComplet, titre: "Un site plus complet", texte: "Un blog, un formulaire, des pages que vous modifiez vous-même." },
+  { scene: SceneRefonte, titre: "La refonte de votre site", texte: "Un site daté remis à neuf, en gardant ce qui marche déjà sur Google." },
+  { scene: SceneAssistant, titre: "Un assistant pour vos clients", texte: "Un chatbot qui répond aux questions courantes, jour et nuit." },
+  { scene: SceneGoogle, titre: "Être trouvé sur Google", texte: "Apparaître quand on cherche votre métier près de chez vous." },
+  { scene: SceneDrone, titre: "Vidéo et drone", texte: "Vidéos et vues aériennes, par un télépilote certifié DGAC." },
 ];
 
 export function ApercuServices() {
@@ -51,16 +59,22 @@ export function ApercuServices() {
           pas. Déplacement offert dans tout le 64.
         </p>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ icon: Icone, titre, texte }) => (
+          {services.map(({ scene: Scene, titre, texte }) => (
             <li
               key={titre}
-              className="rounded-2xl border border-foret/10 bg-white p-6 transition-transform duration-300 hover:-translate-y-1"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-foret/10 bg-white transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_40px_-28px_rgba(18,49,43,0.45)]"
             >
-              <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-soleil/25 text-foret">
-                <Icone className="h-5 w-5" aria-hidden="true" strokeWidth={1.75} />
-              </span>
-              <h3 className="text-[21px] font-bold leading-tight">{titre}</h3>
-              <p className="mt-2 text-[16px] leading-relaxed text-foret/75">{texte}</p>
+              <Scene />
+              <div className="p-6">
+                <h3 className="text-[21px] font-bold leading-tight">
+                  {titre}
+                  <span
+                    className="mt-2 block h-[3px] w-10 origin-left scale-x-50 rounded-full bg-soleil transition-transform duration-300 group-hover:scale-x-100"
+                    aria-hidden="true"
+                  />
+                </h3>
+                <p className="mt-3 text-[16px] leading-relaxed text-foret/75">{texte}</p>
+              </div>
             </li>
           ))}
         </ul>
@@ -71,11 +85,11 @@ export function ApercuServices() {
 }
 
 // Trois projets aux métiers différents : commerce local, santé, édition
-const selection = ["Lune-Soleil", "Cabinet Infirmier Graslin", "LivresStaka.fr"];
+const selection = ["Lune-Soleil", "Cabinet Infirmier Graslin", "SmartPlanning.fr"];
 
 export function ApercuRealisations() {
   const choisis = selection
-    .map((titre) => projects.find((p) => p.title === titre))
+    .map((titre) => allProjects.find((p) => p.title === titre))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
@@ -86,7 +100,7 @@ export function ApercuRealisations() {
           Des sites qui travaillent pour leurs propriétaires.
         </h2>
         <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-creme/80">
-          Une créatrice de bijoux à Artix, un cabinet infirmier, une maison d'édition : quelques-uns
+          Une créatrice de bijoux à Artix, un cabinet infirmier, un logiciel de plannings : quelques-uns
           des sites que j'ai mis en ligne.
         </p>
         <ul className="mt-12 grid gap-6 md:grid-cols-3">

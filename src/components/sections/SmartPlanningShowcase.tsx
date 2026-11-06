@@ -104,34 +104,33 @@ export default function SmartPlanningShowcase() {
               href="https://smartplanning.fr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="block relative group"
+              className="block relative group overflow-hidden rounded-2xl"
               aria-label="Visiter SmartPlanning.fr (nouvel onglet)"
               data-testid="smartplanning_showcase_image"
             >
               <picture>
                 <source
                   type="image/avif"
-                  srcSet="/assets/images/optimized/logosp-320.avif 320w, /assets/images/optimized/logosp-640.avif 640w, /assets/images/optimized/logosp-960.avif 960w"
-                  sizes="(max-width: 768px) 80vw, 40vw"
+                  srcSet="/assets/images/optimized/smartplanning-mockup-400.avif 400w, /assets/images/optimized/smartplanning-mockup-800.avif 800w, /assets/images/optimized/smartplanning-mockup-1200.avif 1200w"
+                  sizes="(max-width: 768px) 100vw, 45vw"
                 />
                 <source
                   type="image/webp"
-                  srcSet="/assets/images/optimized/logosp-320.webp 320w, /assets/images/optimized/logosp-640.webp 640w, /assets/images/optimized/logosp-960.webp 960w"
-                  sizes="(max-width: 768px) 80vw, 40vw"
+                  srcSet="/assets/images/optimized/smartplanning-mockup-400.webp 400w, /assets/images/optimized/smartplanning-mockup-800.webp 800w, /assets/images/optimized/smartplanning-mockup-1200.webp 1200w"
+                  sizes="(max-width: 768px) 100vw, 45vw"
                 />
                 <img
-                  src="/assets/images/optimized/logosp-640.webp"
-                  alt="Logo SmartPlanning, SaaS de gestion de plannings fondé par Christophe Mostefaoui"
-                  width={1482}
-                  height={1384}
+                  src="/assets/images/optimized/smartplanning-mockup-800.webp"
+                  alt="SmartPlanning, logiciel de gestion des plannings fondé par Christophe Mostefaoui, sur un ordinateur portable et un smartphone"
+                  width={1536}
+                  height={864}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                  style={{ aspectRatio: "1482 / 1384" }}
+                  className="aspect-video w-full rounded-2xl object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                 />
               </picture>
               <div
-                className="absolute inset-0 ring-1 ring-creme/10 group-hover:ring-soleil/40 transition-colors duration-300 pointer-events-none"
+                className="absolute inset-0 rounded-2xl ring-1 ring-creme/10 group-hover:ring-soleil/40 transition-colors duration-300 pointer-events-none"
                 aria-hidden="true"
               />
             </a>

@@ -111,7 +111,7 @@ export const schemaSmartPlanning = () => {
       "Gestion des permissions avancée",
       "Synchronisation temps réel WebSockets"
     ],
-    "screenshot": `${baseUrl}/assets/images/logosp.png`,
+    "screenshot": `${baseUrl}/assets/images/smartplanning-mockup.jpg`,
     "softwareVersion": "1.0",
     "datePublished": "2026",
     "inLanguage": "fr-FR",

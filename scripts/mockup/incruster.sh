@@ -19,7 +19,10 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 
 nom="$1"
-src="$(ls scripts/mockup/captures/${nom}-ordi.png scripts/mockup/captures/${nom}-ordi.jpg 2>/dev/null | head -1)"
+src=""
+for f in "scripts/mockup/captures/${nom}-ordi.png" "scripts/mockup/captures/${nom}-ordi.jpg"; do
+  [ -f "$f" ] && { src="$f"; break; }
+done
 [ -n "$src" ] || { echo "Capture ordinateur manquante pour $nom" >&2; exit 1; }
 mobile="scripts/mockup/captures/${nom}-mobile.png"
 decor="scripts/mockup/decor-portable.png"

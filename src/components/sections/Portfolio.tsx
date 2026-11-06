@@ -100,20 +100,21 @@ export default function Portfolio() {
                 href={founderProject.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="md:col-span-5 lg:col-span-5 group block relative max-w-[280px] mx-auto md:max-w-none md:mx-0"
+                className="md:col-span-5 lg:col-span-5 group block relative overflow-hidden rounded-2xl"
                 aria-label={`Visiter ${founderProject.title} (nouvel onglet)`}
               >
                 <OptimizedPicture
                   src={founderProject.image}
                   alt={founderProject.alt}
-                  widths={[320, 640, 960]}
-                  sizes="(max-width: 768px) 80vw, 35vw"
+                  widths={[400, 800, 1200]}
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  width={1536}
+                  height={864}
                   loading="lazy"
-                  className="w-full h-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                  style={{ aspectRatio: "1482 / 1384" }}
+                  className="aspect-video w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                 />
                 <div
-                  className="absolute inset-0 ring-1 ring-creme/10 group-hover:ring-soleil/40 transition-colors duration-300 pointer-events-none"
+                  className="absolute inset-0 rounded-2xl ring-1 ring-creme/10 group-hover:ring-soleil/40 transition-colors duration-300 pointer-events-none"
                   aria-hidden="true"
                 />
               </a>

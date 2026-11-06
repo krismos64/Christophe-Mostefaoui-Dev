@@ -32,7 +32,7 @@ export default function TrajetAnime({ className = "" }: { className?: string }) 
         ref={ref}
         viewBox="0 0 400 300"
         role="img"
-        aria-label="Illustration animée : une voiture roule de Bayonne à Pau en passant par Orthez et Artix, au pied des Pyrénées, puis un signal part de Pau vers un écran de visioconférence pour la France entière"
+        aria-label="Illustration animée : une voiture roule de Bayonne à Pau en passant par Orthez et Artix, au pied des Pyrénées, puis un signal part de Pau vers un écran de visioconférence où Christophe répond, pour la France entière"
         className="trajet block h-full w-full"
       >
         <rect width="400" height="300" fill="#12312B" />
@@ -94,9 +94,34 @@ export default function TrajetAnime({ className = "" }: { className?: string }) 
         </g>
 
         <rect x="290" y="44" width="86" height="62" rx="7" fill="#F5F1E8" />
-        <rect x="295" y="49" width="76" height="48" rx="4" fill="#C5D3CC" />
-        <circle cx="333" cy="67" r="9" fill="#24594C" />
-        <path d="M316 97 Q333 76 350 97 Z" fill="#24594C" />
+        {/* Christophe en visio : la photo de la navbar (déjà en cache), fondue
+            sur les bords dans un fond de la même teinte que son arrière-plan */}
+        <defs>
+          <clipPath id="trajet-ecran">
+            <rect x="295" y="49" width="76" height="48" rx="4" />
+          </clipPath>
+          <linearGradient id="trajet-fondu" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stopColor="#fff" stopOpacity="0" />
+            <stop offset="0.18" stopColor="#fff" />
+            <stop offset="0.82" stopColor="#fff" />
+            <stop offset="1" stopColor="#fff" stopOpacity="0" />
+          </linearGradient>
+          <mask id="trajet-masque">
+            <rect x="311" y="53" width="44" height="44" fill="url(#trajet-fondu)" />
+          </mask>
+        </defs>
+        <g clipPath="url(#trajet-ecran)">
+          <rect x="295" y="49" width="76" height="48" fill="#AAACB0" />
+          <image
+            href="/assets/images/optimized/christophe-avatar-192.webp"
+            x="311"
+            y="53"
+            width="44"
+            height="44"
+            preserveAspectRatio="xMidYMin slice"
+            mask="url(#trajet-masque)"
+          />
+        </g>
         <circle className="trajet-direct" cx="302" cy="55" r="2.5" fill="#F2A25C" />
         <rect x="327" y="106" width="12" height="7" fill="#C5D3CC" />
         <rect x="317" y="113" width="32" height="3" rx="1.5" fill="#C5D3CC" />

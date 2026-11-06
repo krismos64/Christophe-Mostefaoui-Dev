@@ -16,8 +16,8 @@ export const founderProject: Project = {
   title: "SmartPlanning.fr",
   description:
     "Mon projet entrepreneurial : un SaaS de gestion des plannings d'équipe, conçu, développé et lancé seul en 2026 (modèle freemium). De l'architecture au déploiement en passant par le support utilisateurs, je maîtrise tout le cycle de vie d'un produit.",
-  image: "/assets/images/logosp.png",
-  alt: "SmartPlanning, SaaS de gestion des plannings fondé par Christophe Mostefaoui",
+  image: "/assets/images/smartplanning-mockup.jpg",
+  alt: "SmartPlanning, logiciel de gestion des plannings fondé par Christophe Mostefaoui, affiché sur un ordinateur portable et un smartphone",
   tags: ["SaaS Freemium", "Solo founder", "2026"],
   link: "https://smartplanning.fr/",
   isFounder: true,
