@@ -22,7 +22,9 @@ Protections intégrées au proxy : POST uniquement, vérification d'origine
 (christophe-dev-freelance.fr), rate limiting 10 req/min par IP et 500 req/jour au
 global (lecture, contrôle et écriture des compteurs sous un même verrou `flock`
 depuis le 30/09/2026), taille et rôles des messages validés, prompt système non
-modifiable par le client.
+modifiable par le client. Les fichiers de compteurs (empreinte SHA-256 de l'IP)
+sont effacés au-delà de 24 h depuis le 06/11/2026 : c'est la durée annoncée
+dans la politique de confidentialité, ne pas l'allonger sans la mettre à jour.
 
 **Une seconde clé Mistral existe depuis le 30/09/2026**, nommée
 `make-formulaire` sur console.mistral.ai : elle sert au scénario Make qui rédige

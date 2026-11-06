@@ -35,8 +35,12 @@ les accents texte y passent en `foret-moyen`.
 **Motion design** : tout est dessiné en SVG dans la page, rien à télécharger.
 
 - Hero : montagnes en 3 plans avec parallaxe à la souris, titre qui monte mot à mot, fenêtre « votre-entreprise.fr » qui se construit en boucle (devanture, cartes horaires / nous trouver / nous appeler)
+- Home, cartes Services : six petites scènes (boutique qui ouvre, page qui déploie ses fiches, refonte, assistant, repère sur un plan, drone), avec un élément orange qui porte le sens dans chacune (`home/ServicesScenes.tsx`)
 - Home : scène « le bureau de Christophe » (`home/BureauAnime.tsx`)
-- Zone d'intervention : voiture de Bayonne à Pau puis signal vers la visio (`sections/TrajetAnime.tsx`)
+- Zone d'intervention : voiture de Bayonne à Pau puis signal vers l'écran de visio, où apparaît la photo de Christophe (`sections/TrajetAnime.tsx`)
+- À propos : portrait en arche, soleil et anneau animés, Pyrénées au pied (`sections/About.tsx`)
+- Blog : feuille qui se remplit et signet qui se pose, un seul cycle, grands écrans (`sections/BlogScene.tsx`)
+- Réalisations : chaque site présenté dans un portable et un téléphone posés sur un bureau, montage par script (voir « Vignettes des réalisations »)
 - Règles : animations en `transform`/`opacity` seulement, jamais d'`opacity: 0` de départ dans le hero (le pré-rendu est remplacé au chargement du JS, voir Performances), pause hors écran (`hooks/usePauseHorsEcran.ts`), état fixe et complet en mode « réduire les animations »
 
 ---
@@ -52,8 +56,8 @@ sur la home pour ne casser aucun lien existant.
 | Section | Composant | Rôle |
 | --- | --- | --- |
 | Hero | `sections/Hero.tsx` | Promesse, devis, liens vers les 4 pages locales |
-| Services (aperçu) | `home/Apercus.tsx` | 6 services, lien vers `/services` |
-| Réalisations (aperçu) | `home/Apercus.tsx` | 3 projets, lien vers `/realisations` |
+| Services (aperçu) | `home/Apercus.tsx` + `home/ServicesScenes.tsx` | 6 services en cartes animées, lien vers `/services` |
+| Réalisations (aperçu) | `home/Apercus.tsx` | Lune-Soleil, Cabinet Infirmier Graslin, SmartPlanning, lien vers `/realisations` |
 | À propos (aperçu) | `home/Apercus.tsx` + `home/BureauAnime.tsx` | Présentation courte, lien vers `/a-propos` |
 | FAQ | `sections/FeaturedSnippetsFAQ.tsx` | 9 questions en `<details>` (réponses dans le HTML pré-rendu) |
 | Zone d'intervention | `sections/ServiceArea.tsx` + `sections/TrajetAnime.tsx` | SEO local, villes du 64 et de France |
@@ -68,9 +72,9 @@ Chacune a `seo/PageSeo.tsx` (titre, canonical, WebPage + BreadcrumbList) et
 
 - `/services` : `pages/ServicesPage.tsx` (Services + Pricing)
 - `/realisations` : `pages/Realisations.tsx` (Portfolio + SmartPlanning, données dans `data/realisations.ts`)
-- `/a-propos` : `pages/APropos.tsx` (About, vidéo « Mon univers digital »)
+- `/a-propos` : `pages/APropos.tsx` (About avec le portrait en arche, vidéo « Mon univers digital »)
 - `/contact` : `pages/Contact.tsx` (vidéo de présentation, avis Google, formulaire, zone d'intervention)
-- `/blog` + `/blog/:slug` : blog éditorial SEO/GEO
+- `/blog` : `pages/Blog.tsx` (PageHero + scène animée, article à la une, grille illustrée, filtres) ; `/blog/:slug` : `pages/BlogPost.tsx`
 - `/creation-site-internet-{pau,bayonne,biarritz,orthez-bearn}` : pages locales (`pages/LocalLanding.tsx` + `data/localPages.ts`)
 - `/mentions-legales`, `/politique-de-confidentialite` (noindex)
 - `/faq` : redirige vers `/#faq` (règle du `.htaccess`)
@@ -118,7 +122,7 @@ Chacune a `seo/PageSeo.tsx` (titre, canonical, WebPage + BreadcrumbList) et
 - API **Mistral AI** (`mistral-small-2603`, version figée volontairement : l'alias `-latest` pointait vers un modèle retiré par Mistral) en streaming, appelée via un **proxy PHP serveur** (`public/api/chat.php`), jamais directement depuis le client
 - Compte Mistral en **Pay-As-You-Go actif** : sans lui, l'API refuse les appels par clé en 429, quel que soit le volume (voir `docs/mistral-ai-setup.md`)
 - Clé API **hors webroot** sur Hostinger (fichier `mistral-key.php` au-dessus de `public_html`), aucun secret dans le bundle (aucune variable `VITE_*`)
-- Rate limiting côté serveur (10 req/min/IP, 500/jour global), origine vérifiée
+- Rate limiting côté serveur (10 req/min/IP, 500/jour global), origine vérifiée. Les compteurs par IP (empreinte SHA-256) sont purgés au bout de 24 h, durée annoncée dans la politique de confidentialité
 - Capture de leads par email (EmailJS) avec transcript de conversation, relances contextuelles
 - Persistance de la conversation en `sessionStorage`, effaçable via un bouton dédié (confirmation en deux temps)
 - Affichage plein écran optionnel (masqué sous 640px), colonne de texte limitée pour garder des lignes lisibles
@@ -201,23 +205,25 @@ src/
 │   │   └── VideoEmbed.tsx          # Embed YouTube inline réutilisable
 │   ├── home/
 │   │   ├── Apercus.tsx             # Aperçus Services, Réalisations, À propos de la home
-│   │   └── BureauAnime.tsx         # Scène SVG animée « le bureau de Christophe »
+│   │   ├── BureauAnime.tsx         # Scène SVG animée « le bureau de Christophe »
+│   │   └── ServicesScenes.tsx      # Six scènes SVG animées des cartes Services
 │   ├── layout/
 │   │   ├── Header.tsx              # Navbar + menu burger (sous 1280 px)
 │   │   ├── Footer.tsx
 │   │   └── PageHero.tsx            # Bandeau vert + fil d'Ariane + h1 des pages intérieures
 │   ├── sections/
 │   │   ├── Hero.tsx                # Hero Pyrénées + fenêtre « votre-entreprise.fr »
-│   │   ├── About.tsx               # /a-propos
+│   │   ├── About.tsx               # /a-propos (portrait en arche animé)
 │   │   ├── SmartPlanningShowcase.tsx # /realisations
 │   │   ├── Services.tsx            # /services
 │   │   ├── Pricing.tsx             # /services (méthode, devis, vidéo et drone)
-│   │   ├── Portfolio.tsx           # /realisations (11 projets, CreativeWork)
+│   │   ├── Portfolio.tsx           # /realisations (projet fondateur + grille, CreativeWork)
 │   │   ├── FeaturedSnippetsFAQ.tsx # FAQ de la home
 │   │   ├── ServiceArea.tsx         # Zone d'intervention (home, /contact)
 │   │   ├── TrajetAnime.tsx         # Scène SVG animée Bayonne → Pau → visio
 │   │   ├── GoogleReviews.tsx       # Avis Google + lien vers la fiche
-│   │   └── BlogSection.tsx         # Liste du blog (/blog)
+│   │   ├── BlogSection.tsx         # /blog : article à la une, grille illustrée, filtres
+│   │   └── BlogScene.tsx           # Scène SVG du bandeau du blog
 │   ├── seo/
 │   │   ├── GMBOptimizedContact.tsx # Formulaire de contact (/contact)
 │   │   ├── PageSeo.tsx             # Meta + WebPage + BreadcrumbList des pages intérieures
@@ -244,7 +250,7 @@ src/
 │   └── usePauseHorsEcran.ts        # Pause des scènes SVG hors écran / en mode réduit
 ├── data/
 │   ├── faq.ts                      # FAQ de la home (affichage + schéma FAQPage)
-│   ├── realisations.ts             # Projet fondateur + 10 réalisations clients
+│   ├── realisations.ts             # Projet fondateur + réalisations clients
 │   ├── blogPosts.ts                # Articles du blog (contenu éditorial PME/artisans)
 │   └── localPages.ts               # Contenu des 4 pages locales SEO
 ├── config/
@@ -306,9 +312,15 @@ Le rendu (`src/pages/BlogPost.tsx`) accepte un Markdown volontairement limité :
 passent par React Router et restent crawlables dans le HTML pré-rendu, ce qui
 permet le maillage vers les autres articles et les pages locales.
 
-Chaque article a deux images : celle affichée dans la page, déclinée en AVIF et
-WebP (400 et 800px) par `scripts/optimize-images.sh`, et une image de partage
-social en 1200×630 suivant la convention `<slug>-og.jpg`.
+Chaque article a deux images : celle affichée dans la page et dans les cartes
+de `/blog`, déclinée en AVIF et WebP (400 et 800px) par
+`scripts/optimize-images.sh`, et une image de partage social en 1200×630
+suivant la convention `<slug>-og.jpg`. Champs SEO : `seoTitle` (balise title,
+60 caractères au plus) et `metaDescription` (160 au plus).
+
+La page `/blog` met en avant l'article `featured: true` (à la une, visible dès
+le premier rendu, sans fondu), puis les autres en grille de cartes illustrées.
+Un filtre de catégorie remplace la une par les seuls articles concernés.
 
 Règles rédactionnelles : jamais de tarifs, jamais de statistiques invérifiables,
 et pas de tirets cadratins (marqueur d'écriture IA). Avis Google vérifiés
@@ -426,8 +438,9 @@ Autres points traités : contrastes vérifiés au calcul (le lien d'évitement e
 
 ### SEO technique
 
-- Title HTML statique avec nom + localisation + technologies (lu par les bots avant le JS)
-- Meta description ciblée (Pau, 64, React, Node, TypeScript)
+- Title HTML statique de la home orienté client : « Création de site internet à Pau (64) \| Christophe Mostefaoui » (06/11/2026, l'ancien visait « React.js, Node.js, TypeScript »)
+- Titres de 60 caractères au plus et descriptions de 160 au plus sur toutes les pages (audit du 06/11/2026) ; les articles ont un `seoTitle` court, le titre long reste le h1
+- Une seule balise `<main>` (celle de `App.tsx`) : les pages utilisent `<section>`
 - Open Graph (image 1200×630 absolue) + Twitter Card `summary_large_image`
 - Canonical URLs dynamiques
 - Sitemap XML synchronisé avec robots.txt
@@ -459,8 +472,9 @@ Schemas de **page**, générés par `structured-data-final.tsx` :
 
 Schemas de page portés par leur propre composant :
 
-- **CreativeWork** : 11 projets (1 fondateur + 10 clients), dans `Portfolio.tsx` sur `/realisations`
-- **BlogPosting** — un par article, dans `BlogPost.tsx`
+- **CreativeWork** : une entrée par réalisation (fondateur compris), dans `Portfolio.tsx` sur `/realisations`
+- **BlogPosting** + **BreadcrumbList** : un par article, dans `BlogPost.tsx`
+- **WebPage** + **BreadcrumbList** + **FAQPage** sur les pages locales (`LocalLanding.tsx`), **BreadcrumbList** sur les mentions légales
 
 > Les horaires déclarés dans le JSON-LD doivent correspondre à ceux affichés à
 > l'écran (8h30-18h00) : Google compare le contenu visible aux données
@@ -522,6 +536,29 @@ npm run build        # Build de production (tsc + vite build + pré-rendu Puppet
 npm run build:spa    # Build sans pré-rendu (debug)
 npm run preview      # Preview du build
 ```
+
+Scripts hors npm :
+
+```bash
+scripts/optimize-images.sh          # AVIF + WebP multi-tailles de toutes les images listées
+scripts/mockup/incruster.sh <nom>   # Vignette d'une réalisation (portable + téléphone)
+```
+
+### Vignettes des réalisations
+
+Chaque site est montré dans un portable et un téléphone posés sur un bureau en
+chêne. Le décor (`scripts/mockup/decor-portable.png`, écrans en vert et magenta
+chroma) a été généré une seule fois avec Codex ; il est commun à toutes les
+réalisations et ne doit pas être régénéré pour un seul projet. Les captures
+réelles des sites (`scripts/mockup/captures/<nom>-ordi.png` en 1440×900 et
+`<nom>-mobile.png` en 393×852 densité 3, bandeau de cookies masqué, jamais
+accepté) sont posées en perspective sur les quatre coins de chaque écran.
+Sans capture mobile, le téléphone reste éteint (cas de LivresStaka, en
+maintenance au 06/11/2026). La sortie `public/assets/images/<nom>-mockup.jpg`
+passe ensuite par `optimize-images.sh`.
+
+`scripts/favicons/logo-1024.png` est la source des favicons, gardée hors du
+site publié.
 
 ---
 

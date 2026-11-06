@@ -96,6 +96,15 @@ Chacune vient d'un incident réel. Détails et symptômes dans `pieges.md`.
    en `Disallow` ou `noindex`. `/politique-de-confidentialite` est `noindex`,
    donc volontairement hors sitemap, mais pré-rendue via `EXTRA_ROUTES`.
 9. **Un seul `<h1>` par page**, hiérarchie sans trou, `alt` sur les images.
+   Une seule balise `<main>` (celle d'`App.tsx`) : six pages en ajoutaient une
+   seconde jusqu'au 06/11/2026, sans que Lighthouse le signale.
+9bis. **Titres de 60 caractères au plus, descriptions de 160 au plus** (audit
+   du 06/11/2026, 25 pages conformes). Les articles portent un `seoTitle`
+   court distinct du h1. Le titre de la home vise la TPE (« Création de site
+   internet à Pau (64) »), jamais le vocabulaire technique.
+9ter. **BreadcrumbList sur toutes les pages indexées sauf la home** : `PageSeo`
+   pour les pages intérieures et `/blog`, schéma dédié dans `BlogPost.tsx`,
+   `LocalLanding.tsx` et `LegalNotice.tsx`.
 10. **Piège JSX/a11y** : les nœuds texte multi-lignes sont concaténés SANS
     espace dans le DOM. Un `aria-label` ne peut donc pas « contenir » un texte
     visible multi-nœuds (règle axe `label-content-name-mismatch`). Laisser le
@@ -108,10 +117,11 @@ Chacune vient d'un incident réel. Détails et symptômes dans `pieges.md`.
 | `public/.htaccess` | Tester `/blog` EN PRIORITÉ (attendu 200, pas 301), puis toutes les URLs du sitemap. Test local possible : voir `pieges.md` |
 | `index.html` (JSON-LD) | Vérifier qu'il n'existe qu'un `#business`, que les horaires collent à l'UI, relancer Lighthouse |
 | `public/sitemap.xml` | Mettre à jour le `<lastmod>` de la page touchée ET du parent (`/blog` quand un article change), rebuild (le pré-rendu lit le sitemap) |
-| Une page publique (contenu) | Mettre à jour son `<lastmod>` dans le sitemap : signal de fraîcheur, actuellement figé au 18/05/2026 sur `/` et `/mentions-legales` |
+| Une page publique (contenu) | Mettre à jour son `<lastmod>` dans le sitemap (signal de fraîcheur). Vérifier titre ≤ 60 et description ≤ 160 caractères |
 | Un article de blog | Suivre le skill `blog-article` : il inclut la mise à jour de `llms.txt`, `llms-full.txt` et `chatbot-knowledge.txt` |
 | `public/robots.txt` | Vérifier qu'aucune URL du sitemap n'est bloquée. Liste des crawlers IA dans `geo-reference.md` |
 | `src/data/faq.ts` (FAQ de la home) | Rien d'autre à toucher pour le schéma : le FAQPage est généré depuis ce fichier. Garder le texte simple, sans tarif ni chiffre invérifiable ; si une réponse change un fait (délais, zone), le reporter dans les 3 fichiers LLM |
+| Vignette d'une réalisation | `scripts/mockup/incruster.sh <nom>` puis `optimize-images.sh` ; captures dans `scripts/mockup/captures/` (voir README, « Vignettes des réalisations »). Jamais de compteur de projets dans un texte |
 | Ajout d'une route | L'ajouter au sitemap (sinon pas de pré-rendu) ou à `EXTRA_ROUTES` de `scripts/prerender.mjs` si elle est `noindex` |
 
 ## GEO (visibilité dans les LLM)

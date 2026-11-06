@@ -21,7 +21,9 @@ conservée en local (hors dépôt).
 
 - `seo-geo-portfolio` — **à invoquer avant toute modification SEO/GEO** :
   ligne de base Lighthouse à ne pas régresser, audit express en un bloc,
-  10 règles de non-régression, table « quand on modifie quoi ».
+  règles de non-régression (dont, depuis le 06/11/2026, titres ≤ 60 et
+  descriptions ≤ 160 caractères, BreadcrumbList partout, un seul `<main>`),
+  table « quand on modifie quoi ».
   Deux références détachées : `geo-reference.md` (format des fichiers LLM,
   crawlers IA, garde-fous anti-hallucination) et `pieges.md` (incidents vécus)
 - `deploy-portfolio` — checklist de déploiement + smoke tests post-deploy

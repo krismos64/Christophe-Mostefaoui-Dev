@@ -119,8 +119,15 @@ BASE DE CONNAISSANCES
 
 ## Vigilance
 
-- **RGPD** : les données du prospect transitent par Make (hébergement EU) et
-  Mistral AI (France). À mentionner dans la politique de confidentialité
+- **RGPD** : les données du prospect transitent par EmailJS, Gmail (Google),
+  Make (zone eu1) et Mistral AI (France). Tous sont décrits dans la politique
+  de confidentialité réécrite le 06/11/2026 (`src/pages/PrivacyPolicy.tsx`),
+  avec les bases légales et les durées : 3 ans sans suite, supprimées à la
+  main par Christophe. Tout nouveau prestataire qui reçoit ces données doit y
+  être ajouté. Point ouvert : vérifier l'accord de traitement (DPA) d'EmailJS
+- **Compteurs anti-abus** : `contact-hook.php` (comme `chat.php`) garde une
+  empreinte SHA-256 de l'IP dans le dossier temporaire du serveur, purgée
+  au-delà de 24 h depuis le 06/11/2026 (durée annoncée dans la politique)
 - **Accès Gmail** : la connexion Make lit toute la boîte. Double
   authentification activée sur le compte Make
 - **Relecture obligatoire** : chercher `[À COMPLÉTER`, `[À EXAMINER` et

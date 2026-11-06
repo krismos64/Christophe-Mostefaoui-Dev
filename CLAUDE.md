@@ -68,16 +68,25 @@ npm run preview    # Preview build
   réponses fermées restent dans le HTML pré-rendu) et du schéma FAQPage. Ne
   jamais réécrire les questions en dur dans le schéma, ni remettre de liste de
   mots-clés masquée (`sr-only`) sous les réponses : contenu caché
-- Motion design (refonte du 05/11/2026) : hero en CSS (`index.css`, section
-  Hero), scènes SVG `home/BureauAnime.tsx` et `sections/TrajetAnime.tsx`.
+- Motion design (refonte du 05/11/2026, complété le 06/11) : hero en CSS
+  (`index.css`, section Hero), scènes SVG `home/BureauAnime.tsx`,
+  `home/ServicesScenes.tsx` (6 cartes Services, un élément orange porte le
+  sens dans chacune), `sections/TrajetAnime.tsx` (photo de la navbar dans
+  l'écran de visio), `sections/BlogScene.tsx` (un seul cycle, grands écrans),
+  portrait en arche de `sections/About.tsx`. Dans ces scènes, l'état de BASE
+  de chaque élément est l'image finale lisible : le mode réduit l'affiche tel
+  quel, les boucles partent d'un état caché.
   Animer en `transform`/`opacity` seulement, et jamais d'`opacity: 0` de départ
   dans le hero : `main.tsx` fait `createRoot`, le HTML pré-rendu est remplacé au
   chargement du JS et un texte en fondu devient un LCP tardif (3,9 s constaté).
   Chaque scène passe par `hooks/usePauseHorsEcran.ts` (pause hors écran, arrêt
   des `<animateMotion>` en mode réduit, que le CSS ne peut pas couper) et a un
   bloc `prefers-reduced-motion` AVANT la règle globale de fin d'`index.css`
+- **Une seule balise `<main>`**, celle de `App.tsx` (id `contenu`, cible du
+  lien d'évitement) : les pages enveloppent leur contenu dans `<section>`,
+  jamais dans un second `<main>` (corrigé sur 6 pages le 06/11/2026)
 - `src/components/seo/LLMOptimizedHead.tsx` — injecte les meta tags LLM
-- `src/data/blogPosts.ts` — articles du blog (publication : skill `blog-article`)
+- `src/data/blogPosts.ts` — articles du blog (publication : skill `blog-article`). Chaque article a un `seoTitle` (balise title, 60 caractères au plus) distinct du `title` (h1). La page `/blog` affiche l'article `featured` à la une, sans fondu au premier rendu
 - `src/pages/BlogPost.tsx` — rendu Markdown limité : `## H2`, `**gras**`, listes
   à tirets, liens `[texte](url)` (internes via React Router, donc crawlables).
   Pas de `# H1` dans `content` (le titre est déjà rendu en h1). L'image OG suit
@@ -89,7 +98,7 @@ npm run preview    # Preview build
   liens : la tenir à jour à chaque publication. Une ligne de lien ne suffit
   pas : sans section de faits sur le sujet de l'article, le modèle improvise
   (chiffres inventés, constaté le 30/09/2026)
-- `src/data/realisations.ts` (affiché par `Portfolio.tsx` sur `/realisations` et en aperçu de 3 projets sur la home, `src/components/home/Apercus.tsx`) : 10 réalisations clients sous le
+- `src/data/realisations.ts` (affiché par `Portfolio.tsx` sur `/realisations` et en aperçu de 3 projets sur la home, `src/components/home/Apercus.tsx` : Lune-Soleil, Cabinet Infirmier Graslin et SmartPlanning, liste `selection` sur `allProjects`) : 10 réalisations clients sous le
   projet fondateur SmartPlanning (ordre validé le 05/11/2026). **Ne jamais
   chiffrer le nombre de projets** dans un texte (titres, meta, chatbot,
   fichiers LLM) : décision du 06/11/2026, le compteur n'apporte rien et
@@ -144,6 +153,10 @@ structurés**, et avant tout déploiement touchant une page publique.
 Règles absolues, à connaître sans ouvrir le skill :
 - **Priorité maximale** sur le SEO (Google + LLM)
 - Seuils Lighthouse mobile : SEO 100, A11y 100, Best Practices 100. Ne pas régresser
+- Titres de 60 caractères au plus, descriptions de 160 au plus, sur toutes les
+  pages (audit du 06/11/2026). Titre de la home orienté client : « Création de
+  site internet à Pau (64) | Christophe Mostefaoui », sans vocabulaire
+  technique (React, Node…) : la cible est la TPE, pas le recruteur
 - **Jamais de contenu caché** (`display:none`, `hidden`) pour du texte SEO
 - **Jamais de stats inventées** (vues, likes, « +40% de conversions »)
 - **Jamais de numéro fictif** : le vrai est +33679088845

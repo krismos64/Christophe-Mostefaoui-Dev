@@ -44,6 +44,7 @@ for u in / /blog /services /realisations /a-propos /contact /mentions-legales; d
   curl -s -o /dev/null -w "$u -> %{http_code} redirect=[%{redirect_url}]\n" "https://christophe-dev-freelance.fr$u"
 done
 curl -s https://christophe-dev-freelance.fr/blog | grep -c '<h1'   # >= 1
+curl -s https://christophe-dev-freelance.fr/ | grep -o '<title>[^<]*'   # attendu depuis le 06/11/2026 : Création de site internet à Pau (64) | Christophe Mostefaoui
 
 # 2. .htaccess appliqué : cache 1 an sur assets + headers sécurité
 curl -sI https://christophe-dev-freelance.fr/assets/$(curl -s https://christophe-dev-freelance.fr/ | grep -oE 'index-[^"]+\.js' | head -1) | grep -i cache-control   # attendu : max-age=31536000, immutable
