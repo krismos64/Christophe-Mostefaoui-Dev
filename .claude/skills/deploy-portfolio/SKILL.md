@@ -95,6 +95,12 @@ for u in blog/chatbot-ia-boutique-locale-resultats-conversions blog/ia-interne-p
   curl -s -o /dev/null -w "$u -> %{http_code}\n" "https://christophe-dev-freelance.fr/$u"
 done   # attendu : 410
 
+# 6bis. Barre finale : 301 vers l'URL sans barre (500 = boucle de réécriture,
+#       voir seo-geo-portfolio/pieges.md n° 8)
+for u in /services/ /blog/ /blog/chatbot-ia-commerce-pme/; do
+  curl -s -o /dev/null -w "$u -> %{http_code} %{redirect_url}\n" "https://christophe-dev-freelance.fr$u"
+done   # attendu : 301 vers la même URL sans barre finale
+
 # 7. Balayage complet du sitemap en User-Agent Googlebot
 #    403/429 intermittents ici et en 5/5bis = CDN Hostinger qui freine les faux
 #    robots, pas le site : refaire avec -A "Mozilla/5.0 (Macintosh) Chrome/130"
@@ -129,9 +135,10 @@ done   # attendu : 200 sur toutes les lignes
   ajouter le trailing slash avant que `blog.html` soit servi. C'est exactement
   la 301 que le pré-rendu à fichiers plats cherche à éviter. Fix en place :
   `DirectorySlash Off`. Vécu le 08/08/2026. **Après toute modification du
-  `.htaccess`, tester `/blog` en priorité** (attendu 200, pas 301), puis les 15
-  routes du sitemap. Tester en local avant de pousser : voir la procédure
-  Apache dans la mémoire projet `htaccess-directoryslash`.
+  `.htaccess`, tester `/blog` en priorité** (attendu 200, pas 301), puis
+  `/services/` (attendu 301, jamais 500), puis toutes les routes du sitemap.
+  Tester en local avant de pousser : procédure Apache dans
+  `seo-geo-portfolio/pieges.md` (n° 1).
 - **La racine du compte FTP EST `public_html`** : `server-dir: ./` dans le
   workflow. `public_html/` en server-dir crée un dossier imbriqué public.
 - La clé Mistral vit dans `mistral-key.php` au-dessus de `public_html` (hors

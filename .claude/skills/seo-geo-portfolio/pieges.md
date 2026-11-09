@@ -144,6 +144,46 @@ Astuce trouvée le 10/07/2026 en vérifiant la suppression d'un dossier imbriqu�
 
 ---
 
+## 8. URL avec barre finale en 500 (`/services/`)
+
+**Symptôme** : `/services/`, `/contact/`, `/blog/un-article/` et toute page
+pré-rendue demandée avec une barre finale répondent 500. Sans barre finale,
+tout est en 200. `/blog/` répondait 404 (vrai dossier).
+
+**Cause** : la règle qui sert les pages pré-rendues (`$1.html` si le `.html`
+existe) voyait `services` + `.html` exister, puis réécrivait `services/` en
+`services/.html`, et ainsi de suite jusqu'à la limite de récursion d'Apache.
+Défaut présent depuis le pré-rendu du 10/07/2026, découvert le 09/11/2026.
+
+**Fix en place** (commit `c59ff4f`) : bloc placé juste AVANT la règle `.html`,
+qui redirige en 301 toute URL à barre finale vers sa version sans barre
+(`RewriteCond %{REQUEST_FILENAME} !-d`, `/api/` exclu), plus une règle dédiée
+`^blog/$ -> /blog` puisque `dist/blog/` est un dossier. `/blog` reste en 200.
+
+**Contrôle** : `curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' $S/services/`
+doit donner `301 https://christophe-dev-freelance.fr/services`.
+
+---
+
+## 9. Mails Search Console « Nouveaux motifs » après un déploiement
+
+**Symptôme** : mail « Nouveaux motifs empêchant l'indexation » (404, Page avec
+redirection) juste après une mise en ligne, qui laisse croire à une régression.
+
+**Constat du 09/11/2026** (après la refonte) : les 6 URL en 404 du rapport
+étaient toutes anciennes (explorées de juin à septembre, déjà en 410/301 ou
+volontairement laissées en 404), et la seule redirection était `http://` vers
+`https://`. Google regroupe et renomme ses motifs sans que le site ait changé.
+
+**Réflexe** : ouvrir le détail du motif (Pages > motif > Exemples) et regarder
+la date de dernière exploration avant de chercher un bug. Ne pas cliquer sur
+« Valider la correction » si des URL restent volontairement en 404.
+
+**À savoir aussi** : les images supprimées du dépôt répondent **422**
+(`text/plain`, CDN Hostinger), pas 404. Sans conséquence.
+
+---
+
 ## Pré-rendu : « capture suspecte » ou pages de 14 Ko
 
 **Symptôme** : `npm run build` échoue sur `Échec du pré-rendu : / : capture
@@ -180,7 +220,9 @@ passant d'un code à l'autre d'un appel à l'autre. Le site n'y est pour rien.
 **Cause** : le CDN de Hostinger (en-tête `server: hcdn`) freine une rafale de
 requêtes qui se disent Googlebot ou GPTBot sans venir de leurs adresses IP.
 Les vrais robots, qui viennent de leurs propres plages d'IP, ne sont pas
-concernés. Vécu le 05/11/2026 après une trentaine d'appels enchaînés.
+concernés. Vécu le 05/11/2026 après une trentaine d'appels enchaînés, puis
+le 09/11/2026 où les 23 URL du sitemap et tous les fichiers LLM sont passés en
+403 d'un bloc (tout en 200 en user-agent navigateur).
 
 **Réflexe** : refaire les contrôles avec un user-agent navigateur
 (`-A "Mozilla/5.0 (Macintosh) Chrome/130"`). Si tout passe en 200, ce n'était

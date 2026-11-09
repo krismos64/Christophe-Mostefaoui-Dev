@@ -41,6 +41,10 @@ while read u; do echo "$(curl -s -o /dev/null -w '%{http_code}' -A Googlebot "$u
 # 2. /blog en 200 SANS redirection (piège DirectorySlash, cf. pieges.md)
 curl -s -o /dev/null -w '/blog -> %{http_code} redirect=[%{redirect_url}]\n' $S/blog
 
+# 2bis. Barre finale : 301 vers l'URL sans barre, jamais 500 (cf. pieges.md, n° 8)
+for u in /services/ /blog/ /creation-site-internet-pau/; do
+  curl -s -o /dev/null -w "$u -> %{http_code} %{redirect_url}\n" "$S$u"; done
+
 # 3. Contenu lisible sans JS (pré-rendu) : un H1 sur chaque route clé
 for u in / /blog /services /contact /creation-site-internet-pau; do
   echo -n "$u h1="; curl -s "$S$u" | grep -c '<h1'
@@ -114,7 +118,7 @@ Chacune vient d'un incident réel. Détails et symptômes dans `pieges.md`.
 
 | Fichier modifié | À faire ensuite |
 |---|---|
-| `public/.htaccess` | Tester `/blog` EN PRIORITÉ (attendu 200, pas 301), puis toutes les URLs du sitemap. Test local possible : voir `pieges.md` |
+| `public/.htaccess` | Tester `/blog` EN PRIORITÉ (attendu 200, pas 301), puis `/services/` (attendu 301 vers `/services`, jamais 500), puis toutes les URLs du sitemap. Test local possible : voir `pieges.md` |
 | `index.html` (JSON-LD) | Vérifier qu'il n'existe qu'un `#business`, que les horaires collent à l'UI, relancer Lighthouse |
 | `public/sitemap.xml` | Mettre à jour le `<lastmod>` de la page touchée ET du parent (`/blog` quand un article change), rebuild (le pré-rendu lit le sitemap) |
 | Une page publique (contenu) | Mettre à jour son `<lastmod>` dans le sitemap (signal de fraîcheur). Vérifier titre ≤ 60 et description ≤ 160 caractères |
@@ -136,7 +140,8 @@ de `llms.txt`, `llms-full.txt`, `chatbot-knowledge.txt` ou `robots.txt`).
 
 ## Pièges vécus
 
-Symptômes et diagnostics des incidents rencontrés (DirectorySlash, 403
+Symptômes et diagnostics des incidents rencontrés (DirectorySlash, barre
+finale en 500, mails « Nouveaux motifs » de la Search Console, 403
 permissions, doublons de schémas, fallback SPA en 200, timeout FTPS) :
 lire `pieges.md` quand quelque chose ne se comporte pas comme attendu en prod.
 

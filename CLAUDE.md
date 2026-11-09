@@ -173,7 +173,8 @@ Règles absolues, à connaître sans ouvrir le skill :
   `sameAs`/`hasMap` côté JSON-LD, bloc avis de la section Contact et footer côté
   visible. Posts Google à partir des articles : `docs/posts-google-blog.md`
 - Après toute modification du `.htaccess`, **tester `/blog` en priorité**
-  (attendu 200, pas 301)
+  (attendu 200, pas 301), puis `/services/` (attendu 301 vers `/services` :
+  les URL à barre finale bouclaient en 500 jusqu'au 09/11/2026)
 - Piège JSX/a11y : les nœuds texte multi-lignes sont concaténés SANS espace dans le DOM → ne pas mettre d'aria-label « contenant » un texte visible multi-nœuds (règle axe label-content-name-mismatch) ; laisser le nom se calculer depuis le contenu
 
 ## Rédaction — Règles absolues (tout contenu visible : articles, pages, meta, chatbot)
