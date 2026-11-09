@@ -84,6 +84,17 @@
     DirectorySlash Off
 </IfModule>
 
+# Barre finale : /services/ -> /services en 301
+# Sans cette règle, /services/ bouclait sur la règle .html ci-dessous
+# (services/.html, réécriture infinie) et répondait 500 (constaté le 09/11/2026).
+# /blog/ est un vrai dossier, d'où sa règle dédiée (le !-d l'exclut sinon)
+<IfModule mod_rewrite.c>
+    RewriteRule ^blog/$ /blog [R=301,L]
+    RewriteCond %{REQUEST_URI} !^/api/
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)/$ /$1 [R=301,L]
+</IfModule>
+
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_URI} !^/api/
     RewriteCond %{REQUEST_FILENAME} !-f
