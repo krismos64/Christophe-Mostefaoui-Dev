@@ -40,7 +40,7 @@ Le build complet = `tsc && vite build && node scripts/prerender.mjs`
 
 ```bash
 # 1. Routes pré-rendues : 200 direct, PAS de redirection, contenu présent
-for u in / /blog /services /realisations /a-propos /contact /mentions-legales; do
+for u in / /blog /services /realisations /avis /a-propos /contact /mentions-legales; do
   curl -s -o /dev/null -w "$u -> %{http_code} redirect=[%{redirect_url}]\n" "https://christophe-dev-freelance.fr$u"
 done
 curl -s https://christophe-dev-freelance.fr/blog | grep -c '<h1'   # >= 1
@@ -81,12 +81,14 @@ done   # attendu : 200 partout
 curl -s -A 'Googlebot' https://christophe-dev-freelance.fr/ | \
   grep -o 'ChIJlTa-96dvUigRyeCBbLb8qkw' | wc -l
 # attendu : 4 sur la home = 2 sameAs (Organization, Person) + hasMap + lien du footer
-curl -s -A 'Googlebot' https://christophe-dev-freelance.fr/contact | \
+curl -s -A 'Googlebot' https://christophe-dev-freelance.fr/avis | \
   grep -o 'ChIJlTa-96dvUigRyeCBbLb8qkw' | wc -l
-# attendu : 5 sur /contact = les 4 + le bloc avis (le formulaire, et donc le
-# bloc avis, ne sont plus sur la home depuis le 05/11/2026)
-# 4 au lieu de 5 sur /contact = le bloc avis n'est pas dans le pré-rendu :
-# vérifier que GoogleReviews est bien monté dans GMBOptimizedContact et relancer npm run build
+# attendu : 7 sur /avis = les 4 + bouton du bandeau + « Voir les avis sur la
+# fiche » + « Laisser un avis ». Les avis ont quitté /contact le 10/11/2026
+# (4 attendu sur /contact). Moins de 7 sur /avis = GoogleReviews absent du
+# pré-rendu : vérifier src/pages/Avis.tsx et relancer npm run build
+curl -s -A 'Googlebot' https://christophe-dev-freelance.fr/avis | grep -c 'avis vérifiés\?'
+# attendu : 1, et le nombre affiché doit être celui de la fiche Google
 
 # 6. URLs de blog inexistantes : 404, et articles supprimés : 410
 #    (si /blog renvoie 301 ici, c'est le piège DirectorySlash — voir plus bas)
