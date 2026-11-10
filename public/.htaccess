@@ -140,6 +140,21 @@ ErrorDocument 410 /404.html
     RewriteRule ^blog/.+ - [R=404,L]
 </IfModule>
 
+# Fichiers absents : 404 au lieu de la home en 200 (10/11/2026)
+# Sans cette règle, /.well-known/ai-catalog.json ou un ancien /assets/*.js
+# renvoyaient la home en HTML avec un code 200 : Lighthouse lisait du HTML à
+# la place d'un JSON, et un robot croyait le fichier présent. Seules les URL
+# avec extension et /.well-known/ sont visées : les routes de pages (sans
+# extension) passent toujours par la règle .html puis le fallback SPA
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^\.well-known/ - [R=404,L]
+    RewriteCond %{REQUEST_URI} !^/api/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule \.[A-Za-z0-9]{1,5}$ - [R=404,L]
+</IfModule>
+
 # Fallback pour React Router (SPA)
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_FILENAME} !-f

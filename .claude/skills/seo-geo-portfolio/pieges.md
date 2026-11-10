@@ -80,6 +80,19 @@ La page `/404` est pré-rendue via les `EXTRA_ROUTES` de `scripts/prerender.mjs`
 et servie par `ErrorDocument` (le code HTTP reste 404 ou 410, seul le corps
 change).
 
+**Extension du 10/11/2026** : même problème sur les FICHIERS. Toute URL à
+extension absente (`.json`, `.xml`, `.js`...) et tout `/.well-known/*` absent
+renvoyaient la home en HTML avec un code 200. Symptôme visible : Lighthouse
+« Agentic Browsing » à 75, audit `ard-schema` (« Malformed JSON : Unexpected
+token '<' ») car `/.well-known/ai-catalog.json` servait du HTML. Règle 404
+ajoutée dans le `.htaccess` avant le fallback SPA, testée sur Apache local
+(`/blog` 200, sitemap 24/24 en 200) : Agentic Browsing à 100. Ne PAS créer de
+`ai-catalog.json` ni de `ard.json` : la spec ARD sert à déclarer des services
+appelables par un agent (MCP, API), le site n'en a aucun. `/favicon.ico` a été
+créé en même temps (16/32/48 px depuis `public/favicons/`), il servait la home.
+Les routes de pages SANS extension inconnues (`/page-inexistante`) restent en
+200 via le fallback SPA : chantier distinct, non traité.
+
 Les URLs à paramètres (`/?s={search_term_string}`, `/?share=video`), héritées
 d'un ancien schéma `SearchAction`, restent en 200 : impact nul, décision prise.
 
