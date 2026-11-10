@@ -24,7 +24,7 @@ export default function Contact() {
         titre="Parlons de votre projet."
         intro={
           <p>
-            Un appel, un e-mail ou le formulaire plus bas : je réponds personnellement sous 24h en
+            Un appel, un e-mail ou le formulaire juste en dessous : je réponds personnellement sous 24h en
             jours ouvrés. Le premier échange est gratuit et sans engagement.
           </p>
         }

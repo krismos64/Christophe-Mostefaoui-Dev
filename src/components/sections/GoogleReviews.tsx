@@ -1,116 +1,175 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Star } from "lucide-react";
+import { avisGoogle, FICHE_GOOGLE_URL, LAISSER_AVIS_URL, noteMoyenne } from "../../data/avisGoogle";
 
 /**
- * Bloc « avis Google » : preuve sociale + lien humain vers la fiche
- * Google Business Profile (jusqu'ici, seul le JSON-LD d'index.html la
- * connaissait via sameAs/hasMap).
+ * Corps de la page /avis : bandeau de note et cartes des avis de la fiche
+ * Google. Données dans src/data/avisGoogle.ts (source unique, procédure
+ * d'ajout en tête de ce fichier).
  *
- * Pas de JSON-LD ici : l'aggregateRating et le Review sont déjà déclarés
- * dans le ProfessionalService #business d'index.html. Les redéclarer
- * créerait une entité concurrente (voir CLAUDE.md).
+ * Pas de JSON-LD ici : l'aggregateRating et les Review sont déclarés dans le
+ * ProfessionalService #business d'index.html. Les redéclarer créerait une
+ * entité concurrente (voir CLAUDE.md).
  *
- * Contenu strictement issu de la vraie fiche (Place ID
- * ChIJlTa-96dvUigRyeCBbLb8qkw) : aucun avis inventé, aucune statistique
- * fabriquée.
+ * Animations Framer Motion (au défilement, une seule fois) : MotionConfig
+ * reducedMotion="user" d'App.tsx les neutralise en mode réduit.
  */
 
-const GOOGLE_PROFILE_URL =
-  "https://www.google.com/maps/place/?q=place_id:ChIJlTa-96dvUigRyeCBbLb8qkw";
+const EASE = [0.16, 1, 0.3, 1] as const;
 
-const RATING = 5;
-const REVIEW_COUNT = 1;
+const initiales = (nom: string) =>
+  nom
+    .split(/\s+/)
+    .map((mot) => mot[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
-const review = {
-  author: "Stacy Menendez",
-  date: "août 2026",
-  body: "Christophe est un excellent développeur web. Je tiens à le remercier pour son honnêteté, sa patience, sa disponibilité et son amabilité. Il accompagne véritablement ses clients du début jusqu'à la fin de leur projet, avec sérieux.",
-};
+/** Étoiles qui apparaissent une à une quand le bloc entre dans l'écran */
+function Etoiles({ nombre, taille, delai = 0 }: { nombre: number; taille: string; delai?: number }) {
+  return (
+    <span className="inline-flex items-center gap-1" aria-hidden="true">
+      {Array.from({ length: 5 }, (_, i) => (
+        <motion.span
+          key={i}
+          className="inline-flex"
+          initial={{ scale: 0.3, opacity: 0, rotate: -40 }}
+          whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 380, damping: 16, delay: delai + i * 0.09 }}
+        >
+          <Star
+            className={`${taille} ${i < nombre ? "fill-soleil text-soleil" : "fill-transparent text-foret/25"}`}
+            strokeWidth={1.5}
+          />
+        </motion.span>
+      ))}
+    </span>
+  );
+}
 
-const Stars = ({ count }: { count: number }) => (
-  <span className="inline-flex items-center gap-0.5" aria-hidden="true">
-    {Array.from({ length: count }, (_, i) => (
-      <Star
-        key={i}
-        className="h-3.5 w-3.5 fill-soleil text-soleil"
-        strokeWidth={1.5}
+function LienGoogle({ href, children }: { href: string; children: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hero-body group inline-flex items-center gap-1.5 text-[15px] text-foret/80 transition-colors hover:text-soleil"
+    >
+      <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">{children}</span>
+      <ArrowUpRight
+        className="h-3.5 w-3.5 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        aria-hidden="true"
       />
-    ))}
-  </span>
-);
+      <span className="sr-only"> (nouvel onglet)</span>
+    </a>
+  );
+}
 
-const GoogleReviews = ({ isInView }: { isInView: boolean }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 24 }}
-    animate={isInView ? { opacity: 1, y: 0 } : {}}
-    transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-    className="mb-14 sm:mb-16"
-  >
-    <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-6">
-      ↳ ce qu'on en dit sur Google
-    </p>
+export default function GoogleReviews() {
+  const nombre = avisGoogle.length;
+  const note = noteMoyenne.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-      {/* Note globale */}
-      <div className="lg:col-span-4">
-        <div className="flex items-baseline gap-3">
-          <span
-            className="text-[52px] sm:text-[64px] leading-none tabular-nums text-foret"
-          >
-            {RATING.toLocaleString("fr-FR", { minimumFractionDigits: 1 })}
-          </span>
-          <span className="hero-body text-[15px] text-foret/70">
-            / 5
-          </span>
-        </div>
-
-        <div className="mt-3 flex items-center gap-2.5">
-          <Stars count={RATING} />
-          <p className="hero-body text-[13px] text-foret/70">
-            {REVIEW_COUNT} avis vérifié
-          </p>
-        </div>
-
-        <a
-          href={GOOGLE_PROFILE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hero-body group mt-5 inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
-          data-testid="google_profile_link"
+  return (
+    <section aria-labelledby="avis-titre" className="bg-creme pb-16 pt-12 sm:pb-24 sm:pt-16">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        {/* Bandeau de note */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.8, ease: EASE }}
+          className="relative isolate overflow-hidden rounded-[28px] bg-white/70 p-7 shadow-[0_30px_60px_-40px_rgba(18,49,43,0.45)] ring-1 ring-foret/10 sm:p-10"
         >
-          <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
-            voir la fiche Google
-          </span>
-          <ArrowUpRight
-            className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          <div
             aria-hidden="true"
+            className="apropos-soleil pointer-events-none absolute -bottom-32 -left-16 -z-10 h-64 w-64 rounded-full bg-soleil/20"
           />
-<span className="sr-only"> (nouvel onglet)</span>
-        </a>
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2
+                id="avis-titre"
+                className="hero-body text-[13px] font-semibold uppercase tracking-[0.14em] text-foret/70"
+              >
+                Note sur Google
+              </h2>
+              <div className="mt-3 flex flex-wrap items-end gap-x-5 gap-y-3">
+                <p className="flex items-baseline gap-2">
+                  <span className="text-[72px] font-extrabold leading-none tracking-[-0.04em] tabular-nums text-foret sm:text-[88px]">
+                    {note}
+                  </span>
+                  <span className="hero-body text-[17px] text-foret/70">sur 5</span>
+                </p>
+                <div className="pb-2">
+                  <Etoiles nombre={Math.round(noteMoyenne)} taille="h-6 w-6 sm:h-7 sm:w-7" delai={0.3} />
+                  <p className="hero-body mt-1.5 text-[14px] text-foret/70">
+                    {nombre} avis vérifié{nombre > 1 ? "s" : ""}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <ul className="space-y-3 md:text-right">
+              <li>
+                <LienGoogle href={FICHE_GOOGLE_URL}>Voir les avis sur la fiche Google</LienGoogle>
+              </li>
+              <li>
+                <LienGoogle href={LAISSER_AVIS_URL}>Vous êtes client ? Laisser un avis</LienGoogle>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+
+        {/* Cartes des avis, en colonnes : les textes longs et courts s'emboîtent */}
+        <ol className="mt-10 gap-8 sm:mt-14 md:columns-2">
+          {avisGoogle.map((avis, i) => (
+            <motion.li
+              key={`${avis.auteur}-${avis.date}`}
+              initial={{ opacity: 0, y: 36, rotate: i % 2 ? 1.5 : -1.5 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.8, delay: Math.min(i, 3) * 0.12, ease: EASE }}
+              className="mb-8 break-inside-avoid"
+            >
+              <figure className="group relative isolate h-full overflow-hidden rounded-[24px] bg-white/70 p-7 shadow-[0_24px_50px_-36px_rgba(18,49,43,0.5)] ring-1 ring-foret/10 transition-transform duration-500 ease-out hover:-translate-y-1 sm:p-9">
+                {/* Guillemet décoratif */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-16 right-4 -z-10 select-none text-[150px] font-extrabold leading-none text-soleil/20 transition-transform duration-700 ease-out group-hover:-translate-x-2 group-hover:translate-y-2"
+                >
+                  »
+                </span>
+                <p className="flex items-center">
+                  <Etoiles nombre={avis.note} taille="h-4 w-4" delai={0.2 + i * 0.12} />
+                  <span className="sr-only">{avis.note} étoiles sur 5</span>
+                </p>
+                <blockquote className="mt-5 space-y-4 text-[18px] leading-[1.6] text-foret/90 sm:text-[19px]">
+                  {avis.texte.split("\n\n").map((paragraphe, j, tous) => (
+                    <p key={j}>
+                      {j === 0 && "« "}
+                      {paragraphe}
+                      {j === tous.length - 1 && " »"}
+                    </p>
+                  ))}
+                </blockquote>
+                <figcaption className="mt-7 flex items-center gap-3.5 border-t border-foret/10 pt-6">
+                  <span
+                    aria-hidden="true"
+                    className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[15px] font-bold ${
+                      i % 2 ? "bg-soleil text-foret" : "bg-foret text-creme"
+                    }`}
+                  >
+                    {initiales(avis.auteur)}
+                  </span>
+                  <span className="flex flex-col">
+                    <span className="hero-body text-[16px] font-semibold text-foret">{avis.auteur}</span>
+                    <span className="hero-body text-[14px] text-foret/70">avis Google, {avis.date}</span>
+                  </span>
+                </figcaption>
+              </figure>
+            </motion.li>
+          ))}
+        </ol>
       </div>
-
-      {/* Avis */}
-      <figure className="lg:col-span-8 border-l-2 border-soleil pl-6 sm:pl-8">
-        <blockquote
-          className="text-[19px] sm:text-[22px] leading-[1.55] text-foret/90"
-        >
-          « {review.body} »
-        </blockquote>
-        <figcaption className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span className="hero-body text-[14px] text-foret">
-            {review.author}
-          </span>
-          <span
-            className="h-px w-5 bg-foret/25"
-            aria-hidden="true"
-          />
-          <span className="hero-body text-[13px] text-foret/70">
-            avis Google, {review.date}
-          </span>
-        </figcaption>
-      </figure>
-    </div>
-  </motion.div>
-);
-
-export default GoogleReviews;
+    </section>
+  );
+}

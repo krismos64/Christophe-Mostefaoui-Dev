@@ -14,6 +14,10 @@ interface VideoEmbedProps {
    */
   theme?: "light" | "dark";
   ariaLabel?: string;
+  /** Halo orange qui pulse autour du bouton lecture (CSS .video-halo dans index.css) */
+  halo?: boolean;
+  /** Classes ajoutées au cadre 16/9 (coins arrondis, ombre) */
+  cadreClassName?: string;
 }
 
 export default function VideoEmbed({
@@ -25,6 +29,8 @@ export default function VideoEmbed({
   channelUrl,
   theme = "light",
   ariaLabel,
+  halo = false,
+  cadreClassName = "",
 }: VideoEmbedProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -42,7 +48,7 @@ export default function VideoEmbed({
 
   return (
     <figure className="w-full">
-      <div className="relative w-full aspect-video overflow-hidden group bg-foret-profond">
+      <div className={`relative w-full aspect-video overflow-hidden group bg-foret-profond ${cadreClassName}`}>
         {isPlaying ? (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
@@ -96,6 +102,13 @@ export default function VideoEmbed({
               className="absolute inset-0 w-full h-full flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-soleil focus-visible:ring-offset-2"
               aria-label={ariaLabel ?? `Lire la vidéo : ${title}`}
             >
+              <span className="relative inline-flex">
+              {halo && (
+                <span
+                  className="video-halo pointer-events-none absolute inset-0 rounded-full border-2 border-soleil"
+                  aria-hidden="true"
+                />
+              )}
               <motion.span
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
@@ -108,6 +121,7 @@ export default function VideoEmbed({
                   aria-hidden="true"
                 />
               </motion.span>
+              </span>
             </button>
 
             {/* Information avant le chargement du lecteur tiers (politique de confidentialité, VIII) */}
@@ -130,7 +144,7 @@ export default function VideoEmbed({
         )}
         {/* Cadre fin éditorial */}
         <div
-          className={`absolute inset-0 ring-1 ${ringColor} ${!isPlaying ? ringHover : ""} transition-colors duration-300 pointer-events-none`}
+          className={`absolute inset-0 rounded-[inherit] ring-1 ${ringColor} ${!isPlaying ? ringHover : ""} transition-colors duration-300 pointer-events-none`}
           aria-hidden="true"
         />
       </div>

@@ -13,13 +13,15 @@ import {
   MessageSquare,
   Phone,
   Send,
+  Star,
   User,
   Youtube,
 } from "lucide-react";
 import { useRef, useState } from "react";
 import { emailjsConfig, validateEmailjsConfig } from "../../config/emailjs";
 import VideoEmbed from "../common/VideoEmbed";
-import GoogleReviews from "../sections/GoogleReviews";
+import PlateauVideo from "../sections/PlateauVideo";
+import { avisGoogle, noteMoyenne } from "../../data/avisGoogle";
 
 const GMBOptimizedContact = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -165,209 +167,23 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
       <section
         ref={containerRef}
         id="contact"
-        className="relative w-full overflow-hidden bg-creme py-20 sm:py-28 md:py-32"
+        className="relative w-full overflow-hidden bg-creme pt-10 pb-20 sm:pt-14 sm:pb-28 md:pb-32"
         aria-label="Contact"
       >
 
         <div className="mx-auto px-5 sm:px-8 relative z-10 max-w-6xl">
-          {/* Header édito */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-12 sm:mb-16 max-w-4xl"
-          >
-            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
-              Faisons connaissance
-            </p>
-            <h2 className="hero-display text-foret">
-              Voyez qui vous répondra, puis écrivez-moi.
-            </h2>
-          </motion.div>
-
-          {/* Vidéo de présentation */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl mb-16 sm:mb-20"
-          >
-            <p className="hero-handwritten text-[15px] sm:text-[17px] text-foret/70 mb-3">
-              ✏ avant de m'écrire, rencontrez-moi
-            </p>
-            <VideoEmbed
-              youtubeId="tdjXblz4mr4"
-              thumbnail="/assets/images/miniature-2.png"
-              title="Présentation : Christophe Mostefaoui"
-              caption="— React, Node, TypeScript & solutions sur mesure"
-              duration="1:40"
-              channelUrl="https://www.youtube.com/@christophe-dev-freelance/videos"
-              theme="light"
-              ariaLabel="Lire la vidéo : Présentation"
-            />
-          </motion.div>
-
-          {/* Trait de séparation */}
-          <div
-            className="h-px w-full bg-foret/15 mb-12 sm:mb-16"
-            aria-hidden="true"
-          />
-
-          {/* Avis Google + lien vers la fiche */}
-          <GoogleReviews isInView={isInView} />
-
-          {/* Trait de séparation */}
-          <div
-            className="h-px w-full bg-foret/15 mb-12 sm:mb-16"
-            aria-hidden="true"
-          />
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-            {/* Bloc infos contact */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5"
-            >
-              <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-6">
-                ↳ par téléphone ou email
-              </p>
-              <ul className="space-y-6">
-                {contactInfos.map((info) => {
-                  const Icon = info.icon;
-                  const content = (
-                    <div className="flex items-start gap-4">
-                      <Icon
-                        className="h-5 w-5 mt-1 flex-shrink-0 text-soleil"
-                        aria-hidden="true"
-                        strokeWidth={1.5}
-                      />
-                      <div className="min-w-0 flex-1">
-                        <p className="hero-body text-[12px] uppercase tracking-[0.18em] text-foret/70 mb-1">
-                          {info.label}
-                        </p>
-                        <p
-                          className={`text-[15px] sm:text-[16px] text-foret ${
-                            info.mono ? "font-mono tabular-nums" : "hero-body"
-                          }`}
-                        >
-                          {info.value}
-                        </p>
-                        {info.sub && (
-                          <p className="hero-body text-[13px] mt-1 text-foret/70">
-                            {info.sub}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  );
-                  return (
-                    <li key={info.label}>
-                      {info.href ? (
-                        <a
-                          href={info.href}
-                          className="group block transition-colors hover:text-soleil"
-                        >
-                          {content}
-                        </a>
-                      ) : (
-                        content
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-
-              {/* Trait séparateur + liens sociaux */}
-              <div
-                className="h-px w-12 bg-foret/20 my-8"
-                aria-hidden="true"
-              />
-              <p className="hero-handwritten text-[15px] sm:text-[17px] text-foret/70 mb-4">
-                ↳ faisons connaissance ailleurs
-              </p>
-              <ul className="flex flex-wrap items-center gap-x-5 gap-y-3">
-                <li>
-                  <a
-                    href="https://www.linkedin.com/in/christophemostefaoui/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
-                  >
-                    <Linkedin
-                      className="h-4 w-4 flex-shrink-0"
-                      aria-hidden="true"
-                      strokeWidth={1.5}
-                    />
-                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
-                      LinkedIn
-                    </span>
-                    <ArrowUpRight
-                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      aria-hidden="true"
-                    />
-<span className="sr-only"> (nouvel onglet)</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/krismos64"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
-                  >
-                    <Github
-                      className="h-4 w-4 flex-shrink-0"
-                      aria-hidden="true"
-                      strokeWidth={1.5}
-                    />
-                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
-                      GitHub
-                    </span>
-                    <ArrowUpRight
-                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      aria-hidden="true"
-                    />
-<span className="sr-only"> (nouvel onglet)</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.youtube.com/@christophe-dev-freelance/videos"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
-                  >
-                    <Youtube
-                      className="h-4 w-4 flex-shrink-0"
-                      aria-hidden="true"
-                      strokeWidth={1.5}
-                    />
-                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
-                      YouTube
-                    </span>
-                    <ArrowUpRight
-                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      aria-hidden="true"
-                    />
-<span className="sr-only"> (nouvel onglet)</span>
-                  </a>
-                </li>
-              </ul>
-            </motion.div>
-
             {/* Bloc formulaire */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="relative isolate overflow-hidden rounded-[28px] bg-foret p-6 text-creme shadow-[0_40px_80px_-40px_rgba(18,49,43,0.55)] sm:p-10 lg:col-span-7"
             >
               <DecorCarte />
-              <h3 className="pr-14 sm:pr-20 text-[26px] font-extrabold leading-tight tracking-[-0.02em] text-creme sm:text-[30px]">
+              <h2 className="pr-14 sm:pr-20 text-[26px] font-extrabold leading-tight tracking-[-0.02em] text-creme sm:text-[30px]">
                 Votre demande de devis
-              </h3>
+              </h2>
               <p className="mt-2 mb-8 pr-10 sm:pr-20 text-[15px] text-foret-brume">
                 Gratuit, sans engagement. Je vous réponds sous 24h en jours ouvrés.
                 <span className="mt-1 block text-[13px]">Les champs marqués <span className="text-soleil">*</span> sont obligatoires.</span>
@@ -556,6 +372,200 @@ Message envoyé depuis le formulaire de contact du site christophe-dev-freelance
                 </form>
               )}
             </motion.div>
+            {/* Bloc infos contact */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5"
+            >
+              <p className="hero-handwritten text-[16px] sm:text-[18px] text-foret/70 mb-6">
+                ↳ par téléphone ou email
+              </p>
+              <ul className="space-y-6">
+                {contactInfos.map((info) => {
+                  const Icon = info.icon;
+                  const content = (
+                    <div className="flex items-start gap-4">
+                      <Icon
+                        className="h-5 w-5 mt-1 flex-shrink-0 text-soleil"
+                        aria-hidden="true"
+                        strokeWidth={1.5}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="hero-body text-[12px] uppercase tracking-[0.18em] text-foret/70 mb-1">
+                          {info.label}
+                        </p>
+                        <p
+                          className={`text-[15px] sm:text-[16px] text-foret ${
+                            info.mono ? "font-mono tabular-nums" : "hero-body"
+                          }`}
+                        >
+                          {info.value}
+                        </p>
+                        {info.sub && (
+                          <p className="hero-body text-[13px] mt-1 text-foret/70">
+                            {info.sub}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                  return (
+                    <li key={info.label}>
+                      {info.href ? (
+                        <a
+                          href={info.href}
+                          className="group block transition-colors hover:text-soleil"
+                        >
+                          {content}
+                        </a>
+                      ) : (
+                        content
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+
+              {/* Renvoi vers la page des avis (sortis de la page Contact le 10/11/2026) */}
+              <div
+                className="h-px w-12 bg-foret/20 my-8"
+                aria-hidden="true"
+              />
+              <p className="hero-handwritten text-[15px] sm:text-[17px] text-foret/70 mb-4">
+                ↳ ce qu'en disent mes clients
+              </p>
+              <Link
+                to="/avis"
+                className="hero-body group inline-flex items-center gap-2 text-[15px] text-foret hover:text-soleil transition-colors"
+              >
+                <Star className="h-4 w-4 fill-soleil text-soleil" aria-hidden="true" strokeWidth={1.5} />
+                <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
+                  Lire les avis Google ({noteMoyenne.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} sur 5, {avisGoogle.length} avis)
+                </span>
+              </Link>
+
+              {/* Trait séparateur + liens sociaux */}
+              <div
+                className="h-px w-12 bg-foret/20 my-8"
+                aria-hidden="true"
+              />
+              <p className="hero-handwritten text-[15px] sm:text-[17px] text-foret/70 mb-4">
+                ↳ faisons connaissance ailleurs
+              </p>
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-3">
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/christophemostefaoui/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
+                  >
+                    <Linkedin
+                      className="h-4 w-4 flex-shrink-0"
+                      aria-hidden="true"
+                      strokeWidth={1.5}
+                    />
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
+                      LinkedIn
+                    </span>
+                    <ArrowUpRight
+                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+<span className="sr-only"> (nouvel onglet)</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/krismos64"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
+                  >
+                    <Github
+                      className="h-4 w-4 flex-shrink-0"
+                      aria-hidden="true"
+                      strokeWidth={1.5}
+                    />
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
+                      GitHub
+                    </span>
+                    <ArrowUpRight
+                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+<span className="sr-only"> (nouvel onglet)</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/@christophe-dev-freelance/videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hero-body group inline-flex items-center gap-1.5 text-[14px] text-foret/80 hover:text-soleil transition-colors"
+                  >
+                    <Youtube
+                      className="h-4 w-4 flex-shrink-0"
+                      aria-hidden="true"
+                      strokeWidth={1.5}
+                    />
+                    <span className="border-b border-current/30 pb-0.5 group-hover:border-soleil">
+                      YouTube
+                    </span>
+                    <ArrowUpRight
+                      className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
+<span className="sr-only"> (nouvel onglet)</span>
+                  </a>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Trait de séparation */}
+          <div
+            className="h-px w-full bg-foret/15 my-16 sm:my-20"
+            aria-hidden="true"
+          />
+
+          {/* Header édito, centré au-dessus de la vidéo */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mx-auto mb-10 max-w-3xl text-center sm:mb-12"
+          >
+            <p className="hero-handwritten text-[18px] sm:text-[20px] text-foret/75 mb-2">
+              Faisons connaissance
+            </p>
+            <h2 className="hero-display text-foret">
+              Voyez qui vous répondra.
+            </h2>
+            <p className="hero-handwritten mt-4 text-[15px] sm:text-[17px] text-foret/70">
+              ✏ une minute quarante pour se rencontrer
+            </p>
+          </motion.div>
+
+          {/* Vidéo de présentation dans son décor animé */}
+          <div className="mb-20 sm:mb-24">
+            <PlateauVideo>
+              <VideoEmbed
+                youtubeId="tdjXblz4mr4"
+                thumbnail="/assets/images/miniature-2.png"
+                title="Présentation : Christophe Mostefaoui"
+                caption="— React, Node, TypeScript & solutions sur mesure"
+                duration="1:40"
+                channelUrl="https://www.youtube.com/@christophe-dev-freelance/videos"
+                theme="light"
+                ariaLabel="Lire la vidéo : Présentation"
+                halo
+                cadreClassName="rounded-[22px] shadow-[0_30px_60px_-30px_rgba(18,49,43,0.6)]"
+              />
+            </PlateauVideo>
           </div>
 
           {/* Citation manuscrite signée */}

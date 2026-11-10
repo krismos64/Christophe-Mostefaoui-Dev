@@ -10,6 +10,7 @@ export default function Footer() {
   const navLinks = [
     { name: "Services", to: "/services" },
     { name: "Réalisations", to: "/realisations" },
+    { name: "Avis clients", to: "/avis" },
     { name: "À propos", to: "/a-propos" },
     { name: "Blog", to: "/blog" },
     { name: "Questions fréquentes", to: isHomePage ? "#faq" : "/#faq" },

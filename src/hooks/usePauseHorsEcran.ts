@@ -1,15 +1,17 @@
 import { useEffect, type RefObject } from "react";
 
 /**
- * Met en pause les animations d'une scène SVG quand elle sort de l'écran
+ * Met en pause les animations d'une scène SVG (ou d'un conteneur HTML) quand elle sort de l'écran
  * (attribut data-pause lu par index.css pour les animations CSS, et
  * pauseAnimations() pour les animations SVG natives <animateMotion>).
  * Coupe aussi les animations SVG natives si l'utilisateur a demandé de
  * réduire les animations : la media query CSS n'a aucun effet sur elles.
  */
-export function usePauseHorsEcran(ref: RefObject<SVGSVGElement>) {
+export function usePauseHorsEcran(ref: RefObject<SVGSVGElement | HTMLElement>) {
   useEffect(() => {
-    const el = ref.current;
+    // Un conteneur HTML n'a pas pauseAnimations : les appels optionnels
+    // ci-dessous ne font alors rien, seul data-pause agit (animations CSS)
+    const el = ref.current as (SVGSVGElement & HTMLElement) | null;
     if (!el) return;
     const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduit) {

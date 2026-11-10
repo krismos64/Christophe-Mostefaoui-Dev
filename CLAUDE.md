@@ -74,6 +74,9 @@ npm run preview    # Preview build
   `home/ServicesScenes.tsx` (6 cartes Services, un élément orange porte le
   sens dans chacune), `sections/TrajetAnime.tsx` (photo de la navbar dans
   l'écran de visio), `sections/BlogScene.tsx` (un seul cycle, grands écrans),
+  `sections/AvisScene.tsx` (bandeau de `/avis`, grands écrans),
+  `sections/PlateauVideo.tsx` (vidéo de `/contact`, décor autour d'un `div` :
+  `usePauseHorsEcran` accepte aussi un élément HTML depuis le 10/11/2026),
   portrait en arche de `sections/About.tsx`. Dans ces scènes, l'état de BASE
   de chaque élément est l'image finale lisible : le mode réduit l'affiche tel
   quel, les boucles partent d'un état caché.
@@ -167,10 +170,11 @@ Règles absolues, à connaître sans ouvrir le skill :
 - **`llms.txt`, `llms-full.txt` et `chatbot-knowledge.txt` sont à mettre à jour
   à chaque publication d'article** (le skill `blog-article` détaille le format)
 - **Le texte d'un avis Google est identique partout** : JSON-LD d'`index.html`,
-  `src/components/sections/GoogleReviews.tsx` et les trois fichiers LLM. Un
+  `src/data/avisGoogle.ts` (source de la page `/avis`, créée le 10/11/2026,
+  procédure d'ajout en tête du fichier) et les trois fichiers LLM. Un
   écart avec la fiche publique est une donnée structurée trompeuse. La fiche
   (Place ID `ChIJlTa-96dvUigRyeCBbLb8qkw`) est liée au site dans les deux sens :
-  `sameAs`/`hasMap` côté JSON-LD, bloc avis de la section Contact et footer côté
+  `sameAs`/`hasMap` côté JSON-LD, page `/avis` et footer côté
   visible. Posts Google à partir des articles : `docs/posts-google-blog.md`
 - Après toute modification du `.htaccess`, **tester `/blog` en priorité**
   (attendu 200, pas 301), puis `/services/` (attendu 301 vers `/services` :

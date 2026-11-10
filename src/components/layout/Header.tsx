@@ -10,6 +10,7 @@ type Lien = { nom: string; ancre?: string; page?: string };
 const liens: Lien[] = [
   { nom: "Services", page: "/services" },
   { nom: "Réalisations", page: "/realisations" },
+  { nom: "Avis", page: "/avis" },
   { nom: "À propos", page: "/a-propos" },
   { nom: "Blog", page: "/blog" },
   { nom: "Questions fréquentes", ancre: "faq" },

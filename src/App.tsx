@@ -32,6 +32,7 @@ const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 const Realisations = lazy(() => import("./pages/Realisations"));
 const APropos = lazy(() => import("./pages/APropos"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Avis = lazy(() => import("./pages/Avis"));
 
 const Home = () => {
   const structuredData = useStructuredData();
@@ -103,6 +104,7 @@ function App() {
                     <Route path="/realisations" element={<Realisations />} />
                     <Route path="/a-propos" element={<APropos />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/avis" element={<Avis />} />
                     <Route path="/blog" element={<Blog />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/mentions-legales" element={<LegalNotice />} />

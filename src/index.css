@@ -506,6 +506,43 @@ blockquote .hero-handwritten {
   .svc [class*="svc-"] { animation: none !important; }
 }
 
+/* Plateau vidéo de la page Contact (sections/PlateauVideo.tsx). État de
+   base = image finale (clap fermé, ondes visibles, halo caché) */
+.plateau [class*="plateau-"] { transform-box: fill-box; }
+.plateau[data-pause] [class*="plateau-"],
+.plateau[data-pause] .video-halo { animation-play-state: paused; }
+.plateau figcaption { margin-top: 2.25rem; }
+.plateau-soleil { transform-origin: center; animation: blog-soleil 7s ease-in-out infinite alternate; }
+.plateau-clap { transform-origin: 0% 100%; animation: plateau-clap 4.5s cubic-bezier(.5,0,.2,1) infinite; }
+.plateau-rec { animation: svc-rec 1.4s steps(1) infinite; }
+.plateau-onde { animation: plateau-onde 1.8s ease-in-out infinite; }
+.video-halo { opacity: 0; animation: video-halo 2.4s ease-out infinite; }
+@keyframes plateau-clap { 0%, 50% { transform: none; } 62%, 78% { transform: rotate(-26deg); } 83%, 100% { transform: none; } }
+@keyframes plateau-onde { 0%, 100% { opacity: .2; } 40% { opacity: 1; } }
+@keyframes video-halo { 0% { transform: scale(1); opacity: .9; } 70%, 100% { transform: scale(1.7); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .plateau [class*="plateau-"] { animation: none !important; }
+  .video-halo { animation: none !important; opacity: 0; }
+}
+
+/* Scène du bandeau de la page /avis (sections/AvisScene.tsx). Étoiles et
+   lignes : un seul cycle à l'arrivée ; bulles, soleil et éclats : boucles
+   douces. État de base = image finale (mode réduit) */
+.avis-scene [class*="avis-"] { transform-box: fill-box; }
+.avis-scene[data-pause] [class*="avis-"] { animation-play-state: paused; }
+.avis-soleil { transform-origin: center; animation: blog-soleil 7s ease-in-out infinite alternate; }
+.avis-bulle { animation: avis-flotte 6s ease-in-out infinite alternate; }
+.avis-bulle-fond { animation: avis-flotte 7.5s ease-in-out -2s infinite alternate-reverse; }
+.avis-etoile { transform-origin: center; animation: avis-etoile .6s cubic-bezier(.3,1.6,.5,1) both; }
+.avis-ligne { transform-origin: 0 50%; animation: blog-ligne .5s ease-out both; }
+.avis-eclat { transform-origin: center; animation: avis-eclat 3.3s ease-in-out infinite; }
+@keyframes avis-flotte { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+@keyframes avis-etoile { from { transform: scale(.2) rotate(-60deg); opacity: 0; } }
+@keyframes avis-eclat { 0%, 100% { transform: scale(.5) rotate(0deg); opacity: .25; } 50% { transform: scale(1) rotate(45deg); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .avis-scene [class*="avis-"] { animation: none !important; }
+}
+
 /* ============================================
    Mouvement réduit — respecte le réglage système
    « Réduire les animations » (macOS, iOS, Windows, Android).
