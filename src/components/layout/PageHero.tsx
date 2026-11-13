@@ -10,13 +10,17 @@ type Props = {
   /** Fond de la section qui suit, pour que la ligne de crête s'y fonde */
   suite?: "creme" | "foret";
   children?: ReactNode;
+  /** Page parente dans le fil d'Ariane visible (ex. Services) */
+  parent?: { nom: string; to: string };
+  /** Illustration décorative : à droite du texte sur grand écran, dessous sur téléphone */
+  illustration?: ReactNode;
 };
 
 /**
  * En-tête des pages intérieures : bandeau vert, fil d'Ariane, h1 unique
  * de la page, et la ligne de crête du hero de la home en bas (SVG statique).
  */
-export default function PageHero({ surtitre, titre, intro, nomCourt, suite = "creme", children }: Props) {
+export default function PageHero({ surtitre, titre, intro, nomCourt, suite = "creme", children, parent, illustration }: Props) {
   return (
     <section className="relative isolate overflow-hidden bg-foret pb-28 pt-32 font-display text-creme sm:pb-32 sm:pt-36">
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
@@ -28,19 +32,42 @@ export default function PageHero({ surtitre, titre, intro, nomCourt, suite = "cr
               </Link>
             </li>
             <li aria-hidden="true">/</li>
+            {parent && (
+              <>
+                <li>
+                  <Link to={parent.to} className="underline-offset-4 hover:text-soleil hover:underline">
+                    {parent.nom}
+                  </Link>
+                </li>
+                <li aria-hidden="true">/</li>
+              </>
+            )}
             <li aria-current="page" className="text-creme">
               {nomCourt}
             </li>
           </ol>
         </nav>
-        <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-soleil">
-          {surtitre}
-        </p>
-        <h1 className="max-w-4xl text-[clamp(2.3rem,5.5vw,4.2rem)] font-extrabold leading-[1.02] tracking-[-0.035em]">
-          {titre}
-        </h1>
-        <div className="mt-6 max-w-2xl text-[18px] leading-relaxed text-[#D6E0DB]">{intro}</div>
-        {children && <div className="mt-8">{children}</div>}
+        <div className={illustration ? "grid items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-14" : undefined}>
+          <div className="min-w-0">
+            <p className="mb-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-soleil">
+              {surtitre}
+            </p>
+            <h1
+              className={`max-w-4xl font-extrabold leading-[1.02] tracking-[-0.035em] ${
+                illustration ? "text-[clamp(2.1rem,4.4vw,3.5rem)]" : "text-[clamp(2.3rem,5.5vw,4.2rem)]"
+              }`}
+            >
+              {titre}
+            </h1>
+            <div className="mt-6 max-w-2xl text-[18px] leading-relaxed text-[#D6E0DB]">{intro}</div>
+            {children && <div className="mt-8">{children}</div>}
+          </div>
+          {illustration && (
+            <div className="mx-auto w-full max-w-[460px] overflow-hidden rounded-[14px] border border-[#2F5E52] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.7)]">
+              {illustration}
+            </div>
+          )}
+        </div>
       </div>
 
       <svg

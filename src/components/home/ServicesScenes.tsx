@@ -11,7 +11,7 @@ import { usePauseHorsEcran } from "../../hooks/usePauseHorsEcran";
  * Décoratives : le titre et le texte de la carte disent déjà tout.
  */
 
-const C = {
+export const C = {
   foret: "#12312B",
   moyen: "#24594C",
   clair: "#3E7A68",

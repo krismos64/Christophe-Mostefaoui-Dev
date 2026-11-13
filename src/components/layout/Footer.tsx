@@ -237,6 +237,31 @@ export default function Footer() {
           ))}
         </p>
 
+        {/* Pages par service : maillage SEO */}
+        <p className="hero-body text-[13px] text-creme/70 mt-3">
+          Services :{" "}
+          {[
+            { label: "Site vitrine", to: "/creation-site-vitrine" },
+            { label: "Boutique en ligne", to: "/creation-boutique-en-ligne" },
+            { label: "Refonte de site", to: "/refonte-site-internet" },
+            { label: "Référencement local", to: "/referencement-local" },
+          ].map((z, i, arr) => (
+            <span key={z.to}>
+              <Link
+                to={z.to}
+                className="hover:text-soleil transition-colors border-b border-creme/20 hover:border-soleil pb-px"
+              >
+                {z.label}
+              </Link>
+              {i < arr.length - 1 && (
+                <span className="mx-2 text-creme/70" aria-hidden="true">
+                  ·
+                </span>
+              )}
+            </span>
+          ))}
+        </p>
+
         {/* Trait pleine largeur */}
         <div
           className="h-px w-full bg-creme/15 my-10 sm:my-12"

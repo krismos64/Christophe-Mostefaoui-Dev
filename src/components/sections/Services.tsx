@@ -10,6 +10,7 @@ import {
   Video,
 } from "lucide-react";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function Services() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,6 +23,8 @@ export default function Services() {
       title: "Un site vitrine",
       description:
         "Votre entreprise présentée en quelques pages claires : ce que vous faites, où vous trouver, comment vous joindre. Visible sur Google et dans ChatGPT.",
+      to: "/creation-site-vitrine",
+      lien: "Le site vitrine en détail",
     },
     {
       numeral: "II",
@@ -29,6 +32,8 @@ export default function Services() {
       title: "Un site plus complet",
       description:
         "Plusieurs pages, un blog pour vos actualités et un formulaire de contact. Vous changez vos textes vous-même, sans appeler personne.",
+      to: "/creation-boutique-en-ligne",
+      lien: "Vendre en ligne : la boutique sur mesure",
     },
     {
       numeral: "III",
@@ -36,6 +41,8 @@ export default function Services() {
       title: "La refonte de votre site",
       description:
         "Votre site a vieilli ou rame sur téléphone ? Je le remets à neuf en gardant ce qui marche déjà sur Google.",
+      to: "/refonte-site-internet",
+      lien: "La refonte en détail",
     },
     {
       numeral: "IV",
@@ -50,6 +57,8 @@ export default function Services() {
       title: "Être trouvé sur Google (référencement)",
       description:
         "Quand on cherche votre métier près de chez vous, votre entreprise doit apparaître. Sur Google, et aussi dans ChatGPT ou Perplexity.",
+      to: "/referencement-local",
+      lien: "Le référencement local en détail",
     },
     {
       numeral: "VI",
@@ -146,6 +155,15 @@ export default function Services() {
                     <p className="hero-body text-[15px] sm:text-[16px] leading-[1.65] text-foret/70">
                       {s.description}
                     </p>
+                    {"to" in s && (
+                      <Link
+                        to={s.to}
+                        className="hero-body mt-3 inline-flex min-h-[44px] items-center gap-1.5 text-[15px] font-medium text-foret underline decoration-soleil decoration-2 underline-offset-[5px] hover:text-foret-moyen"
+                      >
+                        {s.lien}
+                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </motion.li>

@@ -502,6 +502,27 @@ blockquote .hero-handwritten {
 @keyframes svc-cadre { 0%, 6% { transform: scale(1.18); opacity: 0; } 30%, 100% { transform: none; opacity: 1; } }
 @keyframes svc-rec { 0% { opacity: 1; } 50% { opacity: 0; } }
 
+/* Scènes des pages par service (services/ScenesParcours.tsx). Cinq temps
+   d'entrée successifs sur un cycle de 9 s ; le décalage de départ vient des
+   variables --dx, --dy et --s posées sur l'élément. État de base = image finale. */
+.svc-p1, .svc-p2, .svc-p3, .svc-p4, .svc-p5 { transform-origin: center; animation-duration: 9s; animation-timing-function: cubic-bezier(.16,1,.3,1); }
+.svc-p1 { animation-name: svc-p1; } .svc-p2 { animation-name: svc-p2; } .svc-p3 { animation-name: svc-p3; }
+.svc-p4 { animation-name: svc-p4; } .svc-p5 { animation-name: svc-p5; }
+@keyframes svc-p1 { 0%, 4% { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(var(--s, 1)); } 13%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-p2 { 0%, 16% { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(var(--s, 1)); } 25%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-p3 { 0%, 28% { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(var(--s, 1)); } 37%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-p4 { 0%, 40% { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(var(--s, 1)); } 49%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+@keyframes svc-p5 { 0%, 52% { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(var(--s, 1)); } 61%, 90% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+.svc-p-halo { opacity: 0; transform-origin: center; animation: svc-p-halo 9s ease-out infinite; }
+@keyframes svc-p-halo { 0%, 50% { opacity: 0; transform: scale(1); } 54% { opacity: .9; } 72%, 100% { opacity: 0; transform: scale(1.45); } }
+.svc-p-ancien { opacity: .4; animation: svc-p-ancien 9s ease-in-out infinite; }
+@keyframes svc-p-ancien { 0%, 12% { opacity: 1; } 40%, 90% { opacity: .4; } 97%, 100% { opacity: 1; } }
+.svc-p-commande { animation: svc-p-commande 9s cubic-bezier(.6,0,.2,1) infinite; }
+@keyframes svc-p-commande { 0% { opacity: 0; transform: translateX(-216px); } 4%, 14% { opacity: 1; transform: translateX(-216px); } 26%, 38% { opacity: 1; transform: translateX(-108px); } 50%, 90% { opacity: 1; transform: none; } 95% { opacity: 0; transform: none; } 100% { opacity: 0; transform: translateX(-216px); } }
+
+/* Pages par service : la ligne du déroulement se trace à l'arrivée à l'écran */
+.etapes-trait { transform-origin: top; }
+
 @media (prefers-reduced-motion: reduce) {
   .svc [class*="svc-"] { animation: none !important; }
 }

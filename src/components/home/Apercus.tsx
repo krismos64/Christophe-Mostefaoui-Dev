@@ -37,12 +37,12 @@ function LienSuite({ to, children, sombre = false }: { to: string; children: str
   );
 }
 
-const services = [
-  { scene: SceneVitrine, titre: "Un site vitrine", texte: "Vos services, vos horaires et votre téléphone, en quelques pages claires." },
-  { scene: SceneComplet, titre: "Un site plus complet", texte: "Un blog, un formulaire, des pages que vous modifiez vous-même." },
-  { scene: SceneRefonte, titre: "La refonte de votre site", texte: "Un site daté remis à neuf, en gardant ce qui marche déjà sur Google." },
+const services: { scene: () => JSX.Element; titre: string; texte: string; to?: string; lien?: string }[] = [
+  { scene: SceneVitrine, titre: "Un site vitrine", texte: "Vos services, vos horaires et votre téléphone, en quelques pages claires.", to: "/creation-site-vitrine", lien: "Création de site vitrine" },
+  { scene: SceneComplet, titre: "Un site plus complet", texte: "Un blog, un formulaire, des pages que vous modifiez vous-même.", to: "/creation-boutique-en-ligne", lien: "Vendre en ligne : la boutique sur mesure" },
+  { scene: SceneRefonte, titre: "La refonte de votre site", texte: "Un site daté remis à neuf, en gardant ce qui marche déjà sur Google.", to: "/refonte-site-internet", lien: "Refonte de site internet" },
   { scene: SceneAssistant, titre: "Un assistant pour vos clients", texte: "Un chatbot qui répond aux questions courantes, jour et nuit." },
-  { scene: SceneGoogle, titre: "Être trouvé sur Google", texte: "Apparaître quand on cherche votre métier près de chez vous." },
+  { scene: SceneGoogle, titre: "Être trouvé sur Google", texte: "Apparaître quand on cherche votre métier près de chez vous.", to: "/referencement-local", lien: "Référencement local" },
   { scene: SceneDrone, titre: "Vidéo et drone", texte: "Vidéos et vues aériennes, par un télépilote certifié DGAC." },
 ];
 
@@ -59,7 +59,7 @@ export function ApercuServices() {
           pas. Déplacement offert dans tout le 64.
         </p>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ scene: Scene, titre, texte }) => (
+          {services.map(({ scene: Scene, titre, texte, to, lien }) => (
             <li
               key={titre}
               className="group flex flex-col overflow-hidden rounded-2xl border border-foret/10 bg-white transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_24px_40px_-28px_rgba(18,49,43,0.45)]"
@@ -74,6 +74,15 @@ export function ApercuServices() {
                   />
                 </h3>
                 <p className="mt-3 text-[16px] leading-relaxed text-foret/75">{texte}</p>
+                {to && (
+                  <Link
+                    to={to}
+                    className={`mt-3 inline-flex min-h-[44px] items-center gap-1.5 text-[15px] font-bold text-foret underline decoration-soleil decoration-2 underline-offset-[5px] hover:text-foret-moyen focus-visible:outline-foret ${focus}`}
+                  >
+                    {lien}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )}
               </div>
             </li>
           ))}

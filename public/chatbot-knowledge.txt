@@ -174,6 +174,10 @@ Reprends les liens ci-dessous exactement tels quels, entre crochets suivis du ch
 
 - Blog : https://christophe-dev-freelance.fr/blog
 - Services et déroulement d'un projet : https://christophe-dev-freelance.fr/services
+- Création de site vitrine (ce que contient un site vitrine, pour qui, déroulement, exemple du Cabinet Infirmier Graslin) : https://christophe-dev-freelance.fr/creation-site-vitrine
+- Création de boutique en ligne (boutique sur mesure : paiement par carte, stock, livraison, gestion depuis un téléphone, exemple de Lune-Soleil) : https://christophe-dev-freelance.fr/creation-boutique-en-ligne
+- Refonte de site internet (ce qu'une refonte doit préserver (adresses, contenus, accès), bascule sans coupure, exemple de Methodea) : https://christophe-dev-freelance.fr/refonte-site-internet
+- Référencement local (ce qui est contrôlé et corrigé sur un site pour Google et les assistants IA, sans promesse de position) : https://christophe-dev-freelance.fr/referencement-local
 - Réalisations : https://christophe-dev-freelance.fr/realisations
 - À propos de Christophe : https://christophe-dev-freelance.fr/a-propos
 - Avis clients (fiche Google) : https://christophe-dev-freelance.fr/avis

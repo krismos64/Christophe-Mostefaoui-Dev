@@ -39,6 +39,17 @@ npm run preview    # Preview build
   éléments d'accessibilité à NE PAS retirer : le lien d'évitement et
   `MotionConfig` (voir la section Accessibilité plus bas)
 - Pages intérieures (refonte du 05/11/2026) : `/services`, `/realisations`, `/a-propos`, `/contact` dans `src/pages/`, chacune avec `PageSeo` (titre, canonical, WebPage + BreadcrumbList) et `PageHero` (bandeau vert, h1 unique). La home ne garde que des aperçus qui y renvoient ; les ancres `#services`, `#portfolio`, `#about`, `#faq` restent sur la home. Le formulaire de contact vit seulement sur `/contact` depuis le 05/11/2026 (lien dans la navbar), avec le schéma VideoObject de la vidéo de présentation ; un ancien lien `/#contact` est renvoyé vers `/contact` par la home. Les boutons de devis passent par `LienContact` (vrai lien `/contact`, défilement si le formulaire est sur la page)
+- Pages dédiées par service (13/11/2026) : `/creation-site-vitrine`,
+  `/creation-boutique-en-ligne`, `/refonte-site-internet`, `/referencement-local`.
+  Contenu dans `src/data/servicePages.ts`, gabarit `src/pages/ServiceDetail.tsx`
+  (schémas Service + FAQPage, fil d'Ariane à 3 niveaux via `PageSeo parent`),
+  scènes dans `components/services/ScenesParcours.tsx` (classes `svc-p*`,
+  mêmes règles que `ServicesScenes`). Chaque page garde son bloc `propre`,
+  distinct des trois autres : ne pas en faire quatre copies d'un même texte, ni
+  décliner service × ville (pages satellites). Les faits cités (délais, paiement
+  en trois fois, Stripe, Mondial Relay) doivent rester ceux de
+  `chatbot-knowledge.txt`. Ajouter une page de service = l'ajouter au sitemap,
+  aux routes d'`App.tsx`, aux 3 fichiers LLM, au footer et au catalogue JSON-LD
 - `scripts/prerender.mjs` — pré-rendu statique au build : chaque route du
   sitemap (+ EXTRA_ROUTES) devient un .html complet dans dist/, lisible par les
   crawlers sans JS (GPTBot, ClaudeBot…). Les fichiers sont PLATS (blog.html,

@@ -11,6 +11,8 @@ type Props = {
   chemin: string;
   /** Nom court affiché dans le fil d'Ariane, ex. "Services" */
   nomCourt: string;
+  /** Page parente dans le fil d'Ariane (ex. Services pour une page de service) */
+  parent?: { nom: string; chemin: string };
   /** Schémas de PAGE supplémentaires (jamais d'entité d'identité : elles vivent dans index.html) */
   schemas?: Record<string, unknown>[];
 };
@@ -20,8 +22,13 @@ type Props = {
  * Open Graph, et un graphe JSON-LD WebPage + BreadcrumbList relié à
  * l'entité #business déclarée dans index.html.
  */
-export default function PageSeo({ titre, description, chemin, nomCourt, schemas = [] }: Props) {
+export default function PageSeo({ titre, description, chemin, nomCourt, parent, schemas = [] }: Props) {
   const url = `${BASE_URL}${chemin}`;
+  const ariane = [
+    { name: "Accueil", item: `${BASE_URL}/` },
+    ...(parent ? [{ name: parent.nom, item: `${BASE_URL}${parent.chemin}` }] : []),
+    { name: nomCourt, item: url },
+  ];
   const graphe = {
     "@context": "https://schema.org",
     "@graph": [
@@ -43,10 +50,7 @@ export default function PageSeo({ titre, description, chemin, nomCourt, schemas 
       {
         "@type": "BreadcrumbList",
         "@id": `${url}#ariane`,
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Accueil", item: `${BASE_URL}/` },
-          { "@type": "ListItem", position: 2, name: nomCourt, item: url },
-        ],
+        itemListElement: ariane.map((e, i) => ({ "@type": "ListItem", position: i + 1, ...e })),
       },
       ...schemas,
     ],

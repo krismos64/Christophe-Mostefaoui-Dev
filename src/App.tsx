@@ -29,6 +29,7 @@ const BlogPost = lazy(() => import("./pages/BlogPost"));
 const LocalLanding = lazy(() => import("./pages/LocalLanding"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage"));
+const ServiceDetail = lazy(() => import("./pages/ServiceDetail"));
 const Realisations = lazy(() => import("./pages/Realisations"));
 const APropos = lazy(() => import("./pages/APropos"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -101,6 +102,11 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/faq" element={<Navigate to="/#faq" replace />} />
                     <Route path="/services" element={<ServicesPage />} />
+                    {/* Pages dédiées par service (src/data/servicePages.ts) */}
+                    <Route path="/creation-site-vitrine" element={<ServiceDetail />} />
+                    <Route path="/creation-boutique-en-ligne" element={<ServiceDetail />} />
+                    <Route path="/refonte-site-internet" element={<ServiceDetail />} />
+                    <Route path="/referencement-local" element={<ServiceDetail />} />
                     <Route path="/realisations" element={<Realisations />} />
                     <Route path="/a-propos" element={<APropos />} />
                     <Route path="/contact" element={<Contact />} />
