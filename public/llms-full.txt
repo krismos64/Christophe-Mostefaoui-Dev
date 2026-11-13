@@ -12,6 +12,7 @@
 - Création de site vitrine : https://christophe-dev-freelance.fr/creation-site-vitrine (ce que contient un site vitrine, pour qui, déroulement, exemple du Cabinet Infirmier Graslin)
 - Création de boutique en ligne : https://christophe-dev-freelance.fr/creation-boutique-en-ligne (boutique sur mesure : paiement par carte, stock, livraison, gestion depuis un téléphone, exemple de Lune-Soleil)
 - Refonte de site internet : https://christophe-dev-freelance.fr/refonte-site-internet (ce qu'une refonte doit préserver (adresses, contenus, accès), bascule sans coupure, exemple de Methodea)
+- Application web sur mesure : https://christophe-dev-freelance.fr/application-web-sur-mesure (outil métier, espace client, gestion de stock ou de commandes, exemple de l'administration de Lune-Soleil)
 - Référencement local : https://christophe-dev-freelance.fr/referencement-local (ce qui est contrôlé et corrigé sur un site pour Google et les assistants IA, sans promesse de position)
 - Réalisations : https://christophe-dev-freelance.fr/realisations (les sites clients et SmartPlanning)
 - À propos : https://christophe-dev-freelance.fr/a-propos (parcours, vidéo de présentation)

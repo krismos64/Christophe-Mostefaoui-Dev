@@ -6,6 +6,7 @@ import OptimizedPicture from "../components/common/OptimizedPicture";
 import PageHero from "../components/layout/PageHero";
 import PageSeo from "../components/seo/PageSeo";
 import {
+  ParcoursApplication,
   ParcoursBoutique,
   ParcoursLocal,
   ParcoursRefonte,
@@ -21,6 +22,7 @@ const scenes = {
   boutique: ParcoursBoutique,
   refonte: ParcoursRefonte,
   local: ParcoursLocal,
+  application: ParcoursApplication,
 };
 
 const ease = [0.16, 1, 0.3, 1] as const;

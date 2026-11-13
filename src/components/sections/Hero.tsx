@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 // Villes qui ont leur page locale (src/data/localPages.ts)
 const villes = [
   { nom: "Lescar, Lons et Billère", to: "/creation-site-internet-pau" },
+  { nom: "Artix", to: "/creation-site-internet-artix" },
   { nom: "Orthez et Béarn", to: "/creation-site-internet-orthez-bearn" },
   { nom: "Bayonne", to: "/creation-site-internet-bayonne" },
   { nom: "Biarritz", to: "/creation-site-internet-biarritz" },

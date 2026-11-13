@@ -107,6 +107,7 @@ function App() {
                     <Route path="/creation-boutique-en-ligne" element={<ServiceDetail />} />
                     <Route path="/refonte-site-internet" element={<ServiceDetail />} />
                     <Route path="/referencement-local" element={<ServiceDetail />} />
+                    <Route path="/application-web-sur-mesure" element={<ServiceDetail />} />
                     <Route path="/realisations" element={<Realisations />} />
                     <Route path="/a-propos" element={<APropos />} />
                     <Route path="/contact" element={<Contact />} />
@@ -119,6 +120,7 @@ function App() {
                       element={<PrivacyPolicy />}
                     />
                     {/* Pages locales SEO (contenu : src/data/localPages.ts) */}
+                    <Route path="/creation-site-internet-artix" element={<LocalLanding />} />
                     <Route
                       path="/creation-site-internet-pau"
                       element={<LocalLanding />}

@@ -2,8 +2,8 @@ import { Helmet } from "react-helmet-async";
 import { useParams, Navigate, Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { motion } from "framer-motion";
-import { getBlogPostBySlug } from "../data/blogPosts";
-import { useNavigation } from "../hooks/useNavigation";
+import LienContact from "../components/common/LienContact";
+import { blogPosts, getBlogPostBySlug } from "../data/blogPosts";
 
 const categories = {
   "veille-tech": "Veille technologique",
@@ -51,7 +51,6 @@ const renderInline = (text: string) => {
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { handleNavigation } = useNavigation();
 
   if (!slug) {
     return <Navigate to="/blog" replace />;
@@ -62,6 +61,15 @@ const BlogPost = () => {
   if (!post) {
     return <Navigate to="/blog" replace />;
   }
+
+  // Trois articles liés : ceux de la même catégorie d'abord, puis les plus récents
+  const autres = blogPosts
+    .filter((a) => a.slug !== post.slug)
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+  const articlesLies = [
+    ...autres.filter((a) => a.category === post.category),
+    ...autres.filter((a) => a.category !== post.category),
+  ].slice(0, 3);
 
   // Image dédiée au partage social (1200x630), à côté de l'image éditoriale
   const ogImageUrl = post.imageUrl.replace(/\.[^.]+$/, "-og.jpg");
@@ -165,17 +173,16 @@ const BlogPost = () => {
             transition={{ duration: 0.5 }}
             className="mb-10"
           >
-            <button
-              type="button"
-              onClick={() => handleNavigation("/blog")}
-              className="hero-body group inline-flex items-center gap-2 text-[14px] text-foret/75 hover:text-foret-moyen transition-colors"
+            <Link
+              to="/blog"
+              className="hero-body group inline-flex min-h-[44px] items-center gap-2 text-[14px] text-foret/75 hover:text-foret-moyen transition-colors"
             >
               <ArrowLeft
                 className="h-4 w-4 transition-transform group-hover:-translate-x-1"
                 aria-hidden="true"
               />
               Retour au blog
-            </button>
+            </Link>
           </motion.div>
 
           {/* Header de l'article */}
@@ -320,6 +327,37 @@ const BlogPost = () => {
             })}
           </div>
 
+          {/* Articles liés : même catégorie d'abord, puis les plus récents.
+              Vrais liens, présents dans le HTML pré-rendu (maillage interne) */}
+          <nav aria-labelledby="a-lire-aussi" className="mb-12 border-t border-foret/15 pt-10 sm:pt-12">
+            <h2 id="a-lire-aussi" className="text-[24px] sm:text-[28px] leading-tight text-foret mb-6">
+              À lire aussi
+            </h2>
+            <ul className="hero-body space-y-1">
+              {articlesLies.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    to={`/blog/${a.slug}`}
+                    className="group flex min-h-[48px] items-center justify-between gap-4 border-b border-foret/10 py-3 text-[16px] leading-snug text-foret hover:text-foret-moyen sm:text-[17px]"
+                  >
+                    <span>{a.seoTitle ?? a.title}</span>
+                    <ArrowRight
+                      className="h-4 w-4 flex-shrink-0 text-soleil transition-transform group-hover:translate-x-1"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="hero-body mt-6 text-[15px] text-foret/75 sm:text-[16px]">
+              Ce que je réalise pour les entreprises :{" "}
+              <Link to="/services" className="font-medium text-foret underline decoration-soleil decoration-2 underline-offset-4 hover:text-foret-moyen">
+                le détail de mes services
+              </Link>
+              .
+            </p>
+          </nav>
+
           {/* CTA de fin d'article */}
           <div className="pt-10 sm:pt-12 border-t border-foret/15">
             <p className="hero-handwritten text-[19px] sm:text-[22px] text-foret-moyen mb-5">
@@ -330,27 +368,22 @@ const BlogPost = () => {
               engagement.
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
-              <button
-                type="button"
-                onClick={() => handleNavigation("/contact")}
-                className="hero-cta-primary group inline-flex"
-              >
+              <LienContact className="hero-cta-primary group inline-flex">
                 <span>Demander un devis</span>
                 <span className="hero-cta-sub">gratuit · sous 24h</span>
                 <ArrowRight
                   className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1"
                   aria-hidden="true"
                 />
-              </button>
-              <button
-                type="button"
-                onClick={() => handleNavigation("/blog")}
-                className="hero-body group inline-flex items-center gap-2 text-[15px] text-foret/80 hover:text-foret-moyen transition-colors"
+              </LienContact>
+              <Link
+                to="/blog"
+                className="hero-body group inline-flex min-h-[44px] items-center gap-2 text-[15px] text-foret/80 hover:text-foret-moyen transition-colors"
               >
                 <span className="border-b border-current/40 pb-0.5 group-hover:border-soleil">
                   Autres articles
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </article>

@@ -267,3 +267,53 @@ export function ParcoursLocal() {
     </Scene>
   );
 }
+
+/* 5. Application sur mesure : le même outil au bureau et sur le téléphone */
+export function ParcoursApplication() {
+  const ys = [68, 98, 128];
+  return (
+    <Scene>
+      <text x="134" y="22" textAnchor="middle" {...legende}>Au bureau</text>
+      <text x="290" y="74" textAnchor="middle" {...legende}>Sur téléphone</text>
+
+      {/* Fenêtre de l'application */}
+      <rect x="24" y="34" width="220" height="190" rx="10" fill={C.foret} opacity="0.08" />
+      <rect x="24" y="30" width="220" height="190" rx="10" fill={C.blanc} />
+      <rect x="24" y="30" width="220" height="24" rx="10" fill={C.foret} />
+      <rect x="24" y="44" width="220" height="10" fill={C.foret} />
+      <rect x="34" y="38" width="34" height="7" rx="3.5" fill={C.soleilClair} />
+      <rect x="24" y="54" width="50" height="166" fill={C.creme} />
+      <rect x="24" y="210" width="50" height="10" rx="5" fill={C.creme} />
+      {[68, 84, 100, 116].map((y, i) => (
+        <rect key={y} x="33" y={y} width="32" height="6" rx="3" fill={i === 0 ? C.moyen : C.brume} />
+      ))}
+      {ys.map((y, i) => (
+        <g key={y} className={`svc-p${i + 1}`} style={depuis(0, 10)}>
+          <rect x="86" y={y} width="146" height="22" rx="5" fill={C.neige} />
+          <circle cx="98" cy={y + 11} r="4.5" fill={i === 0 ? C.soleil : C.clair} />
+          <rect x="110" y={y + 8} width={[58, 46, 52][i]} height="6" rx="3" fill={C.clair} />
+          <rect x="196" y={y + 6} width="28" height="10" rx="5" fill={i === 0 ? C.soleilClair : C.brume} />
+        </g>
+      ))}
+      <rect x="86" y="176" width="64" height="20" rx="10" fill={C.soleil} />
+      <rect x="100" y="184" width="36" height="4" rx="2" fill={C.foret} />
+
+      {/* Le même contenu arrive sur le téléphone */}
+      <rect x="236" y="90" width="96" height="160" rx="15" fill={C.foret} opacity="0.1" />
+      <rect x="236" y="84" width="96" height="160" rx="15" fill={C.foret} />
+      <rect x="242" y="91" width="84" height="146" rx="10" fill={C.blanc} />
+      <rect x="250" y="100" width="30" height="6" rx="3" fill={C.soleilClair} />
+      {[116, 142, 168].map((y, i) => (
+        <g key={y} className={`svc-p${i + 2}`} style={depuis(-34)}>
+          <rect x="249" y={y} width="70" height="20" rx="5" fill={C.neige} />
+          <circle cx="259" cy={y + 10} r="4" fill={i === 0 ? C.soleil : C.clair} />
+          <rect x="268" y={y + 7} width={[40, 32, 36][i]} height="6" rx="3" fill={C.clair} />
+        </g>
+      ))}
+      <rect x="249" y="204" width="70" height="20" rx="10" fill={C.soleil} />
+      <rect x="266" y="212" width="36" height="4" rx="2" fill={C.foret} />
+
+      <Coche x={332} y={88} etape={5} />
+    </Scene>
+  );
+}

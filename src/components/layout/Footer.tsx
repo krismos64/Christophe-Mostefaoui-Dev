@@ -214,6 +214,7 @@ export default function Footer() {
           Création de site internet :{" "}
           {[
             { label: "Agglomération de Pau", to: "/creation-site-internet-pau" },
+            { label: "Artix", to: "/creation-site-internet-artix" },
             { label: "Bayonne", to: "/creation-site-internet-bayonne" },
             { label: "Biarritz", to: "/creation-site-internet-biarritz" },
             {
@@ -245,6 +246,7 @@ export default function Footer() {
             { label: "Boutique en ligne", to: "/creation-boutique-en-ligne" },
             { label: "Refonte de site", to: "/refonte-site-internet" },
             { label: "Référencement local", to: "/referencement-local" },
+            { label: "Application sur mesure", to: "/application-web-sur-mesure" },
           ].map((z, i, arr) => (
             <span key={z.to}>
               <Link

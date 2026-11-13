@@ -319,6 +319,76 @@ export const localPages: LocalPage[] = [
       },
     ],
   },
+  {
+    slug: "creation-site-internet-artix",
+    ville: "Artix",
+    labelFooter: "Artix",
+    metaTitle: "Création de site internet à Artix (64) : développeur local",
+    metaDescription:
+      "Développeur web installé à Artix : sites internet pour les commerces, artisans et entreprises d'Artix, Lacq, Mourenx et Arthez-de-Béarn. Devis gratuit sous 24h.",
+    accroche: "↳ votre développeur web à Artix",
+    h1: "Création de site internet à Artix",
+    intro:
+      "Artix est ma commune. J'y ai construit la boutique en ligne de Lune-Soleil, une créatrice de bijoux d'ici, et je me rends chez mes clients de la commune en quelques minutes. Cette page s'adresse aux commerces, artisans et entreprises d'Artix et des communes voisines.",
+    sections: [
+      {
+        titre: "Lune-Soleil, une boutique en ligne née à Artix",
+        paragraphes: [
+          "Lune-Soleil est la boutique d'une créatrice de bijoux faits main installée à Artix. Je lui ai construit une boutique en ligne sur mesure : paiement par carte, stock partagé entre le site et les marchés, livraison Mondial Relay, et une administration qu'elle utilise depuis son téléphone, y compris sur un stand de marché.",
+          "Son avis figure sur ma fiche Google et sur la page des avis de ce site : vous pouvez le lire, puis visiter sa boutique.",
+        ],
+      },
+      {
+        titre: "Ce que vous pouvez me confier",
+        paragraphes: [
+          "Site vitrine, boutique en ligne, refonte d'un site vieillissant, référencement local, application sur mesure : chaque prestation a sa page sur ce site. Pour une entreprise d'Artix, s'y ajoutent les photos et les vidéos de vos locaux ou de vos chantiers, y compris par drone (je suis télépilote certifié DGAC), que je viens tourner sur place.",
+        ],
+      },
+      {
+        titre: "Un projet suivi sur place",
+        paragraphes: [
+          "Le premier échange est gratuit et se fait dans vos locaux. Vous recevez ensuite un devis sous 24h, avec le périmètre, le planning et le prix. Après la mise en ligne, je reste votre interlocuteur pour les modifications et la maintenance.",
+        ],
+      },
+    ],
+    communes: [
+      "Artix",
+      "Lacq",
+      "Mourenx",
+      "Arthez-de-Béarn",
+      "Denguin",
+      "Labastide-Cézéracq",
+      "Serres-Sainte-Marie",
+      "Pardies",
+    ],
+    articles: [
+      {
+        to: "/creation-boutique-en-ligne",
+        label: "La boutique en ligne sur mesure, en détail",
+      },
+      {
+        to: "/avis",
+        label: "Les avis de mes clients, recopiés depuis ma fiche Google",
+      },
+    ],
+    faq: [
+      {
+        question: "Où se rencontre-t-on ?",
+        reponse:
+          "Chez vous, dans votre atelier, votre boutique ou vos bureaux. J'habite à Artix : pour une entreprise de la commune ou des alentours, un rendez-vous est souvent possible le jour même, sans frais de déplacement.",
+      },
+      {
+        question: "Travaillez-vous seulement pour les entreprises d'Artix ?",
+        reponse:
+          "Non. Je me déplace gratuitement dans toutes les Pyrénées-Atlantiques, de Pau à la côte basque, et je travaille à distance partout en France. Artix est l'endroit où je vis et où je travaille.",
+      },
+      {
+        question: "Combien coûte un site internet à Artix ?",
+        reponse:
+          "Je travaille uniquement au devis sur mesure, gratuit et envoyé sous 24h après un premier échange. Le prix dépend de ce que le site doit faire : nombre de pages, contenus à produire, fonctions prévues.",
+      },
+    ],
+  },
 ];
 
 export const getLocalPage = (pathname: string): LocalPage | undefined =>

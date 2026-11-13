@@ -25,7 +25,7 @@ export interface ServicePage {
   metaDescription: string;
   h1: string;
   intro: string;
-  scene: "vitrine" | "boutique" | "refonte" | "local";
+  scene: "vitrine" | "boutique" | "refonte" | "local" | "application";
   /** Champ serviceType du schéma Service */
   serviceType: string;
   pourQui: { titre: string; items: string[] };
@@ -592,6 +592,145 @@ export const servicePages: ServicePage[] = [
       { to: "/blog/visibilite-locale-pau-bearn-cote-basque", label: "Être visible localement à Pau, Bayonne et dans le Béarn" },
       { to: "/blog/referencement-google-chatgpt-2026", label: "Être trouvé sur Google et sur ChatGPT" },
       { to: "/blog/questions-chatgpt-artisans-commerces-locaux", label: "Ce que les gens demandent à ChatGPT sur les commerces locaux" },
+    ],
+  },
+  {
+    slug: "application-web-sur-mesure",
+    nomCourt: "Application sur mesure",
+    resume: "Un outil construit sur votre façon de travailler.",
+    metaTitle: "Application web sur mesure à Pau pour TPE et PME",
+    metaDescription:
+      "Outil métier, espace client, gestion de stock ou de commandes : une application web construite sur votre façon de travailler. Freelance à Pau, devis sous 24h.",
+    h1: "Application web sur mesure pour TPE et PME.",
+    intro:
+      "Quand un tableur, un carnet et des messages ne suffisent plus à suivre votre activité, un outil construit pour vous peut en regrouper l'essentiel. Je le conçois à partir de votre façon de travailler, et vous l'utilisez au bureau comme sur votre téléphone.",
+    scene: "application",
+    serviceType: "Développement d'application web sur mesure",
+    pourQui: {
+      titre: "Une application sur mesure vous convient si",
+      items: [
+        "Vous suivez votre activité avec plusieurs outils qui ne se parlent pas : tableur, carnet, messages.",
+        "Vos clients ou vos employés doivent se connecter pour suivre une commande, un dossier ou un rendez-vous.",
+        "Les logiciels du marché vous font payer des fonctions dont vous ne vous servez pas, sans faire celle qu'il vous faut.",
+      ],
+    },
+    comprend: {
+      titre: "Ce que contient la prestation",
+      items: [
+        {
+          titre: "Un outil calqué sur votre organisation",
+          texte:
+            "Je conçois les écrans à partir de vos tâches, avec vos mots et dans l'ordre où vous travaillez.",
+        },
+        {
+          titre: "Un accès pour chacun",
+          texte:
+            "Gérant, employés, clients : chaque personne se connecte et voit ce qui la concerne.",
+        },
+        {
+          titre: "Utilisable sur téléphone",
+          texte:
+            "L'application s'ouvre dans un navigateur, sans rien installer, sur ordinateur comme sur téléphone.",
+        },
+        {
+          titre: "Paiement et factures, si vous en avez besoin",
+          texte:
+            "Le paiement par carte passe par Stripe, et les factures sont générées par l'application.",
+        },
+        {
+          titre: "Un outil qui vous appartient",
+          texte:
+            "L'application est à vous. Après la livraison, les corrections de bugs sont prises en charge, et les nouvelles fonctions font l'objet d'un devis.",
+        },
+      ],
+    },
+    propre: {
+      surtitre: "Avant d'écrire du code",
+      titre: "Ce qu'on décide ensemble avant de construire.",
+      intro:
+        "Avant la première ligne de code, nous fixons quatre points : qui s'en sert, ce qui doit aller vite, ce qui existe déjà et ce qui attendra.",
+      items: [
+        {
+          titre: "Qui s'en sert",
+          texte: "Vous seul, votre équipe, vos clients : la liste des personnes fixe celle des écrans.",
+        },
+        {
+          titre: "Ce qui se fait en un geste",
+          texte:
+            "La tâche que vous répétez le plus souvent doit demander le moins d'étapes possible, y compris sur téléphone.",
+        },
+        {
+          titre: "Ce qui existe déjà",
+          texte:
+            "Vos logiciels actuels restent en place quand ils font bien leur travail. On regarde ce qui peut être relié à l'application.",
+        },
+        {
+          titre: "Ce qu'on garde pour plus tard",
+          texte:
+            "La première version couvre l'essentiel. Le reste s'ajoute ensuite, sur devis, quand l'usage le demande.",
+        },
+      ],
+    },
+    etapes: [
+      {
+        titre: "Premier échange, gratuit",
+        texte:
+          "Vous me montrez comment vous travaillez aujourd'hui, avec vos vrais documents. Je vous dis si une application se justifie.",
+      },
+      {
+        titre: "Devis sous 24h",
+        texte:
+          "Les écrans prévus, le planning et le prix. Le paiement en trois fois sans frais est possible.",
+      },
+      {
+        titre: "Une première version à essayer",
+        texte:
+          "Je construis l'application, puis vous l'essayez sur vos cas réels avant sa mise en service.",
+      },
+      {
+        titre: "Mise en service et formation",
+        texte:
+          "Je vous forme, ainsi que votre équipe, et je reste votre interlocuteur pour la suite.",
+      },
+    ],
+    preuve: {
+      projet: "Lune-Soleil",
+      titre: "Un exemple en ligne : l'administration de Lune-Soleil",
+      texte:
+        "Derrière la boutique de cette créatrice de bijoux d'Artix, une administration sur mesure : stock partagé entre le site et les marchés, commandes, factures. Elle la gère depuis son téléphone, y compris sur un stand de marché. Je développe et j'exploite aussi seul SmartPlanning, un logiciel de gestion de plannings d'équipe.",
+      lien: { href: "https://lune-soleil.fr/", label: "Visiter la boutique Lune-Soleil" },
+    },
+    limites: {
+      titre: "Quand un logiciel du marché suffit",
+      texte:
+        "Si un logiciel existant couvre votre besoin sans vous contraindre, prenez-le : il sera en place plus vite. Le sur mesure se justifie quand aucun outil ne correspond à votre organisation, ou quand vous en empilez plusieurs pour faire un seul travail.",
+    },
+    faq: [
+      {
+        question: "Combien coûte une application sur mesure ?",
+        reponse:
+          "Je travaille uniquement au devis, gratuit et envoyé sous 24h après un premier échange. Le prix dépend du nombre d'écrans, des types d'utilisateurs et des liaisons avec vos outils.",
+      },
+      {
+        question: "Combien de temps faut-il pour la développer ?",
+        reponse:
+          "Une application sur mesure demande plusieurs semaines, selon sa complexité. Le planning figure dans le devis.",
+      },
+      {
+        question: "Que se passe-t-il si mes besoins changent ?",
+        reponse:
+          "Les corrections de bugs sont prises en charge après la livraison. Les nouvelles fonctions font l'objet d'un devis, et une maintenance continue est possible.",
+      },
+      {
+        question: "Peut-on relier l'application à mes outils actuels ?",
+        reponse:
+          "Cela dépend de vos outils : on le regarde au premier échange. Pour les tâches répétitives (relances, rappels, rangement des demandes), une automatisation avec Make, Zapier ou n8n est parfois plus simple qu'un développement.",
+      },
+    ],
+    liens: [
+      { to: "/blog/smartplanning-saas-solo-ce-que-ca-change-pour-vous", label: "Un logiciel développé seul : ce que ça change pour vous" },
+      { to: "/blog/automatiser-taches-repetitives-petite-entreprise", label: "Automatiser les tâches répétitives d'une petite entreprise" },
+      { to: "/blog/ia-petite-entreprise-usages-concrets", label: "L'IA pour une petite entreprise : quatre usages concrets" },
     ],
   },
 ];
