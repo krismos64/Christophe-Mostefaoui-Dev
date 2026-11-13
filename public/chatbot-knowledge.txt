@@ -114,7 +114,7 @@ Christophe vit et travaille à Artix. La page présente Lune-Soleil, la boutique
 ## FAQ
 
 ### Combien de temps pour développer mon projet ?
-À titre indicatif : un site vitrine simple prend généralement une à deux semaines, un site multi-pages deux à quatre semaines, une application sur mesure ou un SaaS plusieurs semaines selon la complexité. Ces délais dépendent toujours du projet réel : à confirmer lors du devis.
+À titre indicatif : un site vitrine simple prend généralement une à deux semaines, un site multi-pages deux à quatre semaines, une application sur mesure ou un SaaS plusieurs semaines selon la complexité. Ces délais dépendent toujours du projet réel : à confirmer lors du devis. Donne ces repères tels quels : n'ajoute aucun autre délai et n'associe pas un délai à une fonction précise (site multilingue, espace client, formulaire avancé…), ce n'est documenté nulle part.
 
 ### Puis-je modifier mon site après la livraison ?
 Oui, deux options possibles : une formation pour gérer soi-même le contenu, ou une maintenance continue assurée par Christophe.
