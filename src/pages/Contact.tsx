@@ -14,7 +14,7 @@ export default function Contact() {
       <PageSeo
         chemin="/contact"
         nomCourt="Contact"
-        titre="Contact : devis gratuit sous 24h | Christophe Mostefaoui, Pau"
+        titre="Contact : devis gratuit sous 24h | Christophe Mostefaoui"
         schemas={[schemaVideoPresentation()]}
         description="Parlez-moi de votre projet de site internet : réponse sous 24h, déplacement gratuit dans les Pyrénées-Atlantiques. Téléphone : 06 79 08 88 45."
       />

@@ -213,7 +213,7 @@ export default function Footer() {
         <p className="hero-body text-[13px] text-creme/70 mt-12 sm:mt-14">
           Création de site internet :{" "}
           {[
-            { label: "Pau", to: "/creation-site-internet-pau" },
+            { label: "Agglomération de Pau", to: "/creation-site-internet-pau" },
             { label: "Bayonne", to: "/creation-site-internet-bayonne" },
             { label: "Biarritz", to: "/creation-site-internet-biarritz" },
             {

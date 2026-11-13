@@ -7,6 +7,11 @@ export interface LocalPageFaq {
   reponse: string;
 }
 
+export interface LocalPageLien {
+  to: string;
+  label: string;
+}
+
 export interface LocalPageSection {
   titre: string;
   paragraphes: string[];
@@ -23,6 +28,8 @@ export interface LocalPage {
   intro: string;
   sections: LocalPageSection[];
   communes: string[];
+  /** Articles du blog liés à la page : vrais liens, texte d'ancre rédigé à la main */
+  articles: LocalPageLien[];
   faq: LocalPageFaq[];
 }
 
@@ -32,11 +39,11 @@ export const localPages: LocalPage[] = [
     ville: "Pau",
     labelFooter: "Pau",
     metaTitle:
-      "Site internet à Pau (64) : développeur web freelance local",
+      "Site internet à Lescar, Lons, Billère : agglomération de Pau",
     metaDescription:
-      "Création de sites vitrines, refontes et applications pour les commerces, artisans et PME de l'agglomération paloise. Rencontre sur place, devis sous 24h.",
+      "Sites vitrines, refontes et applications pour les commerces, artisans et PME de Lescar, Lons, Billère et de toute l'agglomération paloise. Devis sous 24h.",
     accroche: "↳ votre développeur web à Pau",
-    h1: "Création de site internet à Pau",
+    h1: "Votre site internet à Lescar, Lons, Billère et autour de Pau",
     intro:
       "Je suis Christophe, développeur web freelance installé entre Pau et Artix. Je conçois des sites vitrines, des refontes et des applications sur mesure pour les commerces, artisans, professions libérales et PME de l'agglomération paloise, avec une vraie rencontre autour d'un café plutôt qu'un ticket de support.",
     sections: [
@@ -70,6 +77,16 @@ export const localPages: LocalPage[] = [
       "Idron",
       "Bizanos",
       "Gan",
+    ],
+    articles: [
+      {
+        to: "/blog/visibilite-locale-pau-bearn-cote-basque",
+        label: "Être visible localement à Pau et dans le Béarn",
+      },
+      {
+        to: "/blog/combien-coute-site-internet-2026",
+        label: "Ce qui fait varier le devis d'un site internet",
+      },
     ],
     faq: [
       {
@@ -132,6 +149,16 @@ export const localPages: LocalPage[] = [
       "Saint-Pierre-d'Irube",
       "Ustaritz",
     ],
+    articles: [
+      {
+        to: "/blog/visibilite-locale-pau-bearn-cote-basque",
+        label: "Être visible localement à Bayonne et sur la côte basque",
+      },
+      {
+        to: "/blog/site-vitrine-ou-reseaux-sociaux",
+        label: "Site vitrine ou page Facebook : faut-il les deux ?",
+      },
+    ],
     faq: [
       {
         question: "Vous déplacez-vous vraiment jusqu'à Bayonne ?",
@@ -190,6 +217,16 @@ export const localPages: LocalPage[] = [
       "Guéthary",
       "Saint-Jean-de-Luz",
       "Hendaye",
+    ],
+    articles: [
+      {
+        to: "/blog/refonte-ou-reparation-site-internet",
+        label: "Refaire son site ou le réparer : comment choisir",
+      },
+      {
+        to: "/blog/referencement-google-chatgpt-2026",
+        label: "Être trouvé sur Google et sur ChatGPT",
+      },
     ],
     faq: [
       {
@@ -252,6 +289,16 @@ export const localPages: LocalPage[] = [
       "Oloron-Sainte-Marie",
       "Mont",
       "Arthez-de-Béarn",
+    ],
+    articles: [
+      {
+        to: "/blog/preparer-demande-devis-site-internet",
+        label: "Préparer sa demande de devis de site internet",
+      },
+      {
+        to: "/blog/automatiser-taches-repetitives-petite-entreprise",
+        label: "Automatiser les tâches répétitives d'une petite entreprise",
+      },
     ],
     faq: [
       {

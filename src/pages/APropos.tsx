@@ -10,7 +10,7 @@ export default function APropos() {
         chemin="/a-propos"
         nomCourt="À propos"
         titre="À propos : Christophe Mostefaoui, développeur web à Pau"
-        description="Douze ans de conseil client, puis le développement web. Christophe Mostefaoui crée seul les sites des TPE et PME du Béarn et du Pays basque, depuis Pau et Artix."
+        description="Douze ans de conseil client, puis le développement web. Christophe Mostefaoui crée seul les sites des TPE et PME du Béarn et du Pays basque, à Pau et Artix."
         schemas={[schemaVideoUnivers()]}
       />
       <PageHero

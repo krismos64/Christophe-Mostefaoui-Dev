@@ -83,16 +83,17 @@ const BlogPost = () => {
     "headline": post.title,
     "description": post.metaDescription,
     "image": `https://christophe-dev-freelance.fr${ogImageUrl}`,
+    // Dates lues par Google et les IA pour juger la fraîcheur de l'article
+    "datePublished": post.publishedAt,
+    "dateModified": post.publishedAt,
+    // @id : renvoie aux entités déclarées dans index.html au lieu d'en créer de nouvelles
     "author": {
       "@type": "Person",
+      "@id": "https://christophe-dev-freelance.fr/#person",
       "name": post.author,
-      "url": "https://christophe-dev-freelance.fr"
+      "url": "https://christophe-dev-freelance.fr/a-propos"
     },
-    "publisher": {
-      "@type": "Person",
-      "name": "Christophe Mostefaoui",
-      "url": "https://christophe-dev-freelance.fr"
-    },
+    "publisher": { "@id": "https://christophe-dev-freelance.fr/#organization" },
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `https://christophe-dev-freelance.fr/blog/${post.slug}`
@@ -132,6 +133,7 @@ const BlogPost = () => {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/jpeg" />
+        <meta property="article:published_time" content={post.publishedAt} />
         <meta property="article:author" content={post.author} />
         <meta property="article:section" content={getCategoryName(post.category)} />
         {post.tags.map((tag, index) => (

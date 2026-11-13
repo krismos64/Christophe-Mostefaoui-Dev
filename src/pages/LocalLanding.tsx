@@ -1,15 +1,14 @@
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import { Helmet } from "react-helmet-async";
-import { Navigate, useLocation } from "react-router-dom";
-import { useNavigation } from "../hooks/useNavigation";
+import { Link, Navigate, useLocation } from "react-router-dom";
+import LienContact from "../components/common/LienContact";
 import { getLocalPage } from "../data/localPages";
 
 const BASE_URL = "https://christophe-dev-freelance.fr";
 
 export default function LocalLanding() {
   const { pathname } = useLocation();
-  const { handleNavigation } = useNavigation();
   const page = getLocalPage(pathname);
 
   if (!page) return <Navigate to="/" replace />;
@@ -174,24 +173,49 @@ export default function LocalLanding() {
             </dl>
           </section>
 
+          {/* Maillage interne : sans ces liens, la page était une impasse pour les robots */}
+          <nav
+            className="py-8 sm:py-10 border-t border-foret/15"
+            aria-labelledby="pour-aller-plus-loin"
+          >
+            <h2
+              id="pour-aller-plus-loin"
+              className="text-[24px] sm:text-[28px] leading-tight text-foret mb-6"
+            >
+              Pour aller plus loin
+            </h2>
+            <ul className="hero-body max-w-2xl space-y-3 text-[15px] sm:text-[16px] leading-[1.7]">
+              {[
+                { to: "/services", label: "Le détail de mes services : site vitrine, refonte, référencement" },
+                { to: "/realisations", label: "Les sites que j'ai réalisés, tous en ligne" },
+                ...page.articles,
+              ].map((lien) => (
+                <li key={lien.to}>
+                  <Link
+                    to={lien.to}
+                    className="inline-flex min-h-[44px] items-center text-foret underline decoration-foret/40 underline-offset-4 hover:text-foret-moyen hover:decoration-soleil"
+                  >
+                    {lien.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
           {/* CTA final */}
           <div className="pt-10 sm:pt-12 border-t border-foret/15">
             <p className="hero-handwritten text-[19px] sm:text-[22px] text-foret-moyen mb-5">
               parlons de votre projet —
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
-              <button
-                type="button"
-                onClick={() => handleNavigation("/contact")}
-                className="hero-cta-primary group inline-flex"
-              >
+              <LienContact className="hero-cta-primary group inline-flex">
                 <span>Demander un devis</span>
                 <span className="hero-cta-sub">gratuit · sous 24h</span>
                 <ArrowRight
                   className="ml-1 h-5 w-5 transition-transform group-hover:translate-x-1"
                   aria-hidden="true"
                 />
-              </button>
+              </LienContact>
               <a
                 href="tel:+33679088845"
                 className="hero-body group inline-flex items-center gap-2 text-[15px] text-foret/80 hover:text-foret-moyen transition-colors"

@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 // Villes qui ont leur page locale (src/data/localPages.ts)
 const villes = [
-  { nom: "Pau", to: "/creation-site-internet-pau" },
+  { nom: "Lescar, Lons et Billère", to: "/creation-site-internet-pau" },
   { nom: "Orthez et Béarn", to: "/creation-site-internet-orthez-bearn" },
   { nom: "Bayonne", to: "/creation-site-internet-bayonne" },
   { nom: "Biarritz", to: "/creation-site-internet-biarritz" },
@@ -74,7 +74,7 @@ export default function Hero() {
             className="m-0 font-extrabold tracking-[-0.035em] text-creme"
           >
             <span className="mb-5 block text-[15px] font-medium tracking-normal text-foret-brume sm:text-base">
-              Développeur web freelance à Pau et Artix (64)
+              Création de site internet à Pau (64), par un développeur web freelance
             </span>
             <span className="block text-[clamp(2.6rem,6.2vw,4.6rem)] leading-[0.98]">
               {motsTitre.map((mot, i) => (

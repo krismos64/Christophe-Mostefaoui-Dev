@@ -19,8 +19,7 @@ export default function LLMOptimizedHead() {
       <meta name="llm-portfolio" content={llmMeta["llm-portfolio"]} />
       <meta name="llm-availability" content={llmMeta["llm-availability"]} />
 
-      {/* Directives crawlers - source unique */}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      {/* La balise robots vit dans index.html : elle vaut ainsi pour toutes les pages */}
       <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
       {/* Geo targeting */}
