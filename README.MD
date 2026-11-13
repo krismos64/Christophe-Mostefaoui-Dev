@@ -55,8 +55,8 @@ sur la home pour ne casser aucun lien existant.
 
 | Section | Composant | Rôle |
 | --- | --- | --- |
-| Hero | `sections/Hero.tsx` | Promesse, devis, liens vers les 4 pages locales |
-| Services (aperçu) | `home/Apercus.tsx` + `home/ServicesScenes.tsx` | 6 services en cartes animées, lien vers `/services` |
+| Hero | `sections/Hero.tsx` | h1 « Création de site internet à Pau (64) » (même requête que le title), devis, liens vers les 5 pages locales |
+| Services (aperçu) | `home/Apercus.tsx` + `home/ServicesScenes.tsx` | 6 services en cartes animées, liens vers les pages dédiées par service et vers `/services` |
 | Réalisations (aperçu) | `home/Apercus.tsx` | Lune-Soleil, Cabinet Infirmier Graslin, SmartPlanning, lien vers `/realisations` |
 | À propos (aperçu) | `home/Apercus.tsx` + `home/BureauAnime.tsx` | Présentation courte, lien vers `/a-propos` |
 | FAQ | `sections/FeaturedSnippetsFAQ.tsx` | 9 questions en `<details>` (réponses dans le HTML pré-rendu) |
@@ -70,12 +70,14 @@ ouvre `/contact`.
 Chacune a `seo/PageSeo.tsx` (titre, canonical, WebPage + BreadcrumbList) et
 `layout/PageHero.tsx` (bandeau vert, fil d'Ariane, h1 unique).
 
-- `/services` : `pages/ServicesPage.tsx` (Services + Pricing)
+- `/services` : `pages/ServicesPage.tsx` (Services + Pricing), avec un lien vers chaque page dédiée
+- Pages dédiées par service (13/11/2026) : `/creation-site-vitrine`, `/creation-boutique-en-ligne`, `/refonte-site-internet`, `/referencement-local`, `/application-web-sur-mesure`. Gabarit `pages/ServiceDetail.tsx`, contenu dans `data/servicePages.ts`, une scène animée par page (`services/ScenesParcours.tsx`), schémas `Service` + `FAQPage`, fil d'Ariane Accueil / Services / page
 - `/realisations` : `pages/Realisations.tsx` (Portfolio + SmartPlanning, données dans `data/realisations.ts`)
 - `/a-propos` : `pages/APropos.tsx` (About avec le portrait en arche, vidéo « Mon univers digital »)
-- `/contact` : `pages/Contact.tsx` (vidéo de présentation, avis Google, formulaire, zone d'intervention)
-- `/blog` : `pages/Blog.tsx` (PageHero + scène animée, article à la une, grille illustrée, filtres) ; `/blog/:slug` : `pages/BlogPost.tsx`
-- `/creation-site-internet-{pau,bayonne,biarritz,orthez-bearn}` : pages locales (`pages/LocalLanding.tsx` + `data/localPages.ts`)
+- `/contact` : `pages/Contact.tsx` (formulaire en premier, vidéo de présentation dans un décor animé, zone d'intervention)
+- `/avis` : `pages/Avis.tsx` (avis de la fiche Google recopiés mot pour mot, données dans `data/avisGoogle.ts`)
+- `/blog` : `pages/Blog.tsx` (PageHero + scène animée, article à la une, grille illustrée, filtres) ; `/blog/:slug` : `pages/BlogPost.tsx` (bloc « À lire aussi » de trois articles liés, vrais liens vers `/contact`, `/blog` et `/services`)
+- `/creation-site-internet-{pau,artix,bayonne,biarritz,orthez-bearn}` : pages locales (`pages/LocalLanding.tsx` + `data/localPages.ts`). La page `-pau` vise l'agglomération (Lescar, Lons, Billère) : la requête « création de site internet à Pau » appartient à la home. La page Artix (13/11/2026) est centrée sur Lune-Soleil
 - `/mentions-legales`, `/politique-de-confidentialite` (noindex)
 - `/faq` : redirige vers `/#faq` (règle du `.htaccess`)
 - `*` : page 404 (`pages/NotFound.tsx`)
@@ -83,7 +85,7 @@ Chacune a `seo/PageSeo.tsx` (titre, canonical, WebPage + BreadcrumbList) et
 ### Layout
 
 - `layout/Header.tsx` : navbar transparente sur le hero, verte au défilement, lien Contact et bouton « Devis gratuit » ; menu burger sous 1280 px
-- `layout/Footer.tsx` : navigation, coordonnées, lien vers la fiche Google
+- `layout/Footer.tsx` : navigation, coordonnées, lien vers la fiche Google, une ligne de liens vers les pages locales et une vers les pages par service
 - `common/RemiseEnHaut.tsx` : remet la page en haut à chaque changement de page (placé DANS le `<Suspense>`)
 - `common/LienContact.tsx` : vrai lien `/contact`, défile vers le formulaire s'il est sur la page
 - `AIChatbot.tsx` : assistant Mistral en bas à droite
@@ -128,7 +130,8 @@ Chacune a `seo/PageSeo.tsx` (titre, canonical, WebPage + BreadcrumbList) et
 - Affichage plein écran optionnel (masqué sous 640px), colonne de texte limitée pour garder des lignes lisibles
 - Effet machine à écrire côté client : le texte reçu par paquets réseau irréguliers est réaffiché à cadence régulière
 - Rendu des réponses : `**gras**`, listes à tirets et liens `[texte](url)` cliquables (internes via React Router, le chat reste ouvert)
-- Base de connaissances `public/chatbot-knowledge.txt` injectée côté serveur, incluant la liste des articles de blog que l'assistant peut proposer
+- Base de connaissances `public/chatbot-knowledge.txt` injectée côté serveur, incluant la liste des articles de blog que l'assistant peut proposer et, depuis le 13/11/2026, une section de faits par page de service
+- Prompt système (`chat.php`) : l'assistant parle de Christophe à la troisième personne, cite uniquement les avis Google de la base, n'écrit pas de tiret cadratin et peut donner les liens des pages du site (règles du 13/11/2026)
 - En dev local, le PHP n'est pas exécuté : le chatbot affiche un message d'erreur générique (comportement attendu, voir `npm run dev` ci-dessous)
 
 ---
@@ -207,10 +210,12 @@ src/
 │   │   ├── Apercus.tsx             # Aperçus Services, Réalisations, À propos de la home
 │   │   ├── BureauAnime.tsx         # Scène SVG animée « le bureau de Christophe »
 │   │   └── ServicesScenes.tsx      # Six scènes SVG animées des cartes Services
+│   ├── services/
+│   │   └── ScenesParcours.tsx      # Cinq scènes SVG des pages dédiées par service
 │   ├── layout/
 │   │   ├── Header.tsx              # Navbar + menu burger (sous 1280 px)
 │   │   ├── Footer.tsx
-│   │   └── PageHero.tsx            # Bandeau vert + fil d'Ariane + h1 des pages intérieures
+│   │   └── PageHero.tsx            # Bandeau vert + fil d'Ariane + h1 (page parente et illustration en option)
 │   ├── sections/
 │   │   ├── Hero.tsx                # Hero Pyrénées + fenêtre « votre-entreprise.fr »
 │   │   ├── About.tsx               # /a-propos (portrait en arche animé)
@@ -221,7 +226,9 @@ src/
 │   │   ├── FeaturedSnippetsFAQ.tsx # FAQ de la home
 │   │   ├── ServiceArea.tsx         # Zone d'intervention (home, /contact)
 │   │   ├── TrajetAnime.tsx         # Scène SVG animée Bayonne → Pau → visio
-│   │   ├── GoogleReviews.tsx       # Avis Google + lien vers la fiche
+│   │   ├── GoogleReviews.tsx       # Avis Google + lien vers la fiche (/avis)
+│   │   ├── AvisScene.tsx           # Scène SVG du bandeau de /avis
+│   │   ├── PlateauVideo.tsx        # Décor animé de la vidéo de /contact
 │   │   ├── BlogSection.tsx         # /blog : article à la une, grille illustrée, filtres
 │   │   └── BlogScene.tsx           # Scène SVG du bandeau du blog
 │   ├── seo/
@@ -231,12 +238,14 @@ src/
 │   └── AIChatbot.tsx               # Widget Mistral
 ├── pages/                          # Pages routées (lazy-loaded)
 │   ├── ServicesPage.tsx
+│   ├── ServiceDetail.tsx           # Gabarit des 5 pages dédiées par service
+│   ├── Avis.tsx
 │   ├── Realisations.tsx
 │   ├── APropos.tsx
 │   ├── Contact.tsx
 │   ├── Blog.tsx
 │   ├── BlogPost.tsx
-│   ├── LocalLanding.tsx            # 4 pages SEO locales (Pau, Bayonne, Biarritz, Orthez)
+│   ├── LocalLanding.tsx            # 5 pages SEO locales (agglo de Pau, Artix, Bayonne, Biarritz, Orthez)
 │   ├── LegalNotice.tsx
 │   ├── PrivacyPolicy.tsx
 │   └── NotFound.tsx
@@ -252,7 +261,9 @@ src/
 │   ├── faq.ts                      # FAQ de la home (affichage + schéma FAQPage)
 │   ├── realisations.ts             # Projet fondateur + réalisations clients
 │   ├── blogPosts.ts                # Articles du blog (contenu éditorial PME/artisans)
-│   └── localPages.ts               # Contenu des 4 pages locales SEO
+│   ├── avisGoogle.ts               # Avis de la fiche Google (page /avis)
+│   ├── servicePages.ts             # Contenu des 5 pages dédiées par service
+│   └── localPages.ts               # Contenu des 5 pages locales SEO
 ├── config/
 │   └── emailjs.ts
 ├── animations/                     # Lottie (4 fichiers)
@@ -267,7 +278,7 @@ src/
 
 ```
 public/
-├── sitemap.xml                 # home + blog + articles + pages locales + légales
+├── sitemap.xml                 # home + pages intérieures + pages par service + blog + articles + pages locales + légales
 ├── robots.txt                  # GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot,
 │                               # Google-Extended, Applebot, MistralAI-User… autorisés
 ├── llms.txt                    # Fiche synthétique pour LLM
@@ -282,7 +293,7 @@ public/
     └── ai-plugin.json          # Plugin IA standard
 ```
 
-> Le contenu de chaque page importante (home, blog, articles, pages locales) est **pré-rendu en HTML statique** au build (`scripts/prerender.mjs`), lisible sans exécution de JavaScript — essentiel pour les robots d'indexation IA (GPTBot, ClaudeBot…) qui n'exécutent pas toujours le JS.
+> Le contenu de chaque page importante (home, pages par service, blog, articles, pages locales) est **pré-rendu en HTML statique** au build (`scripts/prerender.mjs`), lisible sans exécution de JavaScript — essentiel pour les robots d'indexation IA (GPTBot, ClaudeBot…) qui n'exécutent pas toujours le JS.
 
 ---
 
@@ -299,6 +310,8 @@ public/
 | V   | Référencement Google & IA | SEO classique + optimisation LLM (ChatGPT, Claude, Perplexity) |
 | VI  | Vidéo & Drone (DGAC)      | Final Cut Pro + DJI Mavic Air certifié DGAC                    |
 
+Cinq prestations ont leur page dédiée depuis le 13/11/2026 : site vitrine, boutique en ligne, refonte, référencement local, application web sur mesure. Les faits qu'elles citent (délais, paiement en trois fois, Stripe, Mondial Relay) sont ceux de `public/chatbot-knowledge.txt`.
+
 ---
 
 ## Blog
@@ -310,7 +323,9 @@ développeurs (le contenu technique vit sur krismos.fr). Contenu dans
 Le rendu (`src/pages/BlogPost.tsx`) accepte un Markdown volontairement limité :
 `## H2`, `**gras**`, listes à tirets et liens `[texte](url)`. Les liens internes
 passent par React Router et restent crawlables dans le HTML pré-rendu, ce qui
-permet le maillage vers les autres articles et les pages locales.
+permet le maillage vers les autres articles et les pages locales. Sous chaque
+article, un bloc « À lire aussi » propose trois articles (même catégorie
+d'abord) et renvoie vers `/services`.
 
 Chaque article a deux images : celle affichée dans la page et dans les cartes
 de `/blog`, déclinée en AVIF et WebP (400 et 800px) par
@@ -440,6 +455,8 @@ Autres points traités : contrastes vérifiés au calcul (le lien d'évitement e
 
 - Title HTML statique de la home orienté client : « Création de site internet à Pau (64) \| Christophe Mostefaoui » (06/11/2026, l'ancien visait « React.js, Node.js, TypeScript »)
 - Titres de 60 caractères au plus et descriptions de 160 au plus sur toutes les pages (audit du 06/11/2026) ; les articles ont un `seoTitle` court, le titre long reste le h1
+- Une requête, une page (13/11/2026) : la home porte « création de site internet à Pau » (title et h1), la page locale de Pau vise l'agglomération, chaque service a sa page. Pas de déclinaison service × ville (pages satellites)
+- Balise `robots` (`index, follow, max-image-preview:large…`) statique dans `index.html`, donc présente sur toutes les pages ; la 404 et la politique de confidentialité ajoutent leur `noindex`
 - Une seule balise `<main>` (celle de `App.tsx`) : les pages utilisent `<section>`
 - Open Graph (image 1200×630 absolue) + Twitter Card `summary_large_image`
 - Canonical URLs dynamiques
@@ -473,7 +490,8 @@ Schemas de **page**, générés par `structured-data-final.tsx` :
 Schemas de page portés par leur propre composant :
 
 - **CreativeWork** : une entrée par réalisation (fondateur compris), dans `Portfolio.tsx` sur `/realisations`
-- **BlogPosting** + **BreadcrumbList** : un par article, dans `BlogPost.tsx`
+- **BlogPosting** (avec `datePublished`, `dateModified`, auteur relié à `#person`, éditeur à `#organization`) + **BreadcrumbList** : un par article, dans `BlogPost.tsx`
+- **Service** (relié à `#business` par `provider`) + **FAQPage** sur les pages dédiées par service (`ServiceDetail.tsx`), fil d'Ariane à trois niveaux via `PageSeo`
 - **WebPage** + **BreadcrumbList** + **FAQPage** sur les pages locales (`LocalLanding.tsx`), **BreadcrumbList** sur les mentions légales
 
 > Les horaires déclarés dans le JSON-LD doivent correspondre à ceux affichés à

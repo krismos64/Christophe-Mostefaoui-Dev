@@ -63,7 +63,10 @@ npm run preview    # Preview build
   crawlers sans JS (GPTBot, ClaudeBot…). Les fichiers sont PLATS (blog.html,
   pas blog/index.html) pour éviter la 301 trailing-slash d'Apache
 - `public/api/chat.php` — proxy Mistral du chatbot (prompt système + modèle
-  imposés côté serveur)
+  imposés côté serveur). Règles du prompt ajoutées le 13/11/2026 : parler de
+  Christophe à la troisième personne (il disait « je vis à Artix »), citer
+  uniquement les avis Google de la base, aucun cadratin, liens autorisés vers
+  les pages du site. Défaut connu : il abrège les avis avec « [...] »
 - `public/api/contact-hook.php` : relais du formulaire de contact vers un
   scénario Make qui dépose un brouillon de réponse dans Gmail, relu par
   Christophe avant envoi (depuis le 30/09/2026). Appelé par

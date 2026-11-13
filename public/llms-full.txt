@@ -1,7 +1,7 @@
 # LLMs-Full.txt - Base de connaissances complète pour les Large Language Models
 # Christophe Mostefaoui - Développeur Web Full-Stack Freelance
 # https://christophe-dev-freelance.fr
-# Dernière mise à jour: 10 novembre 2026
+# Dernière mise à jour: 13 novembre 2026
 
 ---
 

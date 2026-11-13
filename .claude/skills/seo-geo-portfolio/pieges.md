@@ -224,6 +224,22 @@ pollué (`rm -rf dist`), relancer le build. Le garde-fou des 20 000 octets dans
 `dist/index.html`. Un `vite preview` relancé ensuite sert cette capture vide,
 ce qui fausse tout nouveau diagnostic. Toujours repartir d'un `rm -rf dist`.
 
+## Le chatbot improvise sur une page qu'il ne connaît que par son lien
+
+**Symptôme** (13/11/2026) : après la mise en ligne des pages par service, la
+base ne contenait que leurs liens. Interrogé sur la refonte, le chatbot a promis
+qu'elle « conserve votre positionnement Google » ; sur Artix, il a inventé que
+Christophe travaille « régulièrement avec des entreprises locales » et a parlé
+à la première personne.
+
+**Cause** : une ligne de lien sans section de faits, le modèle comble les trous.
+La personne grammaticale, elle, se règle dans le prompt de `chat.php`, pas dans
+la base.
+
+**Réflexe** : toute nouvelle page publique reçoit une section de faits dans
+`chatbot-knowledge.txt` (avec ses interdits), puis de vrais appels à
+`/api/chat.php` en prod. Deux essais au plus.
+
 ## 403 et 429 en rafale avec un user-agent Googlebot ou GPTBot
 
 **Symptôme** : pendant les smoke tests, des URL qui répondaient 200 renvoient

@@ -2,7 +2,7 @@
 
 > Développeur web full-stack freelance basé à Pau et Artix (Pyrénées-Atlantiques, France), fondateur du SaaS SmartPlanning.fr. Services : sites vitrines, applications web et SaaS sur mesure, intégration IA (chatbots GPT, Claude, Mistral, RAG), production vidéo et drone. Devis sur mesure gratuit sous 24h (aucune grille tarifaire publique). Déplacement gratuit dans tout le 64, disponible partout en France à distance. Contact : christophe.mostefaoui.dev@gmail.com | 06 79 08 88 45.
 
-Dernière mise à jour : 10 novembre 2026.
+Dernière mise à jour : 13 novembre 2026.
 
 ## Identité
 
@@ -17,6 +17,9 @@ Dernière mise à jour : 10 novembre 2026.
 
 - Sites vitrines modernes (artisans, indépendants, auto-entrepreneurs, TPE)
 - Sites web multi-pages (commerces, PME, associations)
+- Boutiques en ligne sur mesure (paiement par carte, stock, livraison)
+- Refontes de sites existants
+- Référencement local, pour Google et les assistants IA
 - Applications web sur mesure et SaaS (projets complexes, plateformes métiers)
 - Intégration IA et chatbots (GPT, Claude, Mistral, RAG)
 - Production Vidéo & Drone (Final Cut Pro, DJI Mavic Air, télépilote certifié DGAC)

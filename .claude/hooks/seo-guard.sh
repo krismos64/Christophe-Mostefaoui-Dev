@@ -33,12 +33,18 @@ case "$FILE" in
   */public/robots.txt)
     MSG="robots.txt modifié : vérifier qu'aucune URL du sitemap n'est bloquée. Liste des crawlers IA déclarés : .claude/skills/seo-geo-portfolio/geo-reference.md"
     ;;
+  */src/data/servicePages.ts|*/src/data/localPages.ts)
+    MSG="Page de service ou page locale modifiée. Vérifier : (1) titre de 60 caractères au plus, description de 160 au plus ; (2) aucun prix, aucune promesse de position Google, aucun chiffre inventé, pas de « expert » ; (3) les faits cités (délais, paiement en trois fois, Stripe, Mondial Relay) restent ceux de public/chatbot-knowledge.txt, et la section « Pages dédiées par service » de ce fichier suit la modification ; (4) chaque page garde un contenu distinct des autres (pas de pages satellites), et la requête « création de site internet à Pau » reste à la home ; (5) <lastmod> du sitemap ; (6) page ajoutée : routes d'App.tsx, sitemap, footer, 3 fichiers LLM, catalogue JSON-LD d'index.html."
+    ;;
+  */public/api/chat.php)
+    MSG="Prompt ou proxy du chatbot modifié : php -l public/api/chat.php, puis tester par de vrais appels en prod après déploiement (troisième personne, aucun prix, aucun cadratin, avis recopiés de la base). Deux essais en prod au plus, puis rendre la main. Détail : docs/mistral-ai-setup.md"
+    ;;
   */src/App.tsx|*/src/index.css)
     MSG="Fichier porteur des garde-fous d'accessibilité. Vérifier qu'ils sont TOUJOURS là, Lighthouse ne les détecte pas : (1) le lien d'évitement <a href=\"#contenu\" class=\"skip-link\"> en tête de App.tsx, premier élément focusable, avec id=\"contenu\" sur le <main> ; (2) MotionConfig reducedMotion=\"user\" autour du <Router> ; (3) dans index.css, la classe .skip-link (invisible hors focus, ce n'est PAS du CSS mort) et la media query prefers-reduced-motion. Tester : première tabulation sur la home, le lien doit apparaître. Détail : section Accessibilité de CLAUDE.md"
     ;;
 
   */public/llms.txt|*/public/llms-full.txt|*/public/chatbot-knowledge.txt)
-    MSG="Fichier LLM modifié : les trois (llms.txt, llms-full.txt, chatbot-knowledge.txt) doivent rester cohérents entre eux. Conserver les garde-fous anti-hallucination (pas de tarifs, pas d'avis clients, pas de sous-traitants, pas de stats de résultat) et mettre à jour la date « Dernière mise à jour ». chatbot-knowledge.txt nourrit AUSSI les brouillons Make du formulaire, et chaque nouvel article y demande une section de faits en FAQ, pas seulement une ligne de lien. Format : .claude/skills/seo-geo-portfolio/geo-reference.md"
+    MSG="Fichier LLM modifié : les trois (llms.txt, llms-full.txt, chatbot-knowledge.txt) doivent rester cohérents entre eux. Conserver les garde-fous anti-hallucination (pas de tarifs, pas d'avis inventés : seuls les avis Google de la fiche sont autorisés, pas de sous-traitants, pas de stats de résultat) et mettre à jour la date « Dernière mise à jour ». chatbot-knowledge.txt nourrit AUSSI les brouillons Make du formulaire, et chaque nouvel article y demande une section de faits en FAQ, pas seulement une ligne de lien. Format : .claude/skills/seo-geo-portfolio/geo-reference.md"
     ;;
   *)
     exit 0

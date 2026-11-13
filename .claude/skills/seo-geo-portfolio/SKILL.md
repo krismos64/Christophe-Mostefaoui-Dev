@@ -46,7 +46,7 @@ for u in /services/ /blog/ /creation-site-internet-pau/; do
   curl -s -o /dev/null -w "$u -> %{http_code} %{redirect_url}\n" "$S$u"; done
 
 # 3. Contenu lisible sans JS (pré-rendu) : un H1 sur chaque route clé
-for u in / /blog /services /contact /creation-site-internet-pau; do
+for u in / /blog /services /contact /creation-site-internet-pau /creation-site-vitrine /application-web-sur-mesure; do
   echo -n "$u h1="; curl -s "$S$u" | grep -c '<h1'
 done   # attendu : 1 partout, jamais 0 ni 2
 
@@ -108,7 +108,17 @@ Chacune vient d'un incident réel. Détails et symptômes dans `pieges.md`.
    internet à Pau (64) »), jamais le vocabulaire technique.
 9ter. **BreadcrumbList sur toutes les pages indexées sauf la home** : `PageSeo`
    pour les pages intérieures et `/blog`, schéma dédié dans `BlogPost.tsx`,
-   `LocalLanding.tsx` et `LegalNotice.tsx`.
+   `LocalLanding.tsx` et `LegalNotice.tsx`. Les pages par service passent par
+   `PageSeo` avec `parent` (Accueil / Services / page).
+9quater. **Une requête, une page** (13/11/2026) : la home porte « création de
+   site internet à Pau » dans son title ET son h1. La page locale
+   `/creation-site-internet-pau` vise l'agglomération (Lescar, Lons, Billère) :
+   ne pas lui redonner ce titre, les deux pages se cannibalisaient. Chaque
+   service a sa page (`servicePages.ts`) avec un bloc `propre` distinct ; ne
+   jamais décliner service × ville (pages satellites, « doorway abuse »).
+9quinquies. **Balise `robots` statique dans `index.html`** : elle vaut pour
+   toutes les pages pré-rendues. Ne pas la remettre dans un composant (les pages
+   intérieures ne l'avaient pas avant le 13/11/2026).
 10. **Piège JSX/a11y** : les nœuds texte multi-lignes sont concaténés SANS
     espace dans le DOM. Un `aria-label` ne peut donc pas « contenir » un texte
     visible multi-nœuds (règle axe `label-content-name-mismatch`). Laisser le
@@ -126,6 +136,8 @@ Chacune vient d'un incident réel. Détails et symptômes dans `pieges.md`.
 | `public/robots.txt` | Vérifier qu'aucune URL du sitemap n'est bloquée. Liste des crawlers IA dans `geo-reference.md` |
 | `src/data/faq.ts` (FAQ de la home) | Rien d'autre à toucher pour le schéma : le FAQPage est généré depuis ce fichier. Garder le texte simple, sans tarif ni chiffre invérifiable ; si une réponse change un fait (délais, zone), le reporter dans les 3 fichiers LLM |
 | Vignette d'une réalisation | `scripts/mockup/incruster.sh <nom>` puis `optimize-images.sh` ; captures dans `scripts/mockup/captures/` (voir README, « Vignettes des réalisations »). Jamais de compteur de projets dans un texte |
+| `src/data/servicePages.ts` ou `localPages.ts` | Titre ≤ 60, description ≤ 160, aucun prix ni promesse de position ; reporter tout fait modifié dans la section « Pages dédiées par service » de `chatbot-knowledge.txt` ; `<lastmod>` ; page ajoutée : routes d'`App.tsx`, sitemap, footer, 3 fichiers LLM, catalogue JSON-LD |
+| `public/api/chat.php` (prompt) | `php -l`, puis vrais appels en prod : troisième personne, aucun prix, aucun cadratin, avis de la base seulement. Deux essais au plus |
 | Ajout d'une route | L'ajouter au sitemap (sinon pas de pré-rendu) ou à `EXTRA_ROUTES` de `scripts/prerender.mjs` si elle est `noindex` |
 
 ## GEO (visibilité dans les LLM)

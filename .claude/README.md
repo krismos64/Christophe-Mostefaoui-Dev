@@ -51,7 +51,8 @@ pas branché sur un hook : trop lent (15 à 90 s) et consommateur de quota.
 
 Un hook `PostToolUse` sur Edit/Write rappelle la marche à suivre dès qu'un
 fichier SEO sensible est touché (`index.html`, `.htaccess`, `sitemap.xml`,
-`robots.txt`, `llms*.txt`, `chatbot-knowledge.txt`, `blogPosts.ts`), ou un
+`robots.txt`, `llms*.txt`, `chatbot-knowledge.txt`, `blogPosts.ts`, et depuis
+le 13/11/2026 `servicePages.ts`, `localPages.ts` et `chat.php`), ou un
 fichier porteur des garde-fous d'accessibilité (`App.tsx`, `index.css`). Il affiche
 un rappel contextuel, il ne bloque jamais l'édition.
 

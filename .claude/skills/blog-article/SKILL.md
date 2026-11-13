@@ -57,8 +57,12 @@ Ce qui ne marche PAS : `# H1` (le titre est déjà rendu en h1, doublon), tablea
 images en ligne, `*italique*`, code.
 
 **Maillage interne** : placer 2 ou 3 liens vers d'autres articles ou vers les
-pages locales (`/creation-site-internet-pau`, `-bayonne`, `-biarritz`,
-`-orthez-bearn`), intégrés dans une phrase, pas en liste. Piège : le chemin d'un
+pages locales (`/creation-site-internet-pau` pour l'agglomération paloise,
+`-artix`, `-bayonne`, `-biarritz`, `-orthez-bearn`) ou vers une page de service
+(`/creation-site-vitrine`, `/creation-boutique-en-ligne`,
+`/refonte-site-internet`, `/referencement-local`,
+`/application-web-sur-mesure`), intégrés dans une phrase, pas en liste. Le bloc
+« À lire aussi » sous l'article est automatique (trois articles liés). Piège : le chemin d'un
 article est `/blog/<slug>`, pas `/<slug>`.
 
 ## Processus de publication (dans cet ordre)

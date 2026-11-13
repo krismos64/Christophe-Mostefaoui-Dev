@@ -40,7 +40,9 @@ Le build complet = `tsc && vite build && node scripts/prerender.mjs`
 
 ```bash
 # 1. Routes pré-rendues : 200 direct, PAS de redirection, contenu présent
-for u in / /blog /services /realisations /avis /a-propos /contact /mentions-legales; do
+for u in / /blog /services /realisations /avis /a-propos /contact /mentions-legales \
+         /creation-site-vitrine /creation-boutique-en-ligne /refonte-site-internet \
+         /referencement-local /application-web-sur-mesure /creation-site-internet-artix; do
   curl -s -o /dev/null -w "$u -> %{http_code} redirect=[%{redirect_url}]\n" "https://christophe-dev-freelance.fr$u"
 done
 curl -s https://christophe-dev-freelance.fr/blog | grep -c '<h1'   # >= 1
@@ -57,6 +59,9 @@ curl -s -o /dev/null -w '%{http_code} -> %{redirect_url}\n' https://www.christop
 curl -s -o /dev/null -w '%{http_code}\n' -X POST https://christophe-dev-freelance.fr/api/chat.php \
   -H 'Content-Type: application/json' -H 'Origin: https://christophe-dev-freelance.fr' \
   -d '{"messages":[{"role":"user","content":"ping"}]}'   # attendu : 200
+# Après une modification du prompt ou de chatbot-knowledge.txt, lire aussi la
+# RÉPONSE (pas seulement le code) : Christophe à la troisième personne, aucun
+# prix, aucun cadratin, aucune promesse de position Google.
 # Un 502 ici ne vient PAS du déploiement : l'appel amont à Mistral a échoué.
 # Vérifier d'abord que l'API Pay-As-You-Go est active sur admin.mistral.ai
 # (sans elle : 429 permanent, panne vécue le 07/09/2026), puis que le modèle de

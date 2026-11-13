@@ -65,6 +65,13 @@ Le prompt (identité, services, règles de communication) vit dans
 le CI déploie. Rappel : jamais de tarifs chiffrés ni de stats inventées dans le
 prompt (devis sur mesure uniquement).
 
+Règles ajoutées le 13/11/2026, à conserver : l'assistant n'est pas Christophe
+et parle de lui à la troisième personne ; il cite uniquement les avis Google
+recopiés dans la base ; il n'écrit aucun tiret cadratin ; il peut donner les
+liens des pages du site listées dans la base. Après toute modification, poser
+de vraies questions en prod et lire les réponses. Défaut connu, non corrigé :
+il abrège les avis avec « [...] » au lieu de les recopier en entier.
+
 ## Coûts
 
 Modèle `mistral-small-2603` (Mistral Small 4), plafonné à 500 tokens par réponse,
