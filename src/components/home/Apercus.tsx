@@ -87,6 +87,15 @@ export function ApercuServices() {
             </li>
           ))}
         </ul>
+        <p className="mt-8 max-w-3xl text-[16px] leading-relaxed text-foret/80">
+          Un outil métier, un espace client, une gestion de commandes ?{" "}
+          <Link
+            to="/application-web-sur-mesure"
+            className={`inline-flex min-h-[44px] items-center font-bold text-foret underline decoration-soleil decoration-2 underline-offset-[5px] hover:text-foret-moyen focus-visible:outline-foret ${focus}`}
+          >
+            Application web sur mesure
+          </Link>
+        </p>
         <LienSuite to="/services">Voir le détail des services et le déroulement d'un projet</LienSuite>
       </div>
     </section>

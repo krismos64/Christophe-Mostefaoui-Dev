@@ -177,6 +177,19 @@ export default function Services() {
           aria-hidden="true"
         />
 
+        {/* Le service sans carte : l'application sur mesure a sa page dédiée */}
+        <p className="hero-body mt-8 max-w-3xl text-[16px] sm:text-[17px] leading-[1.7] text-foret/80">
+          Votre besoin dépasse le site internet (outil métier, espace client,
+          gestion de commandes ou de stock) ?{" "}
+          <Link
+            to="/application-web-sur-mesure"
+            className="inline-flex min-h-[44px] items-center gap-1.5 font-medium text-foret underline decoration-soleil decoration-2 underline-offset-[5px] hover:text-foret-moyen"
+          >
+            Voir l'application web sur mesure
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </p>
+
         {/* CTA + transition */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
