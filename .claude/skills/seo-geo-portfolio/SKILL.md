@@ -21,6 +21,14 @@ ne pas régresser est plus important qu'optimiser.
 | TBT | 20 ms | était à 250 ms, ne pas régresser |
 | CLS | 0 | excellent, ne pas casser |
 
+**Contrôle du 13/11/2026** (Lighthouse mobile, prod, après l'ajout des pages
+par service) : SEO, Accessibilité et Best Practices à 100, aucun audit en
+échec, sur six pages : home, `/services`, `/creation-boutique-en-ligne`,
+`/application-web-sur-mesure`, `/creation-site-internet-artix` et un article
+(`/blog/combien-coute-site-internet-2026`). La catégorie expérimentale
+« Agentic Browsing » est aussi à 100. Performance non mesurée ce jour-là :
+l'outil `lighthouse_audit` l'exclut, passer par une trace si besoin.
+
 **Variance** : les runs sur cette prod oscillent de 79 à 91 pour un même code.
 Faire 3 runs et prendre la médiane. Mesurer en local (`serve -s dist`) ne sert
 à rien pour comparer : le TTFB y est de 4 ms contre ~645 ms en prod.
